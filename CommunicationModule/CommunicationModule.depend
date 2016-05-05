@@ -58,9 +58,11 @@
 	<json/config.h>
 	<stdexcept>
 
-1462461993 source:/home/wojciech_dymek/Smeshalist/Smeshalist/CommunicationModule/main.cpp
+1462468100 source:/home/wojciech_dymek/Smeshalist/Smeshalist/CommunicationModule/main.cpp
 	<iostream>
 	<json/json.h>
+	"httpServer.h"
+	<time.h>
 
 1462460865 source:/home/wojciech_dymek/Smeshalist/Smeshalist/CommunicationModule/src/jsoncpp.cpp
 	<json/json.h>
@@ -97,4 +99,41 @@
 	<string.h>
 	<sstream>
 	<iomanip>
+
+1462460865 /home/wojciech_dymek/Smeshalist/Smeshalist/CommunicationModule/include/json/json.h
+	<cpptl/config.h>
+	"config.h"
+	"forwards.h"
+	"forwards.h"
+	<string>
+	<vector>
+	<map>
+	<cpptl/smallmap.h>
+	<cpptl/forwards.h>
+	"features.h"
+	"value.h"
+	<deque>
+	<iosfwd>
+	<stack>
+	<string>
+	"value.h"
+	<vector>
+	<string>
+	<stdlib.h>
+	<json/config.h>
+	<stdexcept>
+
+1462468452 source:/home/wojciech_dymek/Smeshalist/Smeshalist/CommunicationModule/src/httpServer/httpServer.cpp
+	"httpServer.h"
+	"Controller.h"
+
+1462468405 /home/wojciech_dymek/Smeshalist/Smeshalist/CommunicationModule/include/httpServer/httpServer.h
+	<microhttpd.h>
+	<iostream>
+	<string.h>
+	<vector>
+	"Controller.h"
+
+1462468564 /home/wojciech_dymek/Smeshalist/Smeshalist/CommunicationModule/include/httpServer/Controller.h
+	<sstream>
 

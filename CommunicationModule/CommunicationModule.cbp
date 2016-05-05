@@ -13,6 +13,10 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="include/httServer" />
+					<Add directory="include/httpSever" />
+					<Add directory="include/httpServer" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +26,10 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
+					<Add directory="include/httServer" />
+					<Add directory="include/httpSever" />
+					<Add directory="include/httpServer" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,7 +40,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/httpServer/ Controller.h" />
+		<Unit filename="include/httpServer/httpServer.h" />
+		<Unit filename="include/json/json-forwards.h" />
+		<Unit filename="include/json/json.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/httpServer/httpServer.cpp" />
+		<Unit filename="src/jsoncpp.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
