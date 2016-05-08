@@ -9,8 +9,8 @@
 	<netinet/in.h>
 	<arpa/inet.h>
 
-1462704836 source:/home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/main.cpp
-	"Server.h"
+1462723328 source:/home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/main.cpp
+	"LinuxServer.h"
 	<stdio.h>
 
 1462636282 source:/home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/structs.pb.cc
@@ -37,7 +37,7 @@
 1462705019 source:/home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/src/Server.cpp
 	"Server.h"
 
-1462701165 /home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/include/Server.h
+1462720927 /home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/include/Server.h
 	<sys/socket.h>
 	<netinet/in.h>
 	<arpa/inet.h>
@@ -46,6 +46,7 @@
 	<thread>
 	<sys/time.h>
 	"../structs.pb.h"
+	"AbstractServer.h"
 
 1462703264 /usr/local/include/google/protobuf/stubs/common.h
 	<assert.h>
@@ -213,4 +214,25 @@
 	<google/protobuf/extension_set.h>
 	<google/protobuf/generated_enum_reflection.h>
 	<google/protobuf/unknown_field_set.h>
+
+1462722471 /home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/include/AbstractServer.h
+
+1462720708 source:/home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/src/AbstractServer.cpp
+	"AbstractServer.h"
+
+1462724226 source:/home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/src/LinuxServer.cpp
+	"LinuxServer.h"
+
+1462724058 /home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/include/LinuxServer.h
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<string.h>
+	<stdio.h>
+	<thread>
+	<sys/time.h>
+	<atomic>
+	<cerrno>
+	"../structs.pb.h"
+	"AbstractServer.h"
 

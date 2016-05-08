@@ -29,11 +29,12 @@
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-std=c++11" />
+					<Add option="-g" />
+					<Add option="-pthread" />
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add option="-s" />
-					<Add library="libprotobuf.a" />
+					<Add option="libprotobuf.a -lm" />
 				</Linker>
 			</Target>
 		</Build>
