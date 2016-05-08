@@ -1,13 +1,14 @@
-#include "Server.h"
+#include "LinuxServer.h"
 #include <stdio.h>
 
 int main(){
-    Server server;
+    AbstractServer* server = new LinuxServer();
 
-    server.startServer();
+    server->startServer();
 
     getchar();
 
-    //server.stopServer();
+    server->stopServer();
+
     return 0;
 }
