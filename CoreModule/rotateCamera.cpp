@@ -1,26 +1,31 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <math.h>
 
 #ifdef __APPLE__
 #include <GLUT/glut.h>
 #else
 #include <GL/glut.h>
+#include <GL/freeglut_ext.h>
 #endif
 
 // angle of rotation for the camera direction
-float angle = 0.0f;
+float angleX = 0.0f;
+float angleY = 0.0f;
 
 // actual vector representing the camera's direction
-float lx=0.0f,lz=-1.0f;
+float lx=0.0f,ly=1.0f,lz=-1.0f;
 
 // XZ position of the camera
-float x=0.0f, z=5.0f;
+float x=0.0f,y=1.0f,z=5.0f;
 
 // the key states. These variables will be zero
 //when no key is being presses
-float deltaAngle = 0.0f;
+float deltaAngleX = 0.0f;
+float deltaAngleY = 0.0f;
 float deltaMove = 0;
 int xOrigin = -1;
+int yOrigin = -1;
 
 void changeSize(int w, int h) {
 
@@ -94,13 +99,16 @@ void drawTriangle()
 void computePos(float deltaMove) {
 
 	x += deltaMove * lx * 0.1f;
+	y += deltaMove * ly * 0.1f;
 	z += deltaMove * lz * 0.1f;
 }
 
 void renderScene(void) {
 
-	if (deltaMove)
-		computePos(deltaMove);
+	if (deltaMove){
+        computePos(deltaMove);
+
+	}
 
 	// Clear Color and Depth Buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -108,8 +116,8 @@ void renderScene(void) {
 	// Reset transformations
 	glLoadIdentity();
 	// Set the camera
-	gluLookAt(	x, 1.0f, z,
-			x+lx, 1.0f,  z+lz,
+	gluLookAt(	x, y, z,
+			x+lx, y+ly,  z+lz,
 			0.0f, 1.0f,  0.0f);
 
     // Draw ground
@@ -149,8 +157,8 @@ void processNormalKeys(unsigned char key, int xx, int yy) {
 void pressKey(int key, int xx, int yy) {
 
        switch (key) {
-             case GLUT_KEY_UP : deltaMove = 0.5f; break;
-             case GLUT_KEY_DOWN : deltaMove = -0.5f; break;
+             case GLUT_KEY_UP : deltaMove = 0.05f; break;
+             case GLUT_KEY_DOWN : deltaMove = -0.05f; break;
        }
 }
 
@@ -164,15 +172,17 @@ void releaseKey(int key, int x, int y) {
 
 void mouseMove(int x, int y) {
 
-         // this will only be true when the left button is down
-         if (xOrigin >= 0) {
+    // this will only be true when the left button is down
+    if (xOrigin >= 0 && yOrigin >= 0) {
 
 		// update deltaAngle
-		deltaAngle = (x - xOrigin) * 0.001f;
+		deltaAngleX = (x - xOrigin) * 0.001f;
+		deltaAngleY = (y - yOrigin) * 0.001f;
 
 		// update camera's direction
-		lx = sin(angle + deltaAngle);
-		lz = -cos(angle + deltaAngle);
+		lx = sin(angleX + deltaAngleX);
+		ly = -sin(angleY + deltaAngleY);
+		lz = -cos(angleX + deltaAngleX);
 	}
 }
 
@@ -183,15 +193,56 @@ void mouseButton(int button, int state, int x, int y) {
 
 		// when the button is released
 		if (state == GLUT_UP) {
-			angle += deltaAngle;
+			angleX += deltaAngleX;
+			angleY += deltaAngleY;
 			xOrigin = -1;
+			yOrigin = -1;
 		}
 		else  {// state = GLUT_DOWN
 			xOrigin = x;
+			yOrigin = y;
 		}
 	}
-}
 
+
+	//scroll up
+	if (button == 3){
+
+        //when the button is pressed
+        if (state == GLUT_DOWN){
+            if (deltaMove == 0.0f){
+                deltaMove = 0.05f;
+            }else{
+                deltaMove = 0.0f;
+            }
+
+        }
+	}
+	//scroll down
+	if (button == 4){
+
+        //when the button is pressed
+        if (state == GLUT_DOWN){
+            if (deltaMove == 0.0f){
+                deltaMove = -0.05f;
+            }else{
+                deltaMove = 0.0f;
+            }
+
+        }
+	}
+
+}
+void wheelFunc(int wheel, int direction, int x, int y){
+
+    if(direction == -1){
+        deltaMove = -0.05f;
+    }
+    else if (direction == 1){
+        deltaMove = 0.05f;
+    }
+
+}
 int main(int argc, char **argv) {
 
 	// init GLUT and create window
@@ -214,6 +265,9 @@ int main(int argc, char **argv) {
 	// here are the two new functions
 	glutMouseFunc(mouseButton);
 	glutMotionFunc(mouseMove);
+
+	//mouse wheel function
+//	glutMouseWheelFunc(wheelFunc);
 
 	// OpenGL init
 	glEnable(GL_DEPTH_TEST);
