@@ -80,12 +80,12 @@ void drawTriangle()
     glClear(GL_COLOR_BUFFER_BIT);
 
     glColor3f(1.0, 1.0, 1.0);
-//    glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
+    glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
 
         glBegin(GL_TRIANGLES);
-                glVertex3f(-0.7, 0.7, 0);
-                glVertex3f(0.7, 0.7, 0);
-                glVertex3f(0, -1, 0);
+                glVertex3f(-0.1, 1.5, 0);
+                glVertex3f(0.1, 1.5, 0);
+                glVertex3f(0, 1.3, 0);
         glEnd();
 
 //    glFlush();
@@ -113,13 +113,13 @@ void renderScene(void) {
 			0.0f, 1.0f,  0.0f);
 
     // Draw ground
-	glColor3f(0.9f, 0.9f, 0.9f);
+/*	glColor3f(0.9f, 0.9f, 0.9f);
 	glBegin(GL_QUADS);
 		glVertex3f(-100.0f, 0.0f, -100.0f);
 		glVertex3f(-100.0f, 0.0f,  100.0f);
 		glVertex3f( 100.0f, 0.0f,  100.0f);
 		glVertex3f( 100.0f, 0.0f, -100.0f);
-	glEnd();
+	glEnd(); */
 /*
     // Draw 36 SnowMen
 	for(int i = -3; i < 3; i++)
