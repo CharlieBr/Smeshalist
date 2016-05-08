@@ -1,0 +1,11 @@
+option java_package = "structDefinitions";
+option java_outer_classname = "Point2DJSON";
+
+message Point2D {
+    required double x = 1;
+    required double y = 2;
+}
+
+message Point2DSet {
+	repeated Point2D points = 1;
+}

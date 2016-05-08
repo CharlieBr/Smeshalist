@@ -1,0 +1,216 @@
+# depslib dependency file v1.0
+1462635902 source:/home/wojciech_dymek/TEST/CppServer/main.cpp
+	<stdio.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<string.h>
+	<stdlib.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+
+1462704836 source:/home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/main.cpp
+	"Server.h"
+	<stdio.h>
+
+1462636282 source:/home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/structs.pb.cc
+	"structs.pb.h"
+	<algorithm>
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/stubs/once.h>
+	<google/protobuf/io/coded_stream.h>
+	<google/protobuf/wire_format_lite_inl.h>
+	<google/protobuf/descriptor.h>
+	<google/protobuf/generated_message_reflection.h>
+	<google/protobuf/reflection_ops.h>
+	<google/protobuf/wire_format.h>
+
+1462636282 /home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/structs.pb.h
+	<string>
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/generated_message_util.h>
+	<google/protobuf/message.h>
+	<google/protobuf/repeated_field.h>
+	<google/protobuf/extension_set.h>
+	<google/protobuf/unknown_field_set.h>
+
+1462705019 source:/home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/src/Server.cpp
+	"Server.h"
+
+1462701165 /home/wojciech_dymek/Smeshalist/Smeshalist/ProtocolBufferCPPServer/CppServer/include/Server.h
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<string.h>
+	<stdio.h>
+	<thread>
+	<sys/time.h>
+	"../structs.pb.h"
+
+1462703264 /usr/local/include/google/protobuf/stubs/common.h
+	<assert.h>
+	<stdlib.h>
+	<cstddef>
+	<string>
+	<string.h>
+	<inttypes.h>
+	<stdint.h>
+	<exception>
+
+1462703264 /usr/local/include/google/protobuf/generated_message_util.h
+	<assert.h>
+	<string>
+	<google/protobuf/stubs/once.h>
+	<google/protobuf/stubs/common.h>
+
+1462703264 /usr/local/include/google/protobuf/stubs/once.h
+	<google/protobuf/stubs/atomicops.h>
+	<google/protobuf/stubs/common.h>
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops.h
+	<google/protobuf/stubs/platform_macros.h>
+	<google/protobuf/stubs/atomicops_internals_tsan.h>
+	<google/protobuf/stubs/atomicops_internals_x86_msvc.h>
+	<google/protobuf/stubs/atomicops_internals_solaris.h>
+	<google/protobuf/stubs/atomicops_internals_macosx.h>
+	<google/protobuf/stubs/atomicops_internals_x86_gcc.h>
+	<google/protobuf/stubs/atomicops_internals_arm_gcc.h>
+	<google/protobuf/stubs/atomicops_internals_arm64_gcc.h>
+	<google/protobuf/stubs/atomicops_internals_arm_qnx.h>
+	<google/protobuf/stubs/atomicops_internals_mips_gcc.h>
+	<google/protobuf/stubs/atomicops_internals_pnacl.h>
+	<google/protobuf/stubs/atomicops_internals_generic_gcc.h>
+	<google/protobuf/stubs/atomicops_internals_generic_gcc.h>
+	<google/protobuf/stubs/atomicops_internals_atomicword_compat.h>
+
+1462703264 /usr/local/include/google/protobuf/stubs/platform_macros.h
+	<google/protobuf/stubs/common.h>
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_tsan.h
+	<sanitizer/tsan_interface_atomic.h>
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_x86_msvc.h
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_solaris.h
+	<atomic.h>
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_macosx.h
+	<libkern/OSAtomic.h>
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_x86_gcc.h
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_arm_gcc.h
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_arm64_gcc.h
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_arm_qnx.h
+	<pthread.h>
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_mips_gcc.h
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_pnacl.h
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_generic_gcc.h
+
+1462703264 /usr/local/include/google/protobuf/stubs/atomicops_internals_atomicword_compat.h
+
+1462703264 /usr/local/include/google/protobuf/message.h
+	<iosfwd>
+	<string>
+	<vector>
+	<google/protobuf/message_lite.h>
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/descriptor.h>
+
+1462703264 /usr/local/include/google/protobuf/message_lite.h
+	<google/protobuf/stubs/common.h>
+
+1462703264 /usr/local/include/google/protobuf/descriptor.h
+	<set>
+	<string>
+	<vector>
+	<google/protobuf/stubs/common.h>
+
+1462703264 /usr/local/include/google/protobuf/repeated_field.h
+	<algorithm>
+	<string>
+	<iterator>
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/stubs/type_traits.h>
+	<google/protobuf/generated_message_util.h>
+	<google/protobuf/message_lite.h>
+
+1462703264 /usr/local/include/google/protobuf/stubs/type_traits.h
+	<utility>
+	<google/protobuf/stubs/template_util.h>
+
+1462703264 /usr/local/include/google/protobuf/stubs/template_util.h
+
+1462703264 /usr/local/include/google/protobuf/extension_set.h
+	<vector>
+	<map>
+	<utility>
+	<string>
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/repeated_field.h>
+
+1462703264 /usr/local/include/google/protobuf/unknown_field_set.h
+	<assert.h>
+	<string>
+	<vector>
+	<google/protobuf/stubs/common.h>
+
+1462703264 /usr/local/include/google/protobuf/io/coded_stream.h
+	<string>
+	<sys/param.h>
+	<google/protobuf/stubs/common.h>
+
+1462703264 /usr/local/include/google/protobuf/wire_format_lite_inl.h
+	<algorithm>
+	<string>
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/message_lite.h>
+	<google/protobuf/repeated_field.h>
+	<google/protobuf/wire_format_lite.h>
+	<google/protobuf/io/coded_stream.h>
+
+1462703264 /usr/local/include/google/protobuf/wire_format_lite.h
+	<string>
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/message_lite.h>
+	<google/protobuf/io/coded_stream.h>
+
+1462703264 /usr/local/include/google/protobuf/generated_message_reflection.h
+	<string>
+	<vector>
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/generated_enum_reflection.h>
+	<google/protobuf/message.h>
+	<google/protobuf/unknown_field_set.h>
+
+1462703264 /usr/local/include/google/protobuf/generated_enum_reflection.h
+	<string>
+	<google/protobuf/stubs/template_util.h>
+
+1462703264 /usr/local/include/google/protobuf/reflection_ops.h
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/message.h>
+
+1462703264 /usr/local/include/google/protobuf/wire_format.h
+	<string>
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/descriptor.pb.h>
+	<google/protobuf/descriptor.h>
+	<google/protobuf/message.h>
+	<google/protobuf/wire_format_lite.h>
+
+1462703264 /usr/local/include/google/protobuf/descriptor.pb.h
+	<string>
+	<google/protobuf/stubs/common.h>
+	<google/protobuf/generated_message_util.h>
+	<google/protobuf/message.h>
+	<google/protobuf/repeated_field.h>
+	<google/protobuf/extension_set.h>
+	<google/protobuf/generated_enum_reflection.h>
+	<google/protobuf/unknown_field_set.h>
+
