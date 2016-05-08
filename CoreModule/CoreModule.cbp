@@ -34,10 +34,10 @@
 		<Linker>
 			<Add library="GL" />
 			<Add library="X11" />
+			<Add library="glut" />
+			<Add library="GLU" />
 		</Linker>
-		<Unit filename="main.c">
-			<Option compilerVar="CC" />
-		</Unit>
+		<Unit filename="rotateCamera.cpp" />
 		<Unit filename="triangle.cpp" />
 		<Extensions>
 			<code_completion />
