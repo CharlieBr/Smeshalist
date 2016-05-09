@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1462808990 source:/home/kasia/Smeshalist/Structures/structures.cpp
+	"structures.h"
+
+1462808973 /home/kasia/Smeshalist/Structures/structures.h
+	<iostream>
+	<map>
+	<list>
+	<vector>
+	<stdio.h>
+
