@@ -42,27 +42,29 @@ void Block::draw(){
 }
 
 
-Data& Data::getInstance(){
+Data& Data::get_instance(){
     static Data instance;
     return instance;
 }
 
-map<int, list<Element> > Data::structures;
+map<int, list<Element*> > Data::structures;
 
-void Data::add(int key, Element element){
-    map<int, list<Element> >::iterator it;
+void Data::add(int key, Element* element){
+    map<int, list<Element*> >::iterator it;
     it = structures.find(key);
 
     if( it == structures.end() ){
-        list<Element> elements_list;
-        structures.insert( pair<int, list<Element> >(key, elements_list));
+        list<Element*> elements_list;
+        structures.insert( pair<int, list<Element*> >(key, elements_list));
     }
 
     structures.at(key).push_back(element);
 }
 
-list<Element> Data::get(int key){
+list<Element*> Data::get(int key){
     return structures.at(key);
 }
 
+void Data::draw_elements(int index){
 
+}

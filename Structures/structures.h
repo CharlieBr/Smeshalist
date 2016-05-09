@@ -59,15 +59,19 @@ class Element { //kind of interface for mesh elements
 
 class Vertex : public Element {
     public:
-        Vertex(vector<Point3D> * points, int groupID) : Element(points, "point", groupID) {};
-        Vertex(vector<Point3D> * points, int groupID, Label label) : Element(points, "point", groupID, label) {};
+        Vertex(vector<Point3D> * points, int groupID)
+            : Element(points, "point", groupID) {};
+        Vertex(vector<Point3D> * points, int groupID, Label label)
+            : Element(points, "point", groupID, label) {};
         virtual void draw();
 };
 
 class Edge : public Element {
     public:
-        Edge(vector<Point3D> * points, int groupID) : Element(points, "edge", groupID) {};
-        Edge(vector<Point3D> * points, int groupID, Label label) : Element(points, "edge", groupID, label) {};
+        Edge(vector<Point3D> * points, int groupID)
+            : Element(points, "edge", groupID) {};
+        Edge(vector<Point3D> * points, int groupID, Label label)
+            : Element(points, "edge", groupID, label) {};
         virtual void draw();
 };
 
@@ -89,18 +93,14 @@ class Block : public Element {
         vector<Face> faces;
 
     public:
-        Block(vector<Point3D> * points, int groupID, vector<Face> * faces):
-            Element(points, "block", groupID), faces(*faces) {};
-        Block(vector<Point3D> * points, int groupID, vector<Face> * faces, Label label):
-            Element(points, "block", groupID, label), faces(*faces) {};
+        Block(vector<Point3D> * points, int groupID, vector<Face> * faces)
+            : Element(points, "block", groupID), faces(*faces) {};
+        Block(vector<Point3D> * points, int groupID, vector<Face> * faces, Label label)
+            : Element(points, "block", groupID, label), faces(*faces) {};
 
         virtual void draw();
         vector<Face> * getFaces(){ return &faces; }
 };
-
-
-
-
 
 
 // -----------------------------
@@ -110,7 +110,7 @@ class Block : public Element {
 //------------------------------
 
 class Data {
-    static map<int, list<Element> > structures;
+    static map<int, list<Element*> > structures;
 
     private:
         Data(){ };
@@ -119,11 +119,13 @@ class Data {
         Data(Data const&) = delete;
         void operator=(Data const&) = delete;
 
-        static Data& getInstance();
+        static Data& get_instance();
 
-        void add(int, Element);
+        void add(int, Element*);
 
-        list<Element> get(int);
+        list<Element*> get(int);
+
+        void draw_elements(int);
 };
 
 #endif
