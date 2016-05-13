@@ -9,23 +9,27 @@
 #include <GL/freeglut_ext.h>
 #endif
 
+#include "LinuxServer.h"
+
 // angle of rotation for the camera direction
 float angleX = 0.0f;
 float angleY = 0.0f;
 
 // actual vector representing the camera's direction
-float lx=0.0f,ly=1.0f,lz=-1.0f;
+float lx=10.0f,ly=10.0f,lz=-1.0f;
 
 // XZ position of the camera
-float x=0.0f,y=1.0f,z=5.0f;
+float x=0.0f,y=0.0f,z=5.0f;
 
 // the key states. These variables will be zero
 //when no key is being presses
 float deltaAngleX = 0.0f;
 float deltaAngleY = 0.0f;
-float deltaMove = 0;
+float deltaMove = 1;
 int xOrigin = -1;
 int yOrigin = -1;
+
+Data* d;
 
 void changeSize(int w, int h) {
 
@@ -52,55 +56,34 @@ void changeSize(int w, int h) {
 	glMatrixMode(GL_MODELVIEW);
 }
 
-void drawSnowMan() {
-
-	glColor3f(1.0f, 1.0f, 1.0f);
-
-// Draw Body
-	glTranslatef(0.0f ,0.75f, 0.0f);
-	glutSolidSphere(0.75f,20,20);
-
-// Draw Head
-	glTranslatef(0.0f, 1.0f, 0.0f);
-	glutSolidSphere(0.25f,20,20);
-
-// Draw Eyes
-	glPushMatrix();
-	glColor3f(0.0f,0.0f,0.0f);
-	glTranslatef(0.05f, 0.10f, 0.18f);
-	glutSolidSphere(0.05f,10,10);
-	glTranslatef(-0.1f, 0.0f, 0.0f);
-	glutSolidSphere(0.05f,10,10);
-	glPopMatrix();
-
-// Draw Nose
-	glColor3f(1.0f, 0.5f , 0.5f);
-	glRotatef(0.0f,1.0f, 0.0f, 0.0f);
-	glutSolidCone(0.08f,0.5f,10,2);
-}
-
-void drawTriangle()
-{
-    glClearColor(0.4, 0.4, 0.4, 0.4);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glColor3f(1.0, 1.0, 1.0);
-    glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
-
-        glBegin(GL_TRIANGLES);
-                glVertex3f(-0.1, 1.5, 0);
-                glVertex3f(0.1, 1.5, 0);
-                glVertex3f(0, 1.3, 0);
-        glEnd();
-
-//    glFlush();
-}
-
 void computePos(float deltaMove) {
 
-	x += deltaMove * lx * 0.1f;
-	y += deltaMove * ly * 0.1f;
+	x = deltaMove * lx * 0.1f;
+	y = deltaMove * ly * 0.1f;
 	z += deltaMove * lz * 0.1f;
+}
+
+void drawOrigin() {
+    glBegin(GL_LINES);
+        glColor3f(0, 0, 0);
+        glVertex3f(-2, 0, 0);
+        glColor3f(1, 0, 0);
+        glVertex3f( 2, 0, 0);
+    glEnd();
+
+    glBegin(GL_LINES);
+        glColor3f(0, 0, 0);
+        glVertex3f(0, -2, 0);
+        glColor3f(0, 1, 0);
+        glVertex3f(0,  2, 0);
+    glEnd();
+
+    glBegin(GL_LINES);
+        glColor3f(0, 0, 0);
+        glVertex3f(0, 0, -2);
+        glColor3f(0, 0, 1);
+        glVertex3f(0, 0,  2);
+    glEnd();
 }
 
 void renderScene(void) {
@@ -113,39 +96,26 @@ void renderScene(void) {
 	// Clear Color and Depth Buffers
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	glClearColor(1, 1, 1, 1);
+    glClear(GL_COLOR_BUFFER_BIT);
+
 	// Reset transformations
 	glLoadIdentity();
 	// Set the camera
-	gluLookAt(	x, y, z,
-			x+lx, y+ly,  z+lz,
-			0.0f, 1.0f,  0.0f);
+	gluLookAt(0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
-    // Draw ground
-/*	glColor3f(0.9f, 0.9f, 0.9f);
-	glBegin(GL_QUADS);
-		glVertex3f(-100.0f, 0.0f, -100.0f);
-		glVertex3f(-100.0f, 0.0f,  100.0f);
-		glVertex3f( 100.0f, 0.0f,  100.0f);
-		glVertex3f( 100.0f, 0.0f, -100.0f);
-	glEnd(); */
-/*
-    // Draw 36 SnowMen
-	for(int i = -3; i < 3; i++)
-		for(int j=-3; j < 3; j++) {
-			glPushMatrix();
-			glTranslatef(i*10.0,0,j * 10.0);
-			drawSnowMan();
-			glPopMatrix();
-		}
-		*/
+	glTranslatef(0.0f, 0.0f, 0);
+    // use one rotation each for x and y object rotation
+    glRotatef(x, 0, 1, 0);
+    glRotatef(y, 1, 0, 0);
 
+    glPushMatrix();
+        drawOrigin();
+        glColor3f(0.1f, 0.1f, 0.1f);
+        d -> draw_elements();
+    glPopMatrix();
 
-                     glPushMatrix();
-                     drawTriangle();
-                     glPopMatrix();
-
-        glutSwapBuffers();
-
+    glutSwapBuffers();
 }
 
 void processNormalKeys(unsigned char key, int xx, int yy) {
@@ -171,19 +141,9 @@ void releaseKey(int key, int x, int y) {
 }
 
 void mouseMove(int x, int y) {
-
     // this will only be true when the left button is down
-    if (xOrigin >= 0 && yOrigin >= 0) {
-
-		// update deltaAngle
-		deltaAngleX = (x - xOrigin) * 0.001f;
-		deltaAngleY = (y - yOrigin) * 0.001f;
-
-		// update camera's direction
-		lx = sin(angleX + deltaAngleX);
-		ly = -sin(angleY + deltaAngleY);
-		lz = -cos(angleX + deltaAngleX);
-	}
+    lx = x;
+    ly = y;
 }
 
 void mouseButton(int button, int state, int x, int y) {
@@ -244,6 +204,18 @@ void wheelFunc(int wheel, int direction, int x, int y){
 
 }
 int main(int argc, char **argv) {
+    d = &Data::get_instance();
+    vector<Point3D> points;
+
+    Point3D point(1.2, 3.4, 1.4);
+    points.push_back(point);
+
+    Vertex vertex(&points, 0);
+    d->add(0, &vertex);
+    d->draw_elements();
+
+    AbstractServer* server = new LinuxServer();
+    server -> registerStructuresHandler(d);
 
 	// init GLUT and create window
 	glutInit(&argc, argv);
@@ -263,7 +235,7 @@ int main(int argc, char **argv) {
 	glutSpecialUpFunc(releaseKey);
 
 	// here are the two new functions
-	glutMouseFunc(mouseButton);
+	//glutMouseFunc(mouseButton);
 	glutMotionFunc(mouseMove);
 
 	//mouse wheel function
@@ -273,7 +245,9 @@ int main(int argc, char **argv) {
 	glEnable(GL_DEPTH_TEST);
 
 	// enter GLUT event processing cycle
+	server -> startServer();
 	glutMainLoop();
+	server -> stopServer();
 
 	return 1;
 }
