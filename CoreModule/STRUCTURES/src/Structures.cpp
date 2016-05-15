@@ -20,7 +20,7 @@ void Vertex::draw(){
     //cout << "POINT " << coordinates.print_coordinates() << endl;
     //cout << "POINT (" << coordinates.print_coordinates() << endl;
 
-    glPointSize(5);
+    glPointSize(2);
     glBegin(GL_POINTS);
         glVertex3f(coordinates.get_x(), coordinates.get_y(), coordinates.get_z());
     glEnd();

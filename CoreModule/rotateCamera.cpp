@@ -15,19 +15,17 @@
 float angleX = 0.0f;
 float angleY = 0.0f;
 
-// actual vector representing the camera's direction
-float lx=10.0f,ly=10.0f,lz=-1.0f;
-
 // XZ position of the camera
-float x=0.0f,y=0.0f,z=5.0f;
+float x=2.0f,y=2.0f,z=1.0f;
 
 // the key states. These variables will be zero
 //when no key is being presses
 float deltaAngleX = 0.0f;
 float deltaAngleY = 0.0f;
 float deltaMove = 1;
-int xOrigin = -1;
-int yOrigin = -1;
+
+float oldX, oldY;
+float radius=3.0f;
 
 Data* d;
 
@@ -58,9 +56,9 @@ void changeSize(int w, int h) {
 
 void computePos(float deltaMove) {
 
-	x = deltaMove * lx * 0.1f;
-	y = deltaMove * ly * 0.1f;
-	z += deltaMove * lz * 0.1f;
+	x = deltaMove + deltaAngleX;
+	y = deltaMove + deltaAngleY;
+	z += deltaMove;
 }
 
 void drawOrigin() {
@@ -90,7 +88,6 @@ void renderScene(void) {
 
 	if (deltaMove){
         computePos(deltaMove);
-
 	}
 
 	// Clear Color and Depth Buffers
@@ -102,13 +99,13 @@ void renderScene(void) {
 	// Reset transformations
 	glLoadIdentity();
 	// Set the camera
-	gluLookAt(0.0f, 0.0f, -1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+	gluLookAt(cos(deltaAngleY)*cos(deltaAngleX)*radius, sin(deltaAngleY)*radius, cos(deltaAngleY)*sin(deltaAngleX)*radius, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
 
 	glTranslatef(0.0f, 0.0f, 0);
     // use one rotation each for x and y object rotation
-    glRotatef(x, 0, 1, 0);
-    glRotatef(y, 1, 0, 0);
-
+    /*glRotatef(x, 0, 1, 0);
+    glRotatef(y, 1, 0, 0);*/
+    //cout << x << "\t" << y << endl;
     glPushMatrix();
         drawOrigin();
         glColor3f(0.1f, 0.1f, 0.1f);
@@ -142,12 +139,14 @@ void releaseKey(int key, int x, int y) {
 
 void mouseMove(int x, int y) {
     // this will only be true when the left button is down
-    lx = x;
-    ly = y;
+    deltaAngleX += (x-oldX)/100.0;
+    deltaAngleY += (y-oldY)/100.0;
+
+    oldX=x;
+    oldY=y;
 }
 
 void mouseButton(int button, int state, int x, int y) {
-
 	// only start motion if the left button is pressed
 	if (button == GLUT_LEFT_BUTTON) {
 
@@ -155,21 +154,20 @@ void mouseButton(int button, int state, int x, int y) {
 		if (state == GLUT_UP) {
 			angleX += deltaAngleX;
 			angleY += deltaAngleY;
-			xOrigin = -1;
-			yOrigin = -1;
-		}
-		else  {// state = GLUT_DOWN
-			xOrigin = x;
-			yOrigin = y;
+		} else {
+            oldX = x;
+            oldY = y;
 		}
 	}
 
 
 	//scroll up
 	if (button == 3){
-
         //when the button is pressed
         if (state == GLUT_DOWN){
+            if (radius > 1){
+                radius--;
+            }
             if (deltaMove == 0.0f){
                 deltaMove = 0.05f;
             }else{
@@ -180,7 +178,7 @@ void mouseButton(int button, int state, int x, int y) {
 	}
 	//scroll down
 	if (button == 4){
-
+        radius++;
         //when the button is pressed
         if (state == GLUT_DOWN){
             if (deltaMove == 0.0f){
@@ -193,26 +191,8 @@ void mouseButton(int button, int state, int x, int y) {
 	}
 
 }
-void wheelFunc(int wheel, int direction, int x, int y){
-
-    if(direction == -1){
-        deltaMove = -0.05f;
-    }
-    else if (direction == 1){
-        deltaMove = 0.05f;
-    }
-
-}
 int main(int argc, char **argv) {
     d = &Data::get_instance();
-    vector<Point3D> points;
-
-    Point3D point(1.2, 3.4, 1.4);
-    points.push_back(point);
-
-    Vertex vertex(&points, 0);
-    d->add(0, &vertex);
-    d->draw_elements();
 
     AbstractServer* server = new LinuxServer();
     server -> registerStructuresHandler(d);
@@ -235,11 +215,8 @@ int main(int argc, char **argv) {
 	glutSpecialUpFunc(releaseKey);
 
 	// here are the two new functions
-	//glutMouseFunc(mouseButton);
+	glutMouseFunc(mouseButton);
 	glutMotionFunc(mouseMove);
-
-	//mouse wheel function
-//	glutMouseWheelFunc(wheelFunc);
 
 	// OpenGL init
 	glEnable(GL_DEPTH_TEST);
