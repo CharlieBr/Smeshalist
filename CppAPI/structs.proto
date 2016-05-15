@@ -1,5 +1,4 @@
-option java_package = "structDefinitions";
-option java_outer_classname = "Structures";
+package structDefinitions;
 
 message Point2D {
     required double x = 1;
