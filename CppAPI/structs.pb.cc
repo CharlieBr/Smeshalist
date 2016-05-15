@@ -53,9 +53,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* Block_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Block_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Blocks_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* BlockSet_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  Blocks_reflection_ = NULL;
+  BlockSet_reflection_ = NULL;
 
 }  // namespace
 
@@ -241,21 +241,21 @@ void protobuf_AssignDesc_structs_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(Block));
-  Blocks_descriptor_ = file->message_type(11);
-  static const int Blocks_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Blocks, blocks_),
+  BlockSet_descriptor_ = file->message_type(11);
+  static const int BlockSet_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BlockSet, blocks_),
   };
-  Blocks_reflection_ =
+  BlockSet_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      Blocks_descriptor_,
-      Blocks::default_instance_,
-      Blocks_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Blocks, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Blocks, _unknown_fields_),
+      BlockSet_descriptor_,
+      BlockSet::default_instance_,
+      BlockSet_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BlockSet, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BlockSet, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(Blocks));
+      sizeof(BlockSet));
 }
 
 namespace {
@@ -291,7 +291,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     Block_descriptor_, &Block::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    Blocks_descriptor_, &Blocks::default_instance());
+    BlockSet_descriptor_, &BlockSet::default_instance());
 }
 
 }  // namespace
@@ -319,8 +319,8 @@ void protobuf_ShutdownFile_structs_2eproto() {
   delete TriangleFaceSet_reflection_;
   delete Block::default_instance_;
   delete Block_reflection_;
-  delete Blocks::default_instance_;
-  delete Blocks_reflection_;
+  delete BlockSet::default_instance_;
+  delete BlockSet_reflection_;
 }
 
 void protobuf_AddDesc_structs_2eproto() {
@@ -351,9 +351,9 @@ void protobuf_AddDesc_structs_2eproto() {
     "1\030\001 \002(\0132\032.structDefinitions.Point3D\022&\n\002v"
     "2\030\002 \002(\0132\032.structDefinitions.Point3D\022&\n\002v"
     "3\030\003 \002(\0132\032.structDefinitions.Point3D\022&\n\002v"
-    "4\030\004 \002(\0132\032.structDefinitions.Point3D\"2\n\006B"
-    "locks\022(\n\006blocks\030\001 \003(\0132\030.structDefinition"
-    "s.Block", 927);
+    "4\030\004 \002(\0132\032.structDefinitions.Point3D\"4\n\010B"
+    "lockSet\022(\n\006blocks\030\001 \003(\0132\030.structDefiniti"
+    "ons.Block", 929);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "structs.proto", &protobuf_RegisterTypes);
   Point2D::default_instance_ = new Point2D();
@@ -367,7 +367,7 @@ void protobuf_AddDesc_structs_2eproto() {
   TriangleFace::default_instance_ = new TriangleFace();
   TriangleFaceSet::default_instance_ = new TriangleFaceSet();
   Block::default_instance_ = new Block();
-  Blocks::default_instance_ = new Blocks();
+  BlockSet::default_instance_ = new BlockSet();
   Point2D::default_instance_->InitAsDefaultInstance();
   Point2DSet::default_instance_->InitAsDefaultInstance();
   Point3D::default_instance_->InitAsDefaultInstance();
@@ -379,7 +379,7 @@ void protobuf_AddDesc_structs_2eproto() {
   TriangleFace::default_instance_->InitAsDefaultInstance();
   TriangleFaceSet::default_instance_->InitAsDefaultInstance();
   Block::default_instance_->InitAsDefaultInstance();
-  Blocks::default_instance_->InitAsDefaultInstance();
+  BlockSet::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_structs_2eproto);
 }
 
@@ -3322,72 +3322,72 @@ void Block::Swap(Block* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int Blocks::kBlocksFieldNumber;
+const int BlockSet::kBlocksFieldNumber;
 #endif  // !_MSC_VER
 
-Blocks::Blocks()
+BlockSet::BlockSet()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:structDefinitions.Blocks)
+  // @@protoc_insertion_point(constructor:structDefinitions.BlockSet)
 }
 
-void Blocks::InitAsDefaultInstance() {
+void BlockSet::InitAsDefaultInstance() {
 }
 
-Blocks::Blocks(const Blocks& from)
+BlockSet::BlockSet(const BlockSet& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:structDefinitions.Blocks)
+  // @@protoc_insertion_point(copy_constructor:structDefinitions.BlockSet)
 }
 
-void Blocks::SharedCtor() {
+void BlockSet::SharedCtor() {
   _cached_size_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-Blocks::~Blocks() {
-  // @@protoc_insertion_point(destructor:structDefinitions.Blocks)
+BlockSet::~BlockSet() {
+  // @@protoc_insertion_point(destructor:structDefinitions.BlockSet)
   SharedDtor();
 }
 
-void Blocks::SharedDtor() {
+void BlockSet::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void Blocks::SetCachedSize(int size) const {
+void BlockSet::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* Blocks::descriptor() {
+const ::google::protobuf::Descriptor* BlockSet::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return Blocks_descriptor_;
+  return BlockSet_descriptor_;
 }
 
-const Blocks& Blocks::default_instance() {
+const BlockSet& BlockSet::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
   return *default_instance_;
 }
 
-Blocks* Blocks::default_instance_ = NULL;
+BlockSet* BlockSet::default_instance_ = NULL;
 
-Blocks* Blocks::New() const {
-  return new Blocks;
+BlockSet* BlockSet::New() const {
+  return new BlockSet;
 }
 
-void Blocks::Clear() {
+void BlockSet::Clear() {
   blocks_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool Blocks::MergePartialFromCodedStream(
+bool BlockSet::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:structDefinitions.Blocks)
+  // @@protoc_insertion_point(parse_start:structDefinitions.BlockSet)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
@@ -3421,17 +3421,17 @@ bool Blocks::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:structDefinitions.Blocks)
+  // @@protoc_insertion_point(parse_success:structDefinitions.BlockSet)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:structDefinitions.Blocks)
+  // @@protoc_insertion_point(parse_failure:structDefinitions.BlockSet)
   return false;
 #undef DO_
 }
 
-void Blocks::SerializeWithCachedSizes(
+void BlockSet::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:structDefinitions.Blocks)
+  // @@protoc_insertion_point(serialize_start:structDefinitions.BlockSet)
   // repeated .structDefinitions.Block blocks = 1;
   for (int i = 0; i < this->blocks_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -3442,12 +3442,12 @@ void Blocks::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:structDefinitions.Blocks)
+  // @@protoc_insertion_point(serialize_end:structDefinitions.BlockSet)
 }
 
-::google::protobuf::uint8* Blocks::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* BlockSet::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.Blocks)
+  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.BlockSet)
   // repeated .structDefinitions.Block blocks = 1;
   for (int i = 0; i < this->blocks_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -3459,11 +3459,11 @@ void Blocks::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.Blocks)
+  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.BlockSet)
   return target;
 }
 
-int Blocks::ByteSize() const {
+int BlockSet::ByteSize() const {
   int total_size = 0;
 
   // repeated .structDefinitions.Block blocks = 1;
@@ -3485,10 +3485,10 @@ int Blocks::ByteSize() const {
   return total_size;
 }
 
-void Blocks::MergeFrom(const ::google::protobuf::Message& from) {
+void BlockSet::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const Blocks* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const Blocks*>(
+  const BlockSet* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const BlockSet*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -3497,31 +3497,31 @@ void Blocks::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void Blocks::MergeFrom(const Blocks& from) {
+void BlockSet::MergeFrom(const BlockSet& from) {
   GOOGLE_CHECK_NE(&from, this);
   blocks_.MergeFrom(from.blocks_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void Blocks::CopyFrom(const ::google::protobuf::Message& from) {
+void BlockSet::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void Blocks::CopyFrom(const Blocks& from) {
+void BlockSet::CopyFrom(const BlockSet& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool Blocks::IsInitialized() const {
+bool BlockSet::IsInitialized() const {
 
   if (!::google::protobuf::internal::AllAreInitialized(this->blocks())) return false;
   return true;
 }
 
-void Blocks::Swap(Blocks* other) {
+void BlockSet::Swap(BlockSet* other) {
   if (other != this) {
     blocks_.Swap(&other->blocks_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
@@ -3530,11 +3530,11 @@ void Blocks::Swap(Blocks* other) {
   }
 }
 
-::google::protobuf::Metadata Blocks::GetMetadata() const {
+::google::protobuf::Metadata BlockSet::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Blocks_descriptor_;
-  metadata.reflection = Blocks_reflection_;
+  metadata.descriptor = BlockSet_descriptor_;
+  metadata.reflection = BlockSet_reflection_;
   return metadata;
 }
 

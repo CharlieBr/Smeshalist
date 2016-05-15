@@ -7928,8 +7928,8 @@ public final class Structures {
     // @@protoc_insertion_point(class_scope:Block)
   }
 
-  public interface BlocksOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:Blocks)
+  public interface BlockSetOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:BlockSet)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -7957,25 +7957,25 @@ public final class Structures {
         int index);
   }
   /**
-   * Protobuf type {@code Blocks}
+   * Protobuf type {@code BlockSet}
    */
-  public static final class Blocks extends
+  public static final class BlockSet extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:Blocks)
-      BlocksOrBuilder {
-    // Use Blocks.newBuilder() to construct.
-    private Blocks(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // @@protoc_insertion_point(message_implements:BlockSet)
+      BlockSetOrBuilder {
+    // Use BlockSet.newBuilder() to construct.
+    private BlockSet(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
       this.unknownFields = builder.getUnknownFields();
     }
-    private Blocks(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+    private BlockSet(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
 
-    private static final Blocks defaultInstance;
-    public static Blocks getDefaultInstance() {
+    private static final BlockSet defaultInstance;
+    public static BlockSet getDefaultInstance() {
       return defaultInstance;
     }
 
-    public Blocks getDefaultInstanceForType() {
+    public BlockSet getDefaultInstanceForType() {
       return defaultInstance;
     }
 
@@ -7985,7 +7985,7 @@ public final class Structures {
         getUnknownFields() {
       return this.unknownFields;
     }
-    private Blocks(
+    private BlockSet(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -8033,28 +8033,28 @@ public final class Structures {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return structDefinitions.Structures.internal_static_Blocks_descriptor;
+      return structDefinitions.Structures.internal_static_BlockSet_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return structDefinitions.Structures.internal_static_Blocks_fieldAccessorTable
+      return structDefinitions.Structures.internal_static_BlockSet_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              structDefinitions.Structures.Blocks.class, structDefinitions.Structures.Blocks.Builder.class);
+              structDefinitions.Structures.BlockSet.class, structDefinitions.Structures.BlockSet.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Blocks> PARSER =
-        new com.google.protobuf.AbstractParser<Blocks>() {
-      public Blocks parsePartialFrom(
+    public static com.google.protobuf.Parser<BlockSet> PARSER =
+        new com.google.protobuf.AbstractParser<BlockSet>() {
+      public BlockSet parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Blocks(input, extensionRegistry);
+        return new BlockSet(input, extensionRegistry);
       }
     };
 
     @java.lang.Override
-    public com.google.protobuf.Parser<Blocks> getParserForType() {
+    public com.google.protobuf.Parser<BlockSet> getParserForType() {
       return PARSER;
     }
 
@@ -8143,53 +8143,53 @@ public final class Structures {
       return super.writeReplace();
     }
 
-    public static structDefinitions.Structures.Blocks parseFrom(
+    public static structDefinitions.Structures.BlockSet parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static structDefinitions.Structures.Blocks parseFrom(
+    public static structDefinitions.Structures.BlockSet parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static structDefinitions.Structures.Blocks parseFrom(byte[] data)
+    public static structDefinitions.Structures.BlockSet parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static structDefinitions.Structures.Blocks parseFrom(
+    public static structDefinitions.Structures.BlockSet parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static structDefinitions.Structures.Blocks parseFrom(java.io.InputStream input)
+    public static structDefinitions.Structures.BlockSet parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static structDefinitions.Structures.Blocks parseFrom(
+    public static structDefinitions.Structures.BlockSet parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseFrom(input, extensionRegistry);
     }
-    public static structDefinitions.Structures.Blocks parseDelimitedFrom(java.io.InputStream input)
+    public static structDefinitions.Structures.BlockSet parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input);
     }
-    public static structDefinitions.Structures.Blocks parseDelimitedFrom(
+    public static structDefinitions.Structures.BlockSet parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return PARSER.parseDelimitedFrom(input, extensionRegistry);
     }
-    public static structDefinitions.Structures.Blocks parseFrom(
+    public static structDefinitions.Structures.BlockSet parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return PARSER.parseFrom(input);
     }
-    public static structDefinitions.Structures.Blocks parseFrom(
+    public static structDefinitions.Structures.BlockSet parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -8198,7 +8198,7 @@ public final class Structures {
 
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(structDefinitions.Structures.Blocks prototype) {
+    public static Builder newBuilder(structDefinitions.Structures.BlockSet prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -8210,25 +8210,25 @@ public final class Structures {
       return builder;
     }
     /**
-     * Protobuf type {@code Blocks}
+     * Protobuf type {@code BlockSet}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:Blocks)
-        structDefinitions.Structures.BlocksOrBuilder {
+        // @@protoc_insertion_point(builder_implements:BlockSet)
+        structDefinitions.Structures.BlockSetOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return structDefinitions.Structures.internal_static_Blocks_descriptor;
+        return structDefinitions.Structures.internal_static_BlockSet_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return structDefinitions.Structures.internal_static_Blocks_fieldAccessorTable
+        return structDefinitions.Structures.internal_static_BlockSet_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                structDefinitions.Structures.Blocks.class, structDefinitions.Structures.Blocks.Builder.class);
+                structDefinitions.Structures.BlockSet.class, structDefinitions.Structures.BlockSet.Builder.class);
       }
 
-      // Construct using structDefinitions.Structures.Blocks.newBuilder()
+      // Construct using structDefinitions.Structures.BlockSet.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -8264,23 +8264,23 @@ public final class Structures {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return structDefinitions.Structures.internal_static_Blocks_descriptor;
+        return structDefinitions.Structures.internal_static_BlockSet_descriptor;
       }
 
-      public structDefinitions.Structures.Blocks getDefaultInstanceForType() {
-        return structDefinitions.Structures.Blocks.getDefaultInstance();
+      public structDefinitions.Structures.BlockSet getDefaultInstanceForType() {
+        return structDefinitions.Structures.BlockSet.getDefaultInstance();
       }
 
-      public structDefinitions.Structures.Blocks build() {
-        structDefinitions.Structures.Blocks result = buildPartial();
+      public structDefinitions.Structures.BlockSet build() {
+        structDefinitions.Structures.BlockSet result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
 
-      public structDefinitions.Structures.Blocks buildPartial() {
-        structDefinitions.Structures.Blocks result = new structDefinitions.Structures.Blocks(this);
+      public structDefinitions.Structures.BlockSet buildPartial() {
+        structDefinitions.Structures.BlockSet result = new structDefinitions.Structures.BlockSet(this);
         int from_bitField0_ = bitField0_;
         if (blocksBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
@@ -8296,16 +8296,16 @@ public final class Structures {
       }
 
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof structDefinitions.Structures.Blocks) {
-          return mergeFrom((structDefinitions.Structures.Blocks)other);
+        if (other instanceof structDefinitions.Structures.BlockSet) {
+          return mergeFrom((structDefinitions.Structures.BlockSet)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(structDefinitions.Structures.Blocks other) {
-        if (other == structDefinitions.Structures.Blocks.getDefaultInstance()) return this;
+      public Builder mergeFrom(structDefinitions.Structures.BlockSet other) {
+        if (other == structDefinitions.Structures.BlockSet.getDefaultInstance()) return this;
         if (blocksBuilder_ == null) {
           if (!other.blocks_.isEmpty()) {
             if (blocks_.isEmpty()) {
@@ -8350,11 +8350,11 @@ public final class Structures {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        structDefinitions.Structures.Blocks parsedMessage = null;
+        structDefinitions.Structures.BlockSet parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (structDefinitions.Structures.Blocks) e.getUnfinishedMessage();
+          parsedMessage = (structDefinitions.Structures.BlockSet) e.getUnfinishedMessage();
           throw e;
         } finally {
           if (parsedMessage != null) {
@@ -8605,15 +8605,15 @@ public final class Structures {
         return blocksBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:Blocks)
+      // @@protoc_insertion_point(builder_scope:BlockSet)
     }
 
     static {
-      defaultInstance = new Blocks(true);
+      defaultInstance = new BlockSet(true);
       defaultInstance.initFields();
     }
 
-    // @@protoc_insertion_point(class_scope:Blocks)
+    // @@protoc_insertion_point(class_scope:BlockSet)
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
@@ -8672,10 +8672,10 @@ public final class Structures {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Block_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Blocks_descriptor;
+    internal_static_BlockSet_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_Blocks_fieldAccessorTable;
+      internal_static_BlockSet_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -8700,8 +8700,8 @@ public final class Structures {
       "aces\030\001 \003(\0132\r.TriangleFace\"_\n\005Block\022\024\n\002v1" +
       "\030\001 \002(\0132\010.Point3D\022\024\n\002v2\030\002 \002(\0132\010.Point3D\022\024" +
       "\n\002v3\030\003 \002(\0132\010.Point3D\022\024\n\002v4\030\004 \002(\0132\010.Point" +
-      "3D\" \n\006Blocks\022\026\n\006blocks\030\001 \003(\0132\006.BlockB\037\n\021" +
-      "structDefinitionsB\nStructures"
+      "3D\"\"\n\010BlockSet\022\026\n\006blocks\030\001 \003(\0132\006.BlockB\037" +
+      "\n\021structDefinitionsB\nStructures"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8781,11 +8781,11 @@ public final class Structures {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Block_descriptor,
         new java.lang.String[] { "V1", "V2", "V3", "V4", });
-    internal_static_Blocks_descriptor =
+    internal_static_BlockSet_descriptor =
       getDescriptor().getMessageTypes().get(11);
-    internal_static_Blocks_fieldAccessorTable = new
+    internal_static_BlockSet_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_Blocks_descriptor,
+        internal_static_BlockSet_descriptor,
         new java.lang.String[] { "Blocks", });
   }
 

@@ -54,6 +54,6 @@ message Block {
 	required Point3D v4 = 4;
 }
 
-message Blocks {
+message BlockSet {
 	repeated Block blocks = 1;
 }

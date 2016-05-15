@@ -44,7 +44,7 @@ class EdgeSet;
 class TriangleFace;
 class TriangleFaceSet;
 class Block;
-class Blocks;
+class BlockSet;
 
 // ===================================================================
 
@@ -1052,14 +1052,14 @@ class Block : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class Blocks : public ::google::protobuf::Message {
+class BlockSet : public ::google::protobuf::Message {
  public:
-  Blocks();
-  virtual ~Blocks();
+  BlockSet();
+  virtual ~BlockSet();
 
-  Blocks(const Blocks& from);
+  BlockSet(const BlockSet& from);
 
-  inline Blocks& operator=(const Blocks& from) {
+  inline BlockSet& operator=(const BlockSet& from) {
     CopyFrom(from);
     return *this;
   }
@@ -1073,17 +1073,17 @@ class Blocks : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const Blocks& default_instance();
+  static const BlockSet& default_instance();
 
-  void Swap(Blocks* other);
+  void Swap(BlockSet* other);
 
   // implements Message ----------------------------------------------
 
-  Blocks* New() const;
+  BlockSet* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Blocks& from);
-  void MergeFrom(const Blocks& from);
+  void CopyFrom(const BlockSet& from);
+  void MergeFrom(const BlockSet& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -1117,7 +1117,7 @@ class Blocks : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >*
       mutable_blocks();
 
-  // @@protoc_insertion_point(class_scope:structDefinitions.Blocks)
+  // @@protoc_insertion_point(class_scope:structDefinitions.BlockSet)
  private:
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
@@ -1130,7 +1130,7 @@ class Blocks : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_structs_2eproto();
 
   void InitAsDefaultInstance();
-  static Blocks* default_instance_;
+  static BlockSet* default_instance_;
 };
 // ===================================================================
 
@@ -1885,35 +1885,35 @@ inline void Block::set_allocated_v4(::structDefinitions::Point3D* v4) {
 
 // -------------------------------------------------------------------
 
-// Blocks
+// BlockSet
 
 // repeated .structDefinitions.Block blocks = 1;
-inline int Blocks::blocks_size() const {
+inline int BlockSet::blocks_size() const {
   return blocks_.size();
 }
-inline void Blocks::clear_blocks() {
+inline void BlockSet::clear_blocks() {
   blocks_.Clear();
 }
-inline const ::structDefinitions::Block& Blocks::blocks(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.Blocks.blocks)
+inline const ::structDefinitions::Block& BlockSet::blocks(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.BlockSet.blocks)
   return blocks_.Get(index);
 }
-inline ::structDefinitions::Block* Blocks::mutable_blocks(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.Blocks.blocks)
+inline ::structDefinitions::Block* BlockSet::mutable_blocks(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.BlockSet.blocks)
   return blocks_.Mutable(index);
 }
-inline ::structDefinitions::Block* Blocks::add_blocks() {
-  // @@protoc_insertion_point(field_add:structDefinitions.Blocks.blocks)
+inline ::structDefinitions::Block* BlockSet::add_blocks() {
+  // @@protoc_insertion_point(field_add:structDefinitions.BlockSet.blocks)
   return blocks_.Add();
 }
 inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >&
-Blocks::blocks() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.Blocks.blocks)
+BlockSet::blocks() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.BlockSet.blocks)
   return blocks_;
 }
 inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >*
-Blocks::mutable_blocks() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.Blocks.blocks)
+BlockSet::mutable_blocks() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.BlockSet.blocks)
   return &blocks_;
 }
 
