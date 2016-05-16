@@ -13,8 +13,6 @@
 
 #include "Structures.h"
 #include "Data.h"
-
-#include "structs.pb.h"
 #include "AbstractServer.h"
 
 class LinuxServer : public AbstractServer
@@ -34,6 +32,13 @@ class LinuxServer : public AbstractServer
 
         void startServerInNewThread();
         void registerStructuresHandler(Data*);
+
+        void parsePoint2DSet(structDefinitions::Point2DSet*);
+        void parsePoint3DSet(structDefinitions::Point3DSet*);
+        void parseVertexSet(structDefinitions::VertexSet*);
+        void parseEdgeSet(structDefinitions::EdgeSet*);
+        void parseTriangleFaceSet(structDefinitions::TriangleFaceSet*);
+        void parseBlockSet(structDefinitions::BlockSet*);
 };
 
 #endif // SERVER_H

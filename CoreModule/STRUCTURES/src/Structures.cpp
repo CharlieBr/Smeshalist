@@ -29,19 +29,53 @@ void Vertex::draw(){
 void Edge::draw(){
     Point3D v1 = this -> vertexes[0];
     Point3D v2 = this -> vertexes[1];
-    cout << "EDGE |" << v1.print_coordinates() << " ----- " << v2.print_coordinates() << "|" <<endl;
+    //cout << "EDGE |" << v1.print_coordinates() << " ----- " << v2.print_coordinates() << "|" <<endl;
+
+    glBegin(GL_LINES);
+        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+    glEnd();
 }
 
 void Face::draw(){
-    cout << "FACE: \n";
-    for(unsigned int i = 0; i < this -> edges.size(); i++){
-        edges[i].draw();
-    }
+    Point3D v1 = this -> vertexes[0];
+    Point3D v2 = this -> vertexes[1];
+    Point3D v3 = this -> vertexes[2];
+
+    glBegin(GL_TRIANGLES);
+        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+    glEnd();
 }
 
 void Block::draw(){
-    cout << "BLOCK: \n";
-    for(unsigned int i = 0; i < this -> faces.size(); i++){
-        faces[i].draw();
-    }
+    Point3D v1 = this -> vertexes[0];
+    Point3D v2 = this -> vertexes[1];
+    Point3D v3 = this -> vertexes[2];
+    Point3D v4 = this -> vertexes[3];
+
+    glBegin(GL_TRIANGLES);
+        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+    glEnd();
+
+    glBegin(GL_TRIANGLES);
+        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+    glEnd();
+
+    glBegin(GL_TRIANGLES);
+        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+    glEnd();
+
+    glBegin(GL_TRIANGLES);
+        glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+    glEnd();
 }
