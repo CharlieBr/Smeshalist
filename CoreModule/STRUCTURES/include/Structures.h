@@ -34,17 +34,13 @@ class Face : public Element {
 };
 
 class Block : public Element {
-    private:
-        vector<Face> faces;
-
     public:
-        Block(vector<Point3D> * points, vector<Face> * faces)
-            : Element(points, "block"), faces(*faces) {};
-        Block(vector<Point3D> * points, vector<Face> * faces, Label label)
-            : Element(points, "block", label), faces(*faces) {};
+        Block(vector<Point3D> * points)
+            : Element(points, "block") {};
+        Block(vector<Point3D> * points, Label label)
+            : Element(points, "block", label) {};
 
         virtual void draw();
-        vector<Face> * getFaces(){ return &faces; }
 };
 
 #endif // STRUCTURES_H
