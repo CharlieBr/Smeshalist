@@ -2,7 +2,7 @@
 #define STRUCTURES_H
 
 #include "Element.h"
-//#include <GL/glut.h>
+#include <GL/glut.h>
 
 
 class Vertex : public Element {
