@@ -42,14 +42,19 @@ class Element
     protected:
         vector<Point3D> vertexes;
         string type;
-        int groupID;
         Label label;
 
     public:
-        Element(vector<Point3D> * points, string type, int groupID, Label label)
-            : vertexes(*points), type(type), groupID(groupID), label(label) {};
-        Element(vector<Point3D> * points, string type, int groupID)
-            : vertexes(*points), type(type), groupID(groupID) {};
+        Element(vector<Point3D> * points, string type, Label label)
+            : vertexes(*points), type(type), label(label) {};
+        Element(vector<Point3D> * points, string type)
+            : vertexes(*points), type(type) {};
+        //constructors for Vertex
+        Element(Point3D point, string type, Label label)
+            : type(type), label(label) { vertexes.insert(vertexes.begin(), point); };
+        Element(Point3D point, string type)
+            : type(type) { vertexes.insert(vertexes.begin(), point); };
+
 
         virtual void draw(){};
         vector<Point3D> * get_vertexes() { return &vertexes; }
