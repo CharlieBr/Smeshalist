@@ -10,15 +10,43 @@
 #include "Element.h"
 
 using namespace std;
+// -----------------------------------
+// --- struct for list of elements ---
+// class to perform operations on
+// single elements of specified type
+// -----------------------------------
 
-// -----------------------------
-// ----- data structure --------
+class ElementsList {
+    vector <Element*> elements;
+    bool draw;
+
+    public:
+        bool is_drawable() { return draw; }
+        void set_draw_flag(bool draw) { this -> draw = draw; }
+};
+
+// -----------------------------------
+// --- struct for group o elements ---
+// class to perform operations on
+// specified types of elements
+// -----------------------------------
+class ElementsGroup {
+    map <string, ElementsList> groups;
+    bool draw;
+
+    public:
+        bool is_drawable() { return draw; }
+        void set_draw_flag(bool draw) { this -> draw = draw; }
+
+};
+
+// --------------------------------
+// ----- data root structure ------
 // singleton class to perform
-// operations on set of elements
-//------------------------------
+// operations on groups of elements
+//---------------------------------
 
-class Data
-{
+class Data {
     static map<int, list<Element*> > structures;
 
     private:
@@ -36,5 +64,10 @@ class Data
 
         void draw_elements();
 };
+
+
+
+
+
 
 #endif // DATA_H
