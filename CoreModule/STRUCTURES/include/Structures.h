@@ -24,16 +24,13 @@ class Edge : public Element {
 };
 
 class Face : public Element {
-    private:
-        vector<Edge> edges;
-
     public:
-        Face(vector<Point3D> * points, vector<Edge> * edges)
-            : Element(points, "face"), edges(*edges) {};
-        Face(vector<Point3D> * points, vector<Edge> * edges, Label label)
-            : Element(points, "face", label), edges(*edges) {};
+        Face(vector<Point3D> * points)
+            : Element(points, "face"){};
+        Face(vector<Point3D> * points, Label label)
+            : Element(points, "face", label) {};
+
         virtual void draw();
-        vector<Edge> * getEdges(){ return &edges; }
 };
 
 class Block : public Element {
