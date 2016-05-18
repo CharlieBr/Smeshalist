@@ -4,6 +4,9 @@
 #include "Element.h"
 #include <GL/glut.h>
 
+// -----------------------------------------------
+// ----------- mesh elements ---------------------
+// -----------------------------------------------
 
 class Vertex : public Element {
     public:

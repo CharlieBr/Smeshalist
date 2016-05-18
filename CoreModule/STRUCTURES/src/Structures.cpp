@@ -16,19 +16,17 @@ string Point3D::print_coordinates(){
 // --------------------------------------
 
 void Vertex::draw(){
-    Point3D coordinates = this -> vertexes.front();
-
+    Point3D point = this -> vertices.front();
 
     glPointSize(2);
     glBegin(GL_POINTS);
-        glVertex3f(coordinates.get_x(), coordinates.get_y(), coordinates.get_z());
+        glVertex3f(point.get_x(), point.get_y(), point.get_z());
     glEnd();
 }
 
 void Edge::draw(){
-    Point3D v1 = this -> vertexes[0];
-    Point3D v2 = this -> vertexes[1];
-    //cout << "EDGE |" << v1.print_coordinates() << " ----- " << v2.print_coordinates() << "|" <<endl;
+    Point3D v1 = this -> vertices[0];
+    Point3D v2 = this -> vertices[1];
 
     glBegin(GL_LINES);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
@@ -37,9 +35,9 @@ void Edge::draw(){
 }
 
 void Face::draw(){
-    Point3D v1 = this -> vertexes[0];
-    Point3D v2 = this -> vertexes[1];
-    Point3D v3 = this -> vertexes[2];
+    Point3D v1 = this -> vertices[0];
+    Point3D v2 = this -> vertices[1];
+    Point3D v3 = this -> vertices[2];
 
     glBegin(GL_TRIANGLES);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
@@ -49,10 +47,10 @@ void Face::draw(){
 }
 
 void Block::draw(){
-    Point3D v1 = this -> vertexes[0];
-    Point3D v2 = this -> vertexes[1];
-    Point3D v3 = this -> vertexes[2];
-    Point3D v4 = this -> vertexes[3];
+    Point3D v1 = this -> vertices[0];
+    Point3D v2 = this -> vertices[1];
+    Point3D v3 = this -> vertices[2];
+    Point3D v4 = this -> vertices[3];
 
     glBegin(GL_TRIANGLES);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());

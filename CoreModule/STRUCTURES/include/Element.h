@@ -9,6 +9,9 @@
 
 using namespace std;
 
+// ------------------------------------------
+// - basic structure to represent 3d points -
+// ------------------------------------------
 class Point3D {
     double x;
     double y;
@@ -23,6 +26,9 @@ class Point3D {
         string print_coordinates();
 };
 
+// -------------------------------------------
+// ------ element additional attribute -------
+// -------------------------------------------
 class Label {
     string text;
 
@@ -33,31 +39,30 @@ class Label {
         void set_label_text(string text){ this -> text = text; }
 };
 
-// ------------------------------------------
-// ------------- mesh elements --------------
-// ------------------------------------------
-
+// -------------------------------------------
+// - kind of interface for mesh elements -----
+// -------------------------------------------
 class Element
 {
     protected:
-        vector<Point3D> vertexes;
+        vector<Point3D> vertices;
         string type;
         Label label;
 
     public:
         Element(vector<Point3D> * points, string type, Label label)
-            : vertexes(*points), type(type), label(label) {};
+            : vertices(*points), type(type), label(label) {};
         Element(vector<Point3D> * points, string type)
-            : vertexes(*points), type(type) {};
+            : vertices(*points), type(type) {};
         //constructors for Vertex
         Element(Point3D point, string type, Label label)
-            : type(type), label(label) { vertexes.insert(vertexes.begin(), point); };
+            : type(type), label(label) { vertices.insert(vertices.begin(), point); };
         Element(Point3D point, string type)
-            : type(type) { vertexes.insert(vertexes.begin(), point); };
+            : type(type) { vertices.insert(vertices.begin(), point); };
 
 
         virtual void draw(){};
-        vector<Point3D> * get_vertexes() { return &vertexes; }
+        vector<Point3D> * get_vertices() { return &vertices; }
         string get_type(){ return type; }
         void set_label(Label label){ this -> label = label; }
         Label get_label(){ return label; }
