@@ -118,6 +118,7 @@ void mouseButton(int button, int state, int x, int y) {
 
 }
 int main(int argc, char **argv) {
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
     d = &Data::get_instance();
 
     AbstractServer* server = new LinuxServer();

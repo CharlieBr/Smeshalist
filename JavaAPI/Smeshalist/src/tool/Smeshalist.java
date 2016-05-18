@@ -2,6 +2,7 @@ package tool;
 
 import java.awt.Point;
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -118,35 +119,35 @@ public class Smeshalist {
 			aOutput.close();
 			
 			aOutput = new ByteArrayOutputStream(1024);
-			point3DSet.writeDelimitedTo(aOutput);
+			point3DSet.writeTo(aOutput);
 			bytes = aOutput.toByteArray();
 			packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
 			socket.send(packet);
 			aOutput.close();
 			
 			aOutput = new ByteArrayOutputStream(1024);
-			vertexSet.writeDelimitedTo(aOutput);
+			vertexSet.writeTo(aOutput);
 			bytes = aOutput.toByteArray();
 			packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
 			socket.send(packet);
 			aOutput.close();
 			
 			aOutput = new ByteArrayOutputStream(1024);
-			edgeSet.writeDelimitedTo(aOutput);
+			edgeSet.writeTo(aOutput);
 			bytes = aOutput.toByteArray();
 			packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
 			socket.send(packet);
 			aOutput.close();
 			
 			aOutput = new ByteArrayOutputStream(1024);
-			triangleFaceSet.writeDelimitedTo(aOutput);
+			triangleFaceSet.writeTo(aOutput);
 			bytes = aOutput.toByteArray();
 			packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
 			socket.send(packet);
 			aOutput.close();
 			
 			aOutput = new ByteArrayOutputStream(1024);
-			blockSet.writeDelimitedTo(aOutput);
+			blockSet.writeTo(aOutput);
 			bytes = aOutput.toByteArray();
 			packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
 			socket.send(packet);

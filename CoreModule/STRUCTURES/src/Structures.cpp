@@ -43,8 +43,11 @@ void Face::draw(){
     Point3D v3 = this -> vertexes[2];
 
     glBegin(GL_TRIANGLES);
+        glColor3f(0.1f, 0.1f, 0.0f);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glColor3f(0.1f, 0.0f, 0.1f);
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glColor3f(0.0f, 0.1f, 0.1f);
         glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
     glEnd();
 }
@@ -56,26 +59,38 @@ void Block::draw(){
     Point3D v4 = this -> vertexes[3];
 
     glBegin(GL_TRIANGLES);
+        glColor3f(0.1f, 0.1f, 0.0f);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glColor3f(0.1f, 0.0f, 0.1f);
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glColor3f(0.0f, 0.1f, 0.1f);
         glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
     glEnd();
 
     glBegin(GL_TRIANGLES);
+        glColor3f(0.1f, 0.1f, 0.0f);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glColor3f(0.1f, 0.0f, 0.1f);
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glColor3f(0.0f, 0.0f, 0.0f);
         glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
     glEnd();
 
     glBegin(GL_TRIANGLES);
+        glColor3f(0.1f, 0.1f, 0.0f);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glColor3f(0.0f, 0.0f, 0.0f);
         glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+        glColor3f(0.0f, 0.1f, 0.1f);
         glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
     glEnd();
 
     glBegin(GL_TRIANGLES);
+        glColor3f(0.0f, 0.0f, 0.0f);
         glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+        glColor3f(0.1f, 0.0f, 0.1f);
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glColor3f(0.0f, 0.1f, 0.1f);
         glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
     glEnd();
 }
