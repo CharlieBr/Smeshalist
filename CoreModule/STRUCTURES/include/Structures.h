@@ -11,9 +11,9 @@
 class Vertex : public Element {
     public:
         Vertex(Point3D point)
-            : Element(point, "point") {};
+            : Element(point, "vertex") {};
         Vertex(Point3D point, Label label)
-            : Element(point, "point", label) {};
+            : Element(point, "vertex", label) {};
         virtual void draw();
 };
 

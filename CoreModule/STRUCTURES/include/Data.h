@@ -23,6 +23,7 @@ class ElementsList {
     public:
         bool is_drawable() { return draw; }
         void set_draw_flag(bool draw) { this -> draw = draw; }
+        void add(Element* element) { elements.push_back(element); }
 };
 
 // -----------------------------------
@@ -31,13 +32,14 @@ class ElementsList {
 // specified types of elements
 // -----------------------------------
 class ElementsGroup {
-    map <string, ElementsList> groups;
+    map <string, ElementsList*> lists;
     bool draw;
 
     public:
         bool is_drawable() { return draw; }
         void set_draw_flag(bool draw) { this -> draw = draw; }
-
+        bool has_list(string);
+        void add(string, Element*);
 };
 
 // --------------------------------
@@ -47,10 +49,10 @@ class ElementsGroup {
 //---------------------------------
 
 class Data {
-    static map<int, list<Element*> > structures;
+    static map<int, ElementsGroup*> groups;
 
     private:
-        Data(){ };
+        Data(){};
 
     public:
         Data(Data const&) = delete;
@@ -59,8 +61,9 @@ class Data {
         static Data& get_instance();
 
         void add(int, Element*);
+        bool has_group(int);
 
-        list<Element*> get(int);
+        ElementsGroup* get_group(int);
 
         void draw_elements();
 };
