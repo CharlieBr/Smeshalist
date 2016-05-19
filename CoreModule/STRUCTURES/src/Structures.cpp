@@ -17,6 +17,7 @@ string Point3D::print_coordinates(){
 
 void Vertex::draw(){
     Point3D point = this -> vertices.front();
+    cout << point.print_coordinates();
 
     glPointSize(2);
     glBegin(GL_POINTS);

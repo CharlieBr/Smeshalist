@@ -17,13 +17,15 @@ using namespace std;
 // -----------------------------------
 
 class ElementsList {
+public:
     vector <Element*> elements;
-    bool draw;
+    bool draw = false;
 
     public:
         bool is_drawable() { return draw; }
         void set_draw_flag(bool draw) { this -> draw = draw; }
         void add(Element* element) { elements.push_back(element); }
+        void draw_elements();
 };
 
 // -----------------------------------
@@ -33,13 +35,15 @@ class ElementsList {
 // -----------------------------------
 class ElementsGroup {
     map <string, ElementsList*> lists;
-    bool draw;
+    bool draw = false;
 
     public:
         bool is_drawable() { return draw; }
         void set_draw_flag(bool draw) { this -> draw = draw; }
         bool has_list(string);
         void add(string, Element*);
+        void filter_all();
+        void draw_elements();
 };
 
 // --------------------------------
@@ -60,11 +64,10 @@ class Data {
 
         static Data& get_instance();
 
-        void add(int, Element*);
-        bool has_group(int);
-
         ElementsGroup* get_group(int);
-
+        bool has_group(int);
+        void add(int, Element*);
+        void filter_all();
         void draw_elements();
 };
 
