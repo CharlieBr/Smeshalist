@@ -1,4 +1,5 @@
 #include "LinuxServer.h"
+#include <fstream>
 
 LinuxServer::LinuxServer()
 {
@@ -76,6 +77,7 @@ void LinuxServer::startServerInNewThread()
         if(!vertexSet.ParseFromArray(buffer, nBytes)) {
             printf("Unable to parse Vertex\n");
         }
+
         parseVertexSet(&vertexSet);
 
         //EDGE
@@ -132,7 +134,22 @@ void LinuxServer::registerStructuresHandler(Data* handler)
 }
 
 void LinuxServer::parseBlockSet(structDefinitions::BlockSet* blockSet) {
+    for(int i=0; i<blockSet->blocks_size(); i++) {
+        const structDefinitions::Block b = blockSet->blocks(i);
+        Point3D point3D_1(b.v1().x(), b.v1().y(), b.v1().z());
+        Point3D point3D_2(b.v2().x(), b.v2().y(), b.v2().z());
+        Point3D point3D_3(b.v3().x(), b.v3().y(), b.v3().z());
+        Point3D point3D_4(b.v4().x(), b.v4().y(), b.v4().z());
+        vector<Point3D> points;
+        vector<Face> faces;
+        points.push_back(point3D_1);
+        points.push_back(point3D_2);
+        points.push_back(point3D_3);
+        points.push_back(point3D_4);
 
+        Block* block = new Block(&points, 0, &faces);
+        this -> handler -> add(0, block);
+    }
 }
 
 void LinuxServer::parseEdgeSet(structDefinitions::EdgeSet* edgeSet) {
@@ -173,11 +190,16 @@ void LinuxServer::parsePoint3DSet(structDefinitions::Point3DSet* pointSet) {
 void LinuxServer::parseTriangleFaceSet(structDefinitions::TriangleFaceSet* triangleFaceSet) {
     for (int i=0; i<triangleFaceSet->trianglefaces_size(); i++) {
         const structDefinitions::TriangleFace t = triangleFaceSet->trianglefaces(i);
-        //Point3D point3D(p.x(), p.y(), 0);
-        /*vector<Point3D> points;
-        points.push_back(point3D);
-        Vertex* v = new Vertex(&points, 0);
-        this -> handler -> add(0, v);*/
+        Point3D point3D_1(t.v1().x(), t.v1().y(), t.v1().z());
+        Point3D point3D_2(t.v2().x(), t.v2().y(), t.v2().z());
+        Point3D point3D_3(t.v3().x(), t.v3().y(), t.v3().z());
+        vector<Point3D> points;
+        vector<Edge> edges;
+        points.push_back(point3D_1);
+        points.push_back(point3D_2);
+        points.push_back(point3D_3);
+        Face* f = new Face(&points, 0, &edges);
+        this -> handler -> add(0, f);
     }
 }
 

@@ -40,11 +40,26 @@ void Face::draw(){
     Point3D v2 = this -> vertices[1];
     Point3D v3 = this -> vertices[2];
 
+    glColor3f(0.9f, 0.9f, 0.9f);
     glBegin(GL_TRIANGLES);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
         glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
     glEnd();
+
+    glEnable(GL_POLYGON_OFFSET_LINE);
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPolygonOffset(-1,-1);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+    glBegin(GL_TRIANGLES);
+        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+    glEnd();
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glDisable(GL_POLYGON_OFFSET_LINE);
 }
 
 void Block::draw(){
@@ -53,6 +68,7 @@ void Block::draw(){
     Point3D v3 = this -> vertices[2];
     Point3D v4 = this -> vertices[3];
 
+    glColor3f(0.9f, 0.9f, 0.9f);
     glBegin(GL_TRIANGLES);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
@@ -76,4 +92,35 @@ void Block::draw(){
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
         glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
     glEnd();
+
+    glEnable(GL_POLYGON_OFFSET_LINE);
+    glColor3f(0.0f, 0.0f, 0.0f);
+    glPolygonOffset(-1,-1);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glBegin(GL_TRIANGLES);
+        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+    glEnd();
+
+    glBegin(GL_TRIANGLES);
+        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+    glEnd();
+
+    glBegin(GL_TRIANGLES);
+        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+        glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+    glEnd();
+
+    glBegin(GL_TRIANGLES);
+        glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+    glEnd();
+
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glDisable(GL_POLYGON_OFFSET_LINE);
 }
