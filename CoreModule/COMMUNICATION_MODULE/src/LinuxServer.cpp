@@ -35,9 +35,6 @@ void LinuxServer::startServer()
 {
     if (t==NULL) {
         t = new std::thread (&LinuxServer::startServerInNewThread, this);
-    } else {
-        cerr << "Thread already exists\n";
-        t = new std::thread (&LinuxServer::startServerInNewThread, this);
     }
 }
 
