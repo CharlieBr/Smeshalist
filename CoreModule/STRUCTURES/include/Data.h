@@ -19,7 +19,7 @@ using namespace std;
 class ElementsList {
 public:
     vector <Element*> elements;
-    bool draw = false;
+    bool draw = true;
 
     public:
         bool is_drawable() { return draw; }
@@ -35,7 +35,7 @@ public:
 // -----------------------------------
 class ElementsGroup {
     map <string, ElementsList*> lists;
-    bool draw = false;
+    bool draw = true;
 
     public:
         bool is_drawable() { return draw; }
