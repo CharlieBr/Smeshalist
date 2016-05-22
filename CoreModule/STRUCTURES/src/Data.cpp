@@ -106,9 +106,20 @@ void ElementsGroup::draw_elements(){
 // -------------------------------
 // ---- ElementsList methods -----
 // -------------------------------
+void ElementsList::filter_all(){
+    for( unsigned int i = 0; i < elements.size(); i++){
+        Element * element = elements.at(i);
+        element -> set_draw_flag(true);
+    }
+}
+
 void ElementsList::draw_elements(){
     for( unsigned int i = 0; i < elements.size(); i++ ){
         Element * element = elements.at(i);
-        element -> draw();
+
+        if( element -> is_drawable() ){
+            element -> draw();
+        }
     }
 }
+

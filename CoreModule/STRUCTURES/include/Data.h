@@ -25,6 +25,7 @@ public:
         bool is_drawable() { return to_draw; }
         void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
         void add(Element* element) { elements.push_back(element); }
+        void filter_all();
         void draw_elements();
 };
 

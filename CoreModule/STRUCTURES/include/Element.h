@@ -48,7 +48,7 @@ class Element
         vector<Point3D> vertices;
         string type;
         Label label;
-        bool to_draw;
+        bool to_draw = true;
 
     public:
         Element(vector<Point3D> * points, string type, Label label)
