@@ -122,12 +122,10 @@ void mouseMove(int x, int y) {
 
 void mouseButton(int button, int state, int x, int y) {
 	if (button == GLUT_LEFT_BUTTON) {
+        isLeftMouseButtonPressed = state==GLUT_DOWN;
 		if (state == GLUT_DOWN) {
             oldMousePositionX = x;
             oldMousePositionY = y;
-            isLeftMouseButtonPressed = true;
-		} else {
-            isLeftMouseButtonPressed = false;
 		}
 	} else if (button == GLUT_RIGHT_BUTTON) {
         if (state == GLUT_DOWN) {

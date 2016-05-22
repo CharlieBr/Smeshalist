@@ -23,7 +23,7 @@ class LinuxServer : public AbstractServer
         struct sockaddr_in serverAddr;
         socklen_t addr_size;
         struct sockaddr_storage serverStorage;
-        std::thread* t;
+        std::thread* t = NULL;
 
 
         void startServerInNewThread();
