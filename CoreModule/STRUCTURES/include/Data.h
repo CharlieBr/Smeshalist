@@ -19,11 +19,11 @@ using namespace std;
 class ElementsList {
 public:
     vector <Element*> elements;
-    bool draw = true;
+    bool to_draw = true;
 
     public:
-        bool is_drawable() { return draw; }
-        void set_draw_flag(bool draw) { this -> draw = draw; }
+        bool is_drawable() { return to_draw; }
+        void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
         void add(Element* element) { elements.push_back(element); }
         void draw_elements();
 };
@@ -35,11 +35,11 @@ public:
 // -----------------------------------
 class ElementsGroup {
     map <string, ElementsList*> lists;
-    bool draw = true;
+    bool to_draw = true;
 
     public:
-        bool is_drawable() { return draw; }
-        void set_draw_flag(bool draw) { this -> draw = draw; }
+        bool is_drawable() { return to_draw; }
+        void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
         bool has_list(string);
         void add(string, Element*);
         void filter_all();

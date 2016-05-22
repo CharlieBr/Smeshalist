@@ -48,6 +48,7 @@ class Element
         vector<Point3D> vertices;
         string type;
         Label label;
+        bool to_draw;
 
     public:
         Element(vector<Point3D> * points, string type, Label label)
@@ -66,6 +67,8 @@ class Element
         string get_type(){ return type; }
         void set_label(Label label){ this -> label = label; }
         Label get_label(){ return label; }
+        bool is_drawable(){ return to_draw; }
+        void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
 };
 
 #endif // ELEMENT_H
