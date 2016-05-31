@@ -24,9 +24,10 @@ public:
     public:
         bool is_drawable() { return to_draw; }
         void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
-        void add(Element* element) { elements.push_back(element); }
         void filter_all();
         void draw_elements();
+
+        void add(Element* element) { elements.push_back(element); }
 };
 
 // -----------------------------------
@@ -67,14 +68,17 @@ class Data {
 
         ElementsGroup* get_group(int);
         bool has_group(int);
-        void add(int, Element*);
         void filter_all();
         void draw_elements();
+
+        //add single element to proper group and list
+        void add(int, Element*);
+
+        //add list of elements to proper group
+        void add_list(int, ElementsList*);
+        void add_list(int, vector<Element*>);
+
+        //add group of elements
+        void add_group(int, ElementsGroup*);
 };
-
-
-
-
-
-
 #endif // DATA_H

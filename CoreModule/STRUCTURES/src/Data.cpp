@@ -25,17 +25,6 @@ bool Data::has_group(int group_id){
     return true;
 }
 
-void Data::add(int group_id, Element* element){
-    if( !has_group(group_id) ){
-        ElementsGroup * group = new ElementsGroup;
-        groups.insert( pair<int, ElementsGroup*>(group_id, group));
-    }
-
-    string element_type = element -> get_type();
-    ElementsGroup* group = groups.at(group_id);
-    group -> add(element_type, element);
-}
-
 void Data::filter_all(){
     for( auto const it : groups ){
         ElementsGroup * group = it.second;
@@ -52,14 +41,29 @@ void Data::draw_elements(){
             group -> draw_elements();
         }
     }
-
-//    for (map<int, list<Element*> >::iterator it = structures.begin(); it != structures.end(); it++) {
-//        for (Element* e : get(it->first)) {
-//            e->draw();
-//        }
-//    }
 }
 
+void Data::add(int group_id, Element* element){
+    if( !has_group(group_id) ){
+        ElementsGroup * group = new ElementsGroup;
+        groups.insert( pair<int, ElementsGroup*>(group_id, group));
+    }
+
+    string element_type = element -> get_type();
+    ElementsGroup* group = groups.at(group_id);
+    group -> add(element_type, element);
+}
+
+void Data::add_group(int group_id, ElementsGroup* group){
+    if( has_group(group_id) ){
+        cout << "Cannot add group. The group with id " << group_id <<" already exists!\n";
+        return;
+    }
+
+    map<int, ElementsGroup*>::iterator it = groups.end();
+    groups.insert(it, pair<int, ElementsGroup*>(group_id, group));
+    return;
+}
 
 // --------------------------------------
 // ------- ElementsGroup methods --------
