@@ -11,7 +11,11 @@ Data& Data::get_instance(){
 }
 
 ElementsGroup* Data::get_group(int group_id){
-    return groups.at(group_id);
+    if ( has_group(group_id) ){
+        return groups.at(group_id);
+    } else {
+        return NULL;
+    }
 }
 
 bool Data::has_group(int group_id){
@@ -25,11 +29,11 @@ bool Data::has_group(int group_id){
     return true;
 }
 
-void Data::filter_all(){
+void Data::filter_all(bool to_draw){
     for( auto const it : groups ){
         ElementsGroup * group = it.second;
-        group -> set_draw_flag(true);
-        group -> filter_all();
+        group -> set_draw_flag(to_draw);
+        group -> filter_all(to_draw);
     }
 }
 
@@ -54,16 +58,21 @@ void Data::add(int group_id, Element* element){
     group -> add(element_type, element);
 }
 
-void Data::add_group(int group_id, ElementsGroup* group){
-    if( has_group(group_id) ){
-        cout << "Cannot add group. The group with id " << group_id <<" already exists!\n";
-        return;
+void Data::add(int group_id, vector<Element*>* elements){
+    ElementsGroup * group;
+
+    if( !has_group(group_id) ){
+        group = new ElementsGroup;
+        groups.insert( pair<int, ElementsGroup*>(group_id, group));
     }
 
-    map<int, ElementsGroup*>::iterator it = groups.end();
-    groups.insert(it, pair<int, ElementsGroup*>(group_id, group));
-    return;
+    if ( elements -> size() > 0 ) {
+        string type = elements -> at(0) -> get_type();
+        group = groups.at(group_id);
+        group -> add(type, elements);
+    }
 }
+
 
 // --------------------------------------
 // ------- ElementsGroup methods --------
@@ -89,10 +98,26 @@ void ElementsGroup::add(string elements_type, Element* element){
     elements_list -> add(element);
 }
 
-void ElementsGroup::filter_all(){
+void ElementsGroup::add(string elements_type, vector<Element*>* elements){
+    ElementsList * elements_list;
+
+    if( !has_list(elements_type) ){
+        elements_list = new ElementsList;
+        lists.insert( pair<string, ElementsList*>(elements_type, elements_list) );
+    }
+
+    if( elements -> size() > 0 ){
+        elements_list = lists.at(elements_type);
+        elements_list -> add(elements);
+    }
+}
+
+
+void ElementsGroup::filter_all(bool to_draw ){
     for( auto const& it : lists){
         ElementsList * elements_list = it.second;
-        elements_list -> set_draw_flag(true);
+        elements_list -> set_draw_flag(to_draw);
+        elements_list -> filter_all(to_draw);
     }
 }
 
@@ -106,14 +131,29 @@ void ElementsGroup::draw_elements(){
     }
 }
 
+ElementsList* ElementsGroup::get_list(string elements_type){
+    if( has_list(elements_type) ){
+        return lists.at(elements_type);
+    } else {
+        return NULL;
+    }
+}
+
 
 // -------------------------------
 // ---- ElementsList methods -----
 // -------------------------------
-void ElementsList::filter_all(){
+void ElementsList::add(vector<Element*> *new_elements){
+    vector<Element*>::iterator it;
+    it = elements.end();
+
+    elements.insert( it, new_elements -> begin(), new_elements -> end() );
+}
+
+void ElementsList::filter_all(bool to_draw){
     for( unsigned int i = 0; i < elements.size(); i++){
         Element * element = elements.at(i);
-        element -> set_draw_flag(true);
+        element -> set_draw_flag(to_draw);
     }
 }
 
