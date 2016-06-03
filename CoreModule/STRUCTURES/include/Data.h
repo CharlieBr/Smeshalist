@@ -19,13 +19,18 @@ using namespace std;
 class ElementsList {
 public:
     vector <Element*> elements;
-    bool draw = true;
+    bool to_draw = true;
 
     public:
-        bool is_drawable() { return draw; }
-        void set_draw_flag(bool draw) { this -> draw = draw; }
-        void add(Element* element) { elements.push_back(element); }
+        bool is_drawable() { return to_draw; }
+        void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
+        void filter_all(bool);
         void draw_elements();
+
+        void add(Element* element) { elements.push_back(element); }
+        void add(vector<Element*>*);
+
+        vector<Element*>* get_elements(){ return &elements; }
 };
 
 // -----------------------------------
@@ -35,15 +40,17 @@ public:
 // -----------------------------------
 class ElementsGroup {
     map <string, ElementsList*> lists;
-    bool draw = true;
+    bool to_draw = true;
 
     public:
-        bool is_drawable() { return draw; }
-        void set_draw_flag(bool draw) { this -> draw = draw; }
+        bool is_drawable() { return to_draw; }
+        void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
         bool has_list(string);
         void add(string, Element*);
-        void filter_all();
+        void add(string, vector<Element*>*);
+        void filter_all(bool);
         void draw_elements();
+        ElementsList* get_list(string);
 };
 
 // --------------------------------
@@ -66,14 +73,13 @@ class Data {
 
         ElementsGroup* get_group(int);
         bool has_group(int);
-        void add(int, Element*);
-        void filter_all();
+        void filter_all(bool);
         void draw_elements();
+
+        //add single element to proper group and list
+        void add(int, Element*);
+
+        //add list of elements to proper group and list of elements
+        void add(int, vector<Element*>*);
 };
-
-
-
-
-
-
 #endif // DATA_H
