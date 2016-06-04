@@ -4,50 +4,46 @@
 #include "Element.h"
 #include <GL/glut.h>
 
+// -----------------------------------------------
+// ----------- mesh elements ---------------------
+// -----------------------------------------------
 
 class Vertex : public Element {
     public:
-        Vertex(vector<Point3D> * points, int groupID)
-            : Element(points, "point", groupID) {};
-        Vertex(vector<Point3D> * points, int groupID, Label label)
-            : Element(points, "point", groupID, label) {};
+        Vertex(Point3D point)
+            : Element(point, "vertex") {};
+        Vertex(Point3D point, Label label)
+            : Element(point, "vertex", label) {};
         virtual void draw();
 };
 
 class Edge : public Element {
     public:
-        Edge(vector<Point3D> * points, int groupID)
-            : Element(points, "edge", groupID) {};
-        Edge(vector<Point3D> * points, int groupID, Label label)
-            : Element(points, "edge", groupID, label) {};
+        Edge(vector<Point3D> * points)
+            : Element(points, "edge") {};
+        Edge(vector<Point3D> * points, Label label)
+            : Element(points, "edge", label) {};
         virtual void draw();
 };
 
 class Face : public Element {
-    private:
-        vector<Edge> edges;
-
     public:
-        Face(vector<Point3D> * points, int groupID, vector<Edge> * edges)
-            : Element(points, "face", groupID), edges(*edges) {};
-        Face(vector<Point3D> * points, int groupID, vector<Edge> * edges, Label label)
-            : Element(points, "face", groupID, label), edges(*edges) {};
+        Face(vector<Point3D> * points)
+            : Element(points, "face"){};
+        Face(vector<Point3D> * points, Label label)
+            : Element(points, "face", label) {};
+
         virtual void draw();
-        vector<Edge> * getEdges(){ return &edges; }
 };
 
 class Block : public Element {
-    private:
-        vector<Face> faces;
-
     public:
-        Block(vector<Point3D> * points, int groupID, vector<Face> * faces)
-            : Element(points, "block", groupID), faces(*faces) {};
-        Block(vector<Point3D> * points, int groupID, vector<Face> * faces, Label label)
-            : Element(points, "block", groupID, label), faces(*faces) {};
+        Block(vector<Point3D> * points)
+            : Element(points, "block") {};
+        Block(vector<Point3D> * points, Label label)
+            : Element(points, "block", label) {};
 
         virtual void draw();
-        vector<Face> * getFaces(){ return &faces; }
 };
 
 #endif // STRUCTURES_H

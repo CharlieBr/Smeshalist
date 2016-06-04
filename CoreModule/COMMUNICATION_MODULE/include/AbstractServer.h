@@ -7,6 +7,9 @@
 #define SOCKET_TIMEOUT_SEC 1
 #define SOCKET_TIMEOUT_NANO 0
 
+#include "Structures.h"
+#include "Data.h"
+#include <atomic>
 #include "../../../CppAPI/structs.pb.h"
 
 
@@ -17,16 +20,22 @@ class AbstractServer
         virtual ~AbstractServer() {};
         virtual void startServer() {};
         virtual void stopServer() {};
-        virtual void registerStructuresHandler(Data*) {};
-        virtual void parsePoint2DSet(structDefinitions::Point2DSet*) {};
-        virtual void parsePoint3DSet(structDefinitions::Point3DSet*) {};
-        virtual void parseVertexSet(structDefinitions::VertexSet*) {};
-        virtual void parseEdgeSet(structDefinitions::EdgeSet*) {};
-        virtual void parseTriangleFaceSet(structDefinitions::TriangleFaceSet*) {};
-        virtual void parseBlockSet(structDefinitions::BlockSet*) {};
+
+        void registerStructuresHandler(Data* data);
     protected:
         virtual void startServerInNewThread() {};
+
+        void parsePoint2DSet(structDefinitions::Point2DSet*);
+        void parsePoint3DSet(structDefinitions::Point3DSet*);
+        void parseVertexSet(structDefinitions::VertexSet*);
+        void parseEdgeSet(structDefinitions::EdgeSet*);
+        void parseTriangleFaceSet(structDefinitions::TriangleFaceSet*);
+        void parseBlockSet(structDefinitions::BlockSet*);
+
+        Data* handler;
+        std::atomic_bool isStopped;
     private:
+        Point3D parsePoint(const structDefinitions::Point3D*);
 };
 
 #endif // ABSTRACTSERVER_H

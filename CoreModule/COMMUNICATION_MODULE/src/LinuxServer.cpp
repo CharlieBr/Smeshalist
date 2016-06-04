@@ -1,5 +1,4 @@
 #include "LinuxServer.h"
-#include <fstream>
 
 LinuxServer::LinuxServer()
 {
@@ -122,94 +121,5 @@ void LinuxServer::stopServer()
     if (!isStopped.load()) {
         isStopped.store(true);
         t->join();
-    }
-}
-
-
-void LinuxServer::registerStructuresHandler(Data* handler)
-{
-    if (this->handler != NULL) {
-        this->handler = handler;
-    }
-}
-
-void LinuxServer::parseBlockSet(structDefinitions::BlockSet* blockSet) {
-    for(int i=0; i<blockSet->blocks_size(); i++) {
-        const structDefinitions::Block b = blockSet->blocks(i);
-        Point3D point3D_1(b.v1().x(), b.v1().y(), b.v1().z());
-        Point3D point3D_2(b.v2().x(), b.v2().y(), b.v2().z());
-        Point3D point3D_3(b.v3().x(), b.v3().y(), b.v3().z());
-        Point3D point3D_4(b.v4().x(), b.v4().y(), b.v4().z());
-        vector<Point3D> points;
-        vector<Face> faces;
-        points.push_back(point3D_1);
-        points.push_back(point3D_2);
-        points.push_back(point3D_3);
-        points.push_back(point3D_4);
-
-        Block* block = new Block(&points, 0, &faces);
-        this -> handler -> add(0, block);
-    }
-}
-
-void LinuxServer::parseEdgeSet(structDefinitions::EdgeSet* edgeSet) {
-    for (int i=0; i<edgeSet->edges_size(); i++) {
-        const structDefinitions::Edge e = edgeSet->edges(i);
-        Point3D p1(e.v1().x(), e.v1().y(), e.v1().z());
-        Point3D p2(e.v2().x(), e.v2().y(), e.v2().z());
-        vector<Point3D> points;
-        points.push_back(p1);
-        points.push_back(p2);
-        Edge* edge = new Edge(&points, 0);
-        this -> handler -> add(0, edge);
-    }
-}
-
-void LinuxServer::parsePoint2DSet(structDefinitions::Point2DSet* pointSet) {
-    for (int i=0; i<pointSet->points_size(); i++) {
-        const structDefinitions::Point2D p = pointSet->points(i);
-        Point3D point3D(p.x(), p.y(), 0);
-        vector<Point3D> points;
-        points.push_back(point3D);
-        Vertex* v = new Vertex(&points, 0);
-        this -> handler -> add(0, v);
-    }
-}
-
-void LinuxServer::parsePoint3DSet(structDefinitions::Point3DSet* pointSet) {
-    for (int i=0; i<pointSet->points_size(); i++) {
-        const structDefinitions::Point3D p = pointSet->points(i);
-        Point3D point3D(p.x(), p.y(), p.z());
-        vector<Point3D> points;
-        points.push_back(point3D);
-        Vertex* v = new Vertex(&points, 0);
-        this -> handler -> add(0, v);
-    }
-}
-
-void LinuxServer::parseTriangleFaceSet(structDefinitions::TriangleFaceSet* triangleFaceSet) {
-    for (int i=0; i<triangleFaceSet->trianglefaces_size(); i++) {
-        const structDefinitions::TriangleFace t = triangleFaceSet->trianglefaces(i);
-        Point3D point3D_1(t.v1().x(), t.v1().y(), t.v1().z());
-        Point3D point3D_2(t.v2().x(), t.v2().y(), t.v2().z());
-        Point3D point3D_3(t.v3().x(), t.v3().y(), t.v3().z());
-        vector<Point3D> points;
-        vector<Edge> edges;
-        points.push_back(point3D_1);
-        points.push_back(point3D_2);
-        points.push_back(point3D_3);
-        Face* f = new Face(&points, 0, &edges);
-        this -> handler -> add(0, f);
-    }
-}
-
-void LinuxServer::parseVertexSet(structDefinitions::VertexSet* vertexSet) {
-    for (int i=0; i<vertexSet->vertexes_size(); i++) {
-        const structDefinitions::Vertex v = vertexSet->vertexes(i);
-        Point3D point3D(v.point().x(), v.point().y(), v.point().z());
-        vector<Point3D> points;
-        points.push_back(point3D);
-        Vertex* vertex = new Vertex(&points, 0);
-        this->handler->add(0, vertex);
     }
 }
