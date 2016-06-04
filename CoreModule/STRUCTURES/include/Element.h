@@ -61,6 +61,7 @@ class Element
         Element(Point3D point, string type)
             : type(type) { vertices.insert(vertices.begin(), point); };
 
+        virtual ~Element(){};
 
         virtual void draw(){};
         vector<Point3D> * get_vertices() { return &vertices; }

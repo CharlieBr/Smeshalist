@@ -31,6 +31,11 @@ public:
         void add(vector<Element*>*);
 
         vector<Element*>* get_elements(){ return &elements; }
+
+        //remove all data
+        void clean();
+
+        long count_visible_elements();
 };
 
 // -----------------------------------
@@ -51,6 +56,11 @@ class ElementsGroup {
         void filter_all(bool);
         void draw_elements();
         ElementsList* get_list(string);
+
+        //remove all data
+        void clean();
+
+        map<string, int> count_visible_elements();
 };
 
 // --------------------------------
@@ -61,6 +71,8 @@ class ElementsGroup {
 
 class Data {
     static map<int, ElementsGroup*> groups;
+    static map<string, int> all_elements_numbers;
+    static map<string, int> visible_elements_numbers;
 
     private:
         Data(){};
@@ -81,5 +93,13 @@ class Data {
 
         //add list of elements to proper group and list of elements
         void add(int, vector<Element*>*);
+
+        //remove all data
+        void clean();
+
+        //statistics
+        long get_elements_number(string);
+        void count_visible_elements();
+        long get_visible_elements_number(string);
 };
 #endif // DATA_H

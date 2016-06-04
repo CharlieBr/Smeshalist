@@ -4,6 +4,19 @@
 // ------- Data methods -------
 // ----------------------------
 map<int, ElementsGroup* > Data::groups;
+map<string, int> Data::all_elements_numbers = [] {
+    map<string, int> result;
+
+    result["all"] = 0;
+    result["vertex"] = 0;
+    result["edge"] = 0;
+    result["face"] = 0;
+    result["block"] = 0;
+
+    return result;
+}();
+
+map<string, int> Data::visible_elements_numbers = Data::all_elements_numbers;
 
 Data& Data::get_instance(){
     static Data instance;
@@ -48,12 +61,16 @@ void Data::draw_elements(){
 }
 
 void Data::add(int group_id, Element* element){
+    string element_type = element -> get_type();
+    all_elements_numbers["all"] += 1;
+    all_elements_numbers[element_type] += 1;
+
     if( !has_group(group_id) ){
         ElementsGroup * group = new ElementsGroup;
         groups.insert( pair<int, ElementsGroup*>(group_id, group));
     }
 
-    string element_type = element -> get_type();
+
     ElementsGroup* group = groups.at(group_id);
     group -> add(element_type, element);
 }
@@ -68,12 +85,67 @@ void Data::add(int group_id, vector<Element*>* elements){
 
     if ( elements -> size() > 0 ) {
         string type = elements -> at(0) -> get_type();
+        all_elements_numbers["all"] += elements -> size();
+        all_elements_numbers[type] += elements -> size();
         group = groups.at(group_id);
         group -> add(type, elements);
     }
 }
 
+void Data::clean(){
+    all_elements_numbers["all"] = 0;
+    all_elements_numbers["vertex"] = 0;
+    all_elements_numbers["edge"] = 0;
+    all_elements_numbers["face"] = 0;
+    all_elements_numbers["block"] = 0;
 
+    for( auto it : groups ){
+        ElementsGroup * group = it.second;
+        group -> clean();
+        delete group;
+    }
+
+    groups.clear();
+}
+
+long Data::get_elements_number(string type){
+    map<string, int>::iterator it;
+    it = all_elements_numbers.find(type);
+
+    if( it == all_elements_numbers.end() ){
+        return 0;
+    } else {
+        return all_elements_numbers[type];
+    }
+}
+
+void Data::count_visible_elements(){
+    visible_elements_numbers["all"] = 0;
+    visible_elements_numbers["vertex"] = 0;
+    visible_elements_numbers["edge"] = 0;
+    visible_elements_numbers["face"] = 0;
+    visible_elements_numbers["block"] = 0;
+
+    for( auto const it : groups) {
+        map<string, int> result = it.second -> count_visible_elements();
+
+        for( auto const it : result ){
+            visible_elements_numbers["all"] += it.second;
+            visible_elements_numbers[ it.first ] += it.second;
+        }
+    }
+}
+
+long Data::get_visible_elements_number(string type){
+    map<string, int>::iterator it;
+    it = visible_elements_numbers.find(type);
+
+    if( it == visible_elements_numbers.end() ){
+        return 0;
+    } else {
+        return visible_elements_numbers[type];
+    }
+}
 // --------------------------------------
 // ------- ElementsGroup methods --------
 // --------------------------------------
@@ -112,7 +184,6 @@ void ElementsGroup::add(string elements_type, vector<Element*>* elements){
     }
 }
 
-
 void ElementsGroup::filter_all(bool to_draw ){
     for( auto const& it : lists){
         ElementsList * elements_list = it.second;
@@ -139,7 +210,30 @@ ElementsList* ElementsGroup::get_list(string elements_type){
     }
 }
 
+void ElementsGroup::clean(){
+    for (auto& it : lists){
+        ElementsList * elements_list = it.second;
+        elements_list -> clean();
+        delete elements_list;
+    }
 
+    lists.clear();
+}
+
+map<string, int> ElementsGroup::count_visible_elements(){
+    map<string, int> result;
+
+    for(auto const& it : lists){
+        ElementsList* elements_list = it.second;
+
+        if( elements_list -> is_drawable() ){
+            string type = it.first;
+            result[type] = elements_list -> count_visible_elements();
+        }
+    }
+
+    return result;
+}
 // -------------------------------
 // ---- ElementsList methods -----
 // -------------------------------
@@ -167,3 +261,23 @@ void ElementsList::draw_elements(){
     }
 }
 
+void ElementsList::clean(){
+    for( auto& it: elements ){
+        Element * element = it;
+        delete element;
+    }
+
+    elements.clear();
+}
+
+long ElementsList::count_visible_elements(){
+    long counter = 0;
+
+    for(auto const& it : elements){
+        if( it -> is_drawable() ){
+            counter += 1;
+        }
+    }
+
+    return counter;
+}

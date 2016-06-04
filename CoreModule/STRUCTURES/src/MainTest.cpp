@@ -5,27 +5,31 @@
 #include "Data.h"
 using namespace std;
 
+struct test_struct{
+    string name = "Kasia";
+};
+
 int main(void){
     Point3D point(1.2, 3.4, 3.4);
-    Vertex vertex(point);
+    Vertex * vertex = new Vertex(point);
 
     Point3D point2(1.0, 3.0, 3.9);
-    Vertex vertex2(point2);
+    Vertex * vertex2 = new Vertex(point2);
 
     Point3D point3(1.0, 3.0, 3.9);
-    Vertex vertex3(point3);
+    Vertex * vertex3 = new Vertex(point3);
 
     vector<Point3D> points;
     points.push_back(point);
     points.push_back(point2);
-    Edge edge(&points);
+    Edge * edge = new Edge(&points);
 
     Data * data = &(Data::get_instance());
 
-    data -> add(2, &vertex);
-    data -> add(2, &vertex2);
-    data -> add(2, &vertex3);
-    data -> add(2, &edge);
+    data -> add(2, vertex);
+    data -> add(2, vertex2);
+    data -> add(2, vertex3);
+    data -> add(2, edge);
 
     ElementsGroup * group2 = data -> get_group(2);
     assert( group2 != NULL );
@@ -46,16 +50,16 @@ int main(void){
     vector<Point3D> edge1_points;
     edge1_points.push_back(Point3D(4.5, 4.2, 8.9));
     edge1_points.push_back(Point3D(2.3, 4.1, -1.0));
-    Edge edge1(&edge1_points);
+    Edge * edge1 = new Edge(&edge1_points);
 
     vector<Point3D> edge2_points;
     edge2_points.push_back(Point3D(1.5, 8.2, -8.9));
     edge2_points.push_back(Point3D(4.3, 2.1, 1.0));
-    Edge edge2(&edge2_points);
+    Edge * edge2 = new Edge(&edge2_points);
 
     vector<Element*> elements;
-    elements.push_back(&edge1);
-    elements.push_back(&edge2);
+    elements.push_back(edge1);
+    elements.push_back(edge2);
 
     data -> add(1, &elements);
 
@@ -67,6 +71,11 @@ int main(void){
 
     vector<Element*> * edges2 = edge_list2 -> get_elements();
     assert( edges2 -> size() == 2 );
+
+    assert( data -> get_elements_number("all") == 6 );
+    assert( data -> get_elements_number("vertex") == 3 );
+    assert( data -> get_elements_number("edge") == 3 );
+
 
     data -> filter_all(false);
     for(unsigned int i = 0; i < vertices -> size(); i++){
@@ -84,6 +93,11 @@ int main(void){
         assert( element -> is_drawable() == false );
     }
 
+    data -> count_visible_elements();
+    assert( data -> get_visible_elements_number("all") == 0 );
+    assert( data -> get_visible_elements_number("vertex") == 0 );
+    assert( data -> get_visible_elements_number("edge") == 0 );
+
     data -> filter_all(true);
     for(unsigned int i = 0; i < vertices -> size(); i++){
         Element * element = vertices -> at(i);
@@ -100,7 +114,30 @@ int main(void){
         assert( element -> is_drawable() == true );
     }
 
+    data -> count_visible_elements();
+    assert( data -> get_visible_elements_number("all") == 6 );
+    assert( data -> get_visible_elements_number("vertex") == 3 );
+    assert( data -> get_visible_elements_number("edge") == 3 );
+
+
+    //cleaning
     data -> draw_elements();
+    data -> clean();
+
+    vertex = nullptr;
+    vertex2 = nullptr;
+    vertex3 = nullptr;
+    edge = nullptr;
+    edge1 = nullptr;
+    edge2 = nullptr;
+    group1 = nullptr;
+    group2 = nullptr;
+    vertices = nullptr;
+    edges = nullptr;
+    edges2 = nullptr;
+
+    assert( data -> has_group(2) == false );
+    assert( data -> has_group(1) == false );
 
     return 0;
 }
