@@ -5,6 +5,8 @@ import javax.swing.JLabel;
 
 public class HelloWorld extends JFrame{
 
+	private static final long serialVersionUID = 5545012903831096347L;
+
 	HelloWorld() {
 
         JLabel jlbHelloWorld = new JLabel("Hello World");

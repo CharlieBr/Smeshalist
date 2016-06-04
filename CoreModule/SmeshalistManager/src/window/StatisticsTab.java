@@ -133,9 +133,9 @@ public class StatisticsTab extends JPanel{
 	public void setBoundingBox(BoundingBox boundingBox) {
 		this.boundingBox = boundingBox;
 		cell22.removeAll();
-		cell22.add(new JLabel("["+boundingBox.getFromX()+","+boundingBox.getToX()+"]"));
-		cell22.add(new JLabel("["+boundingBox.getFromY()+","+boundingBox.getToY()+"]"));
-		cell22.add(new JLabel("["+boundingBox.getFromZ()+","+boundingBox.getToZ()+"]"));
+		cell22.add(new JLabel("["+this.boundingBox.getFromX()+","+this.boundingBox.getToX()+"]"));
+		cell22.add(new JLabel("["+this.boundingBox.getFromY()+","+this.boundingBox.getToY()+"]"));
+		cell22.add(new JLabel("["+this.boundingBox.getFromZ()+","+this.boundingBox.getToZ()+"]"));
 	}
 	
 	
