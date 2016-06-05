@@ -150,6 +150,16 @@ ElementsList* ElementsGroup::get_list(string elements_type){
 }
 
 
+vector<string>* ElementsGroup::get_struct_types() {
+    vector<string>* result = new vector<string>;
+
+    for(map<string,ElementsList*>::iterator it = lists.begin(); it != lists.end(); ++it) {
+        result -> push_back(it->first);
+    }
+
+    return result;
+}
+
 // -------------------------------
 // ---- ElementsList methods -----
 // -------------------------------

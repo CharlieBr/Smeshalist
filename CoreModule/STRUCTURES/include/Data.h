@@ -50,6 +50,7 @@ class ElementsGroup {
         void add(string, vector<Element*>*);
         void filter_all(bool);
         void draw_elements();
+        vector<string>* get_struct_types();
         ElementsList* get_list(string);
 };
 
