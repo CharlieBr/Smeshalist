@@ -73,6 +73,16 @@ void Data::add(int group_id, vector<Element*>* elements){
     }
 }
 
+vector<int>* Data::get_all_groups() {
+    vector<int>* result = new vector<int>;
+
+    for(map<int,ElementsGroup*>::iterator it = groups.begin(); it != groups.end(); ++it) {
+        result -> push_back(it->first);
+    }
+
+    return result;
+}
+
 
 // --------------------------------------
 // ------- ElementsGroup methods --------
