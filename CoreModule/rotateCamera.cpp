@@ -10,6 +10,7 @@
 
 #include "LinuxServer.h"
 #include "FILTERS_MODULE/include/GroupsFilter.h"
+#include "FILTERS_MODULE/include/CoordinatesFilter.h"
 
 float deltaAngleX = 0.8f;
 float deltaAngleY = 0.8f;
@@ -98,10 +99,39 @@ void processNormalKeys(unsigned char key, int xx, int yy) {
         SingleGroupFilter* filter = new SingleGroupFilter(0);
         GroupsFilter::getInstance() -> deleteAllFilters();
         GroupsFilter::getInstance() -> addSimpleGroupFilter(filter);
+        GroupsFilter::getInstance() -> filterTree(d);
     } else if (key == 115) {
         SingleGroupFilter* filter = new SingleGroupFilter(1);
         GroupsFilter::getInstance() -> deleteAllFilters();
         GroupsFilter::getInstance() -> addSimpleGroupFilter(filter);
+        d->filter_all(true);
+        GroupsFilter::getInstance() -> filterTree(d);
+        CoordinatesFilter::getInstance() -> filterTree(d);
+    } else if (key == 100) {
+        SingleGroupFilter* filter0 = new SingleGroupFilter(0);
+        SingleGroupFilter* filter1 = new SingleGroupFilter(1);
+        GroupsFilter::getInstance() -> deleteAllFilters();
+        GroupsFilter::getInstance() -> addSimpleGroupFilter(filter0);
+        GroupsFilter::getInstance() -> addSimpleGroupFilter(filter1);
+        d->filter_all(true);
+        GroupsFilter::getInstance() -> filterTree(d);
+        CoordinatesFilter::getInstance() -> filterTree(d);
+    } else if (key == 122) {
+        SingleCoordinateFilter* filter0 = new SingleCoordinateFilter(0,0,1,0, RelationalOperator::ge);
+        CoordinatesFilter::getInstance() -> deleteAllFilters();
+        CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(filter0);
+
+        d->filter_all(true);
+        GroupsFilter::getInstance() -> filterTree(d);
+        CoordinatesFilter::getInstance() -> filterTree(d);
+    } else if (key == 120) {
+        SingleCoordinateFilter* filter0 = new SingleCoordinateFilter(1,0,0,0, RelationalOperator::le);
+        CoordinatesFilter::getInstance() -> deleteAllFilters();
+        CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(filter0);
+
+        d->filter_all(true);
+        GroupsFilter::getInstance() -> filterTree(d);
+        CoordinatesFilter::getInstance() -> filterTree(d);
     }
 }
 
@@ -141,7 +171,6 @@ void mouseButton(int button, int state, int x, int y) {
         if (state == GLUT_DOWN) {
             translationX = 0;
             translationY = 0;
-            GroupsFilter::getInstance() -> filterTree(d);
         }
 	}
 
