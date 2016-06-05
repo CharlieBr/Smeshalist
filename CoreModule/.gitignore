@@ -4,3 +4,5 @@ CoreModule.depend
 bin/*
 obj/*
 CoreModule.layout
+.metadata/
+.recommenders/

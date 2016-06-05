@@ -9,6 +9,7 @@
 #define PI_2 1.57
 
 #include "LinuxServer.h"
+#include "FILTERS_MODULE/include/GroupsFilter.h"
 
 float deltaAngleX = 0.8f;
 float deltaAngleY = 0.8f;
@@ -93,6 +94,15 @@ void renderScene(void) {
 void processNormalKeys(unsigned char key, int xx, int yy) {
     if (key == 27)
         exit(0);
+    if (key == 97) {
+        SingleGroupFilter* filter = new SingleGroupFilter(0);
+        GroupsFilter::getInstance() -> deleteAllFilters();
+        GroupsFilter::getInstance() -> addSimpleGroupFilter(filter);
+    } else if (key == 115) {
+        SingleGroupFilter* filter = new SingleGroupFilter(1);
+        GroupsFilter::getInstance() -> deleteAllFilters();
+        GroupsFilter::getInstance() -> addSimpleGroupFilter(filter);
+    }
 }
 
 void mouseMove(int x, int y) {
@@ -131,6 +141,7 @@ void mouseButton(int button, int state, int x, int y) {
         if (state == GLUT_DOWN) {
             translationX = 0;
             translationY = 0;
+            GroupsFilter::getInstance() -> filterTree(d);
         }
 	}
 
@@ -144,9 +155,9 @@ void mouseButton(int button, int state, int x, int y) {
 
     computeCameraPosition();
 }
+
 int main(int argc, char **argv) {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
-
     //set initial position
     computeCameraPosition();
 

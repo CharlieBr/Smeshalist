@@ -92,6 +92,7 @@ void Data::add(int group_id, vector<Element*>* elements){
     }
 }
 
+
 void Data::clean(){
     all_elements_numbers["all"] = 0;
     all_elements_numbers["vertex"] = 0;
@@ -139,12 +140,21 @@ void Data::count_visible_elements(){
 long Data::get_visible_elements_number(string type){
     map<string, int>::iterator it;
     it = visible_elements_numbers.find(type);
-
     if( it == visible_elements_numbers.end() ){
         return 0;
     } else {
         return visible_elements_numbers[type];
     }
+}
+
+vector<int>* Data::get_all_groupIDs() {
+    vector<int>* result = new vector<int>;
+
+    for(map<int,ElementsGroup*>::iterator it = groups.begin(); it != groups.end(); ++it) {
+        result -> push_back(it->first);
+    }
+
+    return result;
 }
 // --------------------------------------
 // ------- ElementsGroup methods --------

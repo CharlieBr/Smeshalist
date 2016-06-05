@@ -88,6 +88,9 @@ class Data {
         void filter_all(bool);
         void draw_elements();
 
+        //returns all available groupIDs (keys)
+        vector<int>* get_all_groupIDs();
+
         //add single element to proper group and list
         void add(int, Element*);
 
