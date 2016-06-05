@@ -73,7 +73,7 @@ void Data::add(int group_id, vector<Element*>* elements){
     }
 }
 
-vector<int>* Data::get_all_groups() {
+vector<int>* Data::get_all_groupIDs() {
     vector<int>* result = new vector<int>;
 
     for(map<int,ElementsGroup*>::iterator it = groups.begin(); it != groups.end(); ++it) {

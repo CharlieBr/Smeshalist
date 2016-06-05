@@ -35,7 +35,7 @@ void AbstractServer::parseEdgeSet(structDefinitions::EdgeSet* edgeSet) {
         points.push_back(parsePoint(&e.v2()));
 
         Edge* edge = new Edge(&points);
-        this -> handler -> add(0, edge);
+        this -> handler -> add(1, edge);
     }
 }
 
@@ -68,7 +68,7 @@ void AbstractServer::parseTriangleFaceSet(structDefinitions::TriangleFaceSet* tr
         points.push_back(parsePoint(&t.v3()));
 
         Face* f = new Face(&points);
-        this -> handler -> add(0, f);
+        this -> handler -> add(1, f);
     }
 }
 
