@@ -16,12 +16,12 @@ public class OptionsTab extends JPanel{
 
 	private boolean transparentStructures;
 	private boolean dynamicRendering;
-	private double dpi; //dots per inch (czulosc myszki z braku laku)
+	private double mouseSensitivity; 
 	
 	private GroupLayout mainLayout;
 	private JCheckBox transparencyCheckBox;
 	private JCheckBox renderingCheckBox;
-	private JSlider dpiSlider;
+	private JSlider sensitivitySlider;
 	private JButton continueButton;
 	private JButton abortButton;
 	private JPanel buttonContainer;
@@ -46,14 +46,14 @@ public class OptionsTab extends JPanel{
 		transparencyCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
 		renderingCheckBox = new JCheckBox("Dynamic rendering");
 		renderingCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
-		JLabel label = new JLabel("DPI");
+		JLabel label = new JLabel("Mouse sensitivity");
 		label.setBorder(new EmptyBorder(30, 0, 20, 0));
-		dpiSlider = new JSlider(JScrollBar.HORIZONTAL, 0, 20, 1);
-		dpiSlider.setMajorTickSpacing(5);
-		dpiSlider.setMinorTickSpacing(1);
-		dpiSlider.setPaintTicks(true);
-		dpiSlider.setPaintLabels(true);
-		dpiSlider.setBorder(new EmptyBorder(0, 20, 20, 20));
+		sensitivitySlider = new JSlider(JScrollBar.HORIZONTAL, 0, 20, 1);
+		sensitivitySlider.setMajorTickSpacing(5);
+		sensitivitySlider.setMinorTickSpacing(1);
+		sensitivitySlider.setPaintTicks(true);
+		sensitivitySlider.setPaintLabels(true);
+		sensitivitySlider.setBorder(new EmptyBorder(0, 20, 20, 20));
 		
 		continueButton = new JButton("Continue");
 		abortButton = new JButton("Abort");
@@ -69,7 +69,7 @@ public class OptionsTab extends JPanel{
 				.addComponent(renderingCheckBox)
 				.addGroup(mainLayout.createParallelGroup()
 						.addComponent(label)
-						.addComponent(dpiSlider))
+						.addComponent(sensitivitySlider))
 						.addComponent(buttonContainer)
 				);
 		
@@ -79,7 +79,7 @@ public class OptionsTab extends JPanel{
 				.addComponent(renderingCheckBox)
 				.addGroup(mainLayout.createSequentialGroup()
 						.addComponent(label)
-						.addComponent(dpiSlider))
+						.addComponent(sensitivitySlider))
 						.addComponent(buttonContainer)
 				
 				);
@@ -101,12 +101,12 @@ public class OptionsTab extends JPanel{
 		this.dynamicRendering = dynamicRendering;
 	}
 
-	public double getDpi() {
-		return dpi;
+	public double getMouseSensitivity() {
+		return mouseSensitivity;
 	}
 
-	public void setDpi(double dpi) {
-		this.dpi = dpi;
+	public void setMouseSensitivity(double mouseSensitivity) {
+		this.mouseSensitivity = mouseSensitivity;
 	}
 	
 	

@@ -1,10 +1,12 @@
 package window;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,6 +16,7 @@ import javax.swing.border.TitledBorder;
 
 import util.BoundingBox;
 import util.ElementInfo;
+import util.WindowUtil;
 
 public class StatisticsTab extends JPanel{
 	
@@ -72,6 +75,8 @@ public class StatisticsTab extends JPanel{
 		cell22.setLayout(bl22);
 
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Range");
+		border.setTitleColor(Color.BLUE);
+		border.setTitleJustification(2);
 		cell22.setBorder(border);
 		
 	}
@@ -81,10 +86,15 @@ public class StatisticsTab extends JPanel{
 		cell21.setLayout(bl21);
 
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Axis");
+		border.setTitleColor(Color.BLUE);
+		border.setTitleJustification(2);
 		cell21.setBorder(border);
 		
+		cell21.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		cell21.add(new JLabel("x"));
+		cell21.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		cell21.add(new JLabel("y"));
+		cell21.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		cell21.add(new JLabel("z"));
 	}
 
@@ -92,6 +102,8 @@ public class StatisticsTab extends JPanel{
 		bl12 = new BoxLayout(cell12,BoxLayout.PAGE_AXIS);
 		cell12.setLayout(bl12);
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Total (visible)");
+		border.setTitleColor(Color.BLUE);
+		border.setTitleJustification(2);
 		cell12.setBorder(border);	
 		
 	}
@@ -100,11 +112,42 @@ public class StatisticsTab extends JPanel{
 		bl11 = new BoxLayout(cell11,BoxLayout.PAGE_AXIS);
 		cell11.setLayout(bl11);
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Structures");
+		border.setTitleColor(Color.BLUE);
+		border.setTitleJustification(2);
 		cell11.setBorder(border);
 		
 	}
 	
+	public void putElementsCount(){
+		
+		cell11.removeAll();
+		cell12.removeAll();
+		
+		cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		for(String element : this.elementsCount.keySet()){
+			cell11.add(new JLabel(element));
+			cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		}
+		
+		for(ElementInfo info : this.elementsCount.values()){
+			cell12.add(new JLabel(info.getTotal()+" ("+info.getVisible()+")"));
+			cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE))
+;		}
 
+	}
+	
+	public void putBoundingBox(){
+		cell22.removeAll();
+		
+		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		cell22.add(new JLabel("["+this.boundingBox.getFromX()+","+this.boundingBox.getToX()+"]"));
+		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		cell22.add(new JLabel("["+this.boundingBox.getFromY()+","+this.boundingBox.getToY()+"]"));
+		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		cell22.add(new JLabel("["+this.boundingBox.getFromZ()+","+this.boundingBox.getToZ()+"]"));
+
+	}
 	
 	
 	public Map<String, ElementInfo> getElementsCount() {
@@ -114,28 +157,14 @@ public class StatisticsTab extends JPanel{
 	public void setElementsCount(Map<String, ElementInfo> elementsCount) {
 		this.elementsCount.clear();
 		this.elementsCount.putAll(elementsCount);
-
-		
-		cell11.removeAll();
-		cell12.removeAll();
-		
-		for(String element : this.elementsCount.keySet()){
-			cell11.add(new JLabel(element));
-		}
-		
-		for(ElementInfo info : this.elementsCount.values()){
-			cell12.add(new JLabel(info.getTotal()+" ("+info.getVisible()+")"));
-		}
+		this.putElementsCount();
 	}
 	
 
 
 	public void setBoundingBox(BoundingBox boundingBox) {
 		this.boundingBox = boundingBox;
-		cell22.removeAll();
-		cell22.add(new JLabel("["+this.boundingBox.getFromX()+","+this.boundingBox.getToX()+"]"));
-		cell22.add(new JLabel("["+this.boundingBox.getFromY()+","+this.boundingBox.getToY()+"]"));
-		cell22.add(new JLabel("["+this.boundingBox.getFromZ()+","+this.boundingBox.getToZ()+"]"));
+		this.putBoundingBox();
 	}
 	
 	
