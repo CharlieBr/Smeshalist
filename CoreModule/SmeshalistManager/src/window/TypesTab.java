@@ -32,7 +32,7 @@ public class TypesTab extends JPanel{
 		mainLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
 		this.setLayout(mainLayout);
 		
-		Border border = new EmptyBorder(30,30,30,30);
+		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		this.setBorder(border);
 
 		

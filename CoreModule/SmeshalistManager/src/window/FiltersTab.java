@@ -14,7 +14,6 @@ public class FiltersTab extends JPanel{
 
 	private static final long serialVersionUID = -4692062501127481100L;
 	
-//	private JPanel filtersPanel;
 	private JButton applyButton;
 	private JTabbedPane tabsContainer;
 	private TypesTab typesTab;
@@ -31,7 +30,6 @@ public class FiltersTab extends JPanel{
 	}
 
 	private void initializeView() {
-//		filtersPanel = new JPanel();
 		mainLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
 		this.setLayout(mainLayout);
 		

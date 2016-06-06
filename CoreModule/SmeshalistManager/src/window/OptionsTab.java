@@ -10,6 +10,8 @@ import javax.swing.JSlider;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import util.WindowUtil;
+
 public class OptionsTab extends JPanel{
 	
 	private static final long serialVersionUID = 2544760396056394118L;
@@ -39,7 +41,7 @@ public class OptionsTab extends JPanel{
 		mainLayout.setAutoCreateContainerGaps(true);
 		this.setLayout(mainLayout);
 		
-		Border border = new EmptyBorder(30,30,30,30);
+		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		setBorder(border);
 		
 		transparencyCheckBox = new JCheckBox("Transparent structures");

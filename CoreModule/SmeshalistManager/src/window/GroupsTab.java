@@ -31,16 +31,13 @@ public class GroupsTab extends JScrollPane{
 	}
 
 	private void initializeView() {
-		Border border = new EmptyBorder(30,30,30,30);
-		this.setBorder(border);
-		this.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_ALWAYS);
-		
+		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
+		this.setBorder(border);		
 
 		scrollPaneContent = new JPanel();
 		boxLayout = new BoxLayout(scrollPaneContent, BoxLayout.PAGE_AXIS);
 		scrollPaneContent.setLayout(boxLayout);
 		this.setViewportView(scrollPaneContent);
-		this.add(new JCheckBox("Proba 1"));
 		
 	}
 
@@ -56,7 +53,6 @@ public class GroupsTab extends JScrollPane{
 	}
 
 	private void putGroups() {
-//		groupsScrollPane.removeAll();
 		scrollPaneContent.removeAll();
 		groupsCheckBoxes.clear();
 		
@@ -65,8 +61,6 @@ public class GroupsTab extends JScrollPane{
 		}
 		
 		for (JCheckBox checkBox: groupsCheckBoxes){
-//			groupsScrollPane.add(checkBox);
-//			groupsScrollPane.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 			scrollPaneContent.add(checkBox);
 			scrollPaneContent.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		}

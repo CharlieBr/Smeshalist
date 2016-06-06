@@ -49,7 +49,7 @@ public class StatisticsTab extends JPanel{
 
 		LayoutManager mgr = new GridLayout(2,2);
 		setLayout(mgr);
-		Border border = new EmptyBorder(30,30,30,30);
+		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		setBorder(border);
 
 		cell11 = new JPanel();
