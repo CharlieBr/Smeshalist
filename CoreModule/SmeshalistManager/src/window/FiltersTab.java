@@ -56,7 +56,7 @@ public class FiltersTab extends JPanel{
 		this.add(tabsContainer);
 		
 		buttonContainer = new JPanel();
-		buttonContainer.setBorder(new EmptyBorder(30, 0, 0, 0));
+		buttonContainer.setBorder(new EmptyBorder(10, 0, 0, 0));
 		applyButton = new JButton("Apply");
 		buttonContainer.add(applyButton);
 		

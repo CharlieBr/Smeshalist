@@ -17,10 +17,11 @@ import javax.swing.border.EmptyBorder;
 
 import util.WindowUtil;
 
-public class QualityTab extends JScrollPane{
+public class QualityTab extends JPanel{
 
 	private static final long serialVersionUID = -7509751926352507679L;
 	
+	private JScrollPane scrollPane;
 	private JPanel scrollPaneContent;
 	private JPanel controlsPanel;
 	private JTextField v1TextField;
@@ -30,6 +31,7 @@ public class QualityTab extends JScrollPane{
 	private JButton addButton;
 	
 	private BoxLayout boxLayout;
+	private BoxLayout mainLayout;
 
 	public QualityTab(){
 		this.initializeView();
@@ -40,6 +42,8 @@ public class QualityTab extends JScrollPane{
 	private void initializeView() {
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		this.setBorder(border);		
+		this.mainLayout = new BoxLayout(this,BoxLayout.PAGE_AXIS);
+		this.setLayout(mainLayout);
 
 		v1TextField = new JTextField();
 		v1TextField.setPreferredSize((new Dimension(50, 25)));
@@ -50,14 +54,10 @@ public class QualityTab extends JScrollPane{
 		v1ComboBox.addItem("<=");
 		v1ComboBox.addItem("<");
 		v1ComboBox.addItem("=");
-		v1ComboBox.addItem(">");
-		v1ComboBox.addItem(">=");
 		v2ComboBox = new JComboBox<>();
 		v2ComboBox.addItem("<=");
 		v2ComboBox.addItem("<");
 		v2ComboBox.addItem("=");
-		v2ComboBox.addItem(">");
-		v2ComboBox.addItem(">=");
 		
 		addButton = new JButton("Add");
 		
@@ -84,7 +84,10 @@ public class QualityTab extends JScrollPane{
 		scrollPaneContent.add(controlsPanel);
 		scrollPaneContent.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		
-		this.setViewportView(scrollPaneContent);
+		scrollPane = new JScrollPane(scrollPaneContent);
+		scrollPane.setPreferredSize(new Dimension(WIDTH, 500));
+		this.add(controlsPanel);
+		this.add(scrollPane);
 	}
 	
 	private void addButtonPressed() {
@@ -97,9 +100,8 @@ public class QualityTab extends JScrollPane{
 		newEntry.add(new JLabel(v2TextField.getText()));
 		newEntry.add(Box.createHorizontalStrut(50));
 		newEntry.add(Box.createHorizontalGlue());
-		
-		JButton button = new JButton("Delete");
-		newEntry.add(button);
+
+		newEntry.add(new JButton("Delete"));
 		
 		scrollPaneContent.add(newEntry);
 		scrollPaneContent.revalidate();
