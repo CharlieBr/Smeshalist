@@ -2,7 +2,7 @@
 
 CoordinatesFilter* CoordinatesFilter::instance;
 
-bool SingleCoordinateFilter::applyFiler(Element* element) {
+bool SingleCoordinateFilter::applyFilter(Element* element) {
     bool result = true;
 
     vector<Point3D>* vertices = element -> get_vertices();
@@ -15,6 +15,7 @@ bool SingleCoordinateFilter::applyFiler(Element* element) {
             case RelationalOperator::le: result = absolute_value >=value; break;
             case RelationalOperator::ge: result = absolute_value <=value; break;
             case RelationalOperator::gt: result = absolute_value < value; break;
+            default: result = true;
         }
     }
 
@@ -66,7 +67,7 @@ void CoordinatesFilter::filterTree(Data* dataTree) {
                 bool result;
 
                 for (vector<SingleCoordinateFilter*>::iterator filter = filterList.begin() ; filter != filterList.end(); ++filter) {
-                    result = (*filter) -> applyFiler(*elem);
+                    result = (*filter) -> applyFilter(*elem);
                     all = all && result;
                     any = any || result;
                 }

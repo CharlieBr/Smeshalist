@@ -2,10 +2,11 @@
 #define COORDINATESFILTER_H
 
 #include "../../STRUCTURES/include/Data.h"
+#include "RelationalOperator.h"
 
 
 enum class LogicalConnectiveEnum {AND, OR};
-enum class RelationalOperator {lt, le, ge, gt};
+
 
 class SingleCoordinateFilter
 {
@@ -13,7 +14,7 @@ class SingleCoordinateFilter
         SingleCoordinateFilter(double x_coef, double y_coef, double z_coef, double absolute_value, RelationalOperator op) :
             x_coef(x_coef), y_coef(y_coef), z_coef(z_coef), absolute_value(absolute_value), op(op) {}
 
-        bool applyFiler(Element*);
+        bool applyFilter(Element*);
 
     private:
         double x_coef;

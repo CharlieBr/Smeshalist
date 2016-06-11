@@ -12,6 +12,7 @@
 #include "FILTERS_MODULE/include/GroupsFilter.h"
 #include "FILTERS_MODULE/include/CoordinatesFilter.h"
 #include "FILTERS_MODULE/include/TypesFilter.h"
+#include "FILTERS_MODULE/include/QualityFilter.h"
 
 float deltaAngleX = 0.8f;
 float deltaAngleY = 0.8f;
@@ -97,6 +98,7 @@ void processNormalKeys(unsigned char key, int xx, int yy) {
     if (key == 27) {    //esc
         GroupsFilter::getInstance() -> deleteAllFilters();
         TypesFilter::getInstance() -> deleteAllFilters();
+        QualityFilter::getInstance() -> deleteAllFilters();
         CoordinatesFilter::getInstance() -> deleteAllFilters();
     } else if (key == 48) {     //0
         SingleGroupFilter* filter = new SingleGroupFilter(0);
@@ -124,8 +126,12 @@ void processNormalKeys(unsigned char key, int xx, int yy) {
         TypesFilter::getInstance() -> addSingleFilter(filter);
     }
 
+    SingleQualityFilter* filter = new SingleQualityFilter(new Double(0), RelationalOperator::eq, RelationalOperator::eq, new Double(0));
+    QualityFilter::getInstance() -> addSingleFilter(filter);
+
     GroupsFilter::getInstance() -> filterTree(d);
     TypesFilter::getInstance() -> filterTree(d);
+    QualityFilter::getInstance() -> filterTree(d);
     CoordinatesFilter::getInstance() -> filterTree(d);
 }
 
