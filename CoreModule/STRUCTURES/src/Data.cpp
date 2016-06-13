@@ -4,8 +4,8 @@
 // ------- Data methods -------
 // ----------------------------
 map<int, ElementsGroup* > Data::groups;
-map<string, int> Data::all_elements_numbers = [] {
-    map<string, int> result;
+map<string, unsigned long> Data::all_elements_numbers = [] {
+    map<string, unsigned long> result;
 
     result["all"] = 0;
     result["vertex"] = 0;
@@ -16,7 +16,7 @@ map<string, int> Data::all_elements_numbers = [] {
     return result;
 }();
 
-map<string, int> Data::visible_elements_numbers = Data::all_elements_numbers;
+map<string, unsigned long> Data::visible_elements_numbers = Data::all_elements_numbers;
 
 Data& Data::get_instance(){
     static Data instance;
@@ -111,6 +111,11 @@ void Data::clean(){
     all_elements_numbers["edge"] = 0;
     all_elements_numbers["face"] = 0;
     all_elements_numbers["block"] = 0;
+    visible_elements_numbers["all"] = 0;
+    visible_elements_numbers["vertex"] = 0;
+    visible_elements_numbers["edge"] = 0;
+    visible_elements_numbers["face"] = 0;
+    visible_elements_numbers["block"] = 0;
 
     for( auto it : groups ){
         ElementsGroup * group = it.second;
@@ -121,8 +126,8 @@ void Data::clean(){
     groups.clear();
 }
 
-long Data::get_elements_number(string type){
-    map<string, int>::iterator it;
+unsigned long Data::get_elements_number(string type){
+    map<string, unsigned long>::iterator it;
     it = all_elements_numbers.find(type);
 
     if( it == all_elements_numbers.end() ){
@@ -140,7 +145,7 @@ void Data::count_visible_elements(){
     visible_elements_numbers["block"] = 0;
 
     for( auto const it : groups) {
-        map<string, int> result = it.second -> count_visible_elements();
+        map<string, unsigned long> result = it.second -> count_visible_elements();
 
         for( auto const it : result ){
             visible_elements_numbers["all"] += it.second;
@@ -149,8 +154,8 @@ void Data::count_visible_elements(){
     }
 }
 
-long Data::get_visible_elements_number(string type){
-    map<string, int>::iterator it;
+unsigned long Data::get_visible_elements_number(string type){
+    map<string, unsigned long>::iterator it;
     it = visible_elements_numbers.find(type);
     if( it == visible_elements_numbers.end() ){
         return 0;
@@ -242,8 +247,8 @@ void ElementsGroup::clean(){
     lists.clear();
 }
 
-map<string, int> ElementsGroup::count_visible_elements(){
-    map<string, int> result;
+map<string, unsigned long> ElementsGroup::count_visible_elements(){
+    map<string, unsigned long> result;
 
     for(auto const& it : lists){
         ElementsList* elements_list = it.second;
@@ -303,7 +308,7 @@ void ElementsList::clean(){
     elements.clear();
 }
 
-long ElementsList::count_visible_elements(){
+unsigned long ElementsList::count_visible_elements(){
     long counter = 0;
 
     for(auto const& it : elements){

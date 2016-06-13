@@ -35,7 +35,7 @@ public:
         //remove all data
         void clean();
 
-        long count_visible_elements();
+        unsigned long count_visible_elements();
 };
 
 // -----------------------------------
@@ -61,7 +61,7 @@ class ElementsGroup {
         //remove all data
         void clean();
 
-        map<string, int> count_visible_elements();
+        map<string, unsigned long> count_visible_elements();
 };
 
 // --------------------------------
@@ -72,8 +72,8 @@ class ElementsGroup {
 
 class Data {
     static map<int, ElementsGroup*> groups;
-    static map<string, int> all_elements_numbers;
-    static map<string, int> visible_elements_numbers;
+    static map<string, unsigned long> all_elements_numbers;
+    static map<string, unsigned long> visible_elements_numbers;
 
     private:
         Data(){};
@@ -102,8 +102,8 @@ class Data {
         void clean();
 
         //statistics
-        long get_elements_number(string);
+        unsigned long get_elements_number(string);
         void count_visible_elements();
-        long get_visible_elements_number(string);
+        unsigned long get_visible_elements_number(string);
 };
 #endif // DATA_H

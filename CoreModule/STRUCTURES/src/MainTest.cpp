@@ -147,6 +147,12 @@ int main(void){
 
     assert( data -> has_group(2) == false );
     assert( data -> has_group(1) == false );
+    assert( data -> get_elements_number("all") == 0 );
+    assert( data -> get_elements_number("vertex") == 0 );
+    assert( data -> get_elements_number("edge") == 0 );
+    assert( data -> get_visible_elements_number("all") == 0 );
+    assert( data -> get_visible_elements_number("vertex") == 0 );
+    assert( data -> get_visible_elements_number("edge") == 0 );
 
     return 0;
 }
