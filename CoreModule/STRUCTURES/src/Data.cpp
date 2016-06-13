@@ -65,6 +65,11 @@ void Data::add(int group_id, Element* element){
     all_elements_numbers["all"] += 1;
     all_elements_numbers[element_type] += 1;
 
+    if( element -> is_drawable() ){
+        visible_elements_numbers["all"] += 1;
+        visible_elements_numbers[element_type] += 1;
+    }
+
     if( !has_group(group_id) ){
         ElementsGroup * group = new ElementsGroup;
         groups.insert( pair<int, ElementsGroup*>(group_id, group));
@@ -87,6 +92,13 @@ void Data::add(int group_id, vector<Element*>* elements){
         string type = elements -> at(0) -> get_type();
         all_elements_numbers["all"] += elements -> size();
         all_elements_numbers[type] += elements -> size();
+
+        //assumed that all elements have the same to_draw flag
+        if( elements -> at(0) -> is_drawable() ){
+            visible_elements_numbers["all"] += elements -> size();
+            visible_elements_numbers[type] += elements -> size();
+        }
+
         group = groups.at(group_id);
         group -> add(type, elements);
     }
