@@ -27,9 +27,9 @@ int main(void){
     Data * data = &(Data::get_instance());
 
 
-    vertex -> set_quality(1);
-    assert( vertex -> get_quality() == 1 );
-    assert( vertex2 -> get_quality() == 0 );
+    vertex -> set_quality(1.0);
+    assert( vertex -> get_quality() == 1.0 );
+    assert( vertex2 -> get_quality() == 0.0 );
 
     data -> add(2, vertex);
     data -> add(2, vertex2);
