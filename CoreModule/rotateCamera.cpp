@@ -10,6 +10,9 @@
 
 #include "LinuxServer.h"
 #include "FILTERS_MODULE/include/GroupsFilter.h"
+#include "FILTERS_MODULE/include/CoordinatesFilter.h"
+#include "FILTERS_MODULE/include/TypesFilter.h"
+#include "FILTERS_MODULE/include/QualityFilter.h"
 
 float deltaAngleX = 0.8f;
 float deltaAngleY = 0.8f;
@@ -92,17 +95,44 @@ void renderScene(void) {
 }
 
 void processNormalKeys(unsigned char key, int xx, int yy) {
-    if (key == 27)
-        exit(0);
-    if (key == 97) {
+    if (key == 27) {    //esc
+        GroupsFilter::getInstance() -> deleteAllFilters();
+        TypesFilter::getInstance() -> deleteAllFilters();
+        QualityFilter::getInstance() -> deleteAllFilters();
+        CoordinatesFilter::getInstance() -> deleteAllFilters();
+    } else if (key == 48) {     //0
         SingleGroupFilter* filter = new SingleGroupFilter(0);
-        GroupsFilter::getInstance() -> deleteAllFilters();
         GroupsFilter::getInstance() -> addSimpleGroupFilter(filter);
-    } else if (key == 115) {
+    } else if (key == 49) {     //1
         SingleGroupFilter* filter = new SingleGroupFilter(1);
-        GroupsFilter::getInstance() -> deleteAllFilters();
         GroupsFilter::getInstance() -> addSimpleGroupFilter(filter);
+    } else if (key == 122) {    //z
+        SingleCoordinateFilter* filter0 = new SingleCoordinateFilter(0,0,1,0, RelationalOperator::ge);
+        CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(filter0);
+    } else if (key == 120) {    //x
+        SingleCoordinateFilter* filter0 = new SingleCoordinateFilter(1,0,0,0, RelationalOperator::le);
+        CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(filter0);
+    } else if (key == 118) {    //v
+        SingleTypesFilter* filter = new SingleTypesFilter("vertex");
+        TypesFilter::getInstance() -> addSingleFilter(filter);
+    } else if (key == 101) {    //e
+        SingleTypesFilter* filter = new SingleTypesFilter("edge");
+        TypesFilter::getInstance() -> addSingleFilter(filter);
+    } else if (key == 102) {    //f
+        SingleTypesFilter* filter = new SingleTypesFilter("face");
+        TypesFilter::getInstance() -> addSingleFilter(filter);
+    } else if (key == 98) {     //b
+        SingleTypesFilter* filter = new SingleTypesFilter("block");
+        TypesFilter::getInstance() -> addSingleFilter(filter);
     }
+
+    SingleQualityFilter* filter = new SingleQualityFilter(new Double(0), RelationalOperator::eq, RelationalOperator::eq, new Double(0));
+    QualityFilter::getInstance() -> addSingleFilter(filter);
+
+    GroupsFilter::getInstance() -> filterTree(d);
+    TypesFilter::getInstance() -> filterTree(d);
+    QualityFilter::getInstance() -> filterTree(d);
+    CoordinatesFilter::getInstance() -> filterTree(d);
 }
 
 void mouseMove(int x, int y) {
@@ -141,7 +171,6 @@ void mouseButton(int button, int state, int x, int y) {
         if (state == GLUT_DOWN) {
             translationX = 0;
             translationY = 0;
-            GroupsFilter::getInstance() -> filterTree(d);
         }
 	}
 
