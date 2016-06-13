@@ -49,6 +49,7 @@ class Element
         string type;
         Label label;
         bool to_draw = true;
+        int quality = 0;
 
     public:
         Element(vector<Point3D> * points, string type, Label label)
@@ -70,6 +71,8 @@ class Element
         Label get_label(){ return label; }
         bool is_drawable(){ return to_draw; }
         void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
+        void set_quality(int quality){ this -> quality = quality; }
+        int get_quality(){ return this -> quality; }
 };
 
 #endif // ELEMENT_H

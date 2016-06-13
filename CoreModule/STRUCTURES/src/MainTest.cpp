@@ -26,6 +26,11 @@ int main(void){
 
     Data * data = &(Data::get_instance());
 
+
+    vertex -> set_quality(1);
+    assert( vertex -> get_quality() == 1 );
+    assert( vertex2 -> get_quality() == 0 );
+
     data -> add(2, vertex);
     data -> add(2, vertex2);
     data -> add(2, vertex3);
@@ -75,6 +80,10 @@ int main(void){
     assert( data -> get_elements_number("all") == 6 );
     assert( data -> get_elements_number("vertex") == 3 );
     assert( data -> get_elements_number("edge") == 3 );
+
+    assert( data -> get_visible_elements_number("all") == 6 );
+    assert( data -> get_visible_elements_number("vertex") == 3 );
+    assert( data -> get_visible_elements_number("edge") == 3 );
 
 
     data -> filter_all(false);
