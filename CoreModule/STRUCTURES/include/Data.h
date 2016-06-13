@@ -84,26 +84,26 @@ class Data {
 
         static Data& get_instance();
 
-        ElementsGroup* get_group(int);
-        bool has_group(int);
-        void filter_all(bool);
-        void draw_elements();
+        static ElementsGroup* get_group(int);
+        static bool has_group(int);
+        static void filter_all(bool);
+        static void draw_elements();
 
         //returns all available groupIDs (keys)
-        vector<int>* get_all_groupIDs();
+        static vector<int>* get_all_groupIDs();
 
         //add single element to proper group and list
-        void add(int, Element*);
+        static void add(int, Element*);
 
         //add list of elements to proper group and list of elements
-        void add(int, vector<Element*>*);
+        static void add(int, vector<Element*>*);
 
         //remove all data
-        void clean();
+        static void clean();
 
         //statistics
-        unsigned long get_elements_number(string);
-        void count_visible_elements();
-        unsigned long get_visible_elements_number(string);
+        static unsigned long get_elements_number(string);
+        static void count_visible_elements();
+        static unsigned long get_visible_elements_number(string);
 };
 #endif // DATA_H
