@@ -16,7 +16,7 @@ int main(void){
     Point3D point2(1.0, 3.0, 3.9);
     Vertex * vertex2 = new Vertex(point2);
 
-    Point3D point3(1.0, 3.0, 3.9);
+    Point3D point3(-1.0, 3.0, 4.9);
     Vertex * vertex3 = new Vertex(point3);
 
     vector<Point3D> points;
@@ -26,15 +26,39 @@ int main(void){
 
     Data * data = &(Data::get_instance());
 
-
     vertex -> set_quality(1.0);
     assert( vertex -> get_quality() == 1.0 );
     assert( vertex2 -> get_quality() == 0.0 );
 
     data -> add(2, vertex);
+
+    assert( data -> get_min_x() == 1.2 );
+    assert( data -> get_max_x() == 1.2 );
+    assert( data -> get_min_y() == 3.4 );
+    assert( data -> get_max_y() == 3.4 );
+    assert( data -> get_min_z() == 3.4 );
+    assert( data -> get_max_z() == 3.4 );
+
     data -> add(2, vertex2);
+
+    assert( data -> get_min_x() == 1.0 );
+    assert( data -> get_max_x() == 1.2 );
+    assert( data -> get_min_y() == 3.0 );
+    assert( data -> get_max_y() == 3.4 );
+    assert( data -> get_min_z() == 3.4 );
+    assert( data -> get_max_z() == 3.9 );
+
     data -> add(2, vertex3);
     data -> add(2, edge);
+
+
+    assert( data -> get_min_x() == -1.0 );
+    assert( data -> get_max_x() == 1.2 );
+    assert( data -> get_min_y() == 3.0 );
+    assert( data -> get_max_y() == 3.4 );
+    assert( data -> get_min_z() == 3.4 );
+    assert( data -> get_max_z() == 4.9 );
+
 
     ElementsGroup * group2 = data -> get_group(2);
     assert( group2 != NULL );
@@ -67,6 +91,14 @@ int main(void){
     elements.push_back(edge2);
 
     data -> add(1, &elements);
+
+    assert( data -> get_min_x() == -1.0 );
+    assert( data -> get_max_x() == 4.5 );
+    assert( data -> get_min_y() == 2.1 );
+    assert( data -> get_max_y() == 8.2 );
+    assert( data -> get_min_z() == -8.9 );
+    assert( data -> get_max_z() == 8.9 );
+
 
     ElementsGroup * group1 = data -> get_group(1);
     assert( group1 != NULL );
@@ -153,6 +185,13 @@ int main(void){
     assert( data -> get_visible_elements_number("all") == 0 );
     assert( data -> get_visible_elements_number("vertex") == 0 );
     assert( data -> get_visible_elements_number("edge") == 0 );
+
+    assert( data -> get_min_x() == DBL_MAX );
+    assert( data -> get_max_x() == DBL_MIN );
+    assert( data -> get_min_y() == DBL_MAX );
+    assert( data -> get_max_y() == DBL_MIN );
+    assert( data -> get_min_z() == DBL_MAX );
+    assert( data -> get_max_z() == DBL_MIN );
 
     return 0;
 }

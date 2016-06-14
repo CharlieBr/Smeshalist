@@ -6,6 +6,8 @@
 #include <list>
 #include <vector>
 #include <stdio.h>
+#include <cfloat>
+
 
 #include "Element.h"
 
@@ -75,8 +77,17 @@ class Data {
     static map<string, unsigned long> all_elements_numbers;
     static map<string, unsigned long> visible_elements_numbers;
 
-    private:
-        Data(){};
+    // coordinates limiting cuboid
+    static double min_x;
+    static double max_x;
+    static double min_y;
+    static double max_y;
+    static double min_z;
+    static double max_z;
+
+    Data(){};
+
+    static void check_coordinates(Point3D*);
 
     public:
         Data(Data const&) = delete;
@@ -105,5 +116,13 @@ class Data {
         static unsigned long get_elements_number(string);
         static void count_visible_elements();
         static unsigned long get_visible_elements_number(string);
+
+        //get coordinates of limiting cuboid
+        static double get_min_x(){ return min_x; }
+        static double get_max_x(){ return max_x; }
+        static double get_min_y(){ return min_y; }
+        static double get_max_y(){ return max_y; }
+        static double get_min_z(){ return min_z; }
+        static double get_max_z(){ return max_z; }
 };
 #endif // DATA_H

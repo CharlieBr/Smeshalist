@@ -1,5 +1,6 @@
 #include "Data.h"
 
+
 // ----------------------------
 // ------- Data methods -------
 // ----------------------------
@@ -17,6 +18,13 @@ map<string, unsigned long> Data::all_elements_numbers = [] {
 }();
 
 map<string, unsigned long> Data::visible_elements_numbers = Data::all_elements_numbers;
+
+double Data::min_x = DBL_MAX;
+double Data::min_y = DBL_MAX;
+double Data::min_z = DBL_MAX;
+double Data::max_x = DBL_MIN;
+double Data::max_y = DBL_MIN;
+double Data::max_z = DBL_MIN;
 
 Data& Data::get_instance(){
     static Data instance;
@@ -70,6 +78,14 @@ void Data::add(int group_id, Element* element){
         visible_elements_numbers[element_type] += 1;
     }
 
+    //check coordinates of each point
+    //to designate limiting cuboid
+    vector<Point3D> vertices = *(element -> get_vertices());
+    for(auto &vertex : vertices){
+        check_coordinates(&vertex);
+    }
+
+
     if( !has_group(group_id) ){
         ElementsGroup * group = new ElementsGroup;
         groups.insert( pair<int, ElementsGroup*>(group_id, group));
@@ -93,6 +109,15 @@ void Data::add(int group_id, vector<Element*>* elements){
         all_elements_numbers["all"] += elements -> size();
         all_elements_numbers[type] += elements -> size();
 
+        for( auto const& element : *(elements)){
+            //check coordinates of each point
+            //to designate limiting cuboid
+            vector<Point3D> vertices = *(element -> get_vertices());
+            for(auto &vertex : vertices){
+                check_coordinates(&vertex);
+            }
+        }
+
         //assumed that all elements have the same to_draw flag
         if( elements -> at(0) -> is_drawable() ){
             visible_elements_numbers["all"] += elements -> size();
@@ -104,6 +129,37 @@ void Data::add(int group_id, vector<Element*>* elements){
     }
 }
 
+void Data::check_coordinates(Point3D * point){
+    double x = point -> get_x();
+    double y = point -> get_y();
+    double z = point -> get_z();
+
+    if( x < min_x ){
+        min_x = x;
+    }
+
+    if( x > max_x ){
+        max_x = x;
+    }
+
+    if( y < min_y ){
+        min_y = y;
+    }
+
+    if ( y > max_y ){
+        max_y = y;
+    }
+
+    if( z < min_z ){
+        min_z = z;
+    }
+
+    if ( z > max_z ){
+        max_z = z;
+    }
+
+    return;
+}
 
 void Data::clean(){
     all_elements_numbers["all"] = 0;
@@ -116,6 +172,12 @@ void Data::clean(){
     visible_elements_numbers["edge"] = 0;
     visible_elements_numbers["face"] = 0;
     visible_elements_numbers["block"] = 0;
+    min_x = DBL_MAX;
+    min_y = DBL_MAX;
+    min_z = DBL_MAX;
+    max_x = DBL_MIN;
+    max_y = DBL_MIN;
+    max_z = DBL_MIN;
 
     for( auto it : groups ){
         ElementsGroup * group = it.second;
