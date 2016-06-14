@@ -10,6 +10,7 @@
 
 
 #include "Element.h"
+#include "Statistics.h"
 
 using namespace std;
 // -----------------------------------
@@ -74,16 +75,7 @@ class ElementsGroup {
 
 class Data {
     static map<int, ElementsGroup*> groups;
-    static map<string, unsigned long> all_elements_numbers;
-    static map<string, unsigned long> visible_elements_numbers;
-
-    // coordinates limiting cuboid
-    static double min_x;
-    static double max_x;
-    static double min_y;
-    static double max_y;
-    static double min_z;
-    static double max_z;
+    static Statistics statistics;
 
     Data(){};
 
@@ -113,16 +105,13 @@ class Data {
         static void clean();
 
         //statistics
-        static unsigned long get_elements_number(string);
         static void count_visible_elements();
-        static unsigned long get_visible_elements_number(string);
-
-        //get coordinates of limiting cuboid
-        static double get_min_x(){ return min_x; }
-        static double get_max_x(){ return max_x; }
-        static double get_min_y(){ return min_y; }
-        static double get_max_y(){ return max_y; }
-        static double get_min_z(){ return min_z; }
-        static double get_max_z(){ return max_z; }
+        static double get_min_x(){ return statistics.min_x; }
+        static double get_max_x(){ return statistics.max_x; }
+        static double get_min_y(){ return statistics.min_y; }
+        static double get_max_y(){ return statistics.max_y; }
+        static double get_min_z(){ return statistics.min_z; }
+        static double get_max_z(){ return statistics.max_z; }
+        static Statistics get_statistics(){ return statistics; }
 };
 #endif // DATA_H

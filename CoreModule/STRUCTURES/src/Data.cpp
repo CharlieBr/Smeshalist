@@ -4,27 +4,8 @@
 // ----------------------------
 // ------- Data methods -------
 // ----------------------------
+Statistics Data::statistics;
 map<int, ElementsGroup* > Data::groups;
-map<string, unsigned long> Data::all_elements_numbers = [] {
-    map<string, unsigned long> result;
-
-    result["all"] = 0;
-    result["vertex"] = 0;
-    result["edge"] = 0;
-    result["face"] = 0;
-    result["block"] = 0;
-
-    return result;
-}();
-
-map<string, unsigned long> Data::visible_elements_numbers = Data::all_elements_numbers;
-
-double Data::min_x = DBL_MAX;
-double Data::min_y = DBL_MAX;
-double Data::min_z = DBL_MAX;
-double Data::max_x = DBL_MIN;
-double Data::max_y = DBL_MIN;
-double Data::max_z = DBL_MIN;
 
 Data& Data::get_instance(){
     static Data instance;
@@ -70,27 +51,25 @@ void Data::draw_elements(){
 
 void Data::add(int group_id, Element* element){
     string element_type = element -> get_type();
-    all_elements_numbers["all"] += 1;
-    all_elements_numbers[element_type] += 1;
+
+    //statistics
+    statistics.update_elements_counter(element_type, 1);
 
     if( element -> is_drawable() ){
-        visible_elements_numbers["all"] += 1;
-        visible_elements_numbers[element_type] += 1;
+        statistics.update_visible_elements_counter(element_type, 1);
     }
 
     //check coordinates of each point
     //to designate limiting cuboid
     vector<Point3D> vertices = *(element -> get_vertices());
     for(auto &vertex : vertices){
-        check_coordinates(&vertex);
+        statistics.update_limiting_cuboid(&vertex);
     }
-
 
     if( !has_group(group_id) ){
         ElementsGroup * group = new ElementsGroup;
         groups.insert( pair<int, ElementsGroup*>(group_id, group));
     }
-
 
     ElementsGroup* group = groups.at(group_id);
     group -> add(element_type, element);
@@ -106,22 +85,22 @@ void Data::add(int group_id, vector<Element*>* elements){
 
     if ( elements -> size() > 0 ) {
         string type = elements -> at(0) -> get_type();
-        all_elements_numbers["all"] += elements -> size();
-        all_elements_numbers[type] += elements -> size();
+
+        //statistics
+        statistics.update_elements_counter(type, elements -> size());
 
         for( auto const& element : *(elements)){
             //check coordinates of each point
             //to designate limiting cuboid
             vector<Point3D> vertices = *(element -> get_vertices());
             for(auto &vertex : vertices){
-                check_coordinates(&vertex);
+                statistics.update_limiting_cuboid(&vertex);
             }
         }
 
         //assumed that all elements have the same to_draw flag
         if( elements -> at(0) -> is_drawable() ){
-            visible_elements_numbers["all"] += elements -> size();
-            visible_elements_numbers[type] += elements -> size();
+            statistics.update_visible_elements_counter(type, elements -> size());
         }
 
         group = groups.at(group_id);
@@ -129,55 +108,8 @@ void Data::add(int group_id, vector<Element*>* elements){
     }
 }
 
-void Data::check_coordinates(Point3D * point){
-    double x = point -> get_x();
-    double y = point -> get_y();
-    double z = point -> get_z();
-
-    if( x < min_x ){
-        min_x = x;
-    }
-
-    if( x > max_x ){
-        max_x = x;
-    }
-
-    if( y < min_y ){
-        min_y = y;
-    }
-
-    if ( y > max_y ){
-        max_y = y;
-    }
-
-    if( z < min_z ){
-        min_z = z;
-    }
-
-    if ( z > max_z ){
-        max_z = z;
-    }
-
-    return;
-}
-
 void Data::clean(){
-    all_elements_numbers["all"] = 0;
-    all_elements_numbers["vertex"] = 0;
-    all_elements_numbers["edge"] = 0;
-    all_elements_numbers["face"] = 0;
-    all_elements_numbers["block"] = 0;
-    visible_elements_numbers["all"] = 0;
-    visible_elements_numbers["vertex"] = 0;
-    visible_elements_numbers["edge"] = 0;
-    visible_elements_numbers["face"] = 0;
-    visible_elements_numbers["block"] = 0;
-    min_x = DBL_MAX;
-    min_y = DBL_MAX;
-    min_z = DBL_MAX;
-    max_x = DBL_MIN;
-    max_y = DBL_MIN;
-    max_z = DBL_MIN;
+    statistics.clean();
 
     for( auto it : groups ){
         ElementsGroup * group = it.second;
@@ -188,41 +120,15 @@ void Data::clean(){
     groups.clear();
 }
 
-unsigned long Data::get_elements_number(string type){
-    map<string, unsigned long>::iterator it;
-    it = all_elements_numbers.find(type);
-
-    if( it == all_elements_numbers.end() ){
-        return 0;
-    } else {
-        return all_elements_numbers[type];
-    }
-}
-
 void Data::count_visible_elements(){
-    visible_elements_numbers["all"] = 0;
-    visible_elements_numbers["vertex"] = 0;
-    visible_elements_numbers["edge"] = 0;
-    visible_elements_numbers["face"] = 0;
-    visible_elements_numbers["block"] = 0;
+    statistics.clean_counters_of_visible_elements();
 
     for( auto const it : groups) {
         map<string, unsigned long> result = it.second -> count_visible_elements();
 
         for( auto const it : result ){
-            visible_elements_numbers["all"] += it.second;
-            visible_elements_numbers[ it.first ] += it.second;
+            statistics.update_visible_elements_counter(it.first, it.second);
         }
-    }
-}
-
-unsigned long Data::get_visible_elements_number(string type){
-    map<string, unsigned long>::iterator it;
-    it = visible_elements_numbers.find(type);
-    if( it == visible_elements_numbers.end() ){
-        return 0;
-    } else {
-        return visible_elements_numbers[type];
     }
 }
 
@@ -235,6 +141,8 @@ vector<int>* Data::get_all_groupIDs() {
 
     return result;
 }
+
+
 // --------------------------------------
 // ------- ElementsGroup methods --------
 // --------------------------------------

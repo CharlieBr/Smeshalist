@@ -51,7 +51,6 @@ int main(void){
     data -> add(2, vertex3);
     data -> add(2, edge);
 
-
     assert( data -> get_min_x() == -1.0 );
     assert( data -> get_max_x() == 1.2 );
     assert( data -> get_min_y() == 3.0 );
@@ -109,13 +108,15 @@ int main(void){
     vector<Element*> * edges2 = edge_list2 -> get_elements();
     assert( edges2 -> size() == 2 );
 
-    assert( data -> get_elements_number("all") == 6 );
-    assert( data -> get_elements_number("vertex") == 3 );
-    assert( data -> get_elements_number("edge") == 3 );
+    Statistics statistics = data -> get_statistics();
 
-    assert( data -> get_visible_elements_number("all") == 6 );
-    assert( data -> get_visible_elements_number("vertex") == 3 );
-    assert( data -> get_visible_elements_number("edge") == 3 );
+    assert( statistics.all_elements_numbers["all"] == 6 );
+    assert( statistics.all_elements_numbers["vertex"] == 3 );
+    assert( statistics.all_elements_numbers["edge"] == 3 );
+
+    assert( statistics.visible_elements_numbers["all"] == 6 );
+    assert( statistics.visible_elements_numbers["vertex"] == 3 );
+    assert( statistics.visible_elements_numbers["edge"] == 3 );
 
 
     data -> filter_all(false);
@@ -135,9 +136,11 @@ int main(void){
     }
 
     data -> count_visible_elements();
-    assert( data -> get_visible_elements_number("all") == 0 );
-    assert( data -> get_visible_elements_number("vertex") == 0 );
-    assert( data -> get_visible_elements_number("edge") == 0 );
+
+    statistics = data -> get_statistics();
+    assert( statistics.visible_elements_numbers["all"] == 0 );
+    assert( statistics.visible_elements_numbers["vertex"] == 0 );
+    assert( statistics.visible_elements_numbers["edge"]== 0 );
 
     data -> filter_all(true);
     for(unsigned int i = 0; i < vertices -> size(); i++){
@@ -156,10 +159,10 @@ int main(void){
     }
 
     data -> count_visible_elements();
-    assert( data -> get_visible_elements_number("all") == 6 );
-    assert( data -> get_visible_elements_number("vertex") == 3 );
-    assert( data -> get_visible_elements_number("edge") == 3 );
-
+    statistics = data -> get_statistics();
+    assert( statistics.visible_elements_numbers["all"] == 6 );
+    assert( statistics.visible_elements_numbers["vertex"] == 3 );
+    assert( statistics.visible_elements_numbers["edge"] == 3 );
 
     //cleaning
     data -> draw_elements();
@@ -179,12 +182,13 @@ int main(void){
 
     assert( data -> has_group(2) == false );
     assert( data -> has_group(1) == false );
-    assert( data -> get_elements_number("all") == 0 );
-    assert( data -> get_elements_number("vertex") == 0 );
-    assert( data -> get_elements_number("edge") == 0 );
-    assert( data -> get_visible_elements_number("all") == 0 );
-    assert( data -> get_visible_elements_number("vertex") == 0 );
-    assert( data -> get_visible_elements_number("edge") == 0 );
+    statistics = data -> get_statistics();
+    assert( statistics.all_elements_numbers["all"] == 0 );
+    assert( statistics.all_elements_numbers["vertex"] == 0 );
+    assert( statistics.all_elements_numbers["edge"] == 0 );
+    assert( statistics.visible_elements_numbers["all"] == 0 );
+    assert( statistics.visible_elements_numbers["vertex"] == 0 );
+    assert( statistics.visible_elements_numbers["edge"]== 0 );
 
     assert( data -> get_min_x() == DBL_MAX );
     assert( data -> get_max_x() == DBL_MIN );
