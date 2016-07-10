@@ -1,8 +1,10 @@
 #include "Data.h"
 
+
 // ----------------------------
 // ------- Data methods -------
 // ----------------------------
+Statistics Data::statistics;
 map<int, ElementsGroup* > Data::groups;
 
 Data& Data::get_instance(){
@@ -48,12 +50,27 @@ void Data::draw_elements(){
 }
 
 void Data::add(int group_id, Element* element){
+    string element_type = element -> get_type();
+
+    //statistics
+    statistics.update_elements_counter(element_type, 1);
+
+    if( element -> is_drawable() ){
+        statistics.update_visible_elements_counter(element_type, 1);
+    }
+
+    //check coordinates of each point
+    //to designate limiting cuboid
+    vector<Point3D> vertices = *(element -> get_vertices());
+    for(auto &vertex : vertices){
+        statistics.update_limiting_cuboid(&vertex);
+    }
+
     if( !has_group(group_id) ){
         ElementsGroup * group = new ElementsGroup;
         groups.insert( pair<int, ElementsGroup*>(group_id, group));
     }
 
-    string element_type = element -> get_type();
     ElementsGroup* group = groups.at(group_id);
     group -> add(element_type, element);
 }
@@ -68,8 +85,50 @@ void Data::add(int group_id, vector<Element*>* elements){
 
     if ( elements -> size() > 0 ) {
         string type = elements -> at(0) -> get_type();
+
+        //statistics
+        statistics.update_elements_counter(type, elements -> size());
+
+        for( auto const& element : *(elements)){
+            //check coordinates of each point
+            //to designate limiting cuboid
+            vector<Point3D> vertices = *(element -> get_vertices());
+            for(auto &vertex : vertices){
+                statistics.update_limiting_cuboid(&vertex);
+            }
+        }
+
+        //assumed that all elements have the same to_draw flag
+        if( elements -> at(0) -> is_drawable() ){
+            statistics.update_visible_elements_counter(type, elements -> size());
+        }
+
         group = groups.at(group_id);
         group -> add(type, elements);
+    }
+}
+
+void Data::clean(){
+    statistics.clean();
+
+    for( auto it : groups ){
+        ElementsGroup * group = it.second;
+        group -> clean();
+        delete group;
+    }
+
+    groups.clear();
+}
+
+void Data::count_visible_elements(){
+    statistics.clean_counters_of_visible_elements();
+
+    for( auto const it : groups) {
+        map<string, unsigned long> result = it.second -> count_visible_elements();
+
+        for( auto const it : result ){
+            statistics.update_visible_elements_counter(it.first, it.second);
+        }
     }
 }
 
@@ -122,7 +181,6 @@ void ElementsGroup::add(string elements_type, vector<Element*>* elements){
     }
 }
 
-
 void ElementsGroup::filter_all(bool to_draw ){
     for( auto const& it : lists){
         ElementsList * elements_list = it.second;
@@ -149,6 +207,30 @@ ElementsList* ElementsGroup::get_list(string elements_type){
     }
 }
 
+void ElementsGroup::clean(){
+    for (auto& it : lists){
+        ElementsList * elements_list = it.second;
+        elements_list -> clean();
+        delete elements_list;
+    }
+
+    lists.clear();
+}
+
+map<string, unsigned long> ElementsGroup::count_visible_elements(){
+    map<string, unsigned long> result;
+
+    for(auto const& it : lists){
+        ElementsList* elements_list = it.second;
+
+        if( elements_list -> is_drawable() ){
+            string type = it.first;
+            result[type] = elements_list -> count_visible_elements();
+        }
+    }
+
+    return result;
+}
 
 vector<string>* ElementsGroup::get_struct_types() {
     vector<string>* result = new vector<string>;
@@ -187,3 +269,23 @@ void ElementsList::draw_elements(){
     }
 }
 
+void ElementsList::clean(){
+    for( auto& it: elements ){
+        Element * element = it;
+        delete element;
+    }
+
+    elements.clear();
+}
+
+unsigned long ElementsList::count_visible_elements(){
+    long counter = 0;
+
+    for(auto const& it : elements){
+        if( it -> is_drawable() ){
+            counter += 1;
+        }
+    }
+
+    return counter;
+}

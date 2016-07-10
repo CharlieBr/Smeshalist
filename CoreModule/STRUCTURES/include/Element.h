@@ -49,18 +49,28 @@ class Element
         string type;
         Label label;
         bool to_draw = true;
+        double quality = 0.0;
 
     public:
         Element(vector<Point3D> * points, string type, Label label)
             : vertices(*points), type(type), label(label) {};
         Element(vector<Point3D> * points, string type)
             : vertices(*points), type(type) {};
+        Element(vector<Point3D> * points, string type, Label label, double quality)
+            : vertices(*points), type(type), label(label), quality(quality) {};
+        Element(vector<Point3D> * points, string type, double quality)
+            : vertices(*points), type(type), quality(quality) {};
         //constructors for Vertex
         Element(Point3D point, string type, Label label)
             : type(type), label(label) { vertices.insert(vertices.begin(), point); };
         Element(Point3D point, string type)
             : type(type) { vertices.insert(vertices.begin(), point); };
+            Element(Point3D point, string type, Label label, double quality)
+            : type(type), label(label), quality(quality) { vertices.insert(vertices.begin(), point); };
+        Element(Point3D point, string type, double quality)
+            : type(type), quality(quality) { vertices.insert(vertices.begin(), point); };
 
+        virtual ~Element(){};
 
         virtual void draw(){};
         vector<Point3D> * get_vertices() { return &vertices; }
@@ -69,6 +79,8 @@ class Element
         Label get_label(){ return label; }
         bool is_drawable(){ return to_draw; }
         void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
+        void set_quality(double quality){ this -> quality = quality; }
+        double get_quality(){ return this -> quality; }
 };
 
 #endif // ELEMENT_H

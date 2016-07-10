@@ -6,8 +6,11 @@
 #include <list>
 #include <vector>
 #include <stdio.h>
+#include <cfloat>
+
 
 #include "Element.h"
+#include "Statistics.h"
 
 using namespace std;
 // -----------------------------------
@@ -31,6 +34,11 @@ public:
         void add(vector<Element*>*);
 
         vector<Element*>* get_elements(){ return &elements; }
+
+        //remove all data
+        void clean();
+
+        unsigned long count_visible_elements();
 };
 
 // -----------------------------------
@@ -52,6 +60,11 @@ class ElementsGroup {
         void draw_elements();
         vector<string>* get_struct_types();
         ElementsList* get_list(string);
+
+        //remove all data
+        void clean();
+
+        map<string, unsigned long> count_visible_elements();
 };
 
 // --------------------------------
@@ -62,9 +75,11 @@ class ElementsGroup {
 
 class Data {
     static map<int, ElementsGroup*> groups;
+    static Statistics statistics;
 
-    private:
-        Data(){};
+    Data(){};
+
+    static void check_coordinates(Point3D*);
 
     public:
         Data(Data const&) = delete;
@@ -72,18 +87,31 @@ class Data {
 
         static Data& get_instance();
 
-        ElementsGroup* get_group(int);
-        bool has_group(int);
-        void filter_all(bool);
-        void draw_elements();
+        static ElementsGroup* get_group(int);
+        static bool has_group(int);
+        static void filter_all(bool);
+        static void draw_elements();
 
         //returns all available groupIDs (keys)
-        vector<int>* get_all_groupIDs();
+        static vector<int>* get_all_groupIDs();
 
         //add single element to proper group and list
-        void add(int, Element*);
+        static void add(int, Element*);
 
         //add list of elements to proper group and list of elements
-        void add(int, vector<Element*>*);
+        static void add(int, vector<Element*>*);
+
+        //remove all data
+        static void clean();
+
+        //statistics
+        static void count_visible_elements();
+        static double get_min_x(){ return statistics.min_x; }
+        static double get_max_x(){ return statistics.max_x; }
+        static double get_min_y(){ return statistics.min_y; }
+        static double get_max_y(){ return statistics.max_y; }
+        static double get_min_z(){ return statistics.min_z; }
+        static double get_max_z(){ return statistics.max_z; }
+        static Statistics get_statistics(){ return statistics; }
 };
 #endif // DATA_H
