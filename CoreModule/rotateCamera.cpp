@@ -126,7 +126,7 @@ void processNormalKeys(unsigned char key, int xx, int yy) {
         TypesFilter::getInstance() -> addSingleFilter(filter);
     }
 
-    SingleQualityFilter* filter = new SingleQualityFilter(new Double(0), RelationalOperator::eq, RelationalOperator::eq, new Double(0));
+    SingleQualityFilter* filter = new SingleQualityFilter(new Double(0), RelationalOperator::le, RelationalOperator::lt, new Double(5));
     QualityFilter::getInstance() -> addSingleFilter(filter);
 
     GroupsFilter::getInstance() -> filterTree(d);

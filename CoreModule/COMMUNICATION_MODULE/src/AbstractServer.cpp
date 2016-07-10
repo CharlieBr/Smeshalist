@@ -67,7 +67,7 @@ void AbstractServer::parseTriangleFaceSet(structDefinitions::TriangleFaceSet* tr
         points.push_back(parsePoint(&t.v2()));
         points.push_back(parsePoint(&t.v3()));
 
-        Face* f = new Face(&points);
+        Face* f = new Face(&points, i);
         this -> handler -> add(1, f);
     }
 }

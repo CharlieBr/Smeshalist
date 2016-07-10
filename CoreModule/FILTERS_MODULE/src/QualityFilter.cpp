@@ -46,12 +46,10 @@ void QualityFilter::filterTree(Data* dataTree) {
 }
 
 bool SingleQualityFilter::applyFilter(Element* element) {
-    //TODO after quality field willbe added to Element class
-    //int quality = element -> get_quality();
-    double quality = 0;
+    double quality = element->get_quality();
     bool result = false;
 
-    if (!leftValue) {
+    if (leftValue != NULL) {
         switch (leftOp) {
             case RelationalOperator::lt : result = leftValue->getValue() < quality; break;
             case RelationalOperator::le : result = leftValue->getValue() <=quality; break;
@@ -60,7 +58,7 @@ bool SingleQualityFilter::applyFilter(Element* element) {
         }
     }
 
-    if (result && !rightValue) {
+    if (result && rightValue != NULL) {
         switch (rightOp) {
             case RelationalOperator::lt : result = quality < rightValue->getValue(); break;
             case RelationalOperator::le : result = quality <=rightValue->getValue(); break;
@@ -68,8 +66,5 @@ bool SingleQualityFilter::applyFilter(Element* element) {
             default : result = true;
         }
     }
-
-    //TODO change it!!!!!
-    result = true;
     return result;
 }
