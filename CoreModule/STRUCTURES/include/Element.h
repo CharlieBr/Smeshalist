@@ -56,11 +56,19 @@ class Element
             : vertices(*points), type(type), label(label) {};
         Element(vector<Point3D> * points, string type)
             : vertices(*points), type(type) {};
+        Element(vector<Point3D> * points, string type, Label label, double quality)
+            : vertices(*points), type(type), label(label), quality(quality) {};
+        Element(vector<Point3D> * points, string type, double quality)
+            : vertices(*points), type(type), quality(quality) {};
         //constructors for Vertex
         Element(Point3D point, string type, Label label)
             : type(type), label(label) { vertices.insert(vertices.begin(), point); };
         Element(Point3D point, string type)
             : type(type) { vertices.insert(vertices.begin(), point); };
+            Element(Point3D point, string type, Label label, double quality)
+            : type(type), label(label), quality(quality) { vertices.insert(vertices.begin(), point); };
+        Element(Point3D point, string type, double quality)
+            : type(type), quality(quality) { vertices.insert(vertices.begin(), point); };
 
         virtual ~Element(){};
 

@@ -11,7 +11,7 @@ struct test_struct{
 
 int main(void){
     Point3D point(1.2, 3.4, 3.4);
-    Vertex * vertex = new Vertex(point);
+    Vertex * vertex = new Vertex(point, 1.2);
 
     Point3D point2(1.0, 3.0, 3.9);
     Vertex * vertex2 = new Vertex(point2);
