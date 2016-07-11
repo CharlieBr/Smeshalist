@@ -18,11 +18,13 @@ public class OptionsTab extends JPanel{
 
 	private boolean transparentStructures;
 	private boolean dynamicRendering;
+	private boolean showLabels;
 	private double mouseSensitivity; 
 	
 	private GroupLayout mainLayout;
 	private JCheckBox transparencyCheckBox;
 	private JCheckBox renderingCheckBox;
+	private JCheckBox showLabelsCheckBox;
 	private JSlider sensitivitySlider;
 	private JButton continueButton;
 	private JButton abortButton;
@@ -48,6 +50,9 @@ public class OptionsTab extends JPanel{
 		transparencyCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
 		renderingCheckBox = new JCheckBox("Dynamic rendering");
 		renderingCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
+		showLabelsCheckBox = new JCheckBox("Show labels");
+		showLabelsCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
+		
 		JLabel label = new JLabel("Mouse sensitivity");
 		label.setBorder(new EmptyBorder(30, 0, 20, 0));
 		sensitivitySlider = new JSlider(JScrollBar.HORIZONTAL, 0, 20, 1);
@@ -69,6 +74,7 @@ public class OptionsTab extends JPanel{
 				mainLayout.createParallelGroup()
 				.addComponent(transparencyCheckBox)
 				.addComponent(renderingCheckBox)
+				.addComponent(showLabelsCheckBox)
 				.addGroup(mainLayout.createParallelGroup()
 						.addComponent(label)
 						.addComponent(sensitivitySlider))
@@ -79,6 +85,7 @@ public class OptionsTab extends JPanel{
 				mainLayout.createSequentialGroup()
 				.addComponent(transparencyCheckBox)
 				.addComponent(renderingCheckBox)
+				.addComponent(showLabelsCheckBox)
 				.addGroup(mainLayout.createSequentialGroup()
 						.addComponent(label)
 						.addComponent(sensitivitySlider))
@@ -109,6 +116,14 @@ public class OptionsTab extends JPanel{
 
 	public void setMouseSensitivity(double mouseSensitivity) {
 		this.mouseSensitivity = mouseSensitivity;
+	}
+
+	public boolean isShowLabels() {
+		return showLabels;
+	}
+
+	public void setShowLabels(boolean showLabels) {
+		this.showLabels = showLabels;
 	}
 	
 	
