@@ -3,6 +3,8 @@ package window;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -32,6 +34,8 @@ public class QualityTab extends JPanel{
 	
 	private BoxLayout boxLayout;
 	private BoxLayout mainLayout;
+	
+	private List<JPanel> conditionEntries;
 
 	public QualityTab(){
 		this.initializeView();
@@ -40,6 +44,8 @@ public class QualityTab extends JPanel{
 	}
 
 	private void initializeView() {
+		conditionEntries = new ArrayList<>();
+		
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		this.setBorder(border);		
 		this.mainLayout = new BoxLayout(this,BoxLayout.PAGE_AXIS);
@@ -101,10 +107,30 @@ public class QualityTab extends JPanel{
 		newEntry.add(Box.createHorizontalStrut(50));
 		newEntry.add(Box.createHorizontalGlue());
 
-		newEntry.add(new JButton("Delete"));
+		JButton deleteButton = new JButton("Delete");
+		deleteButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				deleteButtonPressed(newEntry);
+			}
+
+		});
+		
+		newEntry.add(deleteButton);
+		
+		conditionEntries.add(newEntry);
 		
 		scrollPaneContent.add(newEntry);
 		scrollPaneContent.revalidate();
 		scrollPaneContent.repaint();
+	}
+	private void deleteButtonPressed(JPanel entry) {
+		if (conditionEntries.contains(entry)){
+			conditionEntries.remove(entry);
+			scrollPaneContent.remove(entry);
+		}
+		
+		scrollPaneContent.revalidate();
+		scrollPaneContent.repaint();
+		
 	}
 }

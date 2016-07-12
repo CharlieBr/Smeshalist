@@ -3,6 +3,8 @@ package window;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -35,6 +37,8 @@ public class CoordinatesTab extends JPanel{
 	private BoxLayout mainLayout;
 	private BoxLayout boxLayout;
 	
+	private List<JPanel> conditionEntries;
+	
 	public CoordinatesTab(){
 		this.initializeView();
 		
@@ -42,6 +46,8 @@ public class CoordinatesTab extends JPanel{
 	}
 
 	private void initializeView() {
+		conditionEntries = new ArrayList<>();
+		
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		this.setBorder(border);		
 		this.mainLayout = new BoxLayout(this,BoxLayout.PAGE_AXIS);
@@ -110,11 +116,30 @@ public class CoordinatesTab extends JPanel{
 		newEntry.add(new JLabel(yTextField.getText() + "y"));
 		newEntry.add(new JLabel(zTextField.getText() + "z"));
 		newEntry.add(Box.createHorizontalStrut(50));		
-		JButton button = new JButton("Delete");
-		newEntry.add(button);
+		JButton deleteButton = new JButton("Delete");
+		deleteButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				deleteButtonPressed(newEntry);
+			}
+
+		});
+		newEntry.add(deleteButton);
+		
+		conditionEntries.add(newEntry);
 		
 		scrollPaneContent.add(newEntry);
 		scrollPaneContent.revalidate();
 		scrollPaneContent.repaint();
+	}
+	
+	private void deleteButtonPressed(JPanel entry) {
+		if (conditionEntries.contains(entry)){
+			conditionEntries.remove(entry);
+			scrollPaneContent.remove(entry);
+		}
+		
+		scrollPaneContent.revalidate();
+		scrollPaneContent.repaint();
+		
 	}
 }
