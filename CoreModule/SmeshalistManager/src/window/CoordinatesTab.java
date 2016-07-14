@@ -11,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -18,6 +19,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import util.WindowUtil;
+import verify.InputVerifier;
 
 public class CoordinatesTab extends JPanel{
 
@@ -82,12 +84,18 @@ public class CoordinatesTab extends JPanel{
 		});
 		
 		controlsPanel = new JPanel();
-		controlsPanel.add(valueTextField);
-		controlsPanel.add(operatorsComboBox);
-		controlsPanel.add(Box.createHorizontalStrut(50));
+				
 		controlsPanel.add(xTextField);
+		controlsPanel.add(new JLabel("x"));
+		controlsPanel.add(Box.createHorizontalStrut(5));
 		controlsPanel.add(yTextField);
+		controlsPanel.add(new JLabel("y"));
+		controlsPanel.add(Box.createHorizontalStrut(5));
 		controlsPanel.add(zTextField);
+		controlsPanel.add(new JLabel("z"));
+		controlsPanel.add(Box.createHorizontalStrut(50));		
+		controlsPanel.add(operatorsComboBox);
+		controlsPanel.add(valueTextField);
 		controlsPanel.add(Box.createHorizontalStrut(50));
 		controlsPanel.add(addButton);
 		
@@ -108,13 +116,19 @@ public class CoordinatesTab extends JPanel{
 	}
 
 	private void addButtonPressed() {
+
+		if (!InputVerifier.verifyCoordinatesInput(valueTextField, xTextField, yTextField, zTextField)){
+			JOptionPane.showMessageDialog(MainWindow.getInstance(), "Wrong input!","Wrong input", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		JPanel newEntry = new JPanel();
 		
-		newEntry.add(new JLabel(valueTextField.getText()));
-		newEntry.add(new JLabel(operatorsComboBox.getSelectedItem().toString()));
 		newEntry.add(new JLabel(xTextField.getText() + "x"));
 		newEntry.add(new JLabel(yTextField.getText() + "y"));
 		newEntry.add(new JLabel(zTextField.getText() + "z"));
+		newEntry.add(new JLabel(operatorsComboBox.getSelectedItem().toString()));
+		newEntry.add(new JLabel(valueTextField.getText()));
 		newEntry.add(Box.createHorizontalStrut(50));		
 		JButton deleteButton = new JButton("Delete");
 		deleteButton.addActionListener(new ActionListener(){

@@ -23,7 +23,7 @@ public class FiltersTab extends JPanel{
 	
 	private BoxLayout mainLayout;
 	private JPanel buttonContainer;
-	
+
 	public FiltersTab(){
 		initializeView();
 		this.setVisible(true);
@@ -86,5 +86,5 @@ public class FiltersTab extends JPanel{
 		
 		groupsTab.setGroups(groups);
 	}
-
+	
 }

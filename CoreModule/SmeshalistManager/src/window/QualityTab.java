@@ -11,6 +11,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -18,11 +19,11 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import util.WindowUtil;
+import verify.InputVerifier;
 
 public class QualityTab extends JPanel{
 
 	private static final long serialVersionUID = -7509751926352507679L;
-	
 	private JScrollPane scrollPane;
 	private JPanel scrollPaneContent;
 	private JPanel controlsPanel;
@@ -55,7 +56,7 @@ public class QualityTab extends JPanel{
 		v1TextField.setPreferredSize((new Dimension(50, 25)));
 		v2TextField = new JTextField();	
 		v2TextField.setPreferredSize((new Dimension(50, 25)));
-
+		
 		v1ComboBox = new JComboBox<>();
 		v1ComboBox.addItem("<=");
 		v1ComboBox.addItem("<");
@@ -97,6 +98,12 @@ public class QualityTab extends JPanel{
 	}
 	
 	private void addButtonPressed() {
+		
+		if (!InputVerifier.verifyQualityInput(v1TextField,v1ComboBox,v2TextField,v2ComboBox)){
+			JOptionPane.showMessageDialog(MainWindow.getInstance(), "Wrong input!","Wrong input", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+		
 		JPanel newEntry = new JPanel();
 		
 		newEntry.add(new JLabel(v1TextField.getText()));
@@ -133,4 +140,5 @@ public class QualityTab extends JPanel{
 		scrollPaneContent.repaint();
 		
 	}
+
 }

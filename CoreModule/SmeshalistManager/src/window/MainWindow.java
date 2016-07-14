@@ -2,17 +2,22 @@ package window;
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
-public class MainWindow extends JFrame{
-	
+public class MainWindow extends JFrame {
+
 	private static final long serialVersionUID = -8385942516800601932L;
-	JTabbedPane tabContainer;
-	StatisticsTab statisticsTab;
-	OptionsTab optionsTab;
-	FiltersTab filtersTab;
-		
-	public MainWindow(){
-		this.setSize(500,500);
+
+	private static MainWindow INSTANCE;
+
+	private JTabbedPane tabContainer;
+	private StatisticsTab statisticsTab;
+	private OptionsTab optionsTab;
+	private FiltersTab filtersTab;
+
+	private MainWindow() {
+		this.setSize(500, 500);
 
 		tabContainer = new JTabbedPane();
 		tabContainer.setVisible(true);
@@ -29,7 +34,31 @@ public class MainWindow extends JFrame{
 		setVisible(true);
 	}
 
-	public static void main(String[] args){
-		new MainWindow();
+	public static void main(String[] args) {
+		
+		try {
+			MainWindow.setLookAndFeel();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
+		
+		MainWindow.getInstance();
+	}
+
+	public static MainWindow getInstance() {
+		if (INSTANCE == null) {
+			INSTANCE = new MainWindow();
+		}
+		return INSTANCE;
+	}
+	
+	private static void setLookAndFeel() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
+		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	}
 }
