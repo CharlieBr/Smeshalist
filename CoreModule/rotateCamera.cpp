@@ -10,11 +10,14 @@
 
 #ifdef __linux__
 #include "LinuxServer.h"
+#include "LinuxDataTree.h"
 #elif _WIN32
 #include "WindowsServer.h"
+#include "FILTERS_MODULE\include\CoordinatesFilter.h"
+#include "FILTERS_MODULE\include\GroupsFilter.h"
+#include "FILTERS_MODULE\include\QualityFilter.h"
+#include "FILTERS_MODULE\include\TypesFilter.h"
 #endif // __linux__
-
-#include "LinuxDataTree.h"
 
 float deltaAngleX = 0.8f;
 float deltaAngleY = 0.8f;
@@ -190,16 +193,16 @@ void mouseButton(int button, int state, int x, int y) {
 int main(int argc, char **argv) {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
     //set initial position
-    computeCameraPosition();
-
-    d = &LinuxDataTree::getInstance();
+	computeCameraPosition();
 
     AbstractServer* server = NULL;
 
     #ifdef __linux__
     server = new LinuxServer();
+	d = &LinuxDataTree::getInstance();
     #elif _WIN32
     server = new WindowsServer();
+	d = &Data::get_instance();
     #endif // __linux__
 
     server -> registerStructuresHandler(d);

@@ -4,10 +4,10 @@ WindowsServer::WindowsServer() {
     //TODO create socket and whole connection
 }
 
-WindowsServer::void startServer() {
+void WindowsServer::startServer() {
     //TODO start server in new thread
 }
 
-WindowsServer::void stopServer() {
+void WindowsServer::stopServer() {
     //TODO finish and join server thread
 }
