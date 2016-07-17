@@ -40,6 +40,7 @@ class QualityFilter
         void addSingleFilter(SingleQualityFilter*);
         void deleteAllFilters();
         void filterTree(Data*);
+        void filterElement(Element*);
     protected:
     private:
         static QualityFilter* instance;

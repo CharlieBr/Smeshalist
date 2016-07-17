@@ -2,12 +2,18 @@
 
 void AbstractDataTree::add(int groupID, Element* element) {
     LOCK();
+    QualityFilter::getInstance() -> filterElement(element);
+    CoordinatesFilter::getInstance() -> filterElement(element);
     Data::add(groupID, element);
     UNLOCK();
 }
 
 void AbstractDataTree::add(int groupID, vector<Element*>* elements) {
     LOCK();
+    for(auto const& element : *elements){
+        QualityFilter::getInstance() -> filterElement(element);
+        CoordinatesFilter::getInstance() -> filterElement(element);
+    }
     Data::add(groupID, elements);
     UNLOCK();
 }

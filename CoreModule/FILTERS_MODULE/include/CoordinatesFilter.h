@@ -37,6 +37,7 @@ class CoordinatesFilter
         }
 
         void filterTree(Data*);
+        void filterElement(Element*);
         void addSimpleCoordinateFilter(SingleCoordinateFilter*);
         void changeLogicalCoonective(LogicalConnectiveEnum);
         void deleteAllFilters() {

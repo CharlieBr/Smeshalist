@@ -34,6 +34,29 @@ void CoordinatesFilter::changeLogicalCoonective(LogicalConnectiveEnum lc) {
     logicalConnective = lc;
 }
 
+void CoordinatesFilter::filterElement(Element* element) {
+    if (!element -> is_drawable()) {
+        return;
+    }
+
+    bool any = false;   //use for OR operator
+    bool all = true;    //use for AND operator
+    bool result;
+
+    for (vector<SingleCoordinateFilter*>::iterator filter = filterList.begin() ; filter != filterList.end(); ++filter) {
+        result = (*filter) -> applyFilter(element);
+        all = all && result;
+        any = any || result;
+    }
+
+    if (logicalConnective == LogicalConnectiveEnum::AND) {
+        element->set_draw_flag(all);
+    } else {
+        element->set_draw_flag(any);
+    }
+}
+
+
 void CoordinatesFilter::filterTree(Data* dataTree) {
     vector<int>* groupIDs = dataTree -> get_all_groupIDs();
 
@@ -58,26 +81,7 @@ void CoordinatesFilter::filterTree(Data* dataTree) {
             vector<Element*>* elements = elementsList -> get_elements();
 
             for (vector<Element*>::iterator elem = elements->begin() ; elem != elements->end(); ++elem) {
-                if (!(*elem) -> is_drawable()) {
-                    continue;
-                }
-
-                bool any = false;   //use for OR operator
-                bool all = true;    //use for AND operator
-                bool result;
-
-                for (vector<SingleCoordinateFilter*>::iterator filter = filterList.begin() ; filter != filterList.end(); ++filter) {
-                    result = (*filter) -> applyFilter(*elem);
-                    all = all && result;
-                    any = any || result;
-                }
-
-                if (logicalConnective == LogicalConnectiveEnum::AND) {
-                    (*elem)->set_draw_flag(all);
-                } else {
-                    (*elem)->set_draw_flag(any);
-                }
-
+                filterElement(*elem);
             }
         }
     }

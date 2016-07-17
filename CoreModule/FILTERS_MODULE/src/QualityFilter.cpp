@@ -11,6 +11,16 @@ void QualityFilter::deleteAllFilters() {
     filterList.clear();
 }
 
+void QualityFilter::filterElement(Element* element) {
+    bool result = false;
+
+    for (vector<SingleQualityFilter*>::iterator filter = filterList.begin() ; !result && filter != filterList.end(); ++filter) {
+        result = (*filter) -> applyFilter(element);
+    }
+
+    element->set_draw_flag(result);
+}
+
 void QualityFilter::filterTree(Data* dataTree) {
     vector<int>* groupIDs = dataTree -> get_all_groupIDs();
 
@@ -33,13 +43,7 @@ void QualityFilter::filterTree(Data* dataTree) {
 
             vector<Element*>* elements = elementsList -> get_elements();
             for (vector<Element*>::iterator elem = elements->begin() ; elem != elements->end(); ++elem) {
-                bool result = false;
-
-                for (vector<SingleQualityFilter*>::iterator filter = filterList.begin() ; !result && filter != filterList.end(); ++filter) {
-                    result = (*filter) -> applyFilter(*elem);
-                }
-
-                (*elem)->set_draw_flag(result);
+                filterElement(*elem);
             }
         }
     }
