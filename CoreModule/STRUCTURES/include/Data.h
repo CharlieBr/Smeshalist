@@ -77,9 +77,10 @@ class Data {
     static map<int, ElementsGroup*> groups;
     static Statistics statistics;
 
-    Data(){};
-
     static void check_coordinates(Point3D*);
+
+    protected:
+        Data(){};
 
     public:
         Data(Data const&) = delete;
@@ -96,10 +97,10 @@ class Data {
         static vector<int>* get_all_groupIDs();
 
         //add single element to proper group and list
-        static void add(int, Element*);
+        virtual void add(int, Element*);
 
         //add list of elements to proper group and list of elements
-        static void add(int, vector<Element*>*);
+        virtual void add(int, vector<Element*>*);
 
         //remove all data
         static void clean();

@@ -8,6 +8,7 @@
 #define MOVING_PRECISION 200.0
 #define PI_2 1.57
 
+#include "AbstractDataTree.h"
 #include "LinuxServer.h"
 #include "FILTERS_MODULE/include/GroupsFilter.h"
 #include "FILTERS_MODULE/include/CoordinatesFilter.h"
@@ -190,7 +191,7 @@ int main(int argc, char **argv) {
     //set initial position
     computeCameraPosition();
 
-    d = &Data::get_instance();
+    d = &AbstractDataTree::getInstance();
 
     AbstractServer* server = new LinuxServer();
     server -> registerStructuresHandler(d);
