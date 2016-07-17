@@ -8,12 +8,8 @@
 #define MOVING_PRECISION 200.0
 #define PI_2 1.57
 
-#include "AbstractDataTree.h"
+#include "LinuxDataTree.h"
 #include "LinuxServer.h"
-#include "FILTERS_MODULE/include/GroupsFilter.h"
-#include "FILTERS_MODULE/include/CoordinatesFilter.h"
-#include "FILTERS_MODULE/include/TypesFilter.h"
-#include "FILTERS_MODULE/include/QualityFilter.h"
 
 float deltaAngleX = 0.8f;
 float deltaAngleY = 0.8f;
@@ -191,7 +187,7 @@ int main(int argc, char **argv) {
     //set initial position
     computeCameraPosition();
 
-    d = &AbstractDataTree::getInstance();
+    d = &LinuxDataTree::getInstance();
 
     AbstractServer* server = new LinuxServer();
     server -> registerStructuresHandler(d);
