@@ -1,9 +1,13 @@
 package test;
 
-import java.awt.Point;
 import java.util.Random;
 
-import geometry.*;
+import geometry.Block;
+import geometry.Edge;
+import geometry.Point2D;
+import geometry.Point3D;
+import geometry.TriangleFace;
+import geometry.Vertex;
 import tool.Smeshalist;
 
 public class App {
@@ -13,7 +17,8 @@ public class App {
 		Random r = new Random();
 
 		for (int i=0; i<10; i++) {
-			Point point = new Point(r.nextInt(5), r.nextInt(5));
+			Point2D point = new Point2D();
+			point.setLocation(r.nextInt(5), r.nextInt(5));
 			tool.addGeometry(point);
 		}
 		
