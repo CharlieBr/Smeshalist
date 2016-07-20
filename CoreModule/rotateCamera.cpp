@@ -8,8 +8,13 @@
 #define MOVING_PRECISION 200.0
 #define PI_2 1.57
 
-#include "LinuxDataTree.h"
+#ifdef __linux__
 #include "LinuxServer.h"
+#elif _WIN32
+#include "WindowsServer.h"
+#endif // __linux__
+
+#include "LinuxDataTree.h"
 
 float deltaAngleX = 0.8f;
 float deltaAngleY = 0.8f;
@@ -189,7 +194,14 @@ int main(int argc, char **argv) {
 
     d = &LinuxDataTree::getInstance();
 
-    AbstractServer* server = new LinuxServer();
+    AbstractServer* server = NULL;
+
+    #ifdef __linux__
+    server = new LinuxServer();
+    #elif _WIN32
+    server = new WindowsServer();
+    #endif // __linux__
+
     server -> registerStructuresHandler(d);
 
 	glutInit(&argc, argv);
