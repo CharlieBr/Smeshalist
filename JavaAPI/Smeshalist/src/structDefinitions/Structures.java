@@ -10952,6 +10952,2248 @@ public final class Structures {
 
   }
 
+  public interface MessageInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:MessageInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required .MessageInfo.Type type = 1;</code>
+     */
+    boolean hasType();
+    /**
+     * <code>required .MessageInfo.Type type = 1;</code>
+     */
+    structDefinitions.Structures.MessageInfo.Type getType();
+  }
+  /**
+   * Protobuf type {@code MessageInfo}
+   */
+  public  static final class MessageInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:MessageInfo)
+      MessageInfoOrBuilder {
+    // Use MessageInfo.newBuilder() to construct.
+    private MessageInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private MessageInfo() {
+      type_ = 1;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private MessageInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              int rawValue = input.readEnum();
+              structDefinitions.Structures.MessageInfo.Type value = structDefinitions.Structures.MessageInfo.Type.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                type_ = rawValue;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return structDefinitions.Structures.internal_static_MessageInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return structDefinitions.Structures.internal_static_MessageInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              structDefinitions.Structures.MessageInfo.class, structDefinitions.Structures.MessageInfo.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code MessageInfo.Type}
+     */
+    public enum Type
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>DATA = 1;</code>
+       */
+      DATA(1),
+      /**
+       * <code>RENDER = 2;</code>
+       */
+      RENDER(2),
+      /**
+       * <code>BREAKPOINT = 3;</code>
+       */
+      BREAKPOINT(3),
+      ;
+
+      /**
+       * <code>DATA = 1;</code>
+       */
+      public static final int DATA_VALUE = 1;
+      /**
+       * <code>RENDER = 2;</code>
+       */
+      public static final int RENDER_VALUE = 2;
+      /**
+       * <code>BREAKPOINT = 3;</code>
+       */
+      public static final int BREAKPOINT_VALUE = 3;
+
+
+      public final int getNumber() {
+        return value;
+      }
+
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static Type valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static Type forNumber(int value) {
+        switch (value) {
+          case 1: return DATA;
+          case 2: return RENDER;
+          case 3: return BREAKPOINT;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<Type>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          Type> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<Type>() {
+              public Type findValueByNumber(int number) {
+                return Type.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return structDefinitions.Structures.MessageInfo.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final Type[] VALUES = values();
+
+      public static Type valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private Type(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:MessageInfo.Type)
+    }
+
+    private int bitField0_;
+    public static final int TYPE_FIELD_NUMBER = 1;
+    private int type_;
+    /**
+     * <code>required .MessageInfo.Type type = 1;</code>
+     */
+    public boolean hasType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required .MessageInfo.Type type = 1;</code>
+     */
+    public structDefinitions.Structures.MessageInfo.Type getType() {
+      structDefinitions.Structures.MessageInfo.Type result = structDefinitions.Structures.MessageInfo.Type.valueOf(type_);
+      return result == null ? structDefinitions.Structures.MessageInfo.Type.DATA : result;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeEnum(1, type_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(1, type_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof structDefinitions.Structures.MessageInfo)) {
+        return super.equals(obj);
+      }
+      structDefinitions.Structures.MessageInfo other = (structDefinitions.Structures.MessageInfo) obj;
+
+      boolean result = true;
+      result = result && (hasType() == other.hasType());
+      if (hasType()) {
+        result = result && type_ == other.type_;
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasType()) {
+        hash = (37 * hash) + TYPE_FIELD_NUMBER;
+        hash = (53 * hash) + type_;
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static structDefinitions.Structures.MessageInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static structDefinitions.Structures.MessageInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static structDefinitions.Structures.MessageInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static structDefinitions.Structures.MessageInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static structDefinitions.Structures.MessageInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static structDefinitions.Structures.MessageInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static structDefinitions.Structures.MessageInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static structDefinitions.Structures.MessageInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static structDefinitions.Structures.MessageInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static structDefinitions.Structures.MessageInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(structDefinitions.Structures.MessageInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code MessageInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:MessageInfo)
+        structDefinitions.Structures.MessageInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return structDefinitions.Structures.internal_static_MessageInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return structDefinitions.Structures.internal_static_MessageInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                structDefinitions.Structures.MessageInfo.class, structDefinitions.Structures.MessageInfo.Builder.class);
+      }
+
+      // Construct using structDefinitions.Structures.MessageInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        type_ = 1;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return structDefinitions.Structures.internal_static_MessageInfo_descriptor;
+      }
+
+      public structDefinitions.Structures.MessageInfo getDefaultInstanceForType() {
+        return structDefinitions.Structures.MessageInfo.getDefaultInstance();
+      }
+
+      public structDefinitions.Structures.MessageInfo build() {
+        structDefinitions.Structures.MessageInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public structDefinitions.Structures.MessageInfo buildPartial() {
+        structDefinitions.Structures.MessageInfo result = new structDefinitions.Structures.MessageInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.type_ = type_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof structDefinitions.Structures.MessageInfo) {
+          return mergeFrom((structDefinitions.Structures.MessageInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(structDefinitions.Structures.MessageInfo other) {
+        if (other == structDefinitions.Structures.MessageInfo.getDefaultInstance()) return this;
+        if (other.hasType()) {
+          setType(other.getType());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasType()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        structDefinitions.Structures.MessageInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (structDefinitions.Structures.MessageInfo) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int type_ = 1;
+      /**
+       * <code>required .MessageInfo.Type type = 1;</code>
+       */
+      public boolean hasType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required .MessageInfo.Type type = 1;</code>
+       */
+      public structDefinitions.Structures.MessageInfo.Type getType() {
+        structDefinitions.Structures.MessageInfo.Type result = structDefinitions.Structures.MessageInfo.Type.valueOf(type_);
+        return result == null ? structDefinitions.Structures.MessageInfo.Type.DATA : result;
+      }
+      /**
+       * <code>required .MessageInfo.Type type = 1;</code>
+       */
+      public Builder setType(structDefinitions.Structures.MessageInfo.Type value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000001;
+        type_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .MessageInfo.Type type = 1;</code>
+       */
+      public Builder clearType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        type_ = 1;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:MessageInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:MessageInfo)
+    private static final structDefinitions.Structures.MessageInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new structDefinitions.Structures.MessageInfo();
+    }
+
+    public static structDefinitions.Structures.MessageInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<MessageInfo>
+        PARSER = new com.google.protobuf.AbstractParser<MessageInfo>() {
+      public MessageInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new MessageInfo(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<MessageInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MessageInfo> getParserForType() {
+      return PARSER;
+    }
+
+    public structDefinitions.Structures.MessageInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DataPackageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:DataPackage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional .Point2DSet points2D = 1;</code>
+     */
+    boolean hasPoints2D();
+    /**
+     * <code>optional .Point2DSet points2D = 1;</code>
+     */
+    structDefinitions.Structures.Point2DSet getPoints2D();
+    /**
+     * <code>optional .Point2DSet points2D = 1;</code>
+     */
+    structDefinitions.Structures.Point2DSetOrBuilder getPoints2DOrBuilder();
+
+    /**
+     * <code>optional .Point3DSet points3D = 2;</code>
+     */
+    boolean hasPoints3D();
+    /**
+     * <code>optional .Point3DSet points3D = 2;</code>
+     */
+    structDefinitions.Structures.Point3DSet getPoints3D();
+    /**
+     * <code>optional .Point3DSet points3D = 2;</code>
+     */
+    structDefinitions.Structures.Point3DSetOrBuilder getPoints3DOrBuilder();
+
+    /**
+     * <code>optional .VertexSet vertexes = 3;</code>
+     */
+    boolean hasVertexes();
+    /**
+     * <code>optional .VertexSet vertexes = 3;</code>
+     */
+    structDefinitions.Structures.VertexSet getVertexes();
+    /**
+     * <code>optional .VertexSet vertexes = 3;</code>
+     */
+    structDefinitions.Structures.VertexSetOrBuilder getVertexesOrBuilder();
+
+    /**
+     * <code>optional .EdgeSet edges = 4;</code>
+     */
+    boolean hasEdges();
+    /**
+     * <code>optional .EdgeSet edges = 4;</code>
+     */
+    structDefinitions.Structures.EdgeSet getEdges();
+    /**
+     * <code>optional .EdgeSet edges = 4;</code>
+     */
+    structDefinitions.Structures.EdgeSetOrBuilder getEdgesOrBuilder();
+
+    /**
+     * <code>optional .TriangleFaceSet faces = 5;</code>
+     */
+    boolean hasFaces();
+    /**
+     * <code>optional .TriangleFaceSet faces = 5;</code>
+     */
+    structDefinitions.Structures.TriangleFaceSet getFaces();
+    /**
+     * <code>optional .TriangleFaceSet faces = 5;</code>
+     */
+    structDefinitions.Structures.TriangleFaceSetOrBuilder getFacesOrBuilder();
+
+    /**
+     * <code>optional .BlockSet blocks = 6;</code>
+     */
+    boolean hasBlocks();
+    /**
+     * <code>optional .BlockSet blocks = 6;</code>
+     */
+    structDefinitions.Structures.BlockSet getBlocks();
+    /**
+     * <code>optional .BlockSet blocks = 6;</code>
+     */
+    structDefinitions.Structures.BlockSetOrBuilder getBlocksOrBuilder();
+
+    /**
+     * <code>required bool endOfData = 7;</code>
+     */
+    boolean hasEndOfData();
+    /**
+     * <code>required bool endOfData = 7;</code>
+     */
+    boolean getEndOfData();
+  }
+  /**
+   * Protobuf type {@code DataPackage}
+   */
+  public  static final class DataPackage extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:DataPackage)
+      DataPackageOrBuilder {
+    // Use DataPackage.newBuilder() to construct.
+    private DataPackage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DataPackage() {
+      endOfData_ = false;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private DataPackage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              structDefinitions.Structures.Point2DSet.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                subBuilder = points2D_.toBuilder();
+              }
+              points2D_ = input.readMessage(structDefinitions.Structures.Point2DSet.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(points2D_);
+                points2D_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000001;
+              break;
+            }
+            case 18: {
+              structDefinitions.Structures.Point3DSet.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
+                subBuilder = points3D_.toBuilder();
+              }
+              points3D_ = input.readMessage(structDefinitions.Structures.Point3DSet.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(points3D_);
+                points3D_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              structDefinitions.Structures.VertexSet.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = vertexes_.toBuilder();
+              }
+              vertexes_ = input.readMessage(structDefinitions.Structures.VertexSet.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(vertexes_);
+                vertexes_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              structDefinitions.Structures.EdgeSet.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = edges_.toBuilder();
+              }
+              edges_ = input.readMessage(structDefinitions.Structures.EdgeSet.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(edges_);
+                edges_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+            case 42: {
+              structDefinitions.Structures.TriangleFaceSet.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = faces_.toBuilder();
+              }
+              faces_ = input.readMessage(structDefinitions.Structures.TriangleFaceSet.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(faces_);
+                faces_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
+              break;
+            }
+            case 50: {
+              structDefinitions.Structures.BlockSet.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = blocks_.toBuilder();
+              }
+              blocks_ = input.readMessage(structDefinitions.Structures.BlockSet.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(blocks_);
+                blocks_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              endOfData_ = input.readBool();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return structDefinitions.Structures.internal_static_DataPackage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return structDefinitions.Structures.internal_static_DataPackage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              structDefinitions.Structures.DataPackage.class, structDefinitions.Structures.DataPackage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int POINTS2D_FIELD_NUMBER = 1;
+    private structDefinitions.Structures.Point2DSet points2D_;
+    /**
+     * <code>optional .Point2DSet points2D = 1;</code>
+     */
+    public boolean hasPoints2D() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>optional .Point2DSet points2D = 1;</code>
+     */
+    public structDefinitions.Structures.Point2DSet getPoints2D() {
+      return points2D_ == null ? structDefinitions.Structures.Point2DSet.getDefaultInstance() : points2D_;
+    }
+    /**
+     * <code>optional .Point2DSet points2D = 1;</code>
+     */
+    public structDefinitions.Structures.Point2DSetOrBuilder getPoints2DOrBuilder() {
+      return points2D_ == null ? structDefinitions.Structures.Point2DSet.getDefaultInstance() : points2D_;
+    }
+
+    public static final int POINTS3D_FIELD_NUMBER = 2;
+    private structDefinitions.Structures.Point3DSet points3D_;
+    /**
+     * <code>optional .Point3DSet points3D = 2;</code>
+     */
+    public boolean hasPoints3D() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional .Point3DSet points3D = 2;</code>
+     */
+    public structDefinitions.Structures.Point3DSet getPoints3D() {
+      return points3D_ == null ? structDefinitions.Structures.Point3DSet.getDefaultInstance() : points3D_;
+    }
+    /**
+     * <code>optional .Point3DSet points3D = 2;</code>
+     */
+    public structDefinitions.Structures.Point3DSetOrBuilder getPoints3DOrBuilder() {
+      return points3D_ == null ? structDefinitions.Structures.Point3DSet.getDefaultInstance() : points3D_;
+    }
+
+    public static final int VERTEXES_FIELD_NUMBER = 3;
+    private structDefinitions.Structures.VertexSet vertexes_;
+    /**
+     * <code>optional .VertexSet vertexes = 3;</code>
+     */
+    public boolean hasVertexes() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .VertexSet vertexes = 3;</code>
+     */
+    public structDefinitions.Structures.VertexSet getVertexes() {
+      return vertexes_ == null ? structDefinitions.Structures.VertexSet.getDefaultInstance() : vertexes_;
+    }
+    /**
+     * <code>optional .VertexSet vertexes = 3;</code>
+     */
+    public structDefinitions.Structures.VertexSetOrBuilder getVertexesOrBuilder() {
+      return vertexes_ == null ? structDefinitions.Structures.VertexSet.getDefaultInstance() : vertexes_;
+    }
+
+    public static final int EDGES_FIELD_NUMBER = 4;
+    private structDefinitions.Structures.EdgeSet edges_;
+    /**
+     * <code>optional .EdgeSet edges = 4;</code>
+     */
+    public boolean hasEdges() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .EdgeSet edges = 4;</code>
+     */
+    public structDefinitions.Structures.EdgeSet getEdges() {
+      return edges_ == null ? structDefinitions.Structures.EdgeSet.getDefaultInstance() : edges_;
+    }
+    /**
+     * <code>optional .EdgeSet edges = 4;</code>
+     */
+    public structDefinitions.Structures.EdgeSetOrBuilder getEdgesOrBuilder() {
+      return edges_ == null ? structDefinitions.Structures.EdgeSet.getDefaultInstance() : edges_;
+    }
+
+    public static final int FACES_FIELD_NUMBER = 5;
+    private structDefinitions.Structures.TriangleFaceSet faces_;
+    /**
+     * <code>optional .TriangleFaceSet faces = 5;</code>
+     */
+    public boolean hasFaces() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .TriangleFaceSet faces = 5;</code>
+     */
+    public structDefinitions.Structures.TriangleFaceSet getFaces() {
+      return faces_ == null ? structDefinitions.Structures.TriangleFaceSet.getDefaultInstance() : faces_;
+    }
+    /**
+     * <code>optional .TriangleFaceSet faces = 5;</code>
+     */
+    public structDefinitions.Structures.TriangleFaceSetOrBuilder getFacesOrBuilder() {
+      return faces_ == null ? structDefinitions.Structures.TriangleFaceSet.getDefaultInstance() : faces_;
+    }
+
+    public static final int BLOCKS_FIELD_NUMBER = 6;
+    private structDefinitions.Structures.BlockSet blocks_;
+    /**
+     * <code>optional .BlockSet blocks = 6;</code>
+     */
+    public boolean hasBlocks() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .BlockSet blocks = 6;</code>
+     */
+    public structDefinitions.Structures.BlockSet getBlocks() {
+      return blocks_ == null ? structDefinitions.Structures.BlockSet.getDefaultInstance() : blocks_;
+    }
+    /**
+     * <code>optional .BlockSet blocks = 6;</code>
+     */
+    public structDefinitions.Structures.BlockSetOrBuilder getBlocksOrBuilder() {
+      return blocks_ == null ? structDefinitions.Structures.BlockSet.getDefaultInstance() : blocks_;
+    }
+
+    public static final int ENDOFDATA_FIELD_NUMBER = 7;
+    private boolean endOfData_;
+    /**
+     * <code>required bool endOfData = 7;</code>
+     */
+    public boolean hasEndOfData() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>required bool endOfData = 7;</code>
+     */
+    public boolean getEndOfData() {
+      return endOfData_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasEndOfData()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (hasPoints2D()) {
+        if (!getPoints2D().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasPoints3D()) {
+        if (!getPoints3D().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasVertexes()) {
+        if (!getVertexes().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasEdges()) {
+        if (!getEdges().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasFaces()) {
+        if (!getFaces().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasBlocks()) {
+        if (!getBlocks().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeMessage(1, getPoints2D());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeMessage(2, getPoints3D());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, getVertexes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, getEdges());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(5, getFaces());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(6, getBlocks());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBool(7, endOfData_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getPoints2D());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getPoints3D());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getVertexes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getEdges());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getFaces());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getBlocks());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(7, endOfData_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof structDefinitions.Structures.DataPackage)) {
+        return super.equals(obj);
+      }
+      structDefinitions.Structures.DataPackage other = (structDefinitions.Structures.DataPackage) obj;
+
+      boolean result = true;
+      result = result && (hasPoints2D() == other.hasPoints2D());
+      if (hasPoints2D()) {
+        result = result && getPoints2D()
+            .equals(other.getPoints2D());
+      }
+      result = result && (hasPoints3D() == other.hasPoints3D());
+      if (hasPoints3D()) {
+        result = result && getPoints3D()
+            .equals(other.getPoints3D());
+      }
+      result = result && (hasVertexes() == other.hasVertexes());
+      if (hasVertexes()) {
+        result = result && getVertexes()
+            .equals(other.getVertexes());
+      }
+      result = result && (hasEdges() == other.hasEdges());
+      if (hasEdges()) {
+        result = result && getEdges()
+            .equals(other.getEdges());
+      }
+      result = result && (hasFaces() == other.hasFaces());
+      if (hasFaces()) {
+        result = result && getFaces()
+            .equals(other.getFaces());
+      }
+      result = result && (hasBlocks() == other.hasBlocks());
+      if (hasBlocks()) {
+        result = result && getBlocks()
+            .equals(other.getBlocks());
+      }
+      result = result && (hasEndOfData() == other.hasEndOfData());
+      if (hasEndOfData()) {
+        result = result && (getEndOfData()
+            == other.getEndOfData());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasPoints2D()) {
+        hash = (37 * hash) + POINTS2D_FIELD_NUMBER;
+        hash = (53 * hash) + getPoints2D().hashCode();
+      }
+      if (hasPoints3D()) {
+        hash = (37 * hash) + POINTS3D_FIELD_NUMBER;
+        hash = (53 * hash) + getPoints3D().hashCode();
+      }
+      if (hasVertexes()) {
+        hash = (37 * hash) + VERTEXES_FIELD_NUMBER;
+        hash = (53 * hash) + getVertexes().hashCode();
+      }
+      if (hasEdges()) {
+        hash = (37 * hash) + EDGES_FIELD_NUMBER;
+        hash = (53 * hash) + getEdges().hashCode();
+      }
+      if (hasFaces()) {
+        hash = (37 * hash) + FACES_FIELD_NUMBER;
+        hash = (53 * hash) + getFaces().hashCode();
+      }
+      if (hasBlocks()) {
+        hash = (37 * hash) + BLOCKS_FIELD_NUMBER;
+        hash = (53 * hash) + getBlocks().hashCode();
+      }
+      if (hasEndOfData()) {
+        hash = (37 * hash) + ENDOFDATA_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getEndOfData());
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static structDefinitions.Structures.DataPackage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static structDefinitions.Structures.DataPackage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static structDefinitions.Structures.DataPackage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static structDefinitions.Structures.DataPackage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static structDefinitions.Structures.DataPackage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static structDefinitions.Structures.DataPackage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static structDefinitions.Structures.DataPackage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static structDefinitions.Structures.DataPackage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static structDefinitions.Structures.DataPackage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static structDefinitions.Structures.DataPackage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(structDefinitions.Structures.DataPackage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code DataPackage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:DataPackage)
+        structDefinitions.Structures.DataPackageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return structDefinitions.Structures.internal_static_DataPackage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return structDefinitions.Structures.internal_static_DataPackage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                structDefinitions.Structures.DataPackage.class, structDefinitions.Structures.DataPackage.Builder.class);
+      }
+
+      // Construct using structDefinitions.Structures.DataPackage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getPoints2DFieldBuilder();
+          getPoints3DFieldBuilder();
+          getVertexesFieldBuilder();
+          getEdgesFieldBuilder();
+          getFacesFieldBuilder();
+          getBlocksFieldBuilder();
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        if (points2DBuilder_ == null) {
+          points2D_ = null;
+        } else {
+          points2DBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        if (points3DBuilder_ == null) {
+          points3D_ = null;
+        } else {
+          points3DBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (vertexesBuilder_ == null) {
+          vertexes_ = null;
+        } else {
+          vertexesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (edgesBuilder_ == null) {
+          edges_ = null;
+        } else {
+          edgesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        if (facesBuilder_ == null) {
+          faces_ = null;
+        } else {
+          facesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        if (blocksBuilder_ == null) {
+          blocks_ = null;
+        } else {
+          blocksBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        endOfData_ = false;
+        bitField0_ = (bitField0_ & ~0x00000040);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return structDefinitions.Structures.internal_static_DataPackage_descriptor;
+      }
+
+      public structDefinitions.Structures.DataPackage getDefaultInstanceForType() {
+        return structDefinitions.Structures.DataPackage.getDefaultInstance();
+      }
+
+      public structDefinitions.Structures.DataPackage build() {
+        structDefinitions.Structures.DataPackage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public structDefinitions.Structures.DataPackage buildPartial() {
+        structDefinitions.Structures.DataPackage result = new structDefinitions.Structures.DataPackage(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        if (points2DBuilder_ == null) {
+          result.points2D_ = points2D_;
+        } else {
+          result.points2D_ = points2DBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        if (points3DBuilder_ == null) {
+          result.points3D_ = points3D_;
+        } else {
+          result.points3D_ = points3DBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (vertexesBuilder_ == null) {
+          result.vertexes_ = vertexes_;
+        } else {
+          result.vertexes_ = vertexesBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (edgesBuilder_ == null) {
+          result.edges_ = edges_;
+        } else {
+          result.edges_ = edgesBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        if (facesBuilder_ == null) {
+          result.faces_ = faces_;
+        } else {
+          result.faces_ = facesBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        if (blocksBuilder_ == null) {
+          result.blocks_ = blocks_;
+        } else {
+          result.blocks_ = blocksBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.endOfData_ = endOfData_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof structDefinitions.Structures.DataPackage) {
+          return mergeFrom((structDefinitions.Structures.DataPackage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(structDefinitions.Structures.DataPackage other) {
+        if (other == structDefinitions.Structures.DataPackage.getDefaultInstance()) return this;
+        if (other.hasPoints2D()) {
+          mergePoints2D(other.getPoints2D());
+        }
+        if (other.hasPoints3D()) {
+          mergePoints3D(other.getPoints3D());
+        }
+        if (other.hasVertexes()) {
+          mergeVertexes(other.getVertexes());
+        }
+        if (other.hasEdges()) {
+          mergeEdges(other.getEdges());
+        }
+        if (other.hasFaces()) {
+          mergeFaces(other.getFaces());
+        }
+        if (other.hasBlocks()) {
+          mergeBlocks(other.getBlocks());
+        }
+        if (other.hasEndOfData()) {
+          setEndOfData(other.getEndOfData());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasEndOfData()) {
+          return false;
+        }
+        if (hasPoints2D()) {
+          if (!getPoints2D().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasPoints3D()) {
+          if (!getPoints3D().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasVertexes()) {
+          if (!getVertexes().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasEdges()) {
+          if (!getEdges().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasFaces()) {
+          if (!getFaces().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasBlocks()) {
+          if (!getBlocks().isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        structDefinitions.Structures.DataPackage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (structDefinitions.Structures.DataPackage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private structDefinitions.Structures.Point2DSet points2D_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.Point2DSet, structDefinitions.Structures.Point2DSet.Builder, structDefinitions.Structures.Point2DSetOrBuilder> points2DBuilder_;
+      /**
+       * <code>optional .Point2DSet points2D = 1;</code>
+       */
+      public boolean hasPoints2D() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>optional .Point2DSet points2D = 1;</code>
+       */
+      public structDefinitions.Structures.Point2DSet getPoints2D() {
+        if (points2DBuilder_ == null) {
+          return points2D_ == null ? structDefinitions.Structures.Point2DSet.getDefaultInstance() : points2D_;
+        } else {
+          return points2DBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .Point2DSet points2D = 1;</code>
+       */
+      public Builder setPoints2D(structDefinitions.Structures.Point2DSet value) {
+        if (points2DBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          points2D_ = value;
+          onChanged();
+        } else {
+          points2DBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .Point2DSet points2D = 1;</code>
+       */
+      public Builder setPoints2D(
+          structDefinitions.Structures.Point2DSet.Builder builderForValue) {
+        if (points2DBuilder_ == null) {
+          points2D_ = builderForValue.build();
+          onChanged();
+        } else {
+          points2DBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .Point2DSet points2D = 1;</code>
+       */
+      public Builder mergePoints2D(structDefinitions.Structures.Point2DSet value) {
+        if (points2DBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) == 0x00000001) &&
+              points2D_ != null &&
+              points2D_ != structDefinitions.Structures.Point2DSet.getDefaultInstance()) {
+            points2D_ =
+              structDefinitions.Structures.Point2DSet.newBuilder(points2D_).mergeFrom(value).buildPartial();
+          } else {
+            points2D_ = value;
+          }
+          onChanged();
+        } else {
+          points2DBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>optional .Point2DSet points2D = 1;</code>
+       */
+      public Builder clearPoints2D() {
+        if (points2DBuilder_ == null) {
+          points2D_ = null;
+          onChanged();
+        } else {
+          points2DBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      /**
+       * <code>optional .Point2DSet points2D = 1;</code>
+       */
+      public structDefinitions.Structures.Point2DSet.Builder getPoints2DBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getPoints2DFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .Point2DSet points2D = 1;</code>
+       */
+      public structDefinitions.Structures.Point2DSetOrBuilder getPoints2DOrBuilder() {
+        if (points2DBuilder_ != null) {
+          return points2DBuilder_.getMessageOrBuilder();
+        } else {
+          return points2D_ == null ?
+              structDefinitions.Structures.Point2DSet.getDefaultInstance() : points2D_;
+        }
+      }
+      /**
+       * <code>optional .Point2DSet points2D = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.Point2DSet, structDefinitions.Structures.Point2DSet.Builder, structDefinitions.Structures.Point2DSetOrBuilder> 
+          getPoints2DFieldBuilder() {
+        if (points2DBuilder_ == null) {
+          points2DBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              structDefinitions.Structures.Point2DSet, structDefinitions.Structures.Point2DSet.Builder, structDefinitions.Structures.Point2DSetOrBuilder>(
+                  getPoints2D(),
+                  getParentForChildren(),
+                  isClean());
+          points2D_ = null;
+        }
+        return points2DBuilder_;
+      }
+
+      private structDefinitions.Structures.Point3DSet points3D_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.Point3DSet, structDefinitions.Structures.Point3DSet.Builder, structDefinitions.Structures.Point3DSetOrBuilder> points3DBuilder_;
+      /**
+       * <code>optional .Point3DSet points3D = 2;</code>
+       */
+      public boolean hasPoints3D() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional .Point3DSet points3D = 2;</code>
+       */
+      public structDefinitions.Structures.Point3DSet getPoints3D() {
+        if (points3DBuilder_ == null) {
+          return points3D_ == null ? structDefinitions.Structures.Point3DSet.getDefaultInstance() : points3D_;
+        } else {
+          return points3DBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .Point3DSet points3D = 2;</code>
+       */
+      public Builder setPoints3D(structDefinitions.Structures.Point3DSet value) {
+        if (points3DBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          points3D_ = value;
+          onChanged();
+        } else {
+          points3DBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .Point3DSet points3D = 2;</code>
+       */
+      public Builder setPoints3D(
+          structDefinitions.Structures.Point3DSet.Builder builderForValue) {
+        if (points3DBuilder_ == null) {
+          points3D_ = builderForValue.build();
+          onChanged();
+        } else {
+          points3DBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .Point3DSet points3D = 2;</code>
+       */
+      public Builder mergePoints3D(structDefinitions.Structures.Point3DSet value) {
+        if (points3DBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
+              points3D_ != null &&
+              points3D_ != structDefinitions.Structures.Point3DSet.getDefaultInstance()) {
+            points3D_ =
+              structDefinitions.Structures.Point3DSet.newBuilder(points3D_).mergeFrom(value).buildPartial();
+          } else {
+            points3D_ = value;
+          }
+          onChanged();
+        } else {
+          points3DBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>optional .Point3DSet points3D = 2;</code>
+       */
+      public Builder clearPoints3D() {
+        if (points3DBuilder_ == null) {
+          points3D_ = null;
+          onChanged();
+        } else {
+          points3DBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      /**
+       * <code>optional .Point3DSet points3D = 2;</code>
+       */
+      public structDefinitions.Structures.Point3DSet.Builder getPoints3DBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getPoints3DFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .Point3DSet points3D = 2;</code>
+       */
+      public structDefinitions.Structures.Point3DSetOrBuilder getPoints3DOrBuilder() {
+        if (points3DBuilder_ != null) {
+          return points3DBuilder_.getMessageOrBuilder();
+        } else {
+          return points3D_ == null ?
+              structDefinitions.Structures.Point3DSet.getDefaultInstance() : points3D_;
+        }
+      }
+      /**
+       * <code>optional .Point3DSet points3D = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.Point3DSet, structDefinitions.Structures.Point3DSet.Builder, structDefinitions.Structures.Point3DSetOrBuilder> 
+          getPoints3DFieldBuilder() {
+        if (points3DBuilder_ == null) {
+          points3DBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              structDefinitions.Structures.Point3DSet, structDefinitions.Structures.Point3DSet.Builder, structDefinitions.Structures.Point3DSetOrBuilder>(
+                  getPoints3D(),
+                  getParentForChildren(),
+                  isClean());
+          points3D_ = null;
+        }
+        return points3DBuilder_;
+      }
+
+      private structDefinitions.Structures.VertexSet vertexes_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.VertexSet, structDefinitions.Structures.VertexSet.Builder, structDefinitions.Structures.VertexSetOrBuilder> vertexesBuilder_;
+      /**
+       * <code>optional .VertexSet vertexes = 3;</code>
+       */
+      public boolean hasVertexes() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional .VertexSet vertexes = 3;</code>
+       */
+      public structDefinitions.Structures.VertexSet getVertexes() {
+        if (vertexesBuilder_ == null) {
+          return vertexes_ == null ? structDefinitions.Structures.VertexSet.getDefaultInstance() : vertexes_;
+        } else {
+          return vertexesBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .VertexSet vertexes = 3;</code>
+       */
+      public Builder setVertexes(structDefinitions.Structures.VertexSet value) {
+        if (vertexesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          vertexes_ = value;
+          onChanged();
+        } else {
+          vertexesBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .VertexSet vertexes = 3;</code>
+       */
+      public Builder setVertexes(
+          structDefinitions.Structures.VertexSet.Builder builderForValue) {
+        if (vertexesBuilder_ == null) {
+          vertexes_ = builderForValue.build();
+          onChanged();
+        } else {
+          vertexesBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .VertexSet vertexes = 3;</code>
+       */
+      public Builder mergeVertexes(structDefinitions.Structures.VertexSet value) {
+        if (vertexesBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              vertexes_ != null &&
+              vertexes_ != structDefinitions.Structures.VertexSet.getDefaultInstance()) {
+            vertexes_ =
+              structDefinitions.Structures.VertexSet.newBuilder(vertexes_).mergeFrom(value).buildPartial();
+          } else {
+            vertexes_ = value;
+          }
+          onChanged();
+        } else {
+          vertexesBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .VertexSet vertexes = 3;</code>
+       */
+      public Builder clearVertexes() {
+        if (vertexesBuilder_ == null) {
+          vertexes_ = null;
+          onChanged();
+        } else {
+          vertexesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>optional .VertexSet vertexes = 3;</code>
+       */
+      public structDefinitions.Structures.VertexSet.Builder getVertexesBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getVertexesFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .VertexSet vertexes = 3;</code>
+       */
+      public structDefinitions.Structures.VertexSetOrBuilder getVertexesOrBuilder() {
+        if (vertexesBuilder_ != null) {
+          return vertexesBuilder_.getMessageOrBuilder();
+        } else {
+          return vertexes_ == null ?
+              structDefinitions.Structures.VertexSet.getDefaultInstance() : vertexes_;
+        }
+      }
+      /**
+       * <code>optional .VertexSet vertexes = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.VertexSet, structDefinitions.Structures.VertexSet.Builder, structDefinitions.Structures.VertexSetOrBuilder> 
+          getVertexesFieldBuilder() {
+        if (vertexesBuilder_ == null) {
+          vertexesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              structDefinitions.Structures.VertexSet, structDefinitions.Structures.VertexSet.Builder, structDefinitions.Structures.VertexSetOrBuilder>(
+                  getVertexes(),
+                  getParentForChildren(),
+                  isClean());
+          vertexes_ = null;
+        }
+        return vertexesBuilder_;
+      }
+
+      private structDefinitions.Structures.EdgeSet edges_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.EdgeSet, structDefinitions.Structures.EdgeSet.Builder, structDefinitions.Structures.EdgeSetOrBuilder> edgesBuilder_;
+      /**
+       * <code>optional .EdgeSet edges = 4;</code>
+       */
+      public boolean hasEdges() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .EdgeSet edges = 4;</code>
+       */
+      public structDefinitions.Structures.EdgeSet getEdges() {
+        if (edgesBuilder_ == null) {
+          return edges_ == null ? structDefinitions.Structures.EdgeSet.getDefaultInstance() : edges_;
+        } else {
+          return edgesBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .EdgeSet edges = 4;</code>
+       */
+      public Builder setEdges(structDefinitions.Structures.EdgeSet value) {
+        if (edgesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          edges_ = value;
+          onChanged();
+        } else {
+          edgesBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .EdgeSet edges = 4;</code>
+       */
+      public Builder setEdges(
+          structDefinitions.Structures.EdgeSet.Builder builderForValue) {
+        if (edgesBuilder_ == null) {
+          edges_ = builderForValue.build();
+          onChanged();
+        } else {
+          edgesBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .EdgeSet edges = 4;</code>
+       */
+      public Builder mergeEdges(structDefinitions.Structures.EdgeSet value) {
+        if (edgesBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              edges_ != null &&
+              edges_ != structDefinitions.Structures.EdgeSet.getDefaultInstance()) {
+            edges_ =
+              structDefinitions.Structures.EdgeSet.newBuilder(edges_).mergeFrom(value).buildPartial();
+          } else {
+            edges_ = value;
+          }
+          onChanged();
+        } else {
+          edgesBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .EdgeSet edges = 4;</code>
+       */
+      public Builder clearEdges() {
+        if (edgesBuilder_ == null) {
+          edges_ = null;
+          onChanged();
+        } else {
+          edgesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .EdgeSet edges = 4;</code>
+       */
+      public structDefinitions.Structures.EdgeSet.Builder getEdgesBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getEdgesFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .EdgeSet edges = 4;</code>
+       */
+      public structDefinitions.Structures.EdgeSetOrBuilder getEdgesOrBuilder() {
+        if (edgesBuilder_ != null) {
+          return edgesBuilder_.getMessageOrBuilder();
+        } else {
+          return edges_ == null ?
+              structDefinitions.Structures.EdgeSet.getDefaultInstance() : edges_;
+        }
+      }
+      /**
+       * <code>optional .EdgeSet edges = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.EdgeSet, structDefinitions.Structures.EdgeSet.Builder, structDefinitions.Structures.EdgeSetOrBuilder> 
+          getEdgesFieldBuilder() {
+        if (edgesBuilder_ == null) {
+          edgesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              structDefinitions.Structures.EdgeSet, structDefinitions.Structures.EdgeSet.Builder, structDefinitions.Structures.EdgeSetOrBuilder>(
+                  getEdges(),
+                  getParentForChildren(),
+                  isClean());
+          edges_ = null;
+        }
+        return edgesBuilder_;
+      }
+
+      private structDefinitions.Structures.TriangleFaceSet faces_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.TriangleFaceSet, structDefinitions.Structures.TriangleFaceSet.Builder, structDefinitions.Structures.TriangleFaceSetOrBuilder> facesBuilder_;
+      /**
+       * <code>optional .TriangleFaceSet faces = 5;</code>
+       */
+      public boolean hasFaces() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional .TriangleFaceSet faces = 5;</code>
+       */
+      public structDefinitions.Structures.TriangleFaceSet getFaces() {
+        if (facesBuilder_ == null) {
+          return faces_ == null ? structDefinitions.Structures.TriangleFaceSet.getDefaultInstance() : faces_;
+        } else {
+          return facesBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .TriangleFaceSet faces = 5;</code>
+       */
+      public Builder setFaces(structDefinitions.Structures.TriangleFaceSet value) {
+        if (facesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          faces_ = value;
+          onChanged();
+        } else {
+          facesBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .TriangleFaceSet faces = 5;</code>
+       */
+      public Builder setFaces(
+          structDefinitions.Structures.TriangleFaceSet.Builder builderForValue) {
+        if (facesBuilder_ == null) {
+          faces_ = builderForValue.build();
+          onChanged();
+        } else {
+          facesBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .TriangleFaceSet faces = 5;</code>
+       */
+      public Builder mergeFaces(structDefinitions.Structures.TriangleFaceSet value) {
+        if (facesBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              faces_ != null &&
+              faces_ != structDefinitions.Structures.TriangleFaceSet.getDefaultInstance()) {
+            faces_ =
+              structDefinitions.Structures.TriangleFaceSet.newBuilder(faces_).mergeFrom(value).buildPartial();
+          } else {
+            faces_ = value;
+          }
+          onChanged();
+        } else {
+          facesBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .TriangleFaceSet faces = 5;</code>
+       */
+      public Builder clearFaces() {
+        if (facesBuilder_ == null) {
+          faces_ = null;
+          onChanged();
+        } else {
+          facesBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>optional .TriangleFaceSet faces = 5;</code>
+       */
+      public structDefinitions.Structures.TriangleFaceSet.Builder getFacesBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getFacesFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .TriangleFaceSet faces = 5;</code>
+       */
+      public structDefinitions.Structures.TriangleFaceSetOrBuilder getFacesOrBuilder() {
+        if (facesBuilder_ != null) {
+          return facesBuilder_.getMessageOrBuilder();
+        } else {
+          return faces_ == null ?
+              structDefinitions.Structures.TriangleFaceSet.getDefaultInstance() : faces_;
+        }
+      }
+      /**
+       * <code>optional .TriangleFaceSet faces = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.TriangleFaceSet, structDefinitions.Structures.TriangleFaceSet.Builder, structDefinitions.Structures.TriangleFaceSetOrBuilder> 
+          getFacesFieldBuilder() {
+        if (facesBuilder_ == null) {
+          facesBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              structDefinitions.Structures.TriangleFaceSet, structDefinitions.Structures.TriangleFaceSet.Builder, structDefinitions.Structures.TriangleFaceSetOrBuilder>(
+                  getFaces(),
+                  getParentForChildren(),
+                  isClean());
+          faces_ = null;
+        }
+        return facesBuilder_;
+      }
+
+      private structDefinitions.Structures.BlockSet blocks_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.BlockSet, structDefinitions.Structures.BlockSet.Builder, structDefinitions.Structures.BlockSetOrBuilder> blocksBuilder_;
+      /**
+       * <code>optional .BlockSet blocks = 6;</code>
+       */
+      public boolean hasBlocks() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .BlockSet blocks = 6;</code>
+       */
+      public structDefinitions.Structures.BlockSet getBlocks() {
+        if (blocksBuilder_ == null) {
+          return blocks_ == null ? structDefinitions.Structures.BlockSet.getDefaultInstance() : blocks_;
+        } else {
+          return blocksBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .BlockSet blocks = 6;</code>
+       */
+      public Builder setBlocks(structDefinitions.Structures.BlockSet value) {
+        if (blocksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          blocks_ = value;
+          onChanged();
+        } else {
+          blocksBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .BlockSet blocks = 6;</code>
+       */
+      public Builder setBlocks(
+          structDefinitions.Structures.BlockSet.Builder builderForValue) {
+        if (blocksBuilder_ == null) {
+          blocks_ = builderForValue.build();
+          onChanged();
+        } else {
+          blocksBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .BlockSet blocks = 6;</code>
+       */
+      public Builder mergeBlocks(structDefinitions.Structures.BlockSet value) {
+        if (blocksBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              blocks_ != null &&
+              blocks_ != structDefinitions.Structures.BlockSet.getDefaultInstance()) {
+            blocks_ =
+              structDefinitions.Structures.BlockSet.newBuilder(blocks_).mergeFrom(value).buildPartial();
+          } else {
+            blocks_ = value;
+          }
+          onChanged();
+        } else {
+          blocksBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .BlockSet blocks = 6;</code>
+       */
+      public Builder clearBlocks() {
+        if (blocksBuilder_ == null) {
+          blocks_ = null;
+          onChanged();
+        } else {
+          blocksBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .BlockSet blocks = 6;</code>
+       */
+      public structDefinitions.Structures.BlockSet.Builder getBlocksBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getBlocksFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .BlockSet blocks = 6;</code>
+       */
+      public structDefinitions.Structures.BlockSetOrBuilder getBlocksOrBuilder() {
+        if (blocksBuilder_ != null) {
+          return blocksBuilder_.getMessageOrBuilder();
+        } else {
+          return blocks_ == null ?
+              structDefinitions.Structures.BlockSet.getDefaultInstance() : blocks_;
+        }
+      }
+      /**
+       * <code>optional .BlockSet blocks = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          structDefinitions.Structures.BlockSet, structDefinitions.Structures.BlockSet.Builder, structDefinitions.Structures.BlockSetOrBuilder> 
+          getBlocksFieldBuilder() {
+        if (blocksBuilder_ == null) {
+          blocksBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              structDefinitions.Structures.BlockSet, structDefinitions.Structures.BlockSet.Builder, structDefinitions.Structures.BlockSetOrBuilder>(
+                  getBlocks(),
+                  getParentForChildren(),
+                  isClean());
+          blocks_ = null;
+        }
+        return blocksBuilder_;
+      }
+
+      private boolean endOfData_ ;
+      /**
+       * <code>required bool endOfData = 7;</code>
+       */
+      public boolean hasEndOfData() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>required bool endOfData = 7;</code>
+       */
+      public boolean getEndOfData() {
+        return endOfData_;
+      }
+      /**
+       * <code>required bool endOfData = 7;</code>
+       */
+      public Builder setEndOfData(boolean value) {
+        bitField0_ |= 0x00000040;
+        endOfData_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool endOfData = 7;</code>
+       */
+      public Builder clearEndOfData() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        endOfData_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:DataPackage)
+    }
+
+    // @@protoc_insertion_point(class_scope:DataPackage)
+    private static final structDefinitions.Structures.DataPackage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new structDefinitions.Structures.DataPackage();
+    }
+
+    public static structDefinitions.Structures.DataPackage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<DataPackage>
+        PARSER = new com.google.protobuf.AbstractParser<DataPackage>() {
+      public DataPackage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new DataPackage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<DataPackage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DataPackage> getParserForType() {
+      return PARSER;
+    }
+
+    public structDefinitions.Structures.DataPackage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Properties_descriptor;
   private static final 
@@ -11017,6 +13259,16 @@ public final class Structures {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_BlockSet_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_MessageInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_MessageInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_DataPackage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_DataPackage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -11047,7 +13299,15 @@ public final class Structures {
       "v2\030\002 \002(\0132\010.Point3D\022\024\n\002v3\030\003 \002(\0132\010.Point3D" +
       "\022\024\n\002v4\030\004 \002(\0132\010.Point3D\022\031\n\004prop\030\005 \001(\0132\013.P",
       "roperties\"\"\n\010BlockSet\022\026\n\006blocks\030\001 \003(\0132\006." +
-      "BlockB\037\n\021structDefinitionsB\nStructures"
+      "Block\"\\\n\013MessageInfo\022\037\n\004type\030\001 \002(\0162\021.Mes" +
+      "sageInfo.Type\",\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDE" +
+      "R\020\002\022\016\n\nBREAKPOINT\020\003\"\321\001\n\013DataPackage\022\035\n\010p" +
+      "oints2D\030\001 \001(\0132\013.Point2DSet\022\035\n\010points3D\030\002" +
+      " \001(\0132\013.Point3DSet\022\034\n\010vertexes\030\003 \001(\0132\n.Ve" +
+      "rtexSet\022\027\n\005edges\030\004 \001(\0132\010.EdgeSet\022\037\n\005face" +
+      "s\030\005 \001(\0132\020.TriangleFaceSet\022\031\n\006blocks\030\006 \001(" +
+      "\0132\t.BlockSet\022\021\n\tendOfData\030\007 \002(\010B\037\n\021struc" +
+      "tDefinitionsB\nStructures"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -11139,6 +13399,18 @@ public final class Structures {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_BlockSet_descriptor,
         new java.lang.String[] { "Blocks", });
+    internal_static_MessageInfo_descriptor =
+      getDescriptor().getMessageTypes().get(13);
+    internal_static_MessageInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_MessageInfo_descriptor,
+        new java.lang.String[] { "Type", });
+    internal_static_DataPackage_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_DataPackage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_DataPackage_descriptor,
+        new java.lang.String[] { "Points2D", "Points3D", "Vertexes", "Edges", "Faces", "Blocks", "EndOfData", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

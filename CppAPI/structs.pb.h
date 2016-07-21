@@ -26,6 +26,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -38,8 +39,10 @@ void protobuf_ShutdownFile_structs_2eproto();
 
 class Block;
 class BlockSet;
+class DataPackage;
 class Edge;
 class EdgeSet;
+class MessageInfo;
 class Point2D;
 class Point2DSet;
 class Point3D;
@@ -50,6 +53,26 @@ class TriangleFaceSet;
 class Vertex;
 class VertexSet;
 
+enum MessageInfo_Type {
+  MessageInfo_Type_DATA = 1,
+  MessageInfo_Type_RENDER = 2,
+  MessageInfo_Type_BREAKPOINT = 3
+};
+bool MessageInfo_Type_IsValid(int value);
+const MessageInfo_Type MessageInfo_Type_Type_MIN = MessageInfo_Type_DATA;
+const MessageInfo_Type MessageInfo_Type_Type_MAX = MessageInfo_Type_BREAKPOINT;
+const int MessageInfo_Type_Type_ARRAYSIZE = MessageInfo_Type_Type_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* MessageInfo_Type_descriptor();
+inline const ::std::string& MessageInfo_Type_Name(MessageInfo_Type value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    MessageInfo_Type_descriptor(), value);
+}
+inline bool MessageInfo_Type_Parse(
+    const ::std::string& name, MessageInfo_Type* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<MessageInfo_Type>(
+    MessageInfo_Type_descriptor(), name, value);
+}
 // ===================================================================
 
 class Properties : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Properties) */ {
@@ -1512,6 +1535,292 @@ class BlockSet : public ::google::protobuf::Message /* @@protoc_insertion_point(
   void InitAsDefaultInstance();
   static BlockSet* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class MessageInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.MessageInfo) */ {
+ public:
+  MessageInfo();
+  virtual ~MessageInfo();
+
+  MessageInfo(const MessageInfo& from);
+
+  inline MessageInfo& operator=(const MessageInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MessageInfo& default_instance();
+
+  void Swap(MessageInfo* other);
+
+  // implements Message ----------------------------------------------
+
+  inline MessageInfo* New() const { return New(NULL); }
+
+  MessageInfo* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MessageInfo& from);
+  void MergeFrom(const MessageInfo& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(MessageInfo* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  typedef MessageInfo_Type Type;
+  static const Type DATA =
+    MessageInfo_Type_DATA;
+  static const Type RENDER =
+    MessageInfo_Type_RENDER;
+  static const Type BREAKPOINT =
+    MessageInfo_Type_BREAKPOINT;
+  static inline bool Type_IsValid(int value) {
+    return MessageInfo_Type_IsValid(value);
+  }
+  static const Type Type_MIN =
+    MessageInfo_Type_Type_MIN;
+  static const Type Type_MAX =
+    MessageInfo_Type_Type_MAX;
+  static const int Type_ARRAYSIZE =
+    MessageInfo_Type_Type_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  Type_descriptor() {
+    return MessageInfo_Type_descriptor();
+  }
+  static inline const ::std::string& Type_Name(Type value) {
+    return MessageInfo_Type_Name(value);
+  }
+  static inline bool Type_Parse(const ::std::string& name,
+      Type* value) {
+    return MessageInfo_Type_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  // required .structDefinitions.MessageInfo.Type type = 1;
+  bool has_type() const;
+  void clear_type();
+  static const int kTypeFieldNumber = 1;
+  ::structDefinitions::MessageInfo_Type type() const;
+  void set_type(::structDefinitions::MessageInfo_Type value);
+
+  // @@protoc_insertion_point(class_scope:structDefinitions.MessageInfo)
+ private:
+  inline void set_has_type();
+  inline void clear_has_type();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  int type_;
+  friend void  protobuf_AddDesc_structs_2eproto();
+  friend void protobuf_AssignDesc_structs_2eproto();
+  friend void protobuf_ShutdownFile_structs_2eproto();
+
+  void InitAsDefaultInstance();
+  static MessageInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DataPackage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.DataPackage) */ {
+ public:
+  DataPackage();
+  virtual ~DataPackage();
+
+  DataPackage(const DataPackage& from);
+
+  inline DataPackage& operator=(const DataPackage& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DataPackage& default_instance();
+
+  void Swap(DataPackage* other);
+
+  // implements Message ----------------------------------------------
+
+  inline DataPackage* New() const { return New(NULL); }
+
+  DataPackage* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DataPackage& from);
+  void MergeFrom(const DataPackage& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(DataPackage* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .structDefinitions.Point2DSet points2D = 1;
+  bool has_points2d() const;
+  void clear_points2d();
+  static const int kPoints2DFieldNumber = 1;
+  const ::structDefinitions::Point2DSet& points2d() const;
+  ::structDefinitions::Point2DSet* mutable_points2d();
+  ::structDefinitions::Point2DSet* release_points2d();
+  void set_allocated_points2d(::structDefinitions::Point2DSet* points2d);
+
+  // optional .structDefinitions.Point3DSet points3D = 2;
+  bool has_points3d() const;
+  void clear_points3d();
+  static const int kPoints3DFieldNumber = 2;
+  const ::structDefinitions::Point3DSet& points3d() const;
+  ::structDefinitions::Point3DSet* mutable_points3d();
+  ::structDefinitions::Point3DSet* release_points3d();
+  void set_allocated_points3d(::structDefinitions::Point3DSet* points3d);
+
+  // optional .structDefinitions.VertexSet vertexes = 3;
+  bool has_vertexes() const;
+  void clear_vertexes();
+  static const int kVertexesFieldNumber = 3;
+  const ::structDefinitions::VertexSet& vertexes() const;
+  ::structDefinitions::VertexSet* mutable_vertexes();
+  ::structDefinitions::VertexSet* release_vertexes();
+  void set_allocated_vertexes(::structDefinitions::VertexSet* vertexes);
+
+  // optional .structDefinitions.EdgeSet edges = 4;
+  bool has_edges() const;
+  void clear_edges();
+  static const int kEdgesFieldNumber = 4;
+  const ::structDefinitions::EdgeSet& edges() const;
+  ::structDefinitions::EdgeSet* mutable_edges();
+  ::structDefinitions::EdgeSet* release_edges();
+  void set_allocated_edges(::structDefinitions::EdgeSet* edges);
+
+  // optional .structDefinitions.TriangleFaceSet faces = 5;
+  bool has_faces() const;
+  void clear_faces();
+  static const int kFacesFieldNumber = 5;
+  const ::structDefinitions::TriangleFaceSet& faces() const;
+  ::structDefinitions::TriangleFaceSet* mutable_faces();
+  ::structDefinitions::TriangleFaceSet* release_faces();
+  void set_allocated_faces(::structDefinitions::TriangleFaceSet* faces);
+
+  // optional .structDefinitions.BlockSet blocks = 6;
+  bool has_blocks() const;
+  void clear_blocks();
+  static const int kBlocksFieldNumber = 6;
+  const ::structDefinitions::BlockSet& blocks() const;
+  ::structDefinitions::BlockSet* mutable_blocks();
+  ::structDefinitions::BlockSet* release_blocks();
+  void set_allocated_blocks(::structDefinitions::BlockSet* blocks);
+
+  // required bool endOfData = 7;
+  bool has_endofdata() const;
+  void clear_endofdata();
+  static const int kEndOfDataFieldNumber = 7;
+  bool endofdata() const;
+  void set_endofdata(bool value);
+
+  // @@protoc_insertion_point(class_scope:structDefinitions.DataPackage)
+ private:
+  inline void set_has_points2d();
+  inline void clear_has_points2d();
+  inline void set_has_points3d();
+  inline void clear_has_points3d();
+  inline void set_has_vertexes();
+  inline void clear_has_vertexes();
+  inline void set_has_edges();
+  inline void clear_has_edges();
+  inline void set_has_faces();
+  inline void clear_has_faces();
+  inline void set_has_blocks();
+  inline void clear_has_blocks();
+  inline void set_has_endofdata();
+  inline void clear_has_endofdata();
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::structDefinitions::Point2DSet* points2d_;
+  ::structDefinitions::Point3DSet* points3d_;
+  ::structDefinitions::VertexSet* vertexes_;
+  ::structDefinitions::EdgeSet* edges_;
+  ::structDefinitions::TriangleFaceSet* faces_;
+  ::structDefinitions::BlockSet* blocks_;
+  bool endofdata_;
+  friend void  protobuf_AddDesc_structs_2eproto();
+  friend void protobuf_AssignDesc_structs_2eproto();
+  friend void protobuf_ShutdownFile_structs_2eproto();
+
+  void InitAsDefaultInstance();
+  static DataPackage* default_instance_;
+};
 // ===================================================================
 
 
@@ -2698,7 +3007,332 @@ BlockSet::blocks() const {
   return blocks_;
 }
 
+// -------------------------------------------------------------------
+
+// MessageInfo
+
+// required .structDefinitions.MessageInfo.Type type = 1;
+inline bool MessageInfo::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MessageInfo::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MessageInfo::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MessageInfo::clear_type() {
+  type_ = 1;
+  clear_has_type();
+}
+inline ::structDefinitions::MessageInfo_Type MessageInfo::type() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.MessageInfo.type)
+  return static_cast< ::structDefinitions::MessageInfo_Type >(type_);
+}
+inline void MessageInfo::set_type(::structDefinitions::MessageInfo_Type value) {
+  assert(::structDefinitions::MessageInfo_Type_IsValid(value));
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:structDefinitions.MessageInfo.type)
+}
+
+// -------------------------------------------------------------------
+
+// DataPackage
+
+// optional .structDefinitions.Point2DSet points2D = 1;
+inline bool DataPackage::has_points2d() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DataPackage::set_has_points2d() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DataPackage::clear_has_points2d() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DataPackage::clear_points2d() {
+  if (points2d_ != NULL) points2d_->::structDefinitions::Point2DSet::Clear();
+  clear_has_points2d();
+}
+inline const ::structDefinitions::Point2DSet& DataPackage::points2d() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points2D)
+  return points2d_ != NULL ? *points2d_ : *default_instance_->points2d_;
+}
+inline ::structDefinitions::Point2DSet* DataPackage::mutable_points2d() {
+  set_has_points2d();
+  if (points2d_ == NULL) {
+    points2d_ = new ::structDefinitions::Point2DSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points2D)
+  return points2d_;
+}
+inline ::structDefinitions::Point2DSet* DataPackage::release_points2d() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.points2D)
+  clear_has_points2d();
+  ::structDefinitions::Point2DSet* temp = points2d_;
+  points2d_ = NULL;
+  return temp;
+}
+inline void DataPackage::set_allocated_points2d(::structDefinitions::Point2DSet* points2d) {
+  delete points2d_;
+  points2d_ = points2d;
+  if (points2d) {
+    set_has_points2d();
+  } else {
+    clear_has_points2d();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.points2D)
+}
+
+// optional .structDefinitions.Point3DSet points3D = 2;
+inline bool DataPackage::has_points3d() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DataPackage::set_has_points3d() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DataPackage::clear_has_points3d() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DataPackage::clear_points3d() {
+  if (points3d_ != NULL) points3d_->::structDefinitions::Point3DSet::Clear();
+  clear_has_points3d();
+}
+inline const ::structDefinitions::Point3DSet& DataPackage::points3d() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points3D)
+  return points3d_ != NULL ? *points3d_ : *default_instance_->points3d_;
+}
+inline ::structDefinitions::Point3DSet* DataPackage::mutable_points3d() {
+  set_has_points3d();
+  if (points3d_ == NULL) {
+    points3d_ = new ::structDefinitions::Point3DSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points3D)
+  return points3d_;
+}
+inline ::structDefinitions::Point3DSet* DataPackage::release_points3d() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.points3D)
+  clear_has_points3d();
+  ::structDefinitions::Point3DSet* temp = points3d_;
+  points3d_ = NULL;
+  return temp;
+}
+inline void DataPackage::set_allocated_points3d(::structDefinitions::Point3DSet* points3d) {
+  delete points3d_;
+  points3d_ = points3d;
+  if (points3d) {
+    set_has_points3d();
+  } else {
+    clear_has_points3d();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.points3D)
+}
+
+// optional .structDefinitions.VertexSet vertexes = 3;
+inline bool DataPackage::has_vertexes() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DataPackage::set_has_vertexes() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DataPackage::clear_has_vertexes() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DataPackage::clear_vertexes() {
+  if (vertexes_ != NULL) vertexes_->::structDefinitions::VertexSet::Clear();
+  clear_has_vertexes();
+}
+inline const ::structDefinitions::VertexSet& DataPackage::vertexes() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.vertexes)
+  return vertexes_ != NULL ? *vertexes_ : *default_instance_->vertexes_;
+}
+inline ::structDefinitions::VertexSet* DataPackage::mutable_vertexes() {
+  set_has_vertexes();
+  if (vertexes_ == NULL) {
+    vertexes_ = new ::structDefinitions::VertexSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.vertexes)
+  return vertexes_;
+}
+inline ::structDefinitions::VertexSet* DataPackage::release_vertexes() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.vertexes)
+  clear_has_vertexes();
+  ::structDefinitions::VertexSet* temp = vertexes_;
+  vertexes_ = NULL;
+  return temp;
+}
+inline void DataPackage::set_allocated_vertexes(::structDefinitions::VertexSet* vertexes) {
+  delete vertexes_;
+  vertexes_ = vertexes;
+  if (vertexes) {
+    set_has_vertexes();
+  } else {
+    clear_has_vertexes();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.vertexes)
+}
+
+// optional .structDefinitions.EdgeSet edges = 4;
+inline bool DataPackage::has_edges() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DataPackage::set_has_edges() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void DataPackage::clear_has_edges() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void DataPackage::clear_edges() {
+  if (edges_ != NULL) edges_->::structDefinitions::EdgeSet::Clear();
+  clear_has_edges();
+}
+inline const ::structDefinitions::EdgeSet& DataPackage::edges() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.edges)
+  return edges_ != NULL ? *edges_ : *default_instance_->edges_;
+}
+inline ::structDefinitions::EdgeSet* DataPackage::mutable_edges() {
+  set_has_edges();
+  if (edges_ == NULL) {
+    edges_ = new ::structDefinitions::EdgeSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.edges)
+  return edges_;
+}
+inline ::structDefinitions::EdgeSet* DataPackage::release_edges() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.edges)
+  clear_has_edges();
+  ::structDefinitions::EdgeSet* temp = edges_;
+  edges_ = NULL;
+  return temp;
+}
+inline void DataPackage::set_allocated_edges(::structDefinitions::EdgeSet* edges) {
+  delete edges_;
+  edges_ = edges;
+  if (edges) {
+    set_has_edges();
+  } else {
+    clear_has_edges();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.edges)
+}
+
+// optional .structDefinitions.TriangleFaceSet faces = 5;
+inline bool DataPackage::has_faces() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void DataPackage::set_has_faces() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void DataPackage::clear_has_faces() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void DataPackage::clear_faces() {
+  if (faces_ != NULL) faces_->::structDefinitions::TriangleFaceSet::Clear();
+  clear_has_faces();
+}
+inline const ::structDefinitions::TriangleFaceSet& DataPackage::faces() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.faces)
+  return faces_ != NULL ? *faces_ : *default_instance_->faces_;
+}
+inline ::structDefinitions::TriangleFaceSet* DataPackage::mutable_faces() {
+  set_has_faces();
+  if (faces_ == NULL) {
+    faces_ = new ::structDefinitions::TriangleFaceSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.faces)
+  return faces_;
+}
+inline ::structDefinitions::TriangleFaceSet* DataPackage::release_faces() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.faces)
+  clear_has_faces();
+  ::structDefinitions::TriangleFaceSet* temp = faces_;
+  faces_ = NULL;
+  return temp;
+}
+inline void DataPackage::set_allocated_faces(::structDefinitions::TriangleFaceSet* faces) {
+  delete faces_;
+  faces_ = faces;
+  if (faces) {
+    set_has_faces();
+  } else {
+    clear_has_faces();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.faces)
+}
+
+// optional .structDefinitions.BlockSet blocks = 6;
+inline bool DataPackage::has_blocks() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void DataPackage::set_has_blocks() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void DataPackage::clear_has_blocks() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void DataPackage::clear_blocks() {
+  if (blocks_ != NULL) blocks_->::structDefinitions::BlockSet::Clear();
+  clear_has_blocks();
+}
+inline const ::structDefinitions::BlockSet& DataPackage::blocks() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.blocks)
+  return blocks_ != NULL ? *blocks_ : *default_instance_->blocks_;
+}
+inline ::structDefinitions::BlockSet* DataPackage::mutable_blocks() {
+  set_has_blocks();
+  if (blocks_ == NULL) {
+    blocks_ = new ::structDefinitions::BlockSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.blocks)
+  return blocks_;
+}
+inline ::structDefinitions::BlockSet* DataPackage::release_blocks() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.blocks)
+  clear_has_blocks();
+  ::structDefinitions::BlockSet* temp = blocks_;
+  blocks_ = NULL;
+  return temp;
+}
+inline void DataPackage::set_allocated_blocks(::structDefinitions::BlockSet* blocks) {
+  delete blocks_;
+  blocks_ = blocks;
+  if (blocks) {
+    set_has_blocks();
+  } else {
+    clear_has_blocks();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.blocks)
+}
+
+// required bool endOfData = 7;
+inline bool DataPackage::has_endofdata() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void DataPackage::set_has_endofdata() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void DataPackage::clear_has_endofdata() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void DataPackage::clear_endofdata() {
+  endofdata_ = false;
+  clear_has_endofdata();
+}
+inline bool DataPackage::endofdata() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.endOfData)
+  return endofdata_;
+}
+inline void DataPackage::set_endofdata(bool value) {
+  set_has_endofdata();
+  endofdata_ = value;
+  // @@protoc_insertion_point(field_set:structDefinitions.DataPackage.endOfData)
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -2727,6 +3361,20 @@ BlockSet::blocks() const {
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace structDefinitions
+
+#ifndef SWIG
+namespace google {
+namespace protobuf {
+
+template <> struct is_proto_enum< ::structDefinitions::MessageInfo_Type> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::structDefinitions::MessageInfo_Type>() {
+  return ::structDefinitions::MessageInfo_Type_descriptor();
+}
+
+}  // namespace protobuf
+}  // namespace google
+#endif  // SWIG
 
 // @@protoc_insertion_point(global_scope)
 

@@ -60,6 +60,13 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* BlockSet_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   BlockSet_reflection_ = NULL;
+const ::google::protobuf::Descriptor* MessageInfo_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MessageInfo_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* MessageInfo_Type_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* DataPackage_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  DataPackage_reflection_ = NULL;
 
 }  // namespace
 
@@ -283,6 +290,43 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(BlockSet),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BlockSet, _internal_metadata_),
       -1);
+  MessageInfo_descriptor_ = file->message_type(13);
+  static const int MessageInfo_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, type_),
+  };
+  MessageInfo_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      MessageInfo_descriptor_,
+      MessageInfo::default_instance_,
+      MessageInfo_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(MessageInfo),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, _internal_metadata_),
+      -1);
+  MessageInfo_Type_descriptor_ = MessageInfo_descriptor_->enum_type(0);
+  DataPackage_descriptor_ = file->message_type(14);
+  static const int DataPackage_offsets_[7] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, points2d_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, points3d_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, vertexes_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, edges_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, faces_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, blocks_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, endofdata_),
+  };
+  DataPackage_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      DataPackage_descriptor_,
+      DataPackage::default_instance_,
+      DataPackage_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(DataPackage),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, _internal_metadata_),
+      -1);
 }
 
 namespace {
@@ -321,6 +365,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
       Block_descriptor_, &Block::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       BlockSet_descriptor_, &BlockSet::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      MessageInfo_descriptor_, &MessageInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      DataPackage_descriptor_, &DataPackage::default_instance());
 }
 
 }  // namespace
@@ -352,6 +400,10 @@ void protobuf_ShutdownFile_structs_2eproto() {
   delete Block_reflection_;
   delete BlockSet::default_instance_;
   delete BlockSet_reflection_;
+  delete MessageInfo::default_instance_;
+  delete MessageInfo_reflection_;
+  delete DataPackage::default_instance_;
+  delete DataPackage_reflection_;
 }
 
 void protobuf_AddDesc_structs_2eproto() {
@@ -392,7 +444,18 @@ void protobuf_AddDesc_structs_2eproto() {
     "nt3D\022&\n\002v4\030\004 \002(\0132\032.structDefinitions.Poi"
     "nt3D\022+\n\004prop\030\005 \001(\0132\035.structDefinitions.P"
     "roperties\"4\n\010BlockSet\022(\n\006blocks\030\001 \003(\0132\030."
-    "structDefinitions.Block", 1263);
+    "structDefinitions.Block\"n\n\013MessageInfo\0221"
+    "\n\004type\030\001 \002(\0162#.structDefinitions.Message"
+    "Info.Type\",\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDER\020\002\022"
+    "\016\n\nBREAKPOINT\020\003\"\275\002\n\013DataPackage\022/\n\010point"
+    "s2D\030\001 \001(\0132\035.structDefinitions.Point2DSet"
+    "\022/\n\010points3D\030\002 \001(\0132\035.structDefinitions.P"
+    "oint3DSet\022.\n\010vertexes\030\003 \001(\0132\034.structDefi"
+    "nitions.VertexSet\022)\n\005edges\030\004 \001(\0132\032.struc"
+    "tDefinitions.EdgeSet\0221\n\005faces\030\005 \001(\0132\".st"
+    "ructDefinitions.TriangleFaceSet\022+\n\006block"
+    "s\030\006 \001(\0132\033.structDefinitions.BlockSet\022\021\n\t"
+    "endOfData\030\007 \002(\010", 1695);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "structs.proto", &protobuf_RegisterTypes);
   Properties::default_instance_ = new Properties();
@@ -408,6 +471,8 @@ void protobuf_AddDesc_structs_2eproto() {
   TriangleFaceSet::default_instance_ = new TriangleFaceSet();
   Block::default_instance_ = new Block();
   BlockSet::default_instance_ = new BlockSet();
+  MessageInfo::default_instance_ = new MessageInfo();
+  DataPackage::default_instance_ = new DataPackage();
   Properties::default_instance_->InitAsDefaultInstance();
   Point2D::default_instance_->InitAsDefaultInstance();
   Point2DSet::default_instance_->InitAsDefaultInstance();
@@ -421,6 +486,8 @@ void protobuf_AddDesc_structs_2eproto() {
   TriangleFaceSet::default_instance_->InitAsDefaultInstance();
   Block::default_instance_->InitAsDefaultInstance();
   BlockSet::default_instance_->InitAsDefaultInstance();
+  MessageInfo::default_instance_->InitAsDefaultInstance();
+  DataPackage::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_structs_2eproto);
 }
 
@@ -5741,6 +5808,1118 @@ const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >&
 BlockSet::blocks() const {
   // @@protoc_insertion_point(field_list:structDefinitions.BlockSet.blocks)
   return blocks_;
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+const ::google::protobuf::EnumDescriptor* MessageInfo_Type_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MessageInfo_Type_descriptor_;
+}
+bool MessageInfo_Type_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+    case 3:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const MessageInfo_Type MessageInfo::DATA;
+const MessageInfo_Type MessageInfo::RENDER;
+const MessageInfo_Type MessageInfo::BREAKPOINT;
+const MessageInfo_Type MessageInfo::Type_MIN;
+const MessageInfo_Type MessageInfo::Type_MAX;
+const int MessageInfo::Type_ARRAYSIZE;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int MessageInfo::kTypeFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+MessageInfo::MessageInfo()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:structDefinitions.MessageInfo)
+}
+
+void MessageInfo::InitAsDefaultInstance() {
+}
+
+MessageInfo::MessageInfo(const MessageInfo& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:structDefinitions.MessageInfo)
+}
+
+void MessageInfo::SharedCtor() {
+  _cached_size_ = 0;
+  type_ = 1;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MessageInfo::~MessageInfo() {
+  // @@protoc_insertion_point(destructor:structDefinitions.MessageInfo)
+  SharedDtor();
+}
+
+void MessageInfo::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void MessageInfo::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MessageInfo::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MessageInfo_descriptor_;
+}
+
+const MessageInfo& MessageInfo::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
+  return *default_instance_;
+}
+
+MessageInfo* MessageInfo::default_instance_ = NULL;
+
+MessageInfo* MessageInfo::New(::google::protobuf::Arena* arena) const {
+  MessageInfo* n = new MessageInfo;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void MessageInfo::Clear() {
+// @@protoc_insertion_point(message_clear_start:structDefinitions.MessageInfo)
+  type_ = 1;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool MessageInfo::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:structDefinitions.MessageInfo)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .structDefinitions.MessageInfo.Type type = 1;
+      case 1: {
+        if (tag == 8) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::structDefinitions::MessageInfo_Type_IsValid(value)) {
+            set_type(static_cast< ::structDefinitions::MessageInfo_Type >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(1, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:structDefinitions.MessageInfo)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:structDefinitions.MessageInfo)
+  return false;
+#undef DO_
+}
+
+void MessageInfo::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:structDefinitions.MessageInfo)
+  // required .structDefinitions.MessageInfo.Type type = 1;
+  if (has_type()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->type(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:structDefinitions.MessageInfo)
+}
+
+::google::protobuf::uint8* MessageInfo::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.MessageInfo)
+  // required .structDefinitions.MessageInfo.Type type = 1;
+  if (has_type()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->type(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.MessageInfo)
+  return target;
+}
+
+int MessageInfo::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:structDefinitions.MessageInfo)
+  int total_size = 0;
+
+  // required .structDefinitions.MessageInfo.Type type = 1;
+  if (has_type()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MessageInfo::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:structDefinitions.MessageInfo)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const MessageInfo* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const MessageInfo>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structDefinitions.MessageInfo)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:structDefinitions.MessageInfo)
+    MergeFrom(*source);
+  }
+}
+
+void MessageInfo::MergeFrom(const MessageInfo& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.MessageInfo)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_type()) {
+      set_type(from.type());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void MessageInfo::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:structDefinitions.MessageInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MessageInfo::CopyFrom(const MessageInfo& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:structDefinitions.MessageInfo)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MessageInfo::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  return true;
+}
+
+void MessageInfo::Swap(MessageInfo* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void MessageInfo::InternalSwap(MessageInfo* other) {
+  std::swap(type_, other->type_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata MessageInfo::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MessageInfo_descriptor_;
+  metadata.reflection = MessageInfo_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// MessageInfo
+
+// required .structDefinitions.MessageInfo.Type type = 1;
+bool MessageInfo::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void MessageInfo::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void MessageInfo::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void MessageInfo::clear_type() {
+  type_ = 1;
+  clear_has_type();
+}
+ ::structDefinitions::MessageInfo_Type MessageInfo::type() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.MessageInfo.type)
+  return static_cast< ::structDefinitions::MessageInfo_Type >(type_);
+}
+ void MessageInfo::set_type(::structDefinitions::MessageInfo_Type value) {
+  assert(::structDefinitions::MessageInfo_Type_IsValid(value));
+  set_has_type();
+  type_ = value;
+  // @@protoc_insertion_point(field_set:structDefinitions.MessageInfo.type)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int DataPackage::kPoints2DFieldNumber;
+const int DataPackage::kPoints3DFieldNumber;
+const int DataPackage::kVertexesFieldNumber;
+const int DataPackage::kEdgesFieldNumber;
+const int DataPackage::kFacesFieldNumber;
+const int DataPackage::kBlocksFieldNumber;
+const int DataPackage::kEndOfDataFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+DataPackage::DataPackage()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:structDefinitions.DataPackage)
+}
+
+void DataPackage::InitAsDefaultInstance() {
+  points2d_ = const_cast< ::structDefinitions::Point2DSet*>(&::structDefinitions::Point2DSet::default_instance());
+  points3d_ = const_cast< ::structDefinitions::Point3DSet*>(&::structDefinitions::Point3DSet::default_instance());
+  vertexes_ = const_cast< ::structDefinitions::VertexSet*>(&::structDefinitions::VertexSet::default_instance());
+  edges_ = const_cast< ::structDefinitions::EdgeSet*>(&::structDefinitions::EdgeSet::default_instance());
+  faces_ = const_cast< ::structDefinitions::TriangleFaceSet*>(&::structDefinitions::TriangleFaceSet::default_instance());
+  blocks_ = const_cast< ::structDefinitions::BlockSet*>(&::structDefinitions::BlockSet::default_instance());
+}
+
+DataPackage::DataPackage(const DataPackage& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:structDefinitions.DataPackage)
+}
+
+void DataPackage::SharedCtor() {
+  _cached_size_ = 0;
+  points2d_ = NULL;
+  points3d_ = NULL;
+  vertexes_ = NULL;
+  edges_ = NULL;
+  faces_ = NULL;
+  blocks_ = NULL;
+  endofdata_ = false;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DataPackage::~DataPackage() {
+  // @@protoc_insertion_point(destructor:structDefinitions.DataPackage)
+  SharedDtor();
+}
+
+void DataPackage::SharedDtor() {
+  if (this != default_instance_) {
+    delete points2d_;
+    delete points3d_;
+    delete vertexes_;
+    delete edges_;
+    delete faces_;
+    delete blocks_;
+  }
+}
+
+void DataPackage::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DataPackage::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DataPackage_descriptor_;
+}
+
+const DataPackage& DataPackage::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
+  return *default_instance_;
+}
+
+DataPackage* DataPackage::default_instance_ = NULL;
+
+DataPackage* DataPackage::New(::google::protobuf::Arena* arena) const {
+  DataPackage* n = new DataPackage;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void DataPackage::Clear() {
+// @@protoc_insertion_point(message_clear_start:structDefinitions.DataPackage)
+  if (_has_bits_[0 / 32] & 127u) {
+    if (has_points2d()) {
+      if (points2d_ != NULL) points2d_->::structDefinitions::Point2DSet::Clear();
+    }
+    if (has_points3d()) {
+      if (points3d_ != NULL) points3d_->::structDefinitions::Point3DSet::Clear();
+    }
+    if (has_vertexes()) {
+      if (vertexes_ != NULL) vertexes_->::structDefinitions::VertexSet::Clear();
+    }
+    if (has_edges()) {
+      if (edges_ != NULL) edges_->::structDefinitions::EdgeSet::Clear();
+    }
+    if (has_faces()) {
+      if (faces_ != NULL) faces_->::structDefinitions::TriangleFaceSet::Clear();
+    }
+    if (has_blocks()) {
+      if (blocks_ != NULL) blocks_->::structDefinitions::BlockSet::Clear();
+    }
+    endofdata_ = false;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool DataPackage::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:structDefinitions.DataPackage)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional .structDefinitions.Point2DSet points2D = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_points2d()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_points3D;
+        break;
+      }
+
+      // optional .structDefinitions.Point3DSet points3D = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_points3D:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_points3d()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_vertexes;
+        break;
+      }
+
+      // optional .structDefinitions.VertexSet vertexes = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_vertexes:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_vertexes()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_edges;
+        break;
+      }
+
+      // optional .structDefinitions.EdgeSet edges = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_edges:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_edges()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_faces;
+        break;
+      }
+
+      // optional .structDefinitions.TriangleFaceSet faces = 5;
+      case 5: {
+        if (tag == 42) {
+         parse_faces:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_faces()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(50)) goto parse_blocks;
+        break;
+      }
+
+      // optional .structDefinitions.BlockSet blocks = 6;
+      case 6: {
+        if (tag == 50) {
+         parse_blocks:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_blocks()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(56)) goto parse_endOfData;
+        break;
+      }
+
+      // required bool endOfData = 7;
+      case 7: {
+        if (tag == 56) {
+         parse_endOfData:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &endofdata_)));
+          set_has_endofdata();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:structDefinitions.DataPackage)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:structDefinitions.DataPackage)
+  return false;
+#undef DO_
+}
+
+void DataPackage::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:structDefinitions.DataPackage)
+  // optional .structDefinitions.Point2DSet points2D = 1;
+  if (has_points2d()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, *this->points2d_, output);
+  }
+
+  // optional .structDefinitions.Point3DSet points3D = 2;
+  if (has_points3d()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, *this->points3d_, output);
+  }
+
+  // optional .structDefinitions.VertexSet vertexes = 3;
+  if (has_vertexes()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *this->vertexes_, output);
+  }
+
+  // optional .structDefinitions.EdgeSet edges = 4;
+  if (has_edges()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *this->edges_, output);
+  }
+
+  // optional .structDefinitions.TriangleFaceSet faces = 5;
+  if (has_faces()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, *this->faces_, output);
+  }
+
+  // optional .structDefinitions.BlockSet blocks = 6;
+  if (has_blocks()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, *this->blocks_, output);
+  }
+
+  // required bool endOfData = 7;
+  if (has_endofdata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->endofdata(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:structDefinitions.DataPackage)
+}
+
+::google::protobuf::uint8* DataPackage::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.DataPackage)
+  // optional .structDefinitions.Point2DSet points2D = 1;
+  if (has_points2d()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        1, *this->points2d_, false, target);
+  }
+
+  // optional .structDefinitions.Point3DSet points3D = 2;
+  if (has_points3d()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        2, *this->points3d_, false, target);
+  }
+
+  // optional .structDefinitions.VertexSet vertexes = 3;
+  if (has_vertexes()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        3, *this->vertexes_, false, target);
+  }
+
+  // optional .structDefinitions.EdgeSet edges = 4;
+  if (has_edges()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        4, *this->edges_, false, target);
+  }
+
+  // optional .structDefinitions.TriangleFaceSet faces = 5;
+  if (has_faces()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        5, *this->faces_, false, target);
+  }
+
+  // optional .structDefinitions.BlockSet blocks = 6;
+  if (has_blocks()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        6, *this->blocks_, false, target);
+  }
+
+  // required bool endOfData = 7;
+  if (has_endofdata()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->endofdata(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.DataPackage)
+  return target;
+}
+
+int DataPackage::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:structDefinitions.DataPackage)
+  int total_size = 0;
+
+  // required bool endOfData = 7;
+  if (has_endofdata()) {
+    total_size += 1 + 1;
+  }
+  if (_has_bits_[0 / 32] & 63u) {
+    // optional .structDefinitions.Point2DSet points2D = 1;
+    if (has_points2d()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *this->points2d_);
+    }
+
+    // optional .structDefinitions.Point3DSet points3D = 2;
+    if (has_points3d()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *this->points3d_);
+    }
+
+    // optional .structDefinitions.VertexSet vertexes = 3;
+    if (has_vertexes()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *this->vertexes_);
+    }
+
+    // optional .structDefinitions.EdgeSet edges = 4;
+    if (has_edges()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *this->edges_);
+    }
+
+    // optional .structDefinitions.TriangleFaceSet faces = 5;
+    if (has_faces()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *this->faces_);
+    }
+
+    // optional .structDefinitions.BlockSet blocks = 6;
+    if (has_blocks()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          *this->blocks_);
+    }
+
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DataPackage::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:structDefinitions.DataPackage)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const DataPackage* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const DataPackage>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structDefinitions.DataPackage)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:structDefinitions.DataPackage)
+    MergeFrom(*source);
+  }
+}
+
+void DataPackage::MergeFrom(const DataPackage& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.DataPackage)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_points2d()) {
+      mutable_points2d()->::structDefinitions::Point2DSet::MergeFrom(from.points2d());
+    }
+    if (from.has_points3d()) {
+      mutable_points3d()->::structDefinitions::Point3DSet::MergeFrom(from.points3d());
+    }
+    if (from.has_vertexes()) {
+      mutable_vertexes()->::structDefinitions::VertexSet::MergeFrom(from.vertexes());
+    }
+    if (from.has_edges()) {
+      mutable_edges()->::structDefinitions::EdgeSet::MergeFrom(from.edges());
+    }
+    if (from.has_faces()) {
+      mutable_faces()->::structDefinitions::TriangleFaceSet::MergeFrom(from.faces());
+    }
+    if (from.has_blocks()) {
+      mutable_blocks()->::structDefinitions::BlockSet::MergeFrom(from.blocks());
+    }
+    if (from.has_endofdata()) {
+      set_endofdata(from.endofdata());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void DataPackage::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:structDefinitions.DataPackage)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DataPackage::CopyFrom(const DataPackage& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:structDefinitions.DataPackage)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DataPackage::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000040) != 0x00000040) return false;
+
+  if (has_points2d()) {
+    if (!this->points2d_->IsInitialized()) return false;
+  }
+  if (has_points3d()) {
+    if (!this->points3d_->IsInitialized()) return false;
+  }
+  if (has_vertexes()) {
+    if (!this->vertexes_->IsInitialized()) return false;
+  }
+  if (has_edges()) {
+    if (!this->edges_->IsInitialized()) return false;
+  }
+  if (has_faces()) {
+    if (!this->faces_->IsInitialized()) return false;
+  }
+  if (has_blocks()) {
+    if (!this->blocks_->IsInitialized()) return false;
+  }
+  return true;
+}
+
+void DataPackage::Swap(DataPackage* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void DataPackage::InternalSwap(DataPackage* other) {
+  std::swap(points2d_, other->points2d_);
+  std::swap(points3d_, other->points3d_);
+  std::swap(vertexes_, other->vertexes_);
+  std::swap(edges_, other->edges_);
+  std::swap(faces_, other->faces_);
+  std::swap(blocks_, other->blocks_);
+  std::swap(endofdata_, other->endofdata_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata DataPackage::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = DataPackage_descriptor_;
+  metadata.reflection = DataPackage_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// DataPackage
+
+// optional .structDefinitions.Point2DSet points2D = 1;
+bool DataPackage::has_points2d() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void DataPackage::set_has_points2d() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void DataPackage::clear_has_points2d() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void DataPackage::clear_points2d() {
+  if (points2d_ != NULL) points2d_->::structDefinitions::Point2DSet::Clear();
+  clear_has_points2d();
+}
+const ::structDefinitions::Point2DSet& DataPackage::points2d() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points2D)
+  return points2d_ != NULL ? *points2d_ : *default_instance_->points2d_;
+}
+::structDefinitions::Point2DSet* DataPackage::mutable_points2d() {
+  set_has_points2d();
+  if (points2d_ == NULL) {
+    points2d_ = new ::structDefinitions::Point2DSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points2D)
+  return points2d_;
+}
+::structDefinitions::Point2DSet* DataPackage::release_points2d() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.points2D)
+  clear_has_points2d();
+  ::structDefinitions::Point2DSet* temp = points2d_;
+  points2d_ = NULL;
+  return temp;
+}
+void DataPackage::set_allocated_points2d(::structDefinitions::Point2DSet* points2d) {
+  delete points2d_;
+  points2d_ = points2d;
+  if (points2d) {
+    set_has_points2d();
+  } else {
+    clear_has_points2d();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.points2D)
+}
+
+// optional .structDefinitions.Point3DSet points3D = 2;
+bool DataPackage::has_points3d() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void DataPackage::set_has_points3d() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void DataPackage::clear_has_points3d() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void DataPackage::clear_points3d() {
+  if (points3d_ != NULL) points3d_->::structDefinitions::Point3DSet::Clear();
+  clear_has_points3d();
+}
+const ::structDefinitions::Point3DSet& DataPackage::points3d() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points3D)
+  return points3d_ != NULL ? *points3d_ : *default_instance_->points3d_;
+}
+::structDefinitions::Point3DSet* DataPackage::mutable_points3d() {
+  set_has_points3d();
+  if (points3d_ == NULL) {
+    points3d_ = new ::structDefinitions::Point3DSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points3D)
+  return points3d_;
+}
+::structDefinitions::Point3DSet* DataPackage::release_points3d() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.points3D)
+  clear_has_points3d();
+  ::structDefinitions::Point3DSet* temp = points3d_;
+  points3d_ = NULL;
+  return temp;
+}
+void DataPackage::set_allocated_points3d(::structDefinitions::Point3DSet* points3d) {
+  delete points3d_;
+  points3d_ = points3d;
+  if (points3d) {
+    set_has_points3d();
+  } else {
+    clear_has_points3d();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.points3D)
+}
+
+// optional .structDefinitions.VertexSet vertexes = 3;
+bool DataPackage::has_vertexes() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+void DataPackage::set_has_vertexes() {
+  _has_bits_[0] |= 0x00000004u;
+}
+void DataPackage::clear_has_vertexes() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+void DataPackage::clear_vertexes() {
+  if (vertexes_ != NULL) vertexes_->::structDefinitions::VertexSet::Clear();
+  clear_has_vertexes();
+}
+const ::structDefinitions::VertexSet& DataPackage::vertexes() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.vertexes)
+  return vertexes_ != NULL ? *vertexes_ : *default_instance_->vertexes_;
+}
+::structDefinitions::VertexSet* DataPackage::mutable_vertexes() {
+  set_has_vertexes();
+  if (vertexes_ == NULL) {
+    vertexes_ = new ::structDefinitions::VertexSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.vertexes)
+  return vertexes_;
+}
+::structDefinitions::VertexSet* DataPackage::release_vertexes() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.vertexes)
+  clear_has_vertexes();
+  ::structDefinitions::VertexSet* temp = vertexes_;
+  vertexes_ = NULL;
+  return temp;
+}
+void DataPackage::set_allocated_vertexes(::structDefinitions::VertexSet* vertexes) {
+  delete vertexes_;
+  vertexes_ = vertexes;
+  if (vertexes) {
+    set_has_vertexes();
+  } else {
+    clear_has_vertexes();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.vertexes)
+}
+
+// optional .structDefinitions.EdgeSet edges = 4;
+bool DataPackage::has_edges() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+void DataPackage::set_has_edges() {
+  _has_bits_[0] |= 0x00000008u;
+}
+void DataPackage::clear_has_edges() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+void DataPackage::clear_edges() {
+  if (edges_ != NULL) edges_->::structDefinitions::EdgeSet::Clear();
+  clear_has_edges();
+}
+const ::structDefinitions::EdgeSet& DataPackage::edges() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.edges)
+  return edges_ != NULL ? *edges_ : *default_instance_->edges_;
+}
+::structDefinitions::EdgeSet* DataPackage::mutable_edges() {
+  set_has_edges();
+  if (edges_ == NULL) {
+    edges_ = new ::structDefinitions::EdgeSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.edges)
+  return edges_;
+}
+::structDefinitions::EdgeSet* DataPackage::release_edges() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.edges)
+  clear_has_edges();
+  ::structDefinitions::EdgeSet* temp = edges_;
+  edges_ = NULL;
+  return temp;
+}
+void DataPackage::set_allocated_edges(::structDefinitions::EdgeSet* edges) {
+  delete edges_;
+  edges_ = edges;
+  if (edges) {
+    set_has_edges();
+  } else {
+    clear_has_edges();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.edges)
+}
+
+// optional .structDefinitions.TriangleFaceSet faces = 5;
+bool DataPackage::has_faces() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+void DataPackage::set_has_faces() {
+  _has_bits_[0] |= 0x00000010u;
+}
+void DataPackage::clear_has_faces() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+void DataPackage::clear_faces() {
+  if (faces_ != NULL) faces_->::structDefinitions::TriangleFaceSet::Clear();
+  clear_has_faces();
+}
+const ::structDefinitions::TriangleFaceSet& DataPackage::faces() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.faces)
+  return faces_ != NULL ? *faces_ : *default_instance_->faces_;
+}
+::structDefinitions::TriangleFaceSet* DataPackage::mutable_faces() {
+  set_has_faces();
+  if (faces_ == NULL) {
+    faces_ = new ::structDefinitions::TriangleFaceSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.faces)
+  return faces_;
+}
+::structDefinitions::TriangleFaceSet* DataPackage::release_faces() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.faces)
+  clear_has_faces();
+  ::structDefinitions::TriangleFaceSet* temp = faces_;
+  faces_ = NULL;
+  return temp;
+}
+void DataPackage::set_allocated_faces(::structDefinitions::TriangleFaceSet* faces) {
+  delete faces_;
+  faces_ = faces;
+  if (faces) {
+    set_has_faces();
+  } else {
+    clear_has_faces();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.faces)
+}
+
+// optional .structDefinitions.BlockSet blocks = 6;
+bool DataPackage::has_blocks() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+void DataPackage::set_has_blocks() {
+  _has_bits_[0] |= 0x00000020u;
+}
+void DataPackage::clear_has_blocks() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+void DataPackage::clear_blocks() {
+  if (blocks_ != NULL) blocks_->::structDefinitions::BlockSet::Clear();
+  clear_has_blocks();
+}
+const ::structDefinitions::BlockSet& DataPackage::blocks() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.blocks)
+  return blocks_ != NULL ? *blocks_ : *default_instance_->blocks_;
+}
+::structDefinitions::BlockSet* DataPackage::mutable_blocks() {
+  set_has_blocks();
+  if (blocks_ == NULL) {
+    blocks_ = new ::structDefinitions::BlockSet;
+  }
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.blocks)
+  return blocks_;
+}
+::structDefinitions::BlockSet* DataPackage::release_blocks() {
+  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.blocks)
+  clear_has_blocks();
+  ::structDefinitions::BlockSet* temp = blocks_;
+  blocks_ = NULL;
+  return temp;
+}
+void DataPackage::set_allocated_blocks(::structDefinitions::BlockSet* blocks) {
+  delete blocks_;
+  blocks_ = blocks;
+  if (blocks) {
+    set_has_blocks();
+  } else {
+    clear_has_blocks();
+  }
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.blocks)
+}
+
+// required bool endOfData = 7;
+bool DataPackage::has_endofdata() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+void DataPackage::set_has_endofdata() {
+  _has_bits_[0] |= 0x00000040u;
+}
+void DataPackage::clear_has_endofdata() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+void DataPackage::clear_endofdata() {
+  endofdata_ = false;
+  clear_has_endofdata();
+}
+ bool DataPackage::endofdata() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.endOfData)
+  return endofdata_;
+}
+ void DataPackage::set_endofdata(bool value) {
+  set_has_endofdata();
+  endofdata_ = value;
+  // @@protoc_insertion_point(field_set:structDefinitions.DataPackage.endOfData)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

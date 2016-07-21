@@ -1,6 +1,7 @@
 option java_package = "structDefinitions";
 option java_outer_classname = "Structures";
 
+
 message Properties {
 	optional double quality = 1;
 	optional string label = 2;
@@ -72,3 +73,32 @@ message Block {
 message BlockSet {
 	repeated Block blocks = 1;
 }
+
+
+
+
+message MessageInfo {
+	enum Type {
+		DATA = 1;
+		RENDER = 2;
+		BREAKPOINT = 3;
+	}
+	
+	required Type type = 1;
+}
+
+message DataPackage {
+	
+	optional Point2DSet points2D  = 1;
+	optional Point3DSet points3D = 2;
+	optional VertexSet vertexes = 3;
+	optional EdgeSet edges = 4;
+	optional TriangleFaceSet faces = 5;
+	optional BlockSet blocks = 6;
+	required bool endOfData = 7;
+	
+}
+	
+	
+	
+	
