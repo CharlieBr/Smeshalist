@@ -1,0 +1,20 @@
+option java_package = "communication";
+option java_outer_classname = "Communication";
+
+message ElementInfo {
+	required int32 total = 1;
+	required int32 visible = 2;
+}
+
+message ElementsCount {
+	map<string, ElementInfo> elementInfos = 1;
+}
+
+message BoundingBox {
+	required double fromX = 1;
+	required double toX = 2;
+	required double fromY = 3;
+	required double toY = 4;
+	required double fromZ = 5;
+	required double toZ = 6;
+}

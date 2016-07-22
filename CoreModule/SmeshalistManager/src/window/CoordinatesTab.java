@@ -123,10 +123,17 @@ public class CoordinatesTab extends JPanel{
 		}
 		
 		JPanel newEntry = new JPanel();
-		
 		newEntry.add(new JLabel(xTextField.getText() + "x"));
-		newEntry.add(new JLabel(yTextField.getText() + "y"));
-		newEntry.add(new JLabel(zTextField.getText() + "z"));
+		if (new Double(yTextField.getText()) >= 0){
+			newEntry.add(new JLabel("+" + yTextField.getText() + "y"));			
+		} else {
+			newEntry.add(new JLabel(yTextField.getText() + "y"));
+		}
+		if (new Double(zTextField.getText()) >= 0){
+			newEntry.add(new JLabel("+" + zTextField.getText() + "z"));			
+		} else {
+			newEntry.add(new JLabel(zTextField.getText() + "z"));
+		}
 		newEntry.add(new JLabel(operatorsComboBox.getSelectedItem().toString()));
 		newEntry.add(new JLabel(valueTextField.getText()));
 		newEntry.add(Box.createHorizontalStrut(50));		
