@@ -8,8 +8,10 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
+import geometry.Point2D;
 import structDefinitions.Structures;
 import structDefinitions.Structures.Block;
 import structDefinitions.Structures.BlockSet;
@@ -30,6 +32,14 @@ public class Smeshalist {
 	int mainWindowPort;
 	InetAddress IPAddress;
 	DatagramSocket socket = null;
+	
+	private double point2DSize;
+	private double point3DSize;
+	private double vertexSize;
+	private double edgesSize;
+	private double tiangleFacesSize;
+	private double blocksSize;
+	
 
 	Set<Structures.Point2D> points2D = new HashSet<>();
 	Set<Point3D> points3D = new HashSet<>();
@@ -40,6 +50,13 @@ public class Smeshalist {
 	
 	private Smeshalist() {
 		mainWindowPort = 8383;
+		countPoint2dSetSize();
+		countPoint3DSetSize();
+		countVertexesSize();
+		countEdgeSize();
+		countTriangleFaceSize();
+		countBlockSize();
+		
 		try {
 			socket = new DatagramSocket();
 			IPAddress = InetAddress.getByName("localhost");
@@ -235,6 +252,141 @@ public class Smeshalist {
 	
 	
 	
+	private void countPoint2dSetSize(){
+		Random r = new Random();
+
+		for (int i=0; i<10; i++) {
+			Point2D point = new Point2D();
+			point.setLocation(r.nextInt(5), r.nextInt(5));
+			point.setGroupId(r.nextInt(100));
+			point.setLabel("label");
+			point.setQuality(r.nextDouble()*100);
+			addGeometry(point);
+		}
+		
+		Structures.Point2DSet point2DSet = Structures.Point2DSet.newBuilder().addAllPoints(points2D).build();
+		int size = point2DSet.getSerializedSize();
+		point2DSize = (double) size/10.0;
+		points2D.clear();
+		
+		
+	}
+	
+	
+	private void countPoint3DSetSize(){
+		Random r = new Random();
+
+		for (int i=0; i<10; i++) {
+			geometry.Point3D point = new geometry.Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
+			SmeshialistHelper.addExtraInfo(point);
+			addGeometry(point);
+		}
+		
+		Structures.Point3DSet point3DSet = Structures.Point3DSet.newBuilder().addAllPoints(points3D).build();
+		int size = point3DSet.getSerializedSize();
+		point3DSize = (double) size/10.0;
+		points3D.clear();
+		
+	}
+	
+	private void countVertexesSize(){
+		Random r = new Random();
+		
+		for (int i=0; i<10; i++) {
+			geometry.Point3D point = new geometry.Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
+			SmeshialistHelper.addExtraInfo(point);			
+			geometry.Vertex v = new geometry.Vertex(point, r.nextDouble()*10-5);
+			v.setGroupId(r.nextInt(100));
+			v.setLabel("label");
+			v.setQuality(r.nextDouble()*100);
+			addGeometry(v);
+		}
+		
+		VertexSet vertexSet = VertexSet.newBuilder().addAllVertexes(vertexes).build();
+		int size = vertexSet.getSerializedSize();
+		vertexSize = (double) size/10.0;
+		vertexes.clear();
+		
+	}
+	
+	private void countEdgeSize(){
+		Random r = new Random();
+
+		for (int i=0; i<10; i++) {
+			geometry.Point3D v1 = new geometry.Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
+			SmeshialistHelper.addExtraInfo(v1);
+			geometry.Point3D v2 = new geometry.Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
+			SmeshialistHelper.addExtraInfo(v2);
+			geometry.Edge edge = new geometry.Edge(v1, v2);
+			edge.setGroupId(r.nextInt(100));
+			edge.setLabel("label");
+			edge.setQuality(r.nextDouble()*100);
+			addGeometry(edge);
+		}
+		
+		EdgeSet edgeSet = EdgeSet.newBuilder().addAllEdges(edges).build();
+		int size = edgeSet.getSerializedSize();
+		edgesSize = (double) size/10.0;
+		edges.clear();
+		
+	}
+	
+	
+	public void countTriangleFaceSize(){
+		Random r = new Random();
+
+		for (int i = 0; i < 10; i++) {
+
+			double d = r.nextDouble() * 10 - 5;
+			geometry.Point3D v1 = new geometry.Point3D(d, d, d);
+			SmeshialistHelper.addExtraInfo(v1);
+			geometry.Point3D v2 = new geometry.Point3D(d - 0.5, d - 0.6, d - 0.7);
+			SmeshialistHelper.addExtraInfo(v2);
+			geometry.Point3D v3 = new geometry.Point3D(d + 0.8, d + 0.9, d);
+			SmeshialistHelper.addExtraInfo(v3);
+			geometry.TriangleFace tf = new geometry.TriangleFace(v1, v2, v3);
+			tf.setGroupId(r.nextInt(100));
+			tf.setLabel("label");
+			tf.setQuality(r.nextDouble()*100);
+			addGeometry(tf);
+
+		}
+		
+		TriangleFaceSet triangleFaceSet = TriangleFaceSet.newBuilder().addAllTriangleFaces(triangleFaces).build();
+		int size = triangleFaceSet.getSerializedSize();
+		tiangleFacesSize = (double) size/10.0;
+		triangleFaces.clear();
+		
+	}
+	
+	
+	public void countBlockSize(){
+		
+		Random r = new Random();
+		
+		for (int i=0; i<2; i++) {
+			geometry.Point3D v1 = new geometry.Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
+			SmeshialistHelper.addExtraInfo(v1);
+			geometry.Point3D v2 = new geometry.Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
+			SmeshialistHelper.addExtraInfo(v2);
+			geometry.Point3D v3 = new geometry.Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
+			SmeshialistHelper.addExtraInfo(v3);
+			geometry.Point3D v4 = new geometry.Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
+			SmeshialistHelper.addExtraInfo(v4);
+			geometry.Block b = new geometry.Block(v1, v2, v3, v4);
+			b.setGroupId(r.nextInt(100));
+			b.setLabel("label");
+			b.setQuality(r.nextDouble()*100);
+			addGeometry(b);
+		}
+		
+		
+		BlockSet blockSet = BlockSet.newBuilder().addAllBlocks(blocks).build();
+		int size = blockSet.getSerializedSize();
+		blocksSize = (double) size/10.0;
+		blocks.clear();
+		
+	}
 	
 
 }

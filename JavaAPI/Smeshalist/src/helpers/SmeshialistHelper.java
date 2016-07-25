@@ -1,5 +1,7 @@
 package helpers;
 
+import java.util.Random;
+
 import structDefinitions.Structures.Point3D;
 import structDefinitions.Structures.Properties;
 
@@ -22,5 +24,13 @@ public class SmeshialistHelper {
 		builder.setZ(point.getZ());
 		builder.setProp(prop.build());
 		return builder.build();
+	}
+	
+	public static void addExtraInfo(geometry.Point3D point){
+		Random rand = new Random();
+		point.setGroupId(rand.nextInt(100));
+		point.setLabel("label");
+		point.setQuality(rand.nextDouble() * 100);
+
 	}
 }
