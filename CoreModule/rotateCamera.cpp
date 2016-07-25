@@ -13,11 +13,7 @@
 #include "LinuxDataTree.h"
 #else
 #include "WindowsServer.h"
-#include "STRUCTURES\include\Data.h"
-#include "FILTERS_MODULE\include\CoordinatesFilter.h"
-#include "FILTERS_MODULE\include\GroupsFilter.h"
-#include "FILTERS_MODULE\include\QualityFilter.h"
-#include "FILTERS_MODULE\include\TypesFilter.h"
+#include "WindowsDataTree.h"
 #endif // __linux__
 
 float deltaAngleX = 0.8f;
@@ -223,7 +219,7 @@ int main(int argc, char **argv) {
 	d = &LinuxDataTree::getInstance();
     #else
 	server = new WindowsServer();
-	d = &Data::get_instance();
+	d = &WindowsDataTree::getInstance();
     #endif // __linux__
 
     server -> registerStructuresHandler(d);
