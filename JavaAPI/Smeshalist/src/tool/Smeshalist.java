@@ -15,6 +15,8 @@ import structDefinitions.Structures.Block;
 import structDefinitions.Structures.BlockSet;
 import structDefinitions.Structures.Edge;
 import structDefinitions.Structures.EdgeSet;
+import structDefinitions.Structures.MessageInfo;
+import structDefinitions.Structures.MessageInfo.Type;
 import structDefinitions.Structures.Point3D;
 import structDefinitions.Structures.Properties;
 import structDefinitions.Structures.TriangleFace;
@@ -55,6 +57,10 @@ public class Smeshalist {
 		return instance;
 	}
 
+	public static void destroySmeshialist(){
+		instance.socket.close();
+	}
+	
 	public void addGeometry(geometry.Point2D point) {
 		Properties.Builder prop = SmeshialistHelper.setProperties(point.getLabel(), point.getQuality(), point.getGroupId());
 		Structures.Point2D.Builder builder = Structures.Point2D.newBuilder();
@@ -166,7 +172,69 @@ public class Smeshalist {
 		}
 		
 		points2D.clear();
+		points3D.clear();
+		vertexes.clear();
+		edges.clear();
+		triangleFaces.clear();
+		blocks.clear();
+		
 	}
+	
+	
+	public void breakpoint(){
+		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
+		MessageInfo.Builder builder = MessageInfo.newBuilder();
+		builder.setType(Type.BREAKPOINT);
+		MessageInfo message = builder.build();
+		
+		try {
+			message.writeTo(aOutput);
+			byte[] bytes = aOutput.toByteArray();
+			DatagramPacket packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
+			socket.send(packet);
+			aOutput.close();
+			
+			byte[] responseBytes = new byte[10];
+			DatagramPacket response = new DatagramPacket(responseBytes, responseBytes.length);
+			socket.receive(response);
+	
+			
+			MessageInfo feedback = MessageInfo.parseFrom(response.getData());
+			if(feedback.getType() == Type.REJECTED){
+				socket.close();
+				System.exit(0);
+			}
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	public void render(){
+		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
+		MessageInfo.Builder builder = MessageInfo.newBuilder();
+		builder.setType(Type.RENDER);
+		MessageInfo message = builder.build();
+		try {
+			message.writeTo(aOutput);
+			byte[] bytes = aOutput.toByteArray();
+			DatagramPacket packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
+			socket.send(packet);
+			aOutput.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		
+	}
+	
+	
+	
 	
 
 }

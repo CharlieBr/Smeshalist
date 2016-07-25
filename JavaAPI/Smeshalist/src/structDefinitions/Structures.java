@@ -11060,6 +11060,14 @@ public final class Structures {
        * <code>BREAKPOINT = 3;</code>
        */
       BREAKPOINT(3),
+      /**
+       * <code>ACCEPTED = 4;</code>
+       */
+      ACCEPTED(4),
+      /**
+       * <code>REJECTED = 5;</code>
+       */
+      REJECTED(5),
       ;
 
       /**
@@ -11074,6 +11082,14 @@ public final class Structures {
        * <code>BREAKPOINT = 3;</code>
        */
       public static final int BREAKPOINT_VALUE = 3;
+      /**
+       * <code>ACCEPTED = 4;</code>
+       */
+      public static final int ACCEPTED_VALUE = 4;
+      /**
+       * <code>REJECTED = 5;</code>
+       */
+      public static final int REJECTED_VALUE = 5;
 
 
       public final int getNumber() {
@@ -11093,6 +11109,8 @@ public final class Structures {
           case 1: return DATA;
           case 2: return RENDER;
           case 3: return BREAKPOINT;
+          case 4: return ACCEPTED;
+          case 5: return REJECTED;
           default: return null;
         }
       }
@@ -13299,15 +13317,16 @@ public final class Structures {
       "v2\030\002 \002(\0132\010.Point3D\022\024\n\002v3\030\003 \002(\0132\010.Point3D" +
       "\022\024\n\002v4\030\004 \002(\0132\010.Point3D\022\031\n\004prop\030\005 \001(\0132\013.P",
       "roperties\"\"\n\010BlockSet\022\026\n\006blocks\030\001 \003(\0132\006." +
-      "Block\"\\\n\013MessageInfo\022\037\n\004type\030\001 \002(\0162\021.Mes" +
-      "sageInfo.Type\",\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDE" +
-      "R\020\002\022\016\n\nBREAKPOINT\020\003\"\321\001\n\013DataPackage\022\035\n\010p" +
-      "oints2D\030\001 \001(\0132\013.Point2DSet\022\035\n\010points3D\030\002" +
-      " \001(\0132\013.Point3DSet\022\034\n\010vertexes\030\003 \001(\0132\n.Ve" +
-      "rtexSet\022\027\n\005edges\030\004 \001(\0132\010.EdgeSet\022\037\n\005face" +
-      "s\030\005 \001(\0132\020.TriangleFaceSet\022\031\n\006blocks\030\006 \001(" +
-      "\0132\t.BlockSet\022\021\n\tendOfData\030\007 \002(\010B\037\n\021struc" +
-      "tDefinitionsB\nStructures"
+      "Block\"x\n\013MessageInfo\022\037\n\004type\030\001 \002(\0162\021.Mes" +
+      "sageInfo.Type\"H\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDE" +
+      "R\020\002\022\016\n\nBREAKPOINT\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010REJ" +
+      "ECTED\020\005\"\321\001\n\013DataPackage\022\035\n\010points2D\030\001 \001(" +
+      "\0132\013.Point2DSet\022\035\n\010points3D\030\002 \001(\0132\013.Point" +
+      "3DSet\022\034\n\010vertexes\030\003 \001(\0132\n.VertexSet\022\027\n\005e" +
+      "dges\030\004 \001(\0132\010.EdgeSet\022\037\n\005faces\030\005 \001(\0132\020.Tr" +
+      "iangleFaceSet\022\031\n\006blocks\030\006 \001(\0132\t.BlockSet" +
+      "\022\021\n\tendOfData\030\007 \002(\010B\037\n\021structDefinitions",
+      "B\nStructures"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
