@@ -40,7 +40,7 @@ class AbstractServer
         //TMP
         void sendAccept();
 
-        Data* handler;
+        Data* handler = NULL;
         std::atomic_bool isStopped;
     private:
         Point3D parsePoint(const structDefinitions::Point3D*);

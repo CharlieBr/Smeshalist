@@ -11,8 +11,9 @@
 #ifdef __linux__
 #include "LinuxServer.h"
 #include "LinuxDataTree.h"
-#elif _WIN32
+#else
 #include "WindowsServer.h"
+#include "STRUCTURES\include\Data.h"
 #include "FILTERS_MODULE\include\CoordinatesFilter.h"
 #include "FILTERS_MODULE\include\GroupsFilter.h"
 #include "FILTERS_MODULE\include\QualityFilter.h"
@@ -190,27 +191,11 @@ void mouseButton(int button, int state, int x, int y) {
     computeCameraPosition();
 }
 
-int main(int argc, char **argv) {
-    GOOGLE_PROTOBUF_VERIFY_VERSION;
-    //set initial position
-	computeCameraPosition();
-
-    AbstractServer* server = NULL;
-
-    #ifdef __linux__
-    server = new LinuxServer();
-	d = &LinuxDataTree::getInstance();
-    #elif _WIN32
-    server = new WindowsServer();
-	d = &Data::get_instance();
-    #endif // __linux__
-
-    server -> registerStructuresHandler(d);
-
+void initGLUT(int argc, char **argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
-	glutInitWindowPosition(100,100);
-	glutInitWindowSize(500,500);
+	glutInitWindowPosition(100, 100);
+	glutInitWindowSize(500, 500);
 	glutCreateWindow("Smeshalist v0.0.1");
 
 	glutDisplayFunc(renderScene);
@@ -224,10 +209,30 @@ int main(int argc, char **argv) {
 	glutMotionFunc(mouseMove);
 
 	glEnable(GL_DEPTH_TEST);
+}
+
+int main(int argc, char **argv) {
+    GOOGLE_PROTOBUF_VERIFY_VERSION;
+    //set initial position
+	computeCameraPosition();
+
+    AbstractServer* server = NULL;
+
+    #ifdef __linux__
+    server = new LinuxServer();
+	d = &LinuxDataTree::getInstance();
+    #else
+	server = new WindowsServer();
+	d = &Data::get_instance();
+    #endif // __linux__
+
+    server -> registerStructuresHandler(d);
+
+	initGLUT(argc, argv);
 
 	server -> startServer();
 	glutMainLoop();
 	server -> stopServer();
 
-	return 1;
+	return 0;
 }

@@ -2,8 +2,12 @@
 
 void AbstractServer::registerStructuresHandler(Data* data) {
     if (this->handler != NULL) {
-        this->handler = data;
-    }
+		cout << "Set new data handler\n";
+	}
+	else {
+		cout << "WARNING: data handler was already registered\n";
+	}
+	this->handler = data;
 }
 
 void AbstractServer::sendAcknowlage() {
