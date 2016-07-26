@@ -84,6 +84,7 @@ message MessageInfo {
 		BREAKPOINT = 3;
 		ACCEPTED = 4;
 		REJECTED = 5;
+		ACK = 6;
 	}
 	
 	required Type type = 1;

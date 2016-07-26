@@ -5,7 +5,7 @@ import java.util.Random;
 import structDefinitions.Structures.Point3D;
 import structDefinitions.Structures.Properties;
 
-public class SmeshialistHelper {
+public class SmeshalistHelper {
 
 	public static Properties.Builder setProperties(String label, double quality, int groupId){
 		Properties.Builder prop = Properties.newBuilder();

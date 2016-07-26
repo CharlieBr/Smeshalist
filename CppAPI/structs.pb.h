@@ -58,11 +58,12 @@ enum MessageInfo_Type {
   MessageInfo_Type_RENDER = 2,
   MessageInfo_Type_BREAKPOINT = 3,
   MessageInfo_Type_ACCEPTED = 4,
-  MessageInfo_Type_REJECTED = 5
+  MessageInfo_Type_REJECTED = 5,
+  MessageInfo_Type_ACK = 6
 };
 bool MessageInfo_Type_IsValid(int value);
 const MessageInfo_Type MessageInfo_Type_Type_MIN = MessageInfo_Type_DATA;
-const MessageInfo_Type MessageInfo_Type_Type_MAX = MessageInfo_Type_REJECTED;
+const MessageInfo_Type MessageInfo_Type_Type_MAX = MessageInfo_Type_ACK;
 const int MessageInfo_Type_Type_ARRAYSIZE = MessageInfo_Type_Type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* MessageInfo_Type_descriptor();
@@ -1616,6 +1617,8 @@ class MessageInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
     MessageInfo_Type_ACCEPTED;
   static const Type REJECTED =
     MessageInfo_Type_REJECTED;
+  static const Type ACK =
+    MessageInfo_Type_ACK;
   static inline bool Type_IsValid(int value) {
     return MessageInfo_Type_IsValid(value);
   }
