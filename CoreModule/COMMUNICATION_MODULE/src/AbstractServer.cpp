@@ -19,6 +19,19 @@ void AbstractServer::sendAcknowlage() {
     }
 }
 
+void AbstractServer::sendAccept() {
+    char buffer[BUFFER_SIZE];
+
+    structDefinitions::MessageInfo accept;
+    accept.set_type(structDefinitions::MessageInfo_Type_ACCEPTED);
+
+    accept.SerializeToArray(buffer, BUFFER_SIZE);
+
+    if (sendBytesToSocket(buffer, accept.GetCachedSize()) < 0) {
+        cerr << "Error during sending accept to client\n";
+    }
+}
+
 void AbstractServer::startServerInNewThread()
 {
     int nBytes;
@@ -44,6 +57,7 @@ void AbstractServer::startServerInNewThread()
                 break;
             case structDefinitions::MessageInfo_Type_BREAKPOINT:
                 cout << "Breakpoint\n";
+                sendAccept();
                 break;
             case structDefinitions::MessageInfo_Type_RENDER:
                 cout << "Render\n";

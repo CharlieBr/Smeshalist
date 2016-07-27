@@ -1,7 +1,7 @@
 #ifndef ABSTRACTSERVER_H
 #define ABSTRACTSERVER_H
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 1024*2
 #define IPADDRESS "127.0.0.1"
 #define PORT 8383
 #define SOCKET_TIMEOUT_SEC 1
@@ -36,6 +36,9 @@ class AbstractServer
         void getDataPackages();
         void sendAcknowlage();
         void startServerInNewThread();
+
+        //TMP
+        void sendAccept();
 
         Data* handler;
         std::atomic_bool isStopped;
