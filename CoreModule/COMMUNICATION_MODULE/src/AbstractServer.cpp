@@ -127,6 +127,10 @@ Point3D AbstractServer::parsePoint(const structDefinitions::Point3D* p) {
     return Point3D(p->x(), p->y(), p->z());
 }
 
+Label AbstractServer::getLabel(string text) {
+    return Label(text);
+}
+
 void AbstractServer::parseBlockSet(structDefinitions::BlockSet* blockSet) {
     for(int i=0; i<blockSet->blocks_size(); i++) {
         const structDefinitions::Block b = blockSet->blocks(i);
@@ -138,8 +142,11 @@ void AbstractServer::parseBlockSet(structDefinitions::BlockSet* blockSet) {
         points.push_back(parsePoint(&b.v3()));
         points.push_back(parsePoint(&b.v4()));
 
-        Block* block = new Block(&points);
-        this -> handler -> add(0, block);
+        structDefinitions::Properties prop = b.prop();
+        Label label = getLabel(prop.label());
+
+        Block* block = new Block(&points, label, prop.quality());
+        this -> handler -> add(prop.groupid(), block);
     }
 }
 
@@ -151,8 +158,11 @@ void AbstractServer::parseEdgeSet(structDefinitions::EdgeSet* edgeSet) {
         points.push_back(parsePoint(&e.v1()));
         points.push_back(parsePoint(&e.v2()));
 
-        Edge* edge = new Edge(&points);
-        this -> handler -> add(1, edge);
+        structDefinitions::Properties prop = e.prop();
+        Label label = getLabel(prop.label());
+
+        Edge* edge = new Edge(&points, label, prop.quality());
+        this -> handler -> add(prop.groupid(), edge);
     }
 }
 
@@ -160,8 +170,11 @@ void AbstractServer::parsePoint2DSet(structDefinitions::Point2DSet* pointSet) {
     for (int i=0; i<pointSet->points_size(); i++) {
         const structDefinitions::Point2D p = pointSet->points(i);
 
-        Vertex* v = new Vertex(Point3D(p.x(), p.y(), 0));
-        this -> handler -> add(0, v);
+        structDefinitions::Properties prop = p.prop();
+        Label label = getLabel(prop.label());
+
+        Vertex* v = new Vertex(Point3D(p.x(), p.y(), 0), label, prop.quality());
+        this -> handler -> add(prop.groupid(), v);
     }
 }
 
@@ -169,8 +182,11 @@ void AbstractServer::parsePoint3DSet(structDefinitions::Point3DSet* pointSet) {
     for (int i=0; i<pointSet->points_size(); i++) {
         const structDefinitions::Point3D p = pointSet->points(i);
 
-        Vertex* v = new Vertex(parsePoint(&p));
-        this -> handler -> add(0, v);
+        structDefinitions::Properties prop = p.prop();
+        Label label = getLabel(prop.label());
+
+        Vertex* v = new Vertex(parsePoint(&p), label, prop.quality());
+        this -> handler -> add(prop.groupid(), v);
     }
 }
 
@@ -184,8 +200,11 @@ void AbstractServer::parseTriangleFaceSet(structDefinitions::TriangleFaceSet* tr
         points.push_back(parsePoint(&t.v2()));
         points.push_back(parsePoint(&t.v3()));
 
-        Face* f = new Face(&points, i);
-        this -> handler -> add(1, f);
+        structDefinitions::Properties prop = t.prop();
+        Label label = getLabel(prop.label());
+
+        Face* f = new Face(&points, label, prop.quality());
+        this -> handler -> add(prop.groupid(), f);
     }
 }
 
@@ -193,7 +212,10 @@ void AbstractServer::parseVertexSet(structDefinitions::VertexSet* vertexSet) {
     for (int i=0; i<vertexSet->vertexes_size(); i++) {
         const structDefinitions::Vertex v = vertexSet->vertexes(i);
 
-        Vertex* vertex = new Vertex(parsePoint(&v.point()));
-        this->handler->add(0, vertex);
+        structDefinitions::Properties prop = v.prop();
+        Label label = getLabel(prop.label());
+
+        Vertex* vertex = new Vertex(parsePoint(&v.point()), label, prop.quality());
+        this->handler->add(prop.groupid(), vertex);
     }
 }

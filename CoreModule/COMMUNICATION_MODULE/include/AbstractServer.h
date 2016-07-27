@@ -44,6 +44,7 @@ class AbstractServer
         std::atomic_bool isStopped;
     private:
         Point3D parsePoint(const structDefinitions::Point3D*);
+        Label getLabel(string);
 };
 
 #endif // ABSTRACTSERVER_H
