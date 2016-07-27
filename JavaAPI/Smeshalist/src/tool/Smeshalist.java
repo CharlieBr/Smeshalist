@@ -283,7 +283,12 @@ public class Smeshalist {
 			DatagramPacket response = new DatagramPacket(responseBytes, responseBytes.length);
 			socket.receive(response);
 
-			MessageInfo feedback = MessageInfo.parseFrom(response.getData());
+			byte[] trimResponse = new byte[response.getLength()];
+			for (int i=0; i<response.getLength(); i++) {
+				trimResponse[i] = responseBytes[i];
+			}
+			
+			MessageInfo feedback = MessageInfo.parseFrom(trimResponse);
 			if (feedback.getType() == Type.REJECTED) {
 				socket.close();
 				System.exit(0);
