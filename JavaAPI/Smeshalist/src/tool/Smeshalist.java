@@ -7,13 +7,9 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
-
-import javax.management.timer.TimerNotification;
 
 import geometry.Point2D;
 import helpers.SmeshalistHelper;
@@ -162,7 +158,12 @@ public class Smeshalist {
 			DatagramPacket response = new DatagramPacket(responseBytes, responseBytes.length);
 			socket.receive(response);
 
-			MessageInfo feedback = MessageInfo.parseFrom(response.getData());
+			byte[] trimResponse = new byte[response.getLength()];
+			for (int i=0; i<response.getLength(); i++) {
+				trimResponse[i] = responseBytes[i];
+			}
+
+			MessageInfo feedback = MessageInfo.parseFrom(trimResponse);
 			if (feedback.getType() == Type.ACK) {
 				List<Structures.Point2D> sendedPoints2D = new LinkedList<>();
 				List<Structures.Point3D> sendedPoints3D = new LinkedList<>();

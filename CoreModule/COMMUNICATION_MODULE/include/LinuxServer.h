@@ -25,8 +25,8 @@ class LinuxServer : public AbstractServer
         struct sockaddr_storage serverStorage;
         std::thread* t = NULL;
 
-
-        void startServerInNewThread();
+        int getBytesFromSocket(char[], int);
+        int sendBytesToSocket(char[], int);
 };
 
 #endif // SERVER_H

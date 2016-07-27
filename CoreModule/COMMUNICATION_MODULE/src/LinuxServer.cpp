@@ -38,82 +38,12 @@ void LinuxServer::startServer()
     }
 }
 
-void LinuxServer::startServerInNewThread()
-{
-    int nBytes;
-    char buffer[BUFFER_SIZE];
+int LinuxServer::getBytesFromSocket(char* buffer, int bufferSize) {
+    return recvfrom(udpSocket, buffer, bufferSize, 0, (struct sockaddr *)&serverStorage, &addr_size);
+}
 
-    while(!isStopped.load()){
-        //POINT 2D
-        nBytes = recvfrom(udpSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&serverStorage, &addr_size);
-        if (nBytes < 0) {
-            continue;
-        }
-
-        structDefinitions::Point2DSet point2DSet;
-        if(!point2DSet.ParseFromArray(buffer, nBytes)) {
-            printf("Unable to parse Point2D\n");
-        }
-        parsePoint2DSet(&point2DSet);
-
-        //POINT 3D
-        nBytes = recvfrom(udpSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&serverStorage, &addr_size);
-        if (nBytes < 0) {
-            continue;
-        }
-        structDefinitions::Point3DSet point3DSet;
-        if(!point3DSet.ParseFromArray(buffer, nBytes)) {
-            printf("Unable to parse Point3D\n");
-        }
-        parsePoint3DSet(&point3DSet);
-
-        //VERTEX
-        nBytes = recvfrom(udpSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&serverStorage, &addr_size);
-        if (nBytes < 0) {
-            continue;
-        }
-        structDefinitions::VertexSet vertexSet;
-        if(!vertexSet.ParseFromArray(buffer, nBytes)) {
-            printf("Unable to parse Vertex\n");
-        }
-
-        parseVertexSet(&vertexSet);
-
-        //EDGE
-        nBytes = recvfrom(udpSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&serverStorage, &addr_size);
-        if (nBytes < 0) {
-            continue;
-        }
-        structDefinitions::EdgeSet edgeSet;
-        if(!edgeSet.ParseFromArray(buffer, nBytes)) {
-            printf("Unable to parse Edge\n");
-        }
-        parseEdgeSet(&edgeSet);
-
-        //FACE
-        nBytes = recvfrom(udpSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&serverStorage, &addr_size);
-        if (nBytes < 0) {
-            continue;
-        }
-        structDefinitions::TriangleFaceSet faceSet;
-        if(!faceSet.ParseFromArray(buffer, nBytes)) {
-            printf("Unable to parse Triangle\n");
-        }
-        parseTriangleFaceSet(&faceSet);
-
-        //BLOCK
-        nBytes = recvfrom(udpSocket, buffer, BUFFER_SIZE, 0, (struct sockaddr *)&serverStorage, &addr_size);
-        if (nBytes < 0) {
-            continue;
-        }
-        structDefinitions::BlockSet blockSet;
-        if(!blockSet.ParseFromArray(buffer, nBytes)) {
-            printf("Unable to parse Block\n");
-        }
-        parseBlockSet(&blockSet);
-
-        this -> handler -> draw_elements();
-    }
+int LinuxServer::sendBytesToSocket(char* buffer, int bufferSize) {
+    return sendto(udpSocket, buffer, bufferSize, 0, (struct sockaddr *)&serverStorage, addr_size);
 }
 
 void LinuxServer::stopServer()

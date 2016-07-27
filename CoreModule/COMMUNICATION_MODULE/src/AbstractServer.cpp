@@ -6,6 +6,109 @@ void AbstractServer::registerStructuresHandler(Data* data) {
     }
 }
 
+void AbstractServer::sendAcknowlage() {
+    char buffer[BUFFER_SIZE];
+
+    structDefinitions::MessageInfo ack;
+    ack.set_type(structDefinitions::MessageInfo_Type_ACK);
+
+    ack.SerializeToArray(buffer, BUFFER_SIZE);
+
+    if (sendBytesToSocket(buffer, ack.GetCachedSize()) < 0) {
+        cerr << "Error during sending ack to client\n";
+    }
+}
+
+void AbstractServer::startServerInNewThread()
+{
+    int nBytes;
+    char buffer[BUFFER_SIZE];
+
+    while(!isStopped.load()){
+        nBytes = getBytesFromSocket(buffer, BUFFER_SIZE);
+        if (nBytes < 0) {
+            continue;
+        }
+
+        structDefinitions::MessageInfo messageInfo;
+        if (!messageInfo.ParseFromArray(buffer, nBytes)) {
+            cerr << "Unable to parse messageInfo\n";
+            continue;
+        }
+
+        switch (messageInfo.type()) {
+            case structDefinitions::MessageInfo_Type_DATA:
+                sendAcknowlage();
+                getDataPackages();
+                handler -> draw_elements();
+                break;
+            case structDefinitions::MessageInfo_Type_BREAKPOINT:
+                cout << "Breakpoint\n";
+                break;
+            case structDefinitions::MessageInfo_Type_RENDER:
+                cout << "Render\n";
+                break;
+            default:
+                cerr << "Unknow message type\n";
+                break;
+        }
+    }
+}
+
+void AbstractServer::getDataPackages() {
+    char buffer[BUFFER_SIZE];
+    int nBytes;
+
+    while (true) {
+        nBytes = getBytesFromSocket(buffer, BUFFER_SIZE);
+        if (nBytes < 0) {
+            cerr << "Error during data package transfer\n";
+            return;
+        }
+
+        structDefinitions::DataPackage package;
+
+        if (!package.ParseFromArray(buffer, nBytes)) {
+            cerr << "Error during parsing data package\n";
+            continue;
+        }
+
+        if (package.has_blocks()) {
+            structDefinitions::BlockSet blockSet = package.blocks();
+            parseBlockSet(&blockSet);
+        }
+
+        if (package.has_edges()) {
+            structDefinitions::EdgeSet edgeSet = package.edges();
+            parseEdgeSet(&edgeSet);
+        }
+
+        if (package.has_faces()) {
+            structDefinitions::TriangleFaceSet faceSet = package.faces();
+            parseTriangleFaceSet(&faceSet);
+        }
+
+        if (package.has_points2d()) {
+            structDefinitions::Point2DSet pointSet = package.points2d();
+            parsePoint2DSet(&pointSet);
+        }
+
+        if (package.has_points3d()) {
+            structDefinitions::Point3DSet pointSet = package.points3d();
+            parsePoint3DSet(&pointSet);
+        }
+
+        if (package.has_vertexes()) {
+            structDefinitions::VertexSet vertexSet = package.vertexes();
+            parseVertexSet(&vertexSet);
+        }
+
+        if(package.endofdata()) {
+            return;
+        }
+    }
+}
+
 Point3D AbstractServer::parsePoint(const structDefinitions::Point3D* p) {
     return Point3D(p->x(), p->y(), p->z());
 }

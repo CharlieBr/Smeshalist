@@ -23,7 +23,8 @@ class AbstractServer
 
         void registerStructuresHandler(Data* data);
     protected:
-        virtual void startServerInNewThread() {};
+        virtual int getBytesFromSocket(char[], int) = 0;
+        virtual int sendBytesToSocket(char[], int) = 0;
 
         void parsePoint2DSet(structDefinitions::Point2DSet*);
         void parsePoint3DSet(structDefinitions::Point3DSet*);
@@ -31,6 +32,10 @@ class AbstractServer
         void parseEdgeSet(structDefinitions::EdgeSet*);
         void parseTriangleFaceSet(structDefinitions::TriangleFaceSet*);
         void parseBlockSet(structDefinitions::BlockSet*);
+
+        void getDataPackages();
+        void sendAcknowlage();
+        void startServerInNewThread();
 
         Data* handler;
         std::atomic_bool isStopped;
