@@ -104,6 +104,9 @@ message ManagerToCoreMessage{
 
 	required MTCMessageType messageType = 1;
 	optional OptionsInfo optionsInfo = 2;
-
+    optional GroupsFilter groupsFilter = 3;
+    optional TypesFilter typesFilter = 4;
+    optional QualityFilter qualityFilter = 5;
+    optional CoordinatesFilter coordinatesFilter = 6;
 
 }

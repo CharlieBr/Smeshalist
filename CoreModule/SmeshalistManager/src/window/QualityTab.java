@@ -140,21 +140,10 @@ public class QualityTab extends JPanel{
 
 	public QualityFilter getQualityFilter() {
 		QualityFilter.Builder qualityFilterBuilder = QualityFilter.newBuilder();
-		for (JPanel conditionEntry: conditionEntries){
-			JLabel leftValue = (JLabel)conditionEntry.getComponent(0);
-			JLabel leftOperator = (JLabel)conditionEntry.getComponent(1);
-			JLabel rightValue = (JLabel)conditionEntry.getComponent(3);
-			JLabel rightOperator = (JLabel)conditionEntry.getComponent(4);
+		for (QualityEntry conditionEntry: conditionEntries){
+			qualityFilterBuilder.addQualityCondition(conditionEntry.getQualityCondition());
 
-			QualityCondition.Builder qualityConditionBuilder = QualityCondition.newBuilder();
-			qualityConditionBuilder.setLeftValue(new Double(leftValue.getText()));
-			qualityConditionBuilder.setLeftOperator(FiltersTab.getComparisonOperator(leftOperator.getText()));
-			qualityConditionBuilder.setRightValue(new Double(rightValue.getText()));
-			qualityConditionBuilder.setRightOperator(FiltersTab.getComparisonOperator(rightOperator.getText()));
-
-			qualityFilterBuilder.addQualityCondition(qualityConditionBuilder);
 		}
-
 		return qualityFilterBuilder.build();
 	}
 

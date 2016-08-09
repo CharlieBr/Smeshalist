@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
 import communication.Communication.CoordinatesFilter;
+import util.CoordinatesEntry;
 import util.WindowUtil;
 import verify.InputVerifier;
 
@@ -40,7 +41,7 @@ public class CoordinatesTab extends JPanel{
 	private BoxLayout mainLayout;
 	private BoxLayout boxLayout;
 	
-	private List<JPanel> conditionEntries;
+	private List<CoordinatesEntry> conditionEntries;
 	
 	public CoordinatesTab(){
 		this.initializeView();
@@ -123,23 +124,8 @@ public class CoordinatesTab extends JPanel{
 			return;
 		}
 
-		//TODO you can do this prettier by creating class which extends JPanel and store it as entry with needed values
-		
-		JPanel newEntry = new JPanel();
-		newEntry.add(new JLabel(xTextField.getText() + "x"));
-		if (new Double(yTextField.getText()) >= 0){
-			newEntry.add(new JLabel("+" + yTextField.getText() + "y"));			
-		} else {
-			newEntry.add(new JLabel(yTextField.getText() + "y"));
-		}
-		if (new Double(zTextField.getText()) >= 0){
-			newEntry.add(new JLabel("+" + zTextField.getText() + "z"));			
-		} else {
-			newEntry.add(new JLabel(zTextField.getText() + "z"));
-		}
-		newEntry.add(new JLabel(operatorsComboBox.getSelectedItem().toString()));
-		newEntry.add(new JLabel(valueTextField.getText()));
-		newEntry.add(Box.createHorizontalStrut(50));		
+		CoordinatesEntry newEntry = new CoordinatesEntry(xTextField.getText(), yTextField.getText(), zTextField.getText(), operatorsComboBox.getSelectedItem().toString(), valueTextField.getText());
+
 		JButton deleteButton = new JButton("Delete");
 		deleteButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -156,7 +142,7 @@ public class CoordinatesTab extends JPanel{
 		scrollPaneContent.repaint();
 	}
 	
-	private void deleteButtonPressed(JPanel entry) {
+	private void deleteButtonPressed(CoordinatesEntry entry) {
 		if (conditionEntries.contains(entry)){
 			conditionEntries.remove(entry);
 			scrollPaneContent.remove(entry);
@@ -169,10 +155,11 @@ public class CoordinatesTab extends JPanel{
 
 	public CoordinatesFilter getCoordinatesFilter() {
 		CoordinatesFilter.Builder coordinatesFilterBuilder = CoordinatesFilter.newBuilder();
-		for (JPanel conditionEntry: conditionEntries){
-			//TODO save filter info to protobuf message
+		for (CoordinatesEntry conditionEntry: conditionEntries){
+			coordinatesFilterBuilder.addCoordinatesCondition(conditionEntry.getCoordinatesCondition());
 		}
 
+		coordinatesFilterBuilder.setConjunction(FiltersTab.getConjunction(conjunctionComboBox.getSelectedItem().toString()));
 		return coordinatesFilterBuilder.build();
 	}
 }

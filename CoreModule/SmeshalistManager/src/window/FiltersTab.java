@@ -1,7 +1,8 @@
 package window;
 
+import communication.Communication;
 import communication.Communication.ComparisonOperator;
-import communication.Communication.ComparisonOperator;
+import communication.Communication.CoordinatesFilter.Conjunction;
 import communication.Communication.GroupsFilter;
 import communication.Communication.TypesFilter;
 import communication.Communication.QualityFilter;
@@ -83,6 +84,8 @@ public class FiltersTab extends JPanel{
 		GroupsFilter groupsFilter = groupsTab.getGroupsFilter();
 		QualityFilter qualityFilter = qualityTab.getQualityFilter();
 		CoordinatesFilter coordinatesFilter = coordinatesTab.getCoordinatesFilter();
+
+		//TODO create ManagerToCoreMessage
 	}
 
 	private void setTestContent() {
@@ -123,6 +126,18 @@ public class FiltersTab extends JPanel{
 				return ComparisonOperator.EQUAL;
 			default:
 				System.out.println("No such operator: " + operator);
+				return null;
+		}
+	}
+
+	public static Conjunction getConjunction(String conjunction){
+		switch (conjunction){
+			case "AND":
+				return Conjunction.AND;
+			case "OR":
+				return Conjunction.OR;
+			default:
+				System.out.println("No such conjunction: " + conjunction);
 				return null;
 		}
 	}

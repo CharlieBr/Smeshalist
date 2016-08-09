@@ -9686,6 +9686,58 @@ public final class Communication {
      * <code>optional .OptionsInfo optionsInfo = 2;</code>
      */
     communication.Communication.OptionsInfoOrBuilder getOptionsInfoOrBuilder();
+
+    /**
+     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     */
+    boolean hasGroupsFilter();
+    /**
+     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     */
+    communication.Communication.GroupsFilter getGroupsFilter();
+    /**
+     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     */
+    communication.Communication.GroupsFilterOrBuilder getGroupsFilterOrBuilder();
+
+    /**
+     * <code>optional .TypesFilter typesFilter = 4;</code>
+     */
+    boolean hasTypesFilter();
+    /**
+     * <code>optional .TypesFilter typesFilter = 4;</code>
+     */
+    communication.Communication.TypesFilter getTypesFilter();
+    /**
+     * <code>optional .TypesFilter typesFilter = 4;</code>
+     */
+    communication.Communication.TypesFilterOrBuilder getTypesFilterOrBuilder();
+
+    /**
+     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     */
+    boolean hasQualityFilter();
+    /**
+     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     */
+    communication.Communication.QualityFilter getQualityFilter();
+    /**
+     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     */
+    communication.Communication.QualityFilterOrBuilder getQualityFilterOrBuilder();
+
+    /**
+     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     */
+    boolean hasCoordinatesFilter();
+    /**
+     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     */
+    communication.Communication.CoordinatesFilter getCoordinatesFilter();
+    /**
+     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     */
+    communication.Communication.CoordinatesFilterOrBuilder getCoordinatesFilterOrBuilder();
   }
   /**
    * Protobuf type {@code ManagerToCoreMessage}
@@ -9752,6 +9804,58 @@ public final class Communication {
                 optionsInfo_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000002;
+              break;
+            }
+            case 26: {
+              communication.Communication.GroupsFilter.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = groupsFilter_.toBuilder();
+              }
+              groupsFilter_ = input.readMessage(communication.Communication.GroupsFilter.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(groupsFilter_);
+                groupsFilter_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              communication.Communication.TypesFilter.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+                subBuilder = typesFilter_.toBuilder();
+              }
+              typesFilter_ = input.readMessage(communication.Communication.TypesFilter.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(typesFilter_);
+                typesFilter_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000008;
+              break;
+            }
+            case 42: {
+              communication.Communication.QualityFilter.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+                subBuilder = qualityFilter_.toBuilder();
+              }
+              qualityFilter_ = input.readMessage(communication.Communication.QualityFilter.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(qualityFilter_);
+                qualityFilter_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000010;
+              break;
+            }
+            case 50: {
+              communication.Communication.CoordinatesFilter.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+                subBuilder = coordinatesFilter_.toBuilder();
+              }
+              coordinatesFilter_ = input.readMessage(communication.Communication.CoordinatesFilter.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(coordinatesFilter_);
+                coordinatesFilter_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000020;
               break;
             }
           }
@@ -9924,6 +10028,90 @@ public final class Communication {
       return optionsInfo_ == null ? communication.Communication.OptionsInfo.getDefaultInstance() : optionsInfo_;
     }
 
+    public static final int GROUPSFILTER_FIELD_NUMBER = 3;
+    private communication.Communication.GroupsFilter groupsFilter_;
+    /**
+     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     */
+    public boolean hasGroupsFilter() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     */
+    public communication.Communication.GroupsFilter getGroupsFilter() {
+      return groupsFilter_ == null ? communication.Communication.GroupsFilter.getDefaultInstance() : groupsFilter_;
+    }
+    /**
+     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     */
+    public communication.Communication.GroupsFilterOrBuilder getGroupsFilterOrBuilder() {
+      return groupsFilter_ == null ? communication.Communication.GroupsFilter.getDefaultInstance() : groupsFilter_;
+    }
+
+    public static final int TYPESFILTER_FIELD_NUMBER = 4;
+    private communication.Communication.TypesFilter typesFilter_;
+    /**
+     * <code>optional .TypesFilter typesFilter = 4;</code>
+     */
+    public boolean hasTypesFilter() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .TypesFilter typesFilter = 4;</code>
+     */
+    public communication.Communication.TypesFilter getTypesFilter() {
+      return typesFilter_ == null ? communication.Communication.TypesFilter.getDefaultInstance() : typesFilter_;
+    }
+    /**
+     * <code>optional .TypesFilter typesFilter = 4;</code>
+     */
+    public communication.Communication.TypesFilterOrBuilder getTypesFilterOrBuilder() {
+      return typesFilter_ == null ? communication.Communication.TypesFilter.getDefaultInstance() : typesFilter_;
+    }
+
+    public static final int QUALITYFILTER_FIELD_NUMBER = 5;
+    private communication.Communication.QualityFilter qualityFilter_;
+    /**
+     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     */
+    public boolean hasQualityFilter() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     */
+    public communication.Communication.QualityFilter getQualityFilter() {
+      return qualityFilter_ == null ? communication.Communication.QualityFilter.getDefaultInstance() : qualityFilter_;
+    }
+    /**
+     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     */
+    public communication.Communication.QualityFilterOrBuilder getQualityFilterOrBuilder() {
+      return qualityFilter_ == null ? communication.Communication.QualityFilter.getDefaultInstance() : qualityFilter_;
+    }
+
+    public static final int COORDINATESFILTER_FIELD_NUMBER = 6;
+    private communication.Communication.CoordinatesFilter coordinatesFilter_;
+    /**
+     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     */
+    public boolean hasCoordinatesFilter() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     */
+    public communication.Communication.CoordinatesFilter getCoordinatesFilter() {
+      return coordinatesFilter_ == null ? communication.Communication.CoordinatesFilter.getDefaultInstance() : coordinatesFilter_;
+    }
+    /**
+     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     */
+    public communication.Communication.CoordinatesFilterOrBuilder getCoordinatesFilterOrBuilder() {
+      return coordinatesFilter_ == null ? communication.Communication.CoordinatesFilter.getDefaultInstance() : coordinatesFilter_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -9940,6 +10128,12 @@ public final class Communication {
           return false;
         }
       }
+      if (hasCoordinatesFilter()) {
+        if (!getCoordinatesFilter().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -9951,6 +10145,18 @@ public final class Communication {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(2, getOptionsInfo());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeMessage(3, getGroupsFilter());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeMessage(4, getTypesFilter());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeMessage(5, getQualityFilter());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeMessage(6, getCoordinatesFilter());
       }
       unknownFields.writeTo(output);
     }
@@ -9967,6 +10173,22 @@ public final class Communication {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, getOptionsInfo());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getGroupsFilter());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getTypesFilter());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getQualityFilter());
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getCoordinatesFilter());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -9994,6 +10216,26 @@ public final class Communication {
         result = result && getOptionsInfo()
             .equals(other.getOptionsInfo());
       }
+      result = result && (hasGroupsFilter() == other.hasGroupsFilter());
+      if (hasGroupsFilter()) {
+        result = result && getGroupsFilter()
+            .equals(other.getGroupsFilter());
+      }
+      result = result && (hasTypesFilter() == other.hasTypesFilter());
+      if (hasTypesFilter()) {
+        result = result && getTypesFilter()
+            .equals(other.getTypesFilter());
+      }
+      result = result && (hasQualityFilter() == other.hasQualityFilter());
+      if (hasQualityFilter()) {
+        result = result && getQualityFilter()
+            .equals(other.getQualityFilter());
+      }
+      result = result && (hasCoordinatesFilter() == other.hasCoordinatesFilter());
+      if (hasCoordinatesFilter()) {
+        result = result && getCoordinatesFilter()
+            .equals(other.getCoordinatesFilter());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -10012,6 +10254,22 @@ public final class Communication {
       if (hasOptionsInfo()) {
         hash = (37 * hash) + OPTIONSINFO_FIELD_NUMBER;
         hash = (53 * hash) + getOptionsInfo().hashCode();
+      }
+      if (hasGroupsFilter()) {
+        hash = (37 * hash) + GROUPSFILTER_FIELD_NUMBER;
+        hash = (53 * hash) + getGroupsFilter().hashCode();
+      }
+      if (hasTypesFilter()) {
+        hash = (37 * hash) + TYPESFILTER_FIELD_NUMBER;
+        hash = (53 * hash) + getTypesFilter().hashCode();
+      }
+      if (hasQualityFilter()) {
+        hash = (37 * hash) + QUALITYFILTER_FIELD_NUMBER;
+        hash = (53 * hash) + getQualityFilter().hashCode();
+      }
+      if (hasCoordinatesFilter()) {
+        hash = (37 * hash) + COORDINATESFILTER_FIELD_NUMBER;
+        hash = (53 * hash) + getCoordinatesFilter().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -10127,6 +10385,10 @@ public final class Communication {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getOptionsInfoFieldBuilder();
+          getGroupsFilterFieldBuilder();
+          getTypesFilterFieldBuilder();
+          getQualityFilterFieldBuilder();
+          getCoordinatesFilterFieldBuilder();
         }
       }
       public Builder clear() {
@@ -10139,6 +10401,30 @@ public final class Communication {
           optionsInfoBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
+        if (groupsFilterBuilder_ == null) {
+          groupsFilter_ = null;
+        } else {
+          groupsFilterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        if (typesFilterBuilder_ == null) {
+          typesFilter_ = null;
+        } else {
+          typesFilterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        if (qualityFilterBuilder_ == null) {
+          qualityFilter_ = null;
+        } else {
+          qualityFilterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        if (coordinatesFilterBuilder_ == null) {
+          coordinatesFilter_ = null;
+        } else {
+          coordinatesFilterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -10175,6 +10461,38 @@ public final class Communication {
         } else {
           result.optionsInfo_ = optionsInfoBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        if (groupsFilterBuilder_ == null) {
+          result.groupsFilter_ = groupsFilter_;
+        } else {
+          result.groupsFilter_ = groupsFilterBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        if (typesFilterBuilder_ == null) {
+          result.typesFilter_ = typesFilter_;
+        } else {
+          result.typesFilter_ = typesFilterBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        if (qualityFilterBuilder_ == null) {
+          result.qualityFilter_ = qualityFilter_;
+        } else {
+          result.qualityFilter_ = qualityFilterBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        if (coordinatesFilterBuilder_ == null) {
+          result.coordinatesFilter_ = coordinatesFilter_;
+        } else {
+          result.coordinatesFilter_ = coordinatesFilterBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -10197,6 +10515,18 @@ public final class Communication {
         if (other.hasOptionsInfo()) {
           mergeOptionsInfo(other.getOptionsInfo());
         }
+        if (other.hasGroupsFilter()) {
+          mergeGroupsFilter(other.getGroupsFilter());
+        }
+        if (other.hasTypesFilter()) {
+          mergeTypesFilter(other.getTypesFilter());
+        }
+        if (other.hasQualityFilter()) {
+          mergeQualityFilter(other.getQualityFilter());
+        }
+        if (other.hasCoordinatesFilter()) {
+          mergeCoordinatesFilter(other.getCoordinatesFilter());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -10208,6 +10538,11 @@ public final class Communication {
         }
         if (hasOptionsInfo()) {
           if (!getOptionsInfo().isInitialized()) {
+            return false;
+          }
+        }
+        if (hasCoordinatesFilter()) {
+          if (!getCoordinatesFilter().isInitialized()) {
             return false;
           }
         }
@@ -10387,6 +10722,478 @@ public final class Communication {
         return optionsInfoBuilder_;
       }
 
+      private communication.Communication.GroupsFilter groupsFilter_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          communication.Communication.GroupsFilter, communication.Communication.GroupsFilter.Builder, communication.Communication.GroupsFilterOrBuilder> groupsFilterBuilder_;
+      /**
+       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       */
+      public boolean hasGroupsFilter() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       */
+      public communication.Communication.GroupsFilter getGroupsFilter() {
+        if (groupsFilterBuilder_ == null) {
+          return groupsFilter_ == null ? communication.Communication.GroupsFilter.getDefaultInstance() : groupsFilter_;
+        } else {
+          return groupsFilterBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       */
+      public Builder setGroupsFilter(communication.Communication.GroupsFilter value) {
+        if (groupsFilterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          groupsFilter_ = value;
+          onChanged();
+        } else {
+          groupsFilterBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       */
+      public Builder setGroupsFilter(
+          communication.Communication.GroupsFilter.Builder builderForValue) {
+        if (groupsFilterBuilder_ == null) {
+          groupsFilter_ = builderForValue.build();
+          onChanged();
+        } else {
+          groupsFilterBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       */
+      public Builder mergeGroupsFilter(communication.Communication.GroupsFilter value) {
+        if (groupsFilterBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              groupsFilter_ != null &&
+              groupsFilter_ != communication.Communication.GroupsFilter.getDefaultInstance()) {
+            groupsFilter_ =
+              communication.Communication.GroupsFilter.newBuilder(groupsFilter_).mergeFrom(value).buildPartial();
+          } else {
+            groupsFilter_ = value;
+          }
+          onChanged();
+        } else {
+          groupsFilterBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       */
+      public Builder clearGroupsFilter() {
+        if (groupsFilterBuilder_ == null) {
+          groupsFilter_ = null;
+          onChanged();
+        } else {
+          groupsFilterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       */
+      public communication.Communication.GroupsFilter.Builder getGroupsFilterBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getGroupsFilterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       */
+      public communication.Communication.GroupsFilterOrBuilder getGroupsFilterOrBuilder() {
+        if (groupsFilterBuilder_ != null) {
+          return groupsFilterBuilder_.getMessageOrBuilder();
+        } else {
+          return groupsFilter_ == null ?
+              communication.Communication.GroupsFilter.getDefaultInstance() : groupsFilter_;
+        }
+      }
+      /**
+       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          communication.Communication.GroupsFilter, communication.Communication.GroupsFilter.Builder, communication.Communication.GroupsFilterOrBuilder> 
+          getGroupsFilterFieldBuilder() {
+        if (groupsFilterBuilder_ == null) {
+          groupsFilterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              communication.Communication.GroupsFilter, communication.Communication.GroupsFilter.Builder, communication.Communication.GroupsFilterOrBuilder>(
+                  getGroupsFilter(),
+                  getParentForChildren(),
+                  isClean());
+          groupsFilter_ = null;
+        }
+        return groupsFilterBuilder_;
+      }
+
+      private communication.Communication.TypesFilter typesFilter_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          communication.Communication.TypesFilter, communication.Communication.TypesFilter.Builder, communication.Communication.TypesFilterOrBuilder> typesFilterBuilder_;
+      /**
+       * <code>optional .TypesFilter typesFilter = 4;</code>
+       */
+      public boolean hasTypesFilter() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional .TypesFilter typesFilter = 4;</code>
+       */
+      public communication.Communication.TypesFilter getTypesFilter() {
+        if (typesFilterBuilder_ == null) {
+          return typesFilter_ == null ? communication.Communication.TypesFilter.getDefaultInstance() : typesFilter_;
+        } else {
+          return typesFilterBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .TypesFilter typesFilter = 4;</code>
+       */
+      public Builder setTypesFilter(communication.Communication.TypesFilter value) {
+        if (typesFilterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          typesFilter_ = value;
+          onChanged();
+        } else {
+          typesFilterBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .TypesFilter typesFilter = 4;</code>
+       */
+      public Builder setTypesFilter(
+          communication.Communication.TypesFilter.Builder builderForValue) {
+        if (typesFilterBuilder_ == null) {
+          typesFilter_ = builderForValue.build();
+          onChanged();
+        } else {
+          typesFilterBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .TypesFilter typesFilter = 4;</code>
+       */
+      public Builder mergeTypesFilter(communication.Communication.TypesFilter value) {
+        if (typesFilterBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+              typesFilter_ != null &&
+              typesFilter_ != communication.Communication.TypesFilter.getDefaultInstance()) {
+            typesFilter_ =
+              communication.Communication.TypesFilter.newBuilder(typesFilter_).mergeFrom(value).buildPartial();
+          } else {
+            typesFilter_ = value;
+          }
+          onChanged();
+        } else {
+          typesFilterBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>optional .TypesFilter typesFilter = 4;</code>
+       */
+      public Builder clearTypesFilter() {
+        if (typesFilterBuilder_ == null) {
+          typesFilter_ = null;
+          onChanged();
+        } else {
+          typesFilterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+      /**
+       * <code>optional .TypesFilter typesFilter = 4;</code>
+       */
+      public communication.Communication.TypesFilter.Builder getTypesFilterBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return getTypesFilterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .TypesFilter typesFilter = 4;</code>
+       */
+      public communication.Communication.TypesFilterOrBuilder getTypesFilterOrBuilder() {
+        if (typesFilterBuilder_ != null) {
+          return typesFilterBuilder_.getMessageOrBuilder();
+        } else {
+          return typesFilter_ == null ?
+              communication.Communication.TypesFilter.getDefaultInstance() : typesFilter_;
+        }
+      }
+      /**
+       * <code>optional .TypesFilter typesFilter = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          communication.Communication.TypesFilter, communication.Communication.TypesFilter.Builder, communication.Communication.TypesFilterOrBuilder> 
+          getTypesFilterFieldBuilder() {
+        if (typesFilterBuilder_ == null) {
+          typesFilterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              communication.Communication.TypesFilter, communication.Communication.TypesFilter.Builder, communication.Communication.TypesFilterOrBuilder>(
+                  getTypesFilter(),
+                  getParentForChildren(),
+                  isClean());
+          typesFilter_ = null;
+        }
+        return typesFilterBuilder_;
+      }
+
+      private communication.Communication.QualityFilter qualityFilter_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          communication.Communication.QualityFilter, communication.Communication.QualityFilter.Builder, communication.Communication.QualityFilterOrBuilder> qualityFilterBuilder_;
+      /**
+       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       */
+      public boolean hasQualityFilter() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       */
+      public communication.Communication.QualityFilter getQualityFilter() {
+        if (qualityFilterBuilder_ == null) {
+          return qualityFilter_ == null ? communication.Communication.QualityFilter.getDefaultInstance() : qualityFilter_;
+        } else {
+          return qualityFilterBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       */
+      public Builder setQualityFilter(communication.Communication.QualityFilter value) {
+        if (qualityFilterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          qualityFilter_ = value;
+          onChanged();
+        } else {
+          qualityFilterBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       */
+      public Builder setQualityFilter(
+          communication.Communication.QualityFilter.Builder builderForValue) {
+        if (qualityFilterBuilder_ == null) {
+          qualityFilter_ = builderForValue.build();
+          onChanged();
+        } else {
+          qualityFilterBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       */
+      public Builder mergeQualityFilter(communication.Communication.QualityFilter value) {
+        if (qualityFilterBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+              qualityFilter_ != null &&
+              qualityFilter_ != communication.Communication.QualityFilter.getDefaultInstance()) {
+            qualityFilter_ =
+              communication.Communication.QualityFilter.newBuilder(qualityFilter_).mergeFrom(value).buildPartial();
+          } else {
+            qualityFilter_ = value;
+          }
+          onChanged();
+        } else {
+          qualityFilterBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       */
+      public Builder clearQualityFilter() {
+        if (qualityFilterBuilder_ == null) {
+          qualityFilter_ = null;
+          onChanged();
+        } else {
+          qualityFilterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+      /**
+       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       */
+      public communication.Communication.QualityFilter.Builder getQualityFilterBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return getQualityFilterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       */
+      public communication.Communication.QualityFilterOrBuilder getQualityFilterOrBuilder() {
+        if (qualityFilterBuilder_ != null) {
+          return qualityFilterBuilder_.getMessageOrBuilder();
+        } else {
+          return qualityFilter_ == null ?
+              communication.Communication.QualityFilter.getDefaultInstance() : qualityFilter_;
+        }
+      }
+      /**
+       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          communication.Communication.QualityFilter, communication.Communication.QualityFilter.Builder, communication.Communication.QualityFilterOrBuilder> 
+          getQualityFilterFieldBuilder() {
+        if (qualityFilterBuilder_ == null) {
+          qualityFilterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              communication.Communication.QualityFilter, communication.Communication.QualityFilter.Builder, communication.Communication.QualityFilterOrBuilder>(
+                  getQualityFilter(),
+                  getParentForChildren(),
+                  isClean());
+          qualityFilter_ = null;
+        }
+        return qualityFilterBuilder_;
+      }
+
+      private communication.Communication.CoordinatesFilter coordinatesFilter_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          communication.Communication.CoordinatesFilter, communication.Communication.CoordinatesFilter.Builder, communication.Communication.CoordinatesFilterOrBuilder> coordinatesFilterBuilder_;
+      /**
+       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       */
+      public boolean hasCoordinatesFilter() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       */
+      public communication.Communication.CoordinatesFilter getCoordinatesFilter() {
+        if (coordinatesFilterBuilder_ == null) {
+          return coordinatesFilter_ == null ? communication.Communication.CoordinatesFilter.getDefaultInstance() : coordinatesFilter_;
+        } else {
+          return coordinatesFilterBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       */
+      public Builder setCoordinatesFilter(communication.Communication.CoordinatesFilter value) {
+        if (coordinatesFilterBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          coordinatesFilter_ = value;
+          onChanged();
+        } else {
+          coordinatesFilterBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       */
+      public Builder setCoordinatesFilter(
+          communication.Communication.CoordinatesFilter.Builder builderForValue) {
+        if (coordinatesFilterBuilder_ == null) {
+          coordinatesFilter_ = builderForValue.build();
+          onChanged();
+        } else {
+          coordinatesFilterBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       */
+      public Builder mergeCoordinatesFilter(communication.Communication.CoordinatesFilter value) {
+        if (coordinatesFilterBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+              coordinatesFilter_ != null &&
+              coordinatesFilter_ != communication.Communication.CoordinatesFilter.getDefaultInstance()) {
+            coordinatesFilter_ =
+              communication.Communication.CoordinatesFilter.newBuilder(coordinatesFilter_).mergeFrom(value).buildPartial();
+          } else {
+            coordinatesFilter_ = value;
+          }
+          onChanged();
+        } else {
+          coordinatesFilterBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       */
+      public Builder clearCoordinatesFilter() {
+        if (coordinatesFilterBuilder_ == null) {
+          coordinatesFilter_ = null;
+          onChanged();
+        } else {
+          coordinatesFilterBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      /**
+       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       */
+      public communication.Communication.CoordinatesFilter.Builder getCoordinatesFilterBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return getCoordinatesFilterFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       */
+      public communication.Communication.CoordinatesFilterOrBuilder getCoordinatesFilterOrBuilder() {
+        if (coordinatesFilterBuilder_ != null) {
+          return coordinatesFilterBuilder_.getMessageOrBuilder();
+        } else {
+          return coordinatesFilter_ == null ?
+              communication.Communication.CoordinatesFilter.getDefaultInstance() : coordinatesFilter_;
+        }
+      }
+      /**
+       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          communication.Communication.CoordinatesFilter, communication.Communication.CoordinatesFilter.Builder, communication.Communication.CoordinatesFilterOrBuilder> 
+          getCoordinatesFilterFieldBuilder() {
+        if (coordinatesFilterBuilder_ == null) {
+          coordinatesFilterBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              communication.Communication.CoordinatesFilter, communication.Communication.CoordinatesFilter.Builder, communication.Communication.CoordinatesFilterOrBuilder>(
+                  getCoordinatesFilter(),
+                  getParentForChildren(),
+                  isClean());
+          coordinatesFilter_ = null;
+        }
+        return coordinatesFilterBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:ManagerToCoreMessage)
     }
 
@@ -10557,15 +11364,18 @@ public final class Communication {
       "esCondition\030\001 \003(\0132\025.CoordinatesCondition" +
       "\0223\n\013conjunction\030\002 \001(\0162\036.CoordinatesFilte" +
       "r.Conjunction\"\036\n\013Conjunction\022\007\n\003AND\020\001\022\006\n" +
-      "\002OR\020\002\"\271\001\n\024ManagerToCoreMessage\0229\n\013messag" +
+      "\002OR\020\002\"\327\002\n\024ManagerToCoreMessage\0229\n\013messag" +
       "eType\030\001 \002(\0162$.ManagerToCoreMessage.MTCMe",
       "ssageType\022!\n\013optionsInfo\030\002 \001(\0132\014.Options" +
-      "Info\"C\n\016MTCMessageType\022\013\n\007OPTIONS\020\001\022\013\n\007F" +
-      "ILTERS\020\002\022\014\n\010CONTINUE\020\003\022\t\n\005ABORT\020\004*_\n\022Com" +
-      "parisonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n" +
-      "\007GREATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004" +
-      "\022\010\n\004LESS\020\005B\036\n\rcommunicationB\rCommunicati" +
-      "on"
+      "Info\022#\n\014groupsFilter\030\003 \001(\0132\r.GroupsFilte" +
+      "r\022!\n\013typesFilter\030\004 \001(\0132\014.TypesFilter\022%\n\r" +
+      "qualityFilter\030\005 \001(\0132\016.QualityFilter\022-\n\021c" +
+      "oordinatesFilter\030\006 \001(\0132\022.CoordinatesFilt" +
+      "er\"C\n\016MTCMessageType\022\013\n\007OPTIONS\020\001\022\013\n\007FIL" +
+      "TERS\020\002\022\014\n\010CONTINUE\020\003\022\t\n\005ABORT\020\004*_\n\022Compa" +
+      "risonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007G" +
+      "REATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010" +
+      "\n\004LESS\020\005B\036\n\rcommunicationB\rCommunication"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -10680,7 +11490,7 @@ public final class Communication {
     internal_static_ManagerToCoreMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ManagerToCoreMessage_descriptor,
-        new java.lang.String[] { "MessageType", "OptionsInfo", });
+        new java.lang.String[] { "MessageType", "OptionsInfo", "GroupsFilter", "TypesFilter", "QualityFilter", "CoordinatesFilter", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
