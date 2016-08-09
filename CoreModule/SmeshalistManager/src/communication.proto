@@ -18,3 +18,92 @@ message BoundingBox {
 	required double fromZ = 5;
 	required double toZ = 6;
 }
+
+message GroupsInfo {
+	repeated string allGroups = 1;
+}
+
+message StatisticsInfo{
+	required ElementsCount elementsCount = 1;
+	required BoundingBox boundongBox = 2;
+	required GroupsInfo groupsInfo = 3;
+
+}
+
+message CoreToManagerMessage{
+	enum CTMMessageType{
+		STATISTICS = 1;
+		BREAKPOINT = 2;
+	}
+
+	required CTMMessageType messageType = 1;
+	optional StatisticsInfo statisticsInfo = 2;
+}
+//----------------------------------------------------------------------------------------------------------------
+message OptionsInfo{
+	required bool transparentStructures = 1;
+	required bool dynamicRendering = 2;
+	required bool showLabels = 3;
+	required double mouseSensitivity = 4;
+}
+
+message TypesFilter{
+	map<string, bool> selectedTypes = 1;
+}
+
+message GroupsFilter{
+	map<string, bool> selectedGroups = 1;
+}
+
+enum ComparisonOperator{
+	GREATER_OR_EQUAL = 1;
+	GREATER = 2;
+	EQUAL = 3;
+	LESS_OR_EQUAL = 4;
+	LESS = 5;
+}
+
+message QualityCondition{
+
+	optional double leftValue = 1;
+	optional ComparisonOperator leftOperator = 2;
+	optional ComparisonOperator rightOperator = 3;
+	optional double rightValue = 4;
+}
+
+message QualityFilter{
+	repeated QualityCondition qualityCondition = 1;
+}
+
+message CoordinatesCondition{
+	required double xValue = 1;
+	required double yValue = 2;
+	required double zValue = 3;
+	required ComparisonOperator coordinatesOperator = 4;
+	required double constant = 5;
+
+}
+
+message CoordinatesFilter {
+	enum Conjunction {
+		AND = 1;
+		OR = 2;
+	}
+
+	repeated CoordinatesCondition coordinatesCondition = 1;
+	optional Conjunction conjunction = 2;
+}
+
+message ManagerToCoreMessage{
+	enum MTCMessageType{
+		OPTIONS = 1;
+		FILTERS = 2;
+		CONTINUE = 3;
+		ABORT = 4;
+	}
+
+	required MTCMessageType messageType = 1;
+	optional OptionsInfo optionsInfo = 2;
+
+
+}

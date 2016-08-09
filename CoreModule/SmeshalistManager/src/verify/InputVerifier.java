@@ -10,25 +10,28 @@ public class InputVerifier {
 		String v2Text = v2TextField.getText();
 		String comparator1 = v1ComboBox.getSelectedItem().toString();
 		String comparator2 = v2ComboBox.getSelectedItem().toString();
-		
+
 		try{
-			Double v1 = new Double(v1Text);
-			Double v2 = new Double(v2Text);
-			
-			if (comparator1.compareTo("=") == 0){
-				if (comparator2.compareTo("=") == 0){
-					return v1.compareTo(v2) == 0;
-				} else {
-					return false;
+			if ((v1Text.compareTo("") == 0) ^ (v2Text.compareTo("") == 0)){
+				String vText = v1Text + v2Text;
+				Double v = new Double(vText);
+				return true;
+
+			} else {
+				Double v1 = new Double(v1Text);
+				Double v2 = new Double(v2Text);
+
+				if (comparator1.compareTo("=") == 0){
+					if (comparator2.compareTo("=") == 0){
+						return v1.compareTo(v2) == 0;
+					} else {
+						return false;
+					}
 				}
+
+				return v1.compareTo(v2) < 0;
 			}
-			//jest tak ze jezeli chcemy zeby QUALITY bylo rowne jakiejs wartosci to musi byc
-			//wybrane 2 razy = w checkboxach
-			
-			return v1.compareTo(v2) < 0;
-			
-			
-			
+
 		}catch(NumberFormatException e){
 			return false;
 		}

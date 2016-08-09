@@ -1,6 +1,6 @@
 package window;
 
-import java.awt.Dimension;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -18,6 +18,10 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import communication.Communication.ComparisonOperator;
+import communication.Communication.QualityCondition;
+import communication.Communication.QualityFilter;
+import util.QualityEntry;
 import util.WindowUtil;
 import verify.InputVerifier;
 
@@ -36,7 +40,7 @@ public class QualityTab extends JPanel{
 	private BoxLayout boxLayout;
 	private BoxLayout mainLayout;
 	
-	private List<JPanel> conditionEntries;
+	private List<QualityEntry> conditionEntries;
 
 	public QualityTab(){
 		this.initializeView();
@@ -78,7 +82,9 @@ public class QualityTab extends JPanel{
 		controlsPanel = new JPanel();
 		controlsPanel.add(v1TextField);
 		controlsPanel.add(v1ComboBox);
-		controlsPanel.add(Box.createHorizontalStrut(50));
+		controlsPanel.add(Box.createHorizontalStrut(10));
+		controlsPanel.add(new JLabel("QUALITY"));
+		controlsPanel.add(Box.createHorizontalStrut(10));
 		controlsPanel.add(v2ComboBox);
 		controlsPanel.add(v2TextField);
 		controlsPanel.add(Box.createHorizontalStrut(50));
@@ -98,22 +104,13 @@ public class QualityTab extends JPanel{
 	}
 	
 	private void addButtonPressed() {
-		
+
 		if (!InputVerifier.verifyQualityInput(v1TextField,v1ComboBox,v2TextField,v2ComboBox)){
 			JOptionPane.showMessageDialog(MainWindow.getInstance(), "Wrong input!","Wrong input", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
-		
-		JPanel newEntry = new JPanel();
-		
-		newEntry.add(new JLabel(v1TextField.getText()));
-		newEntry.add(new JLabel(v1ComboBox.getSelectedItem().toString()));
-		newEntry.add(new JLabel("QUALITY"));
-		newEntry.add(new JLabel(v2ComboBox.getSelectedItem().toString()));
-		newEntry.add(new JLabel(v2TextField.getText()));
-		newEntry.add(Box.createHorizontalStrut(50));
-		newEntry.add(Box.createHorizontalGlue());
 
+		QualityEntry newEntry = new QualityEntry(v1TextField.getText(), v1ComboBox.getSelectedItem().toString(), v2TextField.getText(), v2ComboBox.getSelectedItem().toString());
 		JButton deleteButton = new JButton("Delete");
 		deleteButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
@@ -130,7 +127,7 @@ public class QualityTab extends JPanel{
 		scrollPaneContent.revalidate();
 		scrollPaneContent.repaint();
 	}
-	private void deleteButtonPressed(JPanel entry) {
+	private void deleteButtonPressed(QualityEntry entry) {
 		if (conditionEntries.contains(entry)){
 			conditionEntries.remove(entry);
 			scrollPaneContent.remove(entry);
@@ -139,6 +136,26 @@ public class QualityTab extends JPanel{
 		scrollPaneContent.revalidate();
 		scrollPaneContent.repaint();
 		
+	}
+
+	public QualityFilter getQualityFilter() {
+		QualityFilter.Builder qualityFilterBuilder = QualityFilter.newBuilder();
+		for (JPanel conditionEntry: conditionEntries){
+			JLabel leftValue = (JLabel)conditionEntry.getComponent(0);
+			JLabel leftOperator = (JLabel)conditionEntry.getComponent(1);
+			JLabel rightValue = (JLabel)conditionEntry.getComponent(3);
+			JLabel rightOperator = (JLabel)conditionEntry.getComponent(4);
+
+			QualityCondition.Builder qualityConditionBuilder = QualityCondition.newBuilder();
+			qualityConditionBuilder.setLeftValue(new Double(leftValue.getText()));
+			qualityConditionBuilder.setLeftOperator(FiltersTab.getComparisonOperator(leftOperator.getText()));
+			qualityConditionBuilder.setRightValue(new Double(rightValue.getText()));
+			qualityConditionBuilder.setRightOperator(FiltersTab.getComparisonOperator(rightOperator.getText()));
+
+			qualityFilterBuilder.addQualityCondition(qualityConditionBuilder);
+		}
+
+		return qualityFilterBuilder.build();
 	}
 
 }

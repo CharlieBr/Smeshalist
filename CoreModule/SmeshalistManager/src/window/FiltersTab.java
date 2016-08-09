@@ -1,5 +1,14 @@
 package window;
 
+import communication.Communication.ComparisonOperator;
+import communication.Communication.ComparisonOperator;
+import communication.Communication.GroupsFilter;
+import communication.Communication.TypesFilter;
+import communication.Communication.QualityFilter;
+import communication.Communication.CoordinatesFilter;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -58,9 +67,22 @@ public class FiltersTab extends JPanel{
 		buttonContainer = new JPanel();
 		buttonContainer.setBorder(new EmptyBorder(10, 0, 0, 0));
 		applyButton = new JButton("Apply");
+		applyButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				applyButtonPressed();
+			}
+		});
 		buttonContainer.add(applyButton);
 		
 		this.add(buttonContainer);
+	}
+
+	private void applyButtonPressed() {
+		TypesFilter typesFilter = typesTab.getTypesFilter();
+		GroupsFilter groupsFilter = groupsTab.getGroupsFilter();
+		QualityFilter qualityFilter = qualityTab.getQualityFilter();
+		CoordinatesFilter coordinatesFilter = coordinatesTab.getCoordinatesFilter();
 	}
 
 	private void setTestContent() {
@@ -86,5 +108,22 @@ public class FiltersTab extends JPanel{
 		
 		groupsTab.setGroups(groups);
 	}
-	
+
+	public static ComparisonOperator getComparisonOperator(String operator) {
+		switch (operator) {
+			case "<":
+				return ComparisonOperator.LESS;
+			case "<=":
+				return ComparisonOperator.LESS_OR_EQUAL;
+			case ">":
+				return ComparisonOperator.GREATER;
+			case ">=":
+				return ComparisonOperator.GREATER_OR_EQUAL;
+			case "=":
+				return ComparisonOperator.EQUAL;
+			default:
+				System.out.println("No such operator: " + operator);
+				return null;
+		}
+	}
 }

@@ -1,5 +1,8 @@
 package window;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -8,24 +11,25 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JSlider;
 import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
+import communication.Communication.ManagerToCoreMessage;
+import communication.Communication.ManagerToCoreMessage.MTCMessageType;
+import communication.Communication.OptionsInfo;
 import util.WindowUtil;
 
 public class OptionsTab extends JPanel{
 	
 	private static final long serialVersionUID = 2544760396056394118L;
 
-	private boolean transparentStructures;
-	private boolean dynamicRendering;
-	private boolean showLabels;
-	private double mouseSensitivity; 
-	
 	private GroupLayout mainLayout;
 	private JCheckBox transparencyCheckBox;
 	private JCheckBox renderingCheckBox;
 	private JCheckBox showLabelsCheckBox;
 	private JSlider sensitivitySlider;
+	private JButton applyButton;
 	private JButton continueButton;
 	private JButton abortButton;
 	private JPanel buttonContainer;
@@ -54,7 +58,7 @@ public class OptionsTab extends JPanel{
 		showLabelsCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
 		
 		JLabel label = new JLabel("Mouse sensitivity");
-		label.setBorder(new EmptyBorder(30, 0, 20, 0));
+		label.setBorder(new EmptyBorder(0, 0, 10, 0));
 		sensitivitySlider = new JSlider(JScrollBar.HORIZONTAL, 0, 20, 1);
 		sensitivitySlider.setMajorTickSpacing(5);
 		sensitivitySlider.setMinorTickSpacing(1);
@@ -62,13 +66,39 @@ public class OptionsTab extends JPanel{
 		sensitivitySlider.setPaintLabels(true);
 		sensitivitySlider.setBorder(new EmptyBorder(0, 20, 20, 20));
 		
+		applyButton = new JButton("Apply");	
+		applyButton.setBorder(new EmptyBorder(5,25,5,25));
+		applyButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				applyButtonPressed();
+				
+			}
+		});
+		JPanel applyButtonContainer = new JPanel();
+		applyButtonContainer.setBorder(new EmptyBorder(0,145,0,145));
+		applyButtonContainer.add(applyButton);
 		continueButton = new JButton("Continue");
+		continueButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				continueButtonPressed();
+			}
+		});
 		abortButton = new JButton("Abort");
+		abortButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				abortButtonPressed();
+			}
+		});
 		buttonContainer = new JPanel();
 		buttonContainer.add(continueButton);
 		buttonContainer.add(abortButton);
-		buttonContainer.setBorder(new EmptyBorder(100, 100, 20, 100));
-		
+		buttonContainer.setBorder(new CompoundBorder(new TitledBorder("Control"), new EmptyBorder(0, 100, 0, 100)));
 		
 		mainLayout.setHorizontalGroup(
 				mainLayout.createParallelGroup()
@@ -77,7 +107,8 @@ public class OptionsTab extends JPanel{
 				.addComponent(showLabelsCheckBox)
 				.addGroup(mainLayout.createParallelGroup()
 						.addComponent(label)
-						.addComponent(sensitivitySlider))
+						.addComponent(sensitivitySlider)
+						.addComponent(applyButtonContainer))
 						.addComponent(buttonContainer)
 				);
 		
@@ -88,45 +119,45 @@ public class OptionsTab extends JPanel{
 				.addComponent(showLabelsCheckBox)
 				.addGroup(mainLayout.createSequentialGroup()
 						.addComponent(label)
-						.addComponent(sensitivitySlider))
+						.addComponent(sensitivitySlider)
+						.addComponent(applyButtonContainer))
 						.addComponent(buttonContainer)
 				
 				);
+	}		
 	
-	}	
-	public boolean isTransparentStructures() {
-		return transparentStructures;
-	}
-
-	public void setTransparentStructures(boolean transparentStructures) {
-		this.transparentStructures = transparentStructures;
-	}
-
-	public boolean isDynamicRendering() {
-		return dynamicRendering;
-	}
-
-	public void setDynamicRendering(boolean dynamicRendering) {
-		this.dynamicRendering = dynamicRendering;
-	}
-
-	public double getMouseSensitivity() {
-		return mouseSensitivity;
-	}
-
-	public void setMouseSensitivity(double mouseSensitivity) {
-		this.mouseSensitivity = mouseSensitivity;
-	}
-
-	public boolean isShowLabels() {
-		return showLabels;
-	}
-
-	public void setShowLabels(boolean showLabels) {
-		this.showLabels = showLabels;
+	private void applyButtonPressed(){
+		OptionsInfo.Builder optionsInfo = OptionsInfo.newBuilder();
+		optionsInfo.setDynamicRendering(renderingCheckBox.isSelected());
+		optionsInfo.setShowLabels(showLabelsCheckBox.isSelected());
+		optionsInfo.setTransparentStructures(transparencyCheckBox.isSelected());
+		optionsInfo.setMouseSensitivity(sensitivitySlider.getValue() * 0.1);
+		
+		ManagerToCoreMessage.Builder messageBuilder = ManagerToCoreMessage.newBuilder();
+		messageBuilder.setMessageType(MTCMessageType.OPTIONS);
+		messageBuilder.setOptionsInfo(optionsInfo.build());
+		
+		ManagerToCoreMessage message = messageBuilder.build();
+		//TODO send message to Core
 	}
 	
+	private void continueButtonPressed(){
+
+		ManagerToCoreMessage.Builder messageBuilder = ManagerToCoreMessage.newBuilder();
+		messageBuilder.setMessageType(MTCMessageType.CONTINUE);
+		
+		ManagerToCoreMessage message = messageBuilder.build();
+		//TODO send message to Core
+
+	}
 	
-	
-	
+	private void abortButtonPressed(){
+
+		ManagerToCoreMessage.Builder messageBuilder = ManagerToCoreMessage.newBuilder();
+		messageBuilder.setMessageType(MTCMessageType.ABORT);
+		
+		ManagerToCoreMessage message = messageBuilder.build();
+		//TODO send message to Core
+
+	}
 }

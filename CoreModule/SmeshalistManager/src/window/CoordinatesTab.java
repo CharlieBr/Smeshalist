@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import communication.Communication.CoordinatesFilter;
 import util.WindowUtil;
 import verify.InputVerifier;
 
@@ -121,6 +122,8 @@ public class CoordinatesTab extends JPanel{
 			JOptionPane.showMessageDialog(MainWindow.getInstance(), "Wrong input!","Wrong input", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
+
+		//TODO you can do this prettier by creating class which extends JPanel and store it as entry with needed values
 		
 		JPanel newEntry = new JPanel();
 		newEntry.add(new JLabel(xTextField.getText() + "x"));
@@ -162,5 +165,14 @@ public class CoordinatesTab extends JPanel{
 		scrollPaneContent.revalidate();
 		scrollPaneContent.repaint();
 		
+	}
+
+	public CoordinatesFilter getCoordinatesFilter() {
+		CoordinatesFilter.Builder coordinatesFilterBuilder = CoordinatesFilter.newBuilder();
+		for (JPanel conditionEntry: conditionEntries){
+			//TODO save filter info to protobuf message
+		}
+
+		return coordinatesFilterBuilder.build();
 	}
 }

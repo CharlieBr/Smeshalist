@@ -1,5 +1,6 @@
 package window;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import communication.Communication.GroupsFilter;
 import util.WindowUtil;
 
 public class GroupsTab extends JScrollPane{
@@ -67,5 +69,17 @@ public class GroupsTab extends JScrollPane{
 
 	}
 
-	
+
+	public GroupsFilter getGroupsFilter() {
+		GroupsFilter.Builder groupsFilterBuilder = GroupsFilter.newBuilder();
+		Iterator<JCheckBox> iter = groupsCheckBoxes.iterator();
+		for (String groupName: groups){
+			Boolean selected = iter.next().isSelected();
+			groupsFilterBuilder.putSelectedGroups(groupName, selected);
+			System.out.println(groupName+ " " + selected);
+		}
+
+		return groupsFilterBuilder.build();
+
+	}
 }

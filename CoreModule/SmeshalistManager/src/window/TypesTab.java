@@ -1,5 +1,6 @@
 package window;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import communication.Communication.TypesFilter;
 import util.WindowUtil;
 
 public class TypesTab extends JPanel{
@@ -62,5 +64,17 @@ public class TypesTab extends JPanel{
 		
 		this.putStructures();
 	}
-	
+
+	public TypesFilter getTypesFilter() {
+		TypesFilter.Builder typesFilterBuilder = TypesFilter.newBuilder();
+		Iterator<JCheckBox> iter = typeCheckBoxes.iterator();
+		for (String structureType: structures){
+			Boolean selected = iter.next().isSelected();
+			typesFilterBuilder.putSelectedTypes(structureType, selected);
+			System.out.println(structureType + " " + selected);
+		}
+
+		return typesFilterBuilder.build();
+
+	}
 }
