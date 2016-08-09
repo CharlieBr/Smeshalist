@@ -444,18 +444,19 @@ void protobuf_AddDesc_structs_2eproto() {
     "nt3D\022&\n\002v4\030\004 \002(\0132\032.structDefinitions.Poi"
     "nt3D\022+\n\004prop\030\005 \001(\0132\035.structDefinitions.P"
     "roperties\"4\n\010BlockSet\022(\n\006blocks\030\001 \003(\0132\030."
-    "structDefinitions.Block\"n\n\013MessageInfo\0221"
-    "\n\004type\030\001 \002(\0162#.structDefinitions.Message"
-    "Info.Type\",\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDER\020\002\022"
-    "\016\n\nBREAKPOINT\020\003\"\275\002\n\013DataPackage\022/\n\010point"
-    "s2D\030\001 \001(\0132\035.structDefinitions.Point2DSet"
-    "\022/\n\010points3D\030\002 \001(\0132\035.structDefinitions.P"
-    "oint3DSet\022.\n\010vertexes\030\003 \001(\0132\034.structDefi"
-    "nitions.VertexSet\022)\n\005edges\030\004 \001(\0132\032.struc"
-    "tDefinitions.EdgeSet\0221\n\005faces\030\005 \001(\0132\".st"
-    "ructDefinitions.TriangleFaceSet\022+\n\006block"
-    "s\030\006 \001(\0132\033.structDefinitions.BlockSet\022\021\n\t"
-    "endOfData\030\007 \002(\010", 1695);
+    "structDefinitions.Block\"\223\001\n\013MessageInfo\022"
+    "1\n\004type\030\001 \002(\0162#.structDefinitions.Messag"
+    "eInfo.Type\"Q\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDER\020\002"
+    "\022\016\n\nBREAKPOINT\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010REJECT"
+    "ED\020\005\022\007\n\003ACK\020\006\"\275\002\n\013DataPackage\022/\n\010points2"
+    "D\030\001 \001(\0132\035.structDefinitions.Point2DSet\022/"
+    "\n\010points3D\030\002 \001(\0132\035.structDefinitions.Poi"
+    "nt3DSet\022.\n\010vertexes\030\003 \001(\0132\034.structDefini"
+    "tions.VertexSet\022)\n\005edges\030\004 \001(\0132\032.structD"
+    "efinitions.EdgeSet\0221\n\005faces\030\005 \001(\0132\".stru"
+    "ctDefinitions.TriangleFaceSet\022+\n\006blocks\030"
+    "\006 \001(\0132\033.structDefinitions.BlockSet\022\021\n\ten"
+    "dOfData\030\007 \002(\010", 1733);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "structs.proto", &protobuf_RegisterTypes);
   Properties::default_instance_ = new Properties();
@@ -5823,6 +5824,9 @@ bool MessageInfo_Type_IsValid(int value) {
     case 1:
     case 2:
     case 3:
+    case 4:
+    case 5:
+    case 6:
       return true;
     default:
       return false;
@@ -5833,6 +5837,9 @@ bool MessageInfo_Type_IsValid(int value) {
 const MessageInfo_Type MessageInfo::DATA;
 const MessageInfo_Type MessageInfo::RENDER;
 const MessageInfo_Type MessageInfo::BREAKPOINT;
+const MessageInfo_Type MessageInfo::ACCEPTED;
+const MessageInfo_Type MessageInfo::REJECTED;
+const MessageInfo_Type MessageInfo::ACK;
 const MessageInfo_Type MessageInfo::Type_MIN;
 const MessageInfo_Type MessageInfo::Type_MAX;
 const int MessageInfo::Type_ARRAYSIZE;

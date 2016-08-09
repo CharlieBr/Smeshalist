@@ -57,7 +57,15 @@ public class App {
 			tool.addGeometry(b);
 		}
 		
+		System.out.println("Flush...");
 		tool.flushBuffer();
+		System.out.println("Render..");
+		tool.render();
+		System.out.println("Breakpoint...");
+		tool.breakpoint();
+		System.out.println("Destroy...");
+		Smeshalist.destroySmeshialist();
+		
 	}
 
 }

@@ -1,7 +1,7 @@
 #ifndef ABSTRACTSERVER_H
 #define ABSTRACTSERVER_H
 
-#define BUFFER_SIZE 1024
+#define BUFFER_SIZE 1024*2
 #define IPADDRESS "127.0.0.1"
 #define PORT 8383
 #define SOCKET_TIMEOUT_SEC 1
@@ -23,7 +23,8 @@ class AbstractServer
 
         void registerStructuresHandler(Data* data);
     protected:
-        virtual void startServerInNewThread() {};
+        virtual int getBytesFromSocket(char[], int) = 0;
+        virtual int sendBytesToSocket(char[], int) = 0;
 
         void parsePoint2DSet(structDefinitions::Point2DSet*);
         void parsePoint3DSet(structDefinitions::Point3DSet*);
@@ -32,10 +33,18 @@ class AbstractServer
         void parseTriangleFaceSet(structDefinitions::TriangleFaceSet*);
         void parseBlockSet(structDefinitions::BlockSet*);
 
-        Data* handler;
+        void getDataPackages();
+        void sendAcknowlage();
+        void startServerInNewThread();
+
+        //TMP
+        void sendAccept();
+
+        Data* handler = NULL;
         std::atomic_bool isStopped;
     private:
         Point3D parsePoint(const structDefinitions::Point3D*);
+        Label getLabel(string);
 };
 
 #endif // ABSTRACTSERVER_H
