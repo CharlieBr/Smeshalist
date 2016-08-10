@@ -25,9 +25,8 @@ message GroupsInfo {
 
 message StatisticsInfo{
 	required ElementsCount elementsCount = 1;
-	required BoundingBox boundongBox = 2;
+	required BoundingBox boundingBox = 2;
 	required GroupsInfo groupsInfo = 3;
-
 }
 
 message CoreToManagerMessage{

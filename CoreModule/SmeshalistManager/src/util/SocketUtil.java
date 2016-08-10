@@ -9,6 +9,7 @@ public class SocketUtil {
 	public static DatagramSocket socket;
 	public static InetAddress IP;
 	public static final int port = 8393;
+	public static int CTMMessageLength = 1024;
 
 	static {
 		try {

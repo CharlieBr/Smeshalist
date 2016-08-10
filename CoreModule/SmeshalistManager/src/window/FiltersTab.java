@@ -1,5 +1,6 @@
 package window;
 
+import communication.Communication.GroupsInfo;
 import communication.Communication.ManagerToCoreMessage;
 import communication.Communication.ComparisonOperator;
 import communication.Communication.CoordinatesFilter.Conjunction;
@@ -112,6 +113,10 @@ public class FiltersTab extends JPanel{
 		GroupsTab.setChanged(false);
 		CoordinatesTab.setChanged(false);
 		QualityTab.setChanged(false);
+	}
+
+	public void setGroupsInfo(GroupsInfo groupsInfo){
+		typesTab.setStructures(groupsInfo.getAllGroupsList());
 	}
 
 	private void setTestContent() {

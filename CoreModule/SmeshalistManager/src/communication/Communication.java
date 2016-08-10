@@ -2778,17 +2778,17 @@ public final class Communication {
     communication.Communication.ElementsCountOrBuilder getElementsCountOrBuilder();
 
     /**
-     * <code>required .BoundingBox boundongBox = 2;</code>
+     * <code>required .BoundingBox boundingBox = 2;</code>
      */
-    boolean hasBoundongBox();
+    boolean hasBoundingBox();
     /**
-     * <code>required .BoundingBox boundongBox = 2;</code>
+     * <code>required .BoundingBox boundingBox = 2;</code>
      */
-    communication.Communication.BoundingBox getBoundongBox();
+    communication.Communication.BoundingBox getBoundingBox();
     /**
-     * <code>required .BoundingBox boundongBox = 2;</code>
+     * <code>required .BoundingBox boundingBox = 2;</code>
      */
-    communication.Communication.BoundingBoxOrBuilder getBoundongBoxOrBuilder();
+    communication.Communication.BoundingBoxOrBuilder getBoundingBoxOrBuilder();
 
     /**
      * <code>required .GroupsInfo groupsInfo = 3;</code>
@@ -2861,12 +2861,12 @@ public final class Communication {
             case 18: {
               communication.Communication.BoundingBox.Builder subBuilder = null;
               if (((bitField0_ & 0x00000002) == 0x00000002)) {
-                subBuilder = boundongBox_.toBuilder();
+                subBuilder = boundingBox_.toBuilder();
               }
-              boundongBox_ = input.readMessage(communication.Communication.BoundingBox.PARSER, extensionRegistry);
+              boundingBox_ = input.readMessage(communication.Communication.BoundingBox.PARSER, extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(boundongBox_);
-                boundongBox_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(boundingBox_);
+                boundingBox_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000002;
               break;
@@ -2930,25 +2930,25 @@ public final class Communication {
       return elementsCount_ == null ? communication.Communication.ElementsCount.getDefaultInstance() : elementsCount_;
     }
 
-    public static final int BOUNDONGBOX_FIELD_NUMBER = 2;
-    private communication.Communication.BoundingBox boundongBox_;
+    public static final int BOUNDINGBOX_FIELD_NUMBER = 2;
+    private communication.Communication.BoundingBox boundingBox_;
     /**
-     * <code>required .BoundingBox boundongBox = 2;</code>
+     * <code>required .BoundingBox boundingBox = 2;</code>
      */
-    public boolean hasBoundongBox() {
+    public boolean hasBoundingBox() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required .BoundingBox boundongBox = 2;</code>
+     * <code>required .BoundingBox boundingBox = 2;</code>
      */
-    public communication.Communication.BoundingBox getBoundongBox() {
-      return boundongBox_ == null ? communication.Communication.BoundingBox.getDefaultInstance() : boundongBox_;
+    public communication.Communication.BoundingBox getBoundingBox() {
+      return boundingBox_ == null ? communication.Communication.BoundingBox.getDefaultInstance() : boundingBox_;
     }
     /**
-     * <code>required .BoundingBox boundongBox = 2;</code>
+     * <code>required .BoundingBox boundingBox = 2;</code>
      */
-    public communication.Communication.BoundingBoxOrBuilder getBoundongBoxOrBuilder() {
-      return boundongBox_ == null ? communication.Communication.BoundingBox.getDefaultInstance() : boundongBox_;
+    public communication.Communication.BoundingBoxOrBuilder getBoundingBoxOrBuilder() {
+      return boundingBox_ == null ? communication.Communication.BoundingBox.getDefaultInstance() : boundingBox_;
     }
 
     public static final int GROUPSINFO_FIELD_NUMBER = 3;
@@ -2982,7 +2982,7 @@ public final class Communication {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasBoundongBox()) {
+      if (!hasBoundingBox()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2994,7 +2994,7 @@ public final class Communication {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!getBoundongBox().isInitialized()) {
+      if (!getBoundingBox().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3008,7 +3008,7 @@ public final class Communication {
         output.writeMessage(1, getElementsCount());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeMessage(2, getBoundongBox());
+        output.writeMessage(2, getBoundingBox());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(3, getGroupsInfo());
@@ -3027,7 +3027,7 @@ public final class Communication {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getBoundongBox());
+          .computeMessageSize(2, getBoundingBox());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3055,10 +3055,10 @@ public final class Communication {
         result = result && getElementsCount()
             .equals(other.getElementsCount());
       }
-      result = result && (hasBoundongBox() == other.hasBoundongBox());
-      if (hasBoundongBox()) {
-        result = result && getBoundongBox()
-            .equals(other.getBoundongBox());
+      result = result && (hasBoundingBox() == other.hasBoundingBox());
+      if (hasBoundingBox()) {
+        result = result && getBoundingBox()
+            .equals(other.getBoundingBox());
       }
       result = result && (hasGroupsInfo() == other.hasGroupsInfo());
       if (hasGroupsInfo()) {
@@ -3080,9 +3080,9 @@ public final class Communication {
         hash = (37 * hash) + ELEMENTSCOUNT_FIELD_NUMBER;
         hash = (53 * hash) + getElementsCount().hashCode();
       }
-      if (hasBoundongBox()) {
-        hash = (37 * hash) + BOUNDONGBOX_FIELD_NUMBER;
-        hash = (53 * hash) + getBoundongBox().hashCode();
+      if (hasBoundingBox()) {
+        hash = (37 * hash) + BOUNDINGBOX_FIELD_NUMBER;
+        hash = (53 * hash) + getBoundingBox().hashCode();
       }
       if (hasGroupsInfo()) {
         hash = (37 * hash) + GROUPSINFO_FIELD_NUMBER;
@@ -3202,7 +3202,7 @@ public final class Communication {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getElementsCountFieldBuilder();
-          getBoundongBoxFieldBuilder();
+          getBoundingBoxFieldBuilder();
           getGroupsInfoFieldBuilder();
         }
       }
@@ -3214,10 +3214,10 @@ public final class Communication {
           elementsCountBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
-        if (boundongBoxBuilder_ == null) {
-          boundongBox_ = null;
+        if (boundingBoxBuilder_ == null) {
+          boundingBox_ = null;
         } else {
-          boundongBoxBuilder_.clear();
+          boundingBoxBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
         if (groupsInfoBuilder_ == null) {
@@ -3261,10 +3261,10 @@ public final class Communication {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        if (boundongBoxBuilder_ == null) {
-          result.boundongBox_ = boundongBox_;
+        if (boundingBoxBuilder_ == null) {
+          result.boundingBox_ = boundingBox_;
         } else {
-          result.boundongBox_ = boundongBoxBuilder_.build();
+          result.boundingBox_ = boundingBoxBuilder_.build();
         }
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
@@ -3293,8 +3293,8 @@ public final class Communication {
         if (other.hasElementsCount()) {
           mergeElementsCount(other.getElementsCount());
         }
-        if (other.hasBoundongBox()) {
-          mergeBoundongBox(other.getBoundongBox());
+        if (other.hasBoundingBox()) {
+          mergeBoundingBox(other.getBoundingBox());
         }
         if (other.hasGroupsInfo()) {
           mergeGroupsInfo(other.getGroupsInfo());
@@ -3308,7 +3308,7 @@ public final class Communication {
         if (!hasElementsCount()) {
           return false;
         }
-        if (!hasBoundongBox()) {
+        if (!hasBoundingBox()) {
           return false;
         }
         if (!hasGroupsInfo()) {
@@ -3317,7 +3317,7 @@ public final class Communication {
         if (!getElementsCount().isInitialized()) {
           return false;
         }
-        if (!getBoundongBox().isInitialized()) {
+        if (!getBoundingBox().isInitialized()) {
           return false;
         }
         return true;
@@ -3460,122 +3460,122 @@ public final class Communication {
         return elementsCountBuilder_;
       }
 
-      private communication.Communication.BoundingBox boundongBox_ = null;
+      private communication.Communication.BoundingBox boundingBox_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
-          communication.Communication.BoundingBox, communication.Communication.BoundingBox.Builder, communication.Communication.BoundingBoxOrBuilder> boundongBoxBuilder_;
+          communication.Communication.BoundingBox, communication.Communication.BoundingBox.Builder, communication.Communication.BoundingBoxOrBuilder> boundingBoxBuilder_;
       /**
-       * <code>required .BoundingBox boundongBox = 2;</code>
+       * <code>required .BoundingBox boundingBox = 2;</code>
        */
-      public boolean hasBoundongBox() {
+      public boolean hasBoundingBox() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required .BoundingBox boundongBox = 2;</code>
+       * <code>required .BoundingBox boundingBox = 2;</code>
        */
-      public communication.Communication.BoundingBox getBoundongBox() {
-        if (boundongBoxBuilder_ == null) {
-          return boundongBox_ == null ? communication.Communication.BoundingBox.getDefaultInstance() : boundongBox_;
+      public communication.Communication.BoundingBox getBoundingBox() {
+        if (boundingBoxBuilder_ == null) {
+          return boundingBox_ == null ? communication.Communication.BoundingBox.getDefaultInstance() : boundingBox_;
         } else {
-          return boundongBoxBuilder_.getMessage();
+          return boundingBoxBuilder_.getMessage();
         }
       }
       /**
-       * <code>required .BoundingBox boundongBox = 2;</code>
+       * <code>required .BoundingBox boundingBox = 2;</code>
        */
-      public Builder setBoundongBox(communication.Communication.BoundingBox value) {
-        if (boundongBoxBuilder_ == null) {
+      public Builder setBoundingBox(communication.Communication.BoundingBox value) {
+        if (boundingBoxBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          boundongBox_ = value;
+          boundingBox_ = value;
           onChanged();
         } else {
-          boundongBoxBuilder_.setMessage(value);
+          boundingBoxBuilder_.setMessage(value);
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .BoundingBox boundongBox = 2;</code>
+       * <code>required .BoundingBox boundingBox = 2;</code>
        */
-      public Builder setBoundongBox(
+      public Builder setBoundingBox(
           communication.Communication.BoundingBox.Builder builderForValue) {
-        if (boundongBoxBuilder_ == null) {
-          boundongBox_ = builderForValue.build();
+        if (boundingBoxBuilder_ == null) {
+          boundingBox_ = builderForValue.build();
           onChanged();
         } else {
-          boundongBoxBuilder_.setMessage(builderForValue.build());
+          boundingBoxBuilder_.setMessage(builderForValue.build());
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .BoundingBox boundongBox = 2;</code>
+       * <code>required .BoundingBox boundingBox = 2;</code>
        */
-      public Builder mergeBoundongBox(communication.Communication.BoundingBox value) {
-        if (boundongBoxBuilder_ == null) {
+      public Builder mergeBoundingBox(communication.Communication.BoundingBox value) {
+        if (boundingBoxBuilder_ == null) {
           if (((bitField0_ & 0x00000002) == 0x00000002) &&
-              boundongBox_ != null &&
-              boundongBox_ != communication.Communication.BoundingBox.getDefaultInstance()) {
-            boundongBox_ =
-              communication.Communication.BoundingBox.newBuilder(boundongBox_).mergeFrom(value).buildPartial();
+              boundingBox_ != null &&
+              boundingBox_ != communication.Communication.BoundingBox.getDefaultInstance()) {
+            boundingBox_ =
+              communication.Communication.BoundingBox.newBuilder(boundingBox_).mergeFrom(value).buildPartial();
           } else {
-            boundongBox_ = value;
+            boundingBox_ = value;
           }
           onChanged();
         } else {
-          boundongBoxBuilder_.mergeFrom(value);
+          boundingBoxBuilder_.mergeFrom(value);
         }
         bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>required .BoundingBox boundongBox = 2;</code>
+       * <code>required .BoundingBox boundingBox = 2;</code>
        */
-      public Builder clearBoundongBox() {
-        if (boundongBoxBuilder_ == null) {
-          boundongBox_ = null;
+      public Builder clearBoundingBox() {
+        if (boundingBoxBuilder_ == null) {
+          boundingBox_ = null;
           onChanged();
         } else {
-          boundongBoxBuilder_.clear();
+          boundingBoxBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
-       * <code>required .BoundingBox boundongBox = 2;</code>
+       * <code>required .BoundingBox boundingBox = 2;</code>
        */
-      public communication.Communication.BoundingBox.Builder getBoundongBoxBuilder() {
+      public communication.Communication.BoundingBox.Builder getBoundingBoxBuilder() {
         bitField0_ |= 0x00000002;
         onChanged();
-        return getBoundongBoxFieldBuilder().getBuilder();
+        return getBoundingBoxFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .BoundingBox boundongBox = 2;</code>
+       * <code>required .BoundingBox boundingBox = 2;</code>
        */
-      public communication.Communication.BoundingBoxOrBuilder getBoundongBoxOrBuilder() {
-        if (boundongBoxBuilder_ != null) {
-          return boundongBoxBuilder_.getMessageOrBuilder();
+      public communication.Communication.BoundingBoxOrBuilder getBoundingBoxOrBuilder() {
+        if (boundingBoxBuilder_ != null) {
+          return boundingBoxBuilder_.getMessageOrBuilder();
         } else {
-          return boundongBox_ == null ?
-              communication.Communication.BoundingBox.getDefaultInstance() : boundongBox_;
+          return boundingBox_ == null ?
+              communication.Communication.BoundingBox.getDefaultInstance() : boundingBox_;
         }
       }
       /**
-       * <code>required .BoundingBox boundongBox = 2;</code>
+       * <code>required .BoundingBox boundingBox = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.BoundingBox, communication.Communication.BoundingBox.Builder, communication.Communication.BoundingBoxOrBuilder> 
-          getBoundongBoxFieldBuilder() {
-        if (boundongBoxBuilder_ == null) {
-          boundongBoxBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+          getBoundingBoxFieldBuilder() {
+        if (boundingBoxBuilder_ == null) {
+          boundingBoxBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               communication.Communication.BoundingBox, communication.Communication.BoundingBox.Builder, communication.Communication.BoundingBoxOrBuilder>(
-                  getBoundongBox(),
+                  getBoundingBox(),
                   getParentForChildren(),
                   isClean());
-          boundongBox_ = null;
+          boundingBox_ = null;
         }
-        return boundongBoxBuilder_;
+        return boundingBoxBuilder_;
       }
 
       private communication.Communication.GroupsInfo groupsInfo_ = null;
@@ -11336,7 +11336,7 @@ public final class Communication {
       "\022\r\n\005fromZ\030\005 \002(\001\022\013\n\003toZ\030\006 \002(\001\"\037\n\nGroupsIn" +
       "fo\022\021\n\tallGroups\030\001 \003(\t\"{\n\016StatisticsInfo\022" +
       "%\n\relementsCount\030\001 \002(\0132\016.ElementsCount\022!",
-      "\n\013boundongBox\030\002 \002(\0132\014.BoundingBox\022\037\n\ngro" +
+      "\n\013boundingBox\030\002 \002(\0132\014.BoundingBox\022\037\n\ngro" +
       "upsInfo\030\003 \002(\0132\013.GroupsInfo\"\254\001\n\024CoreToMan" +
       "agerMessage\0229\n\013messageType\030\001 \002(\0162$.CoreT" +
       "oManagerMessage.CTMMessageType\022\'\n\016statis" +
@@ -11424,7 +11424,7 @@ public final class Communication {
     internal_static_StatisticsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_StatisticsInfo_descriptor,
-        new java.lang.String[] { "ElementsCount", "BoundongBox", "GroupsInfo", });
+        new java.lang.String[] { "ElementsCount", "BoundingBox", "GroupsInfo", });
     internal_static_CoreToManagerMessage_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_CoreToManagerMessage_fieldAccessorTable = new

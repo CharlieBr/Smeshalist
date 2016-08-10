@@ -77,6 +77,7 @@ public class TypesTab extends JPanel{
 		for (String structureType: structures){
 			Boolean selected = iter.next().isSelected();
 			typesFilterBuilder.putSelectedTypes(structureType, selected);
+
 		}
 
 		return typesFilterBuilder.build();
