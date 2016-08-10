@@ -9,6 +9,7 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 import geometry.Point2D;
@@ -29,7 +30,7 @@ import structDefinitions.Structures.Vertex;
 import structDefinitions.Structures.VertexSet;
 
 public class Smeshalist {
-	private static Smeshalist instance = new Smeshalist();
+	private static Smeshalist instance;
 	int mainWindowPort;
 	InetAddress IPAddress;
 	DatagramSocket socket = null;
@@ -48,8 +49,8 @@ public class Smeshalist {
 	List<TriangleFace> triangleFaces = new LinkedList<>();
 	List<Block> blocks = new LinkedList<>();
 
-	private Smeshalist() {
-		mainWindowPort = 8383;
+	private Smeshalist(int portNumber ) {
+		mainWindowPort = portNumber;
 		countPoint2dSetSize();
 		countPoint3DSetSize();
 		countVertexesSize();
@@ -71,6 +72,17 @@ public class Smeshalist {
 	 *         connect to main window
 	 */
 	public static Smeshalist getInstance() {
+		if(Objects.isNull(instance)){
+			instance = new Smeshalist(8383);
+		}
+		
+		return instance;
+	}
+	
+	public static Smeshalist getInstance(int portNumber){
+		if(Objects.isNull(instance)){
+			instance = new Smeshalist(portNumber);
+		}
 		return instance;
 	}
 

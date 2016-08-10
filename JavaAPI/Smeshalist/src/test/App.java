@@ -13,7 +13,7 @@ import tool.Smeshalist;
 public class App {
 
 	public static void main(String[] args) {
-		Smeshalist tool = Smeshalist.getInstance();
+		Smeshalist tool = Smeshalist.getInstance(8383);
 		Random r = new Random();
 
 		for (int i=0; i<10; i++) {
