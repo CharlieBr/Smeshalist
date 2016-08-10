@@ -2,6 +2,9 @@ package window;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -18,6 +21,8 @@ import javax.swing.border.TitledBorder;
 import communication.Communication.ManagerToCoreMessage;
 import communication.Communication.ManagerToCoreMessage.MTCMessageType;
 import communication.Communication.OptionsInfo;
+import communication.SendingThread;
+import util.SocketUtil;
 import util.WindowUtil;
 
 public class OptionsTab extends JPanel{
@@ -133,31 +138,32 @@ public class OptionsTab extends JPanel{
 		optionsInfo.setTransparentStructures(transparencyCheckBox.isSelected());
 		optionsInfo.setMouseSensitivity(sensitivitySlider.getValue() * 0.1);
 		
-		ManagerToCoreMessage.Builder messageBuilder = ManagerToCoreMessage.newBuilder();
-		messageBuilder.setMessageType(MTCMessageType.OPTIONS);
-		messageBuilder.setOptionsInfo(optionsInfo.build());
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(MTCMessageType.OPTIONS);
+		toCoreMessageBuilder.setOptionsInfo(optionsInfo.build());
 		
-		ManagerToCoreMessage message = messageBuilder.build();
-		//TODO send message to Core
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
+
 	}
 	
 	private void continueButtonPressed(){
 
-		ManagerToCoreMessage.Builder messageBuilder = ManagerToCoreMessage.newBuilder();
-		messageBuilder.setMessageType(MTCMessageType.CONTINUE);
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(MTCMessageType.CONTINUE);
 		
-		ManagerToCoreMessage message = messageBuilder.build();
-		//TODO send message to Core
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
 
 	}
 	
 	private void abortButtonPressed(){
 
-		ManagerToCoreMessage.Builder messageBuilder = ManagerToCoreMessage.newBuilder();
-		messageBuilder.setMessageType(MTCMessageType.ABORT);
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(MTCMessageType.ABORT);
 		
-		ManagerToCoreMessage message = messageBuilder.build();
-		//TODO send message to Core
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
 
 	}
 }

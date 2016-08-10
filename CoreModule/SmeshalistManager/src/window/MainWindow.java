@@ -1,9 +1,13 @@
 package window;
 
-import javax.swing.JFrame;
-import javax.swing.JTabbedPane;
-import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
+import util.SocketUtil;
+
+import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 public class MainWindow extends JFrame {
 
@@ -17,32 +21,34 @@ public class MainWindow extends JFrame {
 	private FiltersTab filtersTab;
 
 	private MainWindow() {
+		this.initializeView();
+
 		this.setSize(500, 500);
-
-		tabContainer = new JTabbedPane();
-		tabContainer.setVisible(true);
-		this.optionsTab = new OptionsTab();
-		this.statisticsTab = new StatisticsTab();
-		statisticsTab.setTestContent();
-		this.filtersTab = new FiltersTab();
-
-		tabContainer.addTab("Statistics", statisticsTab);
-		tabContainer.addTab("Options", optionsTab);
-		tabContainer.addTab("Filters", filtersTab);
-		this.add(tabContainer);
 
 		setVisible(true);
 	}
 
-	public static void main(String[] args) {
-		
-		try {
-			MainWindow.setLookAndFeel();
-		} catch (ClassNotFoundException | InstantiationException | UnsupportedLookAndFeelException | IllegalAccessException e) {
-			e.printStackTrace();
-		}
+	private void initializeView() {
+		this.tabContainer = new JTabbedPane();
+		this.tabContainer.setVisible(true);
+		this.optionsTab = new OptionsTab();
+		this.statisticsTab = new StatisticsTab();
+		this.statisticsTab.setTestContent();
+		this.filtersTab = new FiltersTab();
 
-		MainWindow.getInstance();
+		this.tabContainer.addTab("Statistics", statisticsTab);
+		this.tabContainer.addTab("Options", optionsTab);
+		this.tabContainer.addTab("Filters", filtersTab);
+		this.add(tabContainer);
+
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+				SocketUtil.socket.close();
+			}
+		});
+
 	}
 
 	public static MainWindow getInstance() {
@@ -52,7 +58,7 @@ public class MainWindow extends JFrame {
 		return INSTANCE;
 	}
 	
-	private static void setLookAndFeel() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
+	public static void setLookAndFeel() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException{
 		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 	}
 }

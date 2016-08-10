@@ -75,14 +75,14 @@ public class CoordinatesTab extends JPanel{
 		operatorsComboBox.addItem(">");
 		
 		conjunctionComboBox = new JComboBox<>();
+		conjunctionComboBox.addItem("AND");
+		conjunctionComboBox.addItem("OR");
 		conjunctionComboBox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				CoordinatesTab.setChanged(true);
 			}
 		});
-		conjunctionComboBox.addItem("AND");
-		conjunctionComboBox.addItem("OR");
 		
 		addButton = new JButton("Add");
 		

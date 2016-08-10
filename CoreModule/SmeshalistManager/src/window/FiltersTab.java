@@ -7,11 +7,10 @@ import communication.Communication.GroupsFilter;
 import communication.Communication.TypesFilter;
 import communication.Communication.QualityFilter;
 import communication.Communication.CoordinatesFilter;
+import communication.SendingThread;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Types;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -87,26 +86,27 @@ public class FiltersTab extends JPanel{
 		QualityFilter qualityFilter = qualityTab.getQualityFilter();
 		CoordinatesFilter coordinatesFilter = coordinatesTab.getCoordinatesFilter();
 
-		ManagerToCoreMessage.Builder toCoreMessage = ManagerToCoreMessage.newBuilder();
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(ManagerToCoreMessage.MTCMessageType.FILTERS);
 
 		if (TypesTab.isChanged()){
-			toCoreMessage.setTypesFilter(typesFilter);
+			toCoreMessageBuilder.setTypesFilter(typesFilter);
 			System.out.println("TypesTab changes are being sent");
 		}
 		if (GroupsTab.isChanged()){
-			toCoreMessage.setGroupsFilter(groupsFilter);
+			toCoreMessageBuilder.setGroupsFilter(groupsFilter);
 			System.out.println("GroupsTab changes are being sent");
 		}
 		if (QualityTab.isChanged()){
-			toCoreMessage.setQualityFilter(qualityFilter);
+			toCoreMessageBuilder.setQualityFilter(qualityFilter);
 			System.out.println("QualityTab changes are being sent");
 		}
 		if (CoordinatesTab.isChanged()){
-			toCoreMessage.setCoordinatesFilter(coordinatesFilter);
+			toCoreMessageBuilder.setCoordinatesFilter(coordinatesFilter);
 			System.out.println("CoordinatesTab changes are being sent");
 		}
-
-		//TODO send message to Core
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
 
 		TypesTab.setChanged(false);
 		GroupsTab.setChanged(false);
