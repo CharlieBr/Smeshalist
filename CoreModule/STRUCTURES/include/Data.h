@@ -8,9 +8,9 @@
 #include <stdio.h>
 #include <cfloat>
 
-
 #include "Element.h"
 #include "Statistics.h"
+#include "ColorsMap.h"
 
 using namespace std;
 // -----------------------------------
@@ -76,6 +76,7 @@ class ElementsGroup {
 class Data {
     static map<int, ElementsGroup*> groups;
     static Statistics statistics;
+    static ColorsMap colors_map;
 
     static void check_coordinates(Point3D*);
 
@@ -114,5 +115,10 @@ class Data {
         static double get_min_z(){ return statistics.min_z; }
         static double get_max_z(){ return statistics.max_z; }
         static Statistics get_statistics(){ return statistics; }
+
+        static Color get_color_for_group(int group_id){ return colors_map.get_color_for_group(group_id); }
+
+    private:
+        static void add_color_if_new_group(int);
 };
 #endif // DATA_H

@@ -4,8 +4,9 @@
 // ----------------------------
 // ------- Data methods -------
 // ----------------------------
-Statistics Data::statistics;
 map<int, ElementsGroup* > Data::groups;
+Statistics Data::statistics;
+ColorsMap Data::colors_map;
 
 Data& Data::get_instance(){
     static Data instance;
@@ -50,6 +51,7 @@ void Data::draw_elements(){
 }
 
 void Data::add(int group_id, Element* element){
+    add_color_if_new_group(group_id);
     string element_type = element -> get_type();
 
     //statistics
@@ -76,6 +78,7 @@ void Data::add(int group_id, Element* element){
 }
 
 void Data::add(int group_id, vector<Element*>* elements){
+    add_color_if_new_group(group_id);
     ElementsGroup * group;
 
     if( !has_group(group_id) ){
@@ -105,6 +108,13 @@ void Data::add(int group_id, vector<Element*>* elements){
 
         group = groups.at(group_id);
         group -> add(type, elements);
+    }
+}
+
+void Data::add_color_if_new_group(int group_id){
+    if(!colors_map.has_color(group_id)){
+        Color color = colors_map.create_new_color_for_group(group_id);
+        colors_map.add_group_with_color(group_id, color);
     }
 }
 
