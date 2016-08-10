@@ -85,6 +85,7 @@ public class OptionsTab extends JPanel{
 		applyButtonContainer.setBorder(new EmptyBorder(0,145,0,145));
 		applyButtonContainer.add(applyButton);
 		continueButton = new JButton("Continue");
+		continueButton.setEnabled(false);
 		continueButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -93,6 +94,7 @@ public class OptionsTab extends JPanel{
 			}
 		});
 		abortButton = new JButton("Abort");
+		abortButton.setEnabled(false);
 		abortButton.addActionListener(new ActionListener() {
 			
 			@Override
@@ -154,6 +156,8 @@ public class OptionsTab extends JPanel{
 		
 		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
 		new SendingThread(toCoreMessage).start();
+		continueButton.setEnabled(false);
+		abortButton.setEnabled(false);
 
 	}
 	
@@ -165,9 +169,13 @@ public class OptionsTab extends JPanel{
 		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
 		new SendingThread(toCoreMessage).start();
 
+		continueButton.setEnabled(false);
+		abortButton.setEnabled(false);
+
 	}
 
 	public void breakpoint(){
-		//TODO handle brakpoint
+		abortButton.setEnabled(true);
+		continueButton.setEnabled(true);
 	}
 }
