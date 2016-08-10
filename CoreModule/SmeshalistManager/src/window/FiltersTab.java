@@ -1,6 +1,6 @@
 package window;
 
-import communication.Communication;
+import communication.Communication.ManagerToCoreMessage;
 import communication.Communication.ComparisonOperator;
 import communication.Communication.CoordinatesFilter.Conjunction;
 import communication.Communication.GroupsFilter;
@@ -8,8 +8,10 @@ import communication.Communication.TypesFilter;
 import communication.Communication.QualityFilter;
 import communication.Communication.CoordinatesFilter;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Types;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -85,7 +87,31 @@ public class FiltersTab extends JPanel{
 		QualityFilter qualityFilter = qualityTab.getQualityFilter();
 		CoordinatesFilter coordinatesFilter = coordinatesTab.getCoordinatesFilter();
 
-		//TODO create ManagerToCoreMessage
+		ManagerToCoreMessage.Builder toCoreMessage = ManagerToCoreMessage.newBuilder();
+
+		if (TypesTab.isChanged()){
+			toCoreMessage.setTypesFilter(typesFilter);
+			System.out.println("TypesTab changes are being sent");
+		}
+		if (GroupsTab.isChanged()){
+			toCoreMessage.setGroupsFilter(groupsFilter);
+			System.out.println("GroupsTab changes are being sent");
+		}
+		if (QualityTab.isChanged()){
+			toCoreMessage.setQualityFilter(qualityFilter);
+			System.out.println("QualityTab changes are being sent");
+		}
+		if (CoordinatesTab.isChanged()){
+			toCoreMessage.setCoordinatesFilter(coordinatesFilter);
+			System.out.println("CoordinatesTab changes are being sent");
+		}
+
+		//TODO send message to Core
+
+		TypesTab.setChanged(false);
+		GroupsTab.setChanged(false);
+		CoordinatesTab.setChanged(false);
+		QualityTab.setChanged(false);
 	}
 
 	private void setTestContent() {

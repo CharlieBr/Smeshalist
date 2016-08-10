@@ -47,10 +47,10 @@ public class InputVerifier {
 		String zText = zTextField.getText();
 
 		try{
-			System.out.println(new Double(valueText));
-			System.out.println(new Double(xText));
-			System.out.println(new Double(yText));
-			System.out.println(new Double(zText));
+			new Double(valueText);
+			new Double(xText);
+			new Double(yText);
+			new Double(zText);
 			
 			return true;
 			

@@ -28,6 +28,8 @@ import verify.InputVerifier;
 public class QualityTab extends JPanel{
 
 	private static final long serialVersionUID = -7509751926352507679L;
+	private static boolean changed;
+
 	private JScrollPane scrollPane;
 	private JPanel scrollPaneContent;
 	private JPanel controlsPanel;
@@ -43,6 +45,7 @@ public class QualityTab extends JPanel{
 	private List<QualityEntry> conditionEntries;
 
 	public QualityTab(){
+		this.changed = false;
 		this.initializeView();
 				
 		this.setVisible(true);
@@ -126,6 +129,8 @@ public class QualityTab extends JPanel{
 		scrollPaneContent.add(newEntry);
 		scrollPaneContent.revalidate();
 		scrollPaneContent.repaint();
+
+		QualityTab.setChanged(true);
 	}
 	private void deleteButtonPressed(QualityEntry entry) {
 		if (conditionEntries.contains(entry)){
@@ -135,7 +140,8 @@ public class QualityTab extends JPanel{
 		
 		scrollPaneContent.revalidate();
 		scrollPaneContent.repaint();
-		
+
+		QualityTab.setChanged(true);
 	}
 
 	public QualityFilter getQualityFilter() {
@@ -147,4 +153,11 @@ public class QualityTab extends JPanel{
 		return qualityFilterBuilder.build();
 	}
 
+	public static boolean isChanged() {
+		return changed;
+	}
+
+	public static void setChanged(boolean changed) {
+		QualityTab.changed = changed;
+	}
 }

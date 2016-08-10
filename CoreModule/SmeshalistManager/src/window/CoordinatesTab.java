@@ -26,7 +26,8 @@ import verify.InputVerifier;
 public class CoordinatesTab extends JPanel{
 
 	private static final long serialVersionUID = -1279116248064986979L;
-	
+	private static boolean changed;
+
 	private JScrollPane scrollPane;
 	private JPanel scrollPaneContent;
 	private JPanel controlsPanel;
@@ -44,6 +45,7 @@ public class CoordinatesTab extends JPanel{
 	private List<CoordinatesEntry> conditionEntries;
 	
 	public CoordinatesTab(){
+		this.changed = false;
 		this.initializeView();
 		
 		this.setVisible(true);
@@ -73,6 +75,12 @@ public class CoordinatesTab extends JPanel{
 		operatorsComboBox.addItem(">");
 		
 		conjunctionComboBox = new JComboBox<>();
+		conjunctionComboBox.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				CoordinatesTab.setChanged(true);
+			}
+		});
 		conjunctionComboBox.addItem("AND");
 		conjunctionComboBox.addItem("OR");
 		
@@ -140,6 +148,8 @@ public class CoordinatesTab extends JPanel{
 		scrollPaneContent.add(newEntry);
 		scrollPaneContent.revalidate();
 		scrollPaneContent.repaint();
+
+		CoordinatesTab.setChanged(true);
 	}
 	
 	private void deleteButtonPressed(CoordinatesEntry entry) {
@@ -150,6 +160,8 @@ public class CoordinatesTab extends JPanel{
 		
 		scrollPaneContent.revalidate();
 		scrollPaneContent.repaint();
+
+		CoordinatesTab.setChanged(true);
 		
 	}
 
@@ -161,5 +173,13 @@ public class CoordinatesTab extends JPanel{
 
 		coordinatesFilterBuilder.setConjunction(FiltersTab.getConjunction(conjunctionComboBox.getSelectedItem().toString()));
 		return coordinatesFilterBuilder.build();
+	}
+
+	public static boolean isChanged() {
+		return changed;
+	}
+
+	public static void setChanged(boolean changed) {
+		CoordinatesTab.changed = changed;
 	}
 }

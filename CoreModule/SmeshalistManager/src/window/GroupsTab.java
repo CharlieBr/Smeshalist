@@ -1,5 +1,7 @@
 package window;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,7 +20,8 @@ import util.WindowUtil;
 public class GroupsTab extends JScrollPane{
 
 	private static final long serialVersionUID = 5805971516639326078L;
-	
+	private static boolean changed;
+
 	private JPanel scrollPaneContent;
 	private List<String> groups;
 	private List<JCheckBox> groupsCheckBoxes;
@@ -28,6 +31,7 @@ public class GroupsTab extends JScrollPane{
 	public GroupsTab(){
 		this.groups = new LinkedList<>();
 		this.groupsCheckBoxes = new LinkedList<>();
+		this.changed = false;
 		this.initializeView();
 		this.setVisible(true);
 	}
@@ -63,12 +67,17 @@ public class GroupsTab extends JScrollPane{
 		}
 		
 		for (JCheckBox checkBox: groupsCheckBoxes){
+			checkBox.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					GroupsTab.setChanged(true);
+				}
+			});
 			scrollPaneContent.add(checkBox);
 			scrollPaneContent.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		}
 
 	}
-
 
 	public GroupsFilter getGroupsFilter() {
 		GroupsFilter.Builder groupsFilterBuilder = GroupsFilter.newBuilder();
@@ -76,10 +85,17 @@ public class GroupsTab extends JScrollPane{
 		for (String groupName: groups){
 			Boolean selected = iter.next().isSelected();
 			groupsFilterBuilder.putSelectedGroups(groupName, selected);
-			System.out.println(groupName+ " " + selected);
 		}
 
 		return groupsFilterBuilder.build();
 
 	}
+	public static boolean isChanged() {
+		return changed;
+	}
+
+	public static void setChanged(boolean changed) {
+		GroupsTab.changed = changed;
+	}
+	
 }
