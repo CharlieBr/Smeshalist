@@ -14,8 +14,8 @@ void QualityFilter::deleteAllFilters() {
 void QualityFilter::filterElement(Element* element) {
     bool result = false;
 
-    for (vector<SingleQualityFilter*>::iterator filter = filterList.begin() ; !result && filter != filterList.end(); ++filter) {
-        result = (*filter) -> applyFilter(element);
+    for (auto& filter : filterList) {
+        result = filter -> applyFilter(element);
     }
 
     element->set_draw_flag(result);
@@ -24,8 +24,8 @@ void QualityFilter::filterElement(Element* element) {
 void QualityFilter::filterTree(Data* dataTree) {
     vector<int>* groupIDs = dataTree -> get_all_groupIDs();
 
-    for (vector<int>::iterator groupsIter = groupIDs->begin() ; groupsIter != groupIDs->end(); ++groupsIter) {
-        ElementsGroup* elementsGroup = dataTree -> get_group(*groupsIter);
+    for (int groupID : *groupIDs) {
+        ElementsGroup* elementsGroup = dataTree -> get_group(groupID);
 
         //ommit groups which are not draw
         if (!elementsGroup->is_drawable()) {
@@ -33,8 +33,9 @@ void QualityFilter::filterTree(Data* dataTree) {
         }
 
         vector<string>* typeIDs = elementsGroup -> get_struct_types();
-        for (vector<string>::iterator typeIter = typeIDs->begin() ; typeIter != typeIDs->end(); ++typeIter) {
-            ElementsList* elementsList = elementsGroup -> get_list(*typeIter);
+
+        for (string typeID : *typeIDs) {
+            ElementsList* elementsList = elementsGroup -> get_list(typeID);
 
             //ommit lists which are not draw
             if (!elementsGroup->is_drawable()) {
@@ -42,8 +43,8 @@ void QualityFilter::filterTree(Data* dataTree) {
             }
 
             vector<Element*>* elements = elementsList -> get_elements();
-            for (vector<Element*>::iterator elem = elements->begin() ; elem != elements->end(); ++elem) {
-                filterElement(*elem);
+            for (Element* element : *elements) {
+                filterElement(element);
             }
         }
     }

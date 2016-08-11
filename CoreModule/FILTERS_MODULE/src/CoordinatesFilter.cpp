@@ -7,8 +7,8 @@ bool SingleCoordinateFilter::applyFilter(Element* element) {
 
     vector<Point3D>* vertices = element -> get_vertices();
 
-    for (vector<Point3D>::iterator it = vertices->begin() ; it != vertices->end() && result; ++it) {
-        double value = computeValue(it -> get_x(), it -> get_y(), it -> get_z());
+    for (Point3D& vertex : *vertices) {
+        double value = computeValue(vertex.get_x(), vertex.get_y(), vertex.get_z());
 
         switch(op) {
             case RelationalOperator::lt: result = absolute_value > value; break;
@@ -43,10 +43,10 @@ void CoordinatesFilter::filterElement(Element* element) {
     bool all = true;    //use for AND operator
     bool result;
 
-    for (vector<SingleCoordinateFilter*>::iterator filter = filterList.begin() ; filter != filterList.end(); ++filter) {
-        result = (*filter) -> applyFilter(element);
-        all = all && result;
-        any = any || result;
+    for (auto& filter : filterList) {
+        result = filter -> applyFilter(element);
+        all &= result;
+        any |= result;
     }
 
     if (logicalConnective == LogicalConnectiveEnum::AND) {
@@ -60,8 +60,8 @@ void CoordinatesFilter::filterElement(Element* element) {
 void CoordinatesFilter::filterTree(Data* dataTree) {
     vector<int>* groupIDs = dataTree -> get_all_groupIDs();
 
-    for (vector<int>::iterator groupsIter = groupIDs->begin() ; groupsIter != groupIDs->end(); ++groupsIter) {
-        ElementsGroup* elementsGroup = dataTree -> get_group(*groupsIter);
+    for (int groupID : *groupIDs) {
+        ElementsGroup* elementsGroup = dataTree -> get_group(groupID);
 
         //ommit groups which are not draw
         if (!elementsGroup -> is_drawable()) {
@@ -70,8 +70,8 @@ void CoordinatesFilter::filterTree(Data* dataTree) {
 
         vector<string>* typeIDs = elementsGroup -> get_struct_types();
 
-        for (vector<string>::iterator typeIter = typeIDs->begin() ; typeIter != typeIDs->end(); ++typeIter) {
-            ElementsList* elementsList = elementsGroup -> get_list(*typeIter);
+        for(string typeID : *typeIDs) {
+            ElementsList* elementsList = elementsGroup -> get_list(typeID);
 
             //ommit lists which are not draw
             if (!elementsList -> is_drawable()) {
@@ -80,8 +80,8 @@ void CoordinatesFilter::filterTree(Data* dataTree) {
 
             vector<Element*>* elements = elementsList -> get_elements();
 
-            for (vector<Element*>::iterator elem = elements->begin() ; elem != elements->end(); ++elem) {
-                filterElement(*elem);
+            for(Element* element : *elements) {
+                filterElement(element);
             }
         }
     }

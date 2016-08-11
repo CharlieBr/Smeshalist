@@ -5,6 +5,8 @@ void AbstractDataTree::add(int groupID, Element* element) {
     QualityFilter::getInstance() -> filterElement(element);
     CoordinatesFilter::getInstance() -> filterElement(element);
     Data::add(groupID, element);
+    GroupsFilter::getInstance() -> filterTree(this);
+    TypesFilter::getInstance() -> filterTree(this);
     UNLOCK();
 }
 
@@ -15,6 +17,8 @@ void AbstractDataTree::add(int groupID, vector<Element*>* elements) {
         CoordinatesFilter::getInstance() -> filterElement(element);
     }
     Data::add(groupID, elements);
+    GroupsFilter::getInstance() -> filterTree(this);
+    TypesFilter::getInstance() -> filterTree(this);
     UNLOCK();
 }
 
