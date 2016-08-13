@@ -188,11 +188,14 @@ void mouseButton(int button, int state, int x, int y) {
 }
 
 void initGLUT(int argc, char **argv) {
+    //TODO
+    system("java -jar SmeshalistManager/SmeshalistManager.jar &");
+    //
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(500, 500);
-	glutCreateWindow("Smeshalist v0.0.1");
+	glutCreateWindow("Smeshalist v0.2");
 
 	glutDisplayFunc(renderScene);
 	glutReshapeFunc(changeSize);

@@ -1,7 +1,7 @@
 #ifndef COORDINATESFILTER_H
 #define COORDINATESFILTER_H
 
-#include "../../STRUCTURES/include/Data.h"
+#include "Data.h"
 #include "RelationalOperator.h"
 
 

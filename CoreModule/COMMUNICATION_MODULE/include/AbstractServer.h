@@ -10,7 +10,8 @@
 #include "Structures.h"
 #include "Data.h"
 #include <atomic>
-#include "../../../CppAPI/structs.pb.h"
+#include "structs.pb.h"
+#include "communication.pb.h"
 
 
 class AbstractServer
@@ -25,6 +26,8 @@ class AbstractServer
     protected:
         virtual int getBytesFromSocket(char[], int) = 0;
         virtual int sendBytesToSocket(char[], int) = 0;
+        virtual int getBytesFromSMsocket(char[], int) = 0;
+        virtual int sendBytesToSMsocket(char[], int) = 0;
 
         void parsePoint2DSet(structDefinitions::Point2DSet*);
         void parsePoint3DSet(structDefinitions::Point3DSet*);
@@ -34,11 +37,16 @@ class AbstractServer
         void parseBlockSet(structDefinitions::BlockSet*);
 
         void getDataPackages();
+        void processFiltersDataPackage(sm::ManagerToCoreMessage);
+        int sendDatagramToClient(structDefinitions::MessageInfo_Type);
         void sendAcknowlage();
         void startServerInNewThread();
+        void startSMServer();
 
-        //TMP
-        void sendAccept();
+        void sendContinue();
+        void sendAbort();
+
+        void sendBreakpoint();
 
         Data* handler = NULL;
         std::atomic_bool isStopped;

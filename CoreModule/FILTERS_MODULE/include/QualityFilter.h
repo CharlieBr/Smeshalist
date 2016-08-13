@@ -1,7 +1,7 @@
 #ifndef QUALITYFILTER_H
 #define QUALITYFILTER_H
 
-#include "../../STRUCTURES/include/Data.h"
+#include "Data.h"
 #include "RelationalOperator.h"
 
 class Double

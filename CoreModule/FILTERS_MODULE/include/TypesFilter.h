@@ -3,7 +3,7 @@
 
 #include <string>
 #include <algorithm>
-#include "../../STRUCTURES/include/Data.h"
+#include "Data.h"
 
 using namespace std;
 

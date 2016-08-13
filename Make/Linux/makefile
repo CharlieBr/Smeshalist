@@ -7,7 +7,7 @@ FILTERS_PATH = $(CORE_PATH)/FILTERS_MODULE
 
 CC = g++
 FLAGS = -std=c++11 -Wall
-INCLUDES = -I$(STRUCTURES_PATH)/include -I$(COMMUNICATION_PATH)/include -I$(FILTERS_PATH)/include
+INCLUDES = -I$(STRUCTURES_PATH)/include -I$(COMMUNICATION_PATH)/include -I$(FILTERS_PATH)/include -I$(CPPAPI_PATH) -I$(CORE_PATH)/SmeshalistManager/proto
 LIBS = lib/libGLU.a lib/libprotobuf.a -lGL -lglut
 
 compile:
@@ -28,10 +28,13 @@ compile:
 	$(CC) $(FLAGS) $(INCLUDES) -c $(FILTERS_PATH)/src/TypesFilter.cpp -o obj/TypesFilter.o
 	#COMPILING STRUCTS FROM CPP API
 	$(CC) $(FLAGS) $(INCLUDES) -c $(CPPAPI_PATH)/structs.pb.cc -o obj/structs.o
+	#COMPILING COMMUNICATION PROTO FILE FROM SMESHALIST MANAGER
+	$(CC) $(FLAGS) $(INCLUDES) -c $(CORE_PATH)/SmeshalistManager/proto/communication.pb.cc -o obj/communication.o
 	#COMPILING MAIN FILE
 	$(CC) $(FLAGS) $(INCLUDES) -c $(CORE_PATH)/rotateCamera.cpp -o obj/rotateCamera.o
+	#
 build:
 	#BUILDING
-	$(CC) -o CoreModule obj/structs.o obj/AbstractServer.o obj/LinuxServer.o obj/CoordinatesFilter.o obj/GroupsFilter.o obj/QualityFilter.o obj/TypesFilter.o obj/rotateCamera.o obj/AbstractDataTree.o obj/Data.o obj/LinuxDataTree.o obj/Statistics.o obj/Structures.o $(LIBS)
+	$(CC) -o CoreModule obj/structs.o obj/communication.o obj/AbstractServer.o obj/LinuxServer.o obj/CoordinatesFilter.o obj/GroupsFilter.o obj/QualityFilter.o obj/TypesFilter.o obj/rotateCamera.o obj/AbstractDataTree.o obj/Data.o obj/LinuxDataTree.o obj/Statistics.o obj/Structures.o $(LIBS)
 	rm -r obj
 all: compile build

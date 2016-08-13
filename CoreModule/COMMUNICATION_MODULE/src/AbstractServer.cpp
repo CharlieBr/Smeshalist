@@ -4,35 +4,89 @@ void AbstractServer::registerStructuresHandler(Data* data) {
     if (this->handler != NULL) {
 		cout << "Set new data handler\n";
 	}
-	else {
-		cout << "WARNING: data handler was already registered\n";
-	}
+
 	this->handler = data;
 }
 
-void AbstractServer::sendAcknowlage() {
+int AbstractServer::sendDatagramToClient(structDefinitions::MessageInfo_Type messageType) {
     char buffer[BUFFER_SIZE];
 
-    structDefinitions::MessageInfo ack;
-    ack.set_type(structDefinitions::MessageInfo_Type_ACK);
+    structDefinitions::MessageInfo message;
+    message.set_type(messageType);
 
-    ack.SerializeToArray(buffer, BUFFER_SIZE);
+    message.SerializeToArray(buffer, BUFFER_SIZE);
 
-    if (sendBytesToSocket(buffer, ack.GetCachedSize()) < 0) {
+    return sendBytesToSocket(buffer, message.GetCachedSize());
+}
+
+void AbstractServer::sendAcknowlage() {
+    if (sendDatagramToClient(structDefinitions::MessageInfo_Type_ACK) < 0) {
         cerr << "Error during sending ack to client\n";
     }
 }
 
-void AbstractServer::sendAccept() {
+void AbstractServer::sendContinue() {
+    if (sendDatagramToClient(structDefinitions::MessageInfo_Type_ACCEPTED) < 0) {
+        cerr << "Error during sending accept to client\n";
+    }
+}
+
+void AbstractServer::sendAbort(){
+    if (sendDatagramToClient(structDefinitions::MessageInfo_Type_REJECTED) < 0) {
+        cerr << "Error during sending accept to client\n";
+    }
+}
+
+void AbstractServer::sendBreakpoint() {
     char buffer[BUFFER_SIZE];
 
-    structDefinitions::MessageInfo accept;
-    accept.set_type(structDefinitions::MessageInfo_Type_ACCEPTED);
+    sm::CoreToManagerMessage message;
+    message.set_messagetype(sm::CoreToManagerMessage_CTMMessageType_BREAKPOINT);
 
-    accept.SerializeToArray(buffer, BUFFER_SIZE);
+    message.SerializeToArray(buffer, BUFFER_SIZE);
 
-    if (sendBytesToSocket(buffer, accept.GetCachedSize()) < 0) {
-        cerr << "Error during sending accept to client\n";
+    if (sendBytesToSMsocket(buffer, message.GetCachedSize()) < 0) {
+        cerr << "Error during sending breakpoint to Smeshalist Manager\n";
+    }
+}
+
+void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage message) {
+    cout << "Filters\n";
+}
+
+void AbstractServer::startSMServer() {
+    int nBytes;
+    char buffer[BUFFER_SIZE];
+
+    while(!isStopped.load()){
+        nBytes = getBytesFromSMsocket(buffer, BUFFER_SIZE);
+        if (nBytes < 0) {
+            continue;
+        }
+
+        sm::ManagerToCoreMessage message;
+        if (!message.ParseFromArray(buffer, nBytes)) {
+            cerr << "Unable to parse message from SmeshalistManager\n";
+            continue;
+        }
+
+        switch (message.messagetype()) {
+            case sm::ManagerToCoreMessage_MTCMessageType_ABORT:
+                sendAbort();
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_CONTINUE:
+                sendContinue();
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_FILTERS:
+                processFiltersDataPackage(message);
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_OPTIONS:
+                cout << "Options\n";
+                break;
+            default:
+                cerr << "Unknow message type\n";
+                break;
+        }
     }
 }
 
@@ -60,8 +114,7 @@ void AbstractServer::startServerInNewThread()
                 handler -> draw_elements();
                 break;
             case structDefinitions::MessageInfo_Type_BREAKPOINT:
-                cout << "Breakpoint\n";
-                sendAccept();
+                sendBreakpoint();
                 break;
             case structDefinitions::MessageInfo_Type_RENDER:
                 cout << "Render\n";

@@ -1,5 +1,6 @@
 option java_package = "communication";
 option java_outer_classname = "Communication";
+package sm;
 
 message ElementInfo {
 	required int32 total = 1;
