@@ -15,7 +15,7 @@ void QualityFilter::filterElement(Element* element) {
     bool result = false;
 
     for (auto& filter : filterList) {
-        result = filter -> applyFilter(element);
+        result |= filter -> applyFilter(element);
     }
     if (filterList.size() == 0) {
         result = true;
@@ -55,7 +55,8 @@ void QualityFilter::filterTree(Data* dataTree) {
 
 bool SingleQualityFilter::applyFilter(Element* element) {
     double quality = element->get_quality();
-    bool result = false;
+    cout << quality << endl;
+    bool result = true;
 
     if (leftValue != NULL) {
         switch (leftOp) {

@@ -1,7 +1,6 @@
 #include "AbstractDataTree.h"
 
 void AbstractDataTree::add(int groupID, Element* element) {
-cout << groupID << endl;
     LOCK();
     QualityFilter::getInstance() -> filterElement(element);
     CoordinatesFilter::getInstance() -> filterElement(element);
@@ -12,7 +11,6 @@ cout << groupID << endl;
 }
 
 void AbstractDataTree::add(int groupID, vector<Element*>* elements) {
-cout << groupID << endl;
     LOCK();
     for(auto const& element : *elements){
         QualityFilter::getInstance() -> filterElement(element);
@@ -24,8 +22,8 @@ cout << groupID << endl;
     UNLOCK();
 }
 
-void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> *groupFilters, vector<SingleTypesFilter*> *typesFilters, vector<SingleCoordinateFilter*> *coordinateFilters,
-    vector<SingleQualityFilter*> *qualityFilters) {
+void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> *groupFilters, vector<SingleTypesFilter*> *typesFilters,
+    vector<SingleCoordinateFilter*> *coordinateFilters, LogicalConnectiveEnum* conjuntion, vector<SingleQualityFilter*> *qualityFilters) {
 
     LOCK();
 
@@ -48,6 +46,10 @@ void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> *groupFilters, v
         for(auto const& coordinateFilter : *coordinateFilters){
             CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(coordinateFilter);
         }
+    }
+
+    if (conjuntion != NULL) {
+        CoordinatesFilter::getInstance() -> changeLogicalCoonective(*conjuntion);
     }
 
     if (qualityFilters != NULL) {

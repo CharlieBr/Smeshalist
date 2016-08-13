@@ -17,6 +17,10 @@ bool SingleCoordinateFilter::applyFilter(Element* element) {
             case RelationalOperator::gt: result = absolute_value < value; break;
             default: result = true;
         }
+
+        if  (!result) {
+            break;
+        }
     }
 
     return result;

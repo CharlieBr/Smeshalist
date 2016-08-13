@@ -55,6 +55,7 @@ void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message
     vector<SingleTypesFilter*> *singleTypeFilters = NULL;
     vector<SingleQualityFilter*> *singleQualityFilters = NULL;
     vector<SingleCoordinateFilter*> *singleCoordinateFilters = NULL;
+    LogicalConnectiveEnum* coordinatesConjunction = NULL;
 
 
     if (message -> has_groupsfilter()) {
@@ -77,28 +78,62 @@ void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message
 
         for (; iter!=selectedTypes.end(); ++iter) {
             if (iter -> second) {   //check if type is selected
-                if (iter -> first == "Vertexes") {  //TODO change it!!!! use mapping
-                    singleTypeFilters -> push_back(new SingleTypesFilter("vertex"));
-                } else if (iter -> first == "Edges") {
-                    singleTypeFilters -> push_back(new SingleTypesFilter("edge"));
-                } else if (iter -> first == "Triangles") {
-                    singleTypeFilters -> push_back(new SingleTypesFilter("face"));
-                } else if (iter -> first == "Pyramids") {
-                    singleTypeFilters -> push_back(new SingleTypesFilter("block"));
-                }
+                singleTypeFilters -> push_back(new SingleTypesFilter(typeTraslations[iter->first]));
             }
         }
     }
 
     if (message -> has_qualityfilter()) {
-        cout << "QualityFilter\n";
+        singleQualityFilters = new vector<SingleQualityFilter*>();
+
+        sm::QualityFilter filter = message -> qualityfilter();
+        int size = filter.qualitycondition_size();
+
+        for (int i=0; i<size; i++) {
+            cout << "Compute " << i << " filter\n";
+            sm::QualityCondition condition = filter.qualitycondition(i);
+
+            Double* leftValue = NULL;
+            Double* rightValue = NULL;
+            RelationalOperator leftOp;
+            RelationalOperator rightOp;
+
+            if (condition.has_leftvalue()) {
+                leftValue = new Double(condition.leftvalue());
+                leftOp = operatorTranslations[condition.leftoperator()];
+            }
+            if (condition.has_rightvalue()) {
+                rightValue = new Double(condition.rightvalue());
+                rightOp = operatorTranslations[condition.rightoperator()];
+            }
+            cout << "Create quality filter\n";
+            SingleQualityFilter* qualityFilter = new SingleQualityFilter(leftValue, leftOp, rightOp, rightValue);
+            singleQualityFilters -> push_back(qualityFilter);
+        }
     }
 
     if (message -> has_coordinatesfilter()) {
-        cout << "CoordinatesFilter\n";
+        singleCoordinateFilters = new vector<SingleCoordinateFilter*>();
+        sm::CoordinatesFilter filter = message -> coordinatesfilter();
+
+        if (filter.has_conjunction()) {
+            coordinatesConjunction = &conjunctionTranslations[filter.conjunction()];
+        }
+
+        int size = filter.coordinatescondition_size();
+        for (int i=0; i<size; i++) {
+            sm::CoordinatesCondition condition = filter.coordinatescondition(i);
+
+            SingleCoordinateFilter* coordFilter = new SingleCoordinateFilter(   condition.xvalue(),
+                                                                                condition.yvalue(),
+                                                                                condition.zvalue(),
+                                                                                condition.constant(),
+                                                                                operatorTranslations[condition.coordinatesoperator()]);
+            singleCoordinateFilters -> push_back(coordFilter);
+        }
     }
 
-    handler -> reloadFliters(singleGroupFilters, singleTypeFilters, singleCoordinateFilters, singleQualityFilters);
+    handler -> reloadFliters(singleGroupFilters, singleTypeFilters, singleCoordinateFilters, coordinatesConjunction, singleQualityFilters);
 }
 
 void AbstractServer::startSMServer() {

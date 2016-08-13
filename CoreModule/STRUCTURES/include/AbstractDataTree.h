@@ -2,10 +2,10 @@
 #define ABSTRACTDATATREE_H
 
 #include "Data.h"
-#include "../../FILTERS_MODULE/include/GroupsFilter.h"
-#include "../../FILTERS_MODULE/include/CoordinatesFilter.h"
-#include "../../FILTERS_MODULE/include/TypesFilter.h"
-#include "../../FILTERS_MODULE/include/QualityFilter.h"
+#include "GroupsFilter.h"
+#include "CoordinatesFilter.h"
+#include "TypesFilter.h"
+#include "QualityFilter.h"
 
 
 class AbstractDataTree : public Data
@@ -13,7 +13,7 @@ class AbstractDataTree : public Data
     public:
         void add(int, Element*);
         void add(int, vector<Element*>*);
-        void reloadFliters(vector<SingleGroupFilter*>*, vector<SingleTypesFilter*>*, vector<SingleCoordinateFilter*>*, vector<SingleQualityFilter*>*);
+        void reloadFliters(vector<SingleGroupFilter*>*, vector<SingleTypesFilter*>*, vector<SingleCoordinateFilter*>*, LogicalConnectiveEnum*, vector<SingleQualityFilter*>*);
     protected:
         virtual void LOCK()=0;
         virtual void UNLOCK()=0;

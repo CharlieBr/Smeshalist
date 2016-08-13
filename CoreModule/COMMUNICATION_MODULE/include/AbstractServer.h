@@ -17,7 +17,21 @@
 class AbstractServer
 {
     public:
-        AbstractServer(){};
+        AbstractServer(){
+            typeTraslations["Vertexes"] = "vertex";
+            typeTraslations["Edges"] = "edge";
+            typeTraslations["Triangles"] = "face";
+            typeTraslations["Pyramids"] = "block";
+
+            conjunctionTranslations[sm::CoordinatesFilter_Conjunction_AND] = LogicalConnectiveEnum::AND;
+            conjunctionTranslations[sm::CoordinatesFilter_Conjunction_OR] = LogicalConnectiveEnum::OR;
+
+            operatorTranslations[sm::ComparisonOperator::EQUAL] = RelationalOperator::eq;
+            operatorTranslations[sm::ComparisonOperator::GREATER] = RelationalOperator::gt;
+            operatorTranslations[sm::ComparisonOperator::GREATER_OR_EQUAL] = RelationalOperator::ge;
+            operatorTranslations[sm::ComparisonOperator::LESS] = RelationalOperator::lt;
+            operatorTranslations[sm::ComparisonOperator::LESS_OR_EQUAL] = RelationalOperator::le;
+        };
         virtual ~AbstractServer() {};
         virtual void startServer() {};
         virtual void stopServer() {};
@@ -50,6 +64,9 @@ class AbstractServer
 
         AbstractDataTree* handler = NULL;
         std::atomic_bool isStopped;
+        std::map<string, string> typeTraslations;
+        std::map<sm::CoordinatesFilter_Conjunction, LogicalConnectiveEnum> conjunctionTranslations;
+        std::map<sm::ComparisonOperator, RelationalOperator> operatorTranslations;
     private:
         Point3D parsePoint(const structDefinitions::Point3D*);
         Label getLabel(string);
