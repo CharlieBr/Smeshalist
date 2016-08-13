@@ -17,6 +17,9 @@ void QualityFilter::filterElement(Element* element) {
     for (auto& filter : filterList) {
         result = filter -> applyFilter(element);
     }
+    if (filterList.size() == 0) {
+        result = true;
+    }
 
     element->set_draw_flag(result);
 }

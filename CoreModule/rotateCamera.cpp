@@ -29,7 +29,7 @@ float cameraX=0, cameraY=0, cameraZ=0;
 bool isShiftPressed = false;
 bool isLeftMouseButtonPressed = false;
 
-Data* d;
+AbstractDataTree* d;
 
 void computeCameraPosition() {
     cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius;

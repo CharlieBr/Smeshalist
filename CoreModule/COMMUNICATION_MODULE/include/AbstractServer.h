@@ -8,7 +8,7 @@
 #define SOCKET_TIMEOUT_NANO 0
 
 #include "Structures.h"
-#include "Data.h"
+#include "AbstractDataTree.h"
 #include <atomic>
 #include "structs.pb.h"
 #include "communication.pb.h"
@@ -22,7 +22,7 @@ class AbstractServer
         virtual void startServer() {};
         virtual void stopServer() {};
 
-        void registerStructuresHandler(Data* data);
+        void registerStructuresHandler(AbstractDataTree* data);
     protected:
         virtual int getBytesFromSocket(char[], int) = 0;
         virtual int sendBytesToSocket(char[], int) = 0;
@@ -37,7 +37,7 @@ class AbstractServer
         void parseBlockSet(structDefinitions::BlockSet*);
 
         void getDataPackages();
-        void processFiltersDataPackage(sm::ManagerToCoreMessage);
+        void processFiltersDataPackage(sm::ManagerToCoreMessage*);
         int sendDatagramToClient(structDefinitions::MessageInfo_Type);
         void sendAcknowlage();
         void startServerInNewThread();
@@ -48,7 +48,7 @@ class AbstractServer
 
         void sendBreakpoint();
 
-        Data* handler = NULL;
+        AbstractDataTree* handler = NULL;
         std::atomic_bool isStopped;
     private:
         Point3D parsePoint(const structDefinitions::Point3D*);

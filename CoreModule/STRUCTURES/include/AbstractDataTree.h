@@ -13,7 +13,7 @@ class AbstractDataTree : public Data
     public:
         void add(int, Element*);
         void add(int, vector<Element*>*);
-        void reloadFliters(vector<SingleGroupFilter*>, vector<SingleTypesFilter*>, vector<SingleCoordinateFilter*>, vector<SingleQualityFilter*>);
+        void reloadFliters(vector<SingleGroupFilter*>*, vector<SingleTypesFilter*>*, vector<SingleCoordinateFilter*>*, vector<SingleQualityFilter*>*);
     protected:
         virtual void LOCK()=0;
         virtual void UNLOCK()=0;

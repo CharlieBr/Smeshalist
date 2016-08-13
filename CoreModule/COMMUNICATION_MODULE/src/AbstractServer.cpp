@@ -1,6 +1,6 @@
 #include "AbstractServer.h"
 
-void AbstractServer::registerStructuresHandler(Data* data) {
+void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
     if (this->handler != NULL) {
 		cout << "Set new data handler\n";
 	}
@@ -50,8 +50,55 @@ void AbstractServer::sendBreakpoint() {
     }
 }
 
-void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage message) {
-    cout << "Filters\n";
+void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message) {
+    vector<SingleGroupFilter*> *singleGroupFilters = NULL;
+    vector<SingleTypesFilter*> *singleTypeFilters = NULL;
+    vector<SingleQualityFilter*> *singleQualityFilters = NULL;
+    vector<SingleCoordinateFilter*> *singleCoordinateFilters = NULL;
+
+
+    if (message -> has_groupsfilter()) {
+        singleGroupFilters = new vector<SingleGroupFilter*>();
+        google::protobuf::Map<string, bool> selectedGroups = (message -> groupsfilter()).selectedgroups();
+        google::protobuf::Map<string, bool>::iterator iter = selectedGroups.begin();
+
+        for (; iter!=selectedGroups.end(); ++iter) {
+            if (iter -> second) {   //check if group is selected
+                int groupID = stoi(iter->first);
+                singleGroupFilters -> push_back(new SingleGroupFilter(groupID));
+            }
+        }
+    }
+
+    if (message -> has_typesfilter()) {
+        singleTypeFilters = new vector<SingleTypesFilter*>();
+        google::protobuf::Map<string, bool> selectedTypes = (message -> typesfilter()).selectedtypes();
+        google::protobuf::Map<string, bool>::iterator iter = selectedTypes.begin();
+
+        for (; iter!=selectedTypes.end(); ++iter) {
+            if (iter -> second) {   //check if type is selected
+                if (iter -> first == "Vertexes") {  //TODO change it!!!! use mapping
+                    singleTypeFilters -> push_back(new SingleTypesFilter("vertex"));
+                } else if (iter -> first == "Edges") {
+                    singleTypeFilters -> push_back(new SingleTypesFilter("edge"));
+                } else if (iter -> first == "Triangles") {
+                    singleTypeFilters -> push_back(new SingleTypesFilter("face"));
+                } else if (iter -> first == "Pyramids") {
+                    singleTypeFilters -> push_back(new SingleTypesFilter("block"));
+                }
+            }
+        }
+    }
+
+    if (message -> has_qualityfilter()) {
+        cout << "QualityFilter\n";
+    }
+
+    if (message -> has_coordinatesfilter()) {
+        cout << "CoordinatesFilter\n";
+    }
+
+    handler -> reloadFliters(singleGroupFilters, singleTypeFilters, singleCoordinateFilters, singleQualityFilters);
 }
 
 void AbstractServer::startSMServer() {
@@ -78,7 +125,7 @@ void AbstractServer::startSMServer() {
                 sendContinue();
                 break;
             case sm::ManagerToCoreMessage_MTCMessageType_FILTERS:
-                processFiltersDataPackage(message);
+                processFiltersDataPackage(&message);
                 break;
             case sm::ManagerToCoreMessage_MTCMessageType_OPTIONS:
                 cout << "Options\n";

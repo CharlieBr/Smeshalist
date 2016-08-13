@@ -1,6 +1,7 @@
 #include "AbstractDataTree.h"
 
 void AbstractDataTree::add(int groupID, Element* element) {
+cout << groupID << endl;
     LOCK();
     QualityFilter::getInstance() -> filterElement(element);
     CoordinatesFilter::getInstance() -> filterElement(element);
@@ -11,6 +12,7 @@ void AbstractDataTree::add(int groupID, Element* element) {
 }
 
 void AbstractDataTree::add(int groupID, vector<Element*>* elements) {
+cout << groupID << endl;
     LOCK();
     for(auto const& element : *elements){
         QualityFilter::getInstance() -> filterElement(element);
@@ -22,27 +24,37 @@ void AbstractDataTree::add(int groupID, vector<Element*>* elements) {
     UNLOCK();
 }
 
-void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> groupFilters, vector<SingleTypesFilter*> typesFilters, vector<SingleCoordinateFilter*> coordinateFilters,
-    vector<SingleQualityFilter*> qualityFilters) {
+void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> *groupFilters, vector<SingleTypesFilter*> *typesFilters, vector<SingleCoordinateFilter*> *coordinateFilters,
+    vector<SingleQualityFilter*> *qualityFilters) {
 
     LOCK();
-    GroupsFilter::getInstance() -> deleteAllFilters();
-    TypesFilter::getInstance() -> deleteAllFilters();
-    CoordinatesFilter::getInstance() -> deleteAllFilters();
-    QualityFilter::getInstance() -> deleteAllFilters();
 
+    if (groupFilters != NULL) {
+        GroupsFilter::getInstance() -> deleteAllFilters();
+        for(auto const& groupFilter : *groupFilters){
+            GroupsFilter::getInstance() -> addSimpleGroupFilter(groupFilter);
+        }
+    }
 
-    for(auto const& groupFilter : groupFilters){
-        GroupsFilter::getInstance() -> addSimpleGroupFilter(groupFilter);
+    if (typesFilters != NULL) {
+        TypesFilter::getInstance() -> deleteAllFilters();
+        for(auto const& typesFilter : *typesFilters){
+            TypesFilter::getInstance() -> addSingleFilter(typesFilter);
+        }
     }
-    for(auto const& typesFilter : typesFilters){
-        TypesFilter::getInstance() -> addSingleFilter(typesFilter);
+
+    if (coordinateFilters != NULL) {
+        CoordinatesFilter::getInstance() -> deleteAllFilters();
+        for(auto const& coordinateFilter : *coordinateFilters){
+            CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(coordinateFilter);
+        }
     }
-    for(auto const& coordinateFilter : coordinateFilters){
-        CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(coordinateFilter);
-    }
-    for(auto const& qualityFilter : qualityFilters){
-        QualityFilter::getInstance() -> addSingleFilter(qualityFilter);
+
+    if (qualityFilters != NULL) {
+        QualityFilter::getInstance() -> deleteAllFilters();
+        for(auto const& qualityFilter : *qualityFilters){
+            QualityFilter::getInstance() -> addSingleFilter(qualityFilter);
+        }
     }
 
     filterDataTree();
