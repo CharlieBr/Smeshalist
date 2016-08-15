@@ -51,7 +51,6 @@ int LinuxServer::getBytesFromSocket(char* buffer, int bufferSize) {
 }
 
 int LinuxServer::sendBytesToSocket(char* buffer, int bufferSize) {
-    cout << "Send " << bufferSize << " bytes to client\n";
     return sendto(clientSocket, buffer, bufferSize, 0, (struct sockaddr *)&serverStorage, addr_size);
 }
 
@@ -60,7 +59,6 @@ int LinuxServer::getBytesFromSMsocket(char* buffer, int bufferSize) {
 }
 
 int LinuxServer::sendBytesToSMsocket(char* buffer, int bufferSize) {
-    cout << "Send " << bufferSize << " bytes to SM\n";
     return sendto(SMsocket, buffer, bufferSize, 0, (struct sockaddr *)&SMstorage, addr_size);
 }
 

@@ -90,7 +90,6 @@ void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message
         int size = filter.qualitycondition_size();
 
         for (int i=0; i<size; i++) {
-            cout << "Compute " << i << " filter\n";
             sm::QualityCondition condition = filter.qualitycondition(i);
 
             Double* leftValue = NULL;
@@ -106,7 +105,6 @@ void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message
                 rightValue = new Double(condition.rightvalue());
                 rightOp = operatorTranslations[condition.rightoperator()];
             }
-            cout << "Create quality filter\n";
             SingleQualityFilter* qualityFilter = new SingleQualityFilter(leftValue, leftOp, rightOp, rightValue);
             singleQualityFilters -> push_back(qualityFilter);
         }

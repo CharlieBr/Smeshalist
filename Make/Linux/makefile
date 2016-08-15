@@ -26,6 +26,7 @@ compile:
 	$(CC) $(FLAGS) $(INCLUDES) -c $(FILTERS_PATH)/src/GroupsFilter.cpp -o obj/GroupsFilter.o
 	$(CC) $(FLAGS) $(INCLUDES) -c $(FILTERS_PATH)/src/QualityFilter.cpp -o obj/QualityFilter.o
 	$(CC) $(FLAGS) $(INCLUDES) -c $(FILTERS_PATH)/src/TypesFilter.cpp -o obj/TypesFilter.o
+	$(CC) $(FLAGS) $(INCLUDES) -c $(FILTERS_PATH)/src/CMathUtils.cpp -o obj/CMathUtils.o
 	#COMPILING STRUCTS FROM CPP API
 	$(CC) $(FLAGS) $(INCLUDES) -c $(CPPAPI_PATH)/structs.pb.cc -o obj/structs.o
 	#COMPILING COMMUNICATION PROTO FILE FROM SMESHALIST MANAGER
@@ -35,6 +36,6 @@ compile:
 	#
 build:
 	#BUILDING
-	$(CC) -o CoreModule obj/structs.o obj/communication.o obj/AbstractServer.o obj/LinuxServer.o obj/CoordinatesFilter.o obj/GroupsFilter.o obj/QualityFilter.o obj/TypesFilter.o obj/rotateCamera.o obj/AbstractDataTree.o obj/Data.o obj/LinuxDataTree.o obj/Statistics.o obj/Structures.o $(LIBS)
+	$(CC) -o CoreModule obj/structs.o obj/communication.o obj/AbstractServer.o obj/LinuxServer.o obj/CoordinatesFilter.o obj/GroupsFilter.o obj/QualityFilter.o obj/TypesFilter.o obj/CMathUtils.o obj/rotateCamera.o obj/AbstractDataTree.o obj/Data.o obj/LinuxDataTree.o obj/Statistics.o obj/Structures.o $(LIBS)
 	rm -r obj
 all: compile build

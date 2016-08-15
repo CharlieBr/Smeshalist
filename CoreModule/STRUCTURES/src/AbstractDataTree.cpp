@@ -46,6 +46,7 @@ void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> *groupFilters, v
         for(auto const& coordinateFilter : *coordinateFilters){
             CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(coordinateFilter);
         }
+        CoordinatesFilter::getInstance() -> recomputeIntersections(&statistics);
     }
 
     if (conjuntion != NULL) {

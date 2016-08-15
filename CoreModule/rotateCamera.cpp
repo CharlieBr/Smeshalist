@@ -54,27 +54,40 @@ void changeSize(int w, int h) {
 	glMatrixMode(GL_MODELVIEW);
 }
 
+void drawLine(  double x0, double y0, double z0,
+                double x1, double y1, double z1,
+                double r0, double g0, double b0,
+                double r1, double g1, double b1,
+                double transparent) {
+    glBegin(GL_LINES);
+        glColor4d(r0, g0, b0, transparent);
+        glVertex3d(x0, y0, z0);
+        glColor4d(r1, g1, b1, transparent);
+        glVertex3d(x1, y1, z1);
+    glEnd();
+}
+
 void drawOrigin() {
-    glBegin(GL_LINES);
-        glColor3f(0, 0, 0);
-        glVertex3f(-2, 0, 0);
-        glColor3f(1, 0, 0);
-        glVertex3f( 2, 0, 0);
-    glEnd();
+    drawLine(-2,0,0,  2,0,0,  0,0,0,  1,0,0,  1);
+    drawLine(0,-2,0,  0,2,0,  0,0,0,  0,1,0,  1);
+    drawLine(0,0,-2,  0,0,2,  0,0,0,  0,0,1,  1);
+}
 
-    glBegin(GL_LINES);
-        glColor3f(0, 0, 0);
-        glVertex3f(0, -2, 0);
-        glColor3f(0, 1, 0);
-        glVertex3f(0,  2, 0);
-    glEnd();
+void drawBoundingBox() {
+    drawLine(d->get_max_x(),d->get_max_y(),d->get_max_z(),  d->get_max_x(),d->get_max_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
+    drawLine(d->get_max_x(),d->get_min_y(),d->get_max_z(),  d->get_max_x(),d->get_min_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
+    drawLine(d->get_min_x(),d->get_max_y(),d->get_max_z(),  d->get_min_x(),d->get_max_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
+    drawLine(d->get_min_x(),d->get_min_y(),d->get_max_z(),  d->get_min_x(),d->get_min_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
 
-    glBegin(GL_LINES);
-        glColor3f(0, 0, 0);
-        glVertex3f(0, 0, -2);
-        glColor3f(0, 0, 1);
-        glVertex3f(0, 0,  2);
-    glEnd();
+    drawLine(d->get_max_x(),d->get_max_y(),d->get_max_z(),  d->get_max_x(),d->get_min_y(),d->get_max_z(),  0,0,0,  0,0,0, 0.2);
+    drawLine(d->get_max_x(),d->get_max_y(),d->get_min_z(),  d->get_max_x(),d->get_min_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
+    drawLine(d->get_min_x(),d->get_max_y(),d->get_max_z(),  d->get_min_x(),d->get_min_y(),d->get_max_z(),  0,0,0,  0,0,0, 0.2);
+    drawLine(d->get_min_x(),d->get_max_y(),d->get_min_z(),  d->get_min_x(),d->get_min_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
+
+    drawLine(d->get_max_x(),d->get_max_y(),d->get_max_z(),  d->get_min_x(),d->get_max_y(),d->get_max_z(),  0,0,0,  0,0,0, 0.2);
+    drawLine(d->get_max_x(),d->get_max_y(),d->get_min_z(),  d->get_min_x(),d->get_max_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
+    drawLine(d->get_max_x(),d->get_min_y(),d->get_max_z(),  d->get_min_x(),d->get_min_y(),d->get_max_z(),  0,0,0,  0,0,0, 0.2);
+    drawLine(d->get_max_x(),d->get_min_y(),d->get_min_z(),  d->get_min_x(),d->get_min_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
 }
 
 void renderScene(void) {
@@ -90,51 +103,12 @@ void renderScene(void) {
     glPushMatrix();
         drawOrigin();
         glColor3f(0.1f, 0.1f, 0.1f);
+        drawBoundingBox();
         d -> draw_elements();
+        CoordinatesFilter::getInstance() -> draw();
     glPopMatrix();
 
     glutSwapBuffers();
-}
-
-void processNormalKeys(unsigned char key, int xx, int yy) {
-    if (key == 27) {    //esc
-        GroupsFilter::getInstance() -> deleteAllFilters();
-        TypesFilter::getInstance() -> deleteAllFilters();
-        QualityFilter::getInstance() -> deleteAllFilters();
-        CoordinatesFilter::getInstance() -> deleteAllFilters();
-    } else if (key == 48) {     //0
-        SingleGroupFilter* filter = new SingleGroupFilter(0);
-        GroupsFilter::getInstance() -> addSimpleGroupFilter(filter);
-    } else if (key == 49) {     //1
-        SingleGroupFilter* filter = new SingleGroupFilter(1);
-        GroupsFilter::getInstance() -> addSimpleGroupFilter(filter);
-    } else if (key == 122) {    //z
-        SingleCoordinateFilter* filter0 = new SingleCoordinateFilter(0,0,1,0, RelationalOperator::ge);
-        CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(filter0);
-    } else if (key == 120) {    //x
-        SingleCoordinateFilter* filter0 = new SingleCoordinateFilter(1,0,0,0, RelationalOperator::le);
-        CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(filter0);
-    } else if (key == 118) {    //v
-        SingleTypesFilter* filter = new SingleTypesFilter("vertex");
-        TypesFilter::getInstance() -> addSingleFilter(filter);
-    } else if (key == 101) {    //e
-        SingleTypesFilter* filter = new SingleTypesFilter("edge");
-        TypesFilter::getInstance() -> addSingleFilter(filter);
-    } else if (key == 102) {    //f
-        SingleTypesFilter* filter = new SingleTypesFilter("face");
-        TypesFilter::getInstance() -> addSingleFilter(filter);
-    } else if (key == 98) {     //b
-        SingleTypesFilter* filter = new SingleTypesFilter("block");
-        TypesFilter::getInstance() -> addSingleFilter(filter);
-    }
-
-    SingleQualityFilter* filter = new SingleQualityFilter(new Double(0), RelationalOperator::le, RelationalOperator::lt, new Double(5));
-    QualityFilter::getInstance() -> addSingleFilter(filter);
-
-    GroupsFilter::getInstance() -> filterTree(d);
-    TypesFilter::getInstance() -> filterTree(d);
-    QualityFilter::getInstance() -> filterTree(d);
-    CoordinatesFilter::getInstance() -> filterTree(d);
 }
 
 void mouseMove(int x, int y) {
@@ -202,12 +176,14 @@ void initGLUT(int argc, char **argv) {
 	glutIdleFunc(renderScene);
 
 	glutIgnoreKeyRepeat(1);
-	glutKeyboardFunc(processNormalKeys);
 
 	glutMouseFunc(mouseButton);
 	glutMotionFunc(mouseMove);
 
 	glEnable(GL_DEPTH_TEST);
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
 int main(int argc, char **argv) {
