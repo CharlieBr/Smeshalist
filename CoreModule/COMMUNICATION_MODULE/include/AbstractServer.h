@@ -61,6 +61,7 @@ class AbstractServer
         void sendAbort();
 
         void sendBreakpoint();
+        void sendStatistics();
 
         AbstractDataTree* handler = NULL;
         std::atomic_bool isStopped;

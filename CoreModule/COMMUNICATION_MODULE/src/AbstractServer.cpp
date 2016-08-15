@@ -50,6 +50,51 @@ void AbstractServer::sendBreakpoint() {
     }
 }
 
+void AbstractServer::sendStatistics() {
+    char buffer[BUFFER_SIZE];
+
+    sm::CoreToManagerMessage message;
+    message.set_messagetype(sm::CoreToManagerMessage_CTMMessageType_STATISTICS);
+    sm::StatisticsInfo info;
+
+    //set elementsCount
+    sm::ElementsCount elementsCount;
+    Statistics stats = handler -> get_statistics();
+    map<string, unsigned long> allElements = stats.all_elements_numbers;
+    map<string, unsigned long> visibleElements = stats.visible_elements_numbers;
+
+    for(auto& iter : allElements) {
+        sm::ElementInfo elementInfo;
+        elementInfo.set_total(iter.second);
+        elementInfo.set_visible(visibleElements[iter.first]);
+        (*elementsCount.mutable_elementinfos())[iter.first] = elementInfo;
+    }
+    (*info.mutable_elementscount()) = elementsCount;
+
+    //set boundingBox
+    sm::BoundingBox boundingBox;
+    boundingBox.set_fromx(handler -> get_min_x());  boundingBox.set_tox(handler-> get_max_x());
+    boundingBox.set_fromy(handler -> get_min_y());  boundingBox.set_toy(handler-> get_max_y());
+    boundingBox.set_fromz(handler -> get_min_z());  boundingBox.set_toz(handler-> get_max_z());
+    (*info.mutable_boundingbox()) = boundingBox;
+
+    //set GroupInfo
+    sm::GroupsInfo groupsInfo;
+    vector<int>* groups = handler -> get_all_groupIDs();
+    for (int id : *groups) {
+        groupsInfo.add_allgroups(to_string(id));
+    }
+    (*info.mutable_groupsinfo()) = groupsInfo;
+
+    (*message.mutable_statisticsinfo()) = info;
+
+    message.SerializeToArray(buffer, BUFFER_SIZE);
+
+    if (sendBytesToSMsocket(buffer, message.GetCachedSize()) < 0) {
+        cerr << "Error during sending breakpoint to Smeshalist Manager\n";
+    }
+}
+
 void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message) {
     vector<SingleGroupFilter*> *singleGroupFilters = NULL;
     vector<SingleTypesFilter*> *singleTypeFilters = NULL;
@@ -255,9 +300,11 @@ void AbstractServer::getDataPackages() {
         }
 
         if(package.endofdata()) {
-            return;
+            break;
         }
     }
+
+    sendStatistics();
 }
 
 Point3D AbstractServer::parsePoint(const structDefinitions::Point3D* p) {
