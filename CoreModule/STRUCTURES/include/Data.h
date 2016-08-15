@@ -10,7 +10,7 @@
 
 #include "Element.h"
 #include "Statistics.h"
-#include "ColorsMap.h"
+#include "Color.h"
 
 using namespace std;
 // -----------------------------------
@@ -18,7 +18,6 @@ using namespace std;
 // class to perform operations on
 // single elements of specified type
 // -----------------------------------
-
 class ElementsList {
 public:
     vector <Element*> elements;
@@ -49,8 +48,10 @@ public:
 class ElementsGroup {
     map <string, ElementsList*> lists;
     bool to_draw = true;
+    Color color;
 
     public:
+        ElementsGroup(Color color) : color(color) {};
         bool is_drawable() { return to_draw; }
         void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
         bool has_list(string);
@@ -60,6 +61,7 @@ class ElementsGroup {
         void draw_elements();
         vector<string>* get_struct_types();
         ElementsList* get_list(string);
+        Color get_color(){ return color; }
 
         //remove all data
         void clean();
@@ -72,12 +74,8 @@ class ElementsGroup {
 // singleton class to perform
 // operations on groups of elements
 //---------------------------------
-
 class Data {
     static map<int, ElementsGroup*> groups;
-    static Statistics statistics;
-    static ColorsMap colors_map;
-    static void check_coordinates(Point3D*);
 
     protected:
         Data(){};
@@ -115,10 +113,6 @@ class Data {
         static double get_min_z(){ return statistics.min_z; }
         static double get_max_z(){ return statistics.max_z; }
         static Statistics get_statistics(){ return statistics; }
-
-        static Color get_color_for_group(int group_id){ return colors_map.get_color_for_group(group_id); }
-
-    private:
-        static void add_color_if_new_group(int);
+        static Color get_color_for_group(int);
 };
 #endif // DATA_H
