@@ -17,24 +17,25 @@ void TypesFilter::filterTree(Data* dataTree) {
     vector<string> selectedTypes;
 
     //create list of all selected types in SM
-    for (vector<SingleTypesFilter*>::iterator it = filterList.begin() ; it != filterList.end(); ++it) {
-        selectedTypes.push_back((*it) -> getTypeName());
+    for (auto& filter : filterList) {
+        selectedTypes.push_back(filter -> getTypeName());
     }
 
     //filter
-    for (vector<int>::iterator groupIter = allGroupsInTree -> begin() ; groupIter != allGroupsInTree -> end(); ++groupIter) {
-        //ommite groups which are not drawable
-        ElementsGroup* group = dataTree -> get_group(*groupIter);
+    for (int groupIdInTree : *allGroupsInTree) {
+        ElementsGroup* group = dataTree -> get_group(groupIdInTree);
+
         if (!group -> is_drawable()) {
             continue;
         }
 
         vector<string>* types = group -> get_struct_types();
-        for (vector<string>::iterator typesIter = types -> begin() ; typesIter != types -> end(); ++typesIter) {
-            if(find(selectedTypes.begin(), selectedTypes.end(), *typesIter) != selectedTypes.end()) {
-                group -> get_list(*typesIter) -> set_draw_flag(true);
+
+        for (string type : *types) {
+            if(find(selectedTypes.begin(), selectedTypes.end(), type) != selectedTypes.end()) {
+                group -> get_list(type) -> set_draw_flag(true);
             } else {
-                group -> get_list(*typesIter) -> set_draw_flag(false);
+                group -> get_list(type) -> set_draw_flag(false);
             }
         }
     }

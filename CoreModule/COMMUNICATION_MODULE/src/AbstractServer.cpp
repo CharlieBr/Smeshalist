@@ -1,38 +1,172 @@
 #include "AbstractServer.h"
 
-void AbstractServer::registerStructuresHandler(Data* data) {
+void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
     if (this->handler != NULL) {
 		cout << "Set new data handler\n";
 	}
-	else {
-		cout << "WARNING: data handler was already registered\n";
-	}
+
 	this->handler = data;
 }
 
-void AbstractServer::sendAcknowlage() {
+int AbstractServer::sendDatagramToClient(structDefinitions::MessageInfo_Type messageType) {
     char buffer[BUFFER_SIZE];
 
-    structDefinitions::MessageInfo ack;
-    ack.set_type(structDefinitions::MessageInfo_Type_ACK);
+    structDefinitions::MessageInfo message;
+    message.set_type(messageType);
 
-    ack.SerializeToArray(buffer, BUFFER_SIZE);
+    message.SerializeToArray(buffer, BUFFER_SIZE);
 
-    if (sendBytesToSocket(buffer, ack.GetCachedSize()) < 0) {
+    return sendBytesToSocket(buffer, message.GetCachedSize());
+}
+
+void AbstractServer::sendAcknowlage() {
+    if (sendDatagramToClient(structDefinitions::MessageInfo_Type_ACK) < 0) {
         cerr << "Error during sending ack to client\n";
     }
 }
 
-void AbstractServer::sendAccept() {
+void AbstractServer::sendContinue() {
+    if (sendDatagramToClient(structDefinitions::MessageInfo_Type_ACCEPTED) < 0) {
+        cerr << "Error during sending accept to client\n";
+    }
+}
+
+void AbstractServer::sendAbort(){
+    if (sendDatagramToClient(structDefinitions::MessageInfo_Type_REJECTED) < 0) {
+        cerr << "Error during sending accept to client\n";
+    }
+}
+
+void AbstractServer::sendBreakpoint() {
     char buffer[BUFFER_SIZE];
 
-    structDefinitions::MessageInfo accept;
-    accept.set_type(structDefinitions::MessageInfo_Type_ACCEPTED);
+    sm::CoreToManagerMessage message;
+    message.set_messagetype(sm::CoreToManagerMessage_CTMMessageType_BREAKPOINT);
 
-    accept.SerializeToArray(buffer, BUFFER_SIZE);
+    message.SerializeToArray(buffer, BUFFER_SIZE);
 
-    if (sendBytesToSocket(buffer, accept.GetCachedSize()) < 0) {
-        cerr << "Error during sending accept to client\n";
+    if (sendBytesToSMsocket(buffer, message.GetCachedSize()) < 0) {
+        cerr << "Error during sending breakpoint to Smeshalist Manager\n";
+    }
+}
+
+void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message) {
+    vector<SingleGroupFilter*> *singleGroupFilters = NULL;
+    vector<SingleTypesFilter*> *singleTypeFilters = NULL;
+    vector<SingleQualityFilter*> *singleQualityFilters = NULL;
+    vector<SingleCoordinateFilter*> *singleCoordinateFilters = NULL;
+    LogicalConnectiveEnum* coordinatesConjunction = NULL;
+
+
+    if (message -> has_groupsfilter()) {
+        singleGroupFilters = new vector<SingleGroupFilter*>();
+        google::protobuf::Map<string, bool> selectedGroups = (message -> groupsfilter()).selectedgroups();
+        google::protobuf::Map<string, bool>::iterator iter = selectedGroups.begin();
+
+        for (; iter!=selectedGroups.end(); ++iter) {
+            if (iter -> second) {   //check if group is selected
+                int groupID = stoi(iter->first);
+                singleGroupFilters -> push_back(new SingleGroupFilter(groupID));
+            }
+        }
+    }
+
+    if (message -> has_typesfilter()) {
+        singleTypeFilters = new vector<SingleTypesFilter*>();
+        google::protobuf::Map<string, bool> selectedTypes = (message -> typesfilter()).selectedtypes();
+        google::protobuf::Map<string, bool>::iterator iter = selectedTypes.begin();
+
+        for (; iter!=selectedTypes.end(); ++iter) {
+            if (iter -> second) {   //check if type is selected
+                singleTypeFilters -> push_back(new SingleTypesFilter(typeTraslations[iter->first]));
+            }
+        }
+    }
+
+    if (message -> has_qualityfilter()) {
+        singleQualityFilters = new vector<SingleQualityFilter*>();
+
+        sm::QualityFilter filter = message -> qualityfilter();
+        int size = filter.qualitycondition_size();
+
+        for (int i=0; i<size; i++) {
+            sm::QualityCondition condition = filter.qualitycondition(i);
+
+            Double* leftValue = NULL;
+            Double* rightValue = NULL;
+            RelationalOperator leftOp;
+            RelationalOperator rightOp;
+
+            if (condition.has_leftvalue()) {
+                leftValue = new Double(condition.leftvalue());
+                leftOp = operatorTranslations[condition.leftoperator()];
+            }
+            if (condition.has_rightvalue()) {
+                rightValue = new Double(condition.rightvalue());
+                rightOp = operatorTranslations[condition.rightoperator()];
+            }
+            SingleQualityFilter* qualityFilter = new SingleQualityFilter(leftValue, leftOp, rightOp, rightValue);
+            singleQualityFilters -> push_back(qualityFilter);
+        }
+    }
+
+    if (message -> has_coordinatesfilter()) {
+        singleCoordinateFilters = new vector<SingleCoordinateFilter*>();
+        sm::CoordinatesFilter filter = message -> coordinatesfilter();
+
+        if (filter.has_conjunction()) {
+            coordinatesConjunction = &conjunctionTranslations[filter.conjunction()];
+        }
+
+        int size = filter.coordinatescondition_size();
+        for (int i=0; i<size; i++) {
+            sm::CoordinatesCondition condition = filter.coordinatescondition(i);
+
+            SingleCoordinateFilter* coordFilter = new SingleCoordinateFilter(   condition.xvalue(),
+                                                                                condition.yvalue(),
+                                                                                condition.zvalue(),
+                                                                                condition.constant(),
+                                                                                operatorTranslations[condition.coordinatesoperator()]);
+            singleCoordinateFilters -> push_back(coordFilter);
+        }
+    }
+
+    handler -> reloadFliters(singleGroupFilters, singleTypeFilters, singleCoordinateFilters, coordinatesConjunction, singleQualityFilters);
+}
+
+void AbstractServer::startSMServer() {
+    int nBytes;
+    char buffer[BUFFER_SIZE];
+
+    while(!isStopped.load()){
+        nBytes = getBytesFromSMsocket(buffer, BUFFER_SIZE);
+        if (nBytes < 0) {
+            continue;
+        }
+
+        sm::ManagerToCoreMessage message;
+        if (!message.ParseFromArray(buffer, nBytes)) {
+            cerr << "Unable to parse message from SmeshalistManager\n";
+            continue;
+        }
+
+        switch (message.messagetype()) {
+            case sm::ManagerToCoreMessage_MTCMessageType_ABORT:
+                sendAbort();
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_CONTINUE:
+                sendContinue();
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_FILTERS:
+                processFiltersDataPackage(&message);
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_OPTIONS:
+                cout << "Options\n";
+                break;
+            default:
+                cerr << "Unknow message type\n";
+                break;
+        }
     }
 }
 
@@ -60,8 +194,7 @@ void AbstractServer::startServerInNewThread()
                 handler -> draw_elements();
                 break;
             case structDefinitions::MessageInfo_Type_BREAKPOINT:
-                cout << "Breakpoint\n";
-                sendAccept();
+                sendBreakpoint();
                 break;
             case structDefinitions::MessageInfo_Type_RENDER:
                 cout << "Render\n";

@@ -7,8 +7,8 @@ bool SingleCoordinateFilter::applyFilter(Element* element) {
 
     vector<Point3D>* vertices = element -> get_vertices();
 
-    for (vector<Point3D>::iterator it = vertices->begin() ; it != vertices->end() && result; ++it) {
-        double value = computeValue(it -> get_x(), it -> get_y(), it -> get_z());
+    for (Point3D& vertex : *vertices) {
+        double value = computeValue(vertex.get_x(), vertex.get_y(), vertex.get_z());
 
         switch(op) {
             case RelationalOperator::lt: result = absolute_value > value; break;
@@ -17,6 +17,10 @@ bool SingleCoordinateFilter::applyFilter(Element* element) {
             case RelationalOperator::gt: result = absolute_value < value; break;
             default: result = true;
         }
+
+        if  (!result) {
+            break;
+        }
     }
 
     return result;
@@ -24,6 +28,102 @@ bool SingleCoordinateFilter::applyFilter(Element* element) {
 
 double SingleCoordinateFilter::computeValue(double x, double y, double z) {
     return x*x_coef + y*y_coef + z*z_coef;
+}
+
+void SingleCoordinateFilter::draw() {
+    glColor4f(0.5f,0.1f,0.1f,0.1f);
+    glBegin(GL_POLYGON);
+    for (Point3D* point : intersectionPoints) {
+        glVertex3d(point->get_x(), point->get_y(), point->get_z());
+    }
+    glEnd();
+}
+
+void SingleCoordinateFilter::recomputeIntersections(Statistics* stats) {
+    intersectionPoints.clear();
+
+    //compute for x
+    if (x_coef != 0) {
+        double x = (absolute_value - y_coef*stats->min_y - z_coef*stats->min_z)/x_coef;
+        if (stats->min_x <= x && x <= stats->max_x) {
+            intersectionPoints.push_back(new Point3D(x, stats->min_y, stats->min_z));
+        }
+
+        x = (absolute_value - y_coef*stats->min_y - z_coef*stats->max_z)/x_coef;
+        if (stats->min_x <= x && x <= stats->max_x) {
+            intersectionPoints.push_back(new Point3D(x, stats->min_y, stats->max_z));
+        }
+
+        x = (absolute_value - y_coef*stats->max_y - z_coef*stats->min_z)/x_coef;
+        if (stats->min_x <= x && x <= stats->max_x) {
+            intersectionPoints.push_back(new Point3D(x, stats->max_y, stats->min_z));
+        }
+
+        x = (absolute_value - y_coef*stats->max_y - z_coef*stats->max_z)/x_coef;
+        if (stats->min_x <= x && x <= stats->max_x) {
+            intersectionPoints.push_back(new Point3D(x, stats->max_y, stats->max_z));
+        }
+    }
+
+    //compute for y
+    if (y_coef != 0) {
+        double y = (absolute_value - x_coef*stats->min_x - z_coef*stats->min_z)/y_coef;
+        if (stats->min_y <= y && y <= stats->max_y) {
+            intersectionPoints.push_back(new Point3D(stats->min_x, y, stats->min_z));
+        }
+
+        y = (absolute_value - x_coef*stats->max_x - z_coef*stats->min_z)/y_coef;
+        if (stats->min_y <= y && y <= stats->max_y) {
+            intersectionPoints.push_back(new Point3D(stats->max_x, y, stats->min_z));
+        }
+
+        y = (absolute_value - x_coef*stats->min_x - z_coef*stats->max_z)/y_coef;
+        if (stats->min_y <= y && y <= stats->max_y) {
+            intersectionPoints.push_back(new Point3D(stats->min_x, y, stats->max_z));
+        }
+
+        y = (absolute_value - x_coef*stats->max_x - z_coef*stats->max_z)/y_coef;
+        if (stats->min_y <= y && y <= stats->max_y) {
+            intersectionPoints.push_back(new Point3D(stats->max_x, y, stats->max_z));
+        }
+    }
+
+    //compute for z
+    if (z_coef != 0) {
+        double z = (absolute_value - x_coef*stats->min_x - y_coef*stats->min_y)/z_coef;
+        if (stats->min_z <= z && z <= stats->max_z) {
+            intersectionPoints.push_back(new Point3D(stats->min_x, stats->min_y, z));
+        }
+
+        z = (absolute_value - x_coef*stats->max_x - y_coef*stats->min_y)/z_coef;
+        if (stats->min_z <= z && z <= stats->max_z) {
+            intersectionPoints.push_back(new Point3D(stats->max_x, stats->min_y, z));
+        }
+
+        z = (absolute_value - x_coef*stats->min_x - y_coef*stats->max_y)/z_coef;
+        if (stats->min_z <= z && z <= stats->max_z) {
+            intersectionPoints.push_back(new Point3D(stats->min_x, stats->max_y, z));
+        }
+
+        z = (absolute_value - x_coef*stats->max_x - y_coef*stats->max_y)/z_coef;
+        if (stats->min_z <= z && z <= stats->max_z) {
+            intersectionPoints.push_back(new Point3D(stats->max_x, stats->max_y, z));
+        }
+    }
+
+    intersectionPoints = CMathUtils::sortPoints(intersectionPoints);
+}
+
+void CoordinatesFilter::recomputeIntersections(Statistics* stats) {
+    for (auto& filter : filterList) {
+        filter -> recomputeIntersections(stats);
+    }
+}
+
+void CoordinatesFilter::draw() {
+    for (auto& filter : filterList) {
+        filter -> draw();
+    }
 }
 
 void CoordinatesFilter::addSimpleCoordinateFilter(SingleCoordinateFilter* filter) {
@@ -43,10 +143,10 @@ void CoordinatesFilter::filterElement(Element* element) {
     bool all = true;    //use for AND operator
     bool result;
 
-    for (vector<SingleCoordinateFilter*>::iterator filter = filterList.begin() ; filter != filterList.end(); ++filter) {
-        result = (*filter) -> applyFilter(element);
-        all = all && result;
-        any = any || result;
+    for (auto& filter : filterList) {
+        result = filter -> applyFilter(element);
+        all &= result;
+        any |= result;
     }
 
     if (logicalConnective == LogicalConnectiveEnum::AND) {
@@ -60,8 +160,8 @@ void CoordinatesFilter::filterElement(Element* element) {
 void CoordinatesFilter::filterTree(Data* dataTree) {
     vector<int>* groupIDs = dataTree -> get_all_groupIDs();
 
-    for (vector<int>::iterator groupsIter = groupIDs->begin() ; groupsIter != groupIDs->end(); ++groupsIter) {
-        ElementsGroup* elementsGroup = dataTree -> get_group(*groupsIter);
+    for (int groupID : *groupIDs) {
+        ElementsGroup* elementsGroup = dataTree -> get_group(groupID);
 
         //ommit groups which are not draw
         if (!elementsGroup -> is_drawable()) {
@@ -70,8 +170,8 @@ void CoordinatesFilter::filterTree(Data* dataTree) {
 
         vector<string>* typeIDs = elementsGroup -> get_struct_types();
 
-        for (vector<string>::iterator typeIter = typeIDs->begin() ; typeIter != typeIDs->end(); ++typeIter) {
-            ElementsList* elementsList = elementsGroup -> get_list(*typeIter);
+        for(string typeID : *typeIDs) {
+            ElementsList* elementsList = elementsGroup -> get_list(typeID);
 
             //ommit lists which are not draw
             if (!elementsList -> is_drawable()) {
@@ -80,8 +180,8 @@ void CoordinatesFilter::filterTree(Data* dataTree) {
 
             vector<Element*>* elements = elementsList -> get_elements();
 
-            for (vector<Element*>::iterator elem = elements->begin() ; elem != elements->end(); ++elem) {
-                filterElement(*elem);
+            for(Element* element : *elements) {
+                filterElement(element);
             }
         }
     }

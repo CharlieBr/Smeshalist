@@ -77,11 +77,11 @@ class Data {
     static map<int, ElementsGroup*> groups;
     static Statistics statistics;
     static ColorsMap colors_map;
-
     static void check_coordinates(Point3D*);
 
     protected:
         Data(){};
+        static Statistics statistics;
 
     public:
         Data(Data const&) = delete;

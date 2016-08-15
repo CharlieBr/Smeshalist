@@ -5,6 +5,8 @@ void AbstractDataTree::add(int groupID, Element* element) {
     QualityFilter::getInstance() -> filterElement(element);
     CoordinatesFilter::getInstance() -> filterElement(element);
     Data::add(groupID, element);
+    GroupsFilter::getInstance() -> filterTree(this);
+    TypesFilter::getInstance() -> filterTree(this);
     UNLOCK();
 }
 
@@ -15,30 +17,47 @@ void AbstractDataTree::add(int groupID, vector<Element*>* elements) {
         CoordinatesFilter::getInstance() -> filterElement(element);
     }
     Data::add(groupID, elements);
+    GroupsFilter::getInstance() -> filterTree(this);
+    TypesFilter::getInstance() -> filterTree(this);
     UNLOCK();
 }
 
-void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> groupFilters, vector<SingleTypesFilter*> typesFilters, vector<SingleCoordinateFilter*> coordinateFilters,
-    vector<SingleQualityFilter*> qualityFilters) {
+void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> *groupFilters, vector<SingleTypesFilter*> *typesFilters,
+    vector<SingleCoordinateFilter*> *coordinateFilters, LogicalConnectiveEnum* conjuntion, vector<SingleQualityFilter*> *qualityFilters) {
 
     LOCK();
-    GroupsFilter::getInstance() -> deleteAllFilters();
-    TypesFilter::getInstance() -> deleteAllFilters();
-    CoordinatesFilter::getInstance() -> deleteAllFilters();
-    QualityFilter::getInstance() -> deleteAllFilters();
 
+    if (groupFilters != NULL) {
+        GroupsFilter::getInstance() -> deleteAllFilters();
+        for(auto const& groupFilter : *groupFilters){
+            GroupsFilter::getInstance() -> addSimpleGroupFilter(groupFilter);
+        }
+    }
 
-    for(auto const& groupFilter : groupFilters){
-        GroupsFilter::getInstance() -> addSimpleGroupFilter(groupFilter);
+    if (typesFilters != NULL) {
+        TypesFilter::getInstance() -> deleteAllFilters();
+        for(auto const& typesFilter : *typesFilters){
+            TypesFilter::getInstance() -> addSingleFilter(typesFilter);
+        }
     }
-    for(auto const& typesFilter : typesFilters){
-        TypesFilter::getInstance() -> addSingleFilter(typesFilter);
+
+    if (coordinateFilters != NULL) {
+        CoordinatesFilter::getInstance() -> deleteAllFilters();
+        for(auto const& coordinateFilter : *coordinateFilters){
+            CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(coordinateFilter);
+        }
+        CoordinatesFilter::getInstance() -> recomputeIntersections(&statistics);
     }
-    for(auto const& coordinateFilter : coordinateFilters){
-        CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(coordinateFilter);
+
+    if (conjuntion != NULL) {
+        CoordinatesFilter::getInstance() -> changeLogicalCoonective(*conjuntion);
     }
-    for(auto const& qualityFilter : qualityFilters){
-        QualityFilter::getInstance() -> addSingleFilter(qualityFilter);
+
+    if (qualityFilters != NULL) {
+        QualityFilter::getInstance() -> deleteAllFilters();
+        for(auto const& qualityFilter : *qualityFilters){
+            QualityFilter::getInstance() -> addSingleFilter(qualityFilter);
+        }
     }
 
     filterDataTree();

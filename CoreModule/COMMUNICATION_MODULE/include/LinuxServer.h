@@ -19,14 +19,22 @@ class LinuxServer : public AbstractServer
         void startServer();
         void stopServer();
     private:
-        int udpSocket;
+        int clientSocket;
+        int SMsocket;
         struct sockaddr_in serverAddr;
+        struct sockaddr_in SMaddr;
         socklen_t addr_size;
         struct sockaddr_storage serverStorage;
+        struct sockaddr_storage SMstorage;
         std::thread* t = NULL;
+        std::thread* SM = NULL;
 
         int getBytesFromSocket(char[], int);
         int sendBytesToSocket(char[], int);
+        int getBytesFromSMsocket(char[], int);
+        int sendBytesToSMsocket(char[], int);
+
+        int createSocket(int, sockaddr_in*);
 };
 
 #endif // SERVER_H

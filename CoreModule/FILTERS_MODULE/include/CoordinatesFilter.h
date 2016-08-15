@@ -1,8 +1,10 @@
 #ifndef COORDINATESFILTER_H
 #define COORDINATESFILTER_H
 
-#include "../../STRUCTURES/include/Data.h"
+#include "Data.h"
 #include "RelationalOperator.h"
+#include "CMathUtils.h"
+#include "GL/gl.h"
 
 
 enum class LogicalConnectiveEnum {AND, OR};
@@ -15,13 +17,15 @@ class SingleCoordinateFilter
             x_coef(x_coef), y_coef(y_coef), z_coef(z_coef), absolute_value(absolute_value), op(op) {}
 
         bool applyFilter(Element*);
-
+        void draw();
+        void recomputeIntersections(Statistics*);
     private:
         double x_coef;
         double y_coef;
         double z_coef;
         double absolute_value;
         RelationalOperator op;
+        vector<Point3D*> intersectionPoints;
 
         double computeValue(double, double, double);
 };
@@ -43,6 +47,8 @@ class CoordinatesFilter
         void deleteAllFilters() {
             filterList.clear();
         }
+        void draw();
+        void recomputeIntersections(Statistics*);
     private:
         CoordinatesFilter() {
             logicalConnective = LogicalConnectiveEnum::AND;
