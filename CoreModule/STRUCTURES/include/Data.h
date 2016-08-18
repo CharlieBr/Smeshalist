@@ -27,7 +27,7 @@ public:
         bool is_drawable() { return to_draw; }
         void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
         void filter_all(bool);
-        void draw_elements();
+        void draw_elements(Color);
 
         void add(Element* element) { elements.push_back(element); }
         void add(vector<Element*>*);
@@ -58,7 +58,7 @@ class ElementsGroup {
         void add(string, Element*);
         void add(string, vector<Element*>*);
         void filter_all(bool);
-        void draw_elements();
+        void draw_elements(Color);
         vector<string>* get_struct_types();
         ElementsList* get_list(string);
         Color get_color(){ return color; }

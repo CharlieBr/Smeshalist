@@ -14,6 +14,7 @@ compile:
 	mkdir obj
 	#COMPILING STRUCTURES MODULE FROM CORE
 	$(CC) $(FLAGS) $(INCLUDES) -c $(STRUCTURES_PATH)/src/AbstractDataTree.cpp -o obj/AbstractDataTree.o
+	$(CC) $(FLAGS) $(INCLUDES) -c $(STRUCTURES_PATH)/src/Color.cpp -o obj/Color.o
 	$(CC) $(FLAGS) $(INCLUDES) -c $(STRUCTURES_PATH)/src/Data.cpp -o obj/Data.o
 	$(CC) $(FLAGS) $(INCLUDES) -c $(STRUCTURES_PATH)/src/LinuxDataTree.cpp -o obj/LinuxDataTree.o
 	$(CC) $(FLAGS) $(INCLUDES) -c $(STRUCTURES_PATH)/src/Statistics.cpp -o obj/Statistics.o
@@ -36,6 +37,6 @@ compile:
 	#
 build:
 	#BUILDING
-	$(CC) -o CoreModule obj/structs.o obj/communication.o obj/AbstractServer.o obj/LinuxServer.o obj/CoordinatesFilter.o obj/GroupsFilter.o obj/QualityFilter.o obj/TypesFilter.o obj/CMathUtils.o obj/rotateCamera.o obj/AbstractDataTree.o obj/Data.o obj/LinuxDataTree.o obj/Statistics.o obj/Structures.o $(LIBS)
+	$(CC) -o CoreModule obj/structs.o obj/communication.o obj/AbstractServer.o obj/LinuxServer.o obj/CoordinatesFilter.o obj/GroupsFilter.o obj/QualityFilter.o obj/TypesFilter.o obj/CMathUtils.o obj/rotateCamera.o obj/AbstractDataTree.o obj/Color.o obj/Data.o obj/LinuxDataTree.o obj/Statistics.o obj/Structures.o $(LIBS)
 	rm -r obj
 all: compile build

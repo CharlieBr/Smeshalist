@@ -15,31 +15,33 @@ string Point3D::print_coordinates(){
 // ------- mesh elements methods --------
 // --------------------------------------
 
-void Vertex::draw(){
+void Vertex::draw(Color color){
     Point3D point = this -> vertices.front();
 
+    glColor3f(color.r(), color.g(), color.b());
     glPointSize(2);
     glBegin(GL_POINTS);
         glVertex3f(point.get_x(), point.get_y(), point.get_z());
     glEnd();
 }
 
-void Edge::draw(){
+void Edge::draw(Color color){
     Point3D v1 = this -> vertices[0];
     Point3D v2 = this -> vertices[1];
 
+    glColor3f(color.r(), color.g(), color.b());
     glBegin(GL_LINES);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
     glEnd();
 }
 
-void Face::draw(){
+void Face::draw(Color color){
     Point3D v1 = this -> vertices[0];
     Point3D v2 = this -> vertices[1];
     Point3D v3 = this -> vertices[2];
 
-    glColor3f(0.9f, 0.9f, 0.9f);
+    glColor3f(color.r(), color.g(), color.b());
     glBegin(GL_TRIANGLES);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
@@ -61,13 +63,13 @@ void Face::draw(){
     glDisable(GL_POLYGON_OFFSET_LINE);
 }
 
-void Block::draw(){
+void Block::draw(Color color){
     Point3D v1 = this -> vertices[0];
     Point3D v2 = this -> vertices[1];
     Point3D v3 = this -> vertices[2];
     Point3D v4 = this -> vertices[3];
 
-    glColor3f(0.9f, 0.9f, 0.9f);
+    glColor3f(color.r(), color.g(), color.b());
     glBegin(GL_TRIANGLES);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
@@ -93,7 +95,7 @@ void Block::draw(){
     glEnd();
 
     glEnable(GL_POLYGON_OFFSET_LINE);
-    glColor3f(0.0f, 0.0f, 0.0f);
+    glColor3f(color.r(), color.g(), color.b());
     glPolygonOffset(-1,-1);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glBegin(GL_TRIANGLES);

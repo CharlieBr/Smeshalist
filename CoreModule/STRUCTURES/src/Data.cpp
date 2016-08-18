@@ -42,9 +42,10 @@ void Data::filter_all(bool to_draw){
 void Data::draw_elements(){
     for( auto const it : groups ){
         ElementsGroup * group = it.second;
+        Color color = group -> get_color();
 
         if( group -> is_drawable() ){
-            group -> draw_elements();
+            group -> draw_elements(color);
         }
     }
 }
@@ -195,12 +196,12 @@ void ElementsGroup::filter_all(bool to_draw ){
     }
 }
 
-void ElementsGroup::draw_elements(){
+void ElementsGroup::draw_elements(Color color){
     for(auto const it : lists){
         ElementsList * elements_list = it.second;
 
         if( elements_list -> is_drawable() ){
-            elements_list -> draw_elements();
+            elements_list -> draw_elements(color);
         }
     }
 }
@@ -265,12 +266,12 @@ void ElementsList::filter_all(bool to_draw){
     }
 }
 
-void ElementsList::draw_elements(){
+void ElementsList::draw_elements(Color color){
     for( unsigned int i = 0; i < elements.size(); i++ ){
         Element * element = elements.at(i);
 
         if( element -> is_drawable() ){
-            element -> draw();
+            element -> draw(color);
         }
     }
 }
