@@ -116,18 +116,10 @@ public class FiltersTab extends JPanel{
 	}
 
 	public void setGroupsInfo(GroupsInfo groupsInfo){
-		typesTab.setStructures(groupsInfo.getAllGroupsList());
+		groupsTab.setGroups(groupsInfo.getAllGroupsList());
 	}
 
 	private void setTestContent() {
-		List<String> structures = new LinkedList<>();
-		structures.add("Vertexes");
-		structures.add("Edges");
-		structures.add("Triangles");
-		structures.add("Pyramids");
-		
-		typesTab.setStructures(structures);
-		
 		List<String> groups = new LinkedList<>();
 		groups.add("0");
 		groups.add("1");

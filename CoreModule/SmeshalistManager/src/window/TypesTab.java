@@ -41,7 +41,13 @@ public class TypesTab extends JPanel{
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		this.setBorder(border);
 
-		
+		List<String> structures = new LinkedList<>();
+		structures.add("Vertexes");
+		structures.add("Edges");
+		structures.add("Triangles");
+		structures.add("Pyramids");
+
+		this.setStructures(structures);
 	}
 	
 	private void putStructures(){
@@ -64,7 +70,7 @@ public class TypesTab extends JPanel{
 		}
 	}
 
-	public void setStructures(List<String> structures) {
+	private void setStructures(List<String> structures) {
 		this.structures.clear();
 		this.structures.addAll(structures);
 		

@@ -44,8 +44,8 @@ public class QualityEntry extends JPanel {
 			qualityConditionBuilder.setLeftOperator(FiltersTab.getComparisonOperator(leftOperator));
 		}
 		if (rightValue.compareTo("") != 0){
-			qualityConditionBuilder.setLeftValue(new Double(rightValue));
-			qualityConditionBuilder.setLeftOperator(FiltersTab.getComparisonOperator(rightOperator));
+			qualityConditionBuilder.setRightValue(new Double(rightValue));
+			qualityConditionBuilder.setRightOperator(FiltersTab.getComparisonOperator(rightOperator));
 		}
 		return qualityConditionBuilder.build();
 	}
