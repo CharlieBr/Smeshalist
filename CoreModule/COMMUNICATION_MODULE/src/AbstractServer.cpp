@@ -8,6 +8,10 @@ void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
 	this->handler = data;
 }
 
+void AbstractServer::registerMouseSensitivityHandler(float* pointer) {
+    mouseSensitivity = pointer;
+}
+
 int AbstractServer::sendDatagramToClient(structDefinitions::MessageInfo_Type messageType) {
     char buffer[BUFFER_SIZE];
 
@@ -59,6 +63,7 @@ void AbstractServer::sendStatistics() {
 
     //set elementsCount
     sm::ElementsCount elementsCount;
+    handler -> count_visible_elements();
     Statistics stats = handler -> get_statistics();
     map<string, unsigned long> allElements = stats.all_elements_numbers;
     map<string, unsigned long> visibleElements = stats.visible_elements_numbers;
@@ -177,6 +182,18 @@ void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message
     }
 
     handler -> reloadFliters(singleGroupFilters, singleTypeFilters, singleCoordinateFilters, coordinatesConjunction, singleQualityFilters);
+    sendStatistics();
+}
+
+void AbstractServer::processOptionDataPackage(sm::ManagerToCoreMessage* message) {
+    sm::OptionsInfo options = message -> optionsinfo();
+
+    double exponent = options.mousesensitivity();
+    *mouseSensitivity = std::pow(BASE, exponent)/BASE;
+
+    //TODO dynamic rendering
+    //TODO show labels
+    //TODO transparent structures
 }
 
 void AbstractServer::startSMServer() {
@@ -206,7 +223,10 @@ void AbstractServer::startSMServer() {
                 processFiltersDataPackage(&message);
                 break;
             case sm::ManagerToCoreMessage_MTCMessageType_OPTIONS:
-                cout << "Options\n";
+                processOptionDataPackage(&message);
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_HELLO:
+                //SM connected
                 break;
             default:
                 cerr << "Unknow message type\n";

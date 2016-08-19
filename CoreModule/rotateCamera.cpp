@@ -21,6 +21,7 @@ float deltaAngleY = 0.8f;
 
 float oldMousePositionX, oldMousePositionY;
 float radius=5.0f;
+float mouseSensitivity = 1.0f;
 
 float translationX=0, translationY=0;
 
@@ -117,11 +118,11 @@ void mouseMove(int x, int y) {
     }
 
     if (isShiftPressed) {
-        translationX += (x-oldMousePositionX) * radius / MOVING_PRECISION;
-        translationY -= (y-oldMousePositionY) * radius / MOVING_PRECISION;
+        translationX += mouseSensitivity * (x-oldMousePositionX) * radius / MOVING_PRECISION;
+        translationY -= mouseSensitivity * (y-oldMousePositionY) * radius / MOVING_PRECISION;
     } else {
-        deltaAngleX += (x-oldMousePositionX) / MOUSE_PRECISION;
-        deltaAngleY += (y-oldMousePositionY) / MOUSE_PRECISION;
+        deltaAngleX += mouseSensitivity * (x-oldMousePositionX) / MOUSE_PRECISION;
+        deltaAngleY += mouseSensitivity * (y-oldMousePositionY) / MOUSE_PRECISION;
 
         if (deltaAngleY > PI_2) {
             deltaAngleY = PI_2;
@@ -153,18 +154,15 @@ void mouseButton(int button, int state, int x, int y) {
     isShiftPressed = glutGetModifiers() == GLUT_ACTIVE_SHIFT;
 
 	if (button == 3){
-        radius*=0.9;
+        radius*=std::pow(0.9, mouseSensitivity);
 	} else if (button == 4){
-        radius/=0.9;
+        radius/=std::pow(0.9, mouseSensitivity);
 	}
 
     computeCameraPosition();
 }
 
 void initGLUT(int argc, char **argv) {
-    //TODO
-    system("java -jar SmeshalistManager/SmeshalistManager.jar &");
-    //
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100, 100);
@@ -186,7 +184,38 @@ void initGLUT(int argc, char **argv) {
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 }
 
+inline bool isFileExists(const char* name) {
+    if (FILE *file = fopen(name, "r")) {
+        fclose(file);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void tryToRunSmeshalistManager(int argc, char** argv) {
+    char* p = NULL;
+    for (int i=1; i<argc && p==NULL; i++) {
+        p = strstr(argv[i], "SM=");
+    }
+
+    string path;
+    if (p != NULL) {
+        path = string(p + 3, p+strlen(p));
+    } else {
+        path = "SmeshalistManager/SmeshalistManager.jar";
+    }
+
+    if (isFileExists(path.c_str())) {
+        path = "java -jar " + path + " &";
+        system(path.c_str());
+    } else {
+        cerr << "Unable to run Smeshalist Manager!!!\n";
+    }
+}
+
 int main(int argc, char **argv) {
+    tryToRunSmeshalistManager(argc, argv);
     GOOGLE_PROTOBUF_VERIFY_VERSION;
     //set initial position
 	computeCameraPosition();
@@ -202,6 +231,7 @@ int main(int argc, char **argv) {
     #endif // __linux__
 
     server -> registerStructuresHandler(d);
+    server -> registerMouseSensitivityHandler(&mouseSensitivity);
 
 	initGLUT(argc, argv);
 

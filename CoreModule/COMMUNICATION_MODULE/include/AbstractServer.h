@@ -2,6 +2,7 @@
 #define ABSTRACTSERVER_H
 
 #define BUFFER_SIZE 1024*2
+#define BASE 4
 #define IPADDRESS "127.0.0.1"
 #define PORT 8383
 #define SOCKET_TIMEOUT_SEC 1
@@ -36,7 +37,8 @@ class AbstractServer
         virtual void startServer() {};
         virtual void stopServer() {};
 
-        void registerStructuresHandler(AbstractDataTree* data);
+        void registerStructuresHandler(AbstractDataTree*);
+        void registerMouseSensitivityHandler(float*);
     protected:
         virtual int getBytesFromSocket(char[], int) = 0;
         virtual int sendBytesToSocket(char[], int) = 0;
@@ -52,6 +54,7 @@ class AbstractServer
 
         void getDataPackages();
         void processFiltersDataPackage(sm::ManagerToCoreMessage*);
+        void processOptionDataPackage(sm::ManagerToCoreMessage*);
         int sendDatagramToClient(structDefinitions::MessageInfo_Type);
         void sendAcknowlage();
         void startServerInNewThread();
@@ -64,6 +67,7 @@ class AbstractServer
         void sendStatistics();
 
         AbstractDataTree* handler = NULL;
+        float* mouseSensitivity;
         std::atomic_bool isStopped;
         std::map<string, string> typeTraslations;
         std::map<sm::CoordinatesFilter_Conjunction, LogicalConnectiveEnum> conjunctionTranslations;
