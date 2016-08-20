@@ -16,15 +16,23 @@ class WindowsServer : public AbstractServer
         void stopServer();
     protected:
     private:
+		SOCKET* createSocket(sockaddr_in*, int);
+
 		int getBytesFromSocket(char[], int);
 		int sendBytesToSocket(char[], int);
+		int getBytesFromSMsocket(char[], int);
+		int sendBytesToSMsocket(char[], int);
 
 		SOCKET sock;
+		SOCKET sockSM;
 		WSADATA wsa;
 		struct sockaddr_in sockaddr;
+		struct sockaddr_in sockaddrSM;
 		struct sockaddr client;
+		struct sockaddr clientSM;
 		int slen;
 		thread* t;
+		thread* tSM;
 };
 
 #endif // WINDOWSSERVER_H

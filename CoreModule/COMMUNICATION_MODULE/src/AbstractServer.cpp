@@ -12,6 +12,22 @@ void AbstractServer::registerMouseSensitivityHandler(float* pointer) {
     mouseSensitivity = pointer;
 }
 
+void AbstractServer::setDynamicRendering(bool flag)
+{
+	dynamicRendering = flag;
+}
+
+void AbstractServer::sendElementsBufferToTree()
+{
+	for (auto group : elementsBuffer) {
+		for (auto type : group.second) {
+			handler->add(group.first, &type.second);
+		}
+	}
+	elementsBuffer.clear();
+	sendStatistics();
+}
+
 int AbstractServer::sendDatagramToClient(structDefinitions::MessageInfo_Type messageType) {
     char buffer[BUFFER_SIZE];
 
@@ -324,7 +340,7 @@ void AbstractServer::getDataPackages() {
         }
     }
 
-    sendStatistics();
+	sendElementsBufferToTree();
 }
 
 Point3D AbstractServer::parsePoint(const structDefinitions::Point3D* p) {
@@ -336,22 +352,22 @@ Label AbstractServer::getLabel(string text) {
 }
 
 void AbstractServer::parseBlockSet(structDefinitions::BlockSet* blockSet) {
-    for(int i=0; i<blockSet->blocks_size(); i++) {
-        const structDefinitions::Block b = blockSet->blocks(i);
-        vector<Point3D> points;
-        vector<Face> faces;
+	for (int i = 0; i < blockSet->blocks_size(); i++) {
+		const structDefinitions::Block b = blockSet->blocks(i);
+		vector<Point3D> points;
+		vector<Face> faces;
 
-        points.push_back(parsePoint(&b.v1()));
-        points.push_back(parsePoint(&b.v2()));
-        points.push_back(parsePoint(&b.v3()));
-        points.push_back(parsePoint(&b.v4()));
+		points.push_back(parsePoint(&b.v1()));
+		points.push_back(parsePoint(&b.v2()));
+		points.push_back(parsePoint(&b.v3()));
+		points.push_back(parsePoint(&b.v4()));
 
-        structDefinitions::Properties prop = b.prop();
-        Label label = getLabel(prop.label());
+		structDefinitions::Properties prop = b.prop();
+		Label label = getLabel(prop.label());
 
-        Block* block = new Block(&points, label, prop.quality());
-        this -> handler -> add(prop.groupid(), block);
-    }
+		Block* block = new Block(&points, label, prop.quality());
+		elementsBuffer[prop.groupid()][block->get_type()].push_back(block);
+	}
 }
 
 void AbstractServer::parseEdgeSet(structDefinitions::EdgeSet* edgeSet) {
@@ -366,7 +382,7 @@ void AbstractServer::parseEdgeSet(structDefinitions::EdgeSet* edgeSet) {
         Label label = getLabel(prop.label());
 
         Edge* edge = new Edge(&points, label, prop.quality());
-        this -> handler -> add(prop.groupid(), edge);
+		elementsBuffer[prop.groupid()][edge->get_type()].push_back(edge);
     }
 }
 
@@ -378,7 +394,7 @@ void AbstractServer::parsePoint2DSet(structDefinitions::Point2DSet* pointSet) {
         Label label = getLabel(prop.label());
 
         Vertex* v = new Vertex(Point3D(p.x(), p.y(), 0), label, prop.quality());
-        this -> handler -> add(prop.groupid(), v);
+		elementsBuffer[prop.groupid()][v->get_type()].push_back(v);
     }
 }
 
@@ -390,7 +406,7 @@ void AbstractServer::parsePoint3DSet(structDefinitions::Point3DSet* pointSet) {
         Label label = getLabel(prop.label());
 
         Vertex* v = new Vertex(parsePoint(&p), label, prop.quality());
-        this -> handler -> add(prop.groupid(), v);
+		elementsBuffer[prop.groupid()][v->get_type()].push_back(v);
     }
 }
 
@@ -408,7 +424,7 @@ void AbstractServer::parseTriangleFaceSet(structDefinitions::TriangleFaceSet* tr
         Label label = getLabel(prop.label());
 
         Face* f = new Face(&points, label, prop.quality());
-        this -> handler -> add(prop.groupid(), f);
+		elementsBuffer[prop.groupid()][f->get_type()].push_back(f);
     }
 }
 
@@ -420,6 +436,6 @@ void AbstractServer::parseVertexSet(structDefinitions::VertexSet* vertexSet) {
         Label label = getLabel(prop.label());
 
         Vertex* vertex = new Vertex(parsePoint(&v.point()), label, prop.quality());
-        this->handler->add(prop.groupid(), vertex);
+		elementsBuffer[prop.groupid()][vertex->get_type()].push_back(vertex);
     }
 }

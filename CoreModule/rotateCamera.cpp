@@ -206,8 +206,14 @@ void tryToRunSmeshalistManager(int argc, char** argv) {
         path = "SmeshalistManager/SmeshalistManager.jar";
     }
 
+
     if (isFileExists(path.c_str())) {
-        path = "java -jar " + path + " &";
+        path = "java -jar " + path;
+		#ifdef __linux__			//diffrent options to run process in background
+		path = path + " &";
+		#else
+		path = "start " + path;
+		#endif
         system(path.c_str());
     } else {
         cerr << "Unable to run Smeshalist Manager!!!\n";

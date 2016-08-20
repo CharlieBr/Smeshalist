@@ -39,6 +39,8 @@ class AbstractServer
 
         void registerStructuresHandler(AbstractDataTree*);
         void registerMouseSensitivityHandler(float*);
+		void setDynamicRendering(bool);
+		void sendElementsBufferToTree();
     protected:
         virtual int getBytesFromSocket(char[], int) = 0;
         virtual int sendBytesToSocket(char[], int) = 0;
@@ -75,6 +77,8 @@ class AbstractServer
     private:
         Point3D parsePoint(const structDefinitions::Point3D*);
         Label getLabel(string);
+		map<int, map<string, vector<Element*>>> elementsBuffer;
+		bool dynamicRendering = true;
 };
 
 #endif // ABSTRACTSERVER_H
