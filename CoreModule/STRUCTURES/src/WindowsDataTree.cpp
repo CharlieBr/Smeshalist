@@ -1,6 +1,6 @@
 #include "WindowsDataTree.h"
 
-AbstractDataTree* AbstractDataTree::current = new WindowsDataTree();
+AbstractDataTree* AbstractDataTree::active = new WindowsDataTree();
 
 void WindowsDataTree::LOCK()
 {

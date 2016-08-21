@@ -329,7 +329,7 @@ int main(int argc, char **argv) {
 	d = LinuxDataTree::getActiveDataTree();
     #else
 	server = new WindowsServer();
-	d = WindowsDataTree::getCurrent();
+	d = WindowsDataTree::getActiveDataTree();
     #endif // __linux__
 
     server -> registerStructuresHandler(d);
