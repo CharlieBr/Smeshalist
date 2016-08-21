@@ -1,10 +1,6 @@
 #include "WindowsDataTree.h"
 
-WindowsDataTree& WindowsDataTree::getInstance()
-{
-	static WindowsDataTree instance;
-	return instance;
-}
+AbstractDataTree* AbstractDataTree::current = new WindowsDataTree();
 
 void WindowsDataTree::LOCK()
 {
@@ -14,4 +10,15 @@ void WindowsDataTree::LOCK()
 void WindowsDataTree::UNLOCK()
 {
 	ReleaseMutex(mutex);
+}
+
+void WindowsDataTree::sleepThread(int milisec) {
+	Sleep(milisec);
+}
+
+void WindowsDataTree::createNewInstance() {
+	LOCK();
+	WindowsDataTree* newInstance = new WindowsDataTree();
+	cloneDataTreeToNewInstance(newInstance);
+	UNLOCK();
 }

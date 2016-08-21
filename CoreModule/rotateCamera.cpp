@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <math.h>
+#define _USE_MATH_DEFINES
+#include <cmath>
 
 #include <GL/glut.h>
 
@@ -323,7 +324,7 @@ int main(int argc, char **argv) {
 	d = LinuxDataTree::getCurrent();
     #else
 	server = new WindowsServer();
-	d = &WindowsDataTree::getInstance();
+	d = WindowsDataTree::getCurrent();
     #endif // __linux__
 
     server -> registerStructuresHandler(d);
