@@ -148,11 +148,6 @@ public class StatisticsTab extends JPanel{
 		cell22.add(new JLabel("["+this.boundingBox.getFromZ()+","+this.boundingBox.getToZ()+"]"));
 
 	}
-	
-	
-	public ElementsCount getElementsCount() {
-		return elementsCount;
-	}
 
 	public void setElementsCount(ElementsCount elementsCount) {
 		this.elementsCount = elementsCount;

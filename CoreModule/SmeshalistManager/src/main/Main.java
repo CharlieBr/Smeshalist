@@ -1,6 +1,8 @@
 package main;
 
+import communication.Communication.ManagerToCoreMessage;
 import communication.Communication.CoreToManagerMessage;
+import communication.SendingThread;
 import util.SocketUtil;
 import window.MainWindow;
 
@@ -19,6 +21,13 @@ public class Main {
 		}
 
 		MainWindow.getInstance();
+
+		//send hello message
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(ManagerToCoreMessage.MTCMessageType.HELLO);
+
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
 
 		while (MainWindow.running){
 			try{

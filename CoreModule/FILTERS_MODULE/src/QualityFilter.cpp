@@ -55,7 +55,6 @@ void QualityFilter::filterTree(Data* dataTree) {
 
 bool SingleQualityFilter::applyFilter(Element* element) {
     double quality = element->get_quality();
-    cout << quality << endl;
     bool result = true;
 
     if (leftValue != NULL) {

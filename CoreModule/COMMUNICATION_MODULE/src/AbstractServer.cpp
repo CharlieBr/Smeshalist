@@ -8,6 +8,26 @@ void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
 	this->handler = data;
 }
 
+void AbstractServer::registerMouseSensitivityHandler(float* pointer) {
+    mouseSensitivity = pointer;
+}
+
+void AbstractServer::setDynamicRendering(bool flag)
+{
+	dynamicRendering = flag;
+}
+
+void AbstractServer::sendElementsBufferToTree()
+{
+	for (auto group : elementsBuffer) {
+		for (auto type : group.second) {
+			handler->add(group.first, &type.second);
+		}
+	}
+	elementsBuffer.clear();
+	sendStatistics();
+}
+
 int AbstractServer::sendDatagramToClient(structDefinitions::MessageInfo_Type messageType) {
     char buffer[BUFFER_SIZE];
 
@@ -42,6 +62,52 @@ void AbstractServer::sendBreakpoint() {
 
     sm::CoreToManagerMessage message;
     message.set_messagetype(sm::CoreToManagerMessage_CTMMessageType_BREAKPOINT);
+
+    message.SerializeToArray(buffer, BUFFER_SIZE);
+
+    if (sendBytesToSMsocket(buffer, message.GetCachedSize()) < 0) {
+        cerr << "Error during sending breakpoint to Smeshalist Manager\n";
+    }
+}
+
+void AbstractServer::sendStatistics() {
+    char buffer[BUFFER_SIZE];
+
+    sm::CoreToManagerMessage message;
+    message.set_messagetype(sm::CoreToManagerMessage_CTMMessageType_STATISTICS);
+    sm::StatisticsInfo info;
+
+    //set elementsCount
+    sm::ElementsCount elementsCount;
+    handler -> count_visible_elements();
+    Statistics stats = handler -> get_statistics();
+    map<string, unsigned long> allElements = stats.all_elements_numbers;
+    map<string, unsigned long> visibleElements = stats.visible_elements_numbers;
+
+    for(auto& iter : allElements) {
+        sm::ElementInfo elementInfo;
+        elementInfo.set_total(iter.second);
+        elementInfo.set_visible(visibleElements[iter.first]);
+        (*elementsCount.mutable_elementinfos())[iter.first] = elementInfo;
+    }
+    (*info.mutable_elementscount()) = elementsCount;
+
+    //set boundingBox
+    sm::BoundingBox boundingBox;
+    boundingBox.set_fromx(handler -> get_min_x());  boundingBox.set_tox(handler-> get_max_x());
+    boundingBox.set_fromy(handler -> get_min_y());  boundingBox.set_toy(handler-> get_max_y());
+    boundingBox.set_fromz(handler -> get_min_z());  boundingBox.set_toz(handler-> get_max_z());
+    (*info.mutable_boundingbox()) = boundingBox;
+
+    //set GroupInfo
+    sm::GroupsInfo groupsInfo;
+    vector<int>* groups = handler -> get_all_groupIDs();
+    for (int id : *groups) {
+        groupsInfo.add_allgroups(to_string(id));
+    }
+    (*info.mutable_groupsinfo()) = groupsInfo;
+
+    (*message.mutable_statisticsinfo()) = info;
 
     message.SerializeToArray(buffer, BUFFER_SIZE);
 
@@ -132,6 +198,18 @@ void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message
     }
 
     handler -> reloadFliters(singleGroupFilters, singleTypeFilters, singleCoordinateFilters, coordinatesConjunction, singleQualityFilters);
+    sendStatistics();
+}
+
+void AbstractServer::processOptionDataPackage(sm::ManagerToCoreMessage* message) {
+    sm::OptionsInfo options = message -> optionsinfo();
+
+    double exponent = options.mousesensitivity();
+    *mouseSensitivity = std::pow(BASE, exponent)/BASE;
+
+    //TODO dynamic rendering
+    //TODO show labels
+    //TODO transparent structures
 }
 
 void AbstractServer::startSMServer() {
@@ -161,7 +239,10 @@ void AbstractServer::startSMServer() {
                 processFiltersDataPackage(&message);
                 break;
             case sm::ManagerToCoreMessage_MTCMessageType_OPTIONS:
-                cout << "Options\n";
+                processOptionDataPackage(&message);
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_HELLO:
+                //SM connected
                 break;
             default:
                 cerr << "Unknow message type\n";
@@ -255,9 +336,11 @@ void AbstractServer::getDataPackages() {
         }
 
         if(package.endofdata()) {
-            return;
+            break;
         }
     }
+
+	sendElementsBufferToTree();
 }
 
 Point3D AbstractServer::parsePoint(const structDefinitions::Point3D* p) {
@@ -269,22 +352,22 @@ Label AbstractServer::getLabel(string text) {
 }
 
 void AbstractServer::parseBlockSet(structDefinitions::BlockSet* blockSet) {
-    for(int i=0; i<blockSet->blocks_size(); i++) {
-        const structDefinitions::Block b = blockSet->blocks(i);
-        vector<Point3D> points;
-        vector<Face> faces;
+	for (int i = 0; i < blockSet->blocks_size(); i++) {
+		const structDefinitions::Block b = blockSet->blocks(i);
+		vector<Point3D> points;
+		vector<Face> faces;
 
-        points.push_back(parsePoint(&b.v1()));
-        points.push_back(parsePoint(&b.v2()));
-        points.push_back(parsePoint(&b.v3()));
-        points.push_back(parsePoint(&b.v4()));
+		points.push_back(parsePoint(&b.v1()));
+		points.push_back(parsePoint(&b.v2()));
+		points.push_back(parsePoint(&b.v3()));
+		points.push_back(parsePoint(&b.v4()));
 
-        structDefinitions::Properties prop = b.prop();
-        Label label = getLabel(prop.label());
+		structDefinitions::Properties prop = b.prop();
+		Label label = getLabel(prop.label());
 
-        Block* block = new Block(&points, label, prop.quality());
-        this -> handler -> add(prop.groupid(), block);
-    }
+		Block* block = new Block(&points, label, prop.quality());
+		elementsBuffer[prop.groupid()][block->get_type()].push_back(block);
+	}
 }
 
 void AbstractServer::parseEdgeSet(structDefinitions::EdgeSet* edgeSet) {
@@ -299,7 +382,7 @@ void AbstractServer::parseEdgeSet(structDefinitions::EdgeSet* edgeSet) {
         Label label = getLabel(prop.label());
 
         Edge* edge = new Edge(&points, label, prop.quality());
-        this -> handler -> add(prop.groupid(), edge);
+		elementsBuffer[prop.groupid()][edge->get_type()].push_back(edge);
     }
 }
 
@@ -311,7 +394,7 @@ void AbstractServer::parsePoint2DSet(structDefinitions::Point2DSet* pointSet) {
         Label label = getLabel(prop.label());
 
         Vertex* v = new Vertex(Point3D(p.x(), p.y(), 0), label, prop.quality());
-        this -> handler -> add(prop.groupid(), v);
+		elementsBuffer[prop.groupid()][v->get_type()].push_back(v);
     }
 }
 
@@ -323,7 +406,7 @@ void AbstractServer::parsePoint3DSet(structDefinitions::Point3DSet* pointSet) {
         Label label = getLabel(prop.label());
 
         Vertex* v = new Vertex(parsePoint(&p), label, prop.quality());
-        this -> handler -> add(prop.groupid(), v);
+		elementsBuffer[prop.groupid()][v->get_type()].push_back(v);
     }
 }
 
@@ -341,7 +424,7 @@ void AbstractServer::parseTriangleFaceSet(structDefinitions::TriangleFaceSet* tr
         Label label = getLabel(prop.label());
 
         Face* f = new Face(&points, label, prop.quality());
-        this -> handler -> add(prop.groupid(), f);
+		elementsBuffer[prop.groupid()][f->get_type()].push_back(f);
     }
 }
 
@@ -353,6 +436,6 @@ void AbstractServer::parseVertexSet(structDefinitions::VertexSet* vertexSet) {
         Label label = getLabel(prop.label());
 
         Vertex* vertex = new Vertex(parsePoint(&v.point()), label, prop.quality());
-        this->handler->add(prop.groupid(), vertex);
+		elementsBuffer[prop.groupid()][vertex->get_type()].push_back(vertex);
     }
 }

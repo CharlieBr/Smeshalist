@@ -100,6 +100,7 @@ message ManagerToCoreMessage{
 		FILTERS = 2;
 		CONTINUE = 3;
 		ABORT = 4;
+        HELLO = 5;
 	}
 
 	required MTCMessageType messageType = 1;

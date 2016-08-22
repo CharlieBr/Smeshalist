@@ -470,19 +470,19 @@ void protobuf_AddDesc_communication_2eproto() {
     "inatesCondition\030\001 \003(\0132\030.sm.CoordinatesCo"
     "ndition\0226\n\013conjunction\030\002 \001(\0162!.sm.Coordi"
     "natesFilter.Conjunction\"\036\n\013Conjunction\022\007"
-    "\n\003AND\020\001\022\006\n\002OR\020\002\"\351\002\n\024ManagerToCoreMessage"
+    "\n\003AND\020\001\022\006\n\002OR\020\002\"\364\002\n\024ManagerToCoreMessage"
     "\022<\n\013messageType\030\001 \002(\0162\'.sm.ManagerToCore"
     "Message.MTCMessageType\022$\n\013optionsInfo\030\002 "
     "\001(\0132\017.sm.OptionsInfo\022&\n\014groupsFilter\030\003 \001"
     "(\0132\020.sm.GroupsFilter\022$\n\013typesFilter\030\004 \001("
     "\0132\017.sm.TypesFilter\022(\n\rqualityFilter\030\005 \001("
     "\0132\021.sm.QualityFilter\0220\n\021coordinatesFilte"
-    "r\030\006 \001(\0132\025.sm.CoordinatesFilter\"C\n\016MTCMes"
+    "r\030\006 \001(\0132\025.sm.CoordinatesFilter\"N\n\016MTCMes"
     "sageType\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CO"
-    "NTINUE\020\003\022\t\n\005ABORT\020\004*_\n\022ComparisonOperato"
-    "r\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GREATER\020\002\022\t\n\005"
-    "EQUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\r"
-    "communicationB\rCommunication", 2068);
+    "NTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005*_\n\022Compar"
+    "isonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GR"
+    "EATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n"
+    "\004LESS\020\005B\036\n\rcommunicationB\rCommunication", 2079);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "communication.proto", &protobuf_RegisterTypes);
   ElementInfo::default_instance_ = new ElementInfo();
@@ -5818,6 +5818,7 @@ bool ManagerToCoreMessage_MTCMessageType_IsValid(int value) {
     case 2:
     case 3:
     case 4:
+    case 5:
       return true;
     default:
       return false;
@@ -5829,6 +5830,7 @@ const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::OPTIONS;
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::FILTERS;
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::CONTINUE;
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::ABORT;
+const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::HELLO;
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::MTCMessageType_MIN;
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::MTCMessageType_MAX;
 const int ManagerToCoreMessage::MTCMessageType_ARRAYSIZE;

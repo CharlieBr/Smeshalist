@@ -9,7 +9,7 @@ public final class Communication {
       com.google.protobuf.ExtensionRegistry registry) {
   }
   /**
-   * Protobuf enum {@code ComparisonOperator}
+   * Protobuf enum {@code sm.ComparisonOperator}
    */
   public enum ComparisonOperator
       implements com.google.protobuf.ProtocolMessageEnum {
@@ -122,11 +122,11 @@ public final class Communication {
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:ComparisonOperator)
+    // @@protoc_insertion_point(enum_scope:sm.ComparisonOperator)
   }
 
   public interface ElementInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ElementInfo)
+      // @@protoc_insertion_point(interface_extends:sm.ElementInfo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -148,11 +148,11 @@ public final class Communication {
     int getVisible();
   }
   /**
-   * Protobuf type {@code ElementInfo}
+   * Protobuf type {@code sm.ElementInfo}
    */
   public  static final class ElementInfo extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ElementInfo)
+      // @@protoc_insertion_point(message_implements:sm.ElementInfo)
       ElementInfoOrBuilder {
     // Use ElementInfo.newBuilder() to construct.
     private ElementInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -215,12 +215,12 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_ElementInfo_descriptor;
+      return communication.Communication.internal_static_sm_ElementInfo_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_ElementInfo_fieldAccessorTable
+      return communication.Communication.internal_static_sm_ElementInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.ElementInfo.class, communication.Communication.ElementInfo.Builder.class);
     }
@@ -427,20 +427,20 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code ElementInfo}
+     * Protobuf type {@code sm.ElementInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ElementInfo)
+        // @@protoc_insertion_point(builder_implements:sm.ElementInfo)
         communication.Communication.ElementInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_ElementInfo_descriptor;
+        return communication.Communication.internal_static_sm_ElementInfo_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_ElementInfo_fieldAccessorTable
+        return communication.Communication.internal_static_sm_ElementInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.ElementInfo.class, communication.Communication.ElementInfo.Builder.class);
       }
@@ -470,7 +470,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_ElementInfo_descriptor;
+        return communication.Communication.internal_static_sm_ElementInfo_descriptor;
       }
 
       public communication.Communication.ElementInfo getDefaultInstanceForType() {
@@ -617,10 +617,10 @@ public final class Communication {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:ElementInfo)
+      // @@protoc_insertion_point(builder_scope:sm.ElementInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:ElementInfo)
+    // @@protoc_insertion_point(class_scope:sm.ElementInfo)
     private static final communication.Communication.ElementInfo DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.ElementInfo();
@@ -656,15 +656,15 @@ public final class Communication {
   }
 
   public interface ElementsCountOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ElementsCount)
+      // @@protoc_insertion_point(interface_extends:sm.ElementsCount)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+     * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
      */
     int getElementInfosCount();
     /**
-     * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+     * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
      */
     boolean containsElementInfos(
         java.lang.String key);
@@ -675,30 +675,30 @@ public final class Communication {
     java.util.Map<java.lang.String, communication.Communication.ElementInfo>
     getElementInfos();
     /**
-     * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+     * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
      */
     java.util.Map<java.lang.String, communication.Communication.ElementInfo>
     getElementInfosMap();
     /**
-     * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+     * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
      */
 
     communication.Communication.ElementInfo getElementInfosOrDefault(
         java.lang.String key,
         communication.Communication.ElementInfo defaultValue);
     /**
-     * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+     * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
      */
 
     communication.Communication.ElementInfo getElementInfosOrThrow(
         java.lang.String key);
   }
   /**
-   * Protobuf type {@code ElementsCount}
+   * Protobuf type {@code sm.ElementsCount}
    */
   public  static final class ElementsCount extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ElementsCount)
+      // @@protoc_insertion_point(message_implements:sm.ElementsCount)
       ElementsCountOrBuilder {
     // Use ElementsCount.newBuilder() to construct.
     private ElementsCount(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -761,7 +761,7 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_ElementsCount_descriptor;
+      return communication.Communication.internal_static_sm_ElementsCount_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -777,7 +777,7 @@ public final class Communication {
     }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_ElementsCount_fieldAccessorTable
+      return communication.Communication.internal_static_sm_ElementsCount_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.ElementsCount.class, communication.Communication.ElementsCount.Builder.class);
     }
@@ -788,7 +788,7 @@ public final class Communication {
           java.lang.String, communication.Communication.ElementInfo> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, communication.Communication.ElementInfo>newDefaultInstance(
-                  communication.Communication.internal_static_ElementsCount_ElementInfosEntry_descriptor, 
+                  communication.Communication.internal_static_sm_ElementsCount_ElementInfosEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
@@ -809,7 +809,7 @@ public final class Communication {
       return internalGetElementInfos().getMap().size();
     }
     /**
-     * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+     * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
      */
 
     public boolean containsElementInfos(
@@ -825,14 +825,14 @@ public final class Communication {
       return getElementInfosMap();
     }
     /**
-     * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+     * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
      */
 
     public java.util.Map<java.lang.String, communication.Communication.ElementInfo> getElementInfosMap() {
       return internalGetElementInfos().getMap();
     }
     /**
-     * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+     * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
      */
 
     public communication.Communication.ElementInfo getElementInfosOrDefault(
@@ -844,7 +844,7 @@ public final class Communication {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+     * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
      */
 
     public communication.Communication.ElementInfo getElementInfosOrThrow(
@@ -1020,15 +1020,15 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code ElementsCount}
+     * Protobuf type {@code sm.ElementsCount}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ElementsCount)
+        // @@protoc_insertion_point(builder_implements:sm.ElementsCount)
         communication.Communication.ElementsCountOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_ElementsCount_descriptor;
+        return communication.Communication.internal_static_sm_ElementsCount_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
@@ -1055,7 +1055,7 @@ public final class Communication {
       }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_ElementsCount_fieldAccessorTable
+        return communication.Communication.internal_static_sm_ElementsCount_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.ElementsCount.class, communication.Communication.ElementsCount.Builder.class);
       }
@@ -1082,7 +1082,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_ElementsCount_descriptor;
+        return communication.Communication.internal_static_sm_ElementsCount_descriptor;
       }
 
       public communication.Communication.ElementsCount getDefaultInstanceForType() {
@@ -1179,7 +1179,7 @@ public final class Communication {
         return internalGetElementInfos().getMap().size();
       }
       /**
-       * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+       * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
        */
 
       public boolean containsElementInfos(
@@ -1195,14 +1195,14 @@ public final class Communication {
         return getElementInfosMap();
       }
       /**
-       * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+       * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
        */
 
       public java.util.Map<java.lang.String, communication.Communication.ElementInfo> getElementInfosMap() {
         return internalGetElementInfos().getMap();
       }
       /**
-       * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+       * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
        */
 
       public communication.Communication.ElementInfo getElementInfosOrDefault(
@@ -1214,7 +1214,7 @@ public final class Communication {
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+       * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
        */
 
       public communication.Communication.ElementInfo getElementInfosOrThrow(
@@ -1233,7 +1233,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+       * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
        */
 
       public Builder removeElementInfos(
@@ -1251,7 +1251,7 @@ public final class Communication {
         return internalGetMutableElementInfos().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+       * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
        */
       public Builder putElementInfos(
           java.lang.String key,
@@ -1262,7 +1262,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>map&lt;string, .ElementInfo&gt; elementInfos = 1;</code>
+       * <code>map&lt;string, .sm.ElementInfo&gt; elementInfos = 1;</code>
        */
 
       public Builder putAllElementInfos(
@@ -1271,10 +1271,10 @@ public final class Communication {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:ElementsCount)
+      // @@protoc_insertion_point(builder_scope:sm.ElementsCount)
     }
 
-    // @@protoc_insertion_point(class_scope:ElementsCount)
+    // @@protoc_insertion_point(class_scope:sm.ElementsCount)
     private static final communication.Communication.ElementsCount DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.ElementsCount();
@@ -1310,7 +1310,7 @@ public final class Communication {
   }
 
   public interface BoundingBoxOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:BoundingBox)
+      // @@protoc_insertion_point(interface_extends:sm.BoundingBox)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1368,11 +1368,11 @@ public final class Communication {
     double getToZ();
   }
   /**
-   * Protobuf type {@code BoundingBox}
+   * Protobuf type {@code sm.BoundingBox}
    */
   public  static final class BoundingBox extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:BoundingBox)
+      // @@protoc_insertion_point(message_implements:sm.BoundingBox)
       BoundingBoxOrBuilder {
     // Use BoundingBox.newBuilder() to construct.
     private BoundingBox(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -1459,12 +1459,12 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_BoundingBox_descriptor;
+      return communication.Communication.internal_static_sm_BoundingBox_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_BoundingBox_fieldAccessorTable
+      return communication.Communication.internal_static_sm_BoundingBox_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.BoundingBox.class, communication.Communication.BoundingBox.Builder.class);
     }
@@ -1829,20 +1829,20 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code BoundingBox}
+     * Protobuf type {@code sm.BoundingBox}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:BoundingBox)
+        // @@protoc_insertion_point(builder_implements:sm.BoundingBox)
         communication.Communication.BoundingBoxOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_BoundingBox_descriptor;
+        return communication.Communication.internal_static_sm_BoundingBox_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_BoundingBox_fieldAccessorTable
+        return communication.Communication.internal_static_sm_BoundingBox_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.BoundingBox.class, communication.Communication.BoundingBox.Builder.class);
       }
@@ -1880,7 +1880,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_BoundingBox_descriptor;
+        return communication.Communication.internal_static_sm_BoundingBox_descriptor;
       }
 
       public communication.Communication.BoundingBox getDefaultInstanceForType() {
@@ -2195,10 +2195,10 @@ public final class Communication {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:BoundingBox)
+      // @@protoc_insertion_point(builder_scope:sm.BoundingBox)
     }
 
-    // @@protoc_insertion_point(class_scope:BoundingBox)
+    // @@protoc_insertion_point(class_scope:sm.BoundingBox)
     private static final communication.Communication.BoundingBox DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.BoundingBox();
@@ -2234,7 +2234,7 @@ public final class Communication {
   }
 
   public interface GroupsInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GroupsInfo)
+      // @@protoc_insertion_point(interface_extends:sm.GroupsInfo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2257,11 +2257,11 @@ public final class Communication {
         getAllGroupsBytes(int index);
   }
   /**
-   * Protobuf type {@code GroupsInfo}
+   * Protobuf type {@code sm.GroupsInfo}
    */
   public  static final class GroupsInfo extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:GroupsInfo)
+      // @@protoc_insertion_point(message_implements:sm.GroupsInfo)
       GroupsInfoOrBuilder {
     // Use GroupsInfo.newBuilder() to construct.
     private GroupsInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -2325,12 +2325,12 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_GroupsInfo_descriptor;
+      return communication.Communication.internal_static_sm_GroupsInfo_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_GroupsInfo_fieldAccessorTable
+      return communication.Communication.internal_static_sm_GroupsInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.GroupsInfo.class, communication.Communication.GroupsInfo.Builder.class);
     }
@@ -2512,20 +2512,20 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code GroupsInfo}
+     * Protobuf type {@code sm.GroupsInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GroupsInfo)
+        // @@protoc_insertion_point(builder_implements:sm.GroupsInfo)
         communication.Communication.GroupsInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_GroupsInfo_descriptor;
+        return communication.Communication.internal_static_sm_GroupsInfo_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_GroupsInfo_fieldAccessorTable
+        return communication.Communication.internal_static_sm_GroupsInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.GroupsInfo.class, communication.Communication.GroupsInfo.Builder.class);
       }
@@ -2553,7 +2553,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_GroupsInfo_descriptor;
+        return communication.Communication.internal_static_sm_GroupsInfo_descriptor;
       }
 
       public communication.Communication.GroupsInfo getDefaultInstanceForType() {
@@ -2722,10 +2722,10 @@ public final class Communication {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:GroupsInfo)
+      // @@protoc_insertion_point(builder_scope:sm.GroupsInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:GroupsInfo)
+    // @@protoc_insertion_point(class_scope:sm.GroupsInfo)
     private static final communication.Communication.GroupsInfo DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.GroupsInfo();
@@ -2761,54 +2761,54 @@ public final class Communication {
   }
 
   public interface StatisticsInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:StatisticsInfo)
+      // @@protoc_insertion_point(interface_extends:sm.StatisticsInfo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .ElementsCount elementsCount = 1;</code>
+     * <code>required .sm.ElementsCount elementsCount = 1;</code>
      */
     boolean hasElementsCount();
     /**
-     * <code>required .ElementsCount elementsCount = 1;</code>
+     * <code>required .sm.ElementsCount elementsCount = 1;</code>
      */
     communication.Communication.ElementsCount getElementsCount();
     /**
-     * <code>required .ElementsCount elementsCount = 1;</code>
+     * <code>required .sm.ElementsCount elementsCount = 1;</code>
      */
     communication.Communication.ElementsCountOrBuilder getElementsCountOrBuilder();
 
     /**
-     * <code>required .BoundingBox boundingBox = 2;</code>
+     * <code>required .sm.BoundingBox boundingBox = 2;</code>
      */
     boolean hasBoundingBox();
     /**
-     * <code>required .BoundingBox boundingBox = 2;</code>
+     * <code>required .sm.BoundingBox boundingBox = 2;</code>
      */
     communication.Communication.BoundingBox getBoundingBox();
     /**
-     * <code>required .BoundingBox boundingBox = 2;</code>
+     * <code>required .sm.BoundingBox boundingBox = 2;</code>
      */
     communication.Communication.BoundingBoxOrBuilder getBoundingBoxOrBuilder();
 
     /**
-     * <code>required .GroupsInfo groupsInfo = 3;</code>
+     * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
      */
     boolean hasGroupsInfo();
     /**
-     * <code>required .GroupsInfo groupsInfo = 3;</code>
+     * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
      */
     communication.Communication.GroupsInfo getGroupsInfo();
     /**
-     * <code>required .GroupsInfo groupsInfo = 3;</code>
+     * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
      */
     communication.Communication.GroupsInfoOrBuilder getGroupsInfoOrBuilder();
   }
   /**
-   * Protobuf type {@code StatisticsInfo}
+   * Protobuf type {@code sm.StatisticsInfo}
    */
   public  static final class StatisticsInfo extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:StatisticsInfo)
+      // @@protoc_insertion_point(message_implements:sm.StatisticsInfo)
       StatisticsInfoOrBuilder {
     // Use StatisticsInfo.newBuilder() to construct.
     private StatisticsInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -2898,12 +2898,12 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_StatisticsInfo_descriptor;
+      return communication.Communication.internal_static_sm_StatisticsInfo_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_StatisticsInfo_fieldAccessorTable
+      return communication.Communication.internal_static_sm_StatisticsInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.StatisticsInfo.class, communication.Communication.StatisticsInfo.Builder.class);
     }
@@ -2912,19 +2912,19 @@ public final class Communication {
     public static final int ELEMENTSCOUNT_FIELD_NUMBER = 1;
     private communication.Communication.ElementsCount elementsCount_;
     /**
-     * <code>required .ElementsCount elementsCount = 1;</code>
+     * <code>required .sm.ElementsCount elementsCount = 1;</code>
      */
     public boolean hasElementsCount() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .ElementsCount elementsCount = 1;</code>
+     * <code>required .sm.ElementsCount elementsCount = 1;</code>
      */
     public communication.Communication.ElementsCount getElementsCount() {
       return elementsCount_ == null ? communication.Communication.ElementsCount.getDefaultInstance() : elementsCount_;
     }
     /**
-     * <code>required .ElementsCount elementsCount = 1;</code>
+     * <code>required .sm.ElementsCount elementsCount = 1;</code>
      */
     public communication.Communication.ElementsCountOrBuilder getElementsCountOrBuilder() {
       return elementsCount_ == null ? communication.Communication.ElementsCount.getDefaultInstance() : elementsCount_;
@@ -2933,19 +2933,19 @@ public final class Communication {
     public static final int BOUNDINGBOX_FIELD_NUMBER = 2;
     private communication.Communication.BoundingBox boundingBox_;
     /**
-     * <code>required .BoundingBox boundingBox = 2;</code>
+     * <code>required .sm.BoundingBox boundingBox = 2;</code>
      */
     public boolean hasBoundingBox() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required .BoundingBox boundingBox = 2;</code>
+     * <code>required .sm.BoundingBox boundingBox = 2;</code>
      */
     public communication.Communication.BoundingBox getBoundingBox() {
       return boundingBox_ == null ? communication.Communication.BoundingBox.getDefaultInstance() : boundingBox_;
     }
     /**
-     * <code>required .BoundingBox boundingBox = 2;</code>
+     * <code>required .sm.BoundingBox boundingBox = 2;</code>
      */
     public communication.Communication.BoundingBoxOrBuilder getBoundingBoxOrBuilder() {
       return boundingBox_ == null ? communication.Communication.BoundingBox.getDefaultInstance() : boundingBox_;
@@ -2954,19 +2954,19 @@ public final class Communication {
     public static final int GROUPSINFO_FIELD_NUMBER = 3;
     private communication.Communication.GroupsInfo groupsInfo_;
     /**
-     * <code>required .GroupsInfo groupsInfo = 3;</code>
+     * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
      */
     public boolean hasGroupsInfo() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required .GroupsInfo groupsInfo = 3;</code>
+     * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
      */
     public communication.Communication.GroupsInfo getGroupsInfo() {
       return groupsInfo_ == null ? communication.Communication.GroupsInfo.getDefaultInstance() : groupsInfo_;
     }
     /**
-     * <code>required .GroupsInfo groupsInfo = 3;</code>
+     * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
      */
     public communication.Communication.GroupsInfoOrBuilder getGroupsInfoOrBuilder() {
       return groupsInfo_ == null ? communication.Communication.GroupsInfo.getDefaultInstance() : groupsInfo_;
@@ -3171,20 +3171,20 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code StatisticsInfo}
+     * Protobuf type {@code sm.StatisticsInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:StatisticsInfo)
+        // @@protoc_insertion_point(builder_implements:sm.StatisticsInfo)
         communication.Communication.StatisticsInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_StatisticsInfo_descriptor;
+        return communication.Communication.internal_static_sm_StatisticsInfo_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_StatisticsInfo_fieldAccessorTable
+        return communication.Communication.internal_static_sm_StatisticsInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.StatisticsInfo.class, communication.Communication.StatisticsInfo.Builder.class);
       }
@@ -3231,7 +3231,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_StatisticsInfo_descriptor;
+        return communication.Communication.internal_static_sm_StatisticsInfo_descriptor;
       }
 
       public communication.Communication.StatisticsInfo getDefaultInstanceForType() {
@@ -3346,13 +3346,13 @@ public final class Communication {
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.ElementsCount, communication.Communication.ElementsCount.Builder, communication.Communication.ElementsCountOrBuilder> elementsCountBuilder_;
       /**
-       * <code>required .ElementsCount elementsCount = 1;</code>
+       * <code>required .sm.ElementsCount elementsCount = 1;</code>
        */
       public boolean hasElementsCount() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .ElementsCount elementsCount = 1;</code>
+       * <code>required .sm.ElementsCount elementsCount = 1;</code>
        */
       public communication.Communication.ElementsCount getElementsCount() {
         if (elementsCountBuilder_ == null) {
@@ -3362,7 +3362,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>required .ElementsCount elementsCount = 1;</code>
+       * <code>required .sm.ElementsCount elementsCount = 1;</code>
        */
       public Builder setElementsCount(communication.Communication.ElementsCount value) {
         if (elementsCountBuilder_ == null) {
@@ -3378,7 +3378,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .ElementsCount elementsCount = 1;</code>
+       * <code>required .sm.ElementsCount elementsCount = 1;</code>
        */
       public Builder setElementsCount(
           communication.Communication.ElementsCount.Builder builderForValue) {
@@ -3392,7 +3392,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .ElementsCount elementsCount = 1;</code>
+       * <code>required .sm.ElementsCount elementsCount = 1;</code>
        */
       public Builder mergeElementsCount(communication.Communication.ElementsCount value) {
         if (elementsCountBuilder_ == null) {
@@ -3412,7 +3412,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .ElementsCount elementsCount = 1;</code>
+       * <code>required .sm.ElementsCount elementsCount = 1;</code>
        */
       public Builder clearElementsCount() {
         if (elementsCountBuilder_ == null) {
@@ -3425,7 +3425,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .ElementsCount elementsCount = 1;</code>
+       * <code>required .sm.ElementsCount elementsCount = 1;</code>
        */
       public communication.Communication.ElementsCount.Builder getElementsCountBuilder() {
         bitField0_ |= 0x00000001;
@@ -3433,7 +3433,7 @@ public final class Communication {
         return getElementsCountFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .ElementsCount elementsCount = 1;</code>
+       * <code>required .sm.ElementsCount elementsCount = 1;</code>
        */
       public communication.Communication.ElementsCountOrBuilder getElementsCountOrBuilder() {
         if (elementsCountBuilder_ != null) {
@@ -3444,7 +3444,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>required .ElementsCount elementsCount = 1;</code>
+       * <code>required .sm.ElementsCount elementsCount = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.ElementsCount, communication.Communication.ElementsCount.Builder, communication.Communication.ElementsCountOrBuilder> 
@@ -3464,13 +3464,13 @@ public final class Communication {
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.BoundingBox, communication.Communication.BoundingBox.Builder, communication.Communication.BoundingBoxOrBuilder> boundingBoxBuilder_;
       /**
-       * <code>required .BoundingBox boundingBox = 2;</code>
+       * <code>required .sm.BoundingBox boundingBox = 2;</code>
        */
       public boolean hasBoundingBox() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required .BoundingBox boundingBox = 2;</code>
+       * <code>required .sm.BoundingBox boundingBox = 2;</code>
        */
       public communication.Communication.BoundingBox getBoundingBox() {
         if (boundingBoxBuilder_ == null) {
@@ -3480,7 +3480,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>required .BoundingBox boundingBox = 2;</code>
+       * <code>required .sm.BoundingBox boundingBox = 2;</code>
        */
       public Builder setBoundingBox(communication.Communication.BoundingBox value) {
         if (boundingBoxBuilder_ == null) {
@@ -3496,7 +3496,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .BoundingBox boundingBox = 2;</code>
+       * <code>required .sm.BoundingBox boundingBox = 2;</code>
        */
       public Builder setBoundingBox(
           communication.Communication.BoundingBox.Builder builderForValue) {
@@ -3510,7 +3510,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .BoundingBox boundingBox = 2;</code>
+       * <code>required .sm.BoundingBox boundingBox = 2;</code>
        */
       public Builder mergeBoundingBox(communication.Communication.BoundingBox value) {
         if (boundingBoxBuilder_ == null) {
@@ -3530,7 +3530,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .BoundingBox boundingBox = 2;</code>
+       * <code>required .sm.BoundingBox boundingBox = 2;</code>
        */
       public Builder clearBoundingBox() {
         if (boundingBoxBuilder_ == null) {
@@ -3543,7 +3543,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .BoundingBox boundingBox = 2;</code>
+       * <code>required .sm.BoundingBox boundingBox = 2;</code>
        */
       public communication.Communication.BoundingBox.Builder getBoundingBoxBuilder() {
         bitField0_ |= 0x00000002;
@@ -3551,7 +3551,7 @@ public final class Communication {
         return getBoundingBoxFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .BoundingBox boundingBox = 2;</code>
+       * <code>required .sm.BoundingBox boundingBox = 2;</code>
        */
       public communication.Communication.BoundingBoxOrBuilder getBoundingBoxOrBuilder() {
         if (boundingBoxBuilder_ != null) {
@@ -3562,7 +3562,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>required .BoundingBox boundingBox = 2;</code>
+       * <code>required .sm.BoundingBox boundingBox = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.BoundingBox, communication.Communication.BoundingBox.Builder, communication.Communication.BoundingBoxOrBuilder> 
@@ -3582,13 +3582,13 @@ public final class Communication {
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.GroupsInfo, communication.Communication.GroupsInfo.Builder, communication.Communication.GroupsInfoOrBuilder> groupsInfoBuilder_;
       /**
-       * <code>required .GroupsInfo groupsInfo = 3;</code>
+       * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
        */
       public boolean hasGroupsInfo() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required .GroupsInfo groupsInfo = 3;</code>
+       * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
        */
       public communication.Communication.GroupsInfo getGroupsInfo() {
         if (groupsInfoBuilder_ == null) {
@@ -3598,7 +3598,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>required .GroupsInfo groupsInfo = 3;</code>
+       * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
        */
       public Builder setGroupsInfo(communication.Communication.GroupsInfo value) {
         if (groupsInfoBuilder_ == null) {
@@ -3614,7 +3614,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .GroupsInfo groupsInfo = 3;</code>
+       * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
        */
       public Builder setGroupsInfo(
           communication.Communication.GroupsInfo.Builder builderForValue) {
@@ -3628,7 +3628,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .GroupsInfo groupsInfo = 3;</code>
+       * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
        */
       public Builder mergeGroupsInfo(communication.Communication.GroupsInfo value) {
         if (groupsInfoBuilder_ == null) {
@@ -3648,7 +3648,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .GroupsInfo groupsInfo = 3;</code>
+       * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
        */
       public Builder clearGroupsInfo() {
         if (groupsInfoBuilder_ == null) {
@@ -3661,7 +3661,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .GroupsInfo groupsInfo = 3;</code>
+       * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
        */
       public communication.Communication.GroupsInfo.Builder getGroupsInfoBuilder() {
         bitField0_ |= 0x00000004;
@@ -3669,7 +3669,7 @@ public final class Communication {
         return getGroupsInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>required .GroupsInfo groupsInfo = 3;</code>
+       * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
        */
       public communication.Communication.GroupsInfoOrBuilder getGroupsInfoOrBuilder() {
         if (groupsInfoBuilder_ != null) {
@@ -3680,7 +3680,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>required .GroupsInfo groupsInfo = 3;</code>
+       * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.GroupsInfo, communication.Communication.GroupsInfo.Builder, communication.Communication.GroupsInfoOrBuilder> 
@@ -3696,10 +3696,10 @@ public final class Communication {
         return groupsInfoBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:StatisticsInfo)
+      // @@protoc_insertion_point(builder_scope:sm.StatisticsInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:StatisticsInfo)
+    // @@protoc_insertion_point(class_scope:sm.StatisticsInfo)
     private static final communication.Communication.StatisticsInfo DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.StatisticsInfo();
@@ -3735,37 +3735,37 @@ public final class Communication {
   }
 
   public interface CoreToManagerMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:CoreToManagerMessage)
+      // @@protoc_insertion_point(interface_extends:sm.CoreToManagerMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .CoreToManagerMessage.CTMMessageType messageType = 1;</code>
+     * <code>required .sm.CoreToManagerMessage.CTMMessageType messageType = 1;</code>
      */
     boolean hasMessageType();
     /**
-     * <code>required .CoreToManagerMessage.CTMMessageType messageType = 1;</code>
+     * <code>required .sm.CoreToManagerMessage.CTMMessageType messageType = 1;</code>
      */
     communication.Communication.CoreToManagerMessage.CTMMessageType getMessageType();
 
     /**
-     * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+     * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
      */
     boolean hasStatisticsInfo();
     /**
-     * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+     * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
      */
     communication.Communication.StatisticsInfo getStatisticsInfo();
     /**
-     * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+     * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
      */
     communication.Communication.StatisticsInfoOrBuilder getStatisticsInfoOrBuilder();
   }
   /**
-   * Protobuf type {@code CoreToManagerMessage}
+   * Protobuf type {@code sm.CoreToManagerMessage}
    */
   public  static final class CoreToManagerMessage extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:CoreToManagerMessage)
+      // @@protoc_insertion_point(message_implements:sm.CoreToManagerMessage)
       CoreToManagerMessageOrBuilder {
     // Use CoreToManagerMessage.newBuilder() to construct.
     private CoreToManagerMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -3841,18 +3841,18 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_CoreToManagerMessage_descriptor;
+      return communication.Communication.internal_static_sm_CoreToManagerMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_CoreToManagerMessage_fieldAccessorTable
+      return communication.Communication.internal_static_sm_CoreToManagerMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.CoreToManagerMessage.class, communication.Communication.CoreToManagerMessage.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code CoreToManagerMessage.CTMMessageType}
+     * Protobuf enum {@code sm.CoreToManagerMessage.CTMMessageType}
      */
     public enum CTMMessageType
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -3938,20 +3938,20 @@ public final class Communication {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:CoreToManagerMessage.CTMMessageType)
+      // @@protoc_insertion_point(enum_scope:sm.CoreToManagerMessage.CTMMessageType)
     }
 
     private int bitField0_;
     public static final int MESSAGETYPE_FIELD_NUMBER = 1;
     private int messageType_;
     /**
-     * <code>required .CoreToManagerMessage.CTMMessageType messageType = 1;</code>
+     * <code>required .sm.CoreToManagerMessage.CTMMessageType messageType = 1;</code>
      */
     public boolean hasMessageType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .CoreToManagerMessage.CTMMessageType messageType = 1;</code>
+     * <code>required .sm.CoreToManagerMessage.CTMMessageType messageType = 1;</code>
      */
     public communication.Communication.CoreToManagerMessage.CTMMessageType getMessageType() {
       communication.Communication.CoreToManagerMessage.CTMMessageType result = communication.Communication.CoreToManagerMessage.CTMMessageType.valueOf(messageType_);
@@ -3961,19 +3961,19 @@ public final class Communication {
     public static final int STATISTICSINFO_FIELD_NUMBER = 2;
     private communication.Communication.StatisticsInfo statisticsInfo_;
     /**
-     * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+     * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
      */
     public boolean hasStatisticsInfo() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+     * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
      */
     public communication.Communication.StatisticsInfo getStatisticsInfo() {
       return statisticsInfo_ == null ? communication.Communication.StatisticsInfo.getDefaultInstance() : statisticsInfo_;
     }
     /**
-     * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+     * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
      */
     public communication.Communication.StatisticsInfoOrBuilder getStatisticsInfoOrBuilder() {
       return statisticsInfo_ == null ? communication.Communication.StatisticsInfo.getDefaultInstance() : statisticsInfo_;
@@ -4151,20 +4151,20 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code CoreToManagerMessage}
+     * Protobuf type {@code sm.CoreToManagerMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:CoreToManagerMessage)
+        // @@protoc_insertion_point(builder_implements:sm.CoreToManagerMessage)
         communication.Communication.CoreToManagerMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_CoreToManagerMessage_descriptor;
+        return communication.Communication.internal_static_sm_CoreToManagerMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_CoreToManagerMessage_fieldAccessorTable
+        return communication.Communication.internal_static_sm_CoreToManagerMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.CoreToManagerMessage.class, communication.Communication.CoreToManagerMessage.Builder.class);
       }
@@ -4199,7 +4199,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_CoreToManagerMessage_descriptor;
+        return communication.Communication.internal_static_sm_CoreToManagerMessage_descriptor;
       }
 
       public communication.Communication.CoreToManagerMessage getDefaultInstanceForType() {
@@ -4290,20 +4290,20 @@ public final class Communication {
 
       private int messageType_ = 1;
       /**
-       * <code>required .CoreToManagerMessage.CTMMessageType messageType = 1;</code>
+       * <code>required .sm.CoreToManagerMessage.CTMMessageType messageType = 1;</code>
        */
       public boolean hasMessageType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .CoreToManagerMessage.CTMMessageType messageType = 1;</code>
+       * <code>required .sm.CoreToManagerMessage.CTMMessageType messageType = 1;</code>
        */
       public communication.Communication.CoreToManagerMessage.CTMMessageType getMessageType() {
         communication.Communication.CoreToManagerMessage.CTMMessageType result = communication.Communication.CoreToManagerMessage.CTMMessageType.valueOf(messageType_);
         return result == null ? communication.Communication.CoreToManagerMessage.CTMMessageType.STATISTICS : result;
       }
       /**
-       * <code>required .CoreToManagerMessage.CTMMessageType messageType = 1;</code>
+       * <code>required .sm.CoreToManagerMessage.CTMMessageType messageType = 1;</code>
        */
       public Builder setMessageType(communication.Communication.CoreToManagerMessage.CTMMessageType value) {
         if (value == null) {
@@ -4315,7 +4315,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .CoreToManagerMessage.CTMMessageType messageType = 1;</code>
+       * <code>required .sm.CoreToManagerMessage.CTMMessageType messageType = 1;</code>
        */
       public Builder clearMessageType() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -4328,13 +4328,13 @@ public final class Communication {
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.StatisticsInfo, communication.Communication.StatisticsInfo.Builder, communication.Communication.StatisticsInfoOrBuilder> statisticsInfoBuilder_;
       /**
-       * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+       * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
        */
       public boolean hasStatisticsInfo() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+       * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
        */
       public communication.Communication.StatisticsInfo getStatisticsInfo() {
         if (statisticsInfoBuilder_ == null) {
@@ -4344,7 +4344,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+       * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
        */
       public Builder setStatisticsInfo(communication.Communication.StatisticsInfo value) {
         if (statisticsInfoBuilder_ == null) {
@@ -4360,7 +4360,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+       * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
        */
       public Builder setStatisticsInfo(
           communication.Communication.StatisticsInfo.Builder builderForValue) {
@@ -4374,7 +4374,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+       * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
        */
       public Builder mergeStatisticsInfo(communication.Communication.StatisticsInfo value) {
         if (statisticsInfoBuilder_ == null) {
@@ -4394,7 +4394,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+       * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
        */
       public Builder clearStatisticsInfo() {
         if (statisticsInfoBuilder_ == null) {
@@ -4407,7 +4407,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+       * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
        */
       public communication.Communication.StatisticsInfo.Builder getStatisticsInfoBuilder() {
         bitField0_ |= 0x00000002;
@@ -4415,7 +4415,7 @@ public final class Communication {
         return getStatisticsInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+       * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
        */
       public communication.Communication.StatisticsInfoOrBuilder getStatisticsInfoOrBuilder() {
         if (statisticsInfoBuilder_ != null) {
@@ -4426,7 +4426,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .StatisticsInfo statisticsInfo = 2;</code>
+       * <code>optional .sm.StatisticsInfo statisticsInfo = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.StatisticsInfo, communication.Communication.StatisticsInfo.Builder, communication.Communication.StatisticsInfoOrBuilder> 
@@ -4442,10 +4442,10 @@ public final class Communication {
         return statisticsInfoBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:CoreToManagerMessage)
+      // @@protoc_insertion_point(builder_scope:sm.CoreToManagerMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:CoreToManagerMessage)
+    // @@protoc_insertion_point(class_scope:sm.CoreToManagerMessage)
     private static final communication.Communication.CoreToManagerMessage DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.CoreToManagerMessage();
@@ -4481,7 +4481,7 @@ public final class Communication {
   }
 
   public interface OptionsInfoOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:OptionsInfo)
+      // @@protoc_insertion_point(interface_extends:sm.OptionsInfo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -4525,11 +4525,11 @@ public final class Communication {
    *----------------------------------------------------------------------------------------------------------------
    * </pre>
    *
-   * Protobuf type {@code OptionsInfo}
+   * Protobuf type {@code sm.OptionsInfo}
    */
   public  static final class OptionsInfo extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:OptionsInfo)
+      // @@protoc_insertion_point(message_implements:sm.OptionsInfo)
       OptionsInfoOrBuilder {
     // Use OptionsInfo.newBuilder() to construct.
     private OptionsInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -4604,12 +4604,12 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_OptionsInfo_descriptor;
+      return communication.Communication.internal_static_sm_OptionsInfo_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_OptionsInfo_fieldAccessorTable
+      return communication.Communication.internal_static_sm_OptionsInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.OptionsInfo.class, communication.Communication.OptionsInfo.Builder.class);
     }
@@ -4896,20 +4896,20 @@ public final class Communication {
      *----------------------------------------------------------------------------------------------------------------
      * </pre>
      *
-     * Protobuf type {@code OptionsInfo}
+     * Protobuf type {@code sm.OptionsInfo}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:OptionsInfo)
+        // @@protoc_insertion_point(builder_implements:sm.OptionsInfo)
         communication.Communication.OptionsInfoOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_OptionsInfo_descriptor;
+        return communication.Communication.internal_static_sm_OptionsInfo_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_OptionsInfo_fieldAccessorTable
+        return communication.Communication.internal_static_sm_OptionsInfo_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.OptionsInfo.class, communication.Communication.OptionsInfo.Builder.class);
       }
@@ -4943,7 +4943,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_OptionsInfo_descriptor;
+        return communication.Communication.internal_static_sm_OptionsInfo_descriptor;
       }
 
       public communication.Communication.OptionsInfo getDefaultInstanceForType() {
@@ -5174,10 +5174,10 @@ public final class Communication {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:OptionsInfo)
+      // @@protoc_insertion_point(builder_scope:sm.OptionsInfo)
     }
 
-    // @@protoc_insertion_point(class_scope:OptionsInfo)
+    // @@protoc_insertion_point(class_scope:sm.OptionsInfo)
     private static final communication.Communication.OptionsInfo DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.OptionsInfo();
@@ -5213,7 +5213,7 @@ public final class Communication {
   }
 
   public interface TypesFilterOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:TypesFilter)
+      // @@protoc_insertion_point(interface_extends:sm.TypesFilter)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -5251,11 +5251,11 @@ public final class Communication {
         java.lang.String key);
   }
   /**
-   * Protobuf type {@code TypesFilter}
+   * Protobuf type {@code sm.TypesFilter}
    */
   public  static final class TypesFilter extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:TypesFilter)
+      // @@protoc_insertion_point(message_implements:sm.TypesFilter)
       TypesFilterOrBuilder {
     // Use TypesFilter.newBuilder() to construct.
     private TypesFilter(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -5318,7 +5318,7 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_TypesFilter_descriptor;
+      return communication.Communication.internal_static_sm_TypesFilter_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -5334,7 +5334,7 @@ public final class Communication {
     }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_TypesFilter_fieldAccessorTable
+      return communication.Communication.internal_static_sm_TypesFilter_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.TypesFilter.class, communication.Communication.TypesFilter.Builder.class);
     }
@@ -5345,7 +5345,7 @@ public final class Communication {
           java.lang.String, java.lang.Boolean> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Boolean>newDefaultInstance(
-                  communication.Communication.internal_static_TypesFilter_SelectedTypesEntry_descriptor, 
+                  communication.Communication.internal_static_sm_TypesFilter_SelectedTypesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.BOOL,
@@ -5571,15 +5571,15 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code TypesFilter}
+     * Protobuf type {@code sm.TypesFilter}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:TypesFilter)
+        // @@protoc_insertion_point(builder_implements:sm.TypesFilter)
         communication.Communication.TypesFilterOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_TypesFilter_descriptor;
+        return communication.Communication.internal_static_sm_TypesFilter_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
@@ -5606,7 +5606,7 @@ public final class Communication {
       }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_TypesFilter_fieldAccessorTable
+        return communication.Communication.internal_static_sm_TypesFilter_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.TypesFilter.class, communication.Communication.TypesFilter.Builder.class);
       }
@@ -5633,7 +5633,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_TypesFilter_descriptor;
+        return communication.Communication.internal_static_sm_TypesFilter_descriptor;
       }
 
       public communication.Communication.TypesFilter getDefaultInstanceForType() {
@@ -5817,10 +5817,10 @@ public final class Communication {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:TypesFilter)
+      // @@protoc_insertion_point(builder_scope:sm.TypesFilter)
     }
 
-    // @@protoc_insertion_point(class_scope:TypesFilter)
+    // @@protoc_insertion_point(class_scope:sm.TypesFilter)
     private static final communication.Communication.TypesFilter DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.TypesFilter();
@@ -5856,7 +5856,7 @@ public final class Communication {
   }
 
   public interface GroupsFilterOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GroupsFilter)
+      // @@protoc_insertion_point(interface_extends:sm.GroupsFilter)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -5894,11 +5894,11 @@ public final class Communication {
         java.lang.String key);
   }
   /**
-   * Protobuf type {@code GroupsFilter}
+   * Protobuf type {@code sm.GroupsFilter}
    */
   public  static final class GroupsFilter extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:GroupsFilter)
+      // @@protoc_insertion_point(message_implements:sm.GroupsFilter)
       GroupsFilterOrBuilder {
     // Use GroupsFilter.newBuilder() to construct.
     private GroupsFilter(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -5961,7 +5961,7 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_GroupsFilter_descriptor;
+      return communication.Communication.internal_static_sm_GroupsFilter_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -5977,7 +5977,7 @@ public final class Communication {
     }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_GroupsFilter_fieldAccessorTable
+      return communication.Communication.internal_static_sm_GroupsFilter_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.GroupsFilter.class, communication.Communication.GroupsFilter.Builder.class);
     }
@@ -5988,7 +5988,7 @@ public final class Communication {
           java.lang.String, java.lang.Boolean> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Boolean>newDefaultInstance(
-                  communication.Communication.internal_static_GroupsFilter_SelectedGroupsEntry_descriptor, 
+                  communication.Communication.internal_static_sm_GroupsFilter_SelectedGroupsEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.BOOL,
@@ -6214,15 +6214,15 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code GroupsFilter}
+     * Protobuf type {@code sm.GroupsFilter}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GroupsFilter)
+        // @@protoc_insertion_point(builder_implements:sm.GroupsFilter)
         communication.Communication.GroupsFilterOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_GroupsFilter_descriptor;
+        return communication.Communication.internal_static_sm_GroupsFilter_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
@@ -6249,7 +6249,7 @@ public final class Communication {
       }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_GroupsFilter_fieldAccessorTable
+        return communication.Communication.internal_static_sm_GroupsFilter_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.GroupsFilter.class, communication.Communication.GroupsFilter.Builder.class);
       }
@@ -6276,7 +6276,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_GroupsFilter_descriptor;
+        return communication.Communication.internal_static_sm_GroupsFilter_descriptor;
       }
 
       public communication.Communication.GroupsFilter getDefaultInstanceForType() {
@@ -6460,10 +6460,10 @@ public final class Communication {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:GroupsFilter)
+      // @@protoc_insertion_point(builder_scope:sm.GroupsFilter)
     }
 
-    // @@protoc_insertion_point(class_scope:GroupsFilter)
+    // @@protoc_insertion_point(class_scope:sm.GroupsFilter)
     private static final communication.Communication.GroupsFilter DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.GroupsFilter();
@@ -6499,7 +6499,7 @@ public final class Communication {
   }
 
   public interface QualityConditionOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:QualityCondition)
+      // @@protoc_insertion_point(interface_extends:sm.QualityCondition)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -6512,20 +6512,20 @@ public final class Communication {
     double getLeftValue();
 
     /**
-     * <code>optional .ComparisonOperator leftOperator = 2;</code>
+     * <code>optional .sm.ComparisonOperator leftOperator = 2;</code>
      */
     boolean hasLeftOperator();
     /**
-     * <code>optional .ComparisonOperator leftOperator = 2;</code>
+     * <code>optional .sm.ComparisonOperator leftOperator = 2;</code>
      */
     communication.Communication.ComparisonOperator getLeftOperator();
 
     /**
-     * <code>optional .ComparisonOperator rightOperator = 3;</code>
+     * <code>optional .sm.ComparisonOperator rightOperator = 3;</code>
      */
     boolean hasRightOperator();
     /**
-     * <code>optional .ComparisonOperator rightOperator = 3;</code>
+     * <code>optional .sm.ComparisonOperator rightOperator = 3;</code>
      */
     communication.Communication.ComparisonOperator getRightOperator();
 
@@ -6539,11 +6539,11 @@ public final class Communication {
     double getRightValue();
   }
   /**
-   * Protobuf type {@code QualityCondition}
+   * Protobuf type {@code sm.QualityCondition}
    */
   public  static final class QualityCondition extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:QualityCondition)
+      // @@protoc_insertion_point(message_implements:sm.QualityCondition)
       QualityConditionOrBuilder {
     // Use QualityCondition.newBuilder() to construct.
     private QualityCondition(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -6630,12 +6630,12 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_QualityCondition_descriptor;
+      return communication.Communication.internal_static_sm_QualityCondition_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_QualityCondition_fieldAccessorTable
+      return communication.Communication.internal_static_sm_QualityCondition_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.QualityCondition.class, communication.Communication.QualityCondition.Builder.class);
     }
@@ -6659,13 +6659,13 @@ public final class Communication {
     public static final int LEFTOPERATOR_FIELD_NUMBER = 2;
     private int leftOperator_;
     /**
-     * <code>optional .ComparisonOperator leftOperator = 2;</code>
+     * <code>optional .sm.ComparisonOperator leftOperator = 2;</code>
      */
     public boolean hasLeftOperator() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .ComparisonOperator leftOperator = 2;</code>
+     * <code>optional .sm.ComparisonOperator leftOperator = 2;</code>
      */
     public communication.Communication.ComparisonOperator getLeftOperator() {
       communication.Communication.ComparisonOperator result = communication.Communication.ComparisonOperator.valueOf(leftOperator_);
@@ -6675,13 +6675,13 @@ public final class Communication {
     public static final int RIGHTOPERATOR_FIELD_NUMBER = 3;
     private int rightOperator_;
     /**
-     * <code>optional .ComparisonOperator rightOperator = 3;</code>
+     * <code>optional .sm.ComparisonOperator rightOperator = 3;</code>
      */
     public boolean hasRightOperator() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .ComparisonOperator rightOperator = 3;</code>
+     * <code>optional .sm.ComparisonOperator rightOperator = 3;</code>
      */
     public communication.Communication.ComparisonOperator getRightOperator() {
       communication.Communication.ComparisonOperator result = communication.Communication.ComparisonOperator.valueOf(rightOperator_);
@@ -6902,20 +6902,20 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code QualityCondition}
+     * Protobuf type {@code sm.QualityCondition}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:QualityCondition)
+        // @@protoc_insertion_point(builder_implements:sm.QualityCondition)
         communication.Communication.QualityConditionOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_QualityCondition_descriptor;
+        return communication.Communication.internal_static_sm_QualityCondition_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_QualityCondition_fieldAccessorTable
+        return communication.Communication.internal_static_sm_QualityCondition_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.QualityCondition.class, communication.Communication.QualityCondition.Builder.class);
       }
@@ -6949,7 +6949,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_QualityCondition_descriptor;
+        return communication.Communication.internal_static_sm_QualityCondition_descriptor;
       }
 
       public communication.Communication.QualityCondition getDefaultInstanceForType() {
@@ -7074,20 +7074,20 @@ public final class Communication {
 
       private int leftOperator_ = 1;
       /**
-       * <code>optional .ComparisonOperator leftOperator = 2;</code>
+       * <code>optional .sm.ComparisonOperator leftOperator = 2;</code>
        */
       public boolean hasLeftOperator() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .ComparisonOperator leftOperator = 2;</code>
+       * <code>optional .sm.ComparisonOperator leftOperator = 2;</code>
        */
       public communication.Communication.ComparisonOperator getLeftOperator() {
         communication.Communication.ComparisonOperator result = communication.Communication.ComparisonOperator.valueOf(leftOperator_);
         return result == null ? communication.Communication.ComparisonOperator.GREATER_OR_EQUAL : result;
       }
       /**
-       * <code>optional .ComparisonOperator leftOperator = 2;</code>
+       * <code>optional .sm.ComparisonOperator leftOperator = 2;</code>
        */
       public Builder setLeftOperator(communication.Communication.ComparisonOperator value) {
         if (value == null) {
@@ -7099,7 +7099,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .ComparisonOperator leftOperator = 2;</code>
+       * <code>optional .sm.ComparisonOperator leftOperator = 2;</code>
        */
       public Builder clearLeftOperator() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -7110,20 +7110,20 @@ public final class Communication {
 
       private int rightOperator_ = 1;
       /**
-       * <code>optional .ComparisonOperator rightOperator = 3;</code>
+       * <code>optional .sm.ComparisonOperator rightOperator = 3;</code>
        */
       public boolean hasRightOperator() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .ComparisonOperator rightOperator = 3;</code>
+       * <code>optional .sm.ComparisonOperator rightOperator = 3;</code>
        */
       public communication.Communication.ComparisonOperator getRightOperator() {
         communication.Communication.ComparisonOperator result = communication.Communication.ComparisonOperator.valueOf(rightOperator_);
         return result == null ? communication.Communication.ComparisonOperator.GREATER_OR_EQUAL : result;
       }
       /**
-       * <code>optional .ComparisonOperator rightOperator = 3;</code>
+       * <code>optional .sm.ComparisonOperator rightOperator = 3;</code>
        */
       public Builder setRightOperator(communication.Communication.ComparisonOperator value) {
         if (value == null) {
@@ -7135,7 +7135,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .ComparisonOperator rightOperator = 3;</code>
+       * <code>optional .sm.ComparisonOperator rightOperator = 3;</code>
        */
       public Builder clearRightOperator() {
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -7176,10 +7176,10 @@ public final class Communication {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:QualityCondition)
+      // @@protoc_insertion_point(builder_scope:sm.QualityCondition)
     }
 
-    // @@protoc_insertion_point(class_scope:QualityCondition)
+    // @@protoc_insertion_point(class_scope:sm.QualityCondition)
     private static final communication.Communication.QualityCondition DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.QualityCondition();
@@ -7215,39 +7215,39 @@ public final class Communication {
   }
 
   public interface QualityFilterOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:QualityFilter)
+      // @@protoc_insertion_point(interface_extends:sm.QualityFilter)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .QualityCondition qualityCondition = 1;</code>
+     * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
      */
     java.util.List<communication.Communication.QualityCondition> 
         getQualityConditionList();
     /**
-     * <code>repeated .QualityCondition qualityCondition = 1;</code>
+     * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
      */
     communication.Communication.QualityCondition getQualityCondition(int index);
     /**
-     * <code>repeated .QualityCondition qualityCondition = 1;</code>
+     * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
      */
     int getQualityConditionCount();
     /**
-     * <code>repeated .QualityCondition qualityCondition = 1;</code>
+     * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
      */
     java.util.List<? extends communication.Communication.QualityConditionOrBuilder> 
         getQualityConditionOrBuilderList();
     /**
-     * <code>repeated .QualityCondition qualityCondition = 1;</code>
+     * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
      */
     communication.Communication.QualityConditionOrBuilder getQualityConditionOrBuilder(
         int index);
   }
   /**
-   * Protobuf type {@code QualityFilter}
+   * Protobuf type {@code sm.QualityFilter}
    */
   public  static final class QualityFilter extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:QualityFilter)
+      // @@protoc_insertion_point(message_implements:sm.QualityFilter)
       QualityFilterOrBuilder {
     // Use QualityFilter.newBuilder() to construct.
     private QualityFilter(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -7311,12 +7311,12 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_QualityFilter_descriptor;
+      return communication.Communication.internal_static_sm_QualityFilter_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_QualityFilter_fieldAccessorTable
+      return communication.Communication.internal_static_sm_QualityFilter_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.QualityFilter.class, communication.Communication.QualityFilter.Builder.class);
     }
@@ -7324,32 +7324,32 @@ public final class Communication {
     public static final int QUALITYCONDITION_FIELD_NUMBER = 1;
     private java.util.List<communication.Communication.QualityCondition> qualityCondition_;
     /**
-     * <code>repeated .QualityCondition qualityCondition = 1;</code>
+     * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
      */
     public java.util.List<communication.Communication.QualityCondition> getQualityConditionList() {
       return qualityCondition_;
     }
     /**
-     * <code>repeated .QualityCondition qualityCondition = 1;</code>
+     * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
      */
     public java.util.List<? extends communication.Communication.QualityConditionOrBuilder> 
         getQualityConditionOrBuilderList() {
       return qualityCondition_;
     }
     /**
-     * <code>repeated .QualityCondition qualityCondition = 1;</code>
+     * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
      */
     public int getQualityConditionCount() {
       return qualityCondition_.size();
     }
     /**
-     * <code>repeated .QualityCondition qualityCondition = 1;</code>
+     * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
      */
     public communication.Communication.QualityCondition getQualityCondition(int index) {
       return qualityCondition_.get(index);
     }
     /**
-     * <code>repeated .QualityCondition qualityCondition = 1;</code>
+     * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
      */
     public communication.Communication.QualityConditionOrBuilder getQualityConditionOrBuilder(
         int index) {
@@ -7500,20 +7500,20 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code QualityFilter}
+     * Protobuf type {@code sm.QualityFilter}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:QualityFilter)
+        // @@protoc_insertion_point(builder_implements:sm.QualityFilter)
         communication.Communication.QualityFilterOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_QualityFilter_descriptor;
+        return communication.Communication.internal_static_sm_QualityFilter_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_QualityFilter_fieldAccessorTable
+        return communication.Communication.internal_static_sm_QualityFilter_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.QualityFilter.class, communication.Communication.QualityFilter.Builder.class);
       }
@@ -7546,7 +7546,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_QualityFilter_descriptor;
+        return communication.Communication.internal_static_sm_QualityFilter_descriptor;
       }
 
       public communication.Communication.QualityFilter getDefaultInstanceForType() {
@@ -7655,7 +7655,7 @@ public final class Communication {
           communication.Communication.QualityCondition, communication.Communication.QualityCondition.Builder, communication.Communication.QualityConditionOrBuilder> qualityConditionBuilder_;
 
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public java.util.List<communication.Communication.QualityCondition> getQualityConditionList() {
         if (qualityConditionBuilder_ == null) {
@@ -7665,7 +7665,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public int getQualityConditionCount() {
         if (qualityConditionBuilder_ == null) {
@@ -7675,7 +7675,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public communication.Communication.QualityCondition getQualityCondition(int index) {
         if (qualityConditionBuilder_ == null) {
@@ -7685,7 +7685,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public Builder setQualityCondition(
           int index, communication.Communication.QualityCondition value) {
@@ -7702,7 +7702,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public Builder setQualityCondition(
           int index, communication.Communication.QualityCondition.Builder builderForValue) {
@@ -7716,7 +7716,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public Builder addQualityCondition(communication.Communication.QualityCondition value) {
         if (qualityConditionBuilder_ == null) {
@@ -7732,7 +7732,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public Builder addQualityCondition(
           int index, communication.Communication.QualityCondition value) {
@@ -7749,7 +7749,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public Builder addQualityCondition(
           communication.Communication.QualityCondition.Builder builderForValue) {
@@ -7763,7 +7763,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public Builder addQualityCondition(
           int index, communication.Communication.QualityCondition.Builder builderForValue) {
@@ -7777,7 +7777,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public Builder addAllQualityCondition(
           java.lang.Iterable<? extends communication.Communication.QualityCondition> values) {
@@ -7792,7 +7792,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public Builder clearQualityCondition() {
         if (qualityConditionBuilder_ == null) {
@@ -7805,7 +7805,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public Builder removeQualityCondition(int index) {
         if (qualityConditionBuilder_ == null) {
@@ -7818,14 +7818,14 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public communication.Communication.QualityCondition.Builder getQualityConditionBuilder(
           int index) {
         return getQualityConditionFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public communication.Communication.QualityConditionOrBuilder getQualityConditionOrBuilder(
           int index) {
@@ -7835,7 +7835,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public java.util.List<? extends communication.Communication.QualityConditionOrBuilder> 
            getQualityConditionOrBuilderList() {
@@ -7846,14 +7846,14 @@ public final class Communication {
         }
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public communication.Communication.QualityCondition.Builder addQualityConditionBuilder() {
         return getQualityConditionFieldBuilder().addBuilder(
             communication.Communication.QualityCondition.getDefaultInstance());
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public communication.Communication.QualityCondition.Builder addQualityConditionBuilder(
           int index) {
@@ -7861,7 +7861,7 @@ public final class Communication {
             index, communication.Communication.QualityCondition.getDefaultInstance());
       }
       /**
-       * <code>repeated .QualityCondition qualityCondition = 1;</code>
+       * <code>repeated .sm.QualityCondition qualityCondition = 1;</code>
        */
       public java.util.List<communication.Communication.QualityCondition.Builder> 
            getQualityConditionBuilderList() {
@@ -7882,10 +7882,10 @@ public final class Communication {
         return qualityConditionBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:QualityFilter)
+      // @@protoc_insertion_point(builder_scope:sm.QualityFilter)
     }
 
-    // @@protoc_insertion_point(class_scope:QualityFilter)
+    // @@protoc_insertion_point(class_scope:sm.QualityFilter)
     private static final communication.Communication.QualityFilter DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.QualityFilter();
@@ -7921,7 +7921,7 @@ public final class Communication {
   }
 
   public interface CoordinatesConditionOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:CoordinatesCondition)
+      // @@protoc_insertion_point(interface_extends:sm.CoordinatesCondition)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -7952,11 +7952,11 @@ public final class Communication {
     double getZValue();
 
     /**
-     * <code>required .ComparisonOperator coordinatesOperator = 4;</code>
+     * <code>required .sm.ComparisonOperator coordinatesOperator = 4;</code>
      */
     boolean hasCoordinatesOperator();
     /**
-     * <code>required .ComparisonOperator coordinatesOperator = 4;</code>
+     * <code>required .sm.ComparisonOperator coordinatesOperator = 4;</code>
      */
     communication.Communication.ComparisonOperator getCoordinatesOperator();
 
@@ -7970,11 +7970,11 @@ public final class Communication {
     double getConstant();
   }
   /**
-   * Protobuf type {@code CoordinatesCondition}
+   * Protobuf type {@code sm.CoordinatesCondition}
    */
   public  static final class CoordinatesCondition extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:CoordinatesCondition)
+      // @@protoc_insertion_point(message_implements:sm.CoordinatesCondition)
       CoordinatesConditionOrBuilder {
     // Use CoordinatesCondition.newBuilder() to construct.
     private CoordinatesCondition(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -8061,12 +8061,12 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_CoordinatesCondition_descriptor;
+      return communication.Communication.internal_static_sm_CoordinatesCondition_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_CoordinatesCondition_fieldAccessorTable
+      return communication.Communication.internal_static_sm_CoordinatesCondition_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.CoordinatesCondition.class, communication.Communication.CoordinatesCondition.Builder.class);
     }
@@ -8120,13 +8120,13 @@ public final class Communication {
     public static final int COORDINATESOPERATOR_FIELD_NUMBER = 4;
     private int coordinatesOperator_;
     /**
-     * <code>required .ComparisonOperator coordinatesOperator = 4;</code>
+     * <code>required .sm.ComparisonOperator coordinatesOperator = 4;</code>
      */
     public boolean hasCoordinatesOperator() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required .ComparisonOperator coordinatesOperator = 4;</code>
+     * <code>required .sm.ComparisonOperator coordinatesOperator = 4;</code>
      */
     public communication.Communication.ComparisonOperator getCoordinatesOperator() {
       communication.Communication.ComparisonOperator result = communication.Communication.ComparisonOperator.valueOf(coordinatesOperator_);
@@ -8390,20 +8390,20 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code CoordinatesCondition}
+     * Protobuf type {@code sm.CoordinatesCondition}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:CoordinatesCondition)
+        // @@protoc_insertion_point(builder_implements:sm.CoordinatesCondition)
         communication.Communication.CoordinatesConditionOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_CoordinatesCondition_descriptor;
+        return communication.Communication.internal_static_sm_CoordinatesCondition_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_CoordinatesCondition_fieldAccessorTable
+        return communication.Communication.internal_static_sm_CoordinatesCondition_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.CoordinatesCondition.class, communication.Communication.CoordinatesCondition.Builder.class);
       }
@@ -8439,7 +8439,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_CoordinatesCondition_descriptor;
+        return communication.Communication.internal_static_sm_CoordinatesCondition_descriptor;
       }
 
       public communication.Communication.CoordinatesCondition getDefaultInstanceForType() {
@@ -8650,20 +8650,20 @@ public final class Communication {
 
       private int coordinatesOperator_ = 1;
       /**
-       * <code>required .ComparisonOperator coordinatesOperator = 4;</code>
+       * <code>required .sm.ComparisonOperator coordinatesOperator = 4;</code>
        */
       public boolean hasCoordinatesOperator() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required .ComparisonOperator coordinatesOperator = 4;</code>
+       * <code>required .sm.ComparisonOperator coordinatesOperator = 4;</code>
        */
       public communication.Communication.ComparisonOperator getCoordinatesOperator() {
         communication.Communication.ComparisonOperator result = communication.Communication.ComparisonOperator.valueOf(coordinatesOperator_);
         return result == null ? communication.Communication.ComparisonOperator.GREATER_OR_EQUAL : result;
       }
       /**
-       * <code>required .ComparisonOperator coordinatesOperator = 4;</code>
+       * <code>required .sm.ComparisonOperator coordinatesOperator = 4;</code>
        */
       public Builder setCoordinatesOperator(communication.Communication.ComparisonOperator value) {
         if (value == null) {
@@ -8675,7 +8675,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .ComparisonOperator coordinatesOperator = 4;</code>
+       * <code>required .sm.ComparisonOperator coordinatesOperator = 4;</code>
        */
       public Builder clearCoordinatesOperator() {
         bitField0_ = (bitField0_ & ~0x00000008);
@@ -8716,10 +8716,10 @@ public final class Communication {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:CoordinatesCondition)
+      // @@protoc_insertion_point(builder_scope:sm.CoordinatesCondition)
     }
 
-    // @@protoc_insertion_point(class_scope:CoordinatesCondition)
+    // @@protoc_insertion_point(class_scope:sm.CoordinatesCondition)
     private static final communication.Communication.CoordinatesCondition DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.CoordinatesCondition();
@@ -8755,48 +8755,48 @@ public final class Communication {
   }
 
   public interface CoordinatesFilterOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:CoordinatesFilter)
+      // @@protoc_insertion_point(interface_extends:sm.CoordinatesFilter)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+     * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
      */
     java.util.List<communication.Communication.CoordinatesCondition> 
         getCoordinatesConditionList();
     /**
-     * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+     * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
      */
     communication.Communication.CoordinatesCondition getCoordinatesCondition(int index);
     /**
-     * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+     * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
      */
     int getCoordinatesConditionCount();
     /**
-     * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+     * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
      */
     java.util.List<? extends communication.Communication.CoordinatesConditionOrBuilder> 
         getCoordinatesConditionOrBuilderList();
     /**
-     * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+     * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
      */
     communication.Communication.CoordinatesConditionOrBuilder getCoordinatesConditionOrBuilder(
         int index);
 
     /**
-     * <code>optional .CoordinatesFilter.Conjunction conjunction = 2;</code>
+     * <code>optional .sm.CoordinatesFilter.Conjunction conjunction = 2;</code>
      */
     boolean hasConjunction();
     /**
-     * <code>optional .CoordinatesFilter.Conjunction conjunction = 2;</code>
+     * <code>optional .sm.CoordinatesFilter.Conjunction conjunction = 2;</code>
      */
     communication.Communication.CoordinatesFilter.Conjunction getConjunction();
   }
   /**
-   * Protobuf type {@code CoordinatesFilter}
+   * Protobuf type {@code sm.CoordinatesFilter}
    */
   public  static final class CoordinatesFilter extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:CoordinatesFilter)
+      // @@protoc_insertion_point(message_implements:sm.CoordinatesFilter)
       CoordinatesFilterOrBuilder {
     // Use CoordinatesFilter.newBuilder() to construct.
     private CoordinatesFilter(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -8872,18 +8872,18 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_CoordinatesFilter_descriptor;
+      return communication.Communication.internal_static_sm_CoordinatesFilter_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_CoordinatesFilter_fieldAccessorTable
+      return communication.Communication.internal_static_sm_CoordinatesFilter_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.CoordinatesFilter.class, communication.Communication.CoordinatesFilter.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code CoordinatesFilter.Conjunction}
+     * Protobuf enum {@code sm.CoordinatesFilter.Conjunction}
      */
     public enum Conjunction
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -8969,39 +8969,39 @@ public final class Communication {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:CoordinatesFilter.Conjunction)
+      // @@protoc_insertion_point(enum_scope:sm.CoordinatesFilter.Conjunction)
     }
 
     private int bitField0_;
     public static final int COORDINATESCONDITION_FIELD_NUMBER = 1;
     private java.util.List<communication.Communication.CoordinatesCondition> coordinatesCondition_;
     /**
-     * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+     * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
      */
     public java.util.List<communication.Communication.CoordinatesCondition> getCoordinatesConditionList() {
       return coordinatesCondition_;
     }
     /**
-     * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+     * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
      */
     public java.util.List<? extends communication.Communication.CoordinatesConditionOrBuilder> 
         getCoordinatesConditionOrBuilderList() {
       return coordinatesCondition_;
     }
     /**
-     * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+     * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
      */
     public int getCoordinatesConditionCount() {
       return coordinatesCondition_.size();
     }
     /**
-     * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+     * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
      */
     public communication.Communication.CoordinatesCondition getCoordinatesCondition(int index) {
       return coordinatesCondition_.get(index);
     }
     /**
-     * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+     * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
      */
     public communication.Communication.CoordinatesConditionOrBuilder getCoordinatesConditionOrBuilder(
         int index) {
@@ -9011,13 +9011,13 @@ public final class Communication {
     public static final int CONJUNCTION_FIELD_NUMBER = 2;
     private int conjunction_;
     /**
-     * <code>optional .CoordinatesFilter.Conjunction conjunction = 2;</code>
+     * <code>optional .sm.CoordinatesFilter.Conjunction conjunction = 2;</code>
      */
     public boolean hasConjunction() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional .CoordinatesFilter.Conjunction conjunction = 2;</code>
+     * <code>optional .sm.CoordinatesFilter.Conjunction conjunction = 2;</code>
      */
     public communication.Communication.CoordinatesFilter.Conjunction getConjunction() {
       communication.Communication.CoordinatesFilter.Conjunction result = communication.Communication.CoordinatesFilter.Conjunction.valueOf(conjunction_);
@@ -9189,20 +9189,20 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code CoordinatesFilter}
+     * Protobuf type {@code sm.CoordinatesFilter}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:CoordinatesFilter)
+        // @@protoc_insertion_point(builder_implements:sm.CoordinatesFilter)
         communication.Communication.CoordinatesFilterOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_CoordinatesFilter_descriptor;
+        return communication.Communication.internal_static_sm_CoordinatesFilter_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_CoordinatesFilter_fieldAccessorTable
+        return communication.Communication.internal_static_sm_CoordinatesFilter_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.CoordinatesFilter.class, communication.Communication.CoordinatesFilter.Builder.class);
       }
@@ -9237,7 +9237,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_CoordinatesFilter_descriptor;
+        return communication.Communication.internal_static_sm_CoordinatesFilter_descriptor;
       }
 
       public communication.Communication.CoordinatesFilter getDefaultInstanceForType() {
@@ -9360,7 +9360,7 @@ public final class Communication {
           communication.Communication.CoordinatesCondition, communication.Communication.CoordinatesCondition.Builder, communication.Communication.CoordinatesConditionOrBuilder> coordinatesConditionBuilder_;
 
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public java.util.List<communication.Communication.CoordinatesCondition> getCoordinatesConditionList() {
         if (coordinatesConditionBuilder_ == null) {
@@ -9370,7 +9370,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public int getCoordinatesConditionCount() {
         if (coordinatesConditionBuilder_ == null) {
@@ -9380,7 +9380,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public communication.Communication.CoordinatesCondition getCoordinatesCondition(int index) {
         if (coordinatesConditionBuilder_ == null) {
@@ -9390,7 +9390,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public Builder setCoordinatesCondition(
           int index, communication.Communication.CoordinatesCondition value) {
@@ -9407,7 +9407,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public Builder setCoordinatesCondition(
           int index, communication.Communication.CoordinatesCondition.Builder builderForValue) {
@@ -9421,7 +9421,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public Builder addCoordinatesCondition(communication.Communication.CoordinatesCondition value) {
         if (coordinatesConditionBuilder_ == null) {
@@ -9437,7 +9437,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public Builder addCoordinatesCondition(
           int index, communication.Communication.CoordinatesCondition value) {
@@ -9454,7 +9454,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public Builder addCoordinatesCondition(
           communication.Communication.CoordinatesCondition.Builder builderForValue) {
@@ -9468,7 +9468,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public Builder addCoordinatesCondition(
           int index, communication.Communication.CoordinatesCondition.Builder builderForValue) {
@@ -9482,7 +9482,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public Builder addAllCoordinatesCondition(
           java.lang.Iterable<? extends communication.Communication.CoordinatesCondition> values) {
@@ -9497,7 +9497,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public Builder clearCoordinatesCondition() {
         if (coordinatesConditionBuilder_ == null) {
@@ -9510,7 +9510,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public Builder removeCoordinatesCondition(int index) {
         if (coordinatesConditionBuilder_ == null) {
@@ -9523,14 +9523,14 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public communication.Communication.CoordinatesCondition.Builder getCoordinatesConditionBuilder(
           int index) {
         return getCoordinatesConditionFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public communication.Communication.CoordinatesConditionOrBuilder getCoordinatesConditionOrBuilder(
           int index) {
@@ -9540,7 +9540,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public java.util.List<? extends communication.Communication.CoordinatesConditionOrBuilder> 
            getCoordinatesConditionOrBuilderList() {
@@ -9551,14 +9551,14 @@ public final class Communication {
         }
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public communication.Communication.CoordinatesCondition.Builder addCoordinatesConditionBuilder() {
         return getCoordinatesConditionFieldBuilder().addBuilder(
             communication.Communication.CoordinatesCondition.getDefaultInstance());
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public communication.Communication.CoordinatesCondition.Builder addCoordinatesConditionBuilder(
           int index) {
@@ -9566,7 +9566,7 @@ public final class Communication {
             index, communication.Communication.CoordinatesCondition.getDefaultInstance());
       }
       /**
-       * <code>repeated .CoordinatesCondition coordinatesCondition = 1;</code>
+       * <code>repeated .sm.CoordinatesCondition coordinatesCondition = 1;</code>
        */
       public java.util.List<communication.Communication.CoordinatesCondition.Builder> 
            getCoordinatesConditionBuilderList() {
@@ -9589,20 +9589,20 @@ public final class Communication {
 
       private int conjunction_ = 1;
       /**
-       * <code>optional .CoordinatesFilter.Conjunction conjunction = 2;</code>
+       * <code>optional .sm.CoordinatesFilter.Conjunction conjunction = 2;</code>
        */
       public boolean hasConjunction() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .CoordinatesFilter.Conjunction conjunction = 2;</code>
+       * <code>optional .sm.CoordinatesFilter.Conjunction conjunction = 2;</code>
        */
       public communication.Communication.CoordinatesFilter.Conjunction getConjunction() {
         communication.Communication.CoordinatesFilter.Conjunction result = communication.Communication.CoordinatesFilter.Conjunction.valueOf(conjunction_);
         return result == null ? communication.Communication.CoordinatesFilter.Conjunction.AND : result;
       }
       /**
-       * <code>optional .CoordinatesFilter.Conjunction conjunction = 2;</code>
+       * <code>optional .sm.CoordinatesFilter.Conjunction conjunction = 2;</code>
        */
       public Builder setConjunction(communication.Communication.CoordinatesFilter.Conjunction value) {
         if (value == null) {
@@ -9614,7 +9614,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .CoordinatesFilter.Conjunction conjunction = 2;</code>
+       * <code>optional .sm.CoordinatesFilter.Conjunction conjunction = 2;</code>
        */
       public Builder clearConjunction() {
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -9623,10 +9623,10 @@ public final class Communication {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:CoordinatesFilter)
+      // @@protoc_insertion_point(builder_scope:sm.CoordinatesFilter)
     }
 
-    // @@protoc_insertion_point(class_scope:CoordinatesFilter)
+    // @@protoc_insertion_point(class_scope:sm.CoordinatesFilter)
     private static final communication.Communication.CoordinatesFilter DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.CoordinatesFilter();
@@ -9662,89 +9662,89 @@ public final class Communication {
   }
 
   public interface ManagerToCoreMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ManagerToCoreMessage)
+      // @@protoc_insertion_point(interface_extends:sm.ManagerToCoreMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required .ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
+     * <code>required .sm.ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
      */
     boolean hasMessageType();
     /**
-     * <code>required .ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
+     * <code>required .sm.ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
      */
     communication.Communication.ManagerToCoreMessage.MTCMessageType getMessageType();
 
     /**
-     * <code>optional .OptionsInfo optionsInfo = 2;</code>
+     * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
      */
     boolean hasOptionsInfo();
     /**
-     * <code>optional .OptionsInfo optionsInfo = 2;</code>
+     * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
      */
     communication.Communication.OptionsInfo getOptionsInfo();
     /**
-     * <code>optional .OptionsInfo optionsInfo = 2;</code>
+     * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
      */
     communication.Communication.OptionsInfoOrBuilder getOptionsInfoOrBuilder();
 
     /**
-     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
      */
     boolean hasGroupsFilter();
     /**
-     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
      */
     communication.Communication.GroupsFilter getGroupsFilter();
     /**
-     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
      */
     communication.Communication.GroupsFilterOrBuilder getGroupsFilterOrBuilder();
 
     /**
-     * <code>optional .TypesFilter typesFilter = 4;</code>
+     * <code>optional .sm.TypesFilter typesFilter = 4;</code>
      */
     boolean hasTypesFilter();
     /**
-     * <code>optional .TypesFilter typesFilter = 4;</code>
+     * <code>optional .sm.TypesFilter typesFilter = 4;</code>
      */
     communication.Communication.TypesFilter getTypesFilter();
     /**
-     * <code>optional .TypesFilter typesFilter = 4;</code>
+     * <code>optional .sm.TypesFilter typesFilter = 4;</code>
      */
     communication.Communication.TypesFilterOrBuilder getTypesFilterOrBuilder();
 
     /**
-     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
      */
     boolean hasQualityFilter();
     /**
-     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
      */
     communication.Communication.QualityFilter getQualityFilter();
     /**
-     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
      */
     communication.Communication.QualityFilterOrBuilder getQualityFilterOrBuilder();
 
     /**
-     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
      */
     boolean hasCoordinatesFilter();
     /**
-     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
      */
     communication.Communication.CoordinatesFilter getCoordinatesFilter();
     /**
-     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
      */
     communication.Communication.CoordinatesFilterOrBuilder getCoordinatesFilterOrBuilder();
   }
   /**
-   * Protobuf type {@code ManagerToCoreMessage}
+   * Protobuf type {@code sm.ManagerToCoreMessage}
    */
   public  static final class ManagerToCoreMessage extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ManagerToCoreMessage)
+      // @@protoc_insertion_point(message_implements:sm.ManagerToCoreMessage)
       ManagerToCoreMessageOrBuilder {
     // Use ManagerToCoreMessage.newBuilder() to construct.
     private ManagerToCoreMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
@@ -9872,18 +9872,18 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return communication.Communication.internal_static_ManagerToCoreMessage_descriptor;
+      return communication.Communication.internal_static_sm_ManagerToCoreMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return communication.Communication.internal_static_ManagerToCoreMessage_fieldAccessorTable
+      return communication.Communication.internal_static_sm_ManagerToCoreMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               communication.Communication.ManagerToCoreMessage.class, communication.Communication.ManagerToCoreMessage.Builder.class);
     }
 
     /**
-     * Protobuf enum {@code ManagerToCoreMessage.MTCMessageType}
+     * Protobuf enum {@code sm.ManagerToCoreMessage.MTCMessageType}
      */
     public enum MTCMessageType
         implements com.google.protobuf.ProtocolMessageEnum {
@@ -9903,6 +9903,10 @@ public final class Communication {
        * <code>ABORT = 4;</code>
        */
       ABORT(4),
+      /**
+       * <code>HELLO = 5;</code>
+       */
+      HELLO(5),
       ;
 
       /**
@@ -9921,6 +9925,10 @@ public final class Communication {
        * <code>ABORT = 4;</code>
        */
       public static final int ABORT_VALUE = 4;
+      /**
+       * <code>HELLO = 5;</code>
+       */
+      public static final int HELLO_VALUE = 5;
 
 
       public final int getNumber() {
@@ -9941,6 +9949,7 @@ public final class Communication {
           case 2: return FILTERS;
           case 3: return CONTINUE;
           case 4: return ABORT;
+          case 5: return HELLO;
           default: return null;
         }
       }
@@ -9987,20 +9996,20 @@ public final class Communication {
         this.value = value;
       }
 
-      // @@protoc_insertion_point(enum_scope:ManagerToCoreMessage.MTCMessageType)
+      // @@protoc_insertion_point(enum_scope:sm.ManagerToCoreMessage.MTCMessageType)
     }
 
     private int bitField0_;
     public static final int MESSAGETYPE_FIELD_NUMBER = 1;
     private int messageType_;
     /**
-     * <code>required .ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
+     * <code>required .sm.ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
      */
     public boolean hasMessageType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required .ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
+     * <code>required .sm.ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
      */
     public communication.Communication.ManagerToCoreMessage.MTCMessageType getMessageType() {
       communication.Communication.ManagerToCoreMessage.MTCMessageType result = communication.Communication.ManagerToCoreMessage.MTCMessageType.valueOf(messageType_);
@@ -10010,19 +10019,19 @@ public final class Communication {
     public static final int OPTIONSINFO_FIELD_NUMBER = 2;
     private communication.Communication.OptionsInfo optionsInfo_;
     /**
-     * <code>optional .OptionsInfo optionsInfo = 2;</code>
+     * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
      */
     public boolean hasOptionsInfo() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>optional .OptionsInfo optionsInfo = 2;</code>
+     * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
      */
     public communication.Communication.OptionsInfo getOptionsInfo() {
       return optionsInfo_ == null ? communication.Communication.OptionsInfo.getDefaultInstance() : optionsInfo_;
     }
     /**
-     * <code>optional .OptionsInfo optionsInfo = 2;</code>
+     * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
      */
     public communication.Communication.OptionsInfoOrBuilder getOptionsInfoOrBuilder() {
       return optionsInfo_ == null ? communication.Communication.OptionsInfo.getDefaultInstance() : optionsInfo_;
@@ -10031,19 +10040,19 @@ public final class Communication {
     public static final int GROUPSFILTER_FIELD_NUMBER = 3;
     private communication.Communication.GroupsFilter groupsFilter_;
     /**
-     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
      */
     public boolean hasGroupsFilter() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
      */
     public communication.Communication.GroupsFilter getGroupsFilter() {
       return groupsFilter_ == null ? communication.Communication.GroupsFilter.getDefaultInstance() : groupsFilter_;
     }
     /**
-     * <code>optional .GroupsFilter groupsFilter = 3;</code>
+     * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
      */
     public communication.Communication.GroupsFilterOrBuilder getGroupsFilterOrBuilder() {
       return groupsFilter_ == null ? communication.Communication.GroupsFilter.getDefaultInstance() : groupsFilter_;
@@ -10052,19 +10061,19 @@ public final class Communication {
     public static final int TYPESFILTER_FIELD_NUMBER = 4;
     private communication.Communication.TypesFilter typesFilter_;
     /**
-     * <code>optional .TypesFilter typesFilter = 4;</code>
+     * <code>optional .sm.TypesFilter typesFilter = 4;</code>
      */
     public boolean hasTypesFilter() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional .TypesFilter typesFilter = 4;</code>
+     * <code>optional .sm.TypesFilter typesFilter = 4;</code>
      */
     public communication.Communication.TypesFilter getTypesFilter() {
       return typesFilter_ == null ? communication.Communication.TypesFilter.getDefaultInstance() : typesFilter_;
     }
     /**
-     * <code>optional .TypesFilter typesFilter = 4;</code>
+     * <code>optional .sm.TypesFilter typesFilter = 4;</code>
      */
     public communication.Communication.TypesFilterOrBuilder getTypesFilterOrBuilder() {
       return typesFilter_ == null ? communication.Communication.TypesFilter.getDefaultInstance() : typesFilter_;
@@ -10073,19 +10082,19 @@ public final class Communication {
     public static final int QUALITYFILTER_FIELD_NUMBER = 5;
     private communication.Communication.QualityFilter qualityFilter_;
     /**
-     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
      */
     public boolean hasQualityFilter() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
      */
     public communication.Communication.QualityFilter getQualityFilter() {
       return qualityFilter_ == null ? communication.Communication.QualityFilter.getDefaultInstance() : qualityFilter_;
     }
     /**
-     * <code>optional .QualityFilter qualityFilter = 5;</code>
+     * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
      */
     public communication.Communication.QualityFilterOrBuilder getQualityFilterOrBuilder() {
       return qualityFilter_ == null ? communication.Communication.QualityFilter.getDefaultInstance() : qualityFilter_;
@@ -10094,19 +10103,19 @@ public final class Communication {
     public static final int COORDINATESFILTER_FIELD_NUMBER = 6;
     private communication.Communication.CoordinatesFilter coordinatesFilter_;
     /**
-     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
      */
     public boolean hasCoordinatesFilter() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
      */
     public communication.Communication.CoordinatesFilter getCoordinatesFilter() {
       return coordinatesFilter_ == null ? communication.Communication.CoordinatesFilter.getDefaultInstance() : coordinatesFilter_;
     }
     /**
-     * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+     * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
      */
     public communication.Communication.CoordinatesFilterOrBuilder getCoordinatesFilterOrBuilder() {
       return coordinatesFilter_ == null ? communication.Communication.CoordinatesFilter.getDefaultInstance() : coordinatesFilter_;
@@ -10354,20 +10363,20 @@ public final class Communication {
       return builder;
     }
     /**
-     * Protobuf type {@code ManagerToCoreMessage}
+     * Protobuf type {@code sm.ManagerToCoreMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ManagerToCoreMessage)
+        // @@protoc_insertion_point(builder_implements:sm.ManagerToCoreMessage)
         communication.Communication.ManagerToCoreMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return communication.Communication.internal_static_ManagerToCoreMessage_descriptor;
+        return communication.Communication.internal_static_sm_ManagerToCoreMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return communication.Communication.internal_static_ManagerToCoreMessage_fieldAccessorTable
+        return communication.Communication.internal_static_sm_ManagerToCoreMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 communication.Communication.ManagerToCoreMessage.class, communication.Communication.ManagerToCoreMessage.Builder.class);
       }
@@ -10430,7 +10439,7 @@ public final class Communication {
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return communication.Communication.internal_static_ManagerToCoreMessage_descriptor;
+        return communication.Communication.internal_static_sm_ManagerToCoreMessage_descriptor;
       }
 
       public communication.Communication.ManagerToCoreMessage getDefaultInstanceForType() {
@@ -10570,20 +10579,20 @@ public final class Communication {
 
       private int messageType_ = 1;
       /**
-       * <code>required .ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
+       * <code>required .sm.ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
        */
       public boolean hasMessageType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required .ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
+       * <code>required .sm.ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
        */
       public communication.Communication.ManagerToCoreMessage.MTCMessageType getMessageType() {
         communication.Communication.ManagerToCoreMessage.MTCMessageType result = communication.Communication.ManagerToCoreMessage.MTCMessageType.valueOf(messageType_);
         return result == null ? communication.Communication.ManagerToCoreMessage.MTCMessageType.OPTIONS : result;
       }
       /**
-       * <code>required .ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
+       * <code>required .sm.ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
        */
       public Builder setMessageType(communication.Communication.ManagerToCoreMessage.MTCMessageType value) {
         if (value == null) {
@@ -10595,7 +10604,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>required .ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
+       * <code>required .sm.ManagerToCoreMessage.MTCMessageType messageType = 1;</code>
        */
       public Builder clearMessageType() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -10608,13 +10617,13 @@ public final class Communication {
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.OptionsInfo, communication.Communication.OptionsInfo.Builder, communication.Communication.OptionsInfoOrBuilder> optionsInfoBuilder_;
       /**
-       * <code>optional .OptionsInfo optionsInfo = 2;</code>
+       * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
        */
       public boolean hasOptionsInfo() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .OptionsInfo optionsInfo = 2;</code>
+       * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
        */
       public communication.Communication.OptionsInfo getOptionsInfo() {
         if (optionsInfoBuilder_ == null) {
@@ -10624,7 +10633,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .OptionsInfo optionsInfo = 2;</code>
+       * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
        */
       public Builder setOptionsInfo(communication.Communication.OptionsInfo value) {
         if (optionsInfoBuilder_ == null) {
@@ -10640,7 +10649,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .OptionsInfo optionsInfo = 2;</code>
+       * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
        */
       public Builder setOptionsInfo(
           communication.Communication.OptionsInfo.Builder builderForValue) {
@@ -10654,7 +10663,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .OptionsInfo optionsInfo = 2;</code>
+       * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
        */
       public Builder mergeOptionsInfo(communication.Communication.OptionsInfo value) {
         if (optionsInfoBuilder_ == null) {
@@ -10674,7 +10683,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .OptionsInfo optionsInfo = 2;</code>
+       * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
        */
       public Builder clearOptionsInfo() {
         if (optionsInfoBuilder_ == null) {
@@ -10687,7 +10696,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .OptionsInfo optionsInfo = 2;</code>
+       * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
        */
       public communication.Communication.OptionsInfo.Builder getOptionsInfoBuilder() {
         bitField0_ |= 0x00000002;
@@ -10695,7 +10704,7 @@ public final class Communication {
         return getOptionsInfoFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .OptionsInfo optionsInfo = 2;</code>
+       * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
        */
       public communication.Communication.OptionsInfoOrBuilder getOptionsInfoOrBuilder() {
         if (optionsInfoBuilder_ != null) {
@@ -10706,7 +10715,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .OptionsInfo optionsInfo = 2;</code>
+       * <code>optional .sm.OptionsInfo optionsInfo = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.OptionsInfo, communication.Communication.OptionsInfo.Builder, communication.Communication.OptionsInfoOrBuilder> 
@@ -10726,13 +10735,13 @@ public final class Communication {
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.GroupsFilter, communication.Communication.GroupsFilter.Builder, communication.Communication.GroupsFilterOrBuilder> groupsFilterBuilder_;
       /**
-       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
        */
       public boolean hasGroupsFilter() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
        */
       public communication.Communication.GroupsFilter getGroupsFilter() {
         if (groupsFilterBuilder_ == null) {
@@ -10742,7 +10751,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
        */
       public Builder setGroupsFilter(communication.Communication.GroupsFilter value) {
         if (groupsFilterBuilder_ == null) {
@@ -10758,7 +10767,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
        */
       public Builder setGroupsFilter(
           communication.Communication.GroupsFilter.Builder builderForValue) {
@@ -10772,7 +10781,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
        */
       public Builder mergeGroupsFilter(communication.Communication.GroupsFilter value) {
         if (groupsFilterBuilder_ == null) {
@@ -10792,7 +10801,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
        */
       public Builder clearGroupsFilter() {
         if (groupsFilterBuilder_ == null) {
@@ -10805,7 +10814,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
        */
       public communication.Communication.GroupsFilter.Builder getGroupsFilterBuilder() {
         bitField0_ |= 0x00000004;
@@ -10813,7 +10822,7 @@ public final class Communication {
         return getGroupsFilterFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
        */
       public communication.Communication.GroupsFilterOrBuilder getGroupsFilterOrBuilder() {
         if (groupsFilterBuilder_ != null) {
@@ -10824,7 +10833,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .GroupsFilter groupsFilter = 3;</code>
+       * <code>optional .sm.GroupsFilter groupsFilter = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.GroupsFilter, communication.Communication.GroupsFilter.Builder, communication.Communication.GroupsFilterOrBuilder> 
@@ -10844,13 +10853,13 @@ public final class Communication {
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.TypesFilter, communication.Communication.TypesFilter.Builder, communication.Communication.TypesFilterOrBuilder> typesFilterBuilder_;
       /**
-       * <code>optional .TypesFilter typesFilter = 4;</code>
+       * <code>optional .sm.TypesFilter typesFilter = 4;</code>
        */
       public boolean hasTypesFilter() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional .TypesFilter typesFilter = 4;</code>
+       * <code>optional .sm.TypesFilter typesFilter = 4;</code>
        */
       public communication.Communication.TypesFilter getTypesFilter() {
         if (typesFilterBuilder_ == null) {
@@ -10860,7 +10869,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .TypesFilter typesFilter = 4;</code>
+       * <code>optional .sm.TypesFilter typesFilter = 4;</code>
        */
       public Builder setTypesFilter(communication.Communication.TypesFilter value) {
         if (typesFilterBuilder_ == null) {
@@ -10876,7 +10885,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .TypesFilter typesFilter = 4;</code>
+       * <code>optional .sm.TypesFilter typesFilter = 4;</code>
        */
       public Builder setTypesFilter(
           communication.Communication.TypesFilter.Builder builderForValue) {
@@ -10890,7 +10899,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .TypesFilter typesFilter = 4;</code>
+       * <code>optional .sm.TypesFilter typesFilter = 4;</code>
        */
       public Builder mergeTypesFilter(communication.Communication.TypesFilter value) {
         if (typesFilterBuilder_ == null) {
@@ -10910,7 +10919,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .TypesFilter typesFilter = 4;</code>
+       * <code>optional .sm.TypesFilter typesFilter = 4;</code>
        */
       public Builder clearTypesFilter() {
         if (typesFilterBuilder_ == null) {
@@ -10923,7 +10932,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .TypesFilter typesFilter = 4;</code>
+       * <code>optional .sm.TypesFilter typesFilter = 4;</code>
        */
       public communication.Communication.TypesFilter.Builder getTypesFilterBuilder() {
         bitField0_ |= 0x00000008;
@@ -10931,7 +10940,7 @@ public final class Communication {
         return getTypesFilterFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .TypesFilter typesFilter = 4;</code>
+       * <code>optional .sm.TypesFilter typesFilter = 4;</code>
        */
       public communication.Communication.TypesFilterOrBuilder getTypesFilterOrBuilder() {
         if (typesFilterBuilder_ != null) {
@@ -10942,7 +10951,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .TypesFilter typesFilter = 4;</code>
+       * <code>optional .sm.TypesFilter typesFilter = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.TypesFilter, communication.Communication.TypesFilter.Builder, communication.Communication.TypesFilterOrBuilder> 
@@ -10962,13 +10971,13 @@ public final class Communication {
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.QualityFilter, communication.Communication.QualityFilter.Builder, communication.Communication.QualityFilterOrBuilder> qualityFilterBuilder_;
       /**
-       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
        */
       public boolean hasQualityFilter() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
        */
       public communication.Communication.QualityFilter getQualityFilter() {
         if (qualityFilterBuilder_ == null) {
@@ -10978,7 +10987,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
        */
       public Builder setQualityFilter(communication.Communication.QualityFilter value) {
         if (qualityFilterBuilder_ == null) {
@@ -10994,7 +11003,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
        */
       public Builder setQualityFilter(
           communication.Communication.QualityFilter.Builder builderForValue) {
@@ -11008,7 +11017,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
        */
       public Builder mergeQualityFilter(communication.Communication.QualityFilter value) {
         if (qualityFilterBuilder_ == null) {
@@ -11028,7 +11037,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
        */
       public Builder clearQualityFilter() {
         if (qualityFilterBuilder_ == null) {
@@ -11041,7 +11050,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
        */
       public communication.Communication.QualityFilter.Builder getQualityFilterBuilder() {
         bitField0_ |= 0x00000010;
@@ -11049,7 +11058,7 @@ public final class Communication {
         return getQualityFilterFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
        */
       public communication.Communication.QualityFilterOrBuilder getQualityFilterOrBuilder() {
         if (qualityFilterBuilder_ != null) {
@@ -11060,7 +11069,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .QualityFilter qualityFilter = 5;</code>
+       * <code>optional .sm.QualityFilter qualityFilter = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.QualityFilter, communication.Communication.QualityFilter.Builder, communication.Communication.QualityFilterOrBuilder> 
@@ -11080,13 +11089,13 @@ public final class Communication {
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.CoordinatesFilter, communication.Communication.CoordinatesFilter.Builder, communication.Communication.CoordinatesFilterOrBuilder> coordinatesFilterBuilder_;
       /**
-       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
        */
       public boolean hasCoordinatesFilter() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
        */
       public communication.Communication.CoordinatesFilter getCoordinatesFilter() {
         if (coordinatesFilterBuilder_ == null) {
@@ -11096,7 +11105,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
        */
       public Builder setCoordinatesFilter(communication.Communication.CoordinatesFilter value) {
         if (coordinatesFilterBuilder_ == null) {
@@ -11112,7 +11121,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
        */
       public Builder setCoordinatesFilter(
           communication.Communication.CoordinatesFilter.Builder builderForValue) {
@@ -11126,7 +11135,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
        */
       public Builder mergeCoordinatesFilter(communication.Communication.CoordinatesFilter value) {
         if (coordinatesFilterBuilder_ == null) {
@@ -11146,7 +11155,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
        */
       public Builder clearCoordinatesFilter() {
         if (coordinatesFilterBuilder_ == null) {
@@ -11159,7 +11168,7 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
        */
       public communication.Communication.CoordinatesFilter.Builder getCoordinatesFilterBuilder() {
         bitField0_ |= 0x00000020;
@@ -11167,7 +11176,7 @@ public final class Communication {
         return getCoordinatesFilterFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
        */
       public communication.Communication.CoordinatesFilterOrBuilder getCoordinatesFilterOrBuilder() {
         if (coordinatesFilterBuilder_ != null) {
@@ -11178,7 +11187,7 @@ public final class Communication {
         }
       }
       /**
-       * <code>optional .CoordinatesFilter coordinatesFilter = 6;</code>
+       * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           communication.Communication.CoordinatesFilter, communication.Communication.CoordinatesFilter.Builder, communication.Communication.CoordinatesFilterOrBuilder> 
@@ -11194,10 +11203,10 @@ public final class Communication {
         return coordinatesFilterBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:ManagerToCoreMessage)
+      // @@protoc_insertion_point(builder_scope:sm.ManagerToCoreMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:ManagerToCoreMessage)
+    // @@protoc_insertion_point(class_scope:sm.ManagerToCoreMessage)
     private static final communication.Communication.ManagerToCoreMessage DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new communication.Communication.ManagerToCoreMessage();
@@ -11233,90 +11242,90 @@ public final class Communication {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ElementInfo_descriptor;
+    internal_static_sm_ElementInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ElementInfo_fieldAccessorTable;
+      internal_static_sm_ElementInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ElementsCount_descriptor;
+    internal_static_sm_ElementsCount_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ElementsCount_fieldAccessorTable;
+      internal_static_sm_ElementsCount_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ElementsCount_ElementInfosEntry_descriptor;
+    internal_static_sm_ElementsCount_ElementInfosEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ElementsCount_ElementInfosEntry_fieldAccessorTable;
+      internal_static_sm_ElementsCount_ElementInfosEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_BoundingBox_descriptor;
+    internal_static_sm_BoundingBox_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_BoundingBox_fieldAccessorTable;
+      internal_static_sm_BoundingBox_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GroupsInfo_descriptor;
+    internal_static_sm_GroupsInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_GroupsInfo_fieldAccessorTable;
+      internal_static_sm_GroupsInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_StatisticsInfo_descriptor;
+    internal_static_sm_StatisticsInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_StatisticsInfo_fieldAccessorTable;
+      internal_static_sm_StatisticsInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_CoreToManagerMessage_descriptor;
+    internal_static_sm_CoreToManagerMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_CoreToManagerMessage_fieldAccessorTable;
+      internal_static_sm_CoreToManagerMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_OptionsInfo_descriptor;
+    internal_static_sm_OptionsInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_OptionsInfo_fieldAccessorTable;
+      internal_static_sm_OptionsInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_TypesFilter_descriptor;
+    internal_static_sm_TypesFilter_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_TypesFilter_fieldAccessorTable;
+      internal_static_sm_TypesFilter_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_TypesFilter_SelectedTypesEntry_descriptor;
+    internal_static_sm_TypesFilter_SelectedTypesEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_TypesFilter_SelectedTypesEntry_fieldAccessorTable;
+      internal_static_sm_TypesFilter_SelectedTypesEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GroupsFilter_descriptor;
+    internal_static_sm_GroupsFilter_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_GroupsFilter_fieldAccessorTable;
+      internal_static_sm_GroupsFilter_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GroupsFilter_SelectedGroupsEntry_descriptor;
+    internal_static_sm_GroupsFilter_SelectedGroupsEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_GroupsFilter_SelectedGroupsEntry_fieldAccessorTable;
+      internal_static_sm_GroupsFilter_SelectedGroupsEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_QualityCondition_descriptor;
+    internal_static_sm_QualityCondition_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_QualityCondition_fieldAccessorTable;
+      internal_static_sm_QualityCondition_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_QualityFilter_descriptor;
+    internal_static_sm_QualityFilter_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_QualityFilter_fieldAccessorTable;
+      internal_static_sm_QualityFilter_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_CoordinatesCondition_descriptor;
+    internal_static_sm_CoordinatesCondition_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_CoordinatesCondition_fieldAccessorTable;
+      internal_static_sm_CoordinatesCondition_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_CoordinatesFilter_descriptor;
+    internal_static_sm_CoordinatesFilter_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_CoordinatesFilter_fieldAccessorTable;
+      internal_static_sm_CoordinatesFilter_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ManagerToCoreMessage_descriptor;
+    internal_static_sm_ManagerToCoreMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ManagerToCoreMessage_fieldAccessorTable;
+      internal_static_sm_ManagerToCoreMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -11326,56 +11335,58 @@ public final class Communication {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023communication.proto\"-\n\013ElementInfo\022\r\n\005" +
-      "total\030\001 \002(\005\022\017\n\007visible\030\002 \002(\005\"\212\001\n\rElement" +
-      "sCount\0226\n\014elementInfos\030\001 \003(\0132 .ElementsC" +
-      "ount.ElementInfosEntry\032A\n\021ElementInfosEn" +
-      "try\022\013\n\003key\030\001 \001(\t\022\033\n\005value\030\002 \001(\0132\014.Elemen" +
-      "tInfo:\0028\001\"a\n\013BoundingBox\022\r\n\005fromX\030\001 \002(\001\022" +
-      "\013\n\003toX\030\002 \002(\001\022\r\n\005fromY\030\003 \002(\001\022\013\n\003toY\030\004 \002(\001" +
-      "\022\r\n\005fromZ\030\005 \002(\001\022\013\n\003toZ\030\006 \002(\001\"\037\n\nGroupsIn" +
-      "fo\022\021\n\tallGroups\030\001 \003(\t\"{\n\016StatisticsInfo\022" +
-      "%\n\relementsCount\030\001 \002(\0132\016.ElementsCount\022!",
-      "\n\013boundingBox\030\002 \002(\0132\014.BoundingBox\022\037\n\ngro" +
-      "upsInfo\030\003 \002(\0132\013.GroupsInfo\"\254\001\n\024CoreToMan" +
-      "agerMessage\0229\n\013messageType\030\001 \002(\0162$.CoreT" +
-      "oManagerMessage.CTMMessageType\022\'\n\016statis" +
-      "ticsInfo\030\002 \001(\0132\017.StatisticsInfo\"0\n\016CTMMe" +
-      "ssageType\022\016\n\nSTATISTICS\020\001\022\016\n\nBREAKPOINT\020" +
-      "\002\"t\n\013OptionsInfo\022\035\n\025transparentStructure" +
-      "s\030\001 \002(\010\022\030\n\020dynamicRendering\030\002 \002(\010\022\022\n\nsho" +
-      "wLabels\030\003 \002(\010\022\030\n\020mouseSensitivity\030\004 \002(\001\"" +
-      "{\n\013TypesFilter\0226\n\rselectedTypes\030\001 \003(\0132\037.",
-      "TypesFilter.SelectedTypesEntry\0324\n\022Select" +
-      "edTypesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010" +
-      ":\0028\001\"\200\001\n\014GroupsFilter\0229\n\016selectedGroups\030" +
-      "\001 \003(\0132!.GroupsFilter.SelectedGroupsEntry" +
-      "\0325\n\023SelectedGroupsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005" +
-      "value\030\002 \001(\010:\0028\001\"\220\001\n\020QualityCondition\022\021\n\t" +
-      "leftValue\030\001 \001(\001\022)\n\014leftOperator\030\002 \001(\0162\023." +
-      "ComparisonOperator\022*\n\rrightOperator\030\003 \001(" +
-      "\0162\023.ComparisonOperator\022\022\n\nrightValue\030\004 \001" +
-      "(\001\"<\n\rQualityFilter\022+\n\020qualityCondition\030",
-      "\001 \003(\0132\021.QualityCondition\"\212\001\n\024Coordinates" +
-      "Condition\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030\002 \002(" +
-      "\001\022\016\n\006zValue\030\003 \002(\001\0220\n\023coordinatesOperator" +
-      "\030\004 \002(\0162\023.ComparisonOperator\022\020\n\010constant\030" +
-      "\005 \002(\001\"\235\001\n\021CoordinatesFilter\0223\n\024coordinat" +
-      "esCondition\030\001 \003(\0132\025.CoordinatesCondition" +
-      "\0223\n\013conjunction\030\002 \001(\0162\036.CoordinatesFilte" +
-      "r.Conjunction\"\036\n\013Conjunction\022\007\n\003AND\020\001\022\006\n" +
-      "\002OR\020\002\"\327\002\n\024ManagerToCoreMessage\0229\n\013messag" +
-      "eType\030\001 \002(\0162$.ManagerToCoreMessage.MTCMe",
-      "ssageType\022!\n\013optionsInfo\030\002 \001(\0132\014.Options" +
-      "Info\022#\n\014groupsFilter\030\003 \001(\0132\r.GroupsFilte" +
-      "r\022!\n\013typesFilter\030\004 \001(\0132\014.TypesFilter\022%\n\r" +
-      "qualityFilter\030\005 \001(\0132\016.QualityFilter\022-\n\021c" +
-      "oordinatesFilter\030\006 \001(\0132\022.CoordinatesFilt" +
-      "er\"C\n\016MTCMessageType\022\013\n\007OPTIONS\020\001\022\013\n\007FIL" +
-      "TERS\020\002\022\014\n\010CONTINUE\020\003\022\t\n\005ABORT\020\004*_\n\022Compa" +
-      "risonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007G" +
-      "REATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010" +
-      "\n\004LESS\020\005B\036\n\rcommunicationB\rCommunication"
+      "\n\023communication.proto\022\002sm\"-\n\013ElementInfo" +
+      "\022\r\n\005total\030\001 \002(\005\022\017\n\007visible\030\002 \002(\005\"\220\001\n\rEle" +
+      "mentsCount\0229\n\014elementInfos\030\001 \003(\0132#.sm.El" +
+      "ementsCount.ElementInfosEntry\032D\n\021Element" +
+      "InfosEntry\022\013\n\003key\030\001 \001(\t\022\036\n\005value\030\002 \001(\0132\017" +
+      ".sm.ElementInfo:\0028\001\"a\n\013BoundingBox\022\r\n\005fr" +
+      "omX\030\001 \002(\001\022\013\n\003toX\030\002 \002(\001\022\r\n\005fromY\030\003 \002(\001\022\013\n" +
+      "\003toY\030\004 \002(\001\022\r\n\005fromZ\030\005 \002(\001\022\013\n\003toZ\030\006 \002(\001\"\037" +
+      "\n\nGroupsInfo\022\021\n\tallGroups\030\001 \003(\t\"\204\001\n\016Stat" +
+      "isticsInfo\022(\n\relementsCount\030\001 \002(\0132\021.sm.E",
+      "lementsCount\022$\n\013boundingBox\030\002 \002(\0132\017.sm.B" +
+      "oundingBox\022\"\n\ngroupsInfo\030\003 \002(\0132\016.sm.Grou" +
+      "psInfo\"\262\001\n\024CoreToManagerMessage\022<\n\013messa" +
+      "geType\030\001 \002(\0162\'.sm.CoreToManagerMessage.C" +
+      "TMMessageType\022*\n\016statisticsInfo\030\002 \001(\0132\022." +
+      "sm.StatisticsInfo\"0\n\016CTMMessageType\022\016\n\nS" +
+      "TATISTICS\020\001\022\016\n\nBREAKPOINT\020\002\"t\n\013OptionsIn" +
+      "fo\022\035\n\025transparentStructures\030\001 \002(\010\022\030\n\020dyn" +
+      "amicRendering\030\002 \002(\010\022\022\n\nshowLabels\030\003 \002(\010\022" +
+      "\030\n\020mouseSensitivity\030\004 \002(\001\"~\n\013TypesFilter",
+      "\0229\n\rselectedTypes\030\001 \003(\0132\".sm.TypesFilter" +
+      ".SelectedTypesEntry\0324\n\022SelectedTypesEntr" +
+      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n\014Gr" +
+      "oupsFilter\022<\n\016selectedGroups\030\001 \003(\0132$.sm." +
+      "GroupsFilter.SelectedGroupsEntry\0325\n\023Sele" +
+      "ctedGroupsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 " +
+      "\001(\010:\0028\001\"\226\001\n\020QualityCondition\022\021\n\tleftValu" +
+      "e\030\001 \001(\001\022,\n\014leftOperator\030\002 \001(\0162\026.sm.Compa" +
+      "risonOperator\022-\n\rrightOperator\030\003 \001(\0162\026.s" +
+      "m.ComparisonOperator\022\022\n\nrightValue\030\004 \001(\001",
+      "\"?\n\rQualityFilter\022.\n\020qualityCondition\030\001 " +
+      "\003(\0132\024.sm.QualityCondition\"\215\001\n\024Coordinate" +
+      "sCondition\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030\002 \002" +
+      "(\001\022\016\n\006zValue\030\003 \002(\001\0223\n\023coordinatesOperato" +
+      "r\030\004 \002(\0162\026.sm.ComparisonOperator\022\020\n\010const" +
+      "ant\030\005 \002(\001\"\243\001\n\021CoordinatesFilter\0226\n\024coord" +
+      "inatesCondition\030\001 \003(\0132\030.sm.CoordinatesCo" +
+      "ndition\0226\n\013conjunction\030\002 \001(\0162!.sm.Coordi" +
+      "natesFilter.Conjunction\"\036\n\013Conjunction\022\007" +
+      "\n\003AND\020\001\022\006\n\002OR\020\002\"\364\002\n\024ManagerToCoreMessage",
+      "\022<\n\013messageType\030\001 \002(\0162\'.sm.ManagerToCore" +
+      "Message.MTCMessageType\022$\n\013optionsInfo\030\002 " +
+      "\001(\0132\017.sm.OptionsInfo\022&\n\014groupsFilter\030\003 \001" +
+      "(\0132\020.sm.GroupsFilter\022$\n\013typesFilter\030\004 \001(" +
+      "\0132\017.sm.TypesFilter\022(\n\rqualityFilter\030\005 \001(" +
+      "\0132\021.sm.QualityFilter\0220\n\021coordinatesFilte" +
+      "r\030\006 \001(\0132\025.sm.CoordinatesFilter\"N\n\016MTCMes" +
+      "sageType\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CO" +
+      "NTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005*_\n\022Compar" +
+      "isonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GR",
+      "EATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n" +
+      "\004LESS\020\005B\036\n\rcommunicationB\rCommunication"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -11389,107 +11400,107 @@ public final class Communication {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_ElementInfo_descriptor =
+    internal_static_sm_ElementInfo_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_ElementInfo_fieldAccessorTable = new
+    internal_static_sm_ElementInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ElementInfo_descriptor,
+        internal_static_sm_ElementInfo_descriptor,
         new java.lang.String[] { "Total", "Visible", });
-    internal_static_ElementsCount_descriptor =
+    internal_static_sm_ElementsCount_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_ElementsCount_fieldAccessorTable = new
+    internal_static_sm_ElementsCount_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ElementsCount_descriptor,
+        internal_static_sm_ElementsCount_descriptor,
         new java.lang.String[] { "ElementInfos", });
-    internal_static_ElementsCount_ElementInfosEntry_descriptor =
-      internal_static_ElementsCount_descriptor.getNestedTypes().get(0);
-    internal_static_ElementsCount_ElementInfosEntry_fieldAccessorTable = new
+    internal_static_sm_ElementsCount_ElementInfosEntry_descriptor =
+      internal_static_sm_ElementsCount_descriptor.getNestedTypes().get(0);
+    internal_static_sm_ElementsCount_ElementInfosEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ElementsCount_ElementInfosEntry_descriptor,
+        internal_static_sm_ElementsCount_ElementInfosEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_BoundingBox_descriptor =
+    internal_static_sm_BoundingBox_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_BoundingBox_fieldAccessorTable = new
+    internal_static_sm_BoundingBox_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_BoundingBox_descriptor,
+        internal_static_sm_BoundingBox_descriptor,
         new java.lang.String[] { "FromX", "ToX", "FromY", "ToY", "FromZ", "ToZ", });
-    internal_static_GroupsInfo_descriptor =
+    internal_static_sm_GroupsInfo_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_GroupsInfo_fieldAccessorTable = new
+    internal_static_sm_GroupsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_GroupsInfo_descriptor,
+        internal_static_sm_GroupsInfo_descriptor,
         new java.lang.String[] { "AllGroups", });
-    internal_static_StatisticsInfo_descriptor =
+    internal_static_sm_StatisticsInfo_descriptor =
       getDescriptor().getMessageTypes().get(4);
-    internal_static_StatisticsInfo_fieldAccessorTable = new
+    internal_static_sm_StatisticsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_StatisticsInfo_descriptor,
+        internal_static_sm_StatisticsInfo_descriptor,
         new java.lang.String[] { "ElementsCount", "BoundingBox", "GroupsInfo", });
-    internal_static_CoreToManagerMessage_descriptor =
+    internal_static_sm_CoreToManagerMessage_descriptor =
       getDescriptor().getMessageTypes().get(5);
-    internal_static_CoreToManagerMessage_fieldAccessorTable = new
+    internal_static_sm_CoreToManagerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_CoreToManagerMessage_descriptor,
+        internal_static_sm_CoreToManagerMessage_descriptor,
         new java.lang.String[] { "MessageType", "StatisticsInfo", });
-    internal_static_OptionsInfo_descriptor =
+    internal_static_sm_OptionsInfo_descriptor =
       getDescriptor().getMessageTypes().get(6);
-    internal_static_OptionsInfo_fieldAccessorTable = new
+    internal_static_sm_OptionsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_OptionsInfo_descriptor,
+        internal_static_sm_OptionsInfo_descriptor,
         new java.lang.String[] { "TransparentStructures", "DynamicRendering", "ShowLabels", "MouseSensitivity", });
-    internal_static_TypesFilter_descriptor =
+    internal_static_sm_TypesFilter_descriptor =
       getDescriptor().getMessageTypes().get(7);
-    internal_static_TypesFilter_fieldAccessorTable = new
+    internal_static_sm_TypesFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_TypesFilter_descriptor,
+        internal_static_sm_TypesFilter_descriptor,
         new java.lang.String[] { "SelectedTypes", });
-    internal_static_TypesFilter_SelectedTypesEntry_descriptor =
-      internal_static_TypesFilter_descriptor.getNestedTypes().get(0);
-    internal_static_TypesFilter_SelectedTypesEntry_fieldAccessorTable = new
+    internal_static_sm_TypesFilter_SelectedTypesEntry_descriptor =
+      internal_static_sm_TypesFilter_descriptor.getNestedTypes().get(0);
+    internal_static_sm_TypesFilter_SelectedTypesEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_TypesFilter_SelectedTypesEntry_descriptor,
+        internal_static_sm_TypesFilter_SelectedTypesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_GroupsFilter_descriptor =
+    internal_static_sm_GroupsFilter_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_GroupsFilter_fieldAccessorTable = new
+    internal_static_sm_GroupsFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_GroupsFilter_descriptor,
+        internal_static_sm_GroupsFilter_descriptor,
         new java.lang.String[] { "SelectedGroups", });
-    internal_static_GroupsFilter_SelectedGroupsEntry_descriptor =
-      internal_static_GroupsFilter_descriptor.getNestedTypes().get(0);
-    internal_static_GroupsFilter_SelectedGroupsEntry_fieldAccessorTable = new
+    internal_static_sm_GroupsFilter_SelectedGroupsEntry_descriptor =
+      internal_static_sm_GroupsFilter_descriptor.getNestedTypes().get(0);
+    internal_static_sm_GroupsFilter_SelectedGroupsEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_GroupsFilter_SelectedGroupsEntry_descriptor,
+        internal_static_sm_GroupsFilter_SelectedGroupsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_QualityCondition_descriptor =
+    internal_static_sm_QualityCondition_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_QualityCondition_fieldAccessorTable = new
+    internal_static_sm_QualityCondition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_QualityCondition_descriptor,
+        internal_static_sm_QualityCondition_descriptor,
         new java.lang.String[] { "LeftValue", "LeftOperator", "RightOperator", "RightValue", });
-    internal_static_QualityFilter_descriptor =
+    internal_static_sm_QualityFilter_descriptor =
       getDescriptor().getMessageTypes().get(10);
-    internal_static_QualityFilter_fieldAccessorTable = new
+    internal_static_sm_QualityFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_QualityFilter_descriptor,
+        internal_static_sm_QualityFilter_descriptor,
         new java.lang.String[] { "QualityCondition", });
-    internal_static_CoordinatesCondition_descriptor =
+    internal_static_sm_CoordinatesCondition_descriptor =
       getDescriptor().getMessageTypes().get(11);
-    internal_static_CoordinatesCondition_fieldAccessorTable = new
+    internal_static_sm_CoordinatesCondition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_CoordinatesCondition_descriptor,
+        internal_static_sm_CoordinatesCondition_descriptor,
         new java.lang.String[] { "XValue", "YValue", "ZValue", "CoordinatesOperator", "Constant", });
-    internal_static_CoordinatesFilter_descriptor =
+    internal_static_sm_CoordinatesFilter_descriptor =
       getDescriptor().getMessageTypes().get(12);
-    internal_static_CoordinatesFilter_fieldAccessorTable = new
+    internal_static_sm_CoordinatesFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_CoordinatesFilter_descriptor,
+        internal_static_sm_CoordinatesFilter_descriptor,
         new java.lang.String[] { "CoordinatesCondition", "Conjunction", });
-    internal_static_ManagerToCoreMessage_descriptor =
+    internal_static_sm_ManagerToCoreMessage_descriptor =
       getDescriptor().getMessageTypes().get(13);
-    internal_static_ManagerToCoreMessage_fieldAccessorTable = new
+    internal_static_sm_ManagerToCoreMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ManagerToCoreMessage_descriptor,
+        internal_static_sm_ManagerToCoreMessage_descriptor,
         new java.lang.String[] { "MessageType", "OptionsInfo", "GroupsFilter", "TypesFilter", "QualityFilter", "CoordinatesFilter", });
   }
 
