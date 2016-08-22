@@ -19,7 +19,7 @@ void Vertex::draw(Color color){
     Point3D point = this -> vertices.front();
 
     glColor3f(color.r(), color.g(), color.b());
-    glPointSize(2);
+    glPointSize(4);
     glBegin(GL_POINTS);
         glVertex3f(point.get_x(), point.get_y(), point.get_z());
     glEnd();
@@ -95,7 +95,7 @@ void Block::draw(Color color){
     glEnd();
 
     glEnable(GL_POLYGON_OFFSET_LINE);
-    glColor3f(color.r(), color.g(), color.b());
+    glColor3f(0.0f, 0.0f, 0.0f);
     glPolygonOffset(-1,-1);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glBegin(GL_TRIANGLES);
