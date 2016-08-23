@@ -19,7 +19,7 @@ void Vertex::draw(Color color){
     Point3D point = this -> vertices.front();
 
     glColor3f(color.r(), color.g(), color.b());
-    glPointSize(4);
+    glPointSize(4.0f);
     glBegin(GL_POINTS);
         glVertex3f(point.get_x(), point.get_y(), point.get_z());
     glEnd();
