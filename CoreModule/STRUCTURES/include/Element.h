@@ -7,6 +7,8 @@
 #include <vector>
 #include <stdio.h>
 
+#include "Color.h"
+
 using namespace std;
 
 // ------------------------------------------
@@ -72,7 +74,7 @@ class Element
 
         virtual ~Element(){};
 
-        virtual void draw(){};
+        virtual void draw(Color color){};
         vector<Point3D> * get_vertices() { return &vertices; }
         string get_type(){ return type; }
         void set_label(Label label){ this -> label = label; }

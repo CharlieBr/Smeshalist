@@ -74,7 +74,6 @@ int main(void){
     vector<Element*> * edges = edge_list1 -> get_elements();
     assert( edges -> size() == 1 );
 
-
     vector<Point3D> edge1_points;
     edge1_points.push_back(Point3D(4.5, 4.2, 8.9));
     edge1_points.push_back(Point3D(2.3, 4.1, -1.0));
@@ -98,6 +97,9 @@ int main(void){
     assert( data -> get_min_z() == -8.9 );
     assert( data -> get_max_z() == 8.9 );
 
+    assert(Color(1) == data -> get_color_for_group(1));
+    assert(Color(2) == data -> get_color_for_group(2));
+    assert(Color(-1.0, -1.0, -1.0) == data -> get_color_for_group(3));
 
     ElementsGroup * group1 = data -> get_group(1);
     assert( group1 != NULL );

@@ -4,8 +4,8 @@
 // ----------------------------
 // ------- Data methods -------
 // ----------------------------
-Statistics Data::statistics;
 map<int, ElementsGroup* > Data::groups;
+Statistics Data::statistics;
 
 Data& Data::get_instance(){
     static Data instance;
@@ -42,9 +42,10 @@ void Data::filter_all(bool to_draw){
 void Data::draw_elements(){
     for( auto const it : groups ){
         ElementsGroup * group = it.second;
+        Color color = group -> get_color();
 
         if( group -> is_drawable() ){
-            group -> draw_elements();
+            group -> draw_elements(color);
         }
     }
 }
@@ -67,7 +68,7 @@ void Data::add(int group_id, Element* element){
     }
 
     if( !has_group(group_id) ){
-        ElementsGroup * group = new ElementsGroup;
+        ElementsGroup * group = new ElementsGroup(Color(group_id));
         groups.insert( pair<int, ElementsGroup*>(group_id, group));
     }
 
@@ -79,7 +80,7 @@ void Data::add(int group_id, vector<Element*>* elements){
     ElementsGroup * group;
 
     if( !has_group(group_id) ){
-        group = new ElementsGroup;
+        group = new ElementsGroup(Color(group_id));
         groups.insert( pair<int, ElementsGroup*>(group_id, group));
     }
 
@@ -142,6 +143,12 @@ vector<int>* Data::get_all_groupIDs() {
     return result;
 }
 
+Color Data::get_color_for_group(int group_id){
+    if(has_group(group_id)){
+        return groups.at(group_id) -> get_color();
+    }
+    return Color(-1.0, -1.0, -1.0);
+};
 
 // --------------------------------------
 // ------- ElementsGroup methods --------
@@ -189,12 +196,12 @@ void ElementsGroup::filter_all(bool to_draw ){
     }
 }
 
-void ElementsGroup::draw_elements(){
+void ElementsGroup::draw_elements(Color color){
     for(auto const it : lists){
         ElementsList * elements_list = it.second;
 
         if( elements_list -> is_drawable() ){
-            elements_list -> draw_elements();
+            elements_list -> draw_elements(color);
         }
     }
 }
@@ -259,12 +266,12 @@ void ElementsList::filter_all(bool to_draw){
     }
 }
 
-void ElementsList::draw_elements(){
+void ElementsList::draw_elements(Color color){
     for( unsigned int i = 0; i < elements.size(); i++ ){
         Element * element = elements.at(i);
 
         if( element -> is_drawable() ){
-            element -> draw();
+            element -> draw(color);
         }
     }
 }

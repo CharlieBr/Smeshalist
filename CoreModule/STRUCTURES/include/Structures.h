@@ -18,7 +18,7 @@ class Vertex : public Element {
             : Element(point, "vertex", quality) {};
         Vertex(Point3D point, Label label, double quality)
             : Element(point, "vertex", label, quality) {};
-        virtual void draw();
+        virtual void draw(Color);
 };
 
 class Edge : public Element {
@@ -31,7 +31,7 @@ class Edge : public Element {
             : Element(points, "edge", quality) {};
         Edge(vector<Point3D> * points, Label label, double quality)
             : Element(points, "edge", label, quality) {};
-        virtual void draw();
+        virtual void draw(Color);
 };
 
 class Face : public Element {
@@ -45,7 +45,7 @@ class Face : public Element {
         Face(vector<Point3D> * points, Label label, double quality)
             : Element(points, "face", label, quality) {};
 
-        virtual void draw();
+        virtual void draw(Color);
 };
 
 class Block : public Element {
@@ -59,7 +59,7 @@ class Block : public Element {
         Block(vector<Point3D> * points, Label label, double quality)
             : Element(points, "block", label, quality) {};
 
-        virtual void draw();
+        virtual void draw(Color);
 };
 
 #endif // STRUCTURES_H

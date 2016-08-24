@@ -8,9 +8,9 @@
 #include <stdio.h>
 #include <cfloat>
 
-
 #include "Element.h"
 #include "Statistics.h"
+#include "Color.h"
 
 using namespace std;
 // -----------------------------------
@@ -18,7 +18,6 @@ using namespace std;
 // class to perform operations on
 // single elements of specified type
 // -----------------------------------
-
 class ElementsList {
 public:
     vector <Element*> elements;
@@ -28,7 +27,7 @@ public:
         bool is_drawable() { return to_draw; }
         void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
         void filter_all(bool);
-        void draw_elements();
+        void draw_elements(Color);
 
         void add(Element* element) { elements.push_back(element); }
         void add(vector<Element*>*);
@@ -49,17 +48,20 @@ public:
 class ElementsGroup {
     map <string, ElementsList*> lists;
     bool to_draw = true;
+    Color color;
 
     public:
+        ElementsGroup(Color color) : color(color) {};
         bool is_drawable() { return to_draw; }
         void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
         bool has_list(string);
         void add(string, Element*);
         void add(string, vector<Element*>*);
         void filter_all(bool);
-        void draw_elements();
+        void draw_elements(Color);
         vector<string>* get_struct_types();
         ElementsList* get_list(string);
+        Color get_color(){ return color; }
 
         //remove all data
         void clean();
@@ -72,11 +74,8 @@ class ElementsGroup {
 // singleton class to perform
 // operations on groups of elements
 //---------------------------------
-
 class Data {
     static map<int, ElementsGroup*> groups;
-
-    static void check_coordinates(Point3D*);
 
     protected:
         Data(){};
@@ -114,5 +113,6 @@ class Data {
         static double get_min_z(){ return statistics.min_z; }
         static double get_max_z(){ return statistics.max_z; }
         static Statistics get_statistics(){ return statistics; }
+        static Color get_color_for_group(int);
 };
 #endif // DATA_H
