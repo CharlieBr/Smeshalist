@@ -25,6 +25,7 @@ void AbstractServer::sendElementsBufferToTree()
 		}
 	}
 	elementsBuffer.clear();
+	handler -> recomputeIntersectionPoints();
 	sendStatistics();
 }
 

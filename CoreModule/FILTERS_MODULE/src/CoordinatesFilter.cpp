@@ -139,6 +139,11 @@ void CoordinatesFilter::filterElement(Element* element) {
         return;
     }
 
+    if (filterList.size()==0) {
+        element->set_draw_flag(true);
+        return;
+    }
+
     bool any = false;   //use for OR operator
     bool all = true;    //use for AND operator
     bool result;

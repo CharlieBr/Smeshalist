@@ -46,7 +46,7 @@ void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> *groupFilters, v
         for(auto const& coordinateFilter : *coordinateFilters){
             CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(coordinateFilter);
         }
-        CoordinatesFilter::getInstance() -> recomputeIntersections(&statistics);
+        recomputeIntersectionPoints();
     }
 
     if (conjuntion != NULL) {
@@ -70,4 +70,8 @@ void AbstractDataTree::filterDataTree() {
     TypesFilter::getInstance() -> filterTree(this);
     QualityFilter::getInstance() -> filterTree(this);
     CoordinatesFilter::getInstance() -> filterTree(this);
+}
+
+void AbstractDataTree::recomputeIntersectionPoints() {
+    CoordinatesFilter::getInstance() -> recomputeIntersections(&statistics);
 }
