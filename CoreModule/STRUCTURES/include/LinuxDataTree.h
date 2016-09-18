@@ -8,7 +8,7 @@
 class LinuxDataTree : public AbstractDataTree
 {
     public:
-        static LinuxDataTree& getInstance();
+        void createNewInstance();
     protected:
         void LOCK();
         void UNLOCK();

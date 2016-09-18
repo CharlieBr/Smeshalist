@@ -1,5 +1,11 @@
 #include "AbstractDataTree.h"
 
+vector<AbstractDataTree*> AbstractDataTree::previousInstances;
+
+AbstractDataTree* AbstractDataTree::getCurrent() {
+    return current;
+}
+
 void AbstractDataTree::add(int groupID, Element* element) {
     LOCK();
     QualityFilter::getInstance() -> filterElement(element);
@@ -20,6 +26,15 @@ void AbstractDataTree::add(int groupID, vector<Element*>* elements) {
     GroupsFilter::getInstance() -> filterTree(this);
     TypesFilter::getInstance() -> filterTree(this);
     UNLOCK();
+}
+
+void AbstractDataTree::reloadFlitersInAllTrees(vector<SingleGroupFilter*> *groupFilters, vector<SingleTypesFilter*> *typesFilters,
+    vector<SingleCoordinateFilter*> *coordinateFilters, LogicalConnectiveEnum* conjuntion, vector<SingleQualityFilter*> *qualityFilters) {
+    current -> reloadFliters(groupFilters, typesFilters, coordinateFilters, conjuntion, qualityFilters);
+
+    for (auto tree : previousInstances) {
+        tree -> reloadFliters(groupFilters, typesFilters, coordinateFilters, conjuntion, qualityFilters);
+    }
 }
 
 void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> *groupFilters, vector<SingleTypesFilter*> *typesFilters,
@@ -46,7 +61,6 @@ void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> *groupFilters, v
         for(auto const& coordinateFilter : *coordinateFilters){
             CoordinatesFilter::getInstance() -> addSimpleCoordinateFilter(coordinateFilter);
         }
-        recomputeIntersectionPoints();
     }
 
     if (conjuntion != NULL) {
@@ -72,6 +86,22 @@ void AbstractDataTree::filterDataTree() {
     CoordinatesFilter::getInstance() -> filterTree(this);
 }
 
+void AbstractDataTree::recomputeIntersectionPointsInVisibleTree(int index) {
+    getDataTreeInstance(index) -> recomputeIntersectionPoints();
+}
+
 void AbstractDataTree::recomputeIntersectionPoints() {
     CoordinatesFilter::getInstance() -> recomputeIntersections(&statistics);
+}
+
+AbstractDataTree* AbstractDataTree::getDataTreeInstance(int index) {
+    if (previousInstances.size() == 0 || index == -1) {
+        return current;
+    }
+
+    return previousInstances[index];
+}
+
+int AbstractDataTree::getNumberOfDataTreeInstances() {
+    return AbstractDataTree::previousInstances.size();
 }

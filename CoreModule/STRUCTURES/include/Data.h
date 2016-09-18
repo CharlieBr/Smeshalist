@@ -34,6 +34,8 @@ public:
 
         vector<Element*>* get_elements(){ return &elements; }
 
+        ElementsList* clone();
+
         //remove all data
         void clean();
 
@@ -63,6 +65,8 @@ class ElementsGroup {
         ElementsList* get_list(string);
         Color get_color(){ return color; }
 
+        ElementsGroup* clone();
+
         //remove all data
         void clean();
 
@@ -75,25 +79,23 @@ class ElementsGroup {
 // operations on groups of elements
 //---------------------------------
 class Data {
-    static map<int, ElementsGroup*> groups;
+    map<int, ElementsGroup*> groups;
 
     protected:
-        Data(){};
-        static Statistics statistics;
+        Statistics statistics;
 
     public:
-        Data(Data const&) = delete;
         void operator=(Data const&) = delete;
 
         static Data& get_instance();
 
-        static ElementsGroup* get_group(int);
-        static bool has_group(int);
-        static void filter_all(bool);
-        static void draw_elements();
+        ElementsGroup* get_group(int);
+        bool has_group(int);
+        void filter_all(bool);
+        void draw_elements();
 
         //returns all available groupIDs (keys)
-        static vector<int>* get_all_groupIDs();
+        vector<int>* get_all_groupIDs();
 
         //add single element to proper group and list
         virtual void add(int, Element*);
@@ -102,17 +104,17 @@ class Data {
         virtual void add(int, vector<Element*>*);
 
         //remove all data
-        static void clean();
+        void clean();
 
         //statistics
-        static void count_visible_elements();
-        static double get_min_x(){ return statistics.min_x; }
-        static double get_max_x(){ return statistics.max_x; }
-        static double get_min_y(){ return statistics.min_y; }
-        static double get_max_y(){ return statistics.max_y; }
-        static double get_min_z(){ return statistics.min_z; }
-        static double get_max_z(){ return statistics.max_z; }
-        static Statistics get_statistics(){ return statistics; }
-        static Color get_color_for_group(int);
+        void count_visible_elements();
+        double get_min_x(){ return statistics.min_x; }
+        double get_max_x(){ return statistics.max_x; }
+        double get_min_y(){ return statistics.min_y; }
+        double get_max_y(){ return statistics.max_y; }
+        double get_min_z(){ return statistics.min_z; }
+        double get_max_z(){ return statistics.max_z; }
+        Statistics get_statistics(){ return statistics; }
+        Color get_color_for_group(int);
 };
 #endif // DATA_H

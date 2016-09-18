@@ -83,6 +83,7 @@ class Element
         void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
         void set_quality(double quality){ this -> quality = quality; }
         double get_quality(){ return this -> quality; }
+        virtual Element* clone() = 0; //TODO change implementations!!!!
 };
 
 #endif // ELEMENT_H

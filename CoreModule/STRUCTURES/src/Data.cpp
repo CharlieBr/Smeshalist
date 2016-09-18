@@ -4,13 +4,6 @@
 // ----------------------------
 // ------- Data methods -------
 // ----------------------------
-map<int, ElementsGroup* > Data::groups;
-Statistics Data::statistics;
-
-Data& Data::get_instance(){
-    static Data instance;
-    return instance;
-}
 
 ElementsGroup* Data::get_group(int group_id){
     if ( has_group(group_id) ){
@@ -249,6 +242,19 @@ vector<string>* ElementsGroup::get_struct_types() {
     return result;
 }
 
+ElementsGroup* ElementsGroup::clone() {
+    ElementsGroup* result = new ElementsGroup(color);
+    result -> set_draw_flag(to_draw);
+
+    vector<string>* types = get_struct_types();
+
+    for (auto type : *types) {
+        result -> add(type, get_list(type) -> clone() -> get_elements());
+    }
+
+    return result;
+}
+
 // -------------------------------
 // ---- ElementsList methods -----
 // -------------------------------
@@ -295,4 +301,14 @@ unsigned long ElementsList::count_visible_elements(){
     }
 
     return counter;
+}
+
+ElementsList* ElementsList::clone() {
+    vector<Element*> newElements;
+    for (auto element : elements) {
+        newElements.push_back(element -> clone());
+    }
+    ElementsList* result = new ElementsList();
+    result -> add(&newElements);
+    return result;
 }

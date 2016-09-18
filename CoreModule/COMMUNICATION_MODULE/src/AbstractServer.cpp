@@ -1,5 +1,7 @@
 #include "AbstractServer.h"
 
+extern int visibleDataTree;
+
 void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
     if (this->handler != NULL) {
 		cout << "Set new data handler\n";
@@ -25,7 +27,7 @@ void AbstractServer::sendElementsBufferToTree()
 		}
 	}
 	elementsBuffer.clear();
-	handler -> recomputeIntersectionPoints();
+	AbstractDataTree::recomputeIntersectionPointsInVisibleTree(visibleDataTree);
 	sendStatistics();
 }
 
@@ -198,7 +200,8 @@ void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message
         }
     }
 
-    handler -> reloadFliters(singleGroupFilters, singleTypeFilters, singleCoordinateFilters, coordinatesConjunction, singleQualityFilters);
+    AbstractDataTree::reloadFlitersInAllTrees(singleGroupFilters, singleTypeFilters, singleCoordinateFilters, coordinatesConjunction, singleQualityFilters);
+    AbstractDataTree::recomputeIntersectionPointsInVisibleTree(visibleDataTree);
     sendStatistics();
 }
 

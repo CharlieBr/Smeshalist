@@ -19,6 +19,14 @@ class Vertex : public Element {
         Vertex(Point3D point, Label label, double quality)
             : Element(point, "vertex", label, quality) {};
         virtual void draw(Color);
+        Vertex* clone() {
+        /*vector<Point3D> newVertices(vertices);
+            Label newLabel(label.get_label_text());
+            Element* element = new Element(&newVertices, type, newLabel, quality);
+            element -> set_draw_flag(to_draw);
+            return element;*/
+            return this;
+        }
 };
 
 class Edge : public Element {
@@ -32,6 +40,9 @@ class Edge : public Element {
         Edge(vector<Point3D> * points, Label label, double quality)
             : Element(points, "edge", label, quality) {};
         virtual void draw(Color);
+        Edge* clone() {
+            return this;
+        }
 };
 
 class Face : public Element {
@@ -46,6 +57,9 @@ class Face : public Element {
             : Element(points, "face", label, quality) {};
 
         virtual void draw(Color);
+        Face* clone() {
+            return this;
+        }
 };
 
 class Block : public Element {
@@ -60,6 +74,9 @@ class Block : public Element {
             : Element(points, "block", label, quality) {};
 
         virtual void draw(Color);
+        Block* clone() {
+            return this;
+        }
 };
 
 #endif // STRUCTURES_H

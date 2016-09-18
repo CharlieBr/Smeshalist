@@ -16,6 +16,8 @@
 #include "WindowsDataTree.h"
 #endif // __linux__
 
+char SMESHALIST[] = "Smeshalist v0.2";
+
 float deltaAngleX = 0.8f;
 float deltaAngleY = 0.8f;
 
@@ -29,6 +31,8 @@ float cameraX=0, cameraY=0, cameraZ=0;
 
 bool isShiftPressed = false;
 bool isLeftMouseButtonPressed = false;
+
+int visibleDataTree=-1; //-1-current; >=0 - previous
 
 AbstractDataTree* d;
 
@@ -74,7 +78,7 @@ void drawOrigin() {
     drawLine(0,0,-2,  0,0,2,  0,0,0,  0,0,1,  1);
 }
 
-void drawBoundingBox() {
+void drawBoundingBox(AbstractDataTree* d) {
     drawLine(d->get_max_x(),d->get_max_y(),d->get_max_z(),  d->get_max_x(),d->get_max_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
     drawLine(d->get_max_x(),d->get_min_y(),d->get_max_z(),  d->get_max_x(),d->get_min_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
     drawLine(d->get_min_x(),d->get_max_y(),d->get_max_z(),  d->get_min_x(),d->get_max_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
@@ -104,8 +108,10 @@ void renderScene(void) {
     glPushMatrix();
         drawOrigin();
         glColor3f(0.1f, 0.1f, 0.1f);
-        drawBoundingBox();
-        d -> draw_elements();
+
+        d -> getDataTreeInstance(visibleDataTree) -> draw_elements();
+        drawBoundingBox(d -> getDataTreeInstance(visibleDataTree));
+
         CoordinatesFilter::getInstance() -> draw();
     glPopMatrix();
 
@@ -149,6 +155,8 @@ void mouseButton(int button, int state, int x, int y) {
             translationX = 0;
             translationY = 0;
         }
+	} else if (button == GLUT_MIDDLE_BUTTON && state==GLUT_DOWN){
+        d->createNewInstance();
 	}
 
     isShiftPressed = glutGetModifiers() == GLUT_ACTIVE_SHIFT;
@@ -162,12 +170,53 @@ void mouseButton(int button, int state, int x, int y) {
     computeCameraPosition();
 }
 
+void setTitle() {
+    char title[80];
+    strcpy(title, SMESHALIST);
+
+    if (visibleDataTree == -1) {
+        strcat(title, "\tCURRENT");
+    } else {
+        strcat(title, "\tPREVIOUS: ");
+        strcat(title, to_string(visibleDataTree+1).c_str());
+    }
+
+    glutSetWindowTitle(title);
+}
+
+void keyboardEventSpec(int key, int x, int y) {
+    switch(key) {
+        case GLUT_KEY_LEFT:
+            visibleDataTree--;
+            if (visibleDataTree < -1) {
+                visibleDataTree = AbstractDataTree::getNumberOfDataTreeInstances()-1;
+            }
+            break;
+        case GLUT_KEY_RIGHT:
+            visibleDataTree++;
+            if (visibleDataTree >= AbstractDataTree::getNumberOfDataTreeInstances()) {
+                visibleDataTree = -1;
+            }
+            break;
+    }
+
+    switch(key) {
+        case GLUT_KEY_LEFT:
+        case GLUT_KEY_RIGHT:
+            setTitle();
+            Statistics stats = d->getDataTreeInstance(visibleDataTree)->get_statistics();
+            CoordinatesFilter::getInstance() -> recomputeIntersections(&stats);
+            break;
+    }
+}
+
 void initGLUT(int argc, char **argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(500, 500);
-	glutCreateWindow("Smeshalist v0.2");
+	glutCreateWindow("");
+	setTitle();
 
 	glutDisplayFunc(renderScene);
 	glutReshapeFunc(changeSize);
@@ -176,6 +225,7 @@ void initGLUT(int argc, char **argv) {
 	glutIgnoreKeyRepeat(1);
 
 	glutMouseFunc(mouseButton);
+	glutSpecialFunc(keyboardEventSpec);
 	glutMotionFunc(mouseMove);
 
 	glEnable(GL_DEPTH_TEST);
@@ -230,7 +280,7 @@ int main(int argc, char **argv) {
 
     #ifdef __linux__
     server = new LinuxServer();
-	d = &LinuxDataTree::getInstance();
+	d = LinuxDataTree::getCurrent();
     #else
 	server = new WindowsServer();
 	d = &WindowsDataTree::getInstance();
