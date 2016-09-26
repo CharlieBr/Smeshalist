@@ -31,7 +31,6 @@ public class MainWindow extends JFrame {
 		this.tabContainer.setVisible(true);
 		this.optionsTab = new OptionsTab();
 		this.statisticsTab = new StatisticsTab();
-		this.statisticsTab.setTestContent();
 		this.filtersTab = new FiltersTab();
 
 		this.tabContainer.addTab("Statistics", statisticsTab);

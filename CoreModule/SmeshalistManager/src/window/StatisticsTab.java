@@ -3,6 +3,8 @@ package window;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.LayoutManager;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -23,7 +25,8 @@ public class StatisticsTab extends JPanel{
 	
 
 	private static final long serialVersionUID = 1L;
-	
+	private static final String DEFAULT_DECIMAL_FORMAT = "0.0000";
+
 	private ElementsCount elementsCount;
 	private BoundingBox boundingBox;
 
@@ -56,17 +59,18 @@ public class StatisticsTab extends JPanel{
 		cell12 = new JPanel();
 		cell21 = new JPanel();
 		cell22 = new JPanel();
-		
+
 		initStructuresList();
 		initValuesList();
 		initAxisList();
 		initCoordinatesList();
 		
-				
 		add(cell11);
 		add(cell12);
 		add(cell21);
 		add(cell22);
+
+		setInitContent();
 
 	}
 
@@ -89,7 +93,7 @@ public class StatisticsTab extends JPanel{
 		border.setTitleColor(Color.BLUE);
 		border.setTitleJustification(2);
 		cell21.setBorder(border);
-		
+
 		cell21.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		cell21.add(new JLabel("x"));
 		cell21.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
@@ -121,7 +125,9 @@ public class StatisticsTab extends JPanel{
 	public void putElementsCount(){
 		
 		cell11.removeAll();
+		cell11.repaint();
 		cell12.removeAll();
+		cell12.repaint();
 		
 		cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
@@ -132,20 +138,22 @@ public class StatisticsTab extends JPanel{
 		
 		for(ElementInfo info : this.elementsCount.getElementInfosMap().values()){
 			cell12.add(new JLabel(info.getTotal()+" ("+info.getVisible()+")"));
-			cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE))
-;		}
+			cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		}
 
 	}
 	
 	public void putBoundingBox(){
 		cell22.removeAll();
-		
+		cell22.repaint();
+		DecimalFormat df = new DecimalFormat(DEFAULT_DECIMAL_FORMAT);
+
 		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		cell22.add(new JLabel("["+this.boundingBox.getFromX()+","+this.boundingBox.getToX()+"]"));
+		cell22.add(new JLabel("["+df.format(new BigDecimal(this.boundingBox.getFromX()))+"; "+df.format(new BigDecimal(this.boundingBox.getToX()))+"]"));
 		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		cell22.add(new JLabel("["+this.boundingBox.getFromY()+","+this.boundingBox.getToY()+"]"));
+		cell22.add(new JLabel("["+df.format(new BigDecimal(this.boundingBox.getFromY()))+"; "+df.format(new BigDecimal(this.boundingBox.getToY()))+"]"));
 		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		cell22.add(new JLabel("["+this.boundingBox.getFromZ()+","+this.boundingBox.getToZ()+"]"));
+		cell22.add(new JLabel("["+df.format(new BigDecimal(this.boundingBox.getFromZ()))+"; "+df.format(new BigDecimal(this.boundingBox.getToZ()))+"]"));
 
 	}
 
@@ -162,37 +170,18 @@ public class StatisticsTab extends JPanel{
 	}
 	
 	
-	public void setTestContent(){
+	public void setInitContent(){
 		
-		Map<String, ElementInfo> testMap = new LinkedHashMap<>();
-		ElementInfo.Builder eiBuilder = ElementInfo.newBuilder();
-		eiBuilder.setTotal(2015);
-		eiBuilder.setVisible(215);
-		testMap.put("Vertexes", eiBuilder.build());
-		eiBuilder.setTotal(503);
-		eiBuilder.setVisible(12);
-		testMap.put("Edges", eiBuilder.build());
-		eiBuilder.setTotal(23);
-		eiBuilder.setVisible(0);
-		testMap.put("Triangles", eiBuilder.build());
-		eiBuilder.setTotal(415);
-		eiBuilder.setVisible(415);
-		testMap.put("Pyramids", eiBuilder.build());
-		
-		ElementsCount.Builder ecBuilder = ElementsCount.newBuilder();
-		ecBuilder.putAllElementInfos(testMap);
-		ElementsCount testElementsCount = ecBuilder.build();
-		
+
 		BoundingBox.Builder bbBuilder = BoundingBox.newBuilder();
-		bbBuilder.setFromX(-0.56);
-		bbBuilder.setToX(15.6);
-		bbBuilder.setFromY(1.2);
-		bbBuilder.setToY(5.8);
-		bbBuilder.setFromZ(0.2);
-		bbBuilder.setToZ(3.5);
+		bbBuilder.setFromX(0.0);
+		bbBuilder.setToX(0.0);
+		bbBuilder.setFromY(0.0);
+		bbBuilder.setToY(0.0);
+		bbBuilder.setFromZ(0.0);
+		bbBuilder.setToZ(0.0);
 		BoundingBox testBoundingBox = bbBuilder.build();
 		
-		setElementsCount(testElementsCount);
 		setBoundingBox(testBoundingBox);
 	}
 }

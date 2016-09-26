@@ -58,7 +58,7 @@ public class FiltersTab extends JPanel{
 		qualityTab = new QualityTab();
 		coordinatesTab = new CoordinatesTab();
 		
-		this.setTestContent();
+		//this.setTestContent();
 		
 		tabsContainer.add("Types", typesTab);
 		tabsContainer.add("Groups", groupsTab);
