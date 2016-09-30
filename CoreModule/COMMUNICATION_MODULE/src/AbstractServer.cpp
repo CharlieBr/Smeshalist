@@ -17,6 +17,9 @@ void AbstractServer::registerMouseSensitivityHandler(float* pointer) {
 void AbstractServer::setDynamicRendering(bool flag)
 {
 	dynamicRendering = flag;
+	if (dynamicRendering) {
+        sendElementsBufferToTree();
+	}
 }
 
 void AbstractServer::sendElementsBufferToTree()
@@ -211,7 +214,7 @@ void AbstractServer::processOptionDataPackage(sm::ManagerToCoreMessage* message)
     double exponent = options.mousesensitivity();
     *mouseSensitivity = std::pow(BASE, exponent)/BASE;
 
-    //TODO dynamic rendering
+    setDynamicRendering(options.dynamicrendering());
     //TODO show labels
     //TODO transparent structures
 }
@@ -344,7 +347,9 @@ void AbstractServer::getDataPackages() {
         }
     }
 
-	sendElementsBufferToTree();
+    if (dynamicRendering) {
+        sendElementsBufferToTree();
+	}
 }
 
 Point3D AbstractServer::parsePoint(const structDefinitions::Point3D* p) {
