@@ -270,7 +270,23 @@ void tryToRunSmeshalistManager(int argc, char** argv) {
     }
 }
 
+void redirectOutput() {
+    time_t rawtime;
+    struct tm * timeinfo;
+    time (&rawtime);
+    timeinfo = localtime (&rawtime);
+
+    char *time = asctime (timeinfo);
+    char* fileName = new char[20];
+    memcpy(fileName, &time[4], 16);
+    fileName[15] = '\0';
+    strcat(fileName, ".log");
+
+    freopen(fileName, "w", stdout);
+}
+
 int main(int argc, char **argv) {
+    redirectOutput();
     tryToRunSmeshalistManager(argc, argv);
     GOOGLE_PROTOBUF_VERIFY_VERSION;
     //set initial position
