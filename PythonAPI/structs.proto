@@ -1,0 +1,98 @@
+package structDefinitions;
+
+message Properties {
+	optional double quality = 1;
+	optional string label = 2;
+	optional int32 groupId = 3;
+
+}
+
+message Point2D {
+    required double x = 1;
+    required double y = 2;
+    optional Properties prop = 3;
+}
+
+message Point2DSet {
+	repeated Point2D points = 1;
+}
+
+message Point3D {
+	required double x = 1;
+	required double y = 2;
+	required double z = 3;
+	optional Properties prop = 4;
+}
+
+message Point3DSet  {
+	repeated Point3D points = 1;
+}
+
+message Vertex {
+	required Point3D point = 1;
+	required double number = 2;
+	optional Properties prop = 3;
+}
+
+message VertexSet {
+	repeated Vertex vertexes = 1;
+}
+
+message Edge {
+	required Point3D v1 = 1;
+	required Point3D v2 = 2;
+	optional Properties prop = 3;
+}
+
+message EdgeSet {
+	repeated Edge edges = 1;
+}
+
+message TriangleFace {
+	required Point3D v1 = 1;
+	required Point3D v2 = 2;
+	required Point3D v3 = 3;
+	optional Properties prop = 4;
+}
+
+message TriangleFaceSet {
+	repeated TriangleFace triangleFaces = 1;
+}
+
+message Block {
+	required Point3D v1 = 1;
+	required Point3D v2 = 2;
+	required Point3D v3 = 3;
+	required Point3D v4 = 4;
+	optional Properties prop = 5;
+}
+
+message BlockSet {
+	repeated Block blocks = 1;
+}
+
+message MessageInfo {
+	enum Type {
+		DATA = 1;
+		RENDER = 2;
+		BREAKPOINT = 3;
+		ACCEPTED = 4;
+		REJECTED = 5;
+		ACK = 6;
+	}
+	
+	required Type type = 1;
+}
+
+message DataPackage {
+	
+	optional Point2DSet points2D  = 1;
+	optional Point3DSet points3D = 2;
+	optional VertexSet vertexes = 3;
+	optional EdgeSet edges = 4;
+	optional TriangleFaceSet faces = 5;
+	optional BlockSet blocks = 6;
+	required bool endOfData = 7;
+	
+}
+
