@@ -132,7 +132,8 @@ public class Smeshalist {
 	 * send all structures stored in buffer to main window
 	 */
 	public void flushBuffer() {
-		
+
+		System.out.println(structuresToSend.size() + " structures waiting to be sent when called flushBuffer()");
 		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
 		ByteArrayOutputStream dataBuffer = new ByteArrayOutputStream();
 		MessageInfo.Builder builder = MessageInfo.newBuilder();
@@ -164,17 +165,21 @@ public class Smeshalist {
 					dataBuffer = new ByteArrayOutputStream();
 					
 					
-					while(!structuresToSend.isEmpty()){
-						if(structuresToSend.size() > numberOfStructuresToSend){
-							toBeSent = new LinkedList<>(structuresToSend.subList(0, numberOfStructuresToSend));
-							structuresToSend = new LinkedList<>(structuresToSend.subList(numberOfStructuresToSend, structuresToSend.size()));
-						} else {
-							endOfData = true;
-							toBeSent = structuresToSend;
-							structuresToSend = new LinkedList<>();
-							break;
-						}
+
+					if(structuresToSend.size() > numberOfStructuresToSend){
+						toBeSent = new LinkedList<>(structuresToSend.subList(0, numberOfStructuresToSend));
+						structuresToSend = new LinkedList<>(structuresToSend.subList(numberOfStructuresToSend, structuresToSend.size()));
+						System.out.println("Size of toBeSent: " + toBeSent.size());
+						System.out.println("Size of structuresToSend: " + structuresToSend.size());
+					} else {
+
+						endOfData = true;
+						toBeSent = structuresToSend;
+						structuresToSend = new LinkedList<>();
+						System.out.println("Last batch: " + toBeSent.size() + " left to send");
+
 					}
+
 					
 					DataPackage.Builder dataPackageBuilder = DataPackage.newBuilder();
 					
@@ -203,21 +208,23 @@ public class Smeshalist {
 					headerBuilder.setSizeOfData(dataBytes.length);
 					headerBuilder.setEndOfData(endOfData);
 					Header header = headerBuilder.build();
-					byte[] headerBytes = new byte[64];
+					System.out.println("Header sizeOfData: " + header.getSizeOfData());
+					System.out.println("Header endOfData: " + header.getEndOfData());
+					byte[] headerBytes;
 					aOutput = new ByteArrayOutputStream(64);
 					header.writeTo(aOutput);
 					headerBytes = aOutput.toByteArray();
-					System.out.println(headerBytes.length);
+
 					DatagramPacket headerPacket = new DatagramPacket(headerBytes, headerBytes.length, IPAddress, mainWindowPort);
 					socket.send(headerPacket);
 					aOutput.close();
 					
 					//TODO check if ack is needed
 					
-					
 					DatagramPacket dataPacket = new DatagramPacket(dataBytes, dataBytes.length, IPAddress, mainWindowPort);
 					socket.send(dataPacket);
 					dataBuffer.close();
+					System.out.println("---------------------->sent");
 					
 				}
 					

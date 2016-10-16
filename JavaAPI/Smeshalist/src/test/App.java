@@ -22,8 +22,8 @@ public class App {
 			point.setGroupId(1);
 			tool.addGeometry(point);
 		}
-		
-		for (int i=0; i<10; i++) {
+
+		for (int i=0; i<10000; i++) {
 			Point3D point = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			point.setGroupId(2);
 			tool.addGeometry(point);
