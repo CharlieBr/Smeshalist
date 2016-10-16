@@ -328,6 +328,8 @@ void AbstractServer::getDataPackages() {
         parseTriangleFaceSet(&package);
         parseBlockSet(&package);
 
+        sendAcknowlage();
+
         if(header.endofdata()) {
             break;
         }
