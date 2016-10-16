@@ -23,7 +23,7 @@ public class App {
 			tool.addGeometry(point);
 		}
 
-		for (int i=0; i<10000; i++) {
+		for (int i=0; i<100000; i++) {
 			Point3D point = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			point.setGroupId(2);
 			tool.addGeometry(point);

@@ -157,11 +157,10 @@ public class Smeshalist {
 			}
 
 			MessageInfo feedback = MessageInfo.parseFrom(trimResponse);
-			if (feedback.getType() == Type.ACK) {
 				boolean endOfData = false;
 				List<Object> toBeSent = new LinkedList<>();
 				
-				while(!structuresToSend.isEmpty()){
+				while(feedback.getType() == Type.ACK && !structuresToSend.isEmpty()){
 					dataBuffer = new ByteArrayOutputStream();
 					
 					
@@ -218,17 +217,27 @@ public class Smeshalist {
 					DatagramPacket headerPacket = new DatagramPacket(headerBytes, headerBytes.length, IPAddress, mainWindowPort);
 					socket.send(headerPacket);
 					aOutput.close();
-					
-					//TODO check if ack is needed
-					
+
 					DatagramPacket dataPacket = new DatagramPacket(dataBytes, dataBytes.length, IPAddress, mainWindowPort);
 					socket.send(dataPacket);
 					dataBuffer.close();
 					System.out.println("---------------------->sent");
-					
+
+					//ACK from Core
+					responseBytes = new byte[10];
+					response = new DatagramPacket(responseBytes, responseBytes.length);
+					socket.receive(response);
+
+					trimResponse = new byte[response.getLength()];
+					for (int i=0; i<response.getLength(); i++) {
+						trimResponse[i] = responseBytes[i];
+					}
+
+					feedback = MessageInfo.parseFrom(trimResponse);
+
 				}
 					
-			}			
+//			}
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
