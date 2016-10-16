@@ -207,7 +207,8 @@ public class Smeshalist {
 					aOutput = new ByteArrayOutputStream(64);
 					header.writeTo(aOutput);
 					headerBytes = aOutput.toByteArray();
-					DatagramPacket headerPacket = new DatagramPacket(headerBytes, 64, IPAddress, mainWindowPort);
+					System.out.println(headerBytes.length);
+					DatagramPacket headerPacket = new DatagramPacket(headerBytes, headerBytes.length, IPAddress, mainWindowPort);
 					socket.send(headerPacket);
 					aOutput.close();
 					
