@@ -11,6 +11,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+import org.apache.log4j.Logger;
+
 import helpers.SmeshalistHelper;
 import structDefinitions.Structures;
 import structDefinitions.Structures.Block;
@@ -26,6 +28,8 @@ import structDefinitions.Structures.TriangleFace;
 import structDefinitions.Structures.Vertex;
 
 public class Smeshalist {
+
+	private static final Logger logger = Logger.getLogger(Smeshalist.class.getName());
 	
 	private static Smeshalist instance;
 	int mainWindowPort;
@@ -43,7 +47,7 @@ public class Smeshalist {
 			socket = new DatagramSocket();
 			IPAddress = InetAddress.getByName("localhost");
 		} catch (UnknownHostException | SocketException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 	}
 
@@ -133,7 +137,7 @@ public class Smeshalist {
 	 */
 	public void flushBuffer() {
 
-		System.out.println(structuresToSend.size() + " structures waiting to be sent when called flushBuffer()");
+		logger.info(structuresToSend.size() + " structures waiting to be sent when called flushBuffer()");
 		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
 		ByteArrayOutputStream dataBuffer = new ByteArrayOutputStream();
 		MessageInfo.Builder builder = MessageInfo.newBuilder();
@@ -168,14 +172,15 @@ public class Smeshalist {
 					if(structuresToSend.size() > numberOfStructuresToSend){
 						toBeSent = new LinkedList<>(structuresToSend.subList(0, numberOfStructuresToSend));
 						structuresToSend = new LinkedList<>(structuresToSend.subList(numberOfStructuresToSend, structuresToSend.size()));
-						System.out.println("Size of toBeSent: " + toBeSent.size());
-						System.out.println("Size of structuresToSend: " + structuresToSend.size());
+						logger.info("Size of toBeSent: " + toBeSent.size());
+						logger.info("Size of structuresToSend: " + structuresToSend.size());
 					} else {
 
 						endOfData = true;
 						toBeSent = structuresToSend;
 						structuresToSend = new LinkedList<>();
-						System.out.println("Last batch: " + toBeSent.size() + " left to send");
+						logger.info("Last batch: " + toBeSent.size() + " left to send");
+						
 
 					}
 
@@ -221,7 +226,7 @@ public class Smeshalist {
 					DatagramPacket dataPacket = new DatagramPacket(dataBytes, dataBytes.length, IPAddress, mainWindowPort);
 					socket.send(dataPacket);
 					dataBuffer.close();
-					System.out.println("---------------------->sent");
+					logger.info("---------------------->sent");
 
 					//ACK from Core
 					responseBytes = new byte[10];
@@ -241,7 +246,7 @@ public class Smeshalist {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 
 	}
