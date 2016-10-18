@@ -285,7 +285,7 @@ void AbstractServer::startServerInNewThread()
                 sendBreakpoint();
                 break;
             case structDefinitions::MessageInfo_Type_RENDER:
-                cout << "Render\n";
+                sendElementsBufferToTree();
                 break;
             default:
                 cerr << "Unknow message type\n";
@@ -295,54 +295,40 @@ void AbstractServer::startServerInNewThread()
 }
 
 void AbstractServer::getDataPackages() {
-    char buffer[BUFFER_SIZE];
     int nBytes;
+    char* buffer;
 
     while (true) {
+        buffer = new char[BUFFER_SIZE];
         nBytes = getBytesFromSocket(buffer, BUFFER_SIZE);
         if (nBytes < 0) {
             cerr << "Error during data package transfer\n";
             return;
         }
 
+        structDefinitions::Header header;
+        if (!header.ParseFromArray(buffer, nBytes)) {
+            cerr << "Error during parsing header message\n";
+            continue;
+        }
+
         structDefinitions::DataPackage package;
+        buffer = new char[(int)header.sizeofdata()];
+        nBytes = getBytesFromSocket(buffer, header.sizeofdata());
 
         if (!package.ParseFromArray(buffer, nBytes)) {
             cerr << "Error during parsing data package\n";
             continue;
         }
 
-        if (package.has_blocks()) {
-            structDefinitions::BlockSet blockSet = package.blocks();
-            parseBlockSet(&blockSet);
-        }
+        parsePoint2DSet(&package);
+        parsePoint3DSet(&package);
+        parseVertexSet(&package);
+        parseEdgeSet(&package);
+        parseTriangleFaceSet(&package);
+        parseBlockSet(&package);
 
-        if (package.has_edges()) {
-            structDefinitions::EdgeSet edgeSet = package.edges();
-            parseEdgeSet(&edgeSet);
-        }
-
-        if (package.has_faces()) {
-            structDefinitions::TriangleFaceSet faceSet = package.faces();
-            parseTriangleFaceSet(&faceSet);
-        }
-
-        if (package.has_points2d()) {
-            structDefinitions::Point2DSet pointSet = package.points2d();
-            parsePoint2DSet(&pointSet);
-        }
-
-        if (package.has_points3d()) {
-            structDefinitions::Point3DSet pointSet = package.points3d();
-            parsePoint3DSet(&pointSet);
-        }
-
-        if (package.has_vertexes()) {
-            structDefinitions::VertexSet vertexSet = package.vertexes();
-            parseVertexSet(&vertexSet);
-        }
-
-        if(package.endofdata()) {
+        if(header.endofdata()) {
             break;
         }
     }
@@ -360,11 +346,10 @@ Label AbstractServer::getLabel(string text) {
     return Label(text);
 }
 
-void AbstractServer::parseBlockSet(structDefinitions::BlockSet* blockSet) {
-	for (int i = 0; i < blockSet->blocks_size(); i++) {
-		const structDefinitions::Block b = blockSet->blocks(i);
+void AbstractServer::parseBlockSet(structDefinitions::DataPackage* dataPackage) {
+	for (int i = 0; i < dataPackage->blocks_size(); i++) {
+		const structDefinitions::Block b = dataPackage->blocks(i);
 		vector<Point3D> points;
-		vector<Face> faces;
 
 		points.push_back(parsePoint(&b.v1()));
 		points.push_back(parsePoint(&b.v2()));
@@ -379,9 +364,9 @@ void AbstractServer::parseBlockSet(structDefinitions::BlockSet* blockSet) {
 	}
 }
 
-void AbstractServer::parseEdgeSet(structDefinitions::EdgeSet* edgeSet) {
-    for (int i=0; i<edgeSet->edges_size(); i++) {
-        const structDefinitions::Edge e = edgeSet->edges(i);
+void AbstractServer::parseEdgeSet(structDefinitions::DataPackage* dataPackage) {
+    for (int i=0; i<dataPackage->edges_size(); i++) {
+        const structDefinitions::Edge e = dataPackage->edges(i);
 
         vector<Point3D> points;
         points.push_back(parsePoint(&e.v1()));
@@ -395,9 +380,9 @@ void AbstractServer::parseEdgeSet(structDefinitions::EdgeSet* edgeSet) {
     }
 }
 
-void AbstractServer::parsePoint2DSet(structDefinitions::Point2DSet* pointSet) {
-    for (int i=0; i<pointSet->points_size(); i++) {
-        const structDefinitions::Point2D p = pointSet->points(i);
+void AbstractServer::parsePoint2DSet(structDefinitions::DataPackage* dataPackage) {
+    for (int i=0; i<dataPackage->points2d_size(); i++) {
+        const structDefinitions::Point2D p = dataPackage->points2d(i);
 
         structDefinitions::Properties prop = p.prop();
         Label label = getLabel(prop.label());
@@ -407,9 +392,9 @@ void AbstractServer::parsePoint2DSet(structDefinitions::Point2DSet* pointSet) {
     }
 }
 
-void AbstractServer::parsePoint3DSet(structDefinitions::Point3DSet* pointSet) {
-    for (int i=0; i<pointSet->points_size(); i++) {
-        const structDefinitions::Point3D p = pointSet->points(i);
+void AbstractServer::parsePoint3DSet(structDefinitions::DataPackage* dataPackage) {
+    for (int i=0; i<dataPackage->points3d_size(); i++) {
+        const structDefinitions::Point3D p = dataPackage->points3d(i);
 
         structDefinitions::Properties prop = p.prop();
         Label label = getLabel(prop.label());
@@ -419,9 +404,9 @@ void AbstractServer::parsePoint3DSet(structDefinitions::Point3DSet* pointSet) {
     }
 }
 
-void AbstractServer::parseTriangleFaceSet(structDefinitions::TriangleFaceSet* triangleFaceSet) {
-    for (int i=0; i<triangleFaceSet->trianglefaces_size(); i++) {
-        const structDefinitions::TriangleFace t = triangleFaceSet->trianglefaces(i);
+void AbstractServer::parseTriangleFaceSet(structDefinitions::DataPackage* dataPackage) {
+    for (int i=0; i<dataPackage->faces_size(); i++) {
+        const structDefinitions::TriangleFace t = dataPackage->faces(i);
 
         vector<Point3D> points;
 
@@ -437,9 +422,9 @@ void AbstractServer::parseTriangleFaceSet(structDefinitions::TriangleFaceSet* tr
     }
 }
 
-void AbstractServer::parseVertexSet(structDefinitions::VertexSet* vertexSet) {
-    for (int i=0; i<vertexSet->vertexes_size(); i++) {
-        const structDefinitions::Vertex v = vertexSet->vertexes(i);
+void AbstractServer::parseVertexSet(structDefinitions::DataPackage* dataPackage) {
+    for (int i=0; i<dataPackage->vertexes_size(); i++) {
+        const structDefinitions::Vertex v = dataPackage->vertexes(i);
 
         structDefinitions::Properties prop = v.prop();
         Label label = getLabel(prop.label());
