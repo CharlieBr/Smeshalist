@@ -1,5 +1,4 @@
-option java_package = "structDefinitions";
-option java_outer_classname = "Structures";
+package structDefinitions;
 
 
 message Properties {

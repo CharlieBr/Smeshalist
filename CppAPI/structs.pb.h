@@ -30,6 +30,8 @@
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
+namespace structDefinitions {
+
 // Internal implementation detail -- do not call these.
 void protobuf_AddDesc_structs_2eproto();
 void protobuf_AssignDesc_structs_2eproto();
@@ -71,7 +73,7 @@ inline bool MessageInfo_Type_Parse(
 }
 // ===================================================================
 
-class Properties : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Properties) */ {
+class Properties : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Properties) */ {
  public:
   Properties();
   virtual ~Properties();
@@ -165,7 +167,7 @@ class Properties : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::int32 groupid() const;
   void set_groupid(::google::protobuf::int32 value);
 
-  // @@protoc_insertion_point(class_scope:Properties)
+  // @@protoc_insertion_point(class_scope:structDefinitions.Properties)
  private:
   inline void set_has_quality();
   inline void clear_has_quality();
@@ -189,7 +191,7 @@ class Properties : public ::google::protobuf::Message /* @@protoc_insertion_poin
 };
 // -------------------------------------------------------------------
 
-class Point2D : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Point2D) */ {
+class Point2D : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Point2D) */ {
  public:
   Point2D();
   virtual ~Point2D();
@@ -271,16 +273,16 @@ class Point2D : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   double y() const;
   void set_y(double value);
 
-  // optional .Properties prop = 3;
+  // optional .structDefinitions.Properties prop = 3;
   bool has_prop() const;
   void clear_prop();
   static const int kPropFieldNumber = 3;
-  const ::Properties& prop() const;
-  ::Properties* mutable_prop();
-  ::Properties* release_prop();
-  void set_allocated_prop(::Properties* prop);
+  const ::structDefinitions::Properties& prop() const;
+  ::structDefinitions::Properties* mutable_prop();
+  ::structDefinitions::Properties* release_prop();
+  void set_allocated_prop(::structDefinitions::Properties* prop);
 
-  // @@protoc_insertion_point(class_scope:Point2D)
+  // @@protoc_insertion_point(class_scope:structDefinitions.Point2D)
  private:
   inline void set_has_x();
   inline void clear_has_x();
@@ -297,7 +299,7 @@ class Point2D : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   mutable int _cached_size_;
   double x_;
   double y_;
-  ::Properties* prop_;
+  ::structDefinitions::Properties* prop_;
   friend void  protobuf_AddDesc_structs_2eproto();
   friend void protobuf_AssignDesc_structs_2eproto();
   friend void protobuf_ShutdownFile_structs_2eproto();
@@ -307,7 +309,7 @@ class Point2D : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 };
 // -------------------------------------------------------------------
 
-class Point3D : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Point3D) */ {
+class Point3D : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Point3D) */ {
  public:
   Point3D();
   virtual ~Point3D();
@@ -396,16 +398,16 @@ class Point3D : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   double z() const;
   void set_z(double value);
 
-  // optional .Properties prop = 4;
+  // optional .structDefinitions.Properties prop = 4;
   bool has_prop() const;
   void clear_prop();
   static const int kPropFieldNumber = 4;
-  const ::Properties& prop() const;
-  ::Properties* mutable_prop();
-  ::Properties* release_prop();
-  void set_allocated_prop(::Properties* prop);
+  const ::structDefinitions::Properties& prop() const;
+  ::structDefinitions::Properties* mutable_prop();
+  ::structDefinitions::Properties* release_prop();
+  void set_allocated_prop(::structDefinitions::Properties* prop);
 
-  // @@protoc_insertion_point(class_scope:Point3D)
+  // @@protoc_insertion_point(class_scope:structDefinitions.Point3D)
  private:
   inline void set_has_x();
   inline void clear_has_x();
@@ -425,7 +427,7 @@ class Point3D : public ::google::protobuf::Message /* @@protoc_insertion_point(c
   double x_;
   double y_;
   double z_;
-  ::Properties* prop_;
+  ::structDefinitions::Properties* prop_;
   friend void  protobuf_AddDesc_structs_2eproto();
   friend void protobuf_AssignDesc_structs_2eproto();
   friend void protobuf_ShutdownFile_structs_2eproto();
@@ -435,7 +437,7 @@ class Point3D : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 };
 // -------------------------------------------------------------------
 
-class Vertex : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Vertex) */ {
+class Vertex : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Vertex) */ {
  public:
   Vertex();
   virtual ~Vertex();
@@ -503,14 +505,14 @@ class Vertex : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 
   // accessors -------------------------------------------------------
 
-  // required .Point3D point = 1;
+  // required .structDefinitions.Point3D point = 1;
   bool has_point() const;
   void clear_point();
   static const int kPointFieldNumber = 1;
-  const ::Point3D& point() const;
-  ::Point3D* mutable_point();
-  ::Point3D* release_point();
-  void set_allocated_point(::Point3D* point);
+  const ::structDefinitions::Point3D& point() const;
+  ::structDefinitions::Point3D* mutable_point();
+  ::structDefinitions::Point3D* release_point();
+  void set_allocated_point(::structDefinitions::Point3D* point);
 
   // required double number = 2;
   bool has_number() const;
@@ -519,16 +521,16 @@ class Vertex : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   double number() const;
   void set_number(double value);
 
-  // optional .Properties prop = 3;
+  // optional .structDefinitions.Properties prop = 3;
   bool has_prop() const;
   void clear_prop();
   static const int kPropFieldNumber = 3;
-  const ::Properties& prop() const;
-  ::Properties* mutable_prop();
-  ::Properties* release_prop();
-  void set_allocated_prop(::Properties* prop);
+  const ::structDefinitions::Properties& prop() const;
+  ::structDefinitions::Properties* mutable_prop();
+  ::structDefinitions::Properties* release_prop();
+  void set_allocated_prop(::structDefinitions::Properties* prop);
 
-  // @@protoc_insertion_point(class_scope:Vertex)
+  // @@protoc_insertion_point(class_scope:structDefinitions.Vertex)
  private:
   inline void set_has_point();
   inline void clear_has_point();
@@ -543,9 +545,9 @@ class Vertex : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::Point3D* point_;
+  ::structDefinitions::Point3D* point_;
   double number_;
-  ::Properties* prop_;
+  ::structDefinitions::Properties* prop_;
   friend void  protobuf_AddDesc_structs_2eproto();
   friend void protobuf_AssignDesc_structs_2eproto();
   friend void protobuf_ShutdownFile_structs_2eproto();
@@ -555,7 +557,7 @@ class Vertex : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 };
 // -------------------------------------------------------------------
 
-class Edge : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Edge) */ {
+class Edge : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Edge) */ {
  public:
   Edge();
   virtual ~Edge();
@@ -623,34 +625,34 @@ class Edge : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 
   // accessors -------------------------------------------------------
 
-  // required .Point3D v1 = 1;
+  // required .structDefinitions.Point3D v1 = 1;
   bool has_v1() const;
   void clear_v1();
   static const int kV1FieldNumber = 1;
-  const ::Point3D& v1() const;
-  ::Point3D* mutable_v1();
-  ::Point3D* release_v1();
-  void set_allocated_v1(::Point3D* v1);
+  const ::structDefinitions::Point3D& v1() const;
+  ::structDefinitions::Point3D* mutable_v1();
+  ::structDefinitions::Point3D* release_v1();
+  void set_allocated_v1(::structDefinitions::Point3D* v1);
 
-  // required .Point3D v2 = 2;
+  // required .structDefinitions.Point3D v2 = 2;
   bool has_v2() const;
   void clear_v2();
   static const int kV2FieldNumber = 2;
-  const ::Point3D& v2() const;
-  ::Point3D* mutable_v2();
-  ::Point3D* release_v2();
-  void set_allocated_v2(::Point3D* v2);
+  const ::structDefinitions::Point3D& v2() const;
+  ::structDefinitions::Point3D* mutable_v2();
+  ::structDefinitions::Point3D* release_v2();
+  void set_allocated_v2(::structDefinitions::Point3D* v2);
 
-  // optional .Properties prop = 3;
+  // optional .structDefinitions.Properties prop = 3;
   bool has_prop() const;
   void clear_prop();
   static const int kPropFieldNumber = 3;
-  const ::Properties& prop() const;
-  ::Properties* mutable_prop();
-  ::Properties* release_prop();
-  void set_allocated_prop(::Properties* prop);
+  const ::structDefinitions::Properties& prop() const;
+  ::structDefinitions::Properties* mutable_prop();
+  ::structDefinitions::Properties* release_prop();
+  void set_allocated_prop(::structDefinitions::Properties* prop);
 
-  // @@protoc_insertion_point(class_scope:Edge)
+  // @@protoc_insertion_point(class_scope:structDefinitions.Edge)
  private:
   inline void set_has_v1();
   inline void clear_has_v1();
@@ -665,9 +667,9 @@ class Edge : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::Point3D* v1_;
-  ::Point3D* v2_;
-  ::Properties* prop_;
+  ::structDefinitions::Point3D* v1_;
+  ::structDefinitions::Point3D* v2_;
+  ::structDefinitions::Properties* prop_;
   friend void  protobuf_AddDesc_structs_2eproto();
   friend void protobuf_AssignDesc_structs_2eproto();
   friend void protobuf_ShutdownFile_structs_2eproto();
@@ -677,7 +679,7 @@ class Edge : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 };
 // -------------------------------------------------------------------
 
-class TriangleFace : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:TriangleFace) */ {
+class TriangleFace : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.TriangleFace) */ {
  public:
   TriangleFace();
   virtual ~TriangleFace();
@@ -745,43 +747,43 @@ class TriangleFace : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   // accessors -------------------------------------------------------
 
-  // required .Point3D v1 = 1;
+  // required .structDefinitions.Point3D v1 = 1;
   bool has_v1() const;
   void clear_v1();
   static const int kV1FieldNumber = 1;
-  const ::Point3D& v1() const;
-  ::Point3D* mutable_v1();
-  ::Point3D* release_v1();
-  void set_allocated_v1(::Point3D* v1);
+  const ::structDefinitions::Point3D& v1() const;
+  ::structDefinitions::Point3D* mutable_v1();
+  ::structDefinitions::Point3D* release_v1();
+  void set_allocated_v1(::structDefinitions::Point3D* v1);
 
-  // required .Point3D v2 = 2;
+  // required .structDefinitions.Point3D v2 = 2;
   bool has_v2() const;
   void clear_v2();
   static const int kV2FieldNumber = 2;
-  const ::Point3D& v2() const;
-  ::Point3D* mutable_v2();
-  ::Point3D* release_v2();
-  void set_allocated_v2(::Point3D* v2);
+  const ::structDefinitions::Point3D& v2() const;
+  ::structDefinitions::Point3D* mutable_v2();
+  ::structDefinitions::Point3D* release_v2();
+  void set_allocated_v2(::structDefinitions::Point3D* v2);
 
-  // required .Point3D v3 = 3;
+  // required .structDefinitions.Point3D v3 = 3;
   bool has_v3() const;
   void clear_v3();
   static const int kV3FieldNumber = 3;
-  const ::Point3D& v3() const;
-  ::Point3D* mutable_v3();
-  ::Point3D* release_v3();
-  void set_allocated_v3(::Point3D* v3);
+  const ::structDefinitions::Point3D& v3() const;
+  ::structDefinitions::Point3D* mutable_v3();
+  ::structDefinitions::Point3D* release_v3();
+  void set_allocated_v3(::structDefinitions::Point3D* v3);
 
-  // optional .Properties prop = 4;
+  // optional .structDefinitions.Properties prop = 4;
   bool has_prop() const;
   void clear_prop();
   static const int kPropFieldNumber = 4;
-  const ::Properties& prop() const;
-  ::Properties* mutable_prop();
-  ::Properties* release_prop();
-  void set_allocated_prop(::Properties* prop);
+  const ::structDefinitions::Properties& prop() const;
+  ::structDefinitions::Properties* mutable_prop();
+  ::structDefinitions::Properties* release_prop();
+  void set_allocated_prop(::structDefinitions::Properties* prop);
 
-  // @@protoc_insertion_point(class_scope:TriangleFace)
+  // @@protoc_insertion_point(class_scope:structDefinitions.TriangleFace)
  private:
   inline void set_has_v1();
   inline void clear_has_v1();
@@ -798,10 +800,10 @@ class TriangleFace : public ::google::protobuf::Message /* @@protoc_insertion_po
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::Point3D* v1_;
-  ::Point3D* v2_;
-  ::Point3D* v3_;
-  ::Properties* prop_;
+  ::structDefinitions::Point3D* v1_;
+  ::structDefinitions::Point3D* v2_;
+  ::structDefinitions::Point3D* v3_;
+  ::structDefinitions::Properties* prop_;
   friend void  protobuf_AddDesc_structs_2eproto();
   friend void protobuf_AssignDesc_structs_2eproto();
   friend void protobuf_ShutdownFile_structs_2eproto();
@@ -811,7 +813,7 @@ class TriangleFace : public ::google::protobuf::Message /* @@protoc_insertion_po
 };
 // -------------------------------------------------------------------
 
-class Block : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Block) */ {
+class Block : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Block) */ {
  public:
   Block();
   virtual ~Block();
@@ -879,52 +881,52 @@ class Block : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
 
   // accessors -------------------------------------------------------
 
-  // required .Point3D v1 = 1;
+  // required .structDefinitions.Point3D v1 = 1;
   bool has_v1() const;
   void clear_v1();
   static const int kV1FieldNumber = 1;
-  const ::Point3D& v1() const;
-  ::Point3D* mutable_v1();
-  ::Point3D* release_v1();
-  void set_allocated_v1(::Point3D* v1);
+  const ::structDefinitions::Point3D& v1() const;
+  ::structDefinitions::Point3D* mutable_v1();
+  ::structDefinitions::Point3D* release_v1();
+  void set_allocated_v1(::structDefinitions::Point3D* v1);
 
-  // required .Point3D v2 = 2;
+  // required .structDefinitions.Point3D v2 = 2;
   bool has_v2() const;
   void clear_v2();
   static const int kV2FieldNumber = 2;
-  const ::Point3D& v2() const;
-  ::Point3D* mutable_v2();
-  ::Point3D* release_v2();
-  void set_allocated_v2(::Point3D* v2);
+  const ::structDefinitions::Point3D& v2() const;
+  ::structDefinitions::Point3D* mutable_v2();
+  ::structDefinitions::Point3D* release_v2();
+  void set_allocated_v2(::structDefinitions::Point3D* v2);
 
-  // required .Point3D v3 = 3;
+  // required .structDefinitions.Point3D v3 = 3;
   bool has_v3() const;
   void clear_v3();
   static const int kV3FieldNumber = 3;
-  const ::Point3D& v3() const;
-  ::Point3D* mutable_v3();
-  ::Point3D* release_v3();
-  void set_allocated_v3(::Point3D* v3);
+  const ::structDefinitions::Point3D& v3() const;
+  ::structDefinitions::Point3D* mutable_v3();
+  ::structDefinitions::Point3D* release_v3();
+  void set_allocated_v3(::structDefinitions::Point3D* v3);
 
-  // required .Point3D v4 = 4;
+  // required .structDefinitions.Point3D v4 = 4;
   bool has_v4() const;
   void clear_v4();
   static const int kV4FieldNumber = 4;
-  const ::Point3D& v4() const;
-  ::Point3D* mutable_v4();
-  ::Point3D* release_v4();
-  void set_allocated_v4(::Point3D* v4);
+  const ::structDefinitions::Point3D& v4() const;
+  ::structDefinitions::Point3D* mutable_v4();
+  ::structDefinitions::Point3D* release_v4();
+  void set_allocated_v4(::structDefinitions::Point3D* v4);
 
-  // optional .Properties prop = 5;
+  // optional .structDefinitions.Properties prop = 5;
   bool has_prop() const;
   void clear_prop();
   static const int kPropFieldNumber = 5;
-  const ::Properties& prop() const;
-  ::Properties* mutable_prop();
-  ::Properties* release_prop();
-  void set_allocated_prop(::Properties* prop);
+  const ::structDefinitions::Properties& prop() const;
+  ::structDefinitions::Properties* mutable_prop();
+  ::structDefinitions::Properties* release_prop();
+  void set_allocated_prop(::structDefinitions::Properties* prop);
 
-  // @@protoc_insertion_point(class_scope:Block)
+  // @@protoc_insertion_point(class_scope:structDefinitions.Block)
  private:
   inline void set_has_v1();
   inline void clear_has_v1();
@@ -943,11 +945,11 @@ class Block : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::Point3D* v1_;
-  ::Point3D* v2_;
-  ::Point3D* v3_;
-  ::Point3D* v4_;
-  ::Properties* prop_;
+  ::structDefinitions::Point3D* v1_;
+  ::structDefinitions::Point3D* v2_;
+  ::structDefinitions::Point3D* v3_;
+  ::structDefinitions::Point3D* v4_;
+  ::structDefinitions::Properties* prop_;
   friend void  protobuf_AddDesc_structs_2eproto();
   friend void protobuf_AssignDesc_structs_2eproto();
   friend void protobuf_ShutdownFile_structs_2eproto();
@@ -957,7 +959,7 @@ class Block : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
 };
 // -------------------------------------------------------------------
 
-class MessageInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:MessageInfo) */ {
+class MessageInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.MessageInfo) */ {
  public:
   MessageInfo();
   virtual ~MessageInfo();
@@ -1059,14 +1061,14 @@ class MessageInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // accessors -------------------------------------------------------
 
-  // required .MessageInfo.Type type = 1;
+  // required .structDefinitions.MessageInfo.Type type = 1;
   bool has_type() const;
   void clear_type();
   static const int kTypeFieldNumber = 1;
-  ::MessageInfo_Type type() const;
-  void set_type(::MessageInfo_Type value);
+  ::structDefinitions::MessageInfo_Type type() const;
+  void set_type(::structDefinitions::MessageInfo_Type value);
 
-  // @@protoc_insertion_point(class_scope:MessageInfo)
+  // @@protoc_insertion_point(class_scope:structDefinitions.MessageInfo)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -1084,7 +1086,7 @@ class MessageInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
 };
 // -------------------------------------------------------------------
 
-class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Header) */ {
+class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Header) */ {
  public:
   Header();
   virtual ~Header();
@@ -1166,7 +1168,7 @@ class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   bool endofdata() const;
   void set_endofdata(bool value);
 
-  // @@protoc_insertion_point(class_scope:Header)
+  // @@protoc_insertion_point(class_scope:structDefinitions.Header)
  private:
   inline void set_has_sizeofdata();
   inline void clear_has_sizeofdata();
@@ -1190,7 +1192,7 @@ class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 };
 // -------------------------------------------------------------------
 
-class DataPackage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:DataPackage) */ {
+class DataPackage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.DataPackage) */ {
  public:
   DataPackage();
   virtual ~DataPackage();
@@ -1258,90 +1260,90 @@ class DataPackage : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // accessors -------------------------------------------------------
 
-  // repeated .Point2D points2D = 1;
+  // repeated .structDefinitions.Point2D points2D = 1;
   int points2d_size() const;
   void clear_points2d();
   static const int kPoints2DFieldNumber = 1;
-  const ::Point2D& points2d(int index) const;
-  ::Point2D* mutable_points2d(int index);
-  ::Point2D* add_points2d();
-  ::google::protobuf::RepeatedPtrField< ::Point2D >*
+  const ::structDefinitions::Point2D& points2d(int index) const;
+  ::structDefinitions::Point2D* mutable_points2d(int index);
+  ::structDefinitions::Point2D* add_points2d();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >*
       mutable_points2d();
-  const ::google::protobuf::RepeatedPtrField< ::Point2D >&
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >&
       points2d() const;
 
-  // repeated .Point3D points3D = 2;
+  // repeated .structDefinitions.Point3D points3D = 2;
   int points3d_size() const;
   void clear_points3d();
   static const int kPoints3DFieldNumber = 2;
-  const ::Point3D& points3d(int index) const;
-  ::Point3D* mutable_points3d(int index);
-  ::Point3D* add_points3d();
-  ::google::protobuf::RepeatedPtrField< ::Point3D >*
+  const ::structDefinitions::Point3D& points3d(int index) const;
+  ::structDefinitions::Point3D* mutable_points3d(int index);
+  ::structDefinitions::Point3D* add_points3d();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
       mutable_points3d();
-  const ::google::protobuf::RepeatedPtrField< ::Point3D >&
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
       points3d() const;
 
-  // repeated .Vertex vertexes = 3;
+  // repeated .structDefinitions.Vertex vertexes = 3;
   int vertexes_size() const;
   void clear_vertexes();
   static const int kVertexesFieldNumber = 3;
-  const ::Vertex& vertexes(int index) const;
-  ::Vertex* mutable_vertexes(int index);
-  ::Vertex* add_vertexes();
-  ::google::protobuf::RepeatedPtrField< ::Vertex >*
+  const ::structDefinitions::Vertex& vertexes(int index) const;
+  ::structDefinitions::Vertex* mutable_vertexes(int index);
+  ::structDefinitions::Vertex* add_vertexes();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >*
       mutable_vertexes();
-  const ::google::protobuf::RepeatedPtrField< ::Vertex >&
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >&
       vertexes() const;
 
-  // repeated .Edge edges = 4;
+  // repeated .structDefinitions.Edge edges = 4;
   int edges_size() const;
   void clear_edges();
   static const int kEdgesFieldNumber = 4;
-  const ::Edge& edges(int index) const;
-  ::Edge* mutable_edges(int index);
-  ::Edge* add_edges();
-  ::google::protobuf::RepeatedPtrField< ::Edge >*
+  const ::structDefinitions::Edge& edges(int index) const;
+  ::structDefinitions::Edge* mutable_edges(int index);
+  ::structDefinitions::Edge* add_edges();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >*
       mutable_edges();
-  const ::google::protobuf::RepeatedPtrField< ::Edge >&
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >&
       edges() const;
 
-  // repeated .TriangleFace faces = 5;
+  // repeated .structDefinitions.TriangleFace faces = 5;
   int faces_size() const;
   void clear_faces();
   static const int kFacesFieldNumber = 5;
-  const ::TriangleFace& faces(int index) const;
-  ::TriangleFace* mutable_faces(int index);
-  ::TriangleFace* add_faces();
-  ::google::protobuf::RepeatedPtrField< ::TriangleFace >*
+  const ::structDefinitions::TriangleFace& faces(int index) const;
+  ::structDefinitions::TriangleFace* mutable_faces(int index);
+  ::structDefinitions::TriangleFace* add_faces();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >*
       mutable_faces();
-  const ::google::protobuf::RepeatedPtrField< ::TriangleFace >&
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >&
       faces() const;
 
-  // repeated .Block blocks = 6;
+  // repeated .structDefinitions.Block blocks = 6;
   int blocks_size() const;
   void clear_blocks();
   static const int kBlocksFieldNumber = 6;
-  const ::Block& blocks(int index) const;
-  ::Block* mutable_blocks(int index);
-  ::Block* add_blocks();
-  ::google::protobuf::RepeatedPtrField< ::Block >*
+  const ::structDefinitions::Block& blocks(int index) const;
+  ::structDefinitions::Block* mutable_blocks(int index);
+  ::structDefinitions::Block* add_blocks();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >*
       mutable_blocks();
-  const ::google::protobuf::RepeatedPtrField< ::Block >&
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >&
       blocks() const;
 
-  // @@protoc_insertion_point(class_scope:DataPackage)
+  // @@protoc_insertion_point(class_scope:structDefinitions.DataPackage)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::Point2D > points2d_;
-  ::google::protobuf::RepeatedPtrField< ::Point3D > points3d_;
-  ::google::protobuf::RepeatedPtrField< ::Vertex > vertexes_;
-  ::google::protobuf::RepeatedPtrField< ::Edge > edges_;
-  ::google::protobuf::RepeatedPtrField< ::TriangleFace > faces_;
-  ::google::protobuf::RepeatedPtrField< ::Block > blocks_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D > points2d_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D > points3d_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex > vertexes_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge > edges_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace > faces_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block > blocks_;
   friend void  protobuf_AddDesc_structs_2eproto();
   friend void protobuf_AssignDesc_structs_2eproto();
   friend void protobuf_ShutdownFile_structs_2eproto();
@@ -1372,13 +1374,13 @@ inline void Properties::clear_quality() {
   clear_has_quality();
 }
 inline double Properties::quality() const {
-  // @@protoc_insertion_point(field_get:Properties.quality)
+  // @@protoc_insertion_point(field_get:structDefinitions.Properties.quality)
   return quality_;
 }
 inline void Properties::set_quality(double value) {
   set_has_quality();
   quality_ = value;
-  // @@protoc_insertion_point(field_set:Properties.quality)
+  // @@protoc_insertion_point(field_set:structDefinitions.Properties.quality)
 }
 
 // optional string label = 2;
@@ -1396,32 +1398,32 @@ inline void Properties::clear_label() {
   clear_has_label();
 }
 inline const ::std::string& Properties::label() const {
-  // @@protoc_insertion_point(field_get:Properties.label)
+  // @@protoc_insertion_point(field_get:structDefinitions.Properties.label)
   return label_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline void Properties::set_label(const ::std::string& value) {
   set_has_label();
   label_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:Properties.label)
+  // @@protoc_insertion_point(field_set:structDefinitions.Properties.label)
 }
 inline void Properties::set_label(const char* value) {
   set_has_label();
   label_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:Properties.label)
+  // @@protoc_insertion_point(field_set_char:structDefinitions.Properties.label)
 }
 inline void Properties::set_label(const char* value, size_t size) {
   set_has_label();
   label_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:Properties.label)
+  // @@protoc_insertion_point(field_set_pointer:structDefinitions.Properties.label)
 }
 inline ::std::string* Properties::mutable_label() {
   set_has_label();
-  // @@protoc_insertion_point(field_mutable:Properties.label)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Properties.label)
   return label_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 inline ::std::string* Properties::release_label() {
-  // @@protoc_insertion_point(field_release:Properties.label)
+  // @@protoc_insertion_point(field_release:structDefinitions.Properties.label)
   clear_has_label();
   return label_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
@@ -1432,7 +1434,7 @@ inline void Properties::set_allocated_label(::std::string* label) {
     clear_has_label();
   }
   label_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), label);
-  // @@protoc_insertion_point(field_set_allocated:Properties.label)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Properties.label)
 }
 
 // optional int32 groupId = 3;
@@ -1450,13 +1452,13 @@ inline void Properties::clear_groupid() {
   clear_has_groupid();
 }
 inline ::google::protobuf::int32 Properties::groupid() const {
-  // @@protoc_insertion_point(field_get:Properties.groupId)
+  // @@protoc_insertion_point(field_get:structDefinitions.Properties.groupId)
   return groupid_;
 }
 inline void Properties::set_groupid(::google::protobuf::int32 value) {
   set_has_groupid();
   groupid_ = value;
-  // @@protoc_insertion_point(field_set:Properties.groupId)
+  // @@protoc_insertion_point(field_set:structDefinitions.Properties.groupId)
 }
 
 // -------------------------------------------------------------------
@@ -1478,13 +1480,13 @@ inline void Point2D::clear_x() {
   clear_has_x();
 }
 inline double Point2D::x() const {
-  // @@protoc_insertion_point(field_get:Point2D.x)
+  // @@protoc_insertion_point(field_get:structDefinitions.Point2D.x)
   return x_;
 }
 inline void Point2D::set_x(double value) {
   set_has_x();
   x_ = value;
-  // @@protoc_insertion_point(field_set:Point2D.x)
+  // @@protoc_insertion_point(field_set:structDefinitions.Point2D.x)
 }
 
 // required double y = 2;
@@ -1502,16 +1504,16 @@ inline void Point2D::clear_y() {
   clear_has_y();
 }
 inline double Point2D::y() const {
-  // @@protoc_insertion_point(field_get:Point2D.y)
+  // @@protoc_insertion_point(field_get:structDefinitions.Point2D.y)
   return y_;
 }
 inline void Point2D::set_y(double value) {
   set_has_y();
   y_ = value;
-  // @@protoc_insertion_point(field_set:Point2D.y)
+  // @@protoc_insertion_point(field_set:structDefinitions.Point2D.y)
 }
 
-// optional .Properties prop = 3;
+// optional .structDefinitions.Properties prop = 3;
 inline bool Point2D::has_prop() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1522,29 +1524,29 @@ inline void Point2D::clear_has_prop() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void Point2D::clear_prop() {
-  if (prop_ != NULL) prop_->::Properties::Clear();
+  if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();
   clear_has_prop();
 }
-inline const ::Properties& Point2D::prop() const {
-  // @@protoc_insertion_point(field_get:Point2D.prop)
+inline const ::structDefinitions::Properties& Point2D::prop() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Point2D.prop)
   return prop_ != NULL ? *prop_ : *default_instance_->prop_;
 }
-inline ::Properties* Point2D::mutable_prop() {
+inline ::structDefinitions::Properties* Point2D::mutable_prop() {
   set_has_prop();
   if (prop_ == NULL) {
-    prop_ = new ::Properties;
+    prop_ = new ::structDefinitions::Properties;
   }
-  // @@protoc_insertion_point(field_mutable:Point2D.prop)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Point2D.prop)
   return prop_;
 }
-inline ::Properties* Point2D::release_prop() {
-  // @@protoc_insertion_point(field_release:Point2D.prop)
+inline ::structDefinitions::Properties* Point2D::release_prop() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Point2D.prop)
   clear_has_prop();
-  ::Properties* temp = prop_;
+  ::structDefinitions::Properties* temp = prop_;
   prop_ = NULL;
   return temp;
 }
-inline void Point2D::set_allocated_prop(::Properties* prop) {
+inline void Point2D::set_allocated_prop(::structDefinitions::Properties* prop) {
   delete prop_;
   prop_ = prop;
   if (prop) {
@@ -1552,7 +1554,7 @@ inline void Point2D::set_allocated_prop(::Properties* prop) {
   } else {
     clear_has_prop();
   }
-  // @@protoc_insertion_point(field_set_allocated:Point2D.prop)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Point2D.prop)
 }
 
 // -------------------------------------------------------------------
@@ -1574,13 +1576,13 @@ inline void Point3D::clear_x() {
   clear_has_x();
 }
 inline double Point3D::x() const {
-  // @@protoc_insertion_point(field_get:Point3D.x)
+  // @@protoc_insertion_point(field_get:structDefinitions.Point3D.x)
   return x_;
 }
 inline void Point3D::set_x(double value) {
   set_has_x();
   x_ = value;
-  // @@protoc_insertion_point(field_set:Point3D.x)
+  // @@protoc_insertion_point(field_set:structDefinitions.Point3D.x)
 }
 
 // required double y = 2;
@@ -1598,13 +1600,13 @@ inline void Point3D::clear_y() {
   clear_has_y();
 }
 inline double Point3D::y() const {
-  // @@protoc_insertion_point(field_get:Point3D.y)
+  // @@protoc_insertion_point(field_get:structDefinitions.Point3D.y)
   return y_;
 }
 inline void Point3D::set_y(double value) {
   set_has_y();
   y_ = value;
-  // @@protoc_insertion_point(field_set:Point3D.y)
+  // @@protoc_insertion_point(field_set:structDefinitions.Point3D.y)
 }
 
 // required double z = 3;
@@ -1622,16 +1624,16 @@ inline void Point3D::clear_z() {
   clear_has_z();
 }
 inline double Point3D::z() const {
-  // @@protoc_insertion_point(field_get:Point3D.z)
+  // @@protoc_insertion_point(field_get:structDefinitions.Point3D.z)
   return z_;
 }
 inline void Point3D::set_z(double value) {
   set_has_z();
   z_ = value;
-  // @@protoc_insertion_point(field_set:Point3D.z)
+  // @@protoc_insertion_point(field_set:structDefinitions.Point3D.z)
 }
 
-// optional .Properties prop = 4;
+// optional .structDefinitions.Properties prop = 4;
 inline bool Point3D::has_prop() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -1642,29 +1644,29 @@ inline void Point3D::clear_has_prop() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void Point3D::clear_prop() {
-  if (prop_ != NULL) prop_->::Properties::Clear();
+  if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();
   clear_has_prop();
 }
-inline const ::Properties& Point3D::prop() const {
-  // @@protoc_insertion_point(field_get:Point3D.prop)
+inline const ::structDefinitions::Properties& Point3D::prop() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Point3D.prop)
   return prop_ != NULL ? *prop_ : *default_instance_->prop_;
 }
-inline ::Properties* Point3D::mutable_prop() {
+inline ::structDefinitions::Properties* Point3D::mutable_prop() {
   set_has_prop();
   if (prop_ == NULL) {
-    prop_ = new ::Properties;
+    prop_ = new ::structDefinitions::Properties;
   }
-  // @@protoc_insertion_point(field_mutable:Point3D.prop)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Point3D.prop)
   return prop_;
 }
-inline ::Properties* Point3D::release_prop() {
-  // @@protoc_insertion_point(field_release:Point3D.prop)
+inline ::structDefinitions::Properties* Point3D::release_prop() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Point3D.prop)
   clear_has_prop();
-  ::Properties* temp = prop_;
+  ::structDefinitions::Properties* temp = prop_;
   prop_ = NULL;
   return temp;
 }
-inline void Point3D::set_allocated_prop(::Properties* prop) {
+inline void Point3D::set_allocated_prop(::structDefinitions::Properties* prop) {
   delete prop_;
   prop_ = prop;
   if (prop) {
@@ -1672,14 +1674,14 @@ inline void Point3D::set_allocated_prop(::Properties* prop) {
   } else {
     clear_has_prop();
   }
-  // @@protoc_insertion_point(field_set_allocated:Point3D.prop)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Point3D.prop)
 }
 
 // -------------------------------------------------------------------
 
 // Vertex
 
-// required .Point3D point = 1;
+// required .structDefinitions.Point3D point = 1;
 inline bool Vertex::has_point() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1690,29 +1692,29 @@ inline void Vertex::clear_has_point() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void Vertex::clear_point() {
-  if (point_ != NULL) point_->::Point3D::Clear();
+  if (point_ != NULL) point_->::structDefinitions::Point3D::Clear();
   clear_has_point();
 }
-inline const ::Point3D& Vertex::point() const {
-  // @@protoc_insertion_point(field_get:Vertex.point)
+inline const ::structDefinitions::Point3D& Vertex::point() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Vertex.point)
   return point_ != NULL ? *point_ : *default_instance_->point_;
 }
-inline ::Point3D* Vertex::mutable_point() {
+inline ::structDefinitions::Point3D* Vertex::mutable_point() {
   set_has_point();
   if (point_ == NULL) {
-    point_ = new ::Point3D;
+    point_ = new ::structDefinitions::Point3D;
   }
-  // @@protoc_insertion_point(field_mutable:Vertex.point)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Vertex.point)
   return point_;
 }
-inline ::Point3D* Vertex::release_point() {
-  // @@protoc_insertion_point(field_release:Vertex.point)
+inline ::structDefinitions::Point3D* Vertex::release_point() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Vertex.point)
   clear_has_point();
-  ::Point3D* temp = point_;
+  ::structDefinitions::Point3D* temp = point_;
   point_ = NULL;
   return temp;
 }
-inline void Vertex::set_allocated_point(::Point3D* point) {
+inline void Vertex::set_allocated_point(::structDefinitions::Point3D* point) {
   delete point_;
   point_ = point;
   if (point) {
@@ -1720,7 +1722,7 @@ inline void Vertex::set_allocated_point(::Point3D* point) {
   } else {
     clear_has_point();
   }
-  // @@protoc_insertion_point(field_set_allocated:Vertex.point)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Vertex.point)
 }
 
 // required double number = 2;
@@ -1738,16 +1740,16 @@ inline void Vertex::clear_number() {
   clear_has_number();
 }
 inline double Vertex::number() const {
-  // @@protoc_insertion_point(field_get:Vertex.number)
+  // @@protoc_insertion_point(field_get:structDefinitions.Vertex.number)
   return number_;
 }
 inline void Vertex::set_number(double value) {
   set_has_number();
   number_ = value;
-  // @@protoc_insertion_point(field_set:Vertex.number)
+  // @@protoc_insertion_point(field_set:structDefinitions.Vertex.number)
 }
 
-// optional .Properties prop = 3;
+// optional .structDefinitions.Properties prop = 3;
 inline bool Vertex::has_prop() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1758,29 +1760,29 @@ inline void Vertex::clear_has_prop() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void Vertex::clear_prop() {
-  if (prop_ != NULL) prop_->::Properties::Clear();
+  if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();
   clear_has_prop();
 }
-inline const ::Properties& Vertex::prop() const {
-  // @@protoc_insertion_point(field_get:Vertex.prop)
+inline const ::structDefinitions::Properties& Vertex::prop() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Vertex.prop)
   return prop_ != NULL ? *prop_ : *default_instance_->prop_;
 }
-inline ::Properties* Vertex::mutable_prop() {
+inline ::structDefinitions::Properties* Vertex::mutable_prop() {
   set_has_prop();
   if (prop_ == NULL) {
-    prop_ = new ::Properties;
+    prop_ = new ::structDefinitions::Properties;
   }
-  // @@protoc_insertion_point(field_mutable:Vertex.prop)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Vertex.prop)
   return prop_;
 }
-inline ::Properties* Vertex::release_prop() {
-  // @@protoc_insertion_point(field_release:Vertex.prop)
+inline ::structDefinitions::Properties* Vertex::release_prop() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Vertex.prop)
   clear_has_prop();
-  ::Properties* temp = prop_;
+  ::structDefinitions::Properties* temp = prop_;
   prop_ = NULL;
   return temp;
 }
-inline void Vertex::set_allocated_prop(::Properties* prop) {
+inline void Vertex::set_allocated_prop(::structDefinitions::Properties* prop) {
   delete prop_;
   prop_ = prop;
   if (prop) {
@@ -1788,14 +1790,14 @@ inline void Vertex::set_allocated_prop(::Properties* prop) {
   } else {
     clear_has_prop();
   }
-  // @@protoc_insertion_point(field_set_allocated:Vertex.prop)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Vertex.prop)
 }
 
 // -------------------------------------------------------------------
 
 // Edge
 
-// required .Point3D v1 = 1;
+// required .structDefinitions.Point3D v1 = 1;
 inline bool Edge::has_v1() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1806,29 +1808,29 @@ inline void Edge::clear_has_v1() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void Edge::clear_v1() {
-  if (v1_ != NULL) v1_->::Point3D::Clear();
+  if (v1_ != NULL) v1_->::structDefinitions::Point3D::Clear();
   clear_has_v1();
 }
-inline const ::Point3D& Edge::v1() const {
-  // @@protoc_insertion_point(field_get:Edge.v1)
+inline const ::structDefinitions::Point3D& Edge::v1() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Edge.v1)
   return v1_ != NULL ? *v1_ : *default_instance_->v1_;
 }
-inline ::Point3D* Edge::mutable_v1() {
+inline ::structDefinitions::Point3D* Edge::mutable_v1() {
   set_has_v1();
   if (v1_ == NULL) {
-    v1_ = new ::Point3D;
+    v1_ = new ::structDefinitions::Point3D;
   }
-  // @@protoc_insertion_point(field_mutable:Edge.v1)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Edge.v1)
   return v1_;
 }
-inline ::Point3D* Edge::release_v1() {
-  // @@protoc_insertion_point(field_release:Edge.v1)
+inline ::structDefinitions::Point3D* Edge::release_v1() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Edge.v1)
   clear_has_v1();
-  ::Point3D* temp = v1_;
+  ::structDefinitions::Point3D* temp = v1_;
   v1_ = NULL;
   return temp;
 }
-inline void Edge::set_allocated_v1(::Point3D* v1) {
+inline void Edge::set_allocated_v1(::structDefinitions::Point3D* v1) {
   delete v1_;
   v1_ = v1;
   if (v1) {
@@ -1836,10 +1838,10 @@ inline void Edge::set_allocated_v1(::Point3D* v1) {
   } else {
     clear_has_v1();
   }
-  // @@protoc_insertion_point(field_set_allocated:Edge.v1)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Edge.v1)
 }
 
-// required .Point3D v2 = 2;
+// required .structDefinitions.Point3D v2 = 2;
 inline bool Edge::has_v2() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1850,29 +1852,29 @@ inline void Edge::clear_has_v2() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void Edge::clear_v2() {
-  if (v2_ != NULL) v2_->::Point3D::Clear();
+  if (v2_ != NULL) v2_->::structDefinitions::Point3D::Clear();
   clear_has_v2();
 }
-inline const ::Point3D& Edge::v2() const {
-  // @@protoc_insertion_point(field_get:Edge.v2)
+inline const ::structDefinitions::Point3D& Edge::v2() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Edge.v2)
   return v2_ != NULL ? *v2_ : *default_instance_->v2_;
 }
-inline ::Point3D* Edge::mutable_v2() {
+inline ::structDefinitions::Point3D* Edge::mutable_v2() {
   set_has_v2();
   if (v2_ == NULL) {
-    v2_ = new ::Point3D;
+    v2_ = new ::structDefinitions::Point3D;
   }
-  // @@protoc_insertion_point(field_mutable:Edge.v2)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Edge.v2)
   return v2_;
 }
-inline ::Point3D* Edge::release_v2() {
-  // @@protoc_insertion_point(field_release:Edge.v2)
+inline ::structDefinitions::Point3D* Edge::release_v2() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Edge.v2)
   clear_has_v2();
-  ::Point3D* temp = v2_;
+  ::structDefinitions::Point3D* temp = v2_;
   v2_ = NULL;
   return temp;
 }
-inline void Edge::set_allocated_v2(::Point3D* v2) {
+inline void Edge::set_allocated_v2(::structDefinitions::Point3D* v2) {
   delete v2_;
   v2_ = v2;
   if (v2) {
@@ -1880,10 +1882,10 @@ inline void Edge::set_allocated_v2(::Point3D* v2) {
   } else {
     clear_has_v2();
   }
-  // @@protoc_insertion_point(field_set_allocated:Edge.v2)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Edge.v2)
 }
 
-// optional .Properties prop = 3;
+// optional .structDefinitions.Properties prop = 3;
 inline bool Edge::has_prop() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1894,29 +1896,29 @@ inline void Edge::clear_has_prop() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void Edge::clear_prop() {
-  if (prop_ != NULL) prop_->::Properties::Clear();
+  if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();
   clear_has_prop();
 }
-inline const ::Properties& Edge::prop() const {
-  // @@protoc_insertion_point(field_get:Edge.prop)
+inline const ::structDefinitions::Properties& Edge::prop() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Edge.prop)
   return prop_ != NULL ? *prop_ : *default_instance_->prop_;
 }
-inline ::Properties* Edge::mutable_prop() {
+inline ::structDefinitions::Properties* Edge::mutable_prop() {
   set_has_prop();
   if (prop_ == NULL) {
-    prop_ = new ::Properties;
+    prop_ = new ::structDefinitions::Properties;
   }
-  // @@protoc_insertion_point(field_mutable:Edge.prop)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Edge.prop)
   return prop_;
 }
-inline ::Properties* Edge::release_prop() {
-  // @@protoc_insertion_point(field_release:Edge.prop)
+inline ::structDefinitions::Properties* Edge::release_prop() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Edge.prop)
   clear_has_prop();
-  ::Properties* temp = prop_;
+  ::structDefinitions::Properties* temp = prop_;
   prop_ = NULL;
   return temp;
 }
-inline void Edge::set_allocated_prop(::Properties* prop) {
+inline void Edge::set_allocated_prop(::structDefinitions::Properties* prop) {
   delete prop_;
   prop_ = prop;
   if (prop) {
@@ -1924,14 +1926,14 @@ inline void Edge::set_allocated_prop(::Properties* prop) {
   } else {
     clear_has_prop();
   }
-  // @@protoc_insertion_point(field_set_allocated:Edge.prop)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Edge.prop)
 }
 
 // -------------------------------------------------------------------
 
 // TriangleFace
 
-// required .Point3D v1 = 1;
+// required .structDefinitions.Point3D v1 = 1;
 inline bool TriangleFace::has_v1() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1942,29 +1944,29 @@ inline void TriangleFace::clear_has_v1() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void TriangleFace::clear_v1() {
-  if (v1_ != NULL) v1_->::Point3D::Clear();
+  if (v1_ != NULL) v1_->::structDefinitions::Point3D::Clear();
   clear_has_v1();
 }
-inline const ::Point3D& TriangleFace::v1() const {
-  // @@protoc_insertion_point(field_get:TriangleFace.v1)
+inline const ::structDefinitions::Point3D& TriangleFace::v1() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.TriangleFace.v1)
   return v1_ != NULL ? *v1_ : *default_instance_->v1_;
 }
-inline ::Point3D* TriangleFace::mutable_v1() {
+inline ::structDefinitions::Point3D* TriangleFace::mutable_v1() {
   set_has_v1();
   if (v1_ == NULL) {
-    v1_ = new ::Point3D;
+    v1_ = new ::structDefinitions::Point3D;
   }
-  // @@protoc_insertion_point(field_mutable:TriangleFace.v1)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.TriangleFace.v1)
   return v1_;
 }
-inline ::Point3D* TriangleFace::release_v1() {
-  // @@protoc_insertion_point(field_release:TriangleFace.v1)
+inline ::structDefinitions::Point3D* TriangleFace::release_v1() {
+  // @@protoc_insertion_point(field_release:structDefinitions.TriangleFace.v1)
   clear_has_v1();
-  ::Point3D* temp = v1_;
+  ::structDefinitions::Point3D* temp = v1_;
   v1_ = NULL;
   return temp;
 }
-inline void TriangleFace::set_allocated_v1(::Point3D* v1) {
+inline void TriangleFace::set_allocated_v1(::structDefinitions::Point3D* v1) {
   delete v1_;
   v1_ = v1;
   if (v1) {
@@ -1972,10 +1974,10 @@ inline void TriangleFace::set_allocated_v1(::Point3D* v1) {
   } else {
     clear_has_v1();
   }
-  // @@protoc_insertion_point(field_set_allocated:TriangleFace.v1)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.TriangleFace.v1)
 }
 
-// required .Point3D v2 = 2;
+// required .structDefinitions.Point3D v2 = 2;
 inline bool TriangleFace::has_v2() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1986,29 +1988,29 @@ inline void TriangleFace::clear_has_v2() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void TriangleFace::clear_v2() {
-  if (v2_ != NULL) v2_->::Point3D::Clear();
+  if (v2_ != NULL) v2_->::structDefinitions::Point3D::Clear();
   clear_has_v2();
 }
-inline const ::Point3D& TriangleFace::v2() const {
-  // @@protoc_insertion_point(field_get:TriangleFace.v2)
+inline const ::structDefinitions::Point3D& TriangleFace::v2() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.TriangleFace.v2)
   return v2_ != NULL ? *v2_ : *default_instance_->v2_;
 }
-inline ::Point3D* TriangleFace::mutable_v2() {
+inline ::structDefinitions::Point3D* TriangleFace::mutable_v2() {
   set_has_v2();
   if (v2_ == NULL) {
-    v2_ = new ::Point3D;
+    v2_ = new ::structDefinitions::Point3D;
   }
-  // @@protoc_insertion_point(field_mutable:TriangleFace.v2)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.TriangleFace.v2)
   return v2_;
 }
-inline ::Point3D* TriangleFace::release_v2() {
-  // @@protoc_insertion_point(field_release:TriangleFace.v2)
+inline ::structDefinitions::Point3D* TriangleFace::release_v2() {
+  // @@protoc_insertion_point(field_release:structDefinitions.TriangleFace.v2)
   clear_has_v2();
-  ::Point3D* temp = v2_;
+  ::structDefinitions::Point3D* temp = v2_;
   v2_ = NULL;
   return temp;
 }
-inline void TriangleFace::set_allocated_v2(::Point3D* v2) {
+inline void TriangleFace::set_allocated_v2(::structDefinitions::Point3D* v2) {
   delete v2_;
   v2_ = v2;
   if (v2) {
@@ -2016,10 +2018,10 @@ inline void TriangleFace::set_allocated_v2(::Point3D* v2) {
   } else {
     clear_has_v2();
   }
-  // @@protoc_insertion_point(field_set_allocated:TriangleFace.v2)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.TriangleFace.v2)
 }
 
-// required .Point3D v3 = 3;
+// required .structDefinitions.Point3D v3 = 3;
 inline bool TriangleFace::has_v3() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -2030,29 +2032,29 @@ inline void TriangleFace::clear_has_v3() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void TriangleFace::clear_v3() {
-  if (v3_ != NULL) v3_->::Point3D::Clear();
+  if (v3_ != NULL) v3_->::structDefinitions::Point3D::Clear();
   clear_has_v3();
 }
-inline const ::Point3D& TriangleFace::v3() const {
-  // @@protoc_insertion_point(field_get:TriangleFace.v3)
+inline const ::structDefinitions::Point3D& TriangleFace::v3() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.TriangleFace.v3)
   return v3_ != NULL ? *v3_ : *default_instance_->v3_;
 }
-inline ::Point3D* TriangleFace::mutable_v3() {
+inline ::structDefinitions::Point3D* TriangleFace::mutable_v3() {
   set_has_v3();
   if (v3_ == NULL) {
-    v3_ = new ::Point3D;
+    v3_ = new ::structDefinitions::Point3D;
   }
-  // @@protoc_insertion_point(field_mutable:TriangleFace.v3)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.TriangleFace.v3)
   return v3_;
 }
-inline ::Point3D* TriangleFace::release_v3() {
-  // @@protoc_insertion_point(field_release:TriangleFace.v3)
+inline ::structDefinitions::Point3D* TriangleFace::release_v3() {
+  // @@protoc_insertion_point(field_release:structDefinitions.TriangleFace.v3)
   clear_has_v3();
-  ::Point3D* temp = v3_;
+  ::structDefinitions::Point3D* temp = v3_;
   v3_ = NULL;
   return temp;
 }
-inline void TriangleFace::set_allocated_v3(::Point3D* v3) {
+inline void TriangleFace::set_allocated_v3(::structDefinitions::Point3D* v3) {
   delete v3_;
   v3_ = v3;
   if (v3) {
@@ -2060,10 +2062,10 @@ inline void TriangleFace::set_allocated_v3(::Point3D* v3) {
   } else {
     clear_has_v3();
   }
-  // @@protoc_insertion_point(field_set_allocated:TriangleFace.v3)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.TriangleFace.v3)
 }
 
-// optional .Properties prop = 4;
+// optional .structDefinitions.Properties prop = 4;
 inline bool TriangleFace::has_prop() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -2074,29 +2076,29 @@ inline void TriangleFace::clear_has_prop() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void TriangleFace::clear_prop() {
-  if (prop_ != NULL) prop_->::Properties::Clear();
+  if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();
   clear_has_prop();
 }
-inline const ::Properties& TriangleFace::prop() const {
-  // @@protoc_insertion_point(field_get:TriangleFace.prop)
+inline const ::structDefinitions::Properties& TriangleFace::prop() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.TriangleFace.prop)
   return prop_ != NULL ? *prop_ : *default_instance_->prop_;
 }
-inline ::Properties* TriangleFace::mutable_prop() {
+inline ::structDefinitions::Properties* TriangleFace::mutable_prop() {
   set_has_prop();
   if (prop_ == NULL) {
-    prop_ = new ::Properties;
+    prop_ = new ::structDefinitions::Properties;
   }
-  // @@protoc_insertion_point(field_mutable:TriangleFace.prop)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.TriangleFace.prop)
   return prop_;
 }
-inline ::Properties* TriangleFace::release_prop() {
-  // @@protoc_insertion_point(field_release:TriangleFace.prop)
+inline ::structDefinitions::Properties* TriangleFace::release_prop() {
+  // @@protoc_insertion_point(field_release:structDefinitions.TriangleFace.prop)
   clear_has_prop();
-  ::Properties* temp = prop_;
+  ::structDefinitions::Properties* temp = prop_;
   prop_ = NULL;
   return temp;
 }
-inline void TriangleFace::set_allocated_prop(::Properties* prop) {
+inline void TriangleFace::set_allocated_prop(::structDefinitions::Properties* prop) {
   delete prop_;
   prop_ = prop;
   if (prop) {
@@ -2104,14 +2106,14 @@ inline void TriangleFace::set_allocated_prop(::Properties* prop) {
   } else {
     clear_has_prop();
   }
-  // @@protoc_insertion_point(field_set_allocated:TriangleFace.prop)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.TriangleFace.prop)
 }
 
 // -------------------------------------------------------------------
 
 // Block
 
-// required .Point3D v1 = 1;
+// required .structDefinitions.Point3D v1 = 1;
 inline bool Block::has_v1() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2122,29 +2124,29 @@ inline void Block::clear_has_v1() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void Block::clear_v1() {
-  if (v1_ != NULL) v1_->::Point3D::Clear();
+  if (v1_ != NULL) v1_->::structDefinitions::Point3D::Clear();
   clear_has_v1();
 }
-inline const ::Point3D& Block::v1() const {
-  // @@protoc_insertion_point(field_get:Block.v1)
+inline const ::structDefinitions::Point3D& Block::v1() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Block.v1)
   return v1_ != NULL ? *v1_ : *default_instance_->v1_;
 }
-inline ::Point3D* Block::mutable_v1() {
+inline ::structDefinitions::Point3D* Block::mutable_v1() {
   set_has_v1();
   if (v1_ == NULL) {
-    v1_ = new ::Point3D;
+    v1_ = new ::structDefinitions::Point3D;
   }
-  // @@protoc_insertion_point(field_mutable:Block.v1)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Block.v1)
   return v1_;
 }
-inline ::Point3D* Block::release_v1() {
-  // @@protoc_insertion_point(field_release:Block.v1)
+inline ::structDefinitions::Point3D* Block::release_v1() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Block.v1)
   clear_has_v1();
-  ::Point3D* temp = v1_;
+  ::structDefinitions::Point3D* temp = v1_;
   v1_ = NULL;
   return temp;
 }
-inline void Block::set_allocated_v1(::Point3D* v1) {
+inline void Block::set_allocated_v1(::structDefinitions::Point3D* v1) {
   delete v1_;
   v1_ = v1;
   if (v1) {
@@ -2152,10 +2154,10 @@ inline void Block::set_allocated_v1(::Point3D* v1) {
   } else {
     clear_has_v1();
   }
-  // @@protoc_insertion_point(field_set_allocated:Block.v1)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Block.v1)
 }
 
-// required .Point3D v2 = 2;
+// required .structDefinitions.Point3D v2 = 2;
 inline bool Block::has_v2() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -2166,29 +2168,29 @@ inline void Block::clear_has_v2() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void Block::clear_v2() {
-  if (v2_ != NULL) v2_->::Point3D::Clear();
+  if (v2_ != NULL) v2_->::structDefinitions::Point3D::Clear();
   clear_has_v2();
 }
-inline const ::Point3D& Block::v2() const {
-  // @@protoc_insertion_point(field_get:Block.v2)
+inline const ::structDefinitions::Point3D& Block::v2() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Block.v2)
   return v2_ != NULL ? *v2_ : *default_instance_->v2_;
 }
-inline ::Point3D* Block::mutable_v2() {
+inline ::structDefinitions::Point3D* Block::mutable_v2() {
   set_has_v2();
   if (v2_ == NULL) {
-    v2_ = new ::Point3D;
+    v2_ = new ::structDefinitions::Point3D;
   }
-  // @@protoc_insertion_point(field_mutable:Block.v2)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Block.v2)
   return v2_;
 }
-inline ::Point3D* Block::release_v2() {
-  // @@protoc_insertion_point(field_release:Block.v2)
+inline ::structDefinitions::Point3D* Block::release_v2() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Block.v2)
   clear_has_v2();
-  ::Point3D* temp = v2_;
+  ::structDefinitions::Point3D* temp = v2_;
   v2_ = NULL;
   return temp;
 }
-inline void Block::set_allocated_v2(::Point3D* v2) {
+inline void Block::set_allocated_v2(::structDefinitions::Point3D* v2) {
   delete v2_;
   v2_ = v2;
   if (v2) {
@@ -2196,10 +2198,10 @@ inline void Block::set_allocated_v2(::Point3D* v2) {
   } else {
     clear_has_v2();
   }
-  // @@protoc_insertion_point(field_set_allocated:Block.v2)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Block.v2)
 }
 
-// required .Point3D v3 = 3;
+// required .structDefinitions.Point3D v3 = 3;
 inline bool Block::has_v3() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -2210,29 +2212,29 @@ inline void Block::clear_has_v3() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void Block::clear_v3() {
-  if (v3_ != NULL) v3_->::Point3D::Clear();
+  if (v3_ != NULL) v3_->::structDefinitions::Point3D::Clear();
   clear_has_v3();
 }
-inline const ::Point3D& Block::v3() const {
-  // @@protoc_insertion_point(field_get:Block.v3)
+inline const ::structDefinitions::Point3D& Block::v3() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Block.v3)
   return v3_ != NULL ? *v3_ : *default_instance_->v3_;
 }
-inline ::Point3D* Block::mutable_v3() {
+inline ::structDefinitions::Point3D* Block::mutable_v3() {
   set_has_v3();
   if (v3_ == NULL) {
-    v3_ = new ::Point3D;
+    v3_ = new ::structDefinitions::Point3D;
   }
-  // @@protoc_insertion_point(field_mutable:Block.v3)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Block.v3)
   return v3_;
 }
-inline ::Point3D* Block::release_v3() {
-  // @@protoc_insertion_point(field_release:Block.v3)
+inline ::structDefinitions::Point3D* Block::release_v3() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Block.v3)
   clear_has_v3();
-  ::Point3D* temp = v3_;
+  ::structDefinitions::Point3D* temp = v3_;
   v3_ = NULL;
   return temp;
 }
-inline void Block::set_allocated_v3(::Point3D* v3) {
+inline void Block::set_allocated_v3(::structDefinitions::Point3D* v3) {
   delete v3_;
   v3_ = v3;
   if (v3) {
@@ -2240,10 +2242,10 @@ inline void Block::set_allocated_v3(::Point3D* v3) {
   } else {
     clear_has_v3();
   }
-  // @@protoc_insertion_point(field_set_allocated:Block.v3)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Block.v3)
 }
 
-// required .Point3D v4 = 4;
+// required .structDefinitions.Point3D v4 = 4;
 inline bool Block::has_v4() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -2254,29 +2256,29 @@ inline void Block::clear_has_v4() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void Block::clear_v4() {
-  if (v4_ != NULL) v4_->::Point3D::Clear();
+  if (v4_ != NULL) v4_->::structDefinitions::Point3D::Clear();
   clear_has_v4();
 }
-inline const ::Point3D& Block::v4() const {
-  // @@protoc_insertion_point(field_get:Block.v4)
+inline const ::structDefinitions::Point3D& Block::v4() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Block.v4)
   return v4_ != NULL ? *v4_ : *default_instance_->v4_;
 }
-inline ::Point3D* Block::mutable_v4() {
+inline ::structDefinitions::Point3D* Block::mutable_v4() {
   set_has_v4();
   if (v4_ == NULL) {
-    v4_ = new ::Point3D;
+    v4_ = new ::structDefinitions::Point3D;
   }
-  // @@protoc_insertion_point(field_mutable:Block.v4)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Block.v4)
   return v4_;
 }
-inline ::Point3D* Block::release_v4() {
-  // @@protoc_insertion_point(field_release:Block.v4)
+inline ::structDefinitions::Point3D* Block::release_v4() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Block.v4)
   clear_has_v4();
-  ::Point3D* temp = v4_;
+  ::structDefinitions::Point3D* temp = v4_;
   v4_ = NULL;
   return temp;
 }
-inline void Block::set_allocated_v4(::Point3D* v4) {
+inline void Block::set_allocated_v4(::structDefinitions::Point3D* v4) {
   delete v4_;
   v4_ = v4;
   if (v4) {
@@ -2284,10 +2286,10 @@ inline void Block::set_allocated_v4(::Point3D* v4) {
   } else {
     clear_has_v4();
   }
-  // @@protoc_insertion_point(field_set_allocated:Block.v4)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Block.v4)
 }
 
-// optional .Properties prop = 5;
+// optional .structDefinitions.Properties prop = 5;
 inline bool Block::has_prop() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -2298,29 +2300,29 @@ inline void Block::clear_has_prop() {
   _has_bits_[0] &= ~0x00000010u;
 }
 inline void Block::clear_prop() {
-  if (prop_ != NULL) prop_->::Properties::Clear();
+  if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();
   clear_has_prop();
 }
-inline const ::Properties& Block::prop() const {
-  // @@protoc_insertion_point(field_get:Block.prop)
+inline const ::structDefinitions::Properties& Block::prop() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Block.prop)
   return prop_ != NULL ? *prop_ : *default_instance_->prop_;
 }
-inline ::Properties* Block::mutable_prop() {
+inline ::structDefinitions::Properties* Block::mutable_prop() {
   set_has_prop();
   if (prop_ == NULL) {
-    prop_ = new ::Properties;
+    prop_ = new ::structDefinitions::Properties;
   }
-  // @@protoc_insertion_point(field_mutable:Block.prop)
+  // @@protoc_insertion_point(field_mutable:structDefinitions.Block.prop)
   return prop_;
 }
-inline ::Properties* Block::release_prop() {
-  // @@protoc_insertion_point(field_release:Block.prop)
+inline ::structDefinitions::Properties* Block::release_prop() {
+  // @@protoc_insertion_point(field_release:structDefinitions.Block.prop)
   clear_has_prop();
-  ::Properties* temp = prop_;
+  ::structDefinitions::Properties* temp = prop_;
   prop_ = NULL;
   return temp;
 }
-inline void Block::set_allocated_prop(::Properties* prop) {
+inline void Block::set_allocated_prop(::structDefinitions::Properties* prop) {
   delete prop_;
   prop_ = prop;
   if (prop) {
@@ -2328,14 +2330,14 @@ inline void Block::set_allocated_prop(::Properties* prop) {
   } else {
     clear_has_prop();
   }
-  // @@protoc_insertion_point(field_set_allocated:Block.prop)
+  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Block.prop)
 }
 
 // -------------------------------------------------------------------
 
 // MessageInfo
 
-// required .MessageInfo.Type type = 1;
+// required .structDefinitions.MessageInfo.Type type = 1;
 inline bool MessageInfo::has_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2349,15 +2351,15 @@ inline void MessageInfo::clear_type() {
   type_ = 1;
   clear_has_type();
 }
-inline ::MessageInfo_Type MessageInfo::type() const {
-  // @@protoc_insertion_point(field_get:MessageInfo.type)
-  return static_cast< ::MessageInfo_Type >(type_);
+inline ::structDefinitions::MessageInfo_Type MessageInfo::type() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.MessageInfo.type)
+  return static_cast< ::structDefinitions::MessageInfo_Type >(type_);
 }
-inline void MessageInfo::set_type(::MessageInfo_Type value) {
-  assert(::MessageInfo_Type_IsValid(value));
+inline void MessageInfo::set_type(::structDefinitions::MessageInfo_Type value) {
+  assert(::structDefinitions::MessageInfo_Type_IsValid(value));
   set_has_type();
   type_ = value;
-  // @@protoc_insertion_point(field_set:MessageInfo.type)
+  // @@protoc_insertion_point(field_set:structDefinitions.MessageInfo.type)
 }
 
 // -------------------------------------------------------------------
@@ -2379,13 +2381,13 @@ inline void Header::clear_sizeofdata() {
   clear_has_sizeofdata();
 }
 inline ::google::protobuf::int32 Header::sizeofdata() const {
-  // @@protoc_insertion_point(field_get:Header.sizeOfData)
+  // @@protoc_insertion_point(field_get:structDefinitions.Header.sizeOfData)
   return sizeofdata_;
 }
 inline void Header::set_sizeofdata(::google::protobuf::int32 value) {
   set_has_sizeofdata();
   sizeofdata_ = value;
-  // @@protoc_insertion_point(field_set:Header.sizeOfData)
+  // @@protoc_insertion_point(field_set:structDefinitions.Header.sizeOfData)
 }
 
 // required bool endOfData = 7;
@@ -2403,196 +2405,196 @@ inline void Header::clear_endofdata() {
   clear_has_endofdata();
 }
 inline bool Header::endofdata() const {
-  // @@protoc_insertion_point(field_get:Header.endOfData)
+  // @@protoc_insertion_point(field_get:structDefinitions.Header.endOfData)
   return endofdata_;
 }
 inline void Header::set_endofdata(bool value) {
   set_has_endofdata();
   endofdata_ = value;
-  // @@protoc_insertion_point(field_set:Header.endOfData)
+  // @@protoc_insertion_point(field_set:structDefinitions.Header.endOfData)
 }
 
 // -------------------------------------------------------------------
 
 // DataPackage
 
-// repeated .Point2D points2D = 1;
+// repeated .structDefinitions.Point2D points2D = 1;
 inline int DataPackage::points2d_size() const {
   return points2d_.size();
 }
 inline void DataPackage::clear_points2d() {
   points2d_.Clear();
 }
-inline const ::Point2D& DataPackage::points2d(int index) const {
-  // @@protoc_insertion_point(field_get:DataPackage.points2D)
+inline const ::structDefinitions::Point2D& DataPackage::points2d(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points2D)
   return points2d_.Get(index);
 }
-inline ::Point2D* DataPackage::mutable_points2d(int index) {
-  // @@protoc_insertion_point(field_mutable:DataPackage.points2D)
+inline ::structDefinitions::Point2D* DataPackage::mutable_points2d(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points2D)
   return points2d_.Mutable(index);
 }
-inline ::Point2D* DataPackage::add_points2d() {
-  // @@protoc_insertion_point(field_add:DataPackage.points2D)
+inline ::structDefinitions::Point2D* DataPackage::add_points2d() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.points2D)
   return points2d_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::Point2D >*
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >*
 DataPackage::mutable_points2d() {
-  // @@protoc_insertion_point(field_mutable_list:DataPackage.points2D)
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.points2D)
   return &points2d_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Point2D >&
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >&
 DataPackage::points2d() const {
-  // @@protoc_insertion_point(field_list:DataPackage.points2D)
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.points2D)
   return points2d_;
 }
 
-// repeated .Point3D points3D = 2;
+// repeated .structDefinitions.Point3D points3D = 2;
 inline int DataPackage::points3d_size() const {
   return points3d_.size();
 }
 inline void DataPackage::clear_points3d() {
   points3d_.Clear();
 }
-inline const ::Point3D& DataPackage::points3d(int index) const {
-  // @@protoc_insertion_point(field_get:DataPackage.points3D)
+inline const ::structDefinitions::Point3D& DataPackage::points3d(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points3D)
   return points3d_.Get(index);
 }
-inline ::Point3D* DataPackage::mutable_points3d(int index) {
-  // @@protoc_insertion_point(field_mutable:DataPackage.points3D)
+inline ::structDefinitions::Point3D* DataPackage::mutable_points3d(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points3D)
   return points3d_.Mutable(index);
 }
-inline ::Point3D* DataPackage::add_points3d() {
-  // @@protoc_insertion_point(field_add:DataPackage.points3D)
+inline ::structDefinitions::Point3D* DataPackage::add_points3d() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.points3D)
   return points3d_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::Point3D >*
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
 DataPackage::mutable_points3d() {
-  // @@protoc_insertion_point(field_mutable_list:DataPackage.points3D)
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.points3D)
   return &points3d_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Point3D >&
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
 DataPackage::points3d() const {
-  // @@protoc_insertion_point(field_list:DataPackage.points3D)
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.points3D)
   return points3d_;
 }
 
-// repeated .Vertex vertexes = 3;
+// repeated .structDefinitions.Vertex vertexes = 3;
 inline int DataPackage::vertexes_size() const {
   return vertexes_.size();
 }
 inline void DataPackage::clear_vertexes() {
   vertexes_.Clear();
 }
-inline const ::Vertex& DataPackage::vertexes(int index) const {
-  // @@protoc_insertion_point(field_get:DataPackage.vertexes)
+inline const ::structDefinitions::Vertex& DataPackage::vertexes(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.vertexes)
   return vertexes_.Get(index);
 }
-inline ::Vertex* DataPackage::mutable_vertexes(int index) {
-  // @@protoc_insertion_point(field_mutable:DataPackage.vertexes)
+inline ::structDefinitions::Vertex* DataPackage::mutable_vertexes(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.vertexes)
   return vertexes_.Mutable(index);
 }
-inline ::Vertex* DataPackage::add_vertexes() {
-  // @@protoc_insertion_point(field_add:DataPackage.vertexes)
+inline ::structDefinitions::Vertex* DataPackage::add_vertexes() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.vertexes)
   return vertexes_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::Vertex >*
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >*
 DataPackage::mutable_vertexes() {
-  // @@protoc_insertion_point(field_mutable_list:DataPackage.vertexes)
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.vertexes)
   return &vertexes_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Vertex >&
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >&
 DataPackage::vertexes() const {
-  // @@protoc_insertion_point(field_list:DataPackage.vertexes)
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.vertexes)
   return vertexes_;
 }
 
-// repeated .Edge edges = 4;
+// repeated .structDefinitions.Edge edges = 4;
 inline int DataPackage::edges_size() const {
   return edges_.size();
 }
 inline void DataPackage::clear_edges() {
   edges_.Clear();
 }
-inline const ::Edge& DataPackage::edges(int index) const {
-  // @@protoc_insertion_point(field_get:DataPackage.edges)
+inline const ::structDefinitions::Edge& DataPackage::edges(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.edges)
   return edges_.Get(index);
 }
-inline ::Edge* DataPackage::mutable_edges(int index) {
-  // @@protoc_insertion_point(field_mutable:DataPackage.edges)
+inline ::structDefinitions::Edge* DataPackage::mutable_edges(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.edges)
   return edges_.Mutable(index);
 }
-inline ::Edge* DataPackage::add_edges() {
-  // @@protoc_insertion_point(field_add:DataPackage.edges)
+inline ::structDefinitions::Edge* DataPackage::add_edges() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.edges)
   return edges_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::Edge >*
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >*
 DataPackage::mutable_edges() {
-  // @@protoc_insertion_point(field_mutable_list:DataPackage.edges)
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.edges)
   return &edges_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Edge >&
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >&
 DataPackage::edges() const {
-  // @@protoc_insertion_point(field_list:DataPackage.edges)
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.edges)
   return edges_;
 }
 
-// repeated .TriangleFace faces = 5;
+// repeated .structDefinitions.TriangleFace faces = 5;
 inline int DataPackage::faces_size() const {
   return faces_.size();
 }
 inline void DataPackage::clear_faces() {
   faces_.Clear();
 }
-inline const ::TriangleFace& DataPackage::faces(int index) const {
-  // @@protoc_insertion_point(field_get:DataPackage.faces)
+inline const ::structDefinitions::TriangleFace& DataPackage::faces(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.faces)
   return faces_.Get(index);
 }
-inline ::TriangleFace* DataPackage::mutable_faces(int index) {
-  // @@protoc_insertion_point(field_mutable:DataPackage.faces)
+inline ::structDefinitions::TriangleFace* DataPackage::mutable_faces(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.faces)
   return faces_.Mutable(index);
 }
-inline ::TriangleFace* DataPackage::add_faces() {
-  // @@protoc_insertion_point(field_add:DataPackage.faces)
+inline ::structDefinitions::TriangleFace* DataPackage::add_faces() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.faces)
   return faces_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::TriangleFace >*
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >*
 DataPackage::mutable_faces() {
-  // @@protoc_insertion_point(field_mutable_list:DataPackage.faces)
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.faces)
   return &faces_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::TriangleFace >&
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >&
 DataPackage::faces() const {
-  // @@protoc_insertion_point(field_list:DataPackage.faces)
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.faces)
   return faces_;
 }
 
-// repeated .Block blocks = 6;
+// repeated .structDefinitions.Block blocks = 6;
 inline int DataPackage::blocks_size() const {
   return blocks_.size();
 }
 inline void DataPackage::clear_blocks() {
   blocks_.Clear();
 }
-inline const ::Block& DataPackage::blocks(int index) const {
-  // @@protoc_insertion_point(field_get:DataPackage.blocks)
+inline const ::structDefinitions::Block& DataPackage::blocks(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.blocks)
   return blocks_.Get(index);
 }
-inline ::Block* DataPackage::mutable_blocks(int index) {
-  // @@protoc_insertion_point(field_mutable:DataPackage.blocks)
+inline ::structDefinitions::Block* DataPackage::mutable_blocks(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.blocks)
   return blocks_.Mutable(index);
 }
-inline ::Block* DataPackage::add_blocks() {
-  // @@protoc_insertion_point(field_add:DataPackage.blocks)
+inline ::structDefinitions::Block* DataPackage::add_blocks() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.blocks)
   return blocks_.Add();
 }
-inline ::google::protobuf::RepeatedPtrField< ::Block >*
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >*
 DataPackage::mutable_blocks() {
-  // @@protoc_insertion_point(field_mutable_list:DataPackage.blocks)
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.blocks)
   return &blocks_;
 }
-inline const ::google::protobuf::RepeatedPtrField< ::Block >&
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >&
 DataPackage::blocks() const {
-  // @@protoc_insertion_point(field_list:DataPackage.blocks)
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.blocks)
   return blocks_;
 }
 
@@ -2618,14 +2620,16 @@ DataPackage::blocks() const {
 
 // @@protoc_insertion_point(namespace_scope)
 
+}  // namespace structDefinitions
+
 #ifndef SWIG
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::MessageInfo_Type> : ::google::protobuf::internal::true_type {};
+template <> struct is_proto_enum< ::structDefinitions::MessageInfo_Type> : ::google::protobuf::internal::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::MessageInfo_Type>() {
-  return ::MessageInfo_Type_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::structDefinitions::MessageInfo_Type>() {
+  return ::structDefinitions::MessageInfo_Type_descriptor();
 }
 
 }  // namespace protobuf
