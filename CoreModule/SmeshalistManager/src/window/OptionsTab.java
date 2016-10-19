@@ -58,6 +58,7 @@ public class OptionsTab extends JPanel{
 		transparencyCheckBox = new JCheckBox("Transparent structures");
 		transparencyCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
 		renderingCheckBox = new JCheckBox("Dynamic rendering");
+		renderingCheckBox.setSelected(true);
 		renderingCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
 		showLabelsCheckBox = new JCheckBox("Show labels");
 		showLabelsCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
@@ -67,6 +68,7 @@ public class OptionsTab extends JPanel{
 		sensitivitySlider = new JSlider(JScrollBar.HORIZONTAL, 0, 20, 1);
 		sensitivitySlider.setMajorTickSpacing(5);
 		sensitivitySlider.setMinorTickSpacing(1);
+		sensitivitySlider.setValue(10);
 		sensitivitySlider.setPaintTicks(true);
 		sensitivitySlider.setPaintLabels(true);
 		sensitivitySlider.setBorder(new EmptyBorder(0, 20, 20, 20));
@@ -134,21 +136,25 @@ public class OptionsTab extends JPanel{
 	}		
 	
 	private void applyButtonPressed(){
-		OptionsInfo.Builder optionsInfo = OptionsInfo.newBuilder();
-		optionsInfo.setDynamicRendering(renderingCheckBox.isSelected());
-		optionsInfo.setShowLabels(showLabelsCheckBox.isSelected());
-		optionsInfo.setTransparentStructures(transparencyCheckBox.isSelected());
-		optionsInfo.setMouseSensitivity(sensitivitySlider.getValue() * 0.1);
-		
+
 		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
 		toCoreMessageBuilder.setMessageType(MTCMessageType.OPTIONS);
-		toCoreMessageBuilder.setOptionsInfo(optionsInfo.build());
+		toCoreMessageBuilder.setOptionsInfo(this.getOptionsInfo());
 		
 		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
 		new SendingThread(toCoreMessage).start();
 
 	}
-	
+
+	public OptionsInfo getOptionsInfo() {
+		OptionsInfo.Builder optionsInfo = OptionsInfo.newBuilder();
+		optionsInfo.setDynamicRendering(renderingCheckBox.isSelected());
+		optionsInfo.setShowLabels(showLabelsCheckBox.isSelected());
+		optionsInfo.setTransparentStructures(transparencyCheckBox.isSelected());
+		optionsInfo.setMouseSensitivity(sensitivitySlider.getValue() * 0.1);
+		return optionsInfo.build();
+	}
+
 	private void continueButtonPressed(){
 
 		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();

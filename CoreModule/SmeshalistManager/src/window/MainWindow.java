@@ -1,6 +1,7 @@
 package window;
 
 import communication.Communication.CoreToManagerMessage;
+import communication.Communication.OptionsInfo;
 import util.SocketUtil;
 
 import javax.swing.*;
@@ -74,6 +75,10 @@ public class MainWindow extends JFrame {
 			default:
 				break;
 		}
+	}
+
+	public OptionsInfo getDefaults(){
+		return optionsTab.getOptionsInfo();
 	}
 
 }
