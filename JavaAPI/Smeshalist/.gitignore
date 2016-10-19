@@ -1,4 +1,7 @@
 .settings/
 .classpath
 .project
+.idea/
+Smeshalist.iml
+out/
 bin/

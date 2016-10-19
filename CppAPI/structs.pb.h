@@ -38,20 +38,15 @@ void protobuf_AssignDesc_structs_2eproto();
 void protobuf_ShutdownFile_structs_2eproto();
 
 class Block;
-class BlockSet;
 class DataPackage;
 class Edge;
-class EdgeSet;
+class Header;
 class MessageInfo;
 class Point2D;
-class Point2DSet;
 class Point3D;
-class Point3DSet;
 class Properties;
 class TriangleFace;
-class TriangleFaceSet;
 class Vertex;
-class VertexSet;
 
 enum MessageInfo_Type {
   MessageInfo_Type_DATA = 1,
@@ -314,102 +309,6 @@ class Point2D : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 };
 // -------------------------------------------------------------------
 
-class Point2DSet : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Point2DSet) */ {
- public:
-  Point2DSet();
-  virtual ~Point2DSet();
-
-  Point2DSet(const Point2DSet& from);
-
-  inline Point2DSet& operator=(const Point2DSet& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Point2DSet& default_instance();
-
-  void Swap(Point2DSet* other);
-
-  // implements Message ----------------------------------------------
-
-  inline Point2DSet* New() const { return New(NULL); }
-
-  Point2DSet* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Point2DSet& from);
-  void MergeFrom(const Point2DSet& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(Point2DSet* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .structDefinitions.Point2D points = 1;
-  int points_size() const;
-  void clear_points();
-  static const int kPointsFieldNumber = 1;
-  const ::structDefinitions::Point2D& points(int index) const;
-  ::structDefinitions::Point2D* mutable_points(int index);
-  ::structDefinitions::Point2D* add_points();
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >*
-      mutable_points();
-  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >&
-      points() const;
-
-  // @@protoc_insertion_point(class_scope:structDefinitions.Point2DSet)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D > points_;
-  friend void  protobuf_AddDesc_structs_2eproto();
-  friend void protobuf_AssignDesc_structs_2eproto();
-  friend void protobuf_ShutdownFile_structs_2eproto();
-
-  void InitAsDefaultInstance();
-  static Point2DSet* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class Point3D : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Point3D) */ {
  public:
   Point3D();
@@ -538,102 +437,6 @@ class Point3D : public ::google::protobuf::Message /* @@protoc_insertion_point(c
 };
 // -------------------------------------------------------------------
 
-class Point3DSet : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Point3DSet) */ {
- public:
-  Point3DSet();
-  virtual ~Point3DSet();
-
-  Point3DSet(const Point3DSet& from);
-
-  inline Point3DSet& operator=(const Point3DSet& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const Point3DSet& default_instance();
-
-  void Swap(Point3DSet* other);
-
-  // implements Message ----------------------------------------------
-
-  inline Point3DSet* New() const { return New(NULL); }
-
-  Point3DSet* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const Point3DSet& from);
-  void MergeFrom(const Point3DSet& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(Point3DSet* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .structDefinitions.Point3D points = 1;
-  int points_size() const;
-  void clear_points();
-  static const int kPointsFieldNumber = 1;
-  const ::structDefinitions::Point3D& points(int index) const;
-  ::structDefinitions::Point3D* mutable_points(int index);
-  ::structDefinitions::Point3D* add_points();
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
-      mutable_points();
-  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
-      points() const;
-
-  // @@protoc_insertion_point(class_scope:structDefinitions.Point3DSet)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D > points_;
-  friend void  protobuf_AddDesc_structs_2eproto();
-  friend void protobuf_AssignDesc_structs_2eproto();
-  friend void protobuf_ShutdownFile_structs_2eproto();
-
-  void InitAsDefaultInstance();
-  static Point3DSet* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class Vertex : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Vertex) */ {
  public:
   Vertex();
@@ -751,102 +554,6 @@ class Vertex : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
 
   void InitAsDefaultInstance();
   static Vertex* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class VertexSet : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.VertexSet) */ {
- public:
-  VertexSet();
-  virtual ~VertexSet();
-
-  VertexSet(const VertexSet& from);
-
-  inline VertexSet& operator=(const VertexSet& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const VertexSet& default_instance();
-
-  void Swap(VertexSet* other);
-
-  // implements Message ----------------------------------------------
-
-  inline VertexSet* New() const { return New(NULL); }
-
-  VertexSet* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const VertexSet& from);
-  void MergeFrom(const VertexSet& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(VertexSet* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .structDefinitions.Vertex vertexes = 1;
-  int vertexes_size() const;
-  void clear_vertexes();
-  static const int kVertexesFieldNumber = 1;
-  const ::structDefinitions::Vertex& vertexes(int index) const;
-  ::structDefinitions::Vertex* mutable_vertexes(int index);
-  ::structDefinitions::Vertex* add_vertexes();
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >*
-      mutable_vertexes();
-  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >&
-      vertexes() const;
-
-  // @@protoc_insertion_point(class_scope:structDefinitions.VertexSet)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex > vertexes_;
-  friend void  protobuf_AddDesc_structs_2eproto();
-  friend void protobuf_AssignDesc_structs_2eproto();
-  friend void protobuf_ShutdownFile_structs_2eproto();
-
-  void InitAsDefaultInstance();
-  static VertexSet* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -969,102 +676,6 @@ class Edge : public ::google::protobuf::Message /* @@protoc_insertion_point(clas
 
   void InitAsDefaultInstance();
   static Edge* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class EdgeSet : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.EdgeSet) */ {
- public:
-  EdgeSet();
-  virtual ~EdgeSet();
-
-  EdgeSet(const EdgeSet& from);
-
-  inline EdgeSet& operator=(const EdgeSet& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const EdgeSet& default_instance();
-
-  void Swap(EdgeSet* other);
-
-  // implements Message ----------------------------------------------
-
-  inline EdgeSet* New() const { return New(NULL); }
-
-  EdgeSet* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const EdgeSet& from);
-  void MergeFrom(const EdgeSet& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(EdgeSet* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .structDefinitions.Edge edges = 1;
-  int edges_size() const;
-  void clear_edges();
-  static const int kEdgesFieldNumber = 1;
-  const ::structDefinitions::Edge& edges(int index) const;
-  ::structDefinitions::Edge* mutable_edges(int index);
-  ::structDefinitions::Edge* add_edges();
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >*
-      mutable_edges();
-  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >&
-      edges() const;
-
-  // @@protoc_insertion_point(class_scope:structDefinitions.EdgeSet)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge > edges_;
-  friend void  protobuf_AddDesc_structs_2eproto();
-  friend void protobuf_AssignDesc_structs_2eproto();
-  friend void protobuf_ShutdownFile_structs_2eproto();
-
-  void InitAsDefaultInstance();
-  static EdgeSet* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1199,102 +810,6 @@ class TriangleFace : public ::google::protobuf::Message /* @@protoc_insertion_po
 
   void InitAsDefaultInstance();
   static TriangleFace* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class TriangleFaceSet : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.TriangleFaceSet) */ {
- public:
-  TriangleFaceSet();
-  virtual ~TriangleFaceSet();
-
-  TriangleFaceSet(const TriangleFaceSet& from);
-
-  inline TriangleFaceSet& operator=(const TriangleFaceSet& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const TriangleFaceSet& default_instance();
-
-  void Swap(TriangleFaceSet* other);
-
-  // implements Message ----------------------------------------------
-
-  inline TriangleFaceSet* New() const { return New(NULL); }
-
-  TriangleFaceSet* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const TriangleFaceSet& from);
-  void MergeFrom(const TriangleFaceSet& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(TriangleFaceSet* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .structDefinitions.TriangleFace triangleFaces = 1;
-  int trianglefaces_size() const;
-  void clear_trianglefaces();
-  static const int kTriangleFacesFieldNumber = 1;
-  const ::structDefinitions::TriangleFace& trianglefaces(int index) const;
-  ::structDefinitions::TriangleFace* mutable_trianglefaces(int index);
-  ::structDefinitions::TriangleFace* add_trianglefaces();
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >*
-      mutable_trianglefaces();
-  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >&
-      trianglefaces() const;
-
-  // @@protoc_insertion_point(class_scope:structDefinitions.TriangleFaceSet)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace > trianglefaces_;
-  friend void  protobuf_AddDesc_structs_2eproto();
-  friend void protobuf_AssignDesc_structs_2eproto();
-  friend void protobuf_ShutdownFile_structs_2eproto();
-
-  void InitAsDefaultInstance();
-  static TriangleFaceSet* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1444,102 +959,6 @@ class Block : public ::google::protobuf::Message /* @@protoc_insertion_point(cla
 };
 // -------------------------------------------------------------------
 
-class BlockSet : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.BlockSet) */ {
- public:
-  BlockSet();
-  virtual ~BlockSet();
-
-  BlockSet(const BlockSet& from);
-
-  inline BlockSet& operator=(const BlockSet& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const BlockSet& default_instance();
-
-  void Swap(BlockSet* other);
-
-  // implements Message ----------------------------------------------
-
-  inline BlockSet* New() const { return New(NULL); }
-
-  BlockSet* New(::google::protobuf::Arena* arena) const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const BlockSet& from);
-  void MergeFrom(const BlockSet& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      bool deterministic, ::google::protobuf::uint8* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
-    return InternalSerializeWithCachedSizesToArray(false, output);
-  }
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  void InternalSwap(BlockSet* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return _internal_metadata_.arena();
-  }
-  inline void* MaybeArenaPtr() const {
-    return _internal_metadata_.raw_arena_ptr();
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // repeated .structDefinitions.Block blocks = 1;
-  int blocks_size() const;
-  void clear_blocks();
-  static const int kBlocksFieldNumber = 1;
-  const ::structDefinitions::Block& blocks(int index) const;
-  ::structDefinitions::Block* mutable_blocks(int index);
-  ::structDefinitions::Block* add_blocks();
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >*
-      mutable_blocks();
-  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >&
-      blocks() const;
-
-  // @@protoc_insertion_point(class_scope:structDefinitions.BlockSet)
- private:
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::uint32 _has_bits_[1];
-  mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block > blocks_;
-  friend void  protobuf_AddDesc_structs_2eproto();
-  friend void protobuf_AssignDesc_structs_2eproto();
-  friend void protobuf_ShutdownFile_structs_2eproto();
-
-  void InitAsDefaultInstance();
-  static BlockSet* default_instance_;
-};
-// -------------------------------------------------------------------
-
 class MessageInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.MessageInfo) */ {
  public:
   MessageInfo();
@@ -1667,6 +1086,112 @@ class MessageInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
 };
 // -------------------------------------------------------------------
 
+class Header : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.Header) */ {
+ public:
+  Header();
+  virtual ~Header();
+
+  Header(const Header& from);
+
+  inline Header& operator=(const Header& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Header& default_instance();
+
+  void Swap(Header* other);
+
+  // implements Message ----------------------------------------------
+
+  inline Header* New() const { return New(NULL); }
+
+  Header* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Header& from);
+  void MergeFrom(const Header& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(Header* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 sizeOfData = 1;
+  bool has_sizeofdata() const;
+  void clear_sizeofdata();
+  static const int kSizeOfDataFieldNumber = 1;
+  ::google::protobuf::int32 sizeofdata() const;
+  void set_sizeofdata(::google::protobuf::int32 value);
+
+  // required bool endOfData = 7;
+  bool has_endofdata() const;
+  void clear_endofdata();
+  static const int kEndOfDataFieldNumber = 7;
+  bool endofdata() const;
+  void set_endofdata(bool value);
+
+  // @@protoc_insertion_point(class_scope:structDefinitions.Header)
+ private:
+  inline void set_has_sizeofdata();
+  inline void clear_has_sizeofdata();
+  inline void set_has_endofdata();
+  inline void clear_has_endofdata();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 sizeofdata_;
+  bool endofdata_;
+  friend void  protobuf_AddDesc_structs_2eproto();
+  friend void protobuf_AssignDesc_structs_2eproto();
+  friend void protobuf_ShutdownFile_structs_2eproto();
+
+  void InitAsDefaultInstance();
+  static Header* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class DataPackage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:structDefinitions.DataPackage) */ {
  public:
   DataPackage();
@@ -1735,94 +1260,90 @@ class DataPackage : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // accessors -------------------------------------------------------
 
-  // optional .structDefinitions.Point2DSet points2D = 1;
-  bool has_points2d() const;
+  // repeated .structDefinitions.Point2D points2D = 1;
+  int points2d_size() const;
   void clear_points2d();
   static const int kPoints2DFieldNumber = 1;
-  const ::structDefinitions::Point2DSet& points2d() const;
-  ::structDefinitions::Point2DSet* mutable_points2d();
-  ::structDefinitions::Point2DSet* release_points2d();
-  void set_allocated_points2d(::structDefinitions::Point2DSet* points2d);
+  const ::structDefinitions::Point2D& points2d(int index) const;
+  ::structDefinitions::Point2D* mutable_points2d(int index);
+  ::structDefinitions::Point2D* add_points2d();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >*
+      mutable_points2d();
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >&
+      points2d() const;
 
-  // optional .structDefinitions.Point3DSet points3D = 2;
-  bool has_points3d() const;
+  // repeated .structDefinitions.Point3D points3D = 2;
+  int points3d_size() const;
   void clear_points3d();
   static const int kPoints3DFieldNumber = 2;
-  const ::structDefinitions::Point3DSet& points3d() const;
-  ::structDefinitions::Point3DSet* mutable_points3d();
-  ::structDefinitions::Point3DSet* release_points3d();
-  void set_allocated_points3d(::structDefinitions::Point3DSet* points3d);
+  const ::structDefinitions::Point3D& points3d(int index) const;
+  ::structDefinitions::Point3D* mutable_points3d(int index);
+  ::structDefinitions::Point3D* add_points3d();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
+      mutable_points3d();
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
+      points3d() const;
 
-  // optional .structDefinitions.VertexSet vertexes = 3;
-  bool has_vertexes() const;
+  // repeated .structDefinitions.Vertex vertexes = 3;
+  int vertexes_size() const;
   void clear_vertexes();
   static const int kVertexesFieldNumber = 3;
-  const ::structDefinitions::VertexSet& vertexes() const;
-  ::structDefinitions::VertexSet* mutable_vertexes();
-  ::structDefinitions::VertexSet* release_vertexes();
-  void set_allocated_vertexes(::structDefinitions::VertexSet* vertexes);
+  const ::structDefinitions::Vertex& vertexes(int index) const;
+  ::structDefinitions::Vertex* mutable_vertexes(int index);
+  ::structDefinitions::Vertex* add_vertexes();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >*
+      mutable_vertexes();
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >&
+      vertexes() const;
 
-  // optional .structDefinitions.EdgeSet edges = 4;
-  bool has_edges() const;
+  // repeated .structDefinitions.Edge edges = 4;
+  int edges_size() const;
   void clear_edges();
   static const int kEdgesFieldNumber = 4;
-  const ::structDefinitions::EdgeSet& edges() const;
-  ::structDefinitions::EdgeSet* mutable_edges();
-  ::structDefinitions::EdgeSet* release_edges();
-  void set_allocated_edges(::structDefinitions::EdgeSet* edges);
+  const ::structDefinitions::Edge& edges(int index) const;
+  ::structDefinitions::Edge* mutable_edges(int index);
+  ::structDefinitions::Edge* add_edges();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >*
+      mutable_edges();
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >&
+      edges() const;
 
-  // optional .structDefinitions.TriangleFaceSet faces = 5;
-  bool has_faces() const;
+  // repeated .structDefinitions.TriangleFace faces = 5;
+  int faces_size() const;
   void clear_faces();
   static const int kFacesFieldNumber = 5;
-  const ::structDefinitions::TriangleFaceSet& faces() const;
-  ::structDefinitions::TriangleFaceSet* mutable_faces();
-  ::structDefinitions::TriangleFaceSet* release_faces();
-  void set_allocated_faces(::structDefinitions::TriangleFaceSet* faces);
+  const ::structDefinitions::TriangleFace& faces(int index) const;
+  ::structDefinitions::TriangleFace* mutable_faces(int index);
+  ::structDefinitions::TriangleFace* add_faces();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >*
+      mutable_faces();
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >&
+      faces() const;
 
-  // optional .structDefinitions.BlockSet blocks = 6;
-  bool has_blocks() const;
+  // repeated .structDefinitions.Block blocks = 6;
+  int blocks_size() const;
   void clear_blocks();
   static const int kBlocksFieldNumber = 6;
-  const ::structDefinitions::BlockSet& blocks() const;
-  ::structDefinitions::BlockSet* mutable_blocks();
-  ::structDefinitions::BlockSet* release_blocks();
-  void set_allocated_blocks(::structDefinitions::BlockSet* blocks);
-
-  // required bool endOfData = 7;
-  bool has_endofdata() const;
-  void clear_endofdata();
-  static const int kEndOfDataFieldNumber = 7;
-  bool endofdata() const;
-  void set_endofdata(bool value);
+  const ::structDefinitions::Block& blocks(int index) const;
+  ::structDefinitions::Block* mutable_blocks(int index);
+  ::structDefinitions::Block* add_blocks();
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >*
+      mutable_blocks();
+  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >&
+      blocks() const;
 
   // @@protoc_insertion_point(class_scope:structDefinitions.DataPackage)
  private:
-  inline void set_has_points2d();
-  inline void clear_has_points2d();
-  inline void set_has_points3d();
-  inline void clear_has_points3d();
-  inline void set_has_vertexes();
-  inline void clear_has_vertexes();
-  inline void set_has_edges();
-  inline void clear_has_edges();
-  inline void set_has_faces();
-  inline void clear_has_faces();
-  inline void set_has_blocks();
-  inline void clear_has_blocks();
-  inline void set_has_endofdata();
-  inline void clear_has_endofdata();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::structDefinitions::Point2DSet* points2d_;
-  ::structDefinitions::Point3DSet* points3d_;
-  ::structDefinitions::VertexSet* vertexes_;
-  ::structDefinitions::EdgeSet* edges_;
-  ::structDefinitions::TriangleFaceSet* faces_;
-  ::structDefinitions::BlockSet* blocks_;
-  bool endofdata_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D > points2d_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D > points3d_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex > vertexes_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge > edges_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace > faces_;
+  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block > blocks_;
   friend void  protobuf_AddDesc_structs_2eproto();
   friend void protobuf_AssignDesc_structs_2eproto();
   friend void protobuf_ShutdownFile_structs_2eproto();
@@ -2038,40 +1559,6 @@ inline void Point2D::set_allocated_prop(::structDefinitions::Properties* prop) {
 
 // -------------------------------------------------------------------
 
-// Point2DSet
-
-// repeated .structDefinitions.Point2D points = 1;
-inline int Point2DSet::points_size() const {
-  return points_.size();
-}
-inline void Point2DSet::clear_points() {
-  points_.Clear();
-}
-inline const ::structDefinitions::Point2D& Point2DSet::points(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.Point2DSet.points)
-  return points_.Get(index);
-}
-inline ::structDefinitions::Point2D* Point2DSet::mutable_points(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.Point2DSet.points)
-  return points_.Mutable(index);
-}
-inline ::structDefinitions::Point2D* Point2DSet::add_points() {
-  // @@protoc_insertion_point(field_add:structDefinitions.Point2DSet.points)
-  return points_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >*
-Point2DSet::mutable_points() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.Point2DSet.points)
-  return &points_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >&
-Point2DSet::points() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.Point2DSet.points)
-  return points_;
-}
-
-// -------------------------------------------------------------------
-
 // Point3D
 
 // required double x = 1;
@@ -2192,40 +1679,6 @@ inline void Point3D::set_allocated_prop(::structDefinitions::Properties* prop) {
 
 // -------------------------------------------------------------------
 
-// Point3DSet
-
-// repeated .structDefinitions.Point3D points = 1;
-inline int Point3DSet::points_size() const {
-  return points_.size();
-}
-inline void Point3DSet::clear_points() {
-  points_.Clear();
-}
-inline const ::structDefinitions::Point3D& Point3DSet::points(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.Point3DSet.points)
-  return points_.Get(index);
-}
-inline ::structDefinitions::Point3D* Point3DSet::mutable_points(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.Point3DSet.points)
-  return points_.Mutable(index);
-}
-inline ::structDefinitions::Point3D* Point3DSet::add_points() {
-  // @@protoc_insertion_point(field_add:structDefinitions.Point3DSet.points)
-  return points_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
-Point3DSet::mutable_points() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.Point3DSet.points)
-  return &points_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
-Point3DSet::points() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.Point3DSet.points)
-  return points_;
-}
-
-// -------------------------------------------------------------------
-
 // Vertex
 
 // required .structDefinitions.Point3D point = 1;
@@ -2338,40 +1791,6 @@ inline void Vertex::set_allocated_prop(::structDefinitions::Properties* prop) {
     clear_has_prop();
   }
   // @@protoc_insertion_point(field_set_allocated:structDefinitions.Vertex.prop)
-}
-
-// -------------------------------------------------------------------
-
-// VertexSet
-
-// repeated .structDefinitions.Vertex vertexes = 1;
-inline int VertexSet::vertexes_size() const {
-  return vertexes_.size();
-}
-inline void VertexSet::clear_vertexes() {
-  vertexes_.Clear();
-}
-inline const ::structDefinitions::Vertex& VertexSet::vertexes(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.VertexSet.vertexes)
-  return vertexes_.Get(index);
-}
-inline ::structDefinitions::Vertex* VertexSet::mutable_vertexes(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.VertexSet.vertexes)
-  return vertexes_.Mutable(index);
-}
-inline ::structDefinitions::Vertex* VertexSet::add_vertexes() {
-  // @@protoc_insertion_point(field_add:structDefinitions.VertexSet.vertexes)
-  return vertexes_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >*
-VertexSet::mutable_vertexes() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.VertexSet.vertexes)
-  return &vertexes_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >&
-VertexSet::vertexes() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.VertexSet.vertexes)
-  return vertexes_;
 }
 
 // -------------------------------------------------------------------
@@ -2508,40 +1927,6 @@ inline void Edge::set_allocated_prop(::structDefinitions::Properties* prop) {
     clear_has_prop();
   }
   // @@protoc_insertion_point(field_set_allocated:structDefinitions.Edge.prop)
-}
-
-// -------------------------------------------------------------------
-
-// EdgeSet
-
-// repeated .structDefinitions.Edge edges = 1;
-inline int EdgeSet::edges_size() const {
-  return edges_.size();
-}
-inline void EdgeSet::clear_edges() {
-  edges_.Clear();
-}
-inline const ::structDefinitions::Edge& EdgeSet::edges(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.EdgeSet.edges)
-  return edges_.Get(index);
-}
-inline ::structDefinitions::Edge* EdgeSet::mutable_edges(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.EdgeSet.edges)
-  return edges_.Mutable(index);
-}
-inline ::structDefinitions::Edge* EdgeSet::add_edges() {
-  // @@protoc_insertion_point(field_add:structDefinitions.EdgeSet.edges)
-  return edges_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >*
-EdgeSet::mutable_edges() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.EdgeSet.edges)
-  return &edges_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >&
-EdgeSet::edges() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.EdgeSet.edges)
-  return edges_;
 }
 
 // -------------------------------------------------------------------
@@ -2722,40 +2107,6 @@ inline void TriangleFace::set_allocated_prop(::structDefinitions::Properties* pr
     clear_has_prop();
   }
   // @@protoc_insertion_point(field_set_allocated:structDefinitions.TriangleFace.prop)
-}
-
-// -------------------------------------------------------------------
-
-// TriangleFaceSet
-
-// repeated .structDefinitions.TriangleFace triangleFaces = 1;
-inline int TriangleFaceSet::trianglefaces_size() const {
-  return trianglefaces_.size();
-}
-inline void TriangleFaceSet::clear_trianglefaces() {
-  trianglefaces_.Clear();
-}
-inline const ::structDefinitions::TriangleFace& TriangleFaceSet::trianglefaces(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.TriangleFaceSet.triangleFaces)
-  return trianglefaces_.Get(index);
-}
-inline ::structDefinitions::TriangleFace* TriangleFaceSet::mutable_trianglefaces(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.TriangleFaceSet.triangleFaces)
-  return trianglefaces_.Mutable(index);
-}
-inline ::structDefinitions::TriangleFace* TriangleFaceSet::add_trianglefaces() {
-  // @@protoc_insertion_point(field_add:structDefinitions.TriangleFaceSet.triangleFaces)
-  return trianglefaces_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >*
-TriangleFaceSet::mutable_trianglefaces() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.TriangleFaceSet.triangleFaces)
-  return &trianglefaces_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >&
-TriangleFaceSet::trianglefaces() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.TriangleFaceSet.triangleFaces)
-  return trianglefaces_;
 }
 
 // -------------------------------------------------------------------
@@ -2984,40 +2335,6 @@ inline void Block::set_allocated_prop(::structDefinitions::Properties* prop) {
 
 // -------------------------------------------------------------------
 
-// BlockSet
-
-// repeated .structDefinitions.Block blocks = 1;
-inline int BlockSet::blocks_size() const {
-  return blocks_.size();
-}
-inline void BlockSet::clear_blocks() {
-  blocks_.Clear();
-}
-inline const ::structDefinitions::Block& BlockSet::blocks(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.BlockSet.blocks)
-  return blocks_.Get(index);
-}
-inline ::structDefinitions::Block* BlockSet::mutable_blocks(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.BlockSet.blocks)
-  return blocks_.Mutable(index);
-}
-inline ::structDefinitions::Block* BlockSet::add_blocks() {
-  // @@protoc_insertion_point(field_add:structDefinitions.BlockSet.blocks)
-  return blocks_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >*
-BlockSet::mutable_blocks() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.BlockSet.blocks)
-  return &blocks_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >&
-BlockSet::blocks() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.BlockSet.blocks)
-  return blocks_;
-}
-
-// -------------------------------------------------------------------
-
 // MessageInfo
 
 // required .structDefinitions.MessageInfo.Type type = 1;
@@ -3047,307 +2364,241 @@ inline void MessageInfo::set_type(::structDefinitions::MessageInfo_Type value) {
 
 // -------------------------------------------------------------------
 
-// DataPackage
+// Header
 
-// optional .structDefinitions.Point2DSet points2D = 1;
-inline bool DataPackage::has_points2d() const {
+// required int32 sizeOfData = 1;
+inline bool Header::has_sizeofdata() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void DataPackage::set_has_points2d() {
+inline void Header::set_has_sizeofdata() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void DataPackage::clear_has_points2d() {
+inline void Header::clear_has_sizeofdata() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void DataPackage::clear_points2d() {
-  if (points2d_ != NULL) points2d_->::structDefinitions::Point2DSet::Clear();
-  clear_has_points2d();
+inline void Header::clear_sizeofdata() {
+  sizeofdata_ = 0;
+  clear_has_sizeofdata();
 }
-inline const ::structDefinitions::Point2DSet& DataPackage::points2d() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points2D)
-  return points2d_ != NULL ? *points2d_ : *default_instance_->points2d_;
+inline ::google::protobuf::int32 Header::sizeofdata() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Header.sizeOfData)
+  return sizeofdata_;
 }
-inline ::structDefinitions::Point2DSet* DataPackage::mutable_points2d() {
-  set_has_points2d();
-  if (points2d_ == NULL) {
-    points2d_ = new ::structDefinitions::Point2DSet;
-  }
-  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points2D)
-  return points2d_;
-}
-inline ::structDefinitions::Point2DSet* DataPackage::release_points2d() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.points2D)
-  clear_has_points2d();
-  ::structDefinitions::Point2DSet* temp = points2d_;
-  points2d_ = NULL;
-  return temp;
-}
-inline void DataPackage::set_allocated_points2d(::structDefinitions::Point2DSet* points2d) {
-  delete points2d_;
-  points2d_ = points2d;
-  if (points2d) {
-    set_has_points2d();
-  } else {
-    clear_has_points2d();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.points2D)
-}
-
-// optional .structDefinitions.Point3DSet points3D = 2;
-inline bool DataPackage::has_points3d() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void DataPackage::set_has_points3d() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void DataPackage::clear_has_points3d() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void DataPackage::clear_points3d() {
-  if (points3d_ != NULL) points3d_->::structDefinitions::Point3DSet::Clear();
-  clear_has_points3d();
-}
-inline const ::structDefinitions::Point3DSet& DataPackage::points3d() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points3D)
-  return points3d_ != NULL ? *points3d_ : *default_instance_->points3d_;
-}
-inline ::structDefinitions::Point3DSet* DataPackage::mutable_points3d() {
-  set_has_points3d();
-  if (points3d_ == NULL) {
-    points3d_ = new ::structDefinitions::Point3DSet;
-  }
-  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points3D)
-  return points3d_;
-}
-inline ::structDefinitions::Point3DSet* DataPackage::release_points3d() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.points3D)
-  clear_has_points3d();
-  ::structDefinitions::Point3DSet* temp = points3d_;
-  points3d_ = NULL;
-  return temp;
-}
-inline void DataPackage::set_allocated_points3d(::structDefinitions::Point3DSet* points3d) {
-  delete points3d_;
-  points3d_ = points3d;
-  if (points3d) {
-    set_has_points3d();
-  } else {
-    clear_has_points3d();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.points3D)
-}
-
-// optional .structDefinitions.VertexSet vertexes = 3;
-inline bool DataPackage::has_vertexes() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void DataPackage::set_has_vertexes() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void DataPackage::clear_has_vertexes() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void DataPackage::clear_vertexes() {
-  if (vertexes_ != NULL) vertexes_->::structDefinitions::VertexSet::Clear();
-  clear_has_vertexes();
-}
-inline const ::structDefinitions::VertexSet& DataPackage::vertexes() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.vertexes)
-  return vertexes_ != NULL ? *vertexes_ : *default_instance_->vertexes_;
-}
-inline ::structDefinitions::VertexSet* DataPackage::mutable_vertexes() {
-  set_has_vertexes();
-  if (vertexes_ == NULL) {
-    vertexes_ = new ::structDefinitions::VertexSet;
-  }
-  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.vertexes)
-  return vertexes_;
-}
-inline ::structDefinitions::VertexSet* DataPackage::release_vertexes() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.vertexes)
-  clear_has_vertexes();
-  ::structDefinitions::VertexSet* temp = vertexes_;
-  vertexes_ = NULL;
-  return temp;
-}
-inline void DataPackage::set_allocated_vertexes(::structDefinitions::VertexSet* vertexes) {
-  delete vertexes_;
-  vertexes_ = vertexes;
-  if (vertexes) {
-    set_has_vertexes();
-  } else {
-    clear_has_vertexes();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.vertexes)
-}
-
-// optional .structDefinitions.EdgeSet edges = 4;
-inline bool DataPackage::has_edges() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void DataPackage::set_has_edges() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void DataPackage::clear_has_edges() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void DataPackage::clear_edges() {
-  if (edges_ != NULL) edges_->::structDefinitions::EdgeSet::Clear();
-  clear_has_edges();
-}
-inline const ::structDefinitions::EdgeSet& DataPackage::edges() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.edges)
-  return edges_ != NULL ? *edges_ : *default_instance_->edges_;
-}
-inline ::structDefinitions::EdgeSet* DataPackage::mutable_edges() {
-  set_has_edges();
-  if (edges_ == NULL) {
-    edges_ = new ::structDefinitions::EdgeSet;
-  }
-  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.edges)
-  return edges_;
-}
-inline ::structDefinitions::EdgeSet* DataPackage::release_edges() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.edges)
-  clear_has_edges();
-  ::structDefinitions::EdgeSet* temp = edges_;
-  edges_ = NULL;
-  return temp;
-}
-inline void DataPackage::set_allocated_edges(::structDefinitions::EdgeSet* edges) {
-  delete edges_;
-  edges_ = edges;
-  if (edges) {
-    set_has_edges();
-  } else {
-    clear_has_edges();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.edges)
-}
-
-// optional .structDefinitions.TriangleFaceSet faces = 5;
-inline bool DataPackage::has_faces() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void DataPackage::set_has_faces() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void DataPackage::clear_has_faces() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void DataPackage::clear_faces() {
-  if (faces_ != NULL) faces_->::structDefinitions::TriangleFaceSet::Clear();
-  clear_has_faces();
-}
-inline const ::structDefinitions::TriangleFaceSet& DataPackage::faces() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.faces)
-  return faces_ != NULL ? *faces_ : *default_instance_->faces_;
-}
-inline ::structDefinitions::TriangleFaceSet* DataPackage::mutable_faces() {
-  set_has_faces();
-  if (faces_ == NULL) {
-    faces_ = new ::structDefinitions::TriangleFaceSet;
-  }
-  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.faces)
-  return faces_;
-}
-inline ::structDefinitions::TriangleFaceSet* DataPackage::release_faces() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.faces)
-  clear_has_faces();
-  ::structDefinitions::TriangleFaceSet* temp = faces_;
-  faces_ = NULL;
-  return temp;
-}
-inline void DataPackage::set_allocated_faces(::structDefinitions::TriangleFaceSet* faces) {
-  delete faces_;
-  faces_ = faces;
-  if (faces) {
-    set_has_faces();
-  } else {
-    clear_has_faces();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.faces)
-}
-
-// optional .structDefinitions.BlockSet blocks = 6;
-inline bool DataPackage::has_blocks() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
-inline void DataPackage::set_has_blocks() {
-  _has_bits_[0] |= 0x00000020u;
-}
-inline void DataPackage::clear_has_blocks() {
-  _has_bits_[0] &= ~0x00000020u;
-}
-inline void DataPackage::clear_blocks() {
-  if (blocks_ != NULL) blocks_->::structDefinitions::BlockSet::Clear();
-  clear_has_blocks();
-}
-inline const ::structDefinitions::BlockSet& DataPackage::blocks() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.blocks)
-  return blocks_ != NULL ? *blocks_ : *default_instance_->blocks_;
-}
-inline ::structDefinitions::BlockSet* DataPackage::mutable_blocks() {
-  set_has_blocks();
-  if (blocks_ == NULL) {
-    blocks_ = new ::structDefinitions::BlockSet;
-  }
-  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.blocks)
-  return blocks_;
-}
-inline ::structDefinitions::BlockSet* DataPackage::release_blocks() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.blocks)
-  clear_has_blocks();
-  ::structDefinitions::BlockSet* temp = blocks_;
-  blocks_ = NULL;
-  return temp;
-}
-inline void DataPackage::set_allocated_blocks(::structDefinitions::BlockSet* blocks) {
-  delete blocks_;
-  blocks_ = blocks;
-  if (blocks) {
-    set_has_blocks();
-  } else {
-    clear_has_blocks();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.blocks)
+inline void Header::set_sizeofdata(::google::protobuf::int32 value) {
+  set_has_sizeofdata();
+  sizeofdata_ = value;
+  // @@protoc_insertion_point(field_set:structDefinitions.Header.sizeOfData)
 }
 
 // required bool endOfData = 7;
-inline bool DataPackage::has_endofdata() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+inline bool Header::has_endofdata() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void DataPackage::set_has_endofdata() {
-  _has_bits_[0] |= 0x00000040u;
+inline void Header::set_has_endofdata() {
+  _has_bits_[0] |= 0x00000002u;
 }
-inline void DataPackage::clear_has_endofdata() {
-  _has_bits_[0] &= ~0x00000040u;
+inline void Header::clear_has_endofdata() {
+  _has_bits_[0] &= ~0x00000002u;
 }
-inline void DataPackage::clear_endofdata() {
+inline void Header::clear_endofdata() {
   endofdata_ = false;
   clear_has_endofdata();
 }
-inline bool DataPackage::endofdata() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.endOfData)
+inline bool Header::endofdata() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Header.endOfData)
   return endofdata_;
 }
-inline void DataPackage::set_endofdata(bool value) {
+inline void Header::set_endofdata(bool value) {
   set_has_endofdata();
   endofdata_ = value;
-  // @@protoc_insertion_point(field_set:structDefinitions.DataPackage.endOfData)
+  // @@protoc_insertion_point(field_set:structDefinitions.Header.endOfData)
+}
+
+// -------------------------------------------------------------------
+
+// DataPackage
+
+// repeated .structDefinitions.Point2D points2D = 1;
+inline int DataPackage::points2d_size() const {
+  return points2d_.size();
+}
+inline void DataPackage::clear_points2d() {
+  points2d_.Clear();
+}
+inline const ::structDefinitions::Point2D& DataPackage::points2d(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points2D)
+  return points2d_.Get(index);
+}
+inline ::structDefinitions::Point2D* DataPackage::mutable_points2d(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points2D)
+  return points2d_.Mutable(index);
+}
+inline ::structDefinitions::Point2D* DataPackage::add_points2d() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.points2D)
+  return points2d_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >*
+DataPackage::mutable_points2d() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.points2D)
+  return &points2d_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >&
+DataPackage::points2d() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.points2D)
+  return points2d_;
+}
+
+// repeated .structDefinitions.Point3D points3D = 2;
+inline int DataPackage::points3d_size() const {
+  return points3d_.size();
+}
+inline void DataPackage::clear_points3d() {
+  points3d_.Clear();
+}
+inline const ::structDefinitions::Point3D& DataPackage::points3d(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points3D)
+  return points3d_.Get(index);
+}
+inline ::structDefinitions::Point3D* DataPackage::mutable_points3d(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points3D)
+  return points3d_.Mutable(index);
+}
+inline ::structDefinitions::Point3D* DataPackage::add_points3d() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.points3D)
+  return points3d_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
+DataPackage::mutable_points3d() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.points3D)
+  return &points3d_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
+DataPackage::points3d() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.points3D)
+  return points3d_;
+}
+
+// repeated .structDefinitions.Vertex vertexes = 3;
+inline int DataPackage::vertexes_size() const {
+  return vertexes_.size();
+}
+inline void DataPackage::clear_vertexes() {
+  vertexes_.Clear();
+}
+inline const ::structDefinitions::Vertex& DataPackage::vertexes(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.vertexes)
+  return vertexes_.Get(index);
+}
+inline ::structDefinitions::Vertex* DataPackage::mutable_vertexes(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.vertexes)
+  return vertexes_.Mutable(index);
+}
+inline ::structDefinitions::Vertex* DataPackage::add_vertexes() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.vertexes)
+  return vertexes_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >*
+DataPackage::mutable_vertexes() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.vertexes)
+  return &vertexes_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >&
+DataPackage::vertexes() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.vertexes)
+  return vertexes_;
+}
+
+// repeated .structDefinitions.Edge edges = 4;
+inline int DataPackage::edges_size() const {
+  return edges_.size();
+}
+inline void DataPackage::clear_edges() {
+  edges_.Clear();
+}
+inline const ::structDefinitions::Edge& DataPackage::edges(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.edges)
+  return edges_.Get(index);
+}
+inline ::structDefinitions::Edge* DataPackage::mutable_edges(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.edges)
+  return edges_.Mutable(index);
+}
+inline ::structDefinitions::Edge* DataPackage::add_edges() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.edges)
+  return edges_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >*
+DataPackage::mutable_edges() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.edges)
+  return &edges_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >&
+DataPackage::edges() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.edges)
+  return edges_;
+}
+
+// repeated .structDefinitions.TriangleFace faces = 5;
+inline int DataPackage::faces_size() const {
+  return faces_.size();
+}
+inline void DataPackage::clear_faces() {
+  faces_.Clear();
+}
+inline const ::structDefinitions::TriangleFace& DataPackage::faces(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.faces)
+  return faces_.Get(index);
+}
+inline ::structDefinitions::TriangleFace* DataPackage::mutable_faces(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.faces)
+  return faces_.Mutable(index);
+}
+inline ::structDefinitions::TriangleFace* DataPackage::add_faces() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.faces)
+  return faces_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >*
+DataPackage::mutable_faces() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.faces)
+  return &faces_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >&
+DataPackage::faces() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.faces)
+  return faces_;
+}
+
+// repeated .structDefinitions.Block blocks = 6;
+inline int DataPackage::blocks_size() const {
+  return blocks_.size();
+}
+inline void DataPackage::clear_blocks() {
+  blocks_.Clear();
+}
+inline const ::structDefinitions::Block& DataPackage::blocks(int index) const {
+  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.blocks)
+  return blocks_.Get(index);
+}
+inline ::structDefinitions::Block* DataPackage::mutable_blocks(int index) {
+  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.blocks)
+  return blocks_.Mutable(index);
+}
+inline ::structDefinitions::Block* DataPackage::add_blocks() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.blocks)
+  return blocks_.Add();
+}
+inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >*
+DataPackage::mutable_blocks() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.blocks)
+  return &blocks_;
+}
+inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >&
+DataPackage::blocks() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.blocks)
+  return blocks_;
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
-// -------------------------------------------------------------------
-
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

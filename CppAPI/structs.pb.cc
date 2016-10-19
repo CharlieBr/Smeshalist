@@ -27,43 +27,28 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* Point2D_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Point2D_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Point2DSet_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Point2DSet_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Point3D_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Point3D_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Point3DSet_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Point3DSet_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Vertex_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Vertex_reflection_ = NULL;
-const ::google::protobuf::Descriptor* VertexSet_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  VertexSet_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Edge_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Edge_reflection_ = NULL;
-const ::google::protobuf::Descriptor* EdgeSet_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  EdgeSet_reflection_ = NULL;
 const ::google::protobuf::Descriptor* TriangleFace_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   TriangleFace_reflection_ = NULL;
-const ::google::protobuf::Descriptor* TriangleFaceSet_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  TriangleFaceSet_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Block_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Block_reflection_ = NULL;
-const ::google::protobuf::Descriptor* BlockSet_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  BlockSet_reflection_ = NULL;
 const ::google::protobuf::Descriptor* MessageInfo_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MessageInfo_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* MessageInfo_Type_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* Header_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Header_reflection_ = NULL;
 const ::google::protobuf::Descriptor* DataPackage_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   DataPackage_reflection_ = NULL;
@@ -111,22 +96,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Point2D),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point2D, _internal_metadata_),
       -1);
-  Point2DSet_descriptor_ = file->message_type(2);
-  static const int Point2DSet_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point2DSet, points_),
-  };
-  Point2DSet_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      Point2DSet_descriptor_,
-      Point2DSet::default_instance_,
-      Point2DSet_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point2DSet, _has_bits_[0]),
-      -1,
-      -1,
-      sizeof(Point2DSet),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point2DSet, _internal_metadata_),
-      -1);
-  Point3D_descriptor_ = file->message_type(3);
+  Point3D_descriptor_ = file->message_type(2);
   static const int Point3D_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3D, x_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3D, y_),
@@ -144,22 +114,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Point3D),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3D, _internal_metadata_),
       -1);
-  Point3DSet_descriptor_ = file->message_type(4);
-  static const int Point3DSet_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3DSet, points_),
-  };
-  Point3DSet_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      Point3DSet_descriptor_,
-      Point3DSet::default_instance_,
-      Point3DSet_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3DSet, _has_bits_[0]),
-      -1,
-      -1,
-      sizeof(Point3DSet),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3DSet, _internal_metadata_),
-      -1);
-  Vertex_descriptor_ = file->message_type(5);
+  Vertex_descriptor_ = file->message_type(3);
   static const int Vertex_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vertex, point_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vertex, number_),
@@ -176,22 +131,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Vertex),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vertex, _internal_metadata_),
       -1);
-  VertexSet_descriptor_ = file->message_type(6);
-  static const int VertexSet_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VertexSet, vertexes_),
-  };
-  VertexSet_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      VertexSet_descriptor_,
-      VertexSet::default_instance_,
-      VertexSet_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VertexSet, _has_bits_[0]),
-      -1,
-      -1,
-      sizeof(VertexSet),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(VertexSet, _internal_metadata_),
-      -1);
-  Edge_descriptor_ = file->message_type(7);
+  Edge_descriptor_ = file->message_type(4);
   static const int Edge_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Edge, v1_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Edge, v2_),
@@ -208,22 +148,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Edge),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Edge, _internal_metadata_),
       -1);
-  EdgeSet_descriptor_ = file->message_type(8);
-  static const int EdgeSet_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EdgeSet, edges_),
-  };
-  EdgeSet_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      EdgeSet_descriptor_,
-      EdgeSet::default_instance_,
-      EdgeSet_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EdgeSet, _has_bits_[0]),
-      -1,
-      -1,
-      sizeof(EdgeSet),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EdgeSet, _internal_metadata_),
-      -1);
-  TriangleFace_descriptor_ = file->message_type(9);
+  TriangleFace_descriptor_ = file->message_type(5);
   static const int TriangleFace_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriangleFace, v1_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriangleFace, v2_),
@@ -241,22 +166,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(TriangleFace),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriangleFace, _internal_metadata_),
       -1);
-  TriangleFaceSet_descriptor_ = file->message_type(10);
-  static const int TriangleFaceSet_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriangleFaceSet, trianglefaces_),
-  };
-  TriangleFaceSet_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      TriangleFaceSet_descriptor_,
-      TriangleFaceSet::default_instance_,
-      TriangleFaceSet_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriangleFaceSet, _has_bits_[0]),
-      -1,
-      -1,
-      sizeof(TriangleFaceSet),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriangleFaceSet, _internal_metadata_),
-      -1);
-  Block_descriptor_ = file->message_type(11);
+  Block_descriptor_ = file->message_type(6);
   static const int Block_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Block, v1_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Block, v2_),
@@ -275,22 +185,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Block),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Block, _internal_metadata_),
       -1);
-  BlockSet_descriptor_ = file->message_type(12);
-  static const int BlockSet_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BlockSet, blocks_),
-  };
-  BlockSet_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      BlockSet_descriptor_,
-      BlockSet::default_instance_,
-      BlockSet_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BlockSet, _has_bits_[0]),
-      -1,
-      -1,
-      sizeof(BlockSet),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BlockSet, _internal_metadata_),
-      -1);
-  MessageInfo_descriptor_ = file->message_type(13);
+  MessageInfo_descriptor_ = file->message_type(7);
   static const int MessageInfo_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, type_),
   };
@@ -306,15 +201,30 @@ void protobuf_AssignDesc_structs_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, _internal_metadata_),
       -1);
   MessageInfo_Type_descriptor_ = MessageInfo_descriptor_->enum_type(0);
-  DataPackage_descriptor_ = file->message_type(14);
-  static const int DataPackage_offsets_[7] = {
+  Header_descriptor_ = file->message_type(8);
+  static const int Header_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, sizeofdata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, endofdata_),
+  };
+  Header_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      Header_descriptor_,
+      Header::default_instance_,
+      Header_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(Header),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, _internal_metadata_),
+      -1);
+  DataPackage_descriptor_ = file->message_type(9);
+  static const int DataPackage_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, points2d_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, points3d_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, vertexes_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, edges_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, faces_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, blocks_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, endofdata_),
   };
   DataPackage_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -344,29 +254,19 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       Point2D_descriptor_, &Point2D::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      Point2DSet_descriptor_, &Point2DSet::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       Point3D_descriptor_, &Point3D::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      Point3DSet_descriptor_, &Point3DSet::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       Vertex_descriptor_, &Vertex::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      VertexSet_descriptor_, &VertexSet::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       Edge_descriptor_, &Edge::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      EdgeSet_descriptor_, &EdgeSet::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       TriangleFace_descriptor_, &TriangleFace::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      TriangleFaceSet_descriptor_, &TriangleFaceSet::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       Block_descriptor_, &Block::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      BlockSet_descriptor_, &BlockSet::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       MessageInfo_descriptor_, &MessageInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      Header_descriptor_, &Header::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       DataPackage_descriptor_, &DataPackage::default_instance());
 }
@@ -378,30 +278,20 @@ void protobuf_ShutdownFile_structs_2eproto() {
   delete Properties_reflection_;
   delete Point2D::default_instance_;
   delete Point2D_reflection_;
-  delete Point2DSet::default_instance_;
-  delete Point2DSet_reflection_;
   delete Point3D::default_instance_;
   delete Point3D_reflection_;
-  delete Point3DSet::default_instance_;
-  delete Point3DSet_reflection_;
   delete Vertex::default_instance_;
   delete Vertex_reflection_;
-  delete VertexSet::default_instance_;
-  delete VertexSet_reflection_;
   delete Edge::default_instance_;
   delete Edge_reflection_;
-  delete EdgeSet::default_instance_;
-  delete EdgeSet_reflection_;
   delete TriangleFace::default_instance_;
   delete TriangleFace_reflection_;
-  delete TriangleFaceSet::default_instance_;
-  delete TriangleFaceSet_reflection_;
   delete Block::default_instance_;
   delete Block_reflection_;
-  delete BlockSet::default_instance_;
-  delete BlockSet_reflection_;
   delete MessageInfo::default_instance_;
   delete MessageInfo_reflection_;
+  delete Header::default_instance_;
+  delete Header_reflection_;
   delete DataPackage::default_instance_;
   delete DataPackage_reflection_;
 }
@@ -417,77 +307,58 @@ void protobuf_AddDesc_structs_2eproto() {
     "operties\022\017\n\007quality\030\001 \001(\001\022\r\n\005label\030\002 \001(\t"
     "\022\017\n\007groupId\030\003 \001(\005\"L\n\007Point2D\022\t\n\001x\030\001 \002(\001\022"
     "\t\n\001y\030\002 \002(\001\022+\n\004prop\030\003 \001(\0132\035.structDefinit"
-    "ions.Properties\"8\n\nPoint2DSet\022*\n\006points\030"
-    "\001 \003(\0132\032.structDefinitions.Point2D\"W\n\007Poi"
-    "nt3D\022\t\n\001x\030\001 \002(\001\022\t\n\001y\030\002 \002(\001\022\t\n\001z\030\003 \002(\001\022+\n"
-    "\004prop\030\004 \001(\0132\035.structDefinitions.Properti"
-    "es\"8\n\nPoint3DSet\022*\n\006points\030\001 \003(\0132\032.struc"
-    "tDefinitions.Point3D\"p\n\006Vertex\022)\n\005point\030"
-    "\001 \002(\0132\032.structDefinitions.Point3D\022\016\n\006num"
-    "ber\030\002 \002(\001\022+\n\004prop\030\003 \001(\0132\035.structDefiniti"
-    "ons.Properties\"8\n\tVertexSet\022+\n\010vertexes\030"
-    "\001 \003(\0132\031.structDefinitions.Vertex\"\203\001\n\004Edg"
-    "e\022&\n\002v1\030\001 \002(\0132\032.structDefinitions.Point3"
-    "D\022&\n\002v2\030\002 \002(\0132\032.structDefinitions.Point3"
-    "D\022+\n\004prop\030\003 \001(\0132\035.structDefinitions.Prop"
-    "erties\"1\n\007EdgeSet\022&\n\005edges\030\001 \003(\0132\027.struc"
-    "tDefinitions.Edge\"\263\001\n\014TriangleFace\022&\n\002v1"
-    "\030\001 \002(\0132\032.structDefinitions.Point3D\022&\n\002v2"
-    "\030\002 \002(\0132\032.structDefinitions.Point3D\022&\n\002v3"
-    "\030\003 \002(\0132\032.structDefinitions.Point3D\022+\n\004pr"
-    "op\030\004 \001(\0132\035.structDefinitions.Properties\""
-    "I\n\017TriangleFaceSet\0226\n\rtriangleFaces\030\001 \003("
-    "\0132\037.structDefinitions.TriangleFace\"\324\001\n\005B"
-    "lock\022&\n\002v1\030\001 \002(\0132\032.structDefinitions.Poi"
-    "nt3D\022&\n\002v2\030\002 \002(\0132\032.structDefinitions.Poi"
-    "nt3D\022&\n\002v3\030\003 \002(\0132\032.structDefinitions.Poi"
-    "nt3D\022&\n\002v4\030\004 \002(\0132\032.structDefinitions.Poi"
-    "nt3D\022+\n\004prop\030\005 \001(\0132\035.structDefinitions.P"
-    "roperties\"4\n\010BlockSet\022(\n\006blocks\030\001 \003(\0132\030."
-    "structDefinitions.Block\"\223\001\n\013MessageInfo\022"
-    "1\n\004type\030\001 \002(\0162#.structDefinitions.Messag"
-    "eInfo.Type\"Q\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDER\020\002"
-    "\022\016\n\nBREAKPOINT\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010REJECT"
-    "ED\020\005\022\007\n\003ACK\020\006\"\275\002\n\013DataPackage\022/\n\010points2"
-    "D\030\001 \001(\0132\035.structDefinitions.Point2DSet\022/"
-    "\n\010points3D\030\002 \001(\0132\035.structDefinitions.Poi"
-    "nt3DSet\022.\n\010vertexes\030\003 \001(\0132\034.structDefini"
-    "tions.VertexSet\022)\n\005edges\030\004 \001(\0132\032.structD"
-    "efinitions.EdgeSet\0221\n\005faces\030\005 \001(\0132\".stru"
-    "ctDefinitions.TriangleFaceSet\022+\n\006blocks\030"
-    "\006 \001(\0132\033.structDefinitions.BlockSet\022\021\n\ten"
-    "dOfData\030\007 \002(\010", 1733);
+    "ions.Properties\"W\n\007Point3D\022\t\n\001x\030\001 \002(\001\022\t\n"
+    "\001y\030\002 \002(\001\022\t\n\001z\030\003 \002(\001\022+\n\004prop\030\004 \001(\0132\035.stru"
+    "ctDefinitions.Properties\"p\n\006Vertex\022)\n\005po"
+    "int\030\001 \002(\0132\032.structDefinitions.Point3D\022\016\n"
+    "\006number\030\002 \002(\001\022+\n\004prop\030\003 \001(\0132\035.structDefi"
+    "nitions.Properties\"\203\001\n\004Edge\022&\n\002v1\030\001 \002(\0132"
+    "\032.structDefinitions.Point3D\022&\n\002v2\030\002 \002(\0132"
+    "\032.structDefinitions.Point3D\022+\n\004prop\030\003 \001("
+    "\0132\035.structDefinitions.Properties\"\263\001\n\014Tri"
+    "angleFace\022&\n\002v1\030\001 \002(\0132\032.structDefinition"
+    "s.Point3D\022&\n\002v2\030\002 \002(\0132\032.structDefinition"
+    "s.Point3D\022&\n\002v3\030\003 \002(\0132\032.structDefinition"
+    "s.Point3D\022+\n\004prop\030\004 \001(\0132\035.structDefiniti"
+    "ons.Properties\"\324\001\n\005Block\022&\n\002v1\030\001 \002(\0132\032.s"
+    "tructDefinitions.Point3D\022&\n\002v2\030\002 \002(\0132\032.s"
+    "tructDefinitions.Point3D\022&\n\002v3\030\003 \002(\0132\032.s"
+    "tructDefinitions.Point3D\022&\n\002v4\030\004 \002(\0132\032.s"
+    "tructDefinitions.Point3D\022+\n\004prop\030\005 \001(\0132\035"
+    ".structDefinitions.Properties\"\223\001\n\013Messag"
+    "eInfo\0221\n\004type\030\001 \002(\0162#.structDefinitions."
+    "MessageInfo.Type\"Q\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RE"
+    "NDER\020\002\022\016\n\nBREAKPOINT\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010"
+    "REJECTED\020\005\022\007\n\003ACK\020\006\"/\n\006Header\022\022\n\nsizeOfD"
+    "ata\030\001 \002(\005\022\021\n\tendOfData\030\007 \002(\010\"\230\002\n\013DataPac"
+    "kage\022,\n\010points2D\030\001 \003(\0132\032.structDefinitio"
+    "ns.Point2D\022,\n\010points3D\030\002 \003(\0132\032.structDef"
+    "initions.Point3D\022+\n\010vertexes\030\003 \003(\0132\031.str"
+    "uctDefinitions.Vertex\022&\n\005edges\030\004 \003(\0132\027.s"
+    "tructDefinitions.Edge\022.\n\005faces\030\005 \003(\0132\037.s"
+    "tructDefinitions.TriangleFace\022(\n\006blocks\030"
+    "\006 \003(\0132\030.structDefinitions.Block", 1391);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "structs.proto", &protobuf_RegisterTypes);
   Properties::default_instance_ = new Properties();
   Point2D::default_instance_ = new Point2D();
-  Point2DSet::default_instance_ = new Point2DSet();
   Point3D::default_instance_ = new Point3D();
-  Point3DSet::default_instance_ = new Point3DSet();
   Vertex::default_instance_ = new Vertex();
-  VertexSet::default_instance_ = new VertexSet();
   Edge::default_instance_ = new Edge();
-  EdgeSet::default_instance_ = new EdgeSet();
   TriangleFace::default_instance_ = new TriangleFace();
-  TriangleFaceSet::default_instance_ = new TriangleFaceSet();
   Block::default_instance_ = new Block();
-  BlockSet::default_instance_ = new BlockSet();
   MessageInfo::default_instance_ = new MessageInfo();
+  Header::default_instance_ = new Header();
   DataPackage::default_instance_ = new DataPackage();
   Properties::default_instance_->InitAsDefaultInstance();
   Point2D::default_instance_->InitAsDefaultInstance();
-  Point2DSet::default_instance_->InitAsDefaultInstance();
   Point3D::default_instance_->InitAsDefaultInstance();
-  Point3DSet::default_instance_->InitAsDefaultInstance();
   Vertex::default_instance_->InitAsDefaultInstance();
-  VertexSet::default_instance_->InitAsDefaultInstance();
   Edge::default_instance_->InitAsDefaultInstance();
-  EdgeSet::default_instance_->InitAsDefaultInstance();
   TriangleFace::default_instance_->InitAsDefaultInstance();
-  TriangleFaceSet::default_instance_->InitAsDefaultInstance();
   Block::default_instance_->InitAsDefaultInstance();
-  BlockSet::default_instance_->InitAsDefaultInstance();
   MessageInfo::default_instance_->InitAsDefaultInstance();
+  Header::default_instance_->InitAsDefaultInstance();
   DataPackage::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_structs_2eproto);
 }
@@ -1407,281 +1278,6 @@ void Point2D::set_allocated_prop(::structDefinitions::Properties* prop) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Point2DSet::kPointsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-Point2DSet::Point2DSet()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:structDefinitions.Point2DSet)
-}
-
-void Point2DSet::InitAsDefaultInstance() {
-}
-
-Point2DSet::Point2DSet(const Point2DSet& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:structDefinitions.Point2DSet)
-}
-
-void Point2DSet::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Point2DSet::~Point2DSet() {
-  // @@protoc_insertion_point(destructor:structDefinitions.Point2DSet)
-  SharedDtor();
-}
-
-void Point2DSet::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void Point2DSet::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Point2DSet::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Point2DSet_descriptor_;
-}
-
-const Point2DSet& Point2DSet::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
-  return *default_instance_;
-}
-
-Point2DSet* Point2DSet::default_instance_ = NULL;
-
-Point2DSet* Point2DSet::New(::google::protobuf::Arena* arena) const {
-  Point2DSet* n = new Point2DSet;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void Point2DSet::Clear() {
-// @@protoc_insertion_point(message_clear_start:structDefinitions.Point2DSet)
-  points_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
-}
-
-bool Point2DSet::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:structDefinitions.Point2DSet)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .structDefinitions.Point2D points = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(input->IncrementRecursionDepth());
-         parse_loop_points:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_points()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(10)) goto parse_loop_points;
-        input->UnsafeDecrementRecursionDepth();
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:structDefinitions.Point2DSet)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:structDefinitions.Point2DSet)
-  return false;
-#undef DO_
-}
-
-void Point2DSet::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:structDefinitions.Point2DSet)
-  // repeated .structDefinitions.Point2D points = 1;
-  for (unsigned int i = 0, n = this->points_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->points(i), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:structDefinitions.Point2DSet)
-}
-
-::google::protobuf::uint8* Point2DSet::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.Point2DSet)
-  // repeated .structDefinitions.Point2D points = 1;
-  for (unsigned int i = 0, n = this->points_size(); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        1, this->points(i), false, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.Point2DSet)
-  return target;
-}
-
-int Point2DSet::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:structDefinitions.Point2DSet)
-  int total_size = 0;
-
-  // repeated .structDefinitions.Point2D points = 1;
-  total_size += 1 * this->points_size();
-  for (int i = 0; i < this->points_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->points(i));
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Point2DSet::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:structDefinitions.Point2DSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const Point2DSet* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const Point2DSet>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structDefinitions.Point2DSet)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:structDefinitions.Point2DSet)
-    MergeFrom(*source);
-  }
-}
-
-void Point2DSet::MergeFrom(const Point2DSet& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.Point2DSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  points_.MergeFrom(from.points_);
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-  }
-}
-
-void Point2DSet::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:structDefinitions.Point2DSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Point2DSet::CopyFrom(const Point2DSet& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:structDefinitions.Point2DSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Point2DSet::IsInitialized() const {
-
-  if (!::google::protobuf::internal::AllAreInitialized(this->points())) return false;
-  return true;
-}
-
-void Point2DSet::Swap(Point2DSet* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void Point2DSet::InternalSwap(Point2DSet* other) {
-  points_.UnsafeArenaSwap(&other->points_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata Point2DSet::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Point2DSet_descriptor_;
-  metadata.reflection = Point2DSet_reflection_;
-  return metadata;
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// Point2DSet
-
-// repeated .structDefinitions.Point2D points = 1;
-int Point2DSet::points_size() const {
-  return points_.size();
-}
-void Point2DSet::clear_points() {
-  points_.Clear();
-}
-const ::structDefinitions::Point2D& Point2DSet::points(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.Point2DSet.points)
-  return points_.Get(index);
-}
-::structDefinitions::Point2D* Point2DSet::mutable_points(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.Point2DSet.points)
-  return points_.Mutable(index);
-}
-::structDefinitions::Point2D* Point2DSet::add_points() {
-  // @@protoc_insertion_point(field_add:structDefinitions.Point2DSet.points)
-  return points_.Add();
-}
-::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >*
-Point2DSet::mutable_points() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.Point2DSet.points)
-  return &points_;
-}
-const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >&
-Point2DSet::points() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.Point2DSet.points)
-  return points_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Point3D::kXFieldNumber;
 const int Point3D::kYFieldNumber;
 const int Point3D::kZFieldNumber;
@@ -2197,281 +1793,6 @@ void Point3D::set_allocated_prop(::structDefinitions::Properties* prop) {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Point3DSet::kPointsFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-Point3DSet::Point3DSet()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:structDefinitions.Point3DSet)
-}
-
-void Point3DSet::InitAsDefaultInstance() {
-}
-
-Point3DSet::Point3DSet(const Point3DSet& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:structDefinitions.Point3DSet)
-}
-
-void Point3DSet::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Point3DSet::~Point3DSet() {
-  // @@protoc_insertion_point(destructor:structDefinitions.Point3DSet)
-  SharedDtor();
-}
-
-void Point3DSet::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void Point3DSet::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Point3DSet::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Point3DSet_descriptor_;
-}
-
-const Point3DSet& Point3DSet::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
-  return *default_instance_;
-}
-
-Point3DSet* Point3DSet::default_instance_ = NULL;
-
-Point3DSet* Point3DSet::New(::google::protobuf::Arena* arena) const {
-  Point3DSet* n = new Point3DSet;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void Point3DSet::Clear() {
-// @@protoc_insertion_point(message_clear_start:structDefinitions.Point3DSet)
-  points_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
-}
-
-bool Point3DSet::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:structDefinitions.Point3DSet)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .structDefinitions.Point3D points = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(input->IncrementRecursionDepth());
-         parse_loop_points:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_points()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(10)) goto parse_loop_points;
-        input->UnsafeDecrementRecursionDepth();
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:structDefinitions.Point3DSet)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:structDefinitions.Point3DSet)
-  return false;
-#undef DO_
-}
-
-void Point3DSet::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:structDefinitions.Point3DSet)
-  // repeated .structDefinitions.Point3D points = 1;
-  for (unsigned int i = 0, n = this->points_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->points(i), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:structDefinitions.Point3DSet)
-}
-
-::google::protobuf::uint8* Point3DSet::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.Point3DSet)
-  // repeated .structDefinitions.Point3D points = 1;
-  for (unsigned int i = 0, n = this->points_size(); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        1, this->points(i), false, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.Point3DSet)
-  return target;
-}
-
-int Point3DSet::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:structDefinitions.Point3DSet)
-  int total_size = 0;
-
-  // repeated .structDefinitions.Point3D points = 1;
-  total_size += 1 * this->points_size();
-  for (int i = 0; i < this->points_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->points(i));
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Point3DSet::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:structDefinitions.Point3DSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const Point3DSet* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const Point3DSet>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structDefinitions.Point3DSet)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:structDefinitions.Point3DSet)
-    MergeFrom(*source);
-  }
-}
-
-void Point3DSet::MergeFrom(const Point3DSet& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.Point3DSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  points_.MergeFrom(from.points_);
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-  }
-}
-
-void Point3DSet::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:structDefinitions.Point3DSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Point3DSet::CopyFrom(const Point3DSet& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:structDefinitions.Point3DSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Point3DSet::IsInitialized() const {
-
-  if (!::google::protobuf::internal::AllAreInitialized(this->points())) return false;
-  return true;
-}
-
-void Point3DSet::Swap(Point3DSet* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void Point3DSet::InternalSwap(Point3DSet* other) {
-  points_.UnsafeArenaSwap(&other->points_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata Point3DSet::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Point3DSet_descriptor_;
-  metadata.reflection = Point3DSet_reflection_;
-  return metadata;
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// Point3DSet
-
-// repeated .structDefinitions.Point3D points = 1;
-int Point3DSet::points_size() const {
-  return points_.size();
-}
-void Point3DSet::clear_points() {
-  points_.Clear();
-}
-const ::structDefinitions::Point3D& Point3DSet::points(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.Point3DSet.points)
-  return points_.Get(index);
-}
-::structDefinitions::Point3D* Point3DSet::mutable_points(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.Point3DSet.points)
-  return points_.Mutable(index);
-}
-::structDefinitions::Point3D* Point3DSet::add_points() {
-  // @@protoc_insertion_point(field_add:structDefinitions.Point3DSet.points)
-  return points_.Add();
-}
-::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
-Point3DSet::mutable_points() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.Point3DSet.points)
-  return &points_;
-}
-const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
-Point3DSet::points() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.Point3DSet.points)
-  return points_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Vertex::kPointFieldNumber;
 const int Vertex::kNumberFieldNumber;
 const int Vertex::kPropFieldNumber;
@@ -2930,281 +2251,6 @@ void Vertex::set_allocated_prop(::structDefinitions::Properties* prop) {
     clear_has_prop();
   }
   // @@protoc_insertion_point(field_set_allocated:structDefinitions.Vertex.prop)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int VertexSet::kVertexesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-VertexSet::VertexSet()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:structDefinitions.VertexSet)
-}
-
-void VertexSet::InitAsDefaultInstance() {
-}
-
-VertexSet::VertexSet(const VertexSet& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:structDefinitions.VertexSet)
-}
-
-void VertexSet::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-VertexSet::~VertexSet() {
-  // @@protoc_insertion_point(destructor:structDefinitions.VertexSet)
-  SharedDtor();
-}
-
-void VertexSet::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void VertexSet::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* VertexSet::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return VertexSet_descriptor_;
-}
-
-const VertexSet& VertexSet::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
-  return *default_instance_;
-}
-
-VertexSet* VertexSet::default_instance_ = NULL;
-
-VertexSet* VertexSet::New(::google::protobuf::Arena* arena) const {
-  VertexSet* n = new VertexSet;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void VertexSet::Clear() {
-// @@protoc_insertion_point(message_clear_start:structDefinitions.VertexSet)
-  vertexes_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
-}
-
-bool VertexSet::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:structDefinitions.VertexSet)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .structDefinitions.Vertex vertexes = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(input->IncrementRecursionDepth());
-         parse_loop_vertexes:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_vertexes()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(10)) goto parse_loop_vertexes;
-        input->UnsafeDecrementRecursionDepth();
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:structDefinitions.VertexSet)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:structDefinitions.VertexSet)
-  return false;
-#undef DO_
-}
-
-void VertexSet::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:structDefinitions.VertexSet)
-  // repeated .structDefinitions.Vertex vertexes = 1;
-  for (unsigned int i = 0, n = this->vertexes_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->vertexes(i), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:structDefinitions.VertexSet)
-}
-
-::google::protobuf::uint8* VertexSet::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.VertexSet)
-  // repeated .structDefinitions.Vertex vertexes = 1;
-  for (unsigned int i = 0, n = this->vertexes_size(); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        1, this->vertexes(i), false, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.VertexSet)
-  return target;
-}
-
-int VertexSet::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:structDefinitions.VertexSet)
-  int total_size = 0;
-
-  // repeated .structDefinitions.Vertex vertexes = 1;
-  total_size += 1 * this->vertexes_size();
-  for (int i = 0; i < this->vertexes_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->vertexes(i));
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void VertexSet::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:structDefinitions.VertexSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const VertexSet* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const VertexSet>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structDefinitions.VertexSet)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:structDefinitions.VertexSet)
-    MergeFrom(*source);
-  }
-}
-
-void VertexSet::MergeFrom(const VertexSet& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.VertexSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  vertexes_.MergeFrom(from.vertexes_);
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-  }
-}
-
-void VertexSet::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:structDefinitions.VertexSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void VertexSet::CopyFrom(const VertexSet& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:structDefinitions.VertexSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool VertexSet::IsInitialized() const {
-
-  if (!::google::protobuf::internal::AllAreInitialized(this->vertexes())) return false;
-  return true;
-}
-
-void VertexSet::Swap(VertexSet* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void VertexSet::InternalSwap(VertexSet* other) {
-  vertexes_.UnsafeArenaSwap(&other->vertexes_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata VertexSet::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = VertexSet_descriptor_;
-  metadata.reflection = VertexSet_reflection_;
-  return metadata;
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// VertexSet
-
-// repeated .structDefinitions.Vertex vertexes = 1;
-int VertexSet::vertexes_size() const {
-  return vertexes_.size();
-}
-void VertexSet::clear_vertexes() {
-  vertexes_.Clear();
-}
-const ::structDefinitions::Vertex& VertexSet::vertexes(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.VertexSet.vertexes)
-  return vertexes_.Get(index);
-}
-::structDefinitions::Vertex* VertexSet::mutable_vertexes(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.VertexSet.vertexes)
-  return vertexes_.Mutable(index);
-}
-::structDefinitions::Vertex* VertexSet::add_vertexes() {
-  // @@protoc_insertion_point(field_add:structDefinitions.VertexSet.vertexes)
-  return vertexes_.Add();
-}
-::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >*
-VertexSet::mutable_vertexes() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.VertexSet.vertexes)
-  return &vertexes_;
-}
-const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >&
-VertexSet::vertexes() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.VertexSet.vertexes)
-  return vertexes_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -3702,281 +2748,6 @@ void Edge::set_allocated_prop(::structDefinitions::Properties* prop) {
     clear_has_prop();
   }
   // @@protoc_insertion_point(field_set_allocated:structDefinitions.Edge.prop)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int EdgeSet::kEdgesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-EdgeSet::EdgeSet()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:structDefinitions.EdgeSet)
-}
-
-void EdgeSet::InitAsDefaultInstance() {
-}
-
-EdgeSet::EdgeSet(const EdgeSet& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:structDefinitions.EdgeSet)
-}
-
-void EdgeSet::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-EdgeSet::~EdgeSet() {
-  // @@protoc_insertion_point(destructor:structDefinitions.EdgeSet)
-  SharedDtor();
-}
-
-void EdgeSet::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void EdgeSet::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* EdgeSet::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return EdgeSet_descriptor_;
-}
-
-const EdgeSet& EdgeSet::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
-  return *default_instance_;
-}
-
-EdgeSet* EdgeSet::default_instance_ = NULL;
-
-EdgeSet* EdgeSet::New(::google::protobuf::Arena* arena) const {
-  EdgeSet* n = new EdgeSet;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void EdgeSet::Clear() {
-// @@protoc_insertion_point(message_clear_start:structDefinitions.EdgeSet)
-  edges_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
-}
-
-bool EdgeSet::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:structDefinitions.EdgeSet)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .structDefinitions.Edge edges = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(input->IncrementRecursionDepth());
-         parse_loop_edges:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_edges()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(10)) goto parse_loop_edges;
-        input->UnsafeDecrementRecursionDepth();
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:structDefinitions.EdgeSet)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:structDefinitions.EdgeSet)
-  return false;
-#undef DO_
-}
-
-void EdgeSet::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:structDefinitions.EdgeSet)
-  // repeated .structDefinitions.Edge edges = 1;
-  for (unsigned int i = 0, n = this->edges_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->edges(i), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:structDefinitions.EdgeSet)
-}
-
-::google::protobuf::uint8* EdgeSet::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.EdgeSet)
-  // repeated .structDefinitions.Edge edges = 1;
-  for (unsigned int i = 0, n = this->edges_size(); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        1, this->edges(i), false, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.EdgeSet)
-  return target;
-}
-
-int EdgeSet::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:structDefinitions.EdgeSet)
-  int total_size = 0;
-
-  // repeated .structDefinitions.Edge edges = 1;
-  total_size += 1 * this->edges_size();
-  for (int i = 0; i < this->edges_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->edges(i));
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void EdgeSet::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:structDefinitions.EdgeSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const EdgeSet* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const EdgeSet>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structDefinitions.EdgeSet)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:structDefinitions.EdgeSet)
-    MergeFrom(*source);
-  }
-}
-
-void EdgeSet::MergeFrom(const EdgeSet& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.EdgeSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  edges_.MergeFrom(from.edges_);
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-  }
-}
-
-void EdgeSet::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:structDefinitions.EdgeSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void EdgeSet::CopyFrom(const EdgeSet& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:structDefinitions.EdgeSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool EdgeSet::IsInitialized() const {
-
-  if (!::google::protobuf::internal::AllAreInitialized(this->edges())) return false;
-  return true;
-}
-
-void EdgeSet::Swap(EdgeSet* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void EdgeSet::InternalSwap(EdgeSet* other) {
-  edges_.UnsafeArenaSwap(&other->edges_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata EdgeSet::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = EdgeSet_descriptor_;
-  metadata.reflection = EdgeSet_reflection_;
-  return metadata;
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// EdgeSet
-
-// repeated .structDefinitions.Edge edges = 1;
-int EdgeSet::edges_size() const {
-  return edges_.size();
-}
-void EdgeSet::clear_edges() {
-  edges_.Clear();
-}
-const ::structDefinitions::Edge& EdgeSet::edges(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.EdgeSet.edges)
-  return edges_.Get(index);
-}
-::structDefinitions::Edge* EdgeSet::mutable_edges(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.EdgeSet.edges)
-  return edges_.Mutable(index);
-}
-::structDefinitions::Edge* EdgeSet::add_edges() {
-  // @@protoc_insertion_point(field_add:structDefinitions.EdgeSet.edges)
-  return edges_.Add();
-}
-::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >*
-EdgeSet::mutable_edges() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.EdgeSet.edges)
-  return &edges_;
-}
-const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >&
-EdgeSet::edges() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.EdgeSet.edges)
-  return edges_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -4570,281 +3341,6 @@ void TriangleFace::set_allocated_prop(::structDefinitions::Properties* prop) {
     clear_has_prop();
   }
   // @@protoc_insertion_point(field_set_allocated:structDefinitions.TriangleFace.prop)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int TriangleFaceSet::kTriangleFacesFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-TriangleFaceSet::TriangleFaceSet()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:structDefinitions.TriangleFaceSet)
-}
-
-void TriangleFaceSet::InitAsDefaultInstance() {
-}
-
-TriangleFaceSet::TriangleFaceSet(const TriangleFaceSet& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:structDefinitions.TriangleFaceSet)
-}
-
-void TriangleFaceSet::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-TriangleFaceSet::~TriangleFaceSet() {
-  // @@protoc_insertion_point(destructor:structDefinitions.TriangleFaceSet)
-  SharedDtor();
-}
-
-void TriangleFaceSet::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void TriangleFaceSet::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* TriangleFaceSet::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return TriangleFaceSet_descriptor_;
-}
-
-const TriangleFaceSet& TriangleFaceSet::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
-  return *default_instance_;
-}
-
-TriangleFaceSet* TriangleFaceSet::default_instance_ = NULL;
-
-TriangleFaceSet* TriangleFaceSet::New(::google::protobuf::Arena* arena) const {
-  TriangleFaceSet* n = new TriangleFaceSet;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void TriangleFaceSet::Clear() {
-// @@protoc_insertion_point(message_clear_start:structDefinitions.TriangleFaceSet)
-  trianglefaces_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
-}
-
-bool TriangleFaceSet::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:structDefinitions.TriangleFaceSet)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .structDefinitions.TriangleFace triangleFaces = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(input->IncrementRecursionDepth());
-         parse_loop_triangleFaces:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_trianglefaces()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(10)) goto parse_loop_triangleFaces;
-        input->UnsafeDecrementRecursionDepth();
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:structDefinitions.TriangleFaceSet)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:structDefinitions.TriangleFaceSet)
-  return false;
-#undef DO_
-}
-
-void TriangleFaceSet::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:structDefinitions.TriangleFaceSet)
-  // repeated .structDefinitions.TriangleFace triangleFaces = 1;
-  for (unsigned int i = 0, n = this->trianglefaces_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->trianglefaces(i), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:structDefinitions.TriangleFaceSet)
-}
-
-::google::protobuf::uint8* TriangleFaceSet::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.TriangleFaceSet)
-  // repeated .structDefinitions.TriangleFace triangleFaces = 1;
-  for (unsigned int i = 0, n = this->trianglefaces_size(); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        1, this->trianglefaces(i), false, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.TriangleFaceSet)
-  return target;
-}
-
-int TriangleFaceSet::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:structDefinitions.TriangleFaceSet)
-  int total_size = 0;
-
-  // repeated .structDefinitions.TriangleFace triangleFaces = 1;
-  total_size += 1 * this->trianglefaces_size();
-  for (int i = 0; i < this->trianglefaces_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->trianglefaces(i));
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void TriangleFaceSet::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:structDefinitions.TriangleFaceSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const TriangleFaceSet* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const TriangleFaceSet>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structDefinitions.TriangleFaceSet)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:structDefinitions.TriangleFaceSet)
-    MergeFrom(*source);
-  }
-}
-
-void TriangleFaceSet::MergeFrom(const TriangleFaceSet& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.TriangleFaceSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  trianglefaces_.MergeFrom(from.trianglefaces_);
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-  }
-}
-
-void TriangleFaceSet::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:structDefinitions.TriangleFaceSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void TriangleFaceSet::CopyFrom(const TriangleFaceSet& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:structDefinitions.TriangleFaceSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool TriangleFaceSet::IsInitialized() const {
-
-  if (!::google::protobuf::internal::AllAreInitialized(this->trianglefaces())) return false;
-  return true;
-}
-
-void TriangleFaceSet::Swap(TriangleFaceSet* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void TriangleFaceSet::InternalSwap(TriangleFaceSet* other) {
-  trianglefaces_.UnsafeArenaSwap(&other->trianglefaces_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata TriangleFaceSet::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = TriangleFaceSet_descriptor_;
-  metadata.reflection = TriangleFaceSet_reflection_;
-  return metadata;
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// TriangleFaceSet
-
-// repeated .structDefinitions.TriangleFace triangleFaces = 1;
-int TriangleFaceSet::trianglefaces_size() const {
-  return trianglefaces_.size();
-}
-void TriangleFaceSet::clear_trianglefaces() {
-  trianglefaces_.Clear();
-}
-const ::structDefinitions::TriangleFace& TriangleFaceSet::trianglefaces(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.TriangleFaceSet.triangleFaces)
-  return trianglefaces_.Get(index);
-}
-::structDefinitions::TriangleFace* TriangleFaceSet::mutable_trianglefaces(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.TriangleFaceSet.triangleFaces)
-  return trianglefaces_.Mutable(index);
-}
-::structDefinitions::TriangleFace* TriangleFaceSet::add_trianglefaces() {
-  // @@protoc_insertion_point(field_add:structDefinitions.TriangleFaceSet.triangleFaces)
-  return trianglefaces_.Add();
-}
-::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >*
-TriangleFaceSet::mutable_trianglefaces() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.TriangleFaceSet.triangleFaces)
-  return &trianglefaces_;
-}
-const ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >&
-TriangleFaceSet::trianglefaces() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.TriangleFaceSet.triangleFaces)
-  return trianglefaces_;
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -5540,281 +4036,6 @@ void Block::set_allocated_prop(::structDefinitions::Properties* prop) {
 
 // ===================================================================
 
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int BlockSet::kBlocksFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-BlockSet::BlockSet()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:structDefinitions.BlockSet)
-}
-
-void BlockSet::InitAsDefaultInstance() {
-}
-
-BlockSet::BlockSet(const BlockSet& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:structDefinitions.BlockSet)
-}
-
-void BlockSet::SharedCtor() {
-  _cached_size_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-BlockSet::~BlockSet() {
-  // @@protoc_insertion_point(destructor:structDefinitions.BlockSet)
-  SharedDtor();
-}
-
-void BlockSet::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void BlockSet::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* BlockSet::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return BlockSet_descriptor_;
-}
-
-const BlockSet& BlockSet::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
-  return *default_instance_;
-}
-
-BlockSet* BlockSet::default_instance_ = NULL;
-
-BlockSet* BlockSet::New(::google::protobuf::Arena* arena) const {
-  BlockSet* n = new BlockSet;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void BlockSet::Clear() {
-// @@protoc_insertion_point(message_clear_start:structDefinitions.BlockSet)
-  blocks_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
-}
-
-bool BlockSet::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:structDefinitions.BlockSet)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .structDefinitions.Block blocks = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(input->IncrementRecursionDepth());
-         parse_loop_blocks:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_blocks()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(10)) goto parse_loop_blocks;
-        input->UnsafeDecrementRecursionDepth();
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:structDefinitions.BlockSet)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:structDefinitions.BlockSet)
-  return false;
-#undef DO_
-}
-
-void BlockSet::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:structDefinitions.BlockSet)
-  // repeated .structDefinitions.Block blocks = 1;
-  for (unsigned int i = 0, n = this->blocks_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->blocks(i), output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:structDefinitions.BlockSet)
-}
-
-::google::protobuf::uint8* BlockSet::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.BlockSet)
-  // repeated .structDefinitions.Block blocks = 1;
-  for (unsigned int i = 0, n = this->blocks_size(); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        1, this->blocks(i), false, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.BlockSet)
-  return target;
-}
-
-int BlockSet::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:structDefinitions.BlockSet)
-  int total_size = 0;
-
-  // repeated .structDefinitions.Block blocks = 1;
-  total_size += 1 * this->blocks_size();
-  for (int i = 0; i < this->blocks_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->blocks(i));
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void BlockSet::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:structDefinitions.BlockSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const BlockSet* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const BlockSet>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structDefinitions.BlockSet)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:structDefinitions.BlockSet)
-    MergeFrom(*source);
-  }
-}
-
-void BlockSet::MergeFrom(const BlockSet& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.BlockSet)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  blocks_.MergeFrom(from.blocks_);
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-  }
-}
-
-void BlockSet::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:structDefinitions.BlockSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void BlockSet::CopyFrom(const BlockSet& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:structDefinitions.BlockSet)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool BlockSet::IsInitialized() const {
-
-  if (!::google::protobuf::internal::AllAreInitialized(this->blocks())) return false;
-  return true;
-}
-
-void BlockSet::Swap(BlockSet* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void BlockSet::InternalSwap(BlockSet* other) {
-  blocks_.UnsafeArenaSwap(&other->blocks_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata BlockSet::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = BlockSet_descriptor_;
-  metadata.reflection = BlockSet_reflection_;
-  return metadata;
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// BlockSet
-
-// repeated .structDefinitions.Block blocks = 1;
-int BlockSet::blocks_size() const {
-  return blocks_.size();
-}
-void BlockSet::clear_blocks() {
-  blocks_.Clear();
-}
-const ::structDefinitions::Block& BlockSet::blocks(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.BlockSet.blocks)
-  return blocks_.Get(index);
-}
-::structDefinitions::Block* BlockSet::mutable_blocks(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.BlockSet.blocks)
-  return blocks_.Mutable(index);
-}
-::structDefinitions::Block* BlockSet::add_blocks() {
-  // @@protoc_insertion_point(field_add:structDefinitions.BlockSet.blocks)
-  return blocks_.Add();
-}
-::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >*
-BlockSet::mutable_blocks() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.BlockSet.blocks)
-  return &blocks_;
-}
-const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >&
-BlockSet::blocks() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.BlockSet.blocks)
-  return blocks_;
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
 const ::google::protobuf::EnumDescriptor* MessageInfo_Type_descriptor() {
   protobuf_AssignDescriptorsOnce();
   return MessageInfo_Type_descriptor_;
@@ -6119,200 +4340,115 @@ void MessageInfo::clear_type() {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int DataPackage::kPoints2DFieldNumber;
-const int DataPackage::kPoints3DFieldNumber;
-const int DataPackage::kVertexesFieldNumber;
-const int DataPackage::kEdgesFieldNumber;
-const int DataPackage::kFacesFieldNumber;
-const int DataPackage::kBlocksFieldNumber;
-const int DataPackage::kEndOfDataFieldNumber;
+const int Header::kSizeOfDataFieldNumber;
+const int Header::kEndOfDataFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
-DataPackage::DataPackage()
+Header::Header()
   : ::google::protobuf::Message(), _internal_metadata_(NULL) {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:structDefinitions.DataPackage)
+  // @@protoc_insertion_point(constructor:structDefinitions.Header)
 }
 
-void DataPackage::InitAsDefaultInstance() {
-  points2d_ = const_cast< ::structDefinitions::Point2DSet*>(&::structDefinitions::Point2DSet::default_instance());
-  points3d_ = const_cast< ::structDefinitions::Point3DSet*>(&::structDefinitions::Point3DSet::default_instance());
-  vertexes_ = const_cast< ::structDefinitions::VertexSet*>(&::structDefinitions::VertexSet::default_instance());
-  edges_ = const_cast< ::structDefinitions::EdgeSet*>(&::structDefinitions::EdgeSet::default_instance());
-  faces_ = const_cast< ::structDefinitions::TriangleFaceSet*>(&::structDefinitions::TriangleFaceSet::default_instance());
-  blocks_ = const_cast< ::structDefinitions::BlockSet*>(&::structDefinitions::BlockSet::default_instance());
+void Header::InitAsDefaultInstance() {
 }
 
-DataPackage::DataPackage(const DataPackage& from)
+Header::Header(const Header& from)
   : ::google::protobuf::Message(),
     _internal_metadata_(NULL) {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:structDefinitions.DataPackage)
+  // @@protoc_insertion_point(copy_constructor:structDefinitions.Header)
 }
 
-void DataPackage::SharedCtor() {
+void Header::SharedCtor() {
   _cached_size_ = 0;
-  points2d_ = NULL;
-  points3d_ = NULL;
-  vertexes_ = NULL;
-  edges_ = NULL;
-  faces_ = NULL;
-  blocks_ = NULL;
+  sizeofdata_ = 0;
   endofdata_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-DataPackage::~DataPackage() {
-  // @@protoc_insertion_point(destructor:structDefinitions.DataPackage)
+Header::~Header() {
+  // @@protoc_insertion_point(destructor:structDefinitions.Header)
   SharedDtor();
 }
 
-void DataPackage::SharedDtor() {
+void Header::SharedDtor() {
   if (this != default_instance_) {
-    delete points2d_;
-    delete points3d_;
-    delete vertexes_;
-    delete edges_;
-    delete faces_;
-    delete blocks_;
   }
 }
 
-void DataPackage::SetCachedSize(int size) const {
+void Header::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* DataPackage::descriptor() {
+const ::google::protobuf::Descriptor* Header::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return DataPackage_descriptor_;
+  return Header_descriptor_;
 }
 
-const DataPackage& DataPackage::default_instance() {
+const Header& Header::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
   return *default_instance_;
 }
 
-DataPackage* DataPackage::default_instance_ = NULL;
+Header* Header::default_instance_ = NULL;
 
-DataPackage* DataPackage::New(::google::protobuf::Arena* arena) const {
-  DataPackage* n = new DataPackage;
+Header* Header::New(::google::protobuf::Arena* arena) const {
+  Header* n = new Header;
   if (arena != NULL) {
     arena->Own(n);
   }
   return n;
 }
 
-void DataPackage::Clear() {
-// @@protoc_insertion_point(message_clear_start:structDefinitions.DataPackage)
-  if (_has_bits_[0 / 32] & 127u) {
-    if (has_points2d()) {
-      if (points2d_ != NULL) points2d_->::structDefinitions::Point2DSet::Clear();
-    }
-    if (has_points3d()) {
-      if (points3d_ != NULL) points3d_->::structDefinitions::Point3DSet::Clear();
-    }
-    if (has_vertexes()) {
-      if (vertexes_ != NULL) vertexes_->::structDefinitions::VertexSet::Clear();
-    }
-    if (has_edges()) {
-      if (edges_ != NULL) edges_->::structDefinitions::EdgeSet::Clear();
-    }
-    if (has_faces()) {
-      if (faces_ != NULL) faces_->::structDefinitions::TriangleFaceSet::Clear();
-    }
-    if (has_blocks()) {
-      if (blocks_ != NULL) blocks_->::structDefinitions::BlockSet::Clear();
-    }
-    endofdata_ = false;
-  }
+void Header::Clear() {
+// @@protoc_insertion_point(message_clear_start:structDefinitions.Header)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(Header, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<Header*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(sizeofdata_, endofdata_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   if (_internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->Clear();
   }
 }
 
-bool DataPackage::MergePartialFromCodedStream(
+bool Header::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:structDefinitions.DataPackage)
+  // @@protoc_insertion_point(parse_start:structDefinitions.Header)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .structDefinitions.Point2DSet points2D = 1;
+      // required int32 sizeOfData = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_points2d()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(18)) goto parse_points3D;
-        break;
-      }
-
-      // optional .structDefinitions.Point3DSet points3D = 2;
-      case 2: {
-        if (tag == 18) {
-         parse_points3D:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_points3d()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(26)) goto parse_vertexes;
-        break;
-      }
-
-      // optional .structDefinitions.VertexSet vertexes = 3;
-      case 3: {
-        if (tag == 26) {
-         parse_vertexes:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_vertexes()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(34)) goto parse_edges;
-        break;
-      }
-
-      // optional .structDefinitions.EdgeSet edges = 4;
-      case 4: {
-        if (tag == 34) {
-         parse_edges:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_edges()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(42)) goto parse_faces;
-        break;
-      }
-
-      // optional .structDefinitions.TriangleFaceSet faces = 5;
-      case 5: {
-        if (tag == 42) {
-         parse_faces:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_faces()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(50)) goto parse_blocks;
-        break;
-      }
-
-      // optional .structDefinitions.BlockSet blocks = 6;
-      case 6: {
-        if (tag == 50) {
-         parse_blocks:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_blocks()));
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &sizeofdata_)));
+          set_has_sizeofdata();
         } else {
           goto handle_unusual;
         }
@@ -6349,6 +4485,426 @@ bool DataPackage::MergePartialFromCodedStream(
     }
   }
 success:
+  // @@protoc_insertion_point(parse_success:structDefinitions.Header)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:structDefinitions.Header)
+  return false;
+#undef DO_
+}
+
+void Header::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:structDefinitions.Header)
+  // required int32 sizeOfData = 1;
+  if (has_sizeofdata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->sizeofdata(), output);
+  }
+
+  // required bool endOfData = 7;
+  if (has_endofdata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->endofdata(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:structDefinitions.Header)
+}
+
+::google::protobuf::uint8* Header::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.Header)
+  // required int32 sizeOfData = 1;
+  if (has_sizeofdata()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->sizeofdata(), target);
+  }
+
+  // required bool endOfData = 7;
+  if (has_endofdata()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->endofdata(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.Header)
+  return target;
+}
+
+int Header::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:structDefinitions.Header)
+  int total_size = 0;
+
+  if (has_sizeofdata()) {
+    // required int32 sizeOfData = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->sizeofdata());
+  }
+
+  if (has_endofdata()) {
+    // required bool endOfData = 7;
+    total_size += 1 + 1;
+  }
+
+  return total_size;
+}
+int Header::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:structDefinitions.Header)
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
+    // required int32 sizeOfData = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->sizeofdata());
+
+    // required bool endOfData = 7;
+    total_size += 1 + 1;
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Header::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:structDefinitions.Header)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const Header* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const Header>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structDefinitions.Header)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:structDefinitions.Header)
+    MergeFrom(*source);
+  }
+}
+
+void Header::MergeFrom(const Header& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.Header)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_sizeofdata()) {
+      set_sizeofdata(from.sizeofdata());
+    }
+    if (from.has_endofdata()) {
+      set_endofdata(from.endofdata());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void Header::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:structDefinitions.Header)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Header::CopyFrom(const Header& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:structDefinitions.Header)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Header::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+
+  return true;
+}
+
+void Header::Swap(Header* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Header::InternalSwap(Header* other) {
+  std::swap(sizeofdata_, other->sizeofdata_);
+  std::swap(endofdata_, other->endofdata_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata Header::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Header_descriptor_;
+  metadata.reflection = Header_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// Header
+
+// required int32 sizeOfData = 1;
+bool Header::has_sizeofdata() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void Header::set_has_sizeofdata() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void Header::clear_has_sizeofdata() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void Header::clear_sizeofdata() {
+  sizeofdata_ = 0;
+  clear_has_sizeofdata();
+}
+ ::google::protobuf::int32 Header::sizeofdata() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Header.sizeOfData)
+  return sizeofdata_;
+}
+ void Header::set_sizeofdata(::google::protobuf::int32 value) {
+  set_has_sizeofdata();
+  sizeofdata_ = value;
+  // @@protoc_insertion_point(field_set:structDefinitions.Header.sizeOfData)
+}
+
+// required bool endOfData = 7;
+bool Header::has_endofdata() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void Header::set_has_endofdata() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void Header::clear_has_endofdata() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void Header::clear_endofdata() {
+  endofdata_ = false;
+  clear_has_endofdata();
+}
+ bool Header::endofdata() const {
+  // @@protoc_insertion_point(field_get:structDefinitions.Header.endOfData)
+  return endofdata_;
+}
+ void Header::set_endofdata(bool value) {
+  set_has_endofdata();
+  endofdata_ = value;
+  // @@protoc_insertion_point(field_set:structDefinitions.Header.endOfData)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int DataPackage::kPoints2DFieldNumber;
+const int DataPackage::kPoints3DFieldNumber;
+const int DataPackage::kVertexesFieldNumber;
+const int DataPackage::kEdgesFieldNumber;
+const int DataPackage::kFacesFieldNumber;
+const int DataPackage::kBlocksFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+DataPackage::DataPackage()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:structDefinitions.DataPackage)
+}
+
+void DataPackage::InitAsDefaultInstance() {
+}
+
+DataPackage::DataPackage(const DataPackage& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:structDefinitions.DataPackage)
+}
+
+void DataPackage::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DataPackage::~DataPackage() {
+  // @@protoc_insertion_point(destructor:structDefinitions.DataPackage)
+  SharedDtor();
+}
+
+void DataPackage::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void DataPackage::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DataPackage::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DataPackage_descriptor_;
+}
+
+const DataPackage& DataPackage::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
+  return *default_instance_;
+}
+
+DataPackage* DataPackage::default_instance_ = NULL;
+
+DataPackage* DataPackage::New(::google::protobuf::Arena* arena) const {
+  DataPackage* n = new DataPackage;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void DataPackage::Clear() {
+// @@protoc_insertion_point(message_clear_start:structDefinitions.DataPackage)
+  points2d_.Clear();
+  points3d_.Clear();
+  vertexes_.Clear();
+  edges_.Clear();
+  faces_.Clear();
+  blocks_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool DataPackage::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:structDefinitions.DataPackage)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated .structDefinitions.Point2D points2D = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_points2D:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_points2d()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(10)) goto parse_loop_points2D;
+        if (input->ExpectTag(18)) goto parse_loop_points3D;
+        input->UnsafeDecrementRecursionDepth();
+        break;
+      }
+
+      // repeated .structDefinitions.Point3D points3D = 2;
+      case 2: {
+        if (tag == 18) {
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_points3D:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_points3d()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_loop_points3D;
+        if (input->ExpectTag(26)) goto parse_loop_vertexes;
+        input->UnsafeDecrementRecursionDepth();
+        break;
+      }
+
+      // repeated .structDefinitions.Vertex vertexes = 3;
+      case 3: {
+        if (tag == 26) {
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_vertexes:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_vertexes()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_loop_vertexes;
+        if (input->ExpectTag(34)) goto parse_loop_edges;
+        input->UnsafeDecrementRecursionDepth();
+        break;
+      }
+
+      // repeated .structDefinitions.Edge edges = 4;
+      case 4: {
+        if (tag == 34) {
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_edges:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_edges()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_loop_edges;
+        if (input->ExpectTag(42)) goto parse_loop_faces;
+        input->UnsafeDecrementRecursionDepth();
+        break;
+      }
+
+      // repeated .structDefinitions.TriangleFace faces = 5;
+      case 5: {
+        if (tag == 42) {
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_faces:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_faces()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_loop_faces;
+        if (input->ExpectTag(50)) goto parse_loop_blocks;
+        input->UnsafeDecrementRecursionDepth();
+        break;
+      }
+
+      // repeated .structDefinitions.Block blocks = 6;
+      case 6: {
+        if (tag == 50) {
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_blocks:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
+                input, add_blocks()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(50)) goto parse_loop_blocks;
+        input->UnsafeDecrementRecursionDepth();
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
   // @@protoc_insertion_point(parse_success:structDefinitions.DataPackage)
   return true;
 failure:
@@ -6360,45 +4916,40 @@ failure:
 void DataPackage::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:structDefinitions.DataPackage)
-  // optional .structDefinitions.Point2DSet points2D = 1;
-  if (has_points2d()) {
+  // repeated .structDefinitions.Point2D points2D = 1;
+  for (unsigned int i = 0, n = this->points2d_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, *this->points2d_, output);
+      1, this->points2d(i), output);
   }
 
-  // optional .structDefinitions.Point3DSet points3D = 2;
-  if (has_points3d()) {
+  // repeated .structDefinitions.Point3D points3D = 2;
+  for (unsigned int i = 0, n = this->points3d_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, *this->points3d_, output);
+      2, this->points3d(i), output);
   }
 
-  // optional .structDefinitions.VertexSet vertexes = 3;
-  if (has_vertexes()) {
+  // repeated .structDefinitions.Vertex vertexes = 3;
+  for (unsigned int i = 0, n = this->vertexes_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, *this->vertexes_, output);
+      3, this->vertexes(i), output);
   }
 
-  // optional .structDefinitions.EdgeSet edges = 4;
-  if (has_edges()) {
+  // repeated .structDefinitions.Edge edges = 4;
+  for (unsigned int i = 0, n = this->edges_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, *this->edges_, output);
+      4, this->edges(i), output);
   }
 
-  // optional .structDefinitions.TriangleFaceSet faces = 5;
-  if (has_faces()) {
+  // repeated .structDefinitions.TriangleFace faces = 5;
+  for (unsigned int i = 0, n = this->faces_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, *this->faces_, output);
+      5, this->faces(i), output);
   }
 
-  // optional .structDefinitions.BlockSet blocks = 6;
-  if (has_blocks()) {
+  // repeated .structDefinitions.Block blocks = 6;
+  for (unsigned int i = 0, n = this->blocks_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, *this->blocks_, output);
-  }
-
-  // required bool endOfData = 7;
-  if (has_endofdata()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->endofdata(), output);
+      6, this->blocks(i), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -6411,51 +4962,46 @@ void DataPackage::SerializeWithCachedSizes(
 ::google::protobuf::uint8* DataPackage::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.DataPackage)
-  // optional .structDefinitions.Point2DSet points2D = 1;
-  if (has_points2d()) {
+  // repeated .structDefinitions.Point2D points2D = 1;
+  for (unsigned int i = 0, n = this->points2d_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        1, *this->points2d_, false, target);
+        1, this->points2d(i), false, target);
   }
 
-  // optional .structDefinitions.Point3DSet points3D = 2;
-  if (has_points3d()) {
+  // repeated .structDefinitions.Point3D points3D = 2;
+  for (unsigned int i = 0, n = this->points3d_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        2, *this->points3d_, false, target);
+        2, this->points3d(i), false, target);
   }
 
-  // optional .structDefinitions.VertexSet vertexes = 3;
-  if (has_vertexes()) {
+  // repeated .structDefinitions.Vertex vertexes = 3;
+  for (unsigned int i = 0, n = this->vertexes_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        3, *this->vertexes_, false, target);
+        3, this->vertexes(i), false, target);
   }
 
-  // optional .structDefinitions.EdgeSet edges = 4;
-  if (has_edges()) {
+  // repeated .structDefinitions.Edge edges = 4;
+  for (unsigned int i = 0, n = this->edges_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        4, *this->edges_, false, target);
+        4, this->edges(i), false, target);
   }
 
-  // optional .structDefinitions.TriangleFaceSet faces = 5;
-  if (has_faces()) {
+  // repeated .structDefinitions.TriangleFace faces = 5;
+  for (unsigned int i = 0, n = this->faces_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        5, *this->faces_, false, target);
+        5, this->faces(i), false, target);
   }
 
-  // optional .structDefinitions.BlockSet blocks = 6;
-  if (has_blocks()) {
+  // repeated .structDefinitions.Block blocks = 6;
+  for (unsigned int i = 0, n = this->blocks_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        6, *this->blocks_, false, target);
-  }
-
-  // required bool endOfData = 7;
-  if (has_endofdata()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->endofdata(), target);
+        6, this->blocks(i), false, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -6470,54 +5016,54 @@ int DataPackage::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:structDefinitions.DataPackage)
   int total_size = 0;
 
-  // required bool endOfData = 7;
-  if (has_endofdata()) {
-    total_size += 1 + 1;
+  // repeated .structDefinitions.Point2D points2D = 1;
+  total_size += 1 * this->points2d_size();
+  for (int i = 0; i < this->points2d_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->points2d(i));
   }
-  if (_has_bits_[0 / 32] & 63u) {
-    // optional .structDefinitions.Point2DSet points2D = 1;
-    if (has_points2d()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *this->points2d_);
-    }
 
-    // optional .structDefinitions.Point3DSet points3D = 2;
-    if (has_points3d()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *this->points3d_);
-    }
-
-    // optional .structDefinitions.VertexSet vertexes = 3;
-    if (has_vertexes()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *this->vertexes_);
-    }
-
-    // optional .structDefinitions.EdgeSet edges = 4;
-    if (has_edges()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *this->edges_);
-    }
-
-    // optional .structDefinitions.TriangleFaceSet faces = 5;
-    if (has_faces()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *this->faces_);
-    }
-
-    // optional .structDefinitions.BlockSet blocks = 6;
-    if (has_blocks()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          *this->blocks_);
-    }
-
+  // repeated .structDefinitions.Point3D points3D = 2;
+  total_size += 1 * this->points3d_size();
+  for (int i = 0; i < this->points3d_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->points3d(i));
   }
+
+  // repeated .structDefinitions.Vertex vertexes = 3;
+  total_size += 1 * this->vertexes_size();
+  for (int i = 0; i < this->vertexes_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->vertexes(i));
+  }
+
+  // repeated .structDefinitions.Edge edges = 4;
+  total_size += 1 * this->edges_size();
+  for (int i = 0; i < this->edges_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->edges(i));
+  }
+
+  // repeated .structDefinitions.TriangleFace faces = 5;
+  total_size += 1 * this->faces_size();
+  for (int i = 0; i < this->faces_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->faces(i));
+  }
+
+  // repeated .structDefinitions.Block blocks = 6;
+  total_size += 1 * this->blocks_size();
+  for (int i = 0; i < this->blocks_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->blocks(i));
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -6547,29 +5093,12 @@ void DataPackage::MergeFrom(const ::google::protobuf::Message& from) {
 void DataPackage::MergeFrom(const DataPackage& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.DataPackage)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_points2d()) {
-      mutable_points2d()->::structDefinitions::Point2DSet::MergeFrom(from.points2d());
-    }
-    if (from.has_points3d()) {
-      mutable_points3d()->::structDefinitions::Point3DSet::MergeFrom(from.points3d());
-    }
-    if (from.has_vertexes()) {
-      mutable_vertexes()->::structDefinitions::VertexSet::MergeFrom(from.vertexes());
-    }
-    if (from.has_edges()) {
-      mutable_edges()->::structDefinitions::EdgeSet::MergeFrom(from.edges());
-    }
-    if (from.has_faces()) {
-      mutable_faces()->::structDefinitions::TriangleFaceSet::MergeFrom(from.faces());
-    }
-    if (from.has_blocks()) {
-      mutable_blocks()->::structDefinitions::BlockSet::MergeFrom(from.blocks());
-    }
-    if (from.has_endofdata()) {
-      set_endofdata(from.endofdata());
-    }
-  }
+  points2d_.MergeFrom(from.points2d_);
+  points3d_.MergeFrom(from.points3d_);
+  vertexes_.MergeFrom(from.vertexes_);
+  edges_.MergeFrom(from.edges_);
+  faces_.MergeFrom(from.faces_);
+  blocks_.MergeFrom(from.blocks_);
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
   }
@@ -6590,26 +5119,13 @@ void DataPackage::CopyFrom(const DataPackage& from) {
 }
 
 bool DataPackage::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000040) != 0x00000040) return false;
 
-  if (has_points2d()) {
-    if (!this->points2d_->IsInitialized()) return false;
-  }
-  if (has_points3d()) {
-    if (!this->points3d_->IsInitialized()) return false;
-  }
-  if (has_vertexes()) {
-    if (!this->vertexes_->IsInitialized()) return false;
-  }
-  if (has_edges()) {
-    if (!this->edges_->IsInitialized()) return false;
-  }
-  if (has_faces()) {
-    if (!this->faces_->IsInitialized()) return false;
-  }
-  if (has_blocks()) {
-    if (!this->blocks_->IsInitialized()) return false;
-  }
+  if (!::google::protobuf::internal::AllAreInitialized(this->points2d())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->points3d())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->vertexes())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->edges())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->faces())) return false;
+  if (!::google::protobuf::internal::AllAreInitialized(this->blocks())) return false;
   return true;
 }
 
@@ -6618,13 +5134,12 @@ void DataPackage::Swap(DataPackage* other) {
   InternalSwap(other);
 }
 void DataPackage::InternalSwap(DataPackage* other) {
-  std::swap(points2d_, other->points2d_);
-  std::swap(points3d_, other->points3d_);
-  std::swap(vertexes_, other->vertexes_);
-  std::swap(edges_, other->edges_);
-  std::swap(faces_, other->faces_);
-  std::swap(blocks_, other->blocks_);
-  std::swap(endofdata_, other->endofdata_);
+  points2d_.UnsafeArenaSwap(&other->points2d_);
+  points3d_.UnsafeArenaSwap(&other->points3d_);
+  vertexes_.UnsafeArenaSwap(&other->vertexes_);
+  edges_.UnsafeArenaSwap(&other->edges_);
+  faces_.UnsafeArenaSwap(&other->faces_);
+  blocks_.UnsafeArenaSwap(&other->blocks_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -6641,292 +5156,184 @@ void DataPackage::InternalSwap(DataPackage* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // DataPackage
 
-// optional .structDefinitions.Point2DSet points2D = 1;
-bool DataPackage::has_points2d() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void DataPackage::set_has_points2d() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void DataPackage::clear_has_points2d() {
-  _has_bits_[0] &= ~0x00000001u;
+// repeated .structDefinitions.Point2D points2D = 1;
+int DataPackage::points2d_size() const {
+  return points2d_.size();
 }
 void DataPackage::clear_points2d() {
-  if (points2d_ != NULL) points2d_->::structDefinitions::Point2DSet::Clear();
-  clear_has_points2d();
+  points2d_.Clear();
 }
-const ::structDefinitions::Point2DSet& DataPackage::points2d() const {
+const ::structDefinitions::Point2D& DataPackage::points2d(int index) const {
   // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points2D)
-  return points2d_ != NULL ? *points2d_ : *default_instance_->points2d_;
+  return points2d_.Get(index);
 }
-::structDefinitions::Point2DSet* DataPackage::mutable_points2d() {
-  set_has_points2d();
-  if (points2d_ == NULL) {
-    points2d_ = new ::structDefinitions::Point2DSet;
-  }
+::structDefinitions::Point2D* DataPackage::mutable_points2d(int index) {
   // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points2D)
+  return points2d_.Mutable(index);
+}
+::structDefinitions::Point2D* DataPackage::add_points2d() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.points2D)
+  return points2d_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >*
+DataPackage::mutable_points2d() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.points2D)
+  return &points2d_;
+}
+const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >&
+DataPackage::points2d() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.points2D)
   return points2d_;
 }
-::structDefinitions::Point2DSet* DataPackage::release_points2d() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.points2D)
-  clear_has_points2d();
-  ::structDefinitions::Point2DSet* temp = points2d_;
-  points2d_ = NULL;
-  return temp;
-}
-void DataPackage::set_allocated_points2d(::structDefinitions::Point2DSet* points2d) {
-  delete points2d_;
-  points2d_ = points2d;
-  if (points2d) {
-    set_has_points2d();
-  } else {
-    clear_has_points2d();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.points2D)
-}
 
-// optional .structDefinitions.Point3DSet points3D = 2;
-bool DataPackage::has_points3d() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-void DataPackage::set_has_points3d() {
-  _has_bits_[0] |= 0x00000002u;
-}
-void DataPackage::clear_has_points3d() {
-  _has_bits_[0] &= ~0x00000002u;
+// repeated .structDefinitions.Point3D points3D = 2;
+int DataPackage::points3d_size() const {
+  return points3d_.size();
 }
 void DataPackage::clear_points3d() {
-  if (points3d_ != NULL) points3d_->::structDefinitions::Point3DSet::Clear();
-  clear_has_points3d();
+  points3d_.Clear();
 }
-const ::structDefinitions::Point3DSet& DataPackage::points3d() const {
+const ::structDefinitions::Point3D& DataPackage::points3d(int index) const {
   // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points3D)
-  return points3d_ != NULL ? *points3d_ : *default_instance_->points3d_;
+  return points3d_.Get(index);
 }
-::structDefinitions::Point3DSet* DataPackage::mutable_points3d() {
-  set_has_points3d();
-  if (points3d_ == NULL) {
-    points3d_ = new ::structDefinitions::Point3DSet;
-  }
+::structDefinitions::Point3D* DataPackage::mutable_points3d(int index) {
   // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points3D)
+  return points3d_.Mutable(index);
+}
+::structDefinitions::Point3D* DataPackage::add_points3d() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.points3D)
+  return points3d_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
+DataPackage::mutable_points3d() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.points3D)
+  return &points3d_;
+}
+const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
+DataPackage::points3d() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.points3D)
   return points3d_;
 }
-::structDefinitions::Point3DSet* DataPackage::release_points3d() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.points3D)
-  clear_has_points3d();
-  ::structDefinitions::Point3DSet* temp = points3d_;
-  points3d_ = NULL;
-  return temp;
-}
-void DataPackage::set_allocated_points3d(::structDefinitions::Point3DSet* points3d) {
-  delete points3d_;
-  points3d_ = points3d;
-  if (points3d) {
-    set_has_points3d();
-  } else {
-    clear_has_points3d();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.points3D)
-}
 
-// optional .structDefinitions.VertexSet vertexes = 3;
-bool DataPackage::has_vertexes() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-void DataPackage::set_has_vertexes() {
-  _has_bits_[0] |= 0x00000004u;
-}
-void DataPackage::clear_has_vertexes() {
-  _has_bits_[0] &= ~0x00000004u;
+// repeated .structDefinitions.Vertex vertexes = 3;
+int DataPackage::vertexes_size() const {
+  return vertexes_.size();
 }
 void DataPackage::clear_vertexes() {
-  if (vertexes_ != NULL) vertexes_->::structDefinitions::VertexSet::Clear();
-  clear_has_vertexes();
+  vertexes_.Clear();
 }
-const ::structDefinitions::VertexSet& DataPackage::vertexes() const {
+const ::structDefinitions::Vertex& DataPackage::vertexes(int index) const {
   // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.vertexes)
-  return vertexes_ != NULL ? *vertexes_ : *default_instance_->vertexes_;
+  return vertexes_.Get(index);
 }
-::structDefinitions::VertexSet* DataPackage::mutable_vertexes() {
-  set_has_vertexes();
-  if (vertexes_ == NULL) {
-    vertexes_ = new ::structDefinitions::VertexSet;
-  }
+::structDefinitions::Vertex* DataPackage::mutable_vertexes(int index) {
   // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.vertexes)
+  return vertexes_.Mutable(index);
+}
+::structDefinitions::Vertex* DataPackage::add_vertexes() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.vertexes)
+  return vertexes_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >*
+DataPackage::mutable_vertexes() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.vertexes)
+  return &vertexes_;
+}
+const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex >&
+DataPackage::vertexes() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.vertexes)
   return vertexes_;
 }
-::structDefinitions::VertexSet* DataPackage::release_vertexes() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.vertexes)
-  clear_has_vertexes();
-  ::structDefinitions::VertexSet* temp = vertexes_;
-  vertexes_ = NULL;
-  return temp;
-}
-void DataPackage::set_allocated_vertexes(::structDefinitions::VertexSet* vertexes) {
-  delete vertexes_;
-  vertexes_ = vertexes;
-  if (vertexes) {
-    set_has_vertexes();
-  } else {
-    clear_has_vertexes();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.vertexes)
-}
 
-// optional .structDefinitions.EdgeSet edges = 4;
-bool DataPackage::has_edges() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-void DataPackage::set_has_edges() {
-  _has_bits_[0] |= 0x00000008u;
-}
-void DataPackage::clear_has_edges() {
-  _has_bits_[0] &= ~0x00000008u;
+// repeated .structDefinitions.Edge edges = 4;
+int DataPackage::edges_size() const {
+  return edges_.size();
 }
 void DataPackage::clear_edges() {
-  if (edges_ != NULL) edges_->::structDefinitions::EdgeSet::Clear();
-  clear_has_edges();
+  edges_.Clear();
 }
-const ::structDefinitions::EdgeSet& DataPackage::edges() const {
+const ::structDefinitions::Edge& DataPackage::edges(int index) const {
   // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.edges)
-  return edges_ != NULL ? *edges_ : *default_instance_->edges_;
+  return edges_.Get(index);
 }
-::structDefinitions::EdgeSet* DataPackage::mutable_edges() {
-  set_has_edges();
-  if (edges_ == NULL) {
-    edges_ = new ::structDefinitions::EdgeSet;
-  }
+::structDefinitions::Edge* DataPackage::mutable_edges(int index) {
   // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.edges)
+  return edges_.Mutable(index);
+}
+::structDefinitions::Edge* DataPackage::add_edges() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.edges)
+  return edges_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >*
+DataPackage::mutable_edges() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.edges)
+  return &edges_;
+}
+const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge >&
+DataPackage::edges() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.edges)
   return edges_;
 }
-::structDefinitions::EdgeSet* DataPackage::release_edges() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.edges)
-  clear_has_edges();
-  ::structDefinitions::EdgeSet* temp = edges_;
-  edges_ = NULL;
-  return temp;
-}
-void DataPackage::set_allocated_edges(::structDefinitions::EdgeSet* edges) {
-  delete edges_;
-  edges_ = edges;
-  if (edges) {
-    set_has_edges();
-  } else {
-    clear_has_edges();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.edges)
-}
 
-// optional .structDefinitions.TriangleFaceSet faces = 5;
-bool DataPackage::has_faces() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-void DataPackage::set_has_faces() {
-  _has_bits_[0] |= 0x00000010u;
-}
-void DataPackage::clear_has_faces() {
-  _has_bits_[0] &= ~0x00000010u;
+// repeated .structDefinitions.TriangleFace faces = 5;
+int DataPackage::faces_size() const {
+  return faces_.size();
 }
 void DataPackage::clear_faces() {
-  if (faces_ != NULL) faces_->::structDefinitions::TriangleFaceSet::Clear();
-  clear_has_faces();
+  faces_.Clear();
 }
-const ::structDefinitions::TriangleFaceSet& DataPackage::faces() const {
+const ::structDefinitions::TriangleFace& DataPackage::faces(int index) const {
   // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.faces)
-  return faces_ != NULL ? *faces_ : *default_instance_->faces_;
+  return faces_.Get(index);
 }
-::structDefinitions::TriangleFaceSet* DataPackage::mutable_faces() {
-  set_has_faces();
-  if (faces_ == NULL) {
-    faces_ = new ::structDefinitions::TriangleFaceSet;
-  }
+::structDefinitions::TriangleFace* DataPackage::mutable_faces(int index) {
   // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.faces)
+  return faces_.Mutable(index);
+}
+::structDefinitions::TriangleFace* DataPackage::add_faces() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.faces)
+  return faces_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >*
+DataPackage::mutable_faces() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.faces)
+  return &faces_;
+}
+const ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace >&
+DataPackage::faces() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.faces)
   return faces_;
 }
-::structDefinitions::TriangleFaceSet* DataPackage::release_faces() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.faces)
-  clear_has_faces();
-  ::structDefinitions::TriangleFaceSet* temp = faces_;
-  faces_ = NULL;
-  return temp;
-}
-void DataPackage::set_allocated_faces(::structDefinitions::TriangleFaceSet* faces) {
-  delete faces_;
-  faces_ = faces;
-  if (faces) {
-    set_has_faces();
-  } else {
-    clear_has_faces();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.faces)
-}
 
-// optional .structDefinitions.BlockSet blocks = 6;
-bool DataPackage::has_blocks() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
-void DataPackage::set_has_blocks() {
-  _has_bits_[0] |= 0x00000020u;
-}
-void DataPackage::clear_has_blocks() {
-  _has_bits_[0] &= ~0x00000020u;
+// repeated .structDefinitions.Block blocks = 6;
+int DataPackage::blocks_size() const {
+  return blocks_.size();
 }
 void DataPackage::clear_blocks() {
-  if (blocks_ != NULL) blocks_->::structDefinitions::BlockSet::Clear();
-  clear_has_blocks();
+  blocks_.Clear();
 }
-const ::structDefinitions::BlockSet& DataPackage::blocks() const {
+const ::structDefinitions::Block& DataPackage::blocks(int index) const {
   // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.blocks)
-  return blocks_ != NULL ? *blocks_ : *default_instance_->blocks_;
+  return blocks_.Get(index);
 }
-::structDefinitions::BlockSet* DataPackage::mutable_blocks() {
-  set_has_blocks();
-  if (blocks_ == NULL) {
-    blocks_ = new ::structDefinitions::BlockSet;
-  }
+::structDefinitions::Block* DataPackage::mutable_blocks(int index) {
   // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.blocks)
+  return blocks_.Mutable(index);
+}
+::structDefinitions::Block* DataPackage::add_blocks() {
+  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.blocks)
+  return blocks_.Add();
+}
+::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >*
+DataPackage::mutable_blocks() {
+  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.blocks)
+  return &blocks_;
+}
+const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Block >&
+DataPackage::blocks() const {
+  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.blocks)
   return blocks_;
-}
-::structDefinitions::BlockSet* DataPackage::release_blocks() {
-  // @@protoc_insertion_point(field_release:structDefinitions.DataPackage.blocks)
-  clear_has_blocks();
-  ::structDefinitions::BlockSet* temp = blocks_;
-  blocks_ = NULL;
-  return temp;
-}
-void DataPackage::set_allocated_blocks(::structDefinitions::BlockSet* blocks) {
-  delete blocks_;
-  blocks_ = blocks;
-  if (blocks) {
-    set_has_blocks();
-  } else {
-    clear_has_blocks();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.DataPackage.blocks)
-}
-
-// required bool endOfData = 7;
-bool DataPackage::has_endofdata() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-void DataPackage::set_has_endofdata() {
-  _has_bits_[0] |= 0x00000040u;
-}
-void DataPackage::clear_has_endofdata() {
-  _has_bits_[0] &= ~0x00000040u;
-}
-void DataPackage::clear_endofdata() {
-  endofdata_ = false;
-  clear_has_endofdata();
-}
- bool DataPackage::endofdata() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.endOfData)
-  return endofdata_;
-}
- void DataPackage::set_endofdata(bool value) {
-  set_has_endofdata();
-  endofdata_ = value;
-  // @@protoc_insertion_point(field_set:structDefinitions.DataPackage.endOfData)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
