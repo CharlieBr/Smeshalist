@@ -53,12 +53,14 @@ public class App {
 			tool.addGeometry(tf);
 		}
 		
-		for (int i=0; i<2; i++) {
+		for (int i=0; i<2000; i++) {
 			Point3D v1 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			Point3D v2 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			Point3D v3 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			Point3D v4 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			Block b = new Block(v1, v2, v3, v4);
+			b.setLabel("ala ma kota");
+			b.setQuality(1.0);
 			b.setGroupId(6);
 			tool.addGeometry(b);
 		}

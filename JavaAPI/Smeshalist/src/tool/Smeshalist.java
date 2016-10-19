@@ -35,7 +35,7 @@ public class Smeshalist {
 	int mainWindowPort;
 	InetAddress IPAddress;
 	DatagramSocket socket = null;
-	private static final int numberOfStructuresToSend = 500;
+	private static final int numberOfStructuresToSend = 200;
 	List<Object> structuresToSend = new LinkedList<>();
 	
 	
