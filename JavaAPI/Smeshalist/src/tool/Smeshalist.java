@@ -194,6 +194,9 @@ public class Smeshalist {
 						}
 						else if (structure instanceof Point3D){
 							dataPackageBuilder.addPoints3D((Point3D)structure);
+						} 
+						else if (structure instanceof Vertex){
+							dataPackageBuilder.addVertexes((Vertex)structure);
 						}
 						else if (structure instanceof Edge){
 							dataPackageBuilder.addEdges((Edge)structure);
@@ -203,6 +206,9 @@ public class Smeshalist {
 						}
 						else if (structure instanceof Block){
 							dataPackageBuilder.addBlocks((Block)structure);
+						}
+						else{
+							logger.warn("Unknown data structure type");
 						}
 					}
 					

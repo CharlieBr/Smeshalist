@@ -16,7 +16,7 @@ public class App {
 		Smeshalist tool = Smeshalist.getInstance(8383);
 		Random r = new Random();
 
-		for (int i=0; i<10; i++) {
+/*		for (int i=0; i<10; i++) {
 			Point2D point = new Point2D();
 			point.setLocation(r.nextInt(5), r.nextInt(5));
 			point.setGroupId(1);
@@ -51,9 +51,9 @@ public class App {
 			TriangleFace tf = new TriangleFace(v1, v2, v3);
 			tf.setGroupId(5);
 			tool.addGeometry(tf);
-		}
+		}*/
 		
-		for (int i=0; i<2000; i++) {
+		for (int i=0; i<100000; i++) {
 			Point3D v1 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			Point3D v2 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			Point3D v3 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
