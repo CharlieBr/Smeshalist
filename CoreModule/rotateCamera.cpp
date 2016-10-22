@@ -37,8 +37,8 @@ int visibleDataTree=-1; //-1-current; >=0 - previous
 AbstractDataTree* d;
 
 void computeCameraPosition() {
-    cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius;
-    cameraY = sin(deltaAngleY)*radius;
+    cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius ;
+    cameraY = sin(deltaAngleY)*radius ;
     cameraZ = cos(deltaAngleY)*sin(deltaAngleX)*radius;
 }
 
@@ -102,8 +102,8 @@ void renderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT);
 
 	glLoadIdentity();
-    glTranslatef(translationX, translationY, 0);
 	gluLookAt(cameraX, cameraY, cameraZ, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    glTranslated(translationX, translationY, 0.0f);
 
     glPushMatrix();
         drawOrigin();
@@ -125,7 +125,7 @@ void mouseMove(int x, int y) {
 
     if (isShiftPressed) {
         translationX += mouseSensitivity * (x-oldMousePositionX) * radius / MOVING_PRECISION;
-        translationY -= mouseSensitivity * (y-oldMousePositionY) * radius / MOVING_PRECISION;
+        translationY -= (y-oldMousePositionY) * radius / MOVING_PRECISION;
     } else {
         deltaAngleX += mouseSensitivity * (x-oldMousePositionX) / MOUSE_PRECISION;
         deltaAngleY += mouseSensitivity * (y-oldMousePositionY) / MOUSE_PRECISION;
@@ -271,7 +271,7 @@ void tryToRunSmeshalistManager(int argc, char** argv) {
 }
 
 void redirectOutput() {
-    time_t rawtime;
+    /*time_t rawtime;
     struct tm * timeinfo;
     time (&rawtime);
     timeinfo = localtime (&rawtime);
@@ -280,9 +280,10 @@ void redirectOutput() {
     char* fileName = new char[20];
     memcpy(fileName, &time[4], 16);
     fileName[15] = '\0';
-    strcat(fileName, ".log");
+    strcat(fileName, ".log");*/
 
-    freopen(fileName, "w", stdout);
+    freopen("info.txt", "w", stdout);
+    freopen("error.txt", "w", stderr);
 }
 
 int main(int argc, char **argv) {
