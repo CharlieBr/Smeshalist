@@ -18,15 +18,6 @@ class Point3D:
         self.groupId = 0
 
 
-class Vertex:
-
-    def __init__(self, point,  number):
-        self.point = point
-        self.number = number
-        self.quality = 0.0
-        self.label = ""
-        self.groupId = 0
-
 class Edge:
 
     def __init__(self, v1, v2):
@@ -43,9 +34,9 @@ class TriangleFace:
         self.v1 = v1
         self.v2 = v2
         self.v3 = v3
-        quality = 0.0
-        label = ""
-        groupId = 0
+        self.quality = 0.0
+        self.label = ""
+        self.groupId = 0
 
 
 class Block:
@@ -55,7 +46,7 @@ class Block:
         self.v2 = v2 
         self.v3 = v3
         self.v4 = v4
-        quality = 0.0
-        label = ""
-        groupId = 0
+        self.quality = 0.0
+        self.label = ""
+        self.groupId = 0
 
