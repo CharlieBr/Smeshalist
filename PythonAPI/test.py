@@ -23,15 +23,6 @@ while counter < 1000:
 
 
 counter = 0
-
-while counter < 1000:
-    counter = counter + 1
-    point = geometry.Point3D(random.uniform(-10.0, 10.0), random.uniform(-10.0, 10.0), random.uniform(-10.0, 10.0))
-    vertex = geometry.Vertex(point, random.random())
-    vertex.groupId = 1
-    Smeshalist.addVertex(vertex)
-
-counter = 0
 while counter < 1000:
     counter = counter + 1
     point1 = geometry.Point3D(random.uniform(-10.0, 10.0), random.uniform(-10.0, 10.0), random.uniform(-10.0, 10.0))
@@ -65,7 +56,13 @@ while counter < 1000:
 
     block = geometry.Block(point1, point2, point3, point4)
     block.groupId = 1
-    Smeshalist2.addBlock(block)
+    Smeshalist.addBlock(block)
 
 
-Smeshalist2.flushBuffer()
+Smeshalist.flushBuffer()
+
+Smeshalist.breakpoint()
+print "po breakpoincie"
+
+Smeshalist.render()
+print "po render"

@@ -8,7 +8,7 @@ port = 8383
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 numberOfStructuresToSend = 200
 structuresRemaining = numberOfStructuresToSend
-
+dataPackages = []
 
 def getInstance(portNumber):
     global port
@@ -54,6 +54,7 @@ def addPoint3D(point3D):
     pointToSend.prop.quality = point3D.quality
     pointToSend.prop.label = point3D.label
     pointToSend.prop.groupId = point3D.groupId
+
 
 
 def addEdge(edge):
@@ -180,4 +181,41 @@ def flushBuffer():
         sock.close()
 
 
+def breakpoint():
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        # Send 
+        message = structs_pb2.MessageInfo()
+        message.type = structs_pb2.MessageInfo.BREAKPOINT
+        bytesToSend =  message.SerializeToString()
+        sent = sock.sendto(bytesToSend, (IPAdress, port))   
+
+
+        # Receive acknowledge
+        print 'waiting to receive'
+        data, addr = sock.recvfrom(10)
+        reply = structs_pb2.MessageInfo()
+        reply.ParseFromString(data)
+
+        if reply.type == structs_pb2.MessageInfo.REJECTED:
+            sock.close()
+            exit()                    
+
+    finally:
+        print 'closing socket'
+        sock.close()
+
+
+def render():
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        # Send 
+        message = structs_pb2.MessageInfo()
+        message.type = structs_pb2.MessageInfo.RENDER
+        bytesToSend =  message.SerializeToString()
+        sent = sock.sendto(bytesToSend, (IPAdress, port))                
+
+    finally:
+        print 'closing socket'
+        sock.close()
 
