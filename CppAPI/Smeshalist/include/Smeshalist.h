@@ -14,7 +14,7 @@
 
 #define CORE_PORT 8383
 #define BUFFER_SIZE 1024
-#define BATCH_SIZE 200
+#define BATCH_SIZE 300
 
 using namespace std;
 
