@@ -28,6 +28,7 @@ float mouseSensitivity = 1.0f;
 float translationX=0, translationY=0;
 
 float cameraX=0, cameraY=0, cameraZ=0;
+float cameraLookAtX=0, cameraLookAtY=0, cameraLookAtZ=0;
 
 bool isShiftPressed = false;
 bool isLeftMouseButtonPressed = false;
@@ -37,9 +38,9 @@ int visibleDataTree=-1; //-1-current; >=0 - previous
 AbstractDataTree* d;
 
 void computeCameraPosition() {
-    cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius ;
-    cameraY = sin(deltaAngleY)*radius ;
-    cameraZ = cos(deltaAngleY)*sin(deltaAngleX)*radius;
+    cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius + cameraLookAtX;
+    cameraY = sin(deltaAngleY)*radius + cameraLookAtY;
+    cameraZ = cos(deltaAngleY)*sin(deltaAngleX)*radius + cameraLookAtZ;
 }
 
 void changeSize(int w, int h) {
@@ -102,12 +103,15 @@ void renderScene(void) {
     glClear(GL_COLOR_BUFFER_BIT);
 
 	glLoadIdentity();
-	gluLookAt(cameraX, cameraY, cameraZ, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
-    glTranslated(translationX, translationY, 0.0f);
+	gluLookAt(cameraX, cameraY, cameraZ, cameraLookAtX, cameraLookAtY, cameraLookAtZ, 0.0f, 1.0f, 0.0f);
 
     glPushMatrix();
         drawOrigin();
         glColor3f(0.1f, 0.1f, 0.1f);
+
+        glBegin(GL_POINT);
+        glVertex3d(cameraLookAtX, cameraLookAtY, cameraLookAtZ);
+        glEnd();
 
         d -> getDataTreeInstance(visibleDataTree) -> draw_elements();
         drawBoundingBox(d -> getDataTreeInstance(visibleDataTree));
@@ -125,7 +129,11 @@ void mouseMove(int x, int y) {
 
     if (isShiftPressed) {
         translationX += mouseSensitivity * (x-oldMousePositionX) * radius / MOVING_PRECISION;
-        translationY -= (y-oldMousePositionY) * radius / MOVING_PRECISION;
+        translationY -= mouseSensitivity * (y-oldMousePositionY) * radius / MOVING_PRECISION;
+
+        cameraLookAtX = translationX * sin(deltaAngleY) * cos(deltaAngleX+PI_2);
+        cameraLookAtY = -translationY * cos(deltaAngleY);
+        cameraLookAtZ = translationX * sin(deltaAngleY) * sin(deltaAngleX+PI_2);
     } else {
         deltaAngleX += mouseSensitivity * (x-oldMousePositionX) / MOUSE_PRECISION;
         deltaAngleY += mouseSensitivity * (y-oldMousePositionY) / MOUSE_PRECISION;
@@ -154,6 +162,10 @@ void mouseButton(int button, int state, int x, int y) {
         if (state == GLUT_DOWN) {
             translationX = 0;
             translationY = 0;
+
+            cameraLookAtX = 0;
+            cameraLookAtY = 0;
+            cameraLookAtZ = 0;
         }
 	} else if (button == GLUT_MIDDLE_BUTTON && state==GLUT_DOWN){
         d->createNewInstance();
