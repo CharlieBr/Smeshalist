@@ -65,7 +65,7 @@ while counter < 1000:
 
     block = geometry.Block(point1, point2, point3, point4)
     block.groupId = 1
-    Smeshalist.addBlock(block)
+    Smeshalist2.addBlock(block)
 
 
-Smeshalist.flushBuffer()
+Smeshalist2.flushBuffer()

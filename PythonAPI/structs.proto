@@ -22,13 +22,6 @@ message Point3D {
 }
 
 
-message Vertex {
-	required Point3D point = 1;
-	required double number = 2;
-	optional Properties prop = 3;
-}
-
-
 message Edge {
 	required Point3D v1 = 1;
 	required Point3D v2 = 2;
@@ -75,7 +68,6 @@ message DataPackage {
 	
 	repeated Point2D points2D  = 1;
 	repeated Point3D points3D = 2;
-	repeated Vertex vertexes = 3;
 	repeated Edge edges = 4;
 	repeated TriangleFace faces = 5;
 	repeated Block blocks = 6;
