@@ -35,7 +35,8 @@ bool isLeftMouseButtonPressed = false;
 
 int visibleDataTree=-1; //-1-current; >=0 - previous
 
-AbstractDataTree* d;
+AbstractDataTree* d = NULL;
+AbstractServer* server = NULL;
 
 void computeCameraPosition() {
     cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius + cameraLookAtX;
@@ -215,6 +216,32 @@ void keyboardEventSpec(int key, int x, int y) {
     }
 }
 
+void keyboardEvent(unsigned char key, int x, int y) {
+    switch (key) {
+        case 'x':
+            deltaAngleX=M_PI;
+            deltaAngleY=0;
+            computeCameraPosition();
+            break;
+        case 'y':
+            deltaAngleX=0;
+            deltaAngleY=M_PI_2;
+            computeCameraPosition();
+            break;
+        case 'z':
+            deltaAngleX=M_PI_2;
+            deltaAngleY=0;
+            computeCameraPosition();
+            break;
+        case 'c':
+            if (visibleDataTree==-1) {  //clean CURRENT data tree only when it's visible
+                d->clean();
+                server -> sendStatistics();
+            }
+            break;
+    }
+}
+
 void initGLUT(int argc, char **argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -230,6 +257,7 @@ void initGLUT(int argc, char **argv) {
 	glutIgnoreKeyRepeat(1);
 
 	glutMouseFunc(mouseButton);
+	glutKeyboardFunc(keyboardEvent);
 	glutSpecialFunc(keyboardEventSpec);
 	glutMotionFunc(mouseMove);
 
@@ -297,8 +325,6 @@ int main(int argc, char **argv) {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
     //set initial position
 	computeCameraPosition();
-
-    AbstractServer* server = NULL;
 
     #ifdef __linux__
     server = new LinuxServer();

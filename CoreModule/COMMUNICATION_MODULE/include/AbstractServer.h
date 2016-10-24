@@ -41,6 +41,7 @@ class AbstractServer
         void registerMouseSensitivityHandler(float*);
 		void setDynamicRendering(bool);
 		void sendElementsBufferToTree();
+		void sendStatistics();
     protected:
         virtual int getBytesFromSocket(char[], int) = 0;
         virtual int sendBytesToSocket(char[], int) = 0;
@@ -66,7 +67,6 @@ class AbstractServer
         void sendAbort();
 
         void sendBreakpoint();
-        void sendStatistics();
 
         AbstractDataTree* handler = NULL;
         float* mouseSensitivity;
