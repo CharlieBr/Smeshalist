@@ -5,7 +5,7 @@
 #include <GL/glut.h>
 
 #define MOUSE_PRECISION 100.0
-#define MOVING_PRECISION 200.0
+#define MOVING_PRECISION 400.0
 #define PI_2 1.57
 
 #ifdef __linux__
@@ -35,7 +35,8 @@ bool isLeftMouseButtonPressed = false;
 
 int visibleDataTree=-1; //-1-current; >=0 - previous
 
-AbstractDataTree* d;
+AbstractDataTree* d = NULL;
+AbstractServer* server = NULL;
 
 void computeCameraPosition() {
     cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius + cameraLookAtX;
@@ -109,10 +110,6 @@ void renderScene(void) {
         drawOrigin();
         glColor3f(0.1f, 0.1f, 0.1f);
 
-        glBegin(GL_POINT);
-        glVertex3d(cameraLookAtX, cameraLookAtY, cameraLookAtZ);
-        glEnd();
-
         d -> getDataTreeInstance(visibleDataTree) -> draw_elements();
         drawBoundingBox(d -> getDataTreeInstance(visibleDataTree));
 
@@ -128,12 +125,12 @@ void mouseMove(int x, int y) {
     }
 
     if (isShiftPressed) {
-        translationX += mouseSensitivity * (x-oldMousePositionX) * radius / MOVING_PRECISION;
-        translationY -= mouseSensitivity * (y-oldMousePositionY) * radius / MOVING_PRECISION;
+        translationX = mouseSensitivity * (x-oldMousePositionX) * radius / MOVING_PRECISION;
+        translationY = mouseSensitivity * (oldMousePositionY-y) * radius / MOVING_PRECISION;
 
-        cameraLookAtX = translationX * sin(deltaAngleY) * cos(deltaAngleX+PI_2);
-        cameraLookAtY = -translationY * cos(deltaAngleY);
-        cameraLookAtZ = translationX * sin(deltaAngleY) * sin(deltaAngleX+PI_2);
+        cameraLookAtX += translationX * cos(deltaAngleX+PI_2);
+        cameraLookAtY -= translationY * cos(deltaAngleY);
+        cameraLookAtZ += translationX * sin(deltaAngleX+PI_2);
     } else {
         deltaAngleX += mouseSensitivity * (x-oldMousePositionX) / MOUSE_PRECISION;
         deltaAngleY += mouseSensitivity * (y-oldMousePositionY) / MOUSE_PRECISION;
@@ -160,9 +157,6 @@ void mouseButton(int button, int state, int x, int y) {
 		}
 	} else if (button == GLUT_RIGHT_BUTTON) {
         if (state == GLUT_DOWN) {
-            translationX = 0;
-            translationY = 0;
-
             cameraLookAtX = 0;
             cameraLookAtY = 0;
             cameraLookAtZ = 0;
@@ -222,6 +216,32 @@ void keyboardEventSpec(int key, int x, int y) {
     }
 }
 
+void keyboardEvent(unsigned char key, int x, int y) {
+    switch (key) {
+        case 'x':
+            deltaAngleX=M_PI;
+            deltaAngleY=0;
+            computeCameraPosition();
+            break;
+        case 'y':
+            deltaAngleX=0;
+            deltaAngleY=M_PI_2;
+            computeCameraPosition();
+            break;
+        case 'z':
+            deltaAngleX=M_PI_2;
+            deltaAngleY=0;
+            computeCameraPosition();
+            break;
+        case 'c':
+            if (visibleDataTree==-1) {  //clean CURRENT data tree only when it's visible
+                d->clean();
+                server -> sendStatistics();
+            }
+            break;
+    }
+}
+
 void initGLUT(int argc, char **argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
@@ -237,6 +257,7 @@ void initGLUT(int argc, char **argv) {
 	glutIgnoreKeyRepeat(1);
 
 	glutMouseFunc(mouseButton);
+	glutKeyboardFunc(keyboardEvent);
 	glutSpecialFunc(keyboardEventSpec);
 	glutMotionFunc(mouseMove);
 
@@ -304,8 +325,6 @@ int main(int argc, char **argv) {
     GOOGLE_PROTOBUF_VERIFY_VERSION;
     //set initial position
 	computeCameraPosition();
-
-    AbstractServer* server = NULL;
 
     #ifdef __linux__
     server = new LinuxServer();

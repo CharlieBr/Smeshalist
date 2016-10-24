@@ -1,5 +1,7 @@
 #include "Structures.h"
 
+extern bool transparentStructures;
+
 // ----------------------------
 // -------- points ------------
 // ----------------------------
@@ -41,12 +43,14 @@ void Face::draw(Color color){
     Point3D v2 = this -> vertices[1];
     Point3D v3 = this -> vertices[2];
 
-    glColor3f(color.r(), color.g(), color.b());
-    glBegin(GL_TRIANGLES);
-        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
-        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
-        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
-    glEnd();
+    if (!transparentStructures) {
+        glColor3f(color.r(), color.g(), color.b());
+        glBegin(GL_TRIANGLES);
+            glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+            glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+            glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+        glEnd();
+    }
 
     glEnable(GL_POLYGON_OFFSET_LINE);
     glColor3f(0.0f, 0.0f, 0.0f);
@@ -69,30 +73,32 @@ void Block::draw(Color color){
     Point3D v3 = this -> vertices[2];
     Point3D v4 = this -> vertices[3];
 
-    glColor3f(color.r(), color.g(), color.b());
-    glBegin(GL_TRIANGLES);
-        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
-        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
-        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
-    glEnd();
+    if (!transparentStructures) {
+        glColor3f(color.r(), color.g(), color.b());
+        glBegin(GL_TRIANGLES);
+            glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+            glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+            glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+        glEnd();
 
-    glBegin(GL_TRIANGLES);
-        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
-        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
-        glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
-    glEnd();
+        glBegin(GL_TRIANGLES);
+            glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+            glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+            glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+        glEnd();
 
-    glBegin(GL_TRIANGLES);
-        glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
-        glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
-        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
-    glEnd();
+        glBegin(GL_TRIANGLES);
+            glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
+            glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+            glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+        glEnd();
 
-    glBegin(GL_TRIANGLES);
-        glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
-        glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
-        glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
-    glEnd();
+        glBegin(GL_TRIANGLES);
+            glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
+            glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
+            glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
+        glEnd();
+    }
 
     glEnable(GL_POLYGON_OFFSET_LINE);
     glColor3f(0.0f, 0.0f, 0.0f);
