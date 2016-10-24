@@ -26,6 +26,9 @@ class Point3D {
         double get_z() { return z; }
 
         string print_coordinates();
+        Point3D clone() {
+            return Point3D(x,y,z);
+        }
 };
 
 // -------------------------------------------

@@ -20,12 +20,10 @@ class Vertex : public Element {
             : Element(point, "vertex", label, quality) {};
         virtual void draw(Color);
         Vertex* clone() {
-        /*vector<Point3D> newVertices(vertices);
             Label newLabel(label.get_label_text());
-            Element* element = new Element(&newVertices, type, newLabel, quality);
-            element -> set_draw_flag(to_draw);
-            return element;*/
-            return this;
+            Vertex* v = new Vertex(vertices.front().clone(), newLabel, quality);
+            v -> set_draw_flag(to_draw);
+            return v;
         }
 };
 
@@ -41,7 +39,14 @@ class Edge : public Element {
             : Element(points, "edge", label, quality) {};
         virtual void draw(Color);
         Edge* clone() {
-            return this;
+            vector<Point3D> newVertices;
+            for(auto v : vertices) {
+                newVertices.push_back(v.clone());
+            }
+            Label newLabel(label.get_label_text());
+            Edge* e = new Edge(&newVertices, newLabel, quality);
+            e -> set_draw_flag(to_draw);
+            return e;
         }
 };
 
@@ -58,7 +63,14 @@ class Face : public Element {
 
         virtual void draw(Color);
         Face* clone() {
-            return this;
+            vector<Point3D> newVertices;
+            for(auto v : vertices) {
+                newVertices.push_back(v.clone());
+            }
+            Label newLabel(label.get_label_text());
+            Face* f = new Face(&newVertices, newLabel, quality);
+            f -> set_draw_flag(to_draw);
+            return f;
         }
 };
 
@@ -75,7 +87,14 @@ class Block : public Element {
 
         virtual void draw(Color);
         Block* clone() {
-            return this;
+            vector<Point3D> newVertices;
+            for(auto v : vertices) {
+                newVertices.push_back(v.clone());
+            }
+            Label newLabel(label.get_label_text());
+            Block* b = new Block(&newVertices, newLabel, quality);
+            b -> set_draw_flag(to_draw);
+            return b;
         }
 };
 
