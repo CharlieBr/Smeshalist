@@ -45,28 +45,26 @@ void Data::draw_elements(){
 
 void Data::add(int group_id, Element* element){
     string element_type = element -> get_type();
+    if( !has_group(group_id) ){
+        ElementsGroup * group = new ElementsGroup(Color(group_id));
+        groups.insert( pair<int, ElementsGroup*>(group_id, group));
+    }
+    ElementsGroup* group = groups.at(group_id);
+    group -> add(element_type, element);
 
     //statistics
     statistics.update_elements_counter(element_type, 1);
-
     if( element -> is_drawable() ){
-        statistics.update_visible_elements_counter(element_type, 1);
+        if(group -> is_drawable() && group -> get_list(element_type) -> is_drawable()){
+            statistics.update_visible_elements_counter(element_type, 1);
+        }
     }
-
     //check coordinates of each point
     //to designate limiting cuboid
     vector<Point3D> vertices = *(element -> get_vertices());
     for(auto &vertex : vertices){
         statistics.update_limiting_cuboid(&vertex);
     }
-
-    if( !has_group(group_id) ){
-        ElementsGroup * group = new ElementsGroup(Color(group_id));
-        groups.insert( pair<int, ElementsGroup*>(group_id, group));
-    }
-
-    ElementsGroup* group = groups.at(group_id);
-    group -> add(element_type, element);
 }
 
 void Data::add(int group_id, vector<Element*>* elements){
@@ -79,11 +77,15 @@ void Data::add(int group_id, vector<Element*>* elements){
 
     if ( elements -> size() > 0 ) {
         string type = elements -> at(0) -> get_type();
-
+        group = groups.at(group_id);
+        group -> add(type, elements);
         //statistics
         statistics.update_elements_counter(type, elements -> size());
-
+        long visible_elements_counter = 0;
         for( auto const& element : *(elements)){
+            if (element -> is_drawable()){
+                visible_elements_counter++;
+            }
             //check coordinates of each point
             //to designate limiting cuboid
             vector<Point3D> vertices = *(element -> get_vertices());
@@ -91,14 +93,9 @@ void Data::add(int group_id, vector<Element*>* elements){
                 statistics.update_limiting_cuboid(&vertex);
             }
         }
-
-        //assumed that all elements have the same to_draw flag
-        if( elements -> at(0) -> is_drawable() ){
-            statistics.update_visible_elements_counter(type, elements -> size());
+        if(group -> is_drawable() && group -> get_list(type) -> is_drawable()){
+            statistics.update_visible_elements_counter(type, visible_elements_counter);
         }
-
-        group = groups.at(group_id);
-        group -> add(type, elements);
     }
 }
 
@@ -118,10 +115,12 @@ void Data::count_visible_elements(){
     statistics.clean_counters_of_visible_elements();
 
     for( auto const it : groups) {
-        map<string, unsigned long> result = it.second -> count_visible_elements();
+        if (it.second -> is_drawable()){
+            map<string, unsigned long> result = it.second -> count_visible_elements();
 
-        for( auto const it : result ){
-            statistics.update_visible_elements_counter(it.first, it.second);
+            for( auto const it : result ){
+                statistics.update_visible_elements_counter(it.first, it.second);
+            }
         }
     }
 }
