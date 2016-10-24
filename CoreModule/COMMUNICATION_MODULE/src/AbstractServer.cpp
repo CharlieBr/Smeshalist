@@ -1,6 +1,7 @@
 #include "AbstractServer.h"
 
 extern int visibleDataTree;
+bool transparentStructures = false;
 
 void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
     if (this->handler != NULL) {
@@ -216,7 +217,8 @@ void AbstractServer::processOptionDataPackage(sm::ManagerToCoreMessage* message)
 
     setDynamicRendering(options.dynamicrendering());
     //TODO show labels
-    //TODO transparent structures
+
+    transparentStructures = options.transparentstructures();
 }
 
 void AbstractServer::startSMServer() {
