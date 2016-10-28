@@ -9907,6 +9907,14 @@ public final class Communication {
        * <code>HELLO = 5;</code>
        */
       HELLO(5),
+      /**
+       * <code>SNAPSHOT = 6;</code>
+       */
+      SNAPSHOT(6),
+      /**
+       * <code>CLEAN = 7;</code>
+       */
+      CLEAN(7),
       ;
 
       /**
@@ -9929,6 +9937,14 @@ public final class Communication {
        * <code>HELLO = 5;</code>
        */
       public static final int HELLO_VALUE = 5;
+      /**
+       * <code>SNAPSHOT = 6;</code>
+       */
+      public static final int SNAPSHOT_VALUE = 6;
+      /**
+       * <code>CLEAN = 7;</code>
+       */
+      public static final int CLEAN_VALUE = 7;
 
 
       public final int getNumber() {
@@ -9950,6 +9966,8 @@ public final class Communication {
           case 3: return CONTINUE;
           case 4: return ABORT;
           case 5: return HELLO;
+          case 6: return SNAPSHOT;
+          case 7: return CLEAN;
           default: return null;
         }
       }
@@ -11374,19 +11392,20 @@ public final class Communication {
       "inatesCondition\030\001 \003(\0132\030.sm.CoordinatesCo" +
       "ndition\0226\n\013conjunction\030\002 \001(\0162!.sm.Coordi" +
       "natesFilter.Conjunction\"\036\n\013Conjunction\022\007" +
-      "\n\003AND\020\001\022\006\n\002OR\020\002\"\364\002\n\024ManagerToCoreMessage",
+      "\n\003AND\020\001\022\006\n\002OR\020\002\"\215\003\n\024ManagerToCoreMessage",
       "\022<\n\013messageType\030\001 \002(\0162\'.sm.ManagerToCore" +
       "Message.MTCMessageType\022$\n\013optionsInfo\030\002 " +
       "\001(\0132\017.sm.OptionsInfo\022&\n\014groupsFilter\030\003 \001" +
       "(\0132\020.sm.GroupsFilter\022$\n\013typesFilter\030\004 \001(" +
       "\0132\017.sm.TypesFilter\022(\n\rqualityFilter\030\005 \001(" +
       "\0132\021.sm.QualityFilter\0220\n\021coordinatesFilte" +
-      "r\030\006 \001(\0132\025.sm.CoordinatesFilter\"N\n\016MTCMes" +
+      "r\030\006 \001(\0132\025.sm.CoordinatesFilter\"g\n\016MTCMes" +
       "sageType\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CO" +
-      "NTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005*_\n\022Compar" +
-      "isonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GR",
-      "EATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n" +
-      "\004LESS\020\005B\036\n\rcommunicationB\rCommunication"
+      "NTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSH" +
+      "OT\020\006\022\t\n\005CLEAN\020\007*_\n\022ComparisonOperator\022\024\n",
+      "\020GREATER_OR_EQUAL\020\001\022\013\n\007GREATER\020\002\022\t\n\005EQUA" +
+      "L\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rcomm" +
+      "unicationB\rCommunication"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

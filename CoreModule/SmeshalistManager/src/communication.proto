@@ -101,6 +101,8 @@ message ManagerToCoreMessage{
 		CONTINUE = 3;
 		ABORT = 4;
         HELLO = 5;
+		SNAPSHOT = 6;
+		CLEAN = 7;
 	}
 
 	required MTCMessageType messageType = 1;

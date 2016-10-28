@@ -2,9 +2,6 @@ package window;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.DatagramPacket;
-import java.net.InetAddress;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -22,7 +19,6 @@ import communication.Communication.ManagerToCoreMessage;
 import communication.Communication.ManagerToCoreMessage.MTCMessageType;
 import communication.Communication.OptionsInfo;
 import communication.SendingThread;
-import util.SocketUtil;
 import util.WindowUtil;
 
 public class OptionsTab extends JPanel{
@@ -37,8 +33,11 @@ public class OptionsTab extends JPanel{
 	private JButton applyButton;
 	private JButton continueButton;
 	private JButton abortButton;
-	private JPanel buttonContainer;
-	
+	private JButton snapshotButton;
+	private JButton cleanButton;
+	private JPanel breakpointButtonsContainer;
+	private JPanel treeButtonsContainer;
+
 	public OptionsTab(){
 		
 		initializeView();
@@ -56,12 +55,12 @@ public class OptionsTab extends JPanel{
 		setBorder(border);
 		
 		transparencyCheckBox = new JCheckBox("Transparent structures");
-		transparencyCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
+		transparencyCheckBox.setBorder(new EmptyBorder(0, 0, 10, 0));
 		renderingCheckBox = new JCheckBox("Dynamic rendering");
 		renderingCheckBox.setSelected(true);
-		renderingCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
+		renderingCheckBox.setBorder(new EmptyBorder(0, 0, 10, 0));
 		showLabelsCheckBox = new JCheckBox("Show labels");
-		showLabelsCheckBox.setBorder(new EmptyBorder(0, 0, 20, 0));
+		showLabelsCheckBox.setBorder(new EmptyBorder(0, 0, 10, 0));
 		
 		JLabel label = new JLabel("Mouse sensitivity");
 		label.setBorder(new EmptyBorder(0, 0, 10, 0));
@@ -86,6 +85,7 @@ public class OptionsTab extends JPanel{
 		JPanel applyButtonContainer = new JPanel();
 		applyButtonContainer.setBorder(new EmptyBorder(0,145,0,145));
 		applyButtonContainer.add(applyButton);
+
 		continueButton = new JButton("Continue");
 		continueButton.setEnabled(false);
 		continueButton.addActionListener(new ActionListener() {
@@ -104,11 +104,32 @@ public class OptionsTab extends JPanel{
 				abortButtonPressed();
 			}
 		});
-		buttonContainer = new JPanel();
-		buttonContainer.add(continueButton);
-		buttonContainer.add(abortButton);
-		buttonContainer.setBorder(new CompoundBorder(new TitledBorder("Control"), new EmptyBorder(0, 100, 0, 100)));
-		
+		snapshotButton = new JButton("Snapshot");
+		snapshotButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				snapshotButtonPressed();
+			}
+		});
+		cleanButton = new JButton("Clean");
+		cleanButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cleanButtonPressed();
+			}
+		});
+
+		breakpointButtonsContainer = new JPanel();
+		breakpointButtonsContainer.add(continueButton);
+		breakpointButtonsContainer.add(abortButton);
+		breakpointButtonsContainer.setBorder(new CompoundBorder(new TitledBorder("Breakpoint"), new EmptyBorder(0, 100, 0, 100)));
+		treeButtonsContainer = new JPanel();
+		treeButtonsContainer.add(snapshotButton);
+		treeButtonsContainer.add(cleanButton);
+		treeButtonsContainer.setBorder(new CompoundBorder(new TitledBorder("Structures Tree"), new EmptyBorder(0, 100, 0, 100)));
+
 		mainLayout.setHorizontalGroup(
 				mainLayout.createParallelGroup()
 				.addComponent(transparencyCheckBox)
@@ -118,7 +139,8 @@ public class OptionsTab extends JPanel{
 						.addComponent(label)
 						.addComponent(sensitivitySlider)
 						.addComponent(applyButtonContainer))
-						.addComponent(buttonContainer)
+						.addComponent(breakpointButtonsContainer)
+						.addComponent(treeButtonsContainer)
 				);
 		
 		mainLayout.setVerticalGroup(
@@ -130,11 +152,15 @@ public class OptionsTab extends JPanel{
 						.addComponent(label)
 						.addComponent(sensitivitySlider)
 						.addComponent(applyButtonContainer))
-						.addComponent(buttonContainer)
-				
+						.addComponent(breakpointButtonsContainer)
+						.addComponent(treeButtonsContainer)
+
 				);
-	}		
-	
+	}
+
+
+
+
 	private void applyButtonPressed(){
 
 		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
@@ -153,6 +179,22 @@ public class OptionsTab extends JPanel{
 		optionsInfo.setTransparentStructures(transparencyCheckBox.isSelected());
 		optionsInfo.setMouseSensitivity(sensitivitySlider.getValue() * 0.1);
 		return optionsInfo.build();
+	}
+
+	private void cleanButtonPressed() {
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(MTCMessageType.CLEAN);
+
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
+	}
+
+	private void snapshotButtonPressed() {
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(MTCMessageType.SNAPSHOT);
+
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
 	}
 
 	private void continueButtonPressed(){
