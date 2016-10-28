@@ -55,7 +55,9 @@ public class TypesTab extends JPanel{
 		this.typeCheckBoxes.clear();
 
 		for (String structureName: structures){
-			typeCheckBoxes.add(new JCheckBox(structureName));
+			JCheckBox structureCheckBox = new JCheckBox(structureName);
+			structureCheckBox.setSelected(true);
+			typeCheckBoxes.add(structureCheckBox);
 		}
 		
 		for (JCheckBox checkBox: typeCheckBoxes){
