@@ -161,8 +161,6 @@ void mouseButton(int button, int state, int x, int y) {
             cameraLookAtY = 0;
             cameraLookAtZ = 0;
         }
-	} else if (button == GLUT_MIDDLE_BUTTON && state==GLUT_DOWN){
-        d->createNewInstance();
 	}
 
     isShiftPressed = glutGetModifiers() == GLUT_ACTIVE_SHIFT;
@@ -232,12 +230,6 @@ void keyboardEvent(unsigned char key, int x, int y) {
             deltaAngleX=M_PI_2;
             deltaAngleY=0;
             computeCameraPosition();
-            break;
-        case 'c':
-            if (visibleDataTree==-1) {  //clean CURRENT data tree only when it's visible
-                d->clean();
-                server -> sendStatistics();
-            }
             break;
     }
 }

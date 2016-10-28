@@ -101,9 +101,15 @@ void AbstractServer::sendStatistics() {
 
     //set boundingBox
     sm::BoundingBox boundingBox;
-    boundingBox.set_fromx(handler -> get_min_x());  boundingBox.set_tox(handler-> get_max_x());
-    boundingBox.set_fromy(handler -> get_min_y());  boundingBox.set_toy(handler-> get_max_y());
-    boundingBox.set_fromz(handler -> get_min_z());  boundingBox.set_toz(handler-> get_max_z());
+    if (handler -> get_min_x() > handler -> get_max_x()) {  //no data in tree - send zeros
+        boundingBox.set_fromx(0);  boundingBox.set_tox(0);
+        boundingBox.set_fromy(0);  boundingBox.set_toy(0);
+        boundingBox.set_fromz(0);  boundingBox.set_toz(0);
+    } else {
+        boundingBox.set_fromx(handler -> get_min_x());  boundingBox.set_tox(handler-> get_max_x());
+        boundingBox.set_fromy(handler -> get_min_y());  boundingBox.set_toy(handler-> get_max_y());
+        boundingBox.set_fromz(handler -> get_min_z());  boundingBox.set_toz(handler-> get_max_z());
+    }
     (*info.mutable_boundingbox()) = boundingBox;
 
     //set GroupInfo
@@ -253,6 +259,15 @@ void AbstractServer::startSMServer() {
             case sm::ManagerToCoreMessage_MTCMessageType_HELLO:
                 if (message.has_optionsinfo()) {
                     processOptionDataPackage(&message);
+                }
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_SNAPSHOT:
+                handler->createNewInstance();
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_CLEAN:
+                if (visibleDataTree==-1) {  //clean CURRENT data tree only when it's visible
+                    handler->clean();
+                    sendStatistics();
                 }
                 break;
             default:

@@ -97,11 +97,13 @@ enum ManagerToCoreMessage_MTCMessageType {
   ManagerToCoreMessage_MTCMessageType_FILTERS = 2,
   ManagerToCoreMessage_MTCMessageType_CONTINUE = 3,
   ManagerToCoreMessage_MTCMessageType_ABORT = 4,
-  ManagerToCoreMessage_MTCMessageType_HELLO = 5
+  ManagerToCoreMessage_MTCMessageType_HELLO = 5,
+  ManagerToCoreMessage_MTCMessageType_SNAPSHOT = 6,
+  ManagerToCoreMessage_MTCMessageType_CLEAN = 7
 };
 bool ManagerToCoreMessage_MTCMessageType_IsValid(int value);
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MIN = ManagerToCoreMessage_MTCMessageType_OPTIONS;
-const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX = ManagerToCoreMessage_MTCMessageType_HELLO;
+const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX = ManagerToCoreMessage_MTCMessageType_CLEAN;
 const int ManagerToCoreMessage_MTCMessageType_MTCMessageType_ARRAYSIZE = ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* ManagerToCoreMessage_MTCMessageType_descriptor();
@@ -1745,6 +1747,10 @@ class ManagerToCoreMessage : public ::google::protobuf::Message /* @@protoc_inse
     ManagerToCoreMessage_MTCMessageType_ABORT;
   static const MTCMessageType HELLO =
     ManagerToCoreMessage_MTCMessageType_HELLO;
+  static const MTCMessageType SNAPSHOT =
+    ManagerToCoreMessage_MTCMessageType_SNAPSHOT;
+  static const MTCMessageType CLEAN =
+    ManagerToCoreMessage_MTCMessageType_CLEAN;
   static inline bool MTCMessageType_IsValid(int value) {
     return ManagerToCoreMessage_MTCMessageType_IsValid(value);
   }

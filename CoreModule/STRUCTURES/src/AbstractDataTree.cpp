@@ -23,8 +23,8 @@ void AbstractDataTree::add(int groupID, vector<Element*>* elements) {
         CoordinatesFilter::getInstance() -> filterElement(element);
     }
     Data::add(groupID, elements);
-    GroupsFilter::getInstance() -> filterTree(this);
-    TypesFilter::getInstance() -> filterTree(this);
+    //GroupsFilter::getInstance() -> filterTree(this);
+    //TypesFilter::getInstance() -> filterTree(this);
     UNLOCK();
 }
 
