@@ -30,7 +30,7 @@ class Smeshalist {
         void AddGeometry(Face &face);
         void AddGeometry(Block &block);
         void FlushBuffer();
-        void Breakpoint() const;
+        void Breakpoint();
         void Render() const;
 	protected:
 	private:
