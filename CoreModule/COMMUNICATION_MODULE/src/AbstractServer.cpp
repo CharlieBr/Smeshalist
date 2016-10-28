@@ -251,7 +251,9 @@ void AbstractServer::startSMServer() {
                 processOptionDataPackage(&message);
                 break;
             case sm::ManagerToCoreMessage_MTCMessageType_HELLO:
-                //SM connected
+                if (message.has_optionsinfo()) {
+                    processOptionDataPackage(&message);
+                }
                 break;
             default:
                 cerr << "Unknow message type\n";
