@@ -15,10 +15,15 @@ void TypesFilter::deleteAllFilters() {
 void TypesFilter::filterTree(Data* dataTree) {
     vector<int>* allGroupsInTree = dataTree->get_all_groupIDs();
     vector<string> selectedTypes;
+    vector<string> unSelectedTypes;
 
     //create list of all selected types in SM
     for (auto& filter : filterList) {
-        selectedTypes.push_back(filter -> getTypeName());
+        if (filter -> isSelected()) {
+            selectedTypes.push_back(filter -> getTypeName());
+        } else {
+            unSelectedTypes.push_back(filter -> getTypeName());
+        }
     }
 
     //filter
@@ -32,10 +37,10 @@ void TypesFilter::filterTree(Data* dataTree) {
         vector<string>* types = group -> get_struct_types();
 
         for (string type : *types) {
-            if(find(selectedTypes.begin(), selectedTypes.end(), type) != selectedTypes.end()) {
-                group -> get_list(type) -> set_draw_flag(true);
-            } else {
+            if(find(unSelectedTypes.begin(), unSelectedTypes.end(), type) != unSelectedTypes.end()) {
                 group -> get_list(type) -> set_draw_flag(false);
+            } else {
+                group -> get_list(type) -> set_draw_flag(true);
             }
         }
     }

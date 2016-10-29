@@ -10,14 +10,20 @@ using namespace std;
 class SingleTypesFilter
 {
     string type;
+    bool selected;
 
     public:
-        SingleTypesFilter(string type) {
+        SingleTypesFilter(string type, bool isSelected) {
             this -> type = type;
+            this -> selected = isSelected;
         }
 
         string getTypeName() {
             return type;
+        }
+
+        bool isSelected() {
+            return selected;
         }
 };
 

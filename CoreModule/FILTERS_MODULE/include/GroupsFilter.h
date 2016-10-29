@@ -10,14 +10,20 @@ using namespace std;
 class SingleGroupFilter
 {
     int groupID;
+    bool selected;
 
     public:
-        SingleGroupFilter(int groupID) {
+        SingleGroupFilter(int groupID, bool isSelected) {
             this -> groupID = groupID;
+            this -> selected = isSelected;
         }
 
         int getGroupID() {
             return groupID;
+        }
+
+        bool isSelected() {
+            return selected;
         }
 };
 

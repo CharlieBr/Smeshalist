@@ -143,10 +143,7 @@ void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message
         google::protobuf::Map<string, bool>::iterator iter = selectedGroups.begin();
 
         for (; iter!=selectedGroups.end(); ++iter) {
-            if (iter -> second) {   //check if group is selected
-                int groupID = stoi(iter->first);
-                singleGroupFilters -> push_back(new SingleGroupFilter(groupID));
-            }
+            singleGroupFilters -> push_back(new SingleGroupFilter(stoi(iter->first), iter -> second));
         }
     }
 
@@ -156,9 +153,7 @@ void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message
         google::protobuf::Map<string, bool>::iterator iter = selectedTypes.begin();
 
         for (; iter!=selectedTypes.end(); ++iter) {
-            if (iter -> second) {   //check if type is selected
-                singleTypeFilters -> push_back(new SingleTypesFilter(typeTraslations[iter->first]));
-            }
+            singleTypeFilters -> push_back(new SingleTypesFilter(typeTraslations[iter->first], iter -> second));
         }
     }
 
