@@ -6,6 +6,27 @@ AbstractDataTree* AbstractDataTree::getCurrent() {
     return current;
 }
 
+void AbstractDataTree::draw_elements() {
+    (*this.*drawFunction)();
+}
+
+void AbstractDataTree::drawElements() {
+    Data::draw_elements();
+}
+
+void AbstractDataTree::drawNothing() {
+    return;
+}
+
+void AbstractDataTree::clean() {
+    LOCK();
+    drawFunction = &AbstractDataTree::drawNothing;
+    Data::clean();
+    recomputeIntersectionPoints();
+    drawFunction = &AbstractDataTree::drawElements;
+    UNLOCK();
+}
+
 void AbstractDataTree::add(int groupID, Element* element) {
     LOCK();
     QualityFilter::getInstance() -> filterElement(element);
