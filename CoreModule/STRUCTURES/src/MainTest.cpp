@@ -24,7 +24,7 @@ int main(void){
     points.push_back(point2);
     Edge * edge = new Edge(&points);
 
-    Data * data = &(Data::get_instance());
+    Data * data = new Data();
 
     vertex -> set_quality(1.0);
     assert( vertex -> get_quality() == 1.0 );
@@ -78,6 +78,7 @@ int main(void){
     edge1_points.push_back(Point3D(4.5, 4.2, 8.9));
     edge1_points.push_back(Point3D(2.3, 4.1, -1.0));
     Edge * edge1 = new Edge(&edge1_points);
+    edge1 -> set_draw_flag(false);
 
     vector<Point3D> edge2_points;
     edge2_points.push_back(Point3D(1.5, 8.2, -8.9));
@@ -116,9 +117,24 @@ int main(void){
     assert( statistics.all_elements_numbers["vertex"] == 3 );
     assert( statistics.all_elements_numbers["edge"] == 3 );
 
-    assert( statistics.visible_elements_numbers["all"] == 6 );
+    assert( statistics.visible_elements_numbers["all"] == 5);
     assert( statistics.visible_elements_numbers["vertex"] == 3 );
-    assert( statistics.visible_elements_numbers["edge"] == 3 );
+    assert( statistics.visible_elements_numbers["edge"] == 2 );
+
+    group1 -> set_draw_flag(false);
+    data -> count_visible_elements();
+    statistics = data -> get_statistics();
+    assert( statistics.visible_elements_numbers["all"] == 4);
+    assert( statistics.visible_elements_numbers["vertex"] == 3 );
+    assert( statistics.visible_elements_numbers["edge"] == 1 );
+
+    Edge * edge3 = new Edge(&points);
+    data -> add(1, edge3);
+    statistics = data -> get_statistics();
+    assert( statistics.visible_elements_numbers["all"] == 4);
+    assert( statistics.visible_elements_numbers["vertex"] == 3 );
+    assert( statistics.visible_elements_numbers["edge"] == 1 );
+
 
 
     data -> filter_all(false);
@@ -162,9 +178,9 @@ int main(void){
 
     data -> count_visible_elements();
     statistics = data -> get_statistics();
-    assert( statistics.visible_elements_numbers["all"] == 6 );
+    assert( statistics.visible_elements_numbers["all"] == 7 );
     assert( statistics.visible_elements_numbers["vertex"] == 3 );
-    assert( statistics.visible_elements_numbers["edge"] == 3 );
+    assert( statistics.visible_elements_numbers["edge"] == 4 );
 
     //cleaning
     data -> draw_elements();

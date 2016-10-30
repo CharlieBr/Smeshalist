@@ -79,7 +79,6 @@ void Statistics::update_limiting_cuboid(Point3D* point){
 void Statistics::update_elements_counter(string type, int amount){
     all_elements_numbers["all"] += amount;
     all_elements_numbers[type] += amount;
-    return;
 }
 
 void Statistics::update_visible_elements_counter(string type, int amount){
