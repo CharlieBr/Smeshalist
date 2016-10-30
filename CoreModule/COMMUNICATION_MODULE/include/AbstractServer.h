@@ -5,7 +5,7 @@
 #define BASE 4
 #define IPADDRESS "127.0.0.1"
 #define PORT 8383
-#define SOCKET_TIMEOUT_SEC 1
+#define SOCKET_TIMEOUT_SEC 10
 #define SOCKET_TIMEOUT_NANO 0
 
 #include "Structures.h"

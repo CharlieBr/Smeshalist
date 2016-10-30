@@ -326,8 +326,6 @@ void AbstractServer::getDataPackages() {
             continue;
         }
 
-        sendAcknowlage();
-
         structDefinitions::DataPackage package;
         buffer = new char[(int)header.sizeofdata()];
         nBytes = getBytesFromSocket(buffer, header.sizeofdata());
