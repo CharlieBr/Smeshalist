@@ -30,6 +30,7 @@ class AbstractDataTree : public Data
         void reloadFliters(vector<SingleGroupFilter*>*, vector<SingleTypesFilter*>*, vector<SingleCoordinateFilter*>*, LogicalConnectiveEnum*, vector<SingleQualityFilter*>*);
         static vector<AbstractDataTree*> previousInstances;
         static AbstractDataTree* current;
+        static bool readyToBeCleaned;
         void drawElements();
         void drawNothing();
         AbstractDataTree() {

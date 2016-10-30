@@ -1,6 +1,7 @@
 #include "AbstractDataTree.h"
 
 vector<AbstractDataTree*> AbstractDataTree::previousInstances;
+bool AbstractDataTree::readyToBeCleaned = false;
 
 AbstractDataTree* AbstractDataTree::getCurrent() {
     return current;
@@ -15,15 +16,19 @@ void AbstractDataTree::drawElements() {
 }
 
 void AbstractDataTree::drawNothing() {
-    return;
+    readyToBeCleaned = true;
 }
 
 void AbstractDataTree::clean() {
     LOCK();
     drawFunction = &AbstractDataTree::drawNothing;
+    while (!readyToBeCleaned) {
+        //TODO should be implemented better
+    }
     Data::clean();
     recomputeIntersectionPoints();
     drawFunction = &AbstractDataTree::drawElements;
+    readyToBeCleaned = false;
     UNLOCK();
 }
 
