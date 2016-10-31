@@ -3,6 +3,7 @@
 
 #include "AbstractDataTree.h"
 #include <mutex>
+#include <unistd.h>
 
 
 class LinuxDataTree : public AbstractDataTree
@@ -12,6 +13,7 @@ class LinuxDataTree : public AbstractDataTree
     protected:
         void LOCK();
         void UNLOCK();
+        void sleepThread(int);
     private:
         std::mutex mtx;
 };

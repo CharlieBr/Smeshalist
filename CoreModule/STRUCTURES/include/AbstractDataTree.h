@@ -24,6 +24,7 @@ class AbstractDataTree : public Data
     protected:
         virtual void LOCK()=0;
         virtual void UNLOCK()=0;
+        virtual void sleepThread(int)=0;
         void (AbstractDataTree::*drawFunction)();
         void filterDataTree();
         void recomputeIntersectionPoints();

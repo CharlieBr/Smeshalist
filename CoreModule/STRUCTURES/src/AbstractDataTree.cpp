@@ -23,7 +23,7 @@ void AbstractDataTree::clean() {
     LOCK();
     drawFunction = &AbstractDataTree::drawNothing;
     while (!readyToBeCleaned) {
-        //TODO should be implemented better
+        sleepThread(10);
     }
     Data::clean();
     recomputeIntersectionPoints();
