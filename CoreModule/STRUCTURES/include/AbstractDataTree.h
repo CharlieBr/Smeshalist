@@ -25,6 +25,7 @@ class AbstractDataTree : public Data
         virtual void LOCK()=0;
         virtual void UNLOCK()=0;
         virtual void sleepThread(int)=0;
+		void cloneDataTreeToNewInstance(AbstractDataTree*);
         void (AbstractDataTree::*drawFunction)();
         void filterDataTree();
         void recomputeIntersectionPoints();

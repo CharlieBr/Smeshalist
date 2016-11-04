@@ -6,17 +6,18 @@
 
 class WindowsDataTree : public AbstractDataTree {
 	public:
-		static WindowsDataTree& getInstance();
-	private:
-		void LOCK();
-		void UNLOCK();
+		void createNewInstance();
 		WindowsDataTree() {
 			mutex = CreateMutex(NULL, FALSE, NULL);
 			if (mutex == NULL) {
 				cerr << "Windows mutex cannot be created!!!\n";
 			}
 		}
-
+	protected:
+		void LOCK();
+		void UNLOCK();
+		void sleepThread(int);	
+	private:
 		HANDLE mutex;
 };
 
