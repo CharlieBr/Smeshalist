@@ -29,7 +29,7 @@ public class TypesTab extends JPanel{
 	public TypesTab(){
 		this.structures = new LinkedList<>();
 		this.typeCheckBoxes = new LinkedList<>();
-		this.changed = false;
+		TypesTab.changed = false;
 		this.initializeView();
 		this.setVisible(true);
 	}
@@ -42,10 +42,10 @@ public class TypesTab extends JPanel{
 		this.setBorder(border);
 
 		List<String> structures = new LinkedList<>();
-		structures.add("Vertexes");
-		structures.add("Edges");
-		structures.add("Triangles");
-		structures.add("Pyramids");
+		structures.add("Vertex");
+		structures.add("Edge");
+		structures.add("Face");
+		structures.add("Block");
 
 		this.setStructures(structures);
 	}

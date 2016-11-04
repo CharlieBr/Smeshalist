@@ -28,6 +28,7 @@ public class MainWindow extends JFrame {
 	}
 
 	private void initializeView() {
+		this.setTitle("Smeshalist Manager");
 		this.tabContainer = new JTabbedPane();
 		this.tabContainer.setVisible(true);
 		this.optionsTab = new OptionsTab();
@@ -81,4 +82,7 @@ public class MainWindow extends JFrame {
 		return optionsTab.getOptionsInfo();
 	}
 
+	public void cleanGroupCheckBoxes() {
+		this.filtersTab.cleanGroupCheckBoxes();
+	}
 }

@@ -45,7 +45,7 @@ public class QualityTab extends JPanel{
 	private List<QualityEntry> conditionEntries;
 
 	public QualityTab(){
-		this.changed = false;
+		QualityTab.changed = false;
 		this.initializeView();
 				
 		this.setVisible(true);

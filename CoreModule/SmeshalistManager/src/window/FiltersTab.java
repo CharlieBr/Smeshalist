@@ -164,4 +164,8 @@ public class FiltersTab extends JPanel{
 				return null;
 		}
 	}
+
+	public void cleanGroupCheckBoxes() {
+		this.groupsTab.cleanGroupCheckboxes();
+	}
 }

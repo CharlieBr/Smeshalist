@@ -31,7 +31,7 @@ public class GroupsTab extends JScrollPane{
 	public GroupsTab(){
 		this.groups = new LinkedList<>();
 		this.groupsCheckBoxes = new LinkedList<>();
-		this.changed = false;
+		GroupsTab.changed = false;
 		this.initializeView();
 		this.setVisible(true);
 	}
@@ -102,6 +102,13 @@ public class GroupsTab extends JScrollPane{
 
 	public static void setChanged(boolean changed) {
 		GroupsTab.changed = changed;
+	}
+
+	public void cleanGroupCheckboxes(){
+		this.scrollPaneContent.removeAll();
+		this.scrollPaneContent.repaint();
+		this.groupsCheckBoxes.clear();
+		this.groups.clear();
 	}
 	
 }
