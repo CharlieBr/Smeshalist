@@ -14,6 +14,9 @@ public class CheckBoxEntry extends JPanel {
 		this.colorPanel = new JPanel();
 		this.colorPanel.setMaximumSize(new Dimension(15,15));
 		this.colorPanel.setBackground(new java.awt.Color(color.getR(), color.getG(), color.getB()));
+		this.add(this.checkBox);
+		this.add(this.colorPanel);
+		this.setVisible(true);
 	}
 
 	public boolean isCheckBoxSelected(){
