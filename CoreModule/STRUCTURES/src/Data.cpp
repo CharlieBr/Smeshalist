@@ -1,5 +1,6 @@
 #include "Data.h"
 
+UserPreferencesManager* Data::manager = UserPreferencesManager::getInstance();
 
 // ----------------------------
 // ------- Data methods -------
@@ -46,7 +47,7 @@ void Data::draw_elements(){
 void Data::add(int group_id, Element* element){
     string element_type = element -> get_type();
     if( !has_group(group_id) ){
-        ElementsGroup * group = new ElementsGroup(Color(group_id));
+        ElementsGroup * group = new ElementsGroup(manager->getGroupColor(group_id));
         groups.insert( pair<int, ElementsGroup*>(group_id, group));
     }
     ElementsGroup* group = groups.at(group_id);
@@ -71,7 +72,7 @@ void Data::add(int group_id, vector<Element*>* elements){
     ElementsGroup * group;
 
     if( !has_group(group_id) ){
-        group = new ElementsGroup(Color(group_id));
+        group = new ElementsGroup(manager->getGroupColor(group_id));
         groups.insert( pair<int, ElementsGroup*>(group_id, group));
     }
 

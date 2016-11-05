@@ -4,10 +4,11 @@ CORE_PATH = $(SMESHALIST_PATH)/CoreModule
 STRUCTURES_PATH = $(CORE_PATH)/STRUCTURES
 COMMUNICATION_PATH = $(CORE_PATH)/COMMUNICATION_MODULE
 FILTERS_PATH = $(CORE_PATH)/FILTERS_MODULE
+XML_PARSER_PATH = $(CORE_PATH)/XML_PARSER
 
 CC = g++
 FLAGS = -std=c++11 -Wall
-INCLUDES = -I$(STRUCTURES_PATH)/include -I$(COMMUNICATION_PATH)/include -I$(FILTERS_PATH)/include -I$(CPPAPI_PATH) -I$(CORE_PATH)/SmeshalistManager/proto
+INCLUDES = -I$(STRUCTURES_PATH)/include -I$(COMMUNICATION_PATH)/include -I$(FILTERS_PATH)/include -I$(XML_PARSER_PATH)/include -I$(CPPAPI_PATH) -I$(CORE_PATH)/SmeshalistManager/proto
 LIBS = lib/libGLU.a lib/libprotobuf.a -lGL -lglut
 
 compile:
@@ -28,6 +29,10 @@ compile:
 	$(CC) $(FLAGS) $(INCLUDES) -c $(FILTERS_PATH)/src/QualityFilter.cpp -o obj/QualityFilter.o
 	$(CC) $(FLAGS) $(INCLUDES) -c $(FILTERS_PATH)/src/TypesFilter.cpp -o obj/TypesFilter.o
 	$(CC) $(FLAGS) $(INCLUDES) -c $(FILTERS_PATH)/src/CMathUtils.cpp -o obj/CMathUtils.o
+	#COMPILING XML PARSER MODULE FROM CORE
+	$(CC) $(FLAGS) $(INCLUDES) -c $(XML_PARSER_PATH)/src/UserPreferencesManager.cpp -o obj/UserPreferencesManager.o
+	$(CC) $(FLAGS) $(INCLUDES) -c $(XML_PARSER_PATH)/src/XMLNode.cpp -o obj/XMLNode.o
+	$(CC) $(FLAGS) $(INCLUDES) -c $(XML_PARSER_PATH)/src/XMLParser.cpp -o obj/XMLParser.o
 	#COMPILING STRUCTS FROM CPP API
 	$(CC) $(FLAGS) $(INCLUDES) -c $(CPPAPI_PATH)/structs.pb.cc -o obj/structs.o
 	#COMPILING COMMUNICATION PROTO FILE FROM SMESHALIST MANAGER
@@ -37,6 +42,6 @@ compile:
 	#
 build:
 	#BUILDING
-	$(CC) -o CoreModule obj/structs.o obj/communication.o obj/AbstractServer.o obj/LinuxServer.o obj/CoordinatesFilter.o obj/GroupsFilter.o obj/QualityFilter.o obj/TypesFilter.o obj/CMathUtils.o obj/rotateCamera.o obj/AbstractDataTree.o obj/Color.o obj/Data.o obj/LinuxDataTree.o obj/Statistics.o obj/Structures.o $(LIBS)
+	$(CC) -o CoreModule obj/*.o $(LIBS)
 	rm -r obj
 all: compile build

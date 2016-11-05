@@ -38,9 +38,9 @@ void Statistics::clean(){
     min_x = DBL_MAX;
     min_y = DBL_MAX;
     min_z = DBL_MAX;
-    max_x = DBL_MIN;
-    max_y = DBL_MIN;
-    max_z = DBL_MIN;
+    max_x = -DBL_MAX;
+    max_y = -DBL_MAX;
+    max_z = -DBL_MAX;
     return;
 }
 
