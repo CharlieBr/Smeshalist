@@ -9,6 +9,7 @@
 #define MOVING_PRECISION 400.0
 #define PI_2 1.57
 
+#include "UserPreferencesManager.h"
 #ifdef __linux__
 #include "LinuxServer.h"
 #include "LinuxDataTree.h"
@@ -38,6 +39,8 @@ int visibleDataTree=-1; //-1-current; >=0 - previous
 
 AbstractDataTree* d = NULL;
 AbstractServer* server = NULL;
+
+Color backgroundColor(0,0,0);
 
 void computeCameraPosition() {
     cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius + cameraLookAtX;
@@ -101,7 +104,7 @@ void drawBoundingBox(AbstractDataTree* d) {
 void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	glClearColor(1, 1, 1, 1);
+	glClearColor(backgroundColor.r(), backgroundColor.g(), backgroundColor.b(), 1);
     glClear(GL_COLOR_BUFFER_BIT);
 
 	glLoadIdentity();
@@ -329,6 +332,8 @@ int main(int argc, char **argv) {
 
     server -> registerStructuresHandler(d);
     server -> registerMouseSensitivityHandler(&mouseSensitivity);
+
+    backgroundColor = UserPreferencesManager::getInstance()->getBackgroudColor();
 
 	initGLUT(argc, argv);
 

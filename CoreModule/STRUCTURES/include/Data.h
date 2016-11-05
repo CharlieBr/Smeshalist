@@ -12,6 +12,8 @@
 #include "Statistics.h"
 #include "Color.h"
 
+#include "../../XML_PARSER/include/UserPreferencesManager.h"
+
 using namespace std;
 // -----------------------------------
 // --- struct for list of elements ---
@@ -83,6 +85,7 @@ class Data {
 
     protected:
         Statistics statistics;
+        static UserPreferencesManager* manager;
 
     public:
         void operator=(Data const&) = delete;
