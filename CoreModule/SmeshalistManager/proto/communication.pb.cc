@@ -31,9 +31,13 @@ const ::google::protobuf::Descriptor* ElementsCount_ElementInfosEntry_descriptor
 const ::google::protobuf::Descriptor* BoundingBox_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   BoundingBox_reflection_ = NULL;
+const ::google::protobuf::Descriptor* Color_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  Color_reflection_ = NULL;
 const ::google::protobuf::Descriptor* GroupsInfo_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   GroupsInfo_reflection_ = NULL;
+const ::google::protobuf::Descriptor* GroupsInfo_AllGroupsEntry_descriptor_ = NULL;
 const ::google::protobuf::Descriptor* StatisticsInfo_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   StatisticsInfo_reflection_ = NULL;
@@ -132,7 +136,24 @@ void protobuf_AssignDesc_communication_2eproto() {
       sizeof(BoundingBox),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BoundingBox, _internal_metadata_),
       -1);
-  GroupsInfo_descriptor_ = file->message_type(3);
+  Color_descriptor_ = file->message_type(3);
+  static const int Color_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, r_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, g_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, b_),
+  };
+  Color_reflection_ =
+    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
+      Color_descriptor_,
+      Color::default_instance_,
+      Color_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, _has_bits_[0]),
+      -1,
+      -1,
+      sizeof(Color),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Color, _internal_metadata_),
+      -1);
+  GroupsInfo_descriptor_ = file->message_type(4);
   static const int GroupsInfo_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GroupsInfo, allgroups_),
   };
@@ -147,7 +168,8 @@ void protobuf_AssignDesc_communication_2eproto() {
       sizeof(GroupsInfo),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GroupsInfo, _internal_metadata_),
       -1);
-  StatisticsInfo_descriptor_ = file->message_type(4);
+  GroupsInfo_AllGroupsEntry_descriptor_ = GroupsInfo_descriptor_->nested_type(0);
+  StatisticsInfo_descriptor_ = file->message_type(5);
   static const int StatisticsInfo_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatisticsInfo, elementscount_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatisticsInfo, boundingbox_),
@@ -164,7 +186,7 @@ void protobuf_AssignDesc_communication_2eproto() {
       sizeof(StatisticsInfo),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(StatisticsInfo, _internal_metadata_),
       -1);
-  CoreToManagerMessage_descriptor_ = file->message_type(5);
+  CoreToManagerMessage_descriptor_ = file->message_type(6);
   static const int CoreToManagerMessage_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CoreToManagerMessage, messagetype_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CoreToManagerMessage, statisticsinfo_),
@@ -181,7 +203,7 @@ void protobuf_AssignDesc_communication_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CoreToManagerMessage, _internal_metadata_),
       -1);
   CoreToManagerMessage_CTMMessageType_descriptor_ = CoreToManagerMessage_descriptor_->enum_type(0);
-  OptionsInfo_descriptor_ = file->message_type(6);
+  OptionsInfo_descriptor_ = file->message_type(7);
   static const int OptionsInfo_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, transparentstructures_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, dynamicrendering_),
@@ -199,7 +221,7 @@ void protobuf_AssignDesc_communication_2eproto() {
       sizeof(OptionsInfo),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, _internal_metadata_),
       -1);
-  TypesFilter_descriptor_ = file->message_type(7);
+  TypesFilter_descriptor_ = file->message_type(8);
   static const int TypesFilter_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TypesFilter, selectedtypes_),
   };
@@ -215,7 +237,7 @@ void protobuf_AssignDesc_communication_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TypesFilter, _internal_metadata_),
       -1);
   TypesFilter_SelectedTypesEntry_descriptor_ = TypesFilter_descriptor_->nested_type(0);
-  GroupsFilter_descriptor_ = file->message_type(8);
+  GroupsFilter_descriptor_ = file->message_type(9);
   static const int GroupsFilter_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GroupsFilter, selectedgroups_),
   };
@@ -231,7 +253,7 @@ void protobuf_AssignDesc_communication_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GroupsFilter, _internal_metadata_),
       -1);
   GroupsFilter_SelectedGroupsEntry_descriptor_ = GroupsFilter_descriptor_->nested_type(0);
-  QualityCondition_descriptor_ = file->message_type(9);
+  QualityCondition_descriptor_ = file->message_type(10);
   static const int QualityCondition_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QualityCondition, leftvalue_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QualityCondition, leftoperator_),
@@ -249,7 +271,7 @@ void protobuf_AssignDesc_communication_2eproto() {
       sizeof(QualityCondition),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QualityCondition, _internal_metadata_),
       -1);
-  QualityFilter_descriptor_ = file->message_type(10);
+  QualityFilter_descriptor_ = file->message_type(11);
   static const int QualityFilter_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QualityFilter, qualitycondition_),
   };
@@ -264,7 +286,7 @@ void protobuf_AssignDesc_communication_2eproto() {
       sizeof(QualityFilter),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QualityFilter, _internal_metadata_),
       -1);
-  CoordinatesCondition_descriptor_ = file->message_type(11);
+  CoordinatesCondition_descriptor_ = file->message_type(12);
   static const int CoordinatesCondition_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CoordinatesCondition, xvalue_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CoordinatesCondition, yvalue_),
@@ -283,7 +305,7 @@ void protobuf_AssignDesc_communication_2eproto() {
       sizeof(CoordinatesCondition),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CoordinatesCondition, _internal_metadata_),
       -1);
-  CoordinatesFilter_descriptor_ = file->message_type(12);
+  CoordinatesFilter_descriptor_ = file->message_type(13);
   static const int CoordinatesFilter_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CoordinatesFilter, coordinatescondition_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CoordinatesFilter, conjunction_),
@@ -300,7 +322,7 @@ void protobuf_AssignDesc_communication_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(CoordinatesFilter, _internal_metadata_),
       -1);
   CoordinatesFilter_Conjunction_descriptor_ = CoordinatesFilter_descriptor_->enum_type(0);
-  ManagerToCoreMessage_descriptor_ = file->message_type(13);
+  ManagerToCoreMessage_descriptor_ = file->message_type(14);
   static const int ManagerToCoreMessage_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ManagerToCoreMessage, messagetype_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ManagerToCoreMessage, optionsinfo_),
@@ -350,7 +372,18 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       BoundingBox_descriptor_, &BoundingBox::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+      Color_descriptor_, &Color::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       GroupsInfo_descriptor_, &GroupsInfo::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+        GroupsInfo_AllGroupsEntry_descriptor_,
+        ::google::protobuf::internal::MapEntry<
+            ::std::string,
+            ::sm::Color,
+            ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+            ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+            0>::CreateDefaultInstance(
+                GroupsInfo_AllGroupsEntry_descriptor_));
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       StatisticsInfo_descriptor_, &StatisticsInfo::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -400,6 +433,8 @@ void protobuf_ShutdownFile_communication_2eproto() {
   delete ElementsCount_reflection_;
   delete BoundingBox::default_instance_;
   delete BoundingBox_reflection_;
+  delete Color::default_instance_;
+  delete Color_reflection_;
   delete GroupsInfo::default_instance_;
   delete GroupsInfo_reflection_;
   delete StatisticsInfo::default_instance_;
@@ -438,57 +473,61 @@ void protobuf_AddDesc_communication_2eproto() {
     "InfosEntry\022\013\n\003key\030\001 \001(\t\022\036\n\005value\030\002 \001(\0132\017"
     ".sm.ElementInfo:\0028\001\"a\n\013BoundingBox\022\r\n\005fr"
     "omX\030\001 \002(\001\022\013\n\003toX\030\002 \002(\001\022\r\n\005fromY\030\003 \002(\001\022\013\n"
-    "\003toY\030\004 \002(\001\022\r\n\005fromZ\030\005 \002(\001\022\013\n\003toZ\030\006 \002(\001\"\037"
-    "\n\nGroupsInfo\022\021\n\tallGroups\030\001 \003(\t\"\204\001\n\016Stat"
-    "isticsInfo\022(\n\relementsCount\030\001 \002(\0132\021.sm.E"
-    "lementsCount\022$\n\013boundingBox\030\002 \002(\0132\017.sm.B"
-    "oundingBox\022\"\n\ngroupsInfo\030\003 \002(\0132\016.sm.Grou"
-    "psInfo\"\262\001\n\024CoreToManagerMessage\022<\n\013messa"
-    "geType\030\001 \002(\0162\'.sm.CoreToManagerMessage.C"
-    "TMMessageType\022*\n\016statisticsInfo\030\002 \001(\0132\022."
-    "sm.StatisticsInfo\"0\n\016CTMMessageType\022\016\n\nS"
-    "TATISTICS\020\001\022\016\n\nBREAKPOINT\020\002\"t\n\013OptionsIn"
-    "fo\022\035\n\025transparentStructures\030\001 \002(\010\022\030\n\020dyn"
-    "amicRendering\030\002 \002(\010\022\022\n\nshowLabels\030\003 \002(\010\022"
-    "\030\n\020mouseSensitivity\030\004 \002(\001\"~\n\013TypesFilter"
-    "\0229\n\rselectedTypes\030\001 \003(\0132\".sm.TypesFilter"
-    ".SelectedTypesEntry\0324\n\022SelectedTypesEntr"
-    "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n\014Gr"
-    "oupsFilter\022<\n\016selectedGroups\030\001 \003(\0132$.sm."
-    "GroupsFilter.SelectedGroupsEntry\0325\n\023Sele"
-    "ctedGroupsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 "
-    "\001(\010:\0028\001\"\226\001\n\020QualityCondition\022\021\n\tleftValu"
-    "e\030\001 \001(\001\022,\n\014leftOperator\030\002 \001(\0162\026.sm.Compa"
-    "risonOperator\022-\n\rrightOperator\030\003 \001(\0162\026.s"
-    "m.ComparisonOperator\022\022\n\nrightValue\030\004 \001(\001"
-    "\"\?\n\rQualityFilter\022.\n\020qualityCondition\030\001 "
-    "\003(\0132\024.sm.QualityCondition\"\215\001\n\024Coordinate"
-    "sCondition\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030\002 \002"
-    "(\001\022\016\n\006zValue\030\003 \002(\001\0223\n\023coordinatesOperato"
-    "r\030\004 \002(\0162\026.sm.ComparisonOperator\022\020\n\010const"
-    "ant\030\005 \002(\001\"\243\001\n\021CoordinatesFilter\0226\n\024coord"
-    "inatesCondition\030\001 \003(\0132\030.sm.CoordinatesCo"
-    "ndition\0226\n\013conjunction\030\002 \001(\0162!.sm.Coordi"
-    "natesFilter.Conjunction\"\036\n\013Conjunction\022\007"
-    "\n\003AND\020\001\022\006\n\002OR\020\002\"\215\003\n\024ManagerToCoreMessage"
-    "\022<\n\013messageType\030\001 \002(\0162\'.sm.ManagerToCore"
-    "Message.MTCMessageType\022$\n\013optionsInfo\030\002 "
-    "\001(\0132\017.sm.OptionsInfo\022&\n\014groupsFilter\030\003 \001"
-    "(\0132\020.sm.GroupsFilter\022$\n\013typesFilter\030\004 \001("
-    "\0132\017.sm.TypesFilter\022(\n\rqualityFilter\030\005 \001("
-    "\0132\021.sm.QualityFilter\0220\n\021coordinatesFilte"
-    "r\030\006 \001(\0132\025.sm.CoordinatesFilter\"g\n\016MTCMes"
-    "sageType\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CO"
-    "NTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSH"
-    "OT\020\006\022\t\n\005CLEAN\020\007*_\n\022ComparisonOperator\022\024\n"
-    "\020GREATER_OR_EQUAL\020\001\022\013\n\007GREATER\020\002\022\t\n\005EQUA"
-    "L\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rcomm"
-    "unicationB\rCommunication", 2104);
+    "\003toY\030\004 \002(\001\022\r\n\005fromZ\030\005 \002(\001\022\013\n\003toZ\030\006 \002(\001\"("
+    "\n\005Color\022\t\n\001r\030\001 \002(\005\022\t\n\001g\030\002 \002(\005\022\t\n\001b\030\003 \002(\005"
+    "\"{\n\nGroupsInfo\0220\n\tallGroups\030\001 \003(\0132\035.sm.G"
+    "roupsInfo.AllGroupsEntry\032;\n\016AllGroupsEnt"
+    "ry\022\013\n\003key\030\001 \001(\t\022\030\n\005value\030\002 \001(\0132\t.sm.Colo"
+    "r:\0028\001\"\204\001\n\016StatisticsInfo\022(\n\relementsCoun"
+    "t\030\001 \002(\0132\021.sm.ElementsCount\022$\n\013boundingBo"
+    "x\030\002 \002(\0132\017.sm.BoundingBox\022\"\n\ngroupsInfo\030\003"
+    " \002(\0132\016.sm.GroupsInfo\"\262\001\n\024CoreToManagerMe"
+    "ssage\022<\n\013messageType\030\001 \002(\0162\'.sm.CoreToMa"
+    "nagerMessage.CTMMessageType\022*\n\016statistic"
+    "sInfo\030\002 \001(\0132\022.sm.StatisticsInfo\"0\n\016CTMMe"
+    "ssageType\022\016\n\nSTATISTICS\020\001\022\016\n\nBREAKPOINT\020"
+    "\002\"t\n\013OptionsInfo\022\035\n\025transparentStructure"
+    "s\030\001 \002(\010\022\030\n\020dynamicRendering\030\002 \002(\010\022\022\n\nsho"
+    "wLabels\030\003 \002(\010\022\030\n\020mouseSensitivity\030\004 \002(\001\""
+    "~\n\013TypesFilter\0229\n\rselectedTypes\030\001 \003(\0132\"."
+    "sm.TypesFilter.SelectedTypesEntry\0324\n\022Sel"
+    "ectedTypesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 "
+    "\001(\010:\0028\001\"\203\001\n\014GroupsFilter\022<\n\016selectedGrou"
+    "ps\030\001 \003(\0132$.sm.GroupsFilter.SelectedGroup"
+    "sEntry\0325\n\023SelectedGroupsEntry\022\013\n\003key\030\001 \001"
+    "(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\226\001\n\020QualityConditi"
+    "on\022\021\n\tleftValue\030\001 \001(\001\022,\n\014leftOperator\030\002 "
+    "\001(\0162\026.sm.ComparisonOperator\022-\n\rrightOper"
+    "ator\030\003 \001(\0162\026.sm.ComparisonOperator\022\022\n\nri"
+    "ghtValue\030\004 \001(\001\"\?\n\rQualityFilter\022.\n\020quali"
+    "tyCondition\030\001 \003(\0132\024.sm.QualityCondition\""
+    "\215\001\n\024CoordinatesCondition\022\016\n\006xValue\030\001 \002(\001"
+    "\022\016\n\006yValue\030\002 \002(\001\022\016\n\006zValue\030\003 \002(\001\0223\n\023coor"
+    "dinatesOperator\030\004 \002(\0162\026.sm.ComparisonOpe"
+    "rator\022\020\n\010constant\030\005 \002(\001\"\243\001\n\021CoordinatesF"
+    "ilter\0226\n\024coordinatesCondition\030\001 \003(\0132\030.sm"
+    ".CoordinatesCondition\0226\n\013conjunction\030\002 \001"
+    "(\0162!.sm.CoordinatesFilter.Conjunction\"\036\n"
+    "\013Conjunction\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\215\003\n\024Manage"
+    "rToCoreMessage\022<\n\013messageType\030\001 \002(\0162\'.sm"
+    ".ManagerToCoreMessage.MTCMessageType\022$\n\013"
+    "optionsInfo\030\002 \001(\0132\017.sm.OptionsInfo\022&\n\014gr"
+    "oupsFilter\030\003 \001(\0132\020.sm.GroupsFilter\022$\n\013ty"
+    "pesFilter\030\004 \001(\0132\017.sm.TypesFilter\022(\n\rqual"
+    "ityFilter\030\005 \001(\0132\021.sm.QualityFilter\0220\n\021co"
+    "ordinatesFilter\030\006 \001(\0132\025.sm.CoordinatesFi"
+    "lter\"g\n\016MTCMessageType\022\013\n\007OPTIONS\020\001\022\013\n\007F"
+    "ILTERS\020\002\022\014\n\010CONTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HEL"
+    "LO\020\005\022\014\n\010SNAPSHOT\020\006\022\t\n\005CLEAN\020\007*_\n\022Compari"
+    "sonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GRE"
+    "ATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004"
+    "LESS\020\005B\036\n\rcommunicationB\rCommunication", 2238);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "communication.proto", &protobuf_RegisterTypes);
   ElementInfo::default_instance_ = new ElementInfo();
   ElementsCount::default_instance_ = new ElementsCount();
   BoundingBox::default_instance_ = new BoundingBox();
+  Color::default_instance_ = new Color();
   GroupsInfo::default_instance_ = new GroupsInfo();
   StatisticsInfo::default_instance_ = new StatisticsInfo();
   CoreToManagerMessage::default_instance_ = new CoreToManagerMessage();
@@ -503,6 +542,7 @@ void protobuf_AddDesc_communication_2eproto() {
   ElementInfo::default_instance_->InitAsDefaultInstance();
   ElementsCount::default_instance_->InitAsDefaultInstance();
   BoundingBox::default_instance_->InitAsDefaultInstance();
+  Color::default_instance_->InitAsDefaultInstance();
   GroupsInfo::default_instance_->InitAsDefaultInstance();
   StatisticsInfo::default_instance_->InitAsDefaultInstance();
   CoreToManagerMessage::default_instance_->InitAsDefaultInstance();
@@ -1843,6 +1883,443 @@ void BoundingBox::clear_toz() {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int Color::kRFieldNumber;
+const int Color::kGFieldNumber;
+const int Color::kBFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+Color::Color()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:sm.Color)
+}
+
+void Color::InitAsDefaultInstance() {
+}
+
+Color::Color(const Color& from)
+  : ::google::protobuf::Message(),
+    _internal_metadata_(NULL) {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:sm.Color)
+}
+
+void Color::SharedCtor() {
+  _cached_size_ = 0;
+  r_ = 0;
+  g_ = 0;
+  b_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+Color::~Color() {
+  // @@protoc_insertion_point(destructor:sm.Color)
+  SharedDtor();
+}
+
+void Color::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void Color::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* Color::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return Color_descriptor_;
+}
+
+const Color& Color::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_communication_2eproto();
+  return *default_instance_;
+}
+
+Color* Color::default_instance_ = NULL;
+
+Color* Color::New(::google::protobuf::Arena* arena) const {
+  Color* n = new Color;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void Color::Clear() {
+// @@protoc_insertion_point(message_clear_start:sm.Color)
+#if defined(__clang__)
+#define ZR_HELPER_(f) \
+  _Pragma("clang diagnostic push") \
+  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
+  __builtin_offsetof(Color, f) \
+  _Pragma("clang diagnostic pop")
+#else
+#define ZR_HELPER_(f) reinterpret_cast<char*>(\
+  &reinterpret_cast<Color*>(16)->f)
+#endif
+
+#define ZR_(first, last) do {\
+  ::memset(&first, 0,\
+           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
+} while (0)
+
+  ZR_(r_, b_);
+
+#undef ZR_HELPER_
+#undef ZR_
+
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  if (_internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->Clear();
+  }
+}
+
+bool Color::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:sm.Color)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required int32 r = 1;
+      case 1: {
+        if (tag == 8) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &r_)));
+          set_has_r();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(16)) goto parse_g;
+        break;
+      }
+
+      // required int32 g = 2;
+      case 2: {
+        if (tag == 16) {
+         parse_g:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &g_)));
+          set_has_g();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(24)) goto parse_b;
+        break;
+      }
+
+      // required int32 b = 3;
+      case 3: {
+        if (tag == 24) {
+         parse_b:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &b_)));
+          set_has_b();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:sm.Color)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:sm.Color)
+  return false;
+#undef DO_
+}
+
+void Color::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:sm.Color)
+  // required int32 r = 1;
+  if (has_r()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->r(), output);
+  }
+
+  // required int32 g = 2;
+  if (has_g()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->g(), output);
+  }
+
+  // required int32 b = 3;
+  if (has_b()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->b(), output);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:sm.Color)
+}
+
+::google::protobuf::uint8* Color::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:sm.Color)
+  // required int32 r = 1;
+  if (has_r()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->r(), target);
+  }
+
+  // required int32 g = 2;
+  if (has_g()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->g(), target);
+  }
+
+  // required int32 b = 3;
+  if (has_b()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->b(), target);
+  }
+
+  if (_internal_metadata_.have_unknown_fields()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:sm.Color)
+  return target;
+}
+
+int Color::RequiredFieldsByteSizeFallback() const {
+// @@protoc_insertion_point(required_fields_byte_size_fallback_start:sm.Color)
+  int total_size = 0;
+
+  if (has_r()) {
+    // required int32 r = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->r());
+  }
+
+  if (has_g()) {
+    // required int32 g = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->g());
+  }
+
+  if (has_b()) {
+    // required int32 b = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->b());
+  }
+
+  return total_size;
+}
+int Color::ByteSize() const {
+// @@protoc_insertion_point(message_byte_size_start:sm.Color)
+  int total_size = 0;
+
+  if (((_has_bits_[0] & 0x00000007) ^ 0x00000007) == 0) {  // All required fields are present.
+    // required int32 r = 1;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->r());
+
+    // required int32 g = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->g());
+
+    // required int32 b = 3;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->b());
+
+  } else {
+    total_size += RequiredFieldsByteSizeFallback();
+  }
+  if (_internal_metadata_.have_unknown_fields()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void Color::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:sm.Color)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  const Color* source = 
+      ::google::protobuf::internal::DynamicCastToGenerated<const Color>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:sm.Color)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:sm.Color)
+    MergeFrom(*source);
+  }
+}
+
+void Color::MergeFrom(const Color& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:sm.Color)
+  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_r()) {
+      set_r(from.r());
+    }
+    if (from.has_g()) {
+      set_g(from.g());
+    }
+    if (from.has_b()) {
+      set_b(from.b());
+    }
+  }
+  if (from._internal_metadata_.have_unknown_fields()) {
+    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+  }
+}
+
+void Color::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:sm.Color)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Color::CopyFrom(const Color& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:sm.Color)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Color::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+
+  return true;
+}
+
+void Color::Swap(Color* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void Color::InternalSwap(Color* other) {
+  std::swap(r_, other->r_);
+  std::swap(g_, other->g_);
+  std::swap(b_, other->b_);
+  std::swap(_has_bits_[0], other->_has_bits_[0]);
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata Color::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = Color_descriptor_;
+  metadata.reflection = Color_reflection_;
+  return metadata;
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// Color
+
+// required int32 r = 1;
+bool Color::has_r() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+void Color::set_has_r() {
+  _has_bits_[0] |= 0x00000001u;
+}
+void Color::clear_has_r() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+void Color::clear_r() {
+  r_ = 0;
+  clear_has_r();
+}
+ ::google::protobuf::int32 Color::r() const {
+  // @@protoc_insertion_point(field_get:sm.Color.r)
+  return r_;
+}
+ void Color::set_r(::google::protobuf::int32 value) {
+  set_has_r();
+  r_ = value;
+  // @@protoc_insertion_point(field_set:sm.Color.r)
+}
+
+// required int32 g = 2;
+bool Color::has_g() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+void Color::set_has_g() {
+  _has_bits_[0] |= 0x00000002u;
+}
+void Color::clear_has_g() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+void Color::clear_g() {
+  g_ = 0;
+  clear_has_g();
+}
+ ::google::protobuf::int32 Color::g() const {
+  // @@protoc_insertion_point(field_get:sm.Color.g)
+  return g_;
+}
+ void Color::set_g(::google::protobuf::int32 value) {
+  set_has_g();
+  g_ = value;
+  // @@protoc_insertion_point(field_set:sm.Color.g)
+}
+
+// required int32 b = 3;
+bool Color::has_b() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+void Color::set_has_b() {
+  _has_bits_[0] |= 0x00000004u;
+}
+void Color::clear_has_b() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+void Color::clear_b() {
+  b_ = 0;
+  clear_has_b();
+}
+ ::google::protobuf::int32 Color::b() const {
+  // @@protoc_insertion_point(field_get:sm.Color.b)
+  return b_;
+}
+ void Color::set_b(::google::protobuf::int32 value) {
+  set_has_b();
+  b_ = value;
+  // @@protoc_insertion_point(field_set:sm.Color.b)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int GroupsInfo::kAllGroupsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
@@ -1866,6 +2343,10 @@ GroupsInfo::GroupsInfo(const GroupsInfo& from)
 void GroupsInfo::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
+  allgroups_.SetAssignDescriptorCallback(
+      protobuf_AssignDescriptorsOnce);
+  allgroups_.SetEntryDescriptor(
+      &::sm::GroupsInfo_AllGroupsEntry_descriptor_);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1923,21 +2404,28 @@ bool GroupsInfo::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated string allGroups = 1;
+      // map<string, .sm.Color> allGroups = 1;
       case 1: {
         if (tag == 10) {
-         parse_allGroups:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->add_allgroups()));
+          DO_(input->IncrementRecursionDepth());
+         parse_loop_allGroups:
+          GroupsInfo_AllGroupsEntry::Parser< ::google::protobuf::internal::MapField<
+              ::std::string, ::sm::Color,
+              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+              0 >,
+            ::google::protobuf::Map< ::std::string, ::sm::Color > > parser(&allgroups_);
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+              input, &parser));
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->allgroups(this->allgroups_size() - 1).data(),
-            this->allgroups(this->allgroups_size() - 1).length(),
+            parser.key().data(), parser.key().length(),
             ::google::protobuf::internal::WireFormat::PARSE,
-            "sm.GroupsInfo.allGroups");
+            "sm.GroupsInfo.AllGroupsEntry.key");
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(10)) goto parse_allGroups;
+        if (input->ExpectTag(10)) goto parse_loop_allGroups;
+        input->UnsafeDecrementRecursionDepth();
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1967,14 +2455,20 @@ failure:
 void GroupsInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:sm.GroupsInfo)
-  // repeated string allGroups = 1;
-  for (int i = 0; i < this->allgroups_size(); i++) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->allgroups(i).data(), this->allgroups(i).length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "sm.GroupsInfo.allGroups");
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->allgroups(i), output);
+  // map<string, .sm.Color> allGroups = 1;
+  {
+    ::google::protobuf::scoped_ptr<GroupsInfo_AllGroupsEntry> entry;
+    for (::google::protobuf::Map< ::std::string, ::sm::Color >::const_iterator
+        it = this->allgroups().begin();
+        it != this->allgroups().end(); ++it) {
+      entry.reset(allgroups_.NewEntryWrapper(it->first, it->second));
+      ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+          1, *entry, output);
+      ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+        it->first.data(), it->first.length(),
+        ::google::protobuf::internal::WireFormat::SERIALIZE,
+        "sm.GroupsInfo.AllGroupsEntry.key");
+    }
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1987,14 +2481,21 @@ void GroupsInfo::SerializeWithCachedSizes(
 ::google::protobuf::uint8* GroupsInfo::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:sm.GroupsInfo)
-  // repeated string allGroups = 1;
-  for (int i = 0; i < this->allgroups_size(); i++) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->allgroups(i).data(), this->allgroups(i).length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "sm.GroupsInfo.allGroups");
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteStringToArray(1, this->allgroups(i), target);
+  // map<string, .sm.Color> allGroups = 1;
+  {
+    ::google::protobuf::scoped_ptr<GroupsInfo_AllGroupsEntry> entry;
+    for (::google::protobuf::Map< ::std::string, ::sm::Color >::const_iterator
+        it = this->allgroups().begin();
+        it != this->allgroups().end(); ++it) {
+      entry.reset(allgroups_.NewEntryWrapper(it->first, it->second));
+      target = ::google::protobuf::internal::WireFormatLite::
+          InternalWriteMessageNoVirtualToArray(
+              1, *entry, false, target);
+      ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+        it->first.data(), it->first.length(),
+        ::google::protobuf::internal::WireFormat::SERIALIZE,
+        "sm.GroupsInfo.AllGroupsEntry.key");
+    }
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2009,11 +2510,17 @@ int GroupsInfo::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:sm.GroupsInfo)
   int total_size = 0;
 
-  // repeated string allGroups = 1;
+  // map<string, .sm.Color> allGroups = 1;
   total_size += 1 * this->allgroups_size();
-  for (int i = 0; i < this->allgroups_size(); i++) {
-    total_size += ::google::protobuf::internal::WireFormatLite::StringSize(
-      this->allgroups(i));
+  {
+    ::google::protobuf::scoped_ptr<GroupsInfo_AllGroupsEntry> entry;
+    for (::google::protobuf::Map< ::std::string, ::sm::Color >::const_iterator
+        it = this->allgroups().begin();
+        it != this->allgroups().end(); ++it) {
+      entry.reset(allgroups_.NewEntryWrapper(it->first, it->second));
+      total_size += ::google::protobuf::internal::WireFormatLite::
+          MessageSizeNoVirtual(*entry);
+    }
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -2067,6 +2574,7 @@ void GroupsInfo::CopyFrom(const GroupsInfo& from) {
 
 bool GroupsInfo::IsInitialized() const {
 
+  if (!::google::protobuf::internal::AllAreInitialized(this->allgroups())) return false;
   return true;
 }
 
@@ -2075,7 +2583,7 @@ void GroupsInfo::Swap(GroupsInfo* other) {
   InternalSwap(other);
 }
 void GroupsInfo::InternalSwap(GroupsInfo* other) {
-  allgroups_.UnsafeArenaSwap(&other->allgroups_);
+  allgroups_.Swap(&other->allgroups_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -2092,59 +2600,22 @@ void GroupsInfo::InternalSwap(GroupsInfo* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // GroupsInfo
 
-// repeated string allGroups = 1;
+// map<string, .sm.Color> allGroups = 1;
 int GroupsInfo::allgroups_size() const {
   return allgroups_.size();
 }
 void GroupsInfo::clear_allgroups() {
   allgroups_.Clear();
 }
- const ::std::string& GroupsInfo::allgroups(int index) const {
-  // @@protoc_insertion_point(field_get:sm.GroupsInfo.allGroups)
-  return allgroups_.Get(index);
-}
- ::std::string* GroupsInfo::mutable_allgroups(int index) {
-  // @@protoc_insertion_point(field_mutable:sm.GroupsInfo.allGroups)
-  return allgroups_.Mutable(index);
-}
- void GroupsInfo::set_allgroups(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:sm.GroupsInfo.allGroups)
-  allgroups_.Mutable(index)->assign(value);
-}
- void GroupsInfo::set_allgroups(int index, const char* value) {
-  allgroups_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:sm.GroupsInfo.allGroups)
-}
- void GroupsInfo::set_allgroups(int index, const char* value, size_t size) {
-  allgroups_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:sm.GroupsInfo.allGroups)
-}
- ::std::string* GroupsInfo::add_allgroups() {
-  // @@protoc_insertion_point(field_add_mutable:sm.GroupsInfo.allGroups)
-  return allgroups_.Add();
-}
- void GroupsInfo::add_allgroups(const ::std::string& value) {
-  allgroups_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:sm.GroupsInfo.allGroups)
-}
- void GroupsInfo::add_allgroups(const char* value) {
-  allgroups_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:sm.GroupsInfo.allGroups)
-}
- void GroupsInfo::add_allgroups(const char* value, size_t size) {
-  allgroups_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:sm.GroupsInfo.allGroups)
-}
- const ::google::protobuf::RepeatedPtrField< ::std::string>&
+ const ::google::protobuf::Map< ::std::string, ::sm::Color >&
 GroupsInfo::allgroups() const {
-  // @@protoc_insertion_point(field_list:sm.GroupsInfo.allGroups)
-  return allgroups_;
+  // @@protoc_insertion_point(field_map:sm.GroupsInfo.allGroups)
+  return allgroups_.GetMap();
 }
- ::google::protobuf::RepeatedPtrField< ::std::string>*
+ ::google::protobuf::Map< ::std::string, ::sm::Color >*
 GroupsInfo::mutable_allgroups() {
-  // @@protoc_insertion_point(field_mutable_list:sm.GroupsInfo.allGroups)
-  return &allgroups_;
+  // @@protoc_insertion_point(field_mutable_map:sm.GroupsInfo.allGroups)
+  return allgroups_.MutableMap();
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -2489,6 +2960,9 @@ bool StatisticsInfo::IsInitialized() const {
   }
   if (has_boundingbox()) {
     if (!this->boundingbox_->IsInitialized()) return false;
+  }
+  if (has_groupsinfo()) {
+    if (!this->groupsinfo_->IsInitialized()) return false;
   }
   return true;
 }

@@ -9,7 +9,7 @@
 #define MOVING_PRECISION 400.0
 #define PI_2 1.57
 
-#include "UserPreferencesManager.h"
+#include "XML_PARSER/include/UserPreferencesManager.h"
 #ifdef __linux__
 #include "LinuxServer.h"
 #include "LinuxDataTree.h"

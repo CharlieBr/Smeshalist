@@ -116,7 +116,12 @@ void AbstractServer::sendStatistics() {
     sm::GroupsInfo groupsInfo;
     vector<int>* groups = handler -> get_all_groupIDs();
     for (int id : *groups) {
-        groupsInfo.add_allgroups(to_string(id));
+        Color c = handler -> get_color_for_group(id);
+        sm::Color smColor;
+        smColor.set_r(c.r()*255);
+        smColor.set_g(c.g()*255);
+        smColor.set_b(c.b()*255);
+        (*groupsInfo.mutable_allgroups())[to_string(id)] = smColor;
     }
     (*info.mutable_groupsinfo()) = groupsInfo;
 

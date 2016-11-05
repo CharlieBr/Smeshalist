@@ -40,6 +40,7 @@ void protobuf_AssignDesc_communication_2eproto();
 void protobuf_ShutdownFile_communication_2eproto();
 
 class BoundingBox;
+class Color;
 class CoordinatesCondition;
 class CoordinatesFilter;
 class CoreToManagerMessage;
@@ -496,6 +497,122 @@ class BoundingBox : public ::google::protobuf::Message /* @@protoc_insertion_poi
 };
 // -------------------------------------------------------------------
 
+class Color : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:sm.Color) */ {
+ public:
+  Color();
+  virtual ~Color();
+
+  Color(const Color& from);
+
+  inline Color& operator=(const Color& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _internal_metadata_.unknown_fields();
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return _internal_metadata_.mutable_unknown_fields();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const Color& default_instance();
+
+  void Swap(Color* other);
+
+  // implements Message ----------------------------------------------
+
+  inline Color* New() const { return New(NULL); }
+
+  Color* New(::google::protobuf::Arena* arena) const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const Color& from);
+  void MergeFrom(const Color& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      bool deterministic, ::google::protobuf::uint8* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const {
+    return InternalSerializeWithCachedSizesToArray(false, output);
+  }
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  void InternalSwap(Color* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return _internal_metadata_.arena();
+  }
+  inline void* MaybeArenaPtr() const {
+    return _internal_metadata_.raw_arena_ptr();
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 r = 1;
+  bool has_r() const;
+  void clear_r();
+  static const int kRFieldNumber = 1;
+  ::google::protobuf::int32 r() const;
+  void set_r(::google::protobuf::int32 value);
+
+  // required int32 g = 2;
+  bool has_g() const;
+  void clear_g();
+  static const int kGFieldNumber = 2;
+  ::google::protobuf::int32 g() const;
+  void set_g(::google::protobuf::int32 value);
+
+  // required int32 b = 3;
+  bool has_b() const;
+  void clear_b();
+  static const int kBFieldNumber = 3;
+  ::google::protobuf::int32 b() const;
+  void set_b(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:sm.Color)
+ private:
+  inline void set_has_r();
+  inline void clear_has_r();
+  inline void set_has_g();
+  inline void clear_has_g();
+  inline void set_has_b();
+  inline void clear_has_b();
+
+  // helper for ByteSize()
+  int RequiredFieldsByteSizeFallback() const;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::google::protobuf::int32 r_;
+  ::google::protobuf::int32 g_;
+  ::google::protobuf::int32 b_;
+  friend void  protobuf_AddDesc_communication_2eproto();
+  friend void protobuf_AssignDesc_communication_2eproto();
+  friend void protobuf_ShutdownFile_communication_2eproto();
+
+  void InitAsDefaultInstance();
+  static Color* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class GroupsInfo : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:sm.GroupsInfo) */ {
  public:
   GroupsInfo();
@@ -562,23 +679,17 @@ class GroupsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // nested types ----------------------------------------------------
 
+
   // accessors -------------------------------------------------------
 
-  // repeated string allGroups = 1;
+  // map<string, .sm.Color> allGroups = 1;
   int allgroups_size() const;
   void clear_allgroups();
   static const int kAllGroupsFieldNumber = 1;
-  const ::std::string& allgroups(int index) const;
-  ::std::string* mutable_allgroups(int index);
-  void set_allgroups(int index, const ::std::string& value);
-  void set_allgroups(int index, const char* value);
-  void set_allgroups(int index, const char* value, size_t size);
-  ::std::string* add_allgroups();
-  void add_allgroups(const ::std::string& value);
-  void add_allgroups(const char* value);
-  void add_allgroups(const char* value, size_t size);
-  const ::google::protobuf::RepeatedPtrField< ::std::string>& allgroups() const;
-  ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_allgroups();
+  const ::google::protobuf::Map< ::std::string, ::sm::Color >&
+      allgroups() const;
+  ::google::protobuf::Map< ::std::string, ::sm::Color >*
+      mutable_allgroups();
 
   // @@protoc_insertion_point(class_scope:sm.GroupsInfo)
  private:
@@ -586,7 +697,17 @@ class GroupsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::std::string> allgroups_;
+  typedef ::google::protobuf::internal::MapEntryLite<
+      ::std::string, ::sm::Color,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+      0 >
+      GroupsInfo_AllGroupsEntry;
+  ::google::protobuf::internal::MapField<
+      ::std::string, ::sm::Color,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
+      0 > allgroups_;
   friend void  protobuf_AddDesc_communication_2eproto();
   friend void protobuf_AssignDesc_communication_2eproto();
   friend void protobuf_ShutdownFile_communication_2eproto();
@@ -2085,61 +2206,100 @@ inline void BoundingBox::set_toz(double value) {
 
 // -------------------------------------------------------------------
 
+// Color
+
+// required int32 r = 1;
+inline bool Color::has_r() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void Color::set_has_r() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void Color::clear_has_r() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void Color::clear_r() {
+  r_ = 0;
+  clear_has_r();
+}
+inline ::google::protobuf::int32 Color::r() const {
+  // @@protoc_insertion_point(field_get:sm.Color.r)
+  return r_;
+}
+inline void Color::set_r(::google::protobuf::int32 value) {
+  set_has_r();
+  r_ = value;
+  // @@protoc_insertion_point(field_set:sm.Color.r)
+}
+
+// required int32 g = 2;
+inline bool Color::has_g() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void Color::set_has_g() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void Color::clear_has_g() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void Color::clear_g() {
+  g_ = 0;
+  clear_has_g();
+}
+inline ::google::protobuf::int32 Color::g() const {
+  // @@protoc_insertion_point(field_get:sm.Color.g)
+  return g_;
+}
+inline void Color::set_g(::google::protobuf::int32 value) {
+  set_has_g();
+  g_ = value;
+  // @@protoc_insertion_point(field_set:sm.Color.g)
+}
+
+// required int32 b = 3;
+inline bool Color::has_b() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void Color::set_has_b() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void Color::clear_has_b() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void Color::clear_b() {
+  b_ = 0;
+  clear_has_b();
+}
+inline ::google::protobuf::int32 Color::b() const {
+  // @@protoc_insertion_point(field_get:sm.Color.b)
+  return b_;
+}
+inline void Color::set_b(::google::protobuf::int32 value) {
+  set_has_b();
+  b_ = value;
+  // @@protoc_insertion_point(field_set:sm.Color.b)
+}
+
+// -------------------------------------------------------------------
+
 // GroupsInfo
 
-// repeated string allGroups = 1;
+// map<string, .sm.Color> allGroups = 1;
 inline int GroupsInfo::allgroups_size() const {
   return allgroups_.size();
 }
 inline void GroupsInfo::clear_allgroups() {
   allgroups_.Clear();
 }
-inline const ::std::string& GroupsInfo::allgroups(int index) const {
-  // @@protoc_insertion_point(field_get:sm.GroupsInfo.allGroups)
-  return allgroups_.Get(index);
-}
-inline ::std::string* GroupsInfo::mutable_allgroups(int index) {
-  // @@protoc_insertion_point(field_mutable:sm.GroupsInfo.allGroups)
-  return allgroups_.Mutable(index);
-}
-inline void GroupsInfo::set_allgroups(int index, const ::std::string& value) {
-  // @@protoc_insertion_point(field_set:sm.GroupsInfo.allGroups)
-  allgroups_.Mutable(index)->assign(value);
-}
-inline void GroupsInfo::set_allgroups(int index, const char* value) {
-  allgroups_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:sm.GroupsInfo.allGroups)
-}
-inline void GroupsInfo::set_allgroups(int index, const char* value, size_t size) {
-  allgroups_.Mutable(index)->assign(
-    reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:sm.GroupsInfo.allGroups)
-}
-inline ::std::string* GroupsInfo::add_allgroups() {
-  // @@protoc_insertion_point(field_add_mutable:sm.GroupsInfo.allGroups)
-  return allgroups_.Add();
-}
-inline void GroupsInfo::add_allgroups(const ::std::string& value) {
-  allgroups_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:sm.GroupsInfo.allGroups)
-}
-inline void GroupsInfo::add_allgroups(const char* value) {
-  allgroups_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:sm.GroupsInfo.allGroups)
-}
-inline void GroupsInfo::add_allgroups(const char* value, size_t size) {
-  allgroups_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:sm.GroupsInfo.allGroups)
-}
-inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+inline const ::google::protobuf::Map< ::std::string, ::sm::Color >&
 GroupsInfo::allgroups() const {
-  // @@protoc_insertion_point(field_list:sm.GroupsInfo.allGroups)
-  return allgroups_;
+  // @@protoc_insertion_point(field_map:sm.GroupsInfo.allGroups)
+  return allgroups_.GetMap();
 }
-inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+inline ::google::protobuf::Map< ::std::string, ::sm::Color >*
 GroupsInfo::mutable_allgroups() {
-  // @@protoc_insertion_point(field_mutable_list:sm.GroupsInfo.allGroups)
-  return &allgroups_;
+  // @@protoc_insertion_point(field_mutable_map:sm.GroupsInfo.allGroups)
+  return allgroups_.MutableMap();
 }
 
 // -------------------------------------------------------------------
@@ -3065,6 +3225,8 @@ inline void ManagerToCoreMessage::set_allocated_coordinatesfilter(::sm::Coordina
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
