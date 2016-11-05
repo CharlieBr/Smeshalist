@@ -116,23 +116,7 @@ public class FiltersTab extends JPanel{
 	}
 
 	public void setGroupsInfo(GroupsInfo groupsInfo){
-		groupsTab.setGroups(groupsInfo.getAllGroupsList());
-	}
-
-	private void setTestContent() {
-		List<String> groups = new LinkedList<>();
-		groups.add("0");
-		groups.add("1");
-		groups.add("2");
-		groups.add("3");
-		groups.add("4");
-		groups.add("5");
-		groups.add("6");
-		groups.add("7");
-		groups.add("8");
-		groups.add("9");
-		
-		groupsTab.setGroups(groups);
+		groupsTab.setGroups(groupsInfo.getAllGroupsMap());
 	}
 
 	public static ComparisonOperator getComparisonOperator(String operator) {

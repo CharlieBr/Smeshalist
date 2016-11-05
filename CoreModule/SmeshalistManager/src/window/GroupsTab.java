@@ -1,10 +1,12 @@
 package window;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -14,7 +16,9 @@ import javax.swing.JScrollPane;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
+import communication.Communication.Color;
 import communication.Communication.GroupsFilter;
+import util.CheckBoxEntry;
 import util.WindowUtil;
 
 public class GroupsTab extends JScrollPane{
@@ -24,7 +28,7 @@ public class GroupsTab extends JScrollPane{
 
 	private JPanel scrollPaneContent;
 	private List<String> groups;
-	private List<JCheckBox> groupsCheckBoxes;
+	private List<CheckBoxEntry> groupsCheckBoxes;
 	
 	private BoxLayout boxLayout;
 		
@@ -51,9 +55,9 @@ public class GroupsTab extends JScrollPane{
 		return groups;
 	}
 
-	public void setGroups(List<String> groups) {
+	public void setGroups(Map<String, Color> groups) {
 
-		for (String groupName : groups) {
+		for (String groupName : groups.keySet()) {
 			if (!this.groups.contains(groupName)) {
 				this.groups.add(groupName);
 			}
@@ -61,23 +65,25 @@ public class GroupsTab extends JScrollPane{
 
 		for (String groupName : this.groups) {
 			boolean found = false;
-			for (JCheckBox groupCheckBox : this.groupsCheckBoxes) {
-				if (groupCheckBox.getText().compareTo(groupName) == 0){
+			for (CheckBoxEntry groupCheckBox : this.groupsCheckBoxes) {
+				if (groupCheckBox.getCheckBoxText().compareTo(groupName) == 0){
 					found = true;
 					break;
 				}
 			}
 
 			if (!found) {
-				JCheckBox groupCheckBox = new JCheckBox(groupName);
-				groupCheckBox.setSelected(true);
-				this.groupsCheckBoxes.add(groupCheckBox);
-				groupCheckBox.addActionListener(new ActionListener() {
+				JCheckBox tmpCheckBox = new JCheckBox(groupName);
+				tmpCheckBox.setSelected(true);
+				tmpCheckBox.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						GroupsTab.setChanged(true);
 					}
 				});
+				CheckBoxEntry groupCheckBox = new CheckBoxEntry(tmpCheckBox, groups.get(groupName));
+				this.groupsCheckBoxes.add(groupCheckBox);
+
 				scrollPaneContent.add(groupCheckBox);
 				scrollPaneContent.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 			}
@@ -87,9 +93,9 @@ public class GroupsTab extends JScrollPane{
 
 	public GroupsFilter getGroupsFilter() {
 		GroupsFilter.Builder groupsFilterBuilder = GroupsFilter.newBuilder();
-		Iterator<JCheckBox> iter = groupsCheckBoxes.iterator();
+		Iterator<CheckBoxEntry> iter = groupsCheckBoxes.iterator();
 		for (String groupName: groups){
-			Boolean selected = iter.next().isSelected();
+			Boolean selected = iter.next().isCheckBoxSelected();
 			groupsFilterBuilder.putSelectedGroups(groupName, selected);
 		}
 

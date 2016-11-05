@@ -20,8 +20,14 @@ message BoundingBox {
 	required double toZ = 6;
 }
 
+message Color {
+	required int32 r = 1;
+	required int32 g = 2;
+	required int32 b = 3;
+}
+
 message GroupsInfo {
-	repeated string allGroups = 1;
+	map<string,Color> allGroups = 1;
 }
 
 message StatisticsInfo{

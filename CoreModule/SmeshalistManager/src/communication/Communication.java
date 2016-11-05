@@ -2233,28 +2233,667 @@ public final class Communication {
 
   }
 
+  public interface ColorOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sm.Color)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required int32 r = 1;</code>
+     */
+    boolean hasR();
+    /**
+     * <code>required int32 r = 1;</code>
+     */
+    int getR();
+
+    /**
+     * <code>required int32 g = 2;</code>
+     */
+    boolean hasG();
+    /**
+     * <code>required int32 g = 2;</code>
+     */
+    int getG();
+
+    /**
+     * <code>required int32 b = 3;</code>
+     */
+    boolean hasB();
+    /**
+     * <code>required int32 b = 3;</code>
+     */
+    int getB();
+  }
+  /**
+   * Protobuf type {@code sm.Color}
+   */
+  public  static final class Color extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:sm.Color)
+      ColorOrBuilder {
+    // Use Color.newBuilder() to construct.
+    private Color(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Color() {
+      r_ = 0;
+      g_ = 0;
+      b_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private Color(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              r_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              g_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              b_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return communication.Communication.internal_static_sm_Color_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return communication.Communication.internal_static_sm_Color_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              communication.Communication.Color.class, communication.Communication.Color.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int R_FIELD_NUMBER = 1;
+    private int r_;
+    /**
+     * <code>required int32 r = 1;</code>
+     */
+    public boolean hasR() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required int32 r = 1;</code>
+     */
+    public int getR() {
+      return r_;
+    }
+
+    public static final int G_FIELD_NUMBER = 2;
+    private int g_;
+    /**
+     * <code>required int32 g = 2;</code>
+     */
+    public boolean hasG() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required int32 g = 2;</code>
+     */
+    public int getG() {
+      return g_;
+    }
+
+    public static final int B_FIELD_NUMBER = 3;
+    private int b_;
+    /**
+     * <code>required int32 b = 3;</code>
+     */
+    public boolean hasB() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required int32 b = 3;</code>
+     */
+    public int getB() {
+      return b_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasR()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasG()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasB()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, r_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, g_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, b_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, r_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, g_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, b_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof communication.Communication.Color)) {
+        return super.equals(obj);
+      }
+      communication.Communication.Color other = (communication.Communication.Color) obj;
+
+      boolean result = true;
+      result = result && (hasR() == other.hasR());
+      if (hasR()) {
+        result = result && (getR()
+            == other.getR());
+      }
+      result = result && (hasG() == other.hasG());
+      if (hasG()) {
+        result = result && (getG()
+            == other.getG());
+      }
+      result = result && (hasB() == other.hasB());
+      if (hasB()) {
+        result = result && (getB()
+            == other.getB());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasR()) {
+        hash = (37 * hash) + R_FIELD_NUMBER;
+        hash = (53 * hash) + getR();
+      }
+      if (hasG()) {
+        hash = (37 * hash) + G_FIELD_NUMBER;
+        hash = (53 * hash) + getG();
+      }
+      if (hasB()) {
+        hash = (37 * hash) + B_FIELD_NUMBER;
+        hash = (53 * hash) + getB();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static communication.Communication.Color parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static communication.Communication.Color parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static communication.Communication.Color parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static communication.Communication.Color parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static communication.Communication.Color parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static communication.Communication.Color parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static communication.Communication.Color parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static communication.Communication.Color parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static communication.Communication.Color parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static communication.Communication.Color parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(communication.Communication.Color prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code sm.Color}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:sm.Color)
+        communication.Communication.ColorOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return communication.Communication.internal_static_sm_Color_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return communication.Communication.internal_static_sm_Color_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                communication.Communication.Color.class, communication.Communication.Color.Builder.class);
+      }
+
+      // Construct using communication.Communication.Color.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        r_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        g_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        b_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return communication.Communication.internal_static_sm_Color_descriptor;
+      }
+
+      public communication.Communication.Color getDefaultInstanceForType() {
+        return communication.Communication.Color.getDefaultInstance();
+      }
+
+      public communication.Communication.Color build() {
+        communication.Communication.Color result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public communication.Communication.Color buildPartial() {
+        communication.Communication.Color result = new communication.Communication.Color(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.r_ = r_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.g_ = g_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.b_ = b_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof communication.Communication.Color) {
+          return mergeFrom((communication.Communication.Color)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(communication.Communication.Color other) {
+        if (other == communication.Communication.Color.getDefaultInstance()) return this;
+        if (other.hasR()) {
+          setR(other.getR());
+        }
+        if (other.hasG()) {
+          setG(other.getG());
+        }
+        if (other.hasB()) {
+          setB(other.getB());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasR()) {
+          return false;
+        }
+        if (!hasG()) {
+          return false;
+        }
+        if (!hasB()) {
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        communication.Communication.Color parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (communication.Communication.Color) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int r_ ;
+      /**
+       * <code>required int32 r = 1;</code>
+       */
+      public boolean hasR() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required int32 r = 1;</code>
+       */
+      public int getR() {
+        return r_;
+      }
+      /**
+       * <code>required int32 r = 1;</code>
+       */
+      public Builder setR(int value) {
+        bitField0_ |= 0x00000001;
+        r_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 r = 1;</code>
+       */
+      public Builder clearR() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        r_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int g_ ;
+      /**
+       * <code>required int32 g = 2;</code>
+       */
+      public boolean hasG() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required int32 g = 2;</code>
+       */
+      public int getG() {
+        return g_;
+      }
+      /**
+       * <code>required int32 g = 2;</code>
+       */
+      public Builder setG(int value) {
+        bitField0_ |= 0x00000002;
+        g_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 g = 2;</code>
+       */
+      public Builder clearG() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        g_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int b_ ;
+      /**
+       * <code>required int32 b = 3;</code>
+       */
+      public boolean hasB() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required int32 b = 3;</code>
+       */
+      public int getB() {
+        return b_;
+      }
+      /**
+       * <code>required int32 b = 3;</code>
+       */
+      public Builder setB(int value) {
+        bitField0_ |= 0x00000004;
+        b_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 b = 3;</code>
+       */
+      public Builder clearB() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        b_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:sm.Color)
+    }
+
+    // @@protoc_insertion_point(class_scope:sm.Color)
+    private static final communication.Communication.Color DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new communication.Communication.Color();
+    }
+
+    public static communication.Communication.Color getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Color>
+        PARSER = new com.google.protobuf.AbstractParser<Color>() {
+      public Color parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Color(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Color> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Color> getParserForType() {
+      return PARSER;
+    }
+
+    public communication.Communication.Color getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface GroupsInfoOrBuilder extends
       // @@protoc_insertion_point(interface_extends:sm.GroupsInfo)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated string allGroups = 1;</code>
-     */
-    java.util.List<java.lang.String>
-        getAllGroupsList();
-    /**
-     * <code>repeated string allGroups = 1;</code>
+     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
      */
     int getAllGroupsCount();
     /**
-     * <code>repeated string allGroups = 1;</code>
+     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
      */
-    java.lang.String getAllGroups(int index);
+    boolean containsAllGroups(
+        java.lang.String key);
     /**
-     * <code>repeated string allGroups = 1;</code>
+     * Use {@link #getAllGroupsMap()} instead.
      */
-    com.google.protobuf.ByteString
-        getAllGroupsBytes(int index);
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, communication.Communication.Color>
+    getAllGroups();
+    /**
+     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     */
+    java.util.Map<java.lang.String, communication.Communication.Color>
+    getAllGroupsMap();
+    /**
+     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     */
+
+    communication.Communication.Color getAllGroupsOrDefault(
+        java.lang.String key,
+        communication.Communication.Color defaultValue);
+    /**
+     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     */
+
+    communication.Communication.Color getAllGroupsOrThrow(
+        java.lang.String key);
   }
   /**
    * Protobuf type {@code sm.GroupsInfo}
@@ -2268,7 +2907,6 @@ public final class Communication {
       super(builder);
     }
     private GroupsInfo() {
-      allGroups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     }
 
     @java.lang.Override
@@ -2300,12 +2938,15 @@ public final class Communication {
               break;
             }
             case 10: {
-              com.google.protobuf.ByteString bs = input.readBytes();
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                allGroups_ = new com.google.protobuf.LazyStringArrayList();
+                allGroups_ = com.google.protobuf.MapField.newMapField(
+                    AllGroupsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              allGroups_.add(bs);
+              com.google.protobuf.MapEntry<java.lang.String, communication.Communication.Color>
+              allGroups = input.readMessage(
+                  AllGroupsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              allGroups_.getMutableMap().put(allGroups.getKey(), allGroups.getValue());
               break;
             }
           }
@@ -2316,9 +2957,6 @@ public final class Communication {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          allGroups_ = allGroups_.getUnmodifiableView();
-        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -2328,6 +2966,17 @@ public final class Communication {
       return communication.Communication.internal_static_sm_GroupsInfo_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetAllGroups();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return communication.Communication.internal_static_sm_GroupsInfo_fieldAccessorTable
@@ -2336,32 +2985,79 @@ public final class Communication {
     }
 
     public static final int ALLGROUPS_FIELD_NUMBER = 1;
-    private com.google.protobuf.LazyStringList allGroups_;
-    /**
-     * <code>repeated string allGroups = 1;</code>
-     */
-    public com.google.protobuf.ProtocolStringList
-        getAllGroupsList() {
+    private static final class AllGroupsDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, communication.Communication.Color> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, communication.Communication.Color>newDefaultInstance(
+                  communication.Communication.internal_static_sm_GroupsInfo_AllGroupsEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  communication.Communication.Color.getDefaultInstance());
+    }
+    private com.google.protobuf.MapField<
+        java.lang.String, communication.Communication.Color> allGroups_;
+    private com.google.protobuf.MapField<java.lang.String, communication.Communication.Color>
+    internalGetAllGroups() {
+      if (allGroups_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            AllGroupsDefaultEntryHolder.defaultEntry);
+      }
       return allGroups_;
     }
-    /**
-     * <code>repeated string allGroups = 1;</code>
-     */
+
     public int getAllGroupsCount() {
-      return allGroups_.size();
+      return internalGetAllGroups().getMap().size();
     }
     /**
-     * <code>repeated string allGroups = 1;</code>
+     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
      */
-    public java.lang.String getAllGroups(int index) {
-      return allGroups_.get(index);
+
+    public boolean containsAllGroups(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      return internalGetAllGroups().getMap().containsKey(key);
     }
     /**
-     * <code>repeated string allGroups = 1;</code>
+     * Use {@link #getAllGroupsMap()} instead.
      */
-    public com.google.protobuf.ByteString
-        getAllGroupsBytes(int index) {
-      return allGroups_.getByteString(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, communication.Communication.Color> getAllGroups() {
+      return getAllGroupsMap();
+    }
+    /**
+     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     */
+
+    public java.util.Map<java.lang.String, communication.Communication.Color> getAllGroupsMap() {
+      return internalGetAllGroups().getMap();
+    }
+    /**
+     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     */
+
+    public communication.Communication.Color getAllGroupsOrDefault(
+        java.lang.String key,
+        communication.Communication.Color defaultValue) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, communication.Communication.Color> map =
+          internalGetAllGroups().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     */
+
+    public communication.Communication.Color getAllGroupsOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new java.lang.NullPointerException(); }
+      java.util.Map<java.lang.String, communication.Communication.Color> map =
+          internalGetAllGroups().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2370,14 +3066,26 @@ public final class Communication {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      for (communication.Communication.Color item : getAllGroups().values()) {
+        if (!item.isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < allGroups_.size(); i++) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, allGroups_.getRaw(i));
+      for (java.util.Map.Entry<java.lang.String, communication.Communication.Color> entry
+           : internalGetAllGroups().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, communication.Communication.Color>
+        allGroups = AllGroupsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        output.writeMessage(1, allGroups);
       }
       unknownFields.writeTo(output);
     }
@@ -2387,13 +3095,15 @@ public final class Communication {
       if (size != -1) return size;
 
       size = 0;
-      {
-        int dataSize = 0;
-        for (int i = 0; i < allGroups_.size(); i++) {
-          dataSize += computeStringSizeNoTag(allGroups_.getRaw(i));
-        }
-        size += dataSize;
-        size += 1 * getAllGroupsList().size();
+      for (java.util.Map.Entry<java.lang.String, communication.Communication.Color> entry
+           : internalGetAllGroups().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, communication.Communication.Color>
+        allGroups = AllGroupsDefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(1, allGroups);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2412,8 +3122,8 @@ public final class Communication {
       communication.Communication.GroupsInfo other = (communication.Communication.GroupsInfo) obj;
 
       boolean result = true;
-      result = result && getAllGroupsList()
-          .equals(other.getAllGroupsList());
+      result = result && internalGetAllGroups().equals(
+          other.internalGetAllGroups());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -2425,9 +3135,9 @@ public final class Communication {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      if (getAllGroupsCount() > 0) {
+      if (!internalGetAllGroups().getMap().isEmpty()) {
         hash = (37 * hash) + ALLGROUPS_FIELD_NUMBER;
-        hash = (53 * hash) + getAllGroupsList().hashCode();
+        hash = (53 * hash) + internalGetAllGroups().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -2523,6 +3233,28 @@ public final class Communication {
         return communication.Communication.internal_static_sm_GroupsInfo_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetAllGroups();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapField internalGetMutableMapField(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetMutableAllGroups();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return communication.Communication.internal_static_sm_GroupsInfo_fieldAccessorTable
@@ -2546,8 +3278,7 @@ public final class Communication {
       }
       public Builder clear() {
         super.clear();
-        allGroups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000001);
+        internalGetMutableAllGroups().clear();
         return this;
       }
 
@@ -2571,11 +3302,8 @@ public final class Communication {
       public communication.Communication.GroupsInfo buildPartial() {
         communication.Communication.GroupsInfo result = new communication.Communication.GroupsInfo(this);
         int from_bitField0_ = bitField0_;
-        if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          allGroups_ = allGroups_.getUnmodifiableView();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.allGroups_ = allGroups_;
+        result.allGroups_ = internalGetAllGroups();
+        result.allGroups_.makeImmutable();
         onBuilt();
         return result;
       }
@@ -2591,22 +3319,19 @@ public final class Communication {
 
       public Builder mergeFrom(communication.Communication.GroupsInfo other) {
         if (other == communication.Communication.GroupsInfo.getDefaultInstance()) return this;
-        if (!other.allGroups_.isEmpty()) {
-          if (allGroups_.isEmpty()) {
-            allGroups_ = other.allGroups_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureAllGroupsIsMutable();
-            allGroups_.addAll(other.allGroups_);
-          }
-          onChanged();
-        }
+        internalGetMutableAllGroups().mergeFrom(
+            other.internalGetAllGroups());
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
       public final boolean isInitialized() {
+        for (communication.Communication.Color item : getAllGroups().values()) {
+          if (!item.isInitialized()) {
+            return false;
+          }
+        }
         return true;
       }
 
@@ -2629,96 +3354,122 @@ public final class Communication {
       }
       private int bitField0_;
 
-      private com.google.protobuf.LazyStringList allGroups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-      private void ensureAllGroupsIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          allGroups_ = new com.google.protobuf.LazyStringArrayList(allGroups_);
-          bitField0_ |= 0x00000001;
-         }
+      private com.google.protobuf.MapField<
+          java.lang.String, communication.Communication.Color> allGroups_;
+      private com.google.protobuf.MapField<java.lang.String, communication.Communication.Color>
+      internalGetAllGroups() {
+        if (allGroups_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              AllGroupsDefaultEntryHolder.defaultEntry);
+        }
+        return allGroups_;
       }
-      /**
-       * <code>repeated string allGroups = 1;</code>
-       */
-      public com.google.protobuf.ProtocolStringList
-          getAllGroupsList() {
-        return allGroups_.getUnmodifiableView();
+      private com.google.protobuf.MapField<java.lang.String, communication.Communication.Color>
+      internalGetMutableAllGroups() {
+        onChanged();;
+        if (allGroups_ == null) {
+          allGroups_ = com.google.protobuf.MapField.newMapField(
+              AllGroupsDefaultEntryHolder.defaultEntry);
+        }
+        if (!allGroups_.isMutable()) {
+          allGroups_ = allGroups_.copy();
+        }
+        return allGroups_;
       }
-      /**
-       * <code>repeated string allGroups = 1;</code>
-       */
+
       public int getAllGroupsCount() {
-        return allGroups_.size();
+        return internalGetAllGroups().getMap().size();
       }
       /**
-       * <code>repeated string allGroups = 1;</code>
+       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
        */
-      public java.lang.String getAllGroups(int index) {
-        return allGroups_.get(index);
+
+      public boolean containsAllGroups(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        return internalGetAllGroups().getMap().containsKey(key);
       }
       /**
-       * <code>repeated string allGroups = 1;</code>
+       * Use {@link #getAllGroupsMap()} instead.
        */
-      public com.google.protobuf.ByteString
-          getAllGroupsBytes(int index) {
-        return allGroups_.getByteString(index);
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, communication.Communication.Color> getAllGroups() {
+        return getAllGroupsMap();
       }
       /**
-       * <code>repeated string allGroups = 1;</code>
+       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
        */
-      public Builder setAllGroups(
-          int index, java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureAllGroupsIsMutable();
-        allGroups_.set(index, value);
-        onChanged();
-        return this;
+
+      public java.util.Map<java.lang.String, communication.Communication.Color> getAllGroupsMap() {
+        return internalGetAllGroups().getMap();
       }
       /**
-       * <code>repeated string allGroups = 1;</code>
+       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
        */
-      public Builder addAllGroups(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureAllGroupsIsMutable();
-        allGroups_.add(value);
-        onChanged();
-        return this;
+
+      public communication.Communication.Color getAllGroupsOrDefault(
+          java.lang.String key,
+          communication.Communication.Color defaultValue) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, communication.Communication.Color> map =
+            internalGetAllGroups().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>repeated string allGroups = 1;</code>
+       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
        */
-      public Builder addAllAllGroups(
-          java.lang.Iterable<java.lang.String> values) {
-        ensureAllGroupsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, allGroups_);
-        onChanged();
-        return this;
+
+      public communication.Communication.Color getAllGroupsOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        java.util.Map<java.lang.String, communication.Communication.Color> map =
+            internalGetAllGroups().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
       }
-      /**
-       * <code>repeated string allGroups = 1;</code>
-       */
+
       public Builder clearAllGroups() {
-        allGroups_ = com.google.protobuf.LazyStringArrayList.EMPTY;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
+        getMutableAllGroups().clear();
         return this;
       }
       /**
-       * <code>repeated string allGroups = 1;</code>
+       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
        */
-      public Builder addAllGroupsBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  ensureAllGroupsIsMutable();
-        allGroups_.add(value);
-        onChanged();
+
+      public Builder removeAllGroups(
+          java.lang.String key) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        getMutableAllGroups().remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, communication.Communication.Color>
+      getMutableAllGroups() {
+        return internalGetMutableAllGroups().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+       */
+      public Builder putAllGroups(
+          java.lang.String key,
+          communication.Communication.Color value) {
+        if (key == null) { throw new java.lang.NullPointerException(); }
+        if (value == null) { throw new java.lang.NullPointerException(); }
+        getMutableAllGroups().put(key, value);
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+       */
+
+      public Builder putAllAllGroups(
+          java.util.Map<java.lang.String, communication.Communication.Color> values) {
+        getMutableAllGroups().putAll(values);
         return this;
       }
 
@@ -2995,6 +3746,10 @@ public final class Communication {
         return false;
       }
       if (!getBoundingBox().isInitialized()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!getGroupsInfo().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3318,6 +4073,9 @@ public final class Communication {
           return false;
         }
         if (!getBoundingBox().isInitialized()) {
+          return false;
+        }
+        if (!getGroupsInfo().isInitialized()) {
           return false;
         }
         return true;
@@ -11280,10 +12038,20 @@ public final class Communication {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_sm_BoundingBox_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_sm_Color_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_sm_Color_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_sm_GroupsInfo_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_sm_GroupsInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_sm_GroupsInfo_AllGroupsEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_sm_GroupsInfo_AllGroupsEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_sm_StatisticsInfo_descriptor;
   private static final 
@@ -11360,52 +12128,55 @@ public final class Communication {
       "InfosEntry\022\013\n\003key\030\001 \001(\t\022\036\n\005value\030\002 \001(\0132\017" +
       ".sm.ElementInfo:\0028\001\"a\n\013BoundingBox\022\r\n\005fr" +
       "omX\030\001 \002(\001\022\013\n\003toX\030\002 \002(\001\022\r\n\005fromY\030\003 \002(\001\022\013\n" +
-      "\003toY\030\004 \002(\001\022\r\n\005fromZ\030\005 \002(\001\022\013\n\003toZ\030\006 \002(\001\"\037" +
-      "\n\nGroupsInfo\022\021\n\tallGroups\030\001 \003(\t\"\204\001\n\016Stat" +
-      "isticsInfo\022(\n\relementsCount\030\001 \002(\0132\021.sm.E",
-      "lementsCount\022$\n\013boundingBox\030\002 \002(\0132\017.sm.B" +
-      "oundingBox\022\"\n\ngroupsInfo\030\003 \002(\0132\016.sm.Grou" +
-      "psInfo\"\262\001\n\024CoreToManagerMessage\022<\n\013messa" +
-      "geType\030\001 \002(\0162\'.sm.CoreToManagerMessage.C" +
-      "TMMessageType\022*\n\016statisticsInfo\030\002 \001(\0132\022." +
-      "sm.StatisticsInfo\"0\n\016CTMMessageType\022\016\n\nS" +
-      "TATISTICS\020\001\022\016\n\nBREAKPOINT\020\002\"t\n\013OptionsIn" +
-      "fo\022\035\n\025transparentStructures\030\001 \002(\010\022\030\n\020dyn" +
-      "amicRendering\030\002 \002(\010\022\022\n\nshowLabels\030\003 \002(\010\022" +
-      "\030\n\020mouseSensitivity\030\004 \002(\001\"~\n\013TypesFilter",
-      "\0229\n\rselectedTypes\030\001 \003(\0132\".sm.TypesFilter" +
-      ".SelectedTypesEntry\0324\n\022SelectedTypesEntr" +
-      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n\014Gr" +
-      "oupsFilter\022<\n\016selectedGroups\030\001 \003(\0132$.sm." +
-      "GroupsFilter.SelectedGroupsEntry\0325\n\023Sele" +
-      "ctedGroupsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 " +
-      "\001(\010:\0028\001\"\226\001\n\020QualityCondition\022\021\n\tleftValu" +
-      "e\030\001 \001(\001\022,\n\014leftOperator\030\002 \001(\0162\026.sm.Compa" +
-      "risonOperator\022-\n\rrightOperator\030\003 \001(\0162\026.s" +
-      "m.ComparisonOperator\022\022\n\nrightValue\030\004 \001(\001",
-      "\"?\n\rQualityFilter\022.\n\020qualityCondition\030\001 " +
-      "\003(\0132\024.sm.QualityCondition\"\215\001\n\024Coordinate" +
-      "sCondition\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030\002 \002" +
-      "(\001\022\016\n\006zValue\030\003 \002(\001\0223\n\023coordinatesOperato" +
-      "r\030\004 \002(\0162\026.sm.ComparisonOperator\022\020\n\010const" +
-      "ant\030\005 \002(\001\"\243\001\n\021CoordinatesFilter\0226\n\024coord" +
-      "inatesCondition\030\001 \003(\0132\030.sm.CoordinatesCo" +
-      "ndition\0226\n\013conjunction\030\002 \001(\0162!.sm.Coordi" +
-      "natesFilter.Conjunction\"\036\n\013Conjunction\022\007" +
-      "\n\003AND\020\001\022\006\n\002OR\020\002\"\215\003\n\024ManagerToCoreMessage",
-      "\022<\n\013messageType\030\001 \002(\0162\'.sm.ManagerToCore" +
-      "Message.MTCMessageType\022$\n\013optionsInfo\030\002 " +
-      "\001(\0132\017.sm.OptionsInfo\022&\n\014groupsFilter\030\003 \001" +
-      "(\0132\020.sm.GroupsFilter\022$\n\013typesFilter\030\004 \001(" +
-      "\0132\017.sm.TypesFilter\022(\n\rqualityFilter\030\005 \001(" +
-      "\0132\021.sm.QualityFilter\0220\n\021coordinatesFilte" +
-      "r\030\006 \001(\0132\025.sm.CoordinatesFilter\"g\n\016MTCMes" +
-      "sageType\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CO" +
-      "NTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSH" +
-      "OT\020\006\022\t\n\005CLEAN\020\007*_\n\022ComparisonOperator\022\024\n",
-      "\020GREATER_OR_EQUAL\020\001\022\013\n\007GREATER\020\002\022\t\n\005EQUA" +
-      "L\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rcomm" +
-      "unicationB\rCommunication"
+      "\003toY\030\004 \002(\001\022\r\n\005fromZ\030\005 \002(\001\022\013\n\003toZ\030\006 \002(\001\"(" +
+      "\n\005Color\022\t\n\001r\030\001 \002(\005\022\t\n\001g\030\002 \002(\005\022\t\n\001b\030\003 \002(\005" +
+      "\"{\n\nGroupsInfo\0220\n\tallGroups\030\001 \003(\0132\035.sm.G",
+      "roupsInfo.AllGroupsEntry\032;\n\016AllGroupsEnt" +
+      "ry\022\013\n\003key\030\001 \001(\t\022\030\n\005value\030\002 \001(\0132\t.sm.Colo" +
+      "r:\0028\001\"\204\001\n\016StatisticsInfo\022(\n\relementsCoun" +
+      "t\030\001 \002(\0132\021.sm.ElementsCount\022$\n\013boundingBo" +
+      "x\030\002 \002(\0132\017.sm.BoundingBox\022\"\n\ngroupsInfo\030\003" +
+      " \002(\0132\016.sm.GroupsInfo\"\262\001\n\024CoreToManagerMe" +
+      "ssage\022<\n\013messageType\030\001 \002(\0162\'.sm.CoreToMa" +
+      "nagerMessage.CTMMessageType\022*\n\016statistic" +
+      "sInfo\030\002 \001(\0132\022.sm.StatisticsInfo\"0\n\016CTMMe" +
+      "ssageType\022\016\n\nSTATISTICS\020\001\022\016\n\nBREAKPOINT\020",
+      "\002\"t\n\013OptionsInfo\022\035\n\025transparentStructure" +
+      "s\030\001 \002(\010\022\030\n\020dynamicRendering\030\002 \002(\010\022\022\n\nsho" +
+      "wLabels\030\003 \002(\010\022\030\n\020mouseSensitivity\030\004 \002(\001\"" +
+      "~\n\013TypesFilter\0229\n\rselectedTypes\030\001 \003(\0132\"." +
+      "sm.TypesFilter.SelectedTypesEntry\0324\n\022Sel" +
+      "ectedTypesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 " +
+      "\001(\010:\0028\001\"\203\001\n\014GroupsFilter\022<\n\016selectedGrou" +
+      "ps\030\001 \003(\0132$.sm.GroupsFilter.SelectedGroup" +
+      "sEntry\0325\n\023SelectedGroupsEntry\022\013\n\003key\030\001 \001" +
+      "(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\226\001\n\020QualityConditi",
+      "on\022\021\n\tleftValue\030\001 \001(\001\022,\n\014leftOperator\030\002 " +
+      "\001(\0162\026.sm.ComparisonOperator\022-\n\rrightOper" +
+      "ator\030\003 \001(\0162\026.sm.ComparisonOperator\022\022\n\nri" +
+      "ghtValue\030\004 \001(\001\"?\n\rQualityFilter\022.\n\020quali" +
+      "tyCondition\030\001 \003(\0132\024.sm.QualityCondition\"" +
+      "\215\001\n\024CoordinatesCondition\022\016\n\006xValue\030\001 \002(\001" +
+      "\022\016\n\006yValue\030\002 \002(\001\022\016\n\006zValue\030\003 \002(\001\0223\n\023coor" +
+      "dinatesOperator\030\004 \002(\0162\026.sm.ComparisonOpe" +
+      "rator\022\020\n\010constant\030\005 \002(\001\"\243\001\n\021CoordinatesF" +
+      "ilter\0226\n\024coordinatesCondition\030\001 \003(\0132\030.sm",
+      ".CoordinatesCondition\0226\n\013conjunction\030\002 \001" +
+      "(\0162!.sm.CoordinatesFilter.Conjunction\"\036\n" +
+      "\013Conjunction\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\215\003\n\024Manage" +
+      "rToCoreMessage\022<\n\013messageType\030\001 \002(\0162\'.sm" +
+      ".ManagerToCoreMessage.MTCMessageType\022$\n\013" +
+      "optionsInfo\030\002 \001(\0132\017.sm.OptionsInfo\022&\n\014gr" +
+      "oupsFilter\030\003 \001(\0132\020.sm.GroupsFilter\022$\n\013ty" +
+      "pesFilter\030\004 \001(\0132\017.sm.TypesFilter\022(\n\rqual" +
+      "ityFilter\030\005 \001(\0132\021.sm.QualityFilter\0220\n\021co" +
+      "ordinatesFilter\030\006 \001(\0132\025.sm.CoordinatesFi",
+      "lter\"g\n\016MTCMessageType\022\013\n\007OPTIONS\020\001\022\013\n\007F" +
+      "ILTERS\020\002\022\014\n\010CONTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HEL" +
+      "LO\020\005\022\014\n\010SNAPSHOT\020\006\022\t\n\005CLEAN\020\007*_\n\022Compari" +
+      "sonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GRE" +
+      "ATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004" +
+      "LESS\020\005B\036\n\rcommunicationB\rCommunication"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -11443,32 +12214,44 @@ public final class Communication {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_BoundingBox_descriptor,
         new java.lang.String[] { "FromX", "ToX", "FromY", "ToY", "FromZ", "ToZ", });
-    internal_static_sm_GroupsInfo_descriptor =
+    internal_static_sm_Color_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_sm_Color_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_sm_Color_descriptor,
+        new java.lang.String[] { "R", "G", "B", });
+    internal_static_sm_GroupsInfo_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_sm_GroupsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_GroupsInfo_descriptor,
         new java.lang.String[] { "AllGroups", });
+    internal_static_sm_GroupsInfo_AllGroupsEntry_descriptor =
+      internal_static_sm_GroupsInfo_descriptor.getNestedTypes().get(0);
+    internal_static_sm_GroupsInfo_AllGroupsEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_sm_GroupsInfo_AllGroupsEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_sm_StatisticsInfo_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_sm_StatisticsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_StatisticsInfo_descriptor,
         new java.lang.String[] { "ElementsCount", "BoundingBox", "GroupsInfo", });
     internal_static_sm_CoreToManagerMessage_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_sm_CoreToManagerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_CoreToManagerMessage_descriptor,
         new java.lang.String[] { "MessageType", "StatisticsInfo", });
     internal_static_sm_OptionsInfo_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_sm_OptionsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_OptionsInfo_descriptor,
         new java.lang.String[] { "TransparentStructures", "DynamicRendering", "ShowLabels", "MouseSensitivity", });
     internal_static_sm_TypesFilter_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_sm_TypesFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_TypesFilter_descriptor,
@@ -11480,7 +12263,7 @@ public final class Communication {
         internal_static_sm_TypesFilter_SelectedTypesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_sm_GroupsFilter_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_sm_GroupsFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_GroupsFilter_descriptor,
@@ -11492,31 +12275,31 @@ public final class Communication {
         internal_static_sm_GroupsFilter_SelectedGroupsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_sm_QualityCondition_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_sm_QualityCondition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_QualityCondition_descriptor,
         new java.lang.String[] { "LeftValue", "LeftOperator", "RightOperator", "RightValue", });
     internal_static_sm_QualityFilter_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_sm_QualityFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_QualityFilter_descriptor,
         new java.lang.String[] { "QualityCondition", });
     internal_static_sm_CoordinatesCondition_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_sm_CoordinatesCondition_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_CoordinatesCondition_descriptor,
         new java.lang.String[] { "XValue", "YValue", "ZValue", "CoordinatesOperator", "Constant", });
     internal_static_sm_CoordinatesFilter_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_sm_CoordinatesFilter_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_CoordinatesFilter_descriptor,
         new java.lang.String[] { "CoordinatesCondition", "Conjunction", });
     internal_static_sm_ManagerToCoreMessage_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_sm_ManagerToCoreMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_ManagerToCoreMessage_descriptor,
