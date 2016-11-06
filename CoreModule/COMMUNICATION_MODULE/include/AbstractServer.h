@@ -19,10 +19,10 @@ class AbstractServer
 {
     public:
         AbstractServer(){
-            typeTraslations["Vertexes"] = "vertex";
-            typeTraslations["Edges"] = "edge";
-            typeTraslations["Triangles"] = "face";
-            typeTraslations["Pyramids"] = "block";
+            typeTraslations["Vertex"] = "vertex";
+            typeTraslations["Edge"] = "edge";
+            typeTraslations["Face"] = "face";
+            typeTraslations["Block"] = "block";
 
             conjunctionTranslations[sm::CoordinatesFilter_Conjunction_AND] = LogicalConnectiveEnum::AND;
             conjunctionTranslations[sm::CoordinatesFilter_Conjunction_OR] = LogicalConnectiveEnum::OR;
