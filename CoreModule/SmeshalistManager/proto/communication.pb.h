@@ -682,13 +682,13 @@ class GroupsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // accessors -------------------------------------------------------
 
-  // map<string, .sm.Color> allGroups = 1;
+  // map<int32, .sm.Color> allGroups = 1;
   int allgroups_size() const;
   void clear_allgroups();
   static const int kAllGroupsFieldNumber = 1;
-  const ::google::protobuf::Map< ::std::string, ::sm::Color >&
+  const ::google::protobuf::Map< ::google::protobuf::int32, ::sm::Color >&
       allgroups() const;
-  ::google::protobuf::Map< ::std::string, ::sm::Color >*
+  ::google::protobuf::Map< ::google::protobuf::int32, ::sm::Color >*
       mutable_allgroups();
 
   // @@protoc_insertion_point(class_scope:sm.GroupsInfo)
@@ -698,14 +698,14 @@ class GroupsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   typedef ::google::protobuf::internal::MapEntryLite<
-      ::std::string, ::sm::Color,
-      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::int32, ::sm::Color,
+      ::google::protobuf::internal::WireFormatLite::TYPE_INT32,
       ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
       0 >
       GroupsInfo_AllGroupsEntry;
   ::google::protobuf::internal::MapField<
-      ::std::string, ::sm::Color,
-      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::int32, ::sm::Color,
+      ::google::protobuf::internal::WireFormatLite::TYPE_INT32,
       ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
       0 > allgroups_;
   friend void  protobuf_AddDesc_communication_2eproto();
@@ -2284,19 +2284,19 @@ inline void Color::set_b(::google::protobuf::int32 value) {
 
 // GroupsInfo
 
-// map<string, .sm.Color> allGroups = 1;
+// map<int32, .sm.Color> allGroups = 1;
 inline int GroupsInfo::allgroups_size() const {
   return allgroups_.size();
 }
 inline void GroupsInfo::clear_allgroups() {
   allgroups_.Clear();
 }
-inline const ::google::protobuf::Map< ::std::string, ::sm::Color >&
+inline const ::google::protobuf::Map< ::google::protobuf::int32, ::sm::Color >&
 GroupsInfo::allgroups() const {
   // @@protoc_insertion_point(field_map:sm.GroupsInfo.allGroups)
   return allgroups_.GetMap();
 }
-inline ::google::protobuf::Map< ::std::string, ::sm::Color >*
+inline ::google::protobuf::Map< ::google::protobuf::int32, ::sm::Color >*
 GroupsInfo::mutable_allgroups() {
   // @@protoc_insertion_point(field_mutable_map:sm.GroupsInfo.allGroups)
   return allgroups_.MutableMap();

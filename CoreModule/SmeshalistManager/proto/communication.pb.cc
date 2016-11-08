@@ -378,9 +378,9 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
         GroupsInfo_AllGroupsEntry_descriptor_,
         ::google::protobuf::internal::MapEntry<
-            ::std::string,
+            ::google::protobuf::int32,
             ::sm::Color,
-            ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+            ::google::protobuf::internal::WireFormatLite::TYPE_INT32,
             ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
             0>::CreateDefaultInstance(
                 GroupsInfo_AllGroupsEntry_descriptor_));
@@ -477,7 +477,7 @@ void protobuf_AddDesc_communication_2eproto() {
     "\n\005Color\022\t\n\001r\030\001 \002(\005\022\t\n\001g\030\002 \002(\005\022\t\n\001b\030\003 \002(\005"
     "\"{\n\nGroupsInfo\0220\n\tallGroups\030\001 \003(\0132\035.sm.G"
     "roupsInfo.AllGroupsEntry\032;\n\016AllGroupsEnt"
-    "ry\022\013\n\003key\030\001 \001(\t\022\030\n\005value\030\002 \001(\0132\t.sm.Colo"
+    "ry\022\013\n\003key\030\001 \001(\005\022\030\n\005value\030\002 \001(\0132\t.sm.Colo"
     "r:\0028\001\"\204\001\n\016StatisticsInfo\022(\n\relementsCoun"
     "t\030\001 \002(\0132\021.sm.ElementsCount\022$\n\013boundingBo"
     "x\030\002 \002(\0132\017.sm.BoundingBox\022\"\n\ngroupsInfo\030\003"
@@ -2341,7 +2341,6 @@ GroupsInfo::GroupsInfo(const GroupsInfo& from)
 }
 
 void GroupsInfo::SharedCtor() {
-  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   allgroups_.SetAssignDescriptorCallback(
       protobuf_AssignDescriptorsOnce);
@@ -2404,23 +2403,19 @@ bool GroupsInfo::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // map<string, .sm.Color> allGroups = 1;
+      // map<int32, .sm.Color> allGroups = 1;
       case 1: {
         if (tag == 10) {
           DO_(input->IncrementRecursionDepth());
          parse_loop_allGroups:
           GroupsInfo_AllGroupsEntry::Parser< ::google::protobuf::internal::MapField<
-              ::std::string, ::sm::Color,
-              ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+              ::google::protobuf::int32, ::sm::Color,
+              ::google::protobuf::internal::WireFormatLite::TYPE_INT32,
               ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE,
               0 >,
-            ::google::protobuf::Map< ::std::string, ::sm::Color > > parser(&allgroups_);
+            ::google::protobuf::Map< ::google::protobuf::int32, ::sm::Color > > parser(&allgroups_);
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
               input, &parser));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            parser.key().data(), parser.key().length(),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "sm.GroupsInfo.AllGroupsEntry.key");
         } else {
           goto handle_unusual;
         }
@@ -2455,19 +2450,15 @@ failure:
 void GroupsInfo::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:sm.GroupsInfo)
-  // map<string, .sm.Color> allGroups = 1;
+  // map<int32, .sm.Color> allGroups = 1;
   {
     ::google::protobuf::scoped_ptr<GroupsInfo_AllGroupsEntry> entry;
-    for (::google::protobuf::Map< ::std::string, ::sm::Color >::const_iterator
+    for (::google::protobuf::Map< ::google::protobuf::int32, ::sm::Color >::const_iterator
         it = this->allgroups().begin();
         it != this->allgroups().end(); ++it) {
       entry.reset(allgroups_.NewEntryWrapper(it->first, it->second));
       ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
           1, *entry, output);
-      ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-        it->first.data(), it->first.length(),
-        ::google::protobuf::internal::WireFormat::SERIALIZE,
-        "sm.GroupsInfo.AllGroupsEntry.key");
     }
   }
 
@@ -2481,20 +2472,16 @@ void GroupsInfo::SerializeWithCachedSizes(
 ::google::protobuf::uint8* GroupsInfo::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:sm.GroupsInfo)
-  // map<string, .sm.Color> allGroups = 1;
+  // map<int32, .sm.Color> allGroups = 1;
   {
     ::google::protobuf::scoped_ptr<GroupsInfo_AllGroupsEntry> entry;
-    for (::google::protobuf::Map< ::std::string, ::sm::Color >::const_iterator
+    for (::google::protobuf::Map< ::google::protobuf::int32, ::sm::Color >::const_iterator
         it = this->allgroups().begin();
         it != this->allgroups().end(); ++it) {
       entry.reset(allgroups_.NewEntryWrapper(it->first, it->second));
       target = ::google::protobuf::internal::WireFormatLite::
           InternalWriteMessageNoVirtualToArray(
               1, *entry, false, target);
-      ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-        it->first.data(), it->first.length(),
-        ::google::protobuf::internal::WireFormat::SERIALIZE,
-        "sm.GroupsInfo.AllGroupsEntry.key");
     }
   }
 
@@ -2510,11 +2497,11 @@ int GroupsInfo::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:sm.GroupsInfo)
   int total_size = 0;
 
-  // map<string, .sm.Color> allGroups = 1;
+  // map<int32, .sm.Color> allGroups = 1;
   total_size += 1 * this->allgroups_size();
   {
     ::google::protobuf::scoped_ptr<GroupsInfo_AllGroupsEntry> entry;
-    for (::google::protobuf::Map< ::std::string, ::sm::Color >::const_iterator
+    for (::google::protobuf::Map< ::google::protobuf::int32, ::sm::Color >::const_iterator
         it = this->allgroups().begin();
         it != this->allgroups().end(); ++it) {
       entry.reset(allgroups_.NewEntryWrapper(it->first, it->second));
@@ -2600,19 +2587,19 @@ void GroupsInfo::InternalSwap(GroupsInfo* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // GroupsInfo
 
-// map<string, .sm.Color> allGroups = 1;
+// map<int32, .sm.Color> allGroups = 1;
 int GroupsInfo::allgroups_size() const {
   return allgroups_.size();
 }
 void GroupsInfo::clear_allgroups() {
   allgroups_.Clear();
 }
- const ::google::protobuf::Map< ::std::string, ::sm::Color >&
+ const ::google::protobuf::Map< ::google::protobuf::int32, ::sm::Color >&
 GroupsInfo::allgroups() const {
   // @@protoc_insertion_point(field_map:sm.GroupsInfo.allGroups)
   return allgroups_.GetMap();
 }
- ::google::protobuf::Map< ::std::string, ::sm::Color >*
+ ::google::protobuf::Map< ::google::protobuf::int32, ::sm::Color >*
 GroupsInfo::mutable_allgroups() {
   // @@protoc_insertion_point(field_mutable_map:sm.GroupsInfo.allGroups)
   return allgroups_.MutableMap();

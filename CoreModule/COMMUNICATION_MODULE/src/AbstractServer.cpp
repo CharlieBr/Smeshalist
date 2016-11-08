@@ -121,7 +121,7 @@ void AbstractServer::sendStatistics() {
         smColor.set_r(c.r()*255);
         smColor.set_g(c.g()*255);
         smColor.set_b(c.b()*255);
-        (*groupsInfo.mutable_allgroups())[to_string(id)] = smColor;
+        (*groupsInfo.mutable_allgroups())[id] = smColor;
     }
     (*info.mutable_groupsinfo()) = groupsInfo;
 
