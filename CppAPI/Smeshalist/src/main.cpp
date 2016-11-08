@@ -21,18 +21,6 @@ int main() {
 	Smeshalist tool = Smeshalist::GetInstance();
 	srand(time(NULL));
 
-//	for (int i = 0; i < N; i++){
-//		Vertex vertex = Point3D(frand()*3.0, frand()*3.0,frand()*3.0);
-//		vertex.SetGroupId(2);
-//		tool.AddGeometry(vertex);
-//	}
-//
-//	for (int i = 0; i < N; i++){
-//		Edge edge = Edge(genPoint(),genPoint());
-//		edge.SetGroupId(3);
-//		tool.AddGeometry(edge);
-//	}
-
 	for (int i = 0; i < N; i++){
 		Face face = Face(genPoint(),genPoint(), genPoint());
 		face.SetGroupId(4);

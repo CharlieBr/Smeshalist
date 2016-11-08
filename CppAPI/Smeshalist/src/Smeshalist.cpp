@@ -287,3 +287,32 @@ void Smeshalist::Breakpoint() {
         exit(0);
 	}
 }
+
+void Smeshalist::Clean() {
+	char *out_buffer;
+	char in_buffer[BUFFER_SIZE];
+	int size, n_bytes;
+
+	structDefinitions::MessageInfo message_info;
+	message_info.set_type(structDefinitions::MessageInfo_Type_CLEAN);
+	size = message_info.ByteSize();
+	out_buffer = new char[size];
+
+	message_info.SerializeToArray(out_buffer, size);
+	SendBytesToCore(out_buffer, size);
+
+	n_bytes = GetBytesFromCore(in_buffer, BUFFER_SIZE);
+
+	if (n_bytes < 0) {
+		cout<<"Error when receiving bytes from core"<<endl;
+	}
+
+	structDefinitions::MessageInfo ack_message_info;
+	if (!ack_message_info.ParseFromArray(in_buffer, n_bytes)) {
+		cout<<"Error when parsing message from core"<<endl;
+	}
+	if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
+        cout<<"Error after sending CLEAN request"<<endl;
+        exit(0);
+	}
+}

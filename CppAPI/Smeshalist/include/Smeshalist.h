@@ -32,6 +32,7 @@ class Smeshalist {
         void FlushBuffer();
         void Breakpoint();
         void Render() const;
+        void Clean();
 	protected:
 	private:
 		int core_port;

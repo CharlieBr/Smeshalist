@@ -59,6 +59,7 @@ message MessageInfo {
 		ACCEPTED = 4;
 		REJECTED = 5;
 		ACK = 6;
+		CLEAN = 7;
 	}
 	
 	required Type type = 1;

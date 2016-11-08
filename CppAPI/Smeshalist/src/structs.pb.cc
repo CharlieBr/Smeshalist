@@ -325,19 +325,20 @@ void protobuf_AddDesc_structs_2eproto() {
     "tructDefinitions.Point3D\022&\n\002v3\030\003 \002(\0132\032.s"
     "tructDefinitions.Point3D\022&\n\002v4\030\004 \002(\0132\032.s"
     "tructDefinitions.Point3D\022+\n\004prop\030\005 \001(\0132\035"
-    ".structDefinitions.Properties\"\223\001\n\013Messag"
+    ".structDefinitions.Properties\"\236\001\n\013Messag"
     "eInfo\0221\n\004type\030\001 \002(\0162#.structDefinitions."
-    "MessageInfo.Type\"Q\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RE"
+    "MessageInfo.Type\"\\\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RE"
     "NDER\020\002\022\016\n\nBREAKPOINT\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010"
-    "REJECTED\020\005\022\007\n\003ACK\020\006\"/\n\006Header\022\022\n\nsizeOfD"
-    "ata\030\001 \002(\005\022\021\n\tendOfData\030\007 \002(\010\"\230\002\n\013DataPac"
-    "kage\022,\n\010points2D\030\001 \003(\0132\032.structDefinitio"
-    "ns.Point2D\022,\n\010points3D\030\002 \003(\0132\032.structDef"
-    "initions.Point3D\022+\n\010vertexes\030\003 \003(\0132\031.str"
-    "uctDefinitions.Vertex\022&\n\005edges\030\004 \003(\0132\027.s"
-    "tructDefinitions.Edge\022.\n\005faces\030\005 \003(\0132\037.s"
-    "tructDefinitions.TriangleFace\022(\n\006blocks\030"
-    "\006 \003(\0132\030.structDefinitions.Block", 1391);
+    "REJECTED\020\005\022\007\n\003ACK\020\006\022\t\n\005CLEAN\020\007\"/\n\006Header"
+    "\022\022\n\nsizeOfData\030\001 \002(\005\022\021\n\tendOfData\030\007 \002(\010\""
+    "\230\002\n\013DataPackage\022,\n\010points2D\030\001 \003(\0132\032.stru"
+    "ctDefinitions.Point2D\022,\n\010points3D\030\002 \003(\0132"
+    "\032.structDefinitions.Point3D\022+\n\010vertexes\030"
+    "\003 \003(\0132\031.structDefinitions.Vertex\022&\n\005edge"
+    "s\030\004 \003(\0132\027.structDefinitions.Edge\022.\n\005face"
+    "s\030\005 \003(\0132\037.structDefinitions.TriangleFace"
+    "\022(\n\006blocks\030\006 \003(\0132\030.structDefinitions.Blo"
+    "ck", 1402);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "structs.proto", &protobuf_RegisterTypes);
   Properties::default_instance_ = new Properties();
@@ -4048,6 +4049,7 @@ bool MessageInfo_Type_IsValid(int value) {
     case 4:
     case 5:
     case 6:
+    case 7:
       return true;
     default:
       return false;
@@ -4061,6 +4063,7 @@ const MessageInfo_Type MessageInfo::BREAKPOINT;
 const MessageInfo_Type MessageInfo::ACCEPTED;
 const MessageInfo_Type MessageInfo::REJECTED;
 const MessageInfo_Type MessageInfo::ACK;
+const MessageInfo_Type MessageInfo::CLEAN;
 const MessageInfo_Type MessageInfo::Type_MIN;
 const MessageInfo_Type MessageInfo::Type_MAX;
 const int MessageInfo::Type_ARRAYSIZE;
