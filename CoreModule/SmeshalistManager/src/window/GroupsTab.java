@@ -54,11 +54,11 @@ public class GroupsTab extends JScrollPane{
 	}
 
 	public void setGroups(Map<Integer, Color> groups) {
-		TreeSet<Integer> groupNames = new TreeSet<>(groups.keySet());
+		TreeSet<Integer> sortedGroupNames = new TreeSet<>(groups.keySet());
 
-		for (Integer groupName : groupNames) {
-			if (!this.groups.contains(groupName)) {
-				this.groups.add(groupName.toString());
+		for (Integer groupName : sortedGroupNames) {
+			if (!this.groups.contains(Integer.toString(groupName))) {
+				this.groups.add(Integer.toString(groupName));
 			}
 		}
 
@@ -80,7 +80,7 @@ public class GroupsTab extends JScrollPane{
 						GroupsTab.setChanged(true);
 					}
 				});
-				CheckBoxEntry groupCheckBox = new CheckBoxEntry(tmpCheckBox, groups.get(groupName));
+				CheckBoxEntry groupCheckBox = new CheckBoxEntry(tmpCheckBox, groups.get(Integer.parseInt(groupName)));
 				this.groupsCheckBoxes.add(groupCheckBox);
 
 				scrollPaneContent.add(groupCheckBox);
