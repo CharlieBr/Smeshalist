@@ -306,6 +306,13 @@ void AbstractServer::startServerInNewThread()
             case structDefinitions::MessageInfo_Type_RENDER:
                 sendElementsBufferToTree();
                 break;
+            case structDefinitions::MessageInfo_Type_CLEAN:
+                if (visibleDataTree==-1) {  //clean CURRENT data tree only when it's visible
+                    handler->clean();
+                    sendStatistics();
+                }
+                sendAcknowlage();
+                break;
             default:
                 cerr << "Unknow message type\n";
                 break;
