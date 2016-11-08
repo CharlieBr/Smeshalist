@@ -105,7 +105,7 @@ public class StatisticsTab extends JPanel{
 	private void initValuesList() {
 		bl12 = new BoxLayout(cell12,BoxLayout.PAGE_AXIS);
 		cell12.setLayout(bl12);
-		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Total (visible)");
+		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Visible (total)");
 		border.setTitleColor(Color.BLUE);
 		border.setTitleJustification(2);
 		cell12.setBorder(border);	
@@ -137,7 +137,7 @@ public class StatisticsTab extends JPanel{
 		}
 		
 		for(ElementInfo info : this.elementsCount.getElementInfosMap().values()){
-			cell12.add(new JLabel(info.getTotal()+" ("+info.getVisible()+")"));
+			cell12.add(new JLabel(info.getVisible()+" ("+info.getTotal()+")"));
 			cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		}
 

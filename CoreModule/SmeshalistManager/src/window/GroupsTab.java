@@ -3,10 +3,8 @@ package window;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -55,11 +53,12 @@ public class GroupsTab extends JScrollPane{
 		return groups;
 	}
 
-	public void setGroups(Map<String, Color> groups) {
+	public void setGroups(Map<Integer, Color> groups) {
+		TreeSet<Integer> groupNames = new TreeSet<>(groups.keySet());
 
-		for (String groupName : groups.keySet()) {
+		for (Integer groupName : groupNames) {
 			if (!this.groups.contains(groupName)) {
-				this.groups.add(groupName);
+				this.groups.add(groupName.toString());
 			}
 		}
 

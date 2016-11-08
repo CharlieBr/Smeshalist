@@ -106,7 +106,7 @@ public class CoordinatesTab extends JPanel{
 		controlsPanel.add(Box.createHorizontalStrut(50));		
 		controlsPanel.add(operatorsComboBox);
 		controlsPanel.add(valueTextField);
-		controlsPanel.add(Box.createHorizontalStrut(50));
+		controlsPanel.add(Box.createHorizontalStrut(30));
 		controlsPanel.add(addButton);
 		
 		scrollPaneContent = new JPanel();

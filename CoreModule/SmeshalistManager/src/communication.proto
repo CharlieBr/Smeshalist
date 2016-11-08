@@ -27,7 +27,7 @@ message Color {
 }
 
 message GroupsInfo {
-	map<string,Color> allGroups = 1;
+	map<int32,Color> allGroups = 1;
 }
 
 message StatisticsInfo{

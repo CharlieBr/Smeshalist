@@ -2862,38 +2862,38 @@ public final class Communication {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
      */
     int getAllGroupsCount();
     /**
-     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
      */
     boolean containsAllGroups(
-        java.lang.String key);
+        int key);
     /**
      * Use {@link #getAllGroupsMap()} instead.
      */
     @java.lang.Deprecated
-    java.util.Map<java.lang.String, communication.Communication.Color>
+    java.util.Map<java.lang.Integer, communication.Communication.Color>
     getAllGroups();
     /**
-     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
      */
-    java.util.Map<java.lang.String, communication.Communication.Color>
+    java.util.Map<java.lang.Integer, communication.Communication.Color>
     getAllGroupsMap();
     /**
-     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
      */
 
     communication.Communication.Color getAllGroupsOrDefault(
-        java.lang.String key,
+        int key,
         communication.Communication.Color defaultValue);
     /**
-     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
      */
 
     communication.Communication.Color getAllGroupsOrThrow(
-        java.lang.String key);
+        int key);
   }
   /**
    * Protobuf type {@code sm.GroupsInfo}
@@ -2943,7 +2943,7 @@ public final class Communication {
                     AllGroupsDefaultEntryHolder.defaultEntry);
                 mutable_bitField0_ |= 0x00000001;
               }
-              com.google.protobuf.MapEntry<java.lang.String, communication.Communication.Color>
+              com.google.protobuf.MapEntry<java.lang.Integer, communication.Communication.Color>
               allGroups = input.readMessage(
                   AllGroupsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               allGroups_.getMutableMap().put(allGroups.getKey(), allGroups.getValue());
@@ -2987,18 +2987,18 @@ public final class Communication {
     public static final int ALLGROUPS_FIELD_NUMBER = 1;
     private static final class AllGroupsDefaultEntryHolder {
       static final com.google.protobuf.MapEntry<
-          java.lang.String, communication.Communication.Color> defaultEntry =
+          java.lang.Integer, communication.Communication.Color> defaultEntry =
               com.google.protobuf.MapEntry
-              .<java.lang.String, communication.Communication.Color>newDefaultInstance(
+              .<java.lang.Integer, communication.Communication.Color>newDefaultInstance(
                   communication.Communication.internal_static_sm_GroupsInfo_AllGroupsEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0,
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
                   communication.Communication.Color.getDefaultInstance());
     }
     private com.google.protobuf.MapField<
-        java.lang.String, communication.Communication.Color> allGroups_;
-    private com.google.protobuf.MapField<java.lang.String, communication.Communication.Color>
+        java.lang.Integer, communication.Communication.Color> allGroups_;
+    private com.google.protobuf.MapField<java.lang.Integer, communication.Communication.Color>
     internalGetAllGroups() {
       if (allGroups_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -3011,48 +3011,48 @@ public final class Communication {
       return internalGetAllGroups().getMap().size();
     }
     /**
-     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
      */
 
     public boolean containsAllGroups(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+        int key) {
+      
       return internalGetAllGroups().getMap().containsKey(key);
     }
     /**
      * Use {@link #getAllGroupsMap()} instead.
      */
     @java.lang.Deprecated
-    public java.util.Map<java.lang.String, communication.Communication.Color> getAllGroups() {
+    public java.util.Map<java.lang.Integer, communication.Communication.Color> getAllGroups() {
       return getAllGroupsMap();
     }
     /**
-     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
      */
 
-    public java.util.Map<java.lang.String, communication.Communication.Color> getAllGroupsMap() {
+    public java.util.Map<java.lang.Integer, communication.Communication.Color> getAllGroupsMap() {
       return internalGetAllGroups().getMap();
     }
     /**
-     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
      */
 
     public communication.Communication.Color getAllGroupsOrDefault(
-        java.lang.String key,
+        int key,
         communication.Communication.Color defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, communication.Communication.Color> map =
+      
+      java.util.Map<java.lang.Integer, communication.Communication.Color> map =
           internalGetAllGroups().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+     * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
      */
 
     public communication.Communication.Color getAllGroupsOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      java.util.Map<java.lang.String, communication.Communication.Color> map =
+        int key) {
+      
+      java.util.Map<java.lang.Integer, communication.Communication.Color> map =
           internalGetAllGroups().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -3078,9 +3078,9 @@ public final class Communication {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (java.util.Map.Entry<java.lang.String, communication.Communication.Color> entry
+      for (java.util.Map.Entry<java.lang.Integer, communication.Communication.Color> entry
            : internalGetAllGroups().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, communication.Communication.Color>
+        com.google.protobuf.MapEntry<java.lang.Integer, communication.Communication.Color>
         allGroups = AllGroupsDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -3095,9 +3095,9 @@ public final class Communication {
       if (size != -1) return size;
 
       size = 0;
-      for (java.util.Map.Entry<java.lang.String, communication.Communication.Color> entry
+      for (java.util.Map.Entry<java.lang.Integer, communication.Communication.Color> entry
            : internalGetAllGroups().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, communication.Communication.Color>
+        com.google.protobuf.MapEntry<java.lang.Integer, communication.Communication.Color>
         allGroups = AllGroupsDefaultEntryHolder.defaultEntry.newBuilderForType()
             .setKey(entry.getKey())
             .setValue(entry.getValue())
@@ -3355,8 +3355,8 @@ public final class Communication {
       private int bitField0_;
 
       private com.google.protobuf.MapField<
-          java.lang.String, communication.Communication.Color> allGroups_;
-      private com.google.protobuf.MapField<java.lang.String, communication.Communication.Color>
+          java.lang.Integer, communication.Communication.Color> allGroups_;
+      private com.google.protobuf.MapField<java.lang.Integer, communication.Communication.Color>
       internalGetAllGroups() {
         if (allGroups_ == null) {
           return com.google.protobuf.MapField.emptyMapField(
@@ -3364,7 +3364,7 @@ public final class Communication {
         }
         return allGroups_;
       }
-      private com.google.protobuf.MapField<java.lang.String, communication.Communication.Color>
+      private com.google.protobuf.MapField<java.lang.Integer, communication.Communication.Color>
       internalGetMutableAllGroups() {
         onChanged();;
         if (allGroups_ == null) {
@@ -3381,48 +3381,48 @@ public final class Communication {
         return internalGetAllGroups().getMap().size();
       }
       /**
-       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+       * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
        */
 
       public boolean containsAllGroups(
-          java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+          int key) {
+        
         return internalGetAllGroups().getMap().containsKey(key);
       }
       /**
        * Use {@link #getAllGroupsMap()} instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, communication.Communication.Color> getAllGroups() {
+      public java.util.Map<java.lang.Integer, communication.Communication.Color> getAllGroups() {
         return getAllGroupsMap();
       }
       /**
-       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+       * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
        */
 
-      public java.util.Map<java.lang.String, communication.Communication.Color> getAllGroupsMap() {
+      public java.util.Map<java.lang.Integer, communication.Communication.Color> getAllGroupsMap() {
         return internalGetAllGroups().getMap();
       }
       /**
-       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+       * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
        */
 
       public communication.Communication.Color getAllGroupsOrDefault(
-          java.lang.String key,
+          int key,
           communication.Communication.Color defaultValue) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, communication.Communication.Color> map =
+        
+        java.util.Map<java.lang.Integer, communication.Communication.Color> map =
             internalGetAllGroups().getMap();
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+       * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
        */
 
       public communication.Communication.Color getAllGroupsOrThrow(
-          java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
-        java.util.Map<java.lang.String, communication.Communication.Color> map =
+          int key) {
+        
+        java.util.Map<java.lang.Integer, communication.Communication.Color> map =
             internalGetAllGroups().getMap();
         if (!map.containsKey(key)) {
           throw new java.lang.IllegalArgumentException();
@@ -3435,12 +3435,12 @@ public final class Communication {
         return this;
       }
       /**
-       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+       * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
        */
 
       public Builder removeAllGroups(
-          java.lang.String key) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+          int key) {
+        
         getMutableAllGroups().remove(key);
         return this;
       }
@@ -3448,27 +3448,27 @@ public final class Communication {
        * Use alternate mutation accessors instead.
        */
       @java.lang.Deprecated
-      public java.util.Map<java.lang.String, communication.Communication.Color>
+      public java.util.Map<java.lang.Integer, communication.Communication.Color>
       getMutableAllGroups() {
         return internalGetMutableAllGroups().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+       * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
        */
       public Builder putAllGroups(
-          java.lang.String key,
+          int key,
           communication.Communication.Color value) {
-        if (key == null) { throw new java.lang.NullPointerException(); }
+        
         if (value == null) { throw new java.lang.NullPointerException(); }
         getMutableAllGroups().put(key, value);
         return this;
       }
       /**
-       * <code>map&lt;string, .sm.Color&gt; allGroups = 1;</code>
+       * <code>map&lt;int32, .sm.Color&gt; allGroups = 1;</code>
        */
 
       public Builder putAllAllGroups(
-          java.util.Map<java.lang.String, communication.Communication.Color> values) {
+          java.util.Map<java.lang.Integer, communication.Communication.Color> values) {
         getMutableAllGroups().putAll(values);
         return this;
       }
@@ -12132,7 +12132,7 @@ public final class Communication {
       "\n\005Color\022\t\n\001r\030\001 \002(\005\022\t\n\001g\030\002 \002(\005\022\t\n\001b\030\003 \002(\005" +
       "\"{\n\nGroupsInfo\0220\n\tallGroups\030\001 \003(\0132\035.sm.G",
       "roupsInfo.AllGroupsEntry\032;\n\016AllGroupsEnt" +
-      "ry\022\013\n\003key\030\001 \001(\t\022\030\n\005value\030\002 \001(\0132\t.sm.Colo" +
+      "ry\022\013\n\003key\030\001 \001(\005\022\030\n\005value\030\002 \001(\0132\t.sm.Colo" +
       "r:\0028\001\"\204\001\n\016StatisticsInfo\022(\n\relementsCoun" +
       "t\030\001 \002(\0132\021.sm.ElementsCount\022$\n\013boundingBo" +
       "x\030\002 \002(\0132\017.sm.BoundingBox\022\"\n\ngroupsInfo\030\003" +
