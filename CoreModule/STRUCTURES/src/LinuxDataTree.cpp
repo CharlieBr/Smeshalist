@@ -1,6 +1,6 @@
 #include "LinuxDataTree.h"
 
-AbstractDataTree* AbstractDataTree::current = new LinuxDataTree();
+AbstractDataTree* AbstractDataTree::active = new LinuxDataTree();
 
 void LinuxDataTree::LOCK() {
     mtx.lock();

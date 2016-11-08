@@ -13,12 +13,16 @@ class AbstractDataTree : public Data
     public:
         void add(int, Element*);
         void add(int, vector<Element*>*);
-        static void recomputeIntersectionPointsInVisibleTree(int);
+        static void recomputeIntersectionPointsInVisibleTree();
         static void reloadFlitersInAllTrees(vector<SingleGroupFilter*>*, vector<SingleTypesFilter*>*, vector<SingleCoordinateFilter*>*, LogicalConnectiveEnum*, vector<SingleQualityFilter*>*);
         static int getNumberOfDataTreeInstances();
         virtual void createNewInstance() = 0;
-        static AbstractDataTree* getDataTreeInstance(int);
-        static AbstractDataTree* getCurrent();
+        static AbstractDataTree* getCurrentlyVisibleDataTree();
+        static AbstractDataTree* getActiveDataTree();
+        static int getVisibleDataTreeIndex();
+        static void decreaseVisibleDataTreeIndex();
+        static void increaseVisibleDataTreeIndex();
+        static bool isActiveTreeVisible();
         void draw_elements();
         void clean();
     protected:
@@ -30,9 +34,11 @@ class AbstractDataTree : public Data
         void filterDataTree();
         void recomputeIntersectionPoints();
         void reloadFliters(vector<SingleGroupFilter*>*, vector<SingleTypesFilter*>*, vector<SingleCoordinateFilter*>*, LogicalConnectiveEnum*, vector<SingleQualityFilter*>*);
+        static AbstractDataTree* getDataTreeInstance(int);
         static vector<AbstractDataTree*> previousInstances;
-        static AbstractDataTree* current;
+        static AbstractDataTree* active;
         static bool readyToBeCleaned;
+        static int visibleDataTreeIndex; //-1-current; >=0 - previous
         void drawElements();
         void drawNothing();
         AbstractDataTree() {

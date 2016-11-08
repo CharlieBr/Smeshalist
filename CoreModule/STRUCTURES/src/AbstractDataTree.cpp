@@ -2,9 +2,10 @@
 
 vector<AbstractDataTree*> AbstractDataTree::previousInstances;
 bool AbstractDataTree::readyToBeCleaned = false;
+int AbstractDataTree::visibleDataTreeIndex=-1; //-1-current; >=0 - previous
 
-AbstractDataTree* AbstractDataTree::getCurrent() {
-    return current;
+AbstractDataTree* AbstractDataTree::getActiveDataTree() {
+    return active;
 }
 
 void AbstractDataTree::draw_elements() {
@@ -56,10 +57,11 @@ void AbstractDataTree::add(int groupID, vector<Element*>* elements) {
 
 void AbstractDataTree::reloadFlitersInAllTrees(vector<SingleGroupFilter*> *groupFilters, vector<SingleTypesFilter*> *typesFilters,
     vector<SingleCoordinateFilter*> *coordinateFilters, LogicalConnectiveEnum* conjuntion, vector<SingleQualityFilter*> *qualityFilters) {
-    current -> reloadFliters(groupFilters, typesFilters, coordinateFilters, conjuntion, qualityFilters);
+    active -> reloadFliters(groupFilters, typesFilters, coordinateFilters, conjuntion, qualityFilters);
 
+    //filters are already reloaded, previous instances should only be filtered, even without setting locks (this trees are immutable)
     for (auto tree : previousInstances) {
-        tree -> reloadFliters(groupFilters, typesFilters, coordinateFilters, conjuntion, qualityFilters);
+        tree -> filterDataTree();
     }
 }
 
@@ -112,8 +114,8 @@ void AbstractDataTree::filterDataTree() {
     CoordinatesFilter::getInstance() -> filterTree(this);
 }
 
-void AbstractDataTree::recomputeIntersectionPointsInVisibleTree(int index) {
-    getDataTreeInstance(index) -> recomputeIntersectionPoints();
+void AbstractDataTree::recomputeIntersectionPointsInVisibleTree() {
+    getCurrentlyVisibleDataTree() -> recomputeIntersectionPoints();
 }
 
 void AbstractDataTree::recomputeIntersectionPoints() {
@@ -122,14 +124,40 @@ void AbstractDataTree::recomputeIntersectionPoints() {
 
 AbstractDataTree* AbstractDataTree::getDataTreeInstance(int index) {
     if (previousInstances.size() == 0 || index == -1) {
-        return current;
+        return active;
     }
 
     return previousInstances[index];
 }
 
+AbstractDataTree* AbstractDataTree::getCurrentlyVisibleDataTree() {
+    return getDataTreeInstance(visibleDataTreeIndex);
+}
+
 int AbstractDataTree::getNumberOfDataTreeInstances() {
     return AbstractDataTree::previousInstances.size();
+}
+
+int AbstractDataTree::getVisibleDataTreeIndex() {
+    return visibleDataTreeIndex;
+}
+
+void AbstractDataTree::decreaseVisibleDataTreeIndex() {
+    visibleDataTreeIndex--;
+    if (visibleDataTreeIndex < -1) {
+        visibleDataTreeIndex = getNumberOfDataTreeInstances()-1;
+    }
+}
+
+void AbstractDataTree::increaseVisibleDataTreeIndex() {
+    visibleDataTreeIndex++;
+    if (visibleDataTreeIndex >= getNumberOfDataTreeInstances()) {
+        visibleDataTreeIndex = -1;
+    }
+}
+
+bool AbstractDataTree::isActiveTreeVisible() {
+    return visibleDataTreeIndex == -1;
 }
 
 void AbstractDataTree::cloneDataTreeToNewInstance(AbstractDataTree* newInstance) {

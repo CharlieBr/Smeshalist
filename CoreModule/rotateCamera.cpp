@@ -35,8 +35,6 @@ float cameraLookAtX=0, cameraLookAtY=0, cameraLookAtZ=0;
 bool isShiftPressed = false;
 bool isLeftMouseButtonPressed = false;
 
-int visibleDataTree=-1; //-1-current; >=0 - previous
-
 AbstractDataTree* d = NULL;
 AbstractServer* server = NULL;
 
@@ -114,8 +112,8 @@ void renderScene(void) {
         drawOrigin();
         glColor3f(0.1f, 0.1f, 0.1f);
 
-        d -> getDataTreeInstance(visibleDataTree) -> draw_elements();
-        drawBoundingBox(d -> getDataTreeInstance(visibleDataTree));
+        d -> getCurrentlyVisibleDataTree() -> draw_elements();
+        drawBoundingBox(d -> getCurrentlyVisibleDataTree());
 
         CoordinatesFilter::getInstance() -> draw();
     glPopMatrix();
@@ -182,39 +180,39 @@ void setTitle() {
     char title[80];
     strcpy(title, SMESHALIST);
 
-    if (visibleDataTree == -1) {
-        strcat(title, "\tCURRENT");
+    if (AbstractDataTree::getVisibleDataTreeIndex() == -1) {
+        strcat(title, "\tACTIVE");
     } else {
         strcat(title, "\tPREVIOUS: ");
-        strcat(title, to_string(visibleDataTree+1).c_str());
+        strcat(title, to_string(AbstractDataTree::getVisibleDataTreeIndex()+1).c_str());
     }
 
     glutSetWindowTitle(title);
 }
 
 void keyboardEventSpec(int key, int x, int y) {
-    switch(key) {
-        case GLUT_KEY_LEFT:
-            visibleDataTree--;
-            if (visibleDataTree < -1) {
-                visibleDataTree = AbstractDataTree::getNumberOfDataTreeInstances()-1;
-            }
-            break;
-        case GLUT_KEY_RIGHT:
-            visibleDataTree++;
-            if (visibleDataTree >= AbstractDataTree::getNumberOfDataTreeInstances()) {
-                visibleDataTree = -1;
-            }
-            break;
-    }
+    int visibleTreeIndex = AbstractDataTree::getVisibleDataTreeIndex();
 
     switch(key) {
         case GLUT_KEY_LEFT:
-        case GLUT_KEY_RIGHT:
-            setTitle();
-            Statistics stats = d->getDataTreeInstance(visibleDataTree)->get_statistics();
-            CoordinatesFilter::getInstance() -> recomputeIntersections(&stats);
+            AbstractDataTree::decreaseVisibleDataTreeIndex();
             break;
+        case GLUT_KEY_RIGHT:
+            AbstractDataTree::increaseVisibleDataTreeIndex();
+            break;
+    }
+
+    //recompute only when data tree changed
+    if (visibleTreeIndex != AbstractDataTree::getVisibleDataTreeIndex()) {
+        switch(key) {
+            case GLUT_KEY_LEFT:
+            case GLUT_KEY_RIGHT:
+                setTitle();
+                Statistics stats = d->getCurrentlyVisibleDataTree()->get_statistics();
+                CoordinatesFilter::getInstance() -> recomputeIntersections(&stats);
+                server -> sendStatisticsOfCurrentlyVisibleTree();
+                break;
+        }
     }
 }
 
@@ -324,7 +322,7 @@ int main(int argc, char **argv) {
 
     #ifdef __linux__
     server = new LinuxServer();
-	d = LinuxDataTree::getCurrent();
+	d = LinuxDataTree::getActiveDataTree();
     #else
 	server = new WindowsServer();
 	d = WindowsDataTree::getCurrent();

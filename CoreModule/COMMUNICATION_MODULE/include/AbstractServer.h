@@ -42,6 +42,7 @@ class AbstractServer
 		void setDynamicRendering(bool);
 		void sendElementsBufferToTree();
 		void sendStatistics();
+		void sendStatisticsOfCurrentlyVisibleTree();
     protected:
         virtual int getBytesFromSocket(char[], int) = 0;
         virtual int sendBytesToSocket(char[], int) = 0;
@@ -60,6 +61,7 @@ class AbstractServer
         void processOptionDataPackage(sm::ManagerToCoreMessage*);
         int sendDatagramToClient(structDefinitions::MessageInfo_Type);
         void sendAcknowlage();
+        void sendStaticticsOfGivenTree(AbstractDataTree*);
         void startServerInNewThread();
         void startSMServer();
 

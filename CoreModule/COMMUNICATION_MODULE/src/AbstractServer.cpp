@@ -1,6 +1,5 @@
 #include "AbstractServer.h"
 
-extern int visibleDataTree;
 bool transparentStructures = false;
 
 void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
@@ -31,8 +30,11 @@ void AbstractServer::sendElementsBufferToTree()
 		}
 	}
 	elementsBuffer.clear();
-	AbstractDataTree::recomputeIntersectionPointsInVisibleTree(visibleDataTree);
-	sendStatistics();
+	AbstractDataTree::recomputeIntersectionPointsInVisibleTree();
+
+	if (AbstractDataTree::isActiveTreeVisible()) {
+        sendStatistics();
+	}
 }
 
 int AbstractServer::sendDatagramToClient(structDefinitions::MessageInfo_Type messageType) {
@@ -78,6 +80,14 @@ void AbstractServer::sendBreakpoint() {
 }
 
 void AbstractServer::sendStatistics() {
+    sendStaticticsOfGivenTree(handler);
+}
+
+void AbstractServer::sendStatisticsOfCurrentlyVisibleTree() {
+    sendStaticticsOfGivenTree(AbstractDataTree::getCurrentlyVisibleDataTree());
+}
+
+void AbstractServer::sendStaticticsOfGivenTree(AbstractDataTree* tree) {
     char buffer[BUFFER_SIZE];
 
     sm::CoreToManagerMessage message;
@@ -86,8 +96,8 @@ void AbstractServer::sendStatistics() {
 
     //set elementsCount
     sm::ElementsCount elementsCount;
-    handler -> count_visible_elements();
-    Statistics stats = handler -> get_statistics();
+    tree -> count_visible_elements();
+    Statistics stats = tree -> get_statistics();
     map<string, unsigned long> allElements = stats.all_elements_numbers;
     map<string, unsigned long> visibleElements = stats.visible_elements_numbers;
 
@@ -101,22 +111,22 @@ void AbstractServer::sendStatistics() {
 
     //set boundingBox
     sm::BoundingBox boundingBox;
-    if (handler -> get_min_x() > handler -> get_max_x()) {  //no data in tree - send zeros
+    if (tree -> get_min_x() > tree -> get_max_x()) {  //no data in tree - send zeros
         boundingBox.set_fromx(0);  boundingBox.set_tox(0);
         boundingBox.set_fromy(0);  boundingBox.set_toy(0);
         boundingBox.set_fromz(0);  boundingBox.set_toz(0);
     } else {
-        boundingBox.set_fromx(handler -> get_min_x());  boundingBox.set_tox(handler-> get_max_x());
-        boundingBox.set_fromy(handler -> get_min_y());  boundingBox.set_toy(handler-> get_max_y());
-        boundingBox.set_fromz(handler -> get_min_z());  boundingBox.set_toz(handler-> get_max_z());
+        boundingBox.set_fromx(tree -> get_min_x());  boundingBox.set_tox(tree-> get_max_x());
+        boundingBox.set_fromy(tree -> get_min_y());  boundingBox.set_toy(tree-> get_max_y());
+        boundingBox.set_fromz(tree -> get_min_z());  boundingBox.set_toz(tree-> get_max_z());
     }
     (*info.mutable_boundingbox()) = boundingBox;
 
     //set GroupInfo
     sm::GroupsInfo groupsInfo;
-    vector<int>* groups = handler -> get_all_groupIDs();
+    vector<int>* groups = tree -> get_all_groupIDs();
     for (int id : *groups) {
-        Color c = handler -> get_color_for_group(id);
+        Color c = tree -> get_color_for_group(id);
         sm::Color smColor;
         smColor.set_r(c.r()*255);
         smColor.set_g(c.g()*255);
@@ -211,7 +221,7 @@ void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message
     }
 
     AbstractDataTree::reloadFlitersInAllTrees(singleGroupFilters, singleTypeFilters, singleCoordinateFilters, coordinatesConjunction, singleQualityFilters);
-    AbstractDataTree::recomputeIntersectionPointsInVisibleTree(visibleDataTree);
+    AbstractDataTree::recomputeIntersectionPointsInVisibleTree();
     sendStatistics();
 }
 
@@ -265,7 +275,7 @@ void AbstractServer::startSMServer() {
                 handler->createNewInstance();
                 break;
             case sm::ManagerToCoreMessage_MTCMessageType_CLEAN:
-                if (visibleDataTree==-1) {  //clean CURRENT data tree only when it's visible
+                if (AbstractDataTree::isActiveTreeVisible()) {  //clean ACTIVE data tree only when it's visible
                     handler->clean();
                     sendStatistics();
                 }
@@ -307,7 +317,7 @@ void AbstractServer::startServerInNewThread()
                 sendElementsBufferToTree();
                 break;
             case structDefinitions::MessageInfo_Type_CLEAN:
-                if (visibleDataTree==-1) {  //clean CURRENT data tree only when it's visible
+                if (AbstractDataTree::isActiveTreeVisible()) {  //clean ACTIVE data tree only when it's visible
                     handler->clean();
                     sendStatistics();
                 }
