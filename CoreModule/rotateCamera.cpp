@@ -280,7 +280,7 @@ void tryToRunSmeshalistManager(int argc, char** argv) {
     if (p != NULL) {
         path = string(p + 3, p+strlen(p));
     } else {
-        path = "SmeshalistManager/SmeshalistManager.jar";
+        path = "lib/SmeshalistManager.jar";
     }
 
 

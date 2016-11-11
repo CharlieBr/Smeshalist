@@ -317,10 +317,8 @@ void AbstractServer::startServerInNewThread()
                 sendElementsBufferToTree();
                 break;
             case structDefinitions::MessageInfo_Type_CLEAN:
-                if (AbstractDataTree::isActiveTreeVisible()) {  //clean ACTIVE data tree only when it's visible
-                    handler->clean();
-                    sendStatistics();
-                }
+                handler->clean();
+                sendStatistics();
                 sendAcknowlage();
                 break;
             default:

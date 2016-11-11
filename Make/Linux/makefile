@@ -9,7 +9,7 @@ XML_PARSER_PATH = $(CORE_PATH)/XML_PARSER
 CC = g++
 FLAGS = -std=c++11 -Wall
 INCLUDES = -I$(STRUCTURES_PATH)/include -I$(COMMUNICATION_PATH)/include -I$(FILTERS_PATH)/include -I$(XML_PARSER_PATH)/include -I$(CPPAPI_PATH)/include -I$(CORE_PATH)/SmeshalistManager/proto
-LIBS = lib/libGLU.a lib/libprotobuf.a -lGL -lglut
+LIBS = lib/*.a -lGL -lglut
 
 compile:
 	mkdir obj
@@ -42,6 +42,7 @@ compile:
 	#
 build:
 	#BUILDING
-	$(CC) -o CoreModule obj/*.o $(LIBS)
+	ar rvs lib/CORE.a obj/*.o
+	$(CC) -o CoreModule $(LIBS)
 	rm -r obj
 all: compile build
