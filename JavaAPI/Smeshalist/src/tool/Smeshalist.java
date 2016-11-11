@@ -290,7 +290,7 @@ public class Smeshalist {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 
 	}
@@ -309,9 +309,45 @@ public class Smeshalist {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 
+	}
+	
+	
+	public void clean() {
+		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
+		MessageInfo.Builder builder = MessageInfo.newBuilder();
+		builder.setType(Type.CLEAN);
+		MessageInfo message = builder.build();
+
+		try {
+			message.writeTo(aOutput);
+			byte[] bytes = aOutput.toByteArray();
+			DatagramPacket packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
+			socket.send(packet);
+			aOutput.close();
+
+			byte[] responseBytes = new byte[10];
+			DatagramPacket response = new DatagramPacket(responseBytes, responseBytes.length);
+			socket.receive(response);
+
+			byte[] trimResponse = new byte[response.getLength()];
+			for (int i=0; i<response.getLength(); i++) {
+				trimResponse[i] = responseBytes[i];
+			}
+			
+			MessageInfo feedback = MessageInfo.parseFrom(trimResponse);
+			if (feedback.getType() != Type.ACK) {
+				socket.close();
+				logger.error("Clean method feedback from CORE");
+				System.exit(0);
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			logger.error(e.getMessage());
+		}
 	}
 
 	

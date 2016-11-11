@@ -6770,6 +6770,10 @@ public final class Structures {
        * <code>ACK = 6;</code>
        */
       ACK(6),
+      /**
+       * <code>CLEAN = 7;</code>
+       */
+      CLEAN(7),
       ;
 
       /**
@@ -6796,6 +6800,10 @@ public final class Structures {
        * <code>ACK = 6;</code>
        */
       public static final int ACK_VALUE = 6;
+      /**
+       * <code>CLEAN = 7;</code>
+       */
+      public static final int CLEAN_VALUE = 7;
 
 
       public final int getNumber() {
@@ -6818,6 +6826,7 @@ public final class Structures {
           case 4: return ACCEPTED;
           case 5: return REJECTED;
           case 6: return ACK;
+          case 7: return CLEAN;
           default: return null;
         }
       }
@@ -10434,16 +10443,16 @@ public final class Structures {
       "lock\022\024\n\002v1\030\001 \002(\0132\010.Point3D\022\024\n\002v2\030\002 \002(\0132\010" +
       ".Point3D\022\024\n\002v3\030\003 \002(\0132\010.Point3D\022\024\n\002v4\030\004 \002" +
       "(\0132\010.Point3D\022\031\n\004prop\030\005 \001(\0132\013.Properties\"" +
-      "\201\001\n\013MessageInfo\022\037\n\004type\030\001 \002(\0162\021.MessageI" +
-      "nfo.Type\"Q\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDER\020\002\022\016" +
+      "\214\001\n\013MessageInfo\022\037\n\004type\030\001 \002(\0162\021.MessageI" +
+      "nfo.Type\"\\\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDER\020\002\022\016" +
       "\n\nBREAKPOINT\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010REJECTED" +
-      "\020\005\022\007\n\003ACK\020\006\"/\n\006Header\022\022\n\nsizeOfData\030\001 \002(" +
-      "\005\022\021\n\tendOfData\030\007 \002(\010\"\254\001\n\013DataPackage\022\032\n\010",
-      "points2D\030\001 \003(\0132\010.Point2D\022\032\n\010points3D\030\002 \003" +
-      "(\0132\010.Point3D\022\031\n\010vertexes\030\003 \003(\0132\007.Vertex\022" +
-      "\024\n\005edges\030\004 \003(\0132\005.Edge\022\034\n\005faces\030\005 \003(\0132\r.T" +
-      "riangleFace\022\026\n\006blocks\030\006 \003(\0132\006.BlockB\037\n\021s" +
-      "tructDefinitionsB\nStructures"
+      "\020\005\022\007\n\003ACK\020\006\022\t\n\005CLEAN\020\007\"/\n\006Header\022\022\n\nsize" +
+      "OfData\030\001 \002(\005\022\021\n\tendOfData\030\007 \002(\010\"\254\001\n\013Data",
+      "Package\022\032\n\010points2D\030\001 \003(\0132\010.Point2D\022\032\n\010p" +
+      "oints3D\030\002 \003(\0132\010.Point3D\022\031\n\010vertexes\030\003 \003(" +
+      "\0132\007.Vertex\022\024\n\005edges\030\004 \003(\0132\005.Edge\022\034\n\005face" +
+      "s\030\005 \003(\0132\r.TriangleFace\022\026\n\006blocks\030\006 \003(\0132\006" +
+      ".BlockB\037\n\021structDefinitionsB\nStructures"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
