@@ -66,3 +66,6 @@ print "po breakpoincie"
 
 Smeshalist.render()
 print "po render"
+
+Smeshalist.clean()
+print "po clean"

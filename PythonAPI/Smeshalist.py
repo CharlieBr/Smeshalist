@@ -219,3 +219,27 @@ def render():
         print 'closing socket'
         sock.close()
 
+
+def clean():
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        # Send 
+        message = structs_pb2.MessageInfo()
+        message.type = structs_pb2.MessageInfo.CLEAN
+        bytesToSend =  message.SerializeToString()
+        sent = sock.sendto(bytesToSend, (IPAdress, port))   
+
+
+        # Receive acknowledge
+        print 'waiting to receive'
+        data, addr = sock.recvfrom(10)
+        reply = structs_pb2.MessageInfo()
+        reply.ParseFromString(data)
+
+        if reply.type != structs_pb2.MessageInfo.ACK:
+            sock.close()
+            exit()                    
+
+    finally:
+        print 'closing socket'
+        sock.close()
