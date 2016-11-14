@@ -138,6 +138,9 @@ public class Smeshalist {
 	public void flushBuffer() {
 
 		logger.info(structuresToSend.size() + " structures waiting to be sent when called flushBuffer()");
+		
+		if(structuresToSend.isEmpty()) return;
+		
 		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
 		ByteArrayOutputStream dataBuffer = new ByteArrayOutputStream();
 		MessageInfo.Builder builder = MessageInfo.newBuilder();
