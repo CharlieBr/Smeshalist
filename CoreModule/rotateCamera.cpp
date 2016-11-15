@@ -18,7 +18,7 @@
 #include "WindowsDataTree.h"
 #endif // __linux__
 
-char SMESHALIST[] = "Smeshalist v0.2";
+char SMESHALIST[] = "Smeshalist v1.0";
 
 float deltaAngleX = 0.8f;
 float deltaAngleY = 0.8f;

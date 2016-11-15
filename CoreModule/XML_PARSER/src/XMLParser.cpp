@@ -31,6 +31,7 @@ XMLParser::XMLParser(string fileName) {
 
     if (!file.is_open()) {
         cerr << "Unable to open user configuration\n";
+        root = NULL;
         return;
     }
 
