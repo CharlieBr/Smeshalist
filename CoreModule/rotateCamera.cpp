@@ -130,9 +130,9 @@ void mouseMove(int x, int y) {
         translationX = mouseSensitivity * (x-oldMousePositionX) * radius / MOVING_PRECISION;
         translationY = mouseSensitivity * (oldMousePositionY-y) * radius / MOVING_PRECISION;
 
-        cameraLookAtX += translationX * cos(deltaAngleX+PI_2);
+        cameraLookAtX -= translationX * sin(deltaAngleX) - translationY*sin(deltaAngleY)*cos(deltaAngleX);
         cameraLookAtY -= translationY * cos(deltaAngleY);
-        cameraLookAtZ += translationX * sin(deltaAngleX+PI_2);
+        cameraLookAtZ += translationX * cos(deltaAngleX) + translationY*sin(deltaAngleY)*sin(deltaAngleX);
     } else {
         deltaAngleX += mouseSensitivity * (x-oldMousePositionX) / MOUSE_PRECISION;
         deltaAngleY += mouseSensitivity * (y-oldMousePositionY) / MOUSE_PRECISION;
@@ -225,11 +225,11 @@ void keyboardEvent(unsigned char key, int x, int y) {
             break;
         case 'y':
             deltaAngleX=0;
-            deltaAngleY=M_PI_2;
+            deltaAngleY=PI_2;
             computeCameraPosition();
             break;
         case 'z':
-            deltaAngleX=M_PI_2;
+            deltaAngleX=PI_2;
             deltaAngleY=0;
             computeCameraPosition();
             break;
