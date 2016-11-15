@@ -111,9 +111,10 @@ public class GroupsTab extends JScrollPane{
 
 	public void cleanGroupCheckboxes(){
 		this.scrollPaneContent.removeAll();
-		this.scrollPaneContent.repaint();
 		this.groupsCheckBoxes.clear();
 		this.groups.clear();
+		this.scrollPaneContent.revalidate();
+		this.scrollPaneContent.repaint();
 	}
 	
 }

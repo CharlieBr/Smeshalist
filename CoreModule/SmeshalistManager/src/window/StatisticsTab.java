@@ -125,9 +125,8 @@ public class StatisticsTab extends JPanel{
 	public void putElementsCount(){
 		
 		cell11.removeAll();
-		cell11.repaint();
 		cell12.removeAll();
-		cell12.repaint();
+
 		
 		cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
@@ -141,6 +140,10 @@ public class StatisticsTab extends JPanel{
 			cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		}
 
+		cell11.revalidate();
+		cell11.repaint();
+		cell12.revalidate();
+		cell12.repaint();
 	}
 	
 	public void putBoundingBox(){
