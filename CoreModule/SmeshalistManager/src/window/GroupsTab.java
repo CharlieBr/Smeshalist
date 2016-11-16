@@ -43,8 +43,9 @@ public class GroupsTab extends JScrollPane{
 		this.setBorder(border);		
 
 		scrollPaneContent = new JPanel();
-		boxLayout = new BoxLayout(scrollPaneContent, BoxLayout.PAGE_AXIS);
-		scrollPaneContent.setLayout(boxLayout);
+//		boxLayout = new BoxLayout(scrollPaneContent, BoxLayout.PAGE_AXIS);
+//		scrollPaneContent.setLayout(boxLayout);
+		scrollPaneContent.setLayout(new GridLayout(0,3));
 		this.setViewportView(scrollPaneContent);
 		
 	}
@@ -81,12 +82,15 @@ public class GroupsTab extends JScrollPane{
 					}
 				});
 				CheckBoxEntry groupCheckBox = new CheckBoxEntry(tmpCheckBox, groups.get(Integer.parseInt(groupName)));
+				groupCheckBox.setPreferredSize(new Dimension(50,25));
 				this.groupsCheckBoxes.add(groupCheckBox);
 
 				scrollPaneContent.add(groupCheckBox);
-				scrollPaneContent.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 			}
 		}
+
+		scrollPaneContent.revalidate();
+		scrollPaneContent.repaint();
 
 	}
 
