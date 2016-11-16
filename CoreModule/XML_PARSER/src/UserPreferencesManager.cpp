@@ -50,6 +50,102 @@ Color UserPreferencesManager::getGroupColor(int groupID) {
     return Color(r, g, b);
 }
 
+int UserPreferencesManager::getCorePort() {
+    int result = 8383;
+
+    string port = getPreference("port.CORE");
+
+    if (port != "") {
+        result = stoi(port);
+    }
+
+    return result;
+}
+
+Color UserPreferencesManager::getXAxisColor() {
+    string rSTR = getPreference("axes.x.r");
+    string gSTR = getPreference("axes.x.g");
+    string bSTR = getPreference("axes.x.b");
+
+    double r = 255, g = 0, b = 0;
+
+    if (rSTR != "") {
+        r = stoi(rSTR);
+    }
+    if (gSTR != "") {
+        g = stoi(gSTR);
+    }
+    if (bSTR != "") {
+        b = stoi(bSTR);
+    }
+
+    return Color(r,g,b);
+}
+
+Color UserPreferencesManager::getYAxisColor() {
+    string rSTR = getPreference("axes.y.r");
+    string gSTR = getPreference("axes.y.g");
+    string bSTR = getPreference("axes.y.b");
+
+    double r = 1, g = 0, b = 0;
+
+    if (rSTR != "") {
+        r = stoi(rSTR)/255.0;
+    }
+    if (gSTR != "") {
+        g = stoi(gSTR)/255.0;
+    }
+    if (bSTR != "") {
+        b = stoi(bSTR)/255.0;
+    }
+
+    return Color(r,g,b);
+}
+
+Color UserPreferencesManager::getZAxisColor() {
+    string rSTR = getPreference("axes.z.r");
+    string gSTR = getPreference("axes.z.g");
+    string bSTR = getPreference("axes.z.b");
+
+    double r = 1, g = 0, b = 0;
+
+    if (rSTR != "") {
+        r = stoi(rSTR)/255.0;
+    }
+    if (gSTR != "") {
+        g = stoi(gSTR)/255.0;
+    }
+    if (bSTR != "") {
+        b = stoi(bSTR)/255.0;
+    }
+
+    return Color(r,g,b);
+}
+
+Color UserPreferencesManager::getCuttingPlaneColor() {
+    string rSTR = getPreference("cuttingPlane.r");
+    string gSTR = getPreference("cuttingPlane.g");
+    string bSTR = getPreference("cuttingPlane.b");
+    string aSTR = getPreference("cuttingPlane.a");
+
+    double r = 0.5, g = 0.1, b = 0.1, a = 0.1;
+
+    if (rSTR != "") {
+        r = stoi(rSTR)/255.0;
+    }
+    if (gSTR != "") {
+        g = stoi(gSTR)/255.0;
+    }
+    if (bSTR != "") {
+        b = stoi(bSTR)/255.0;
+    }
+    if (aSTR != "") {
+        a = stoi(aSTR)/255.0;
+    }
+
+    return Color(r,g,b,a);
+}
+
 string UserPreferencesManager::getPreference(string path) {
     XMLNode* root = parser -> getRoot();
 

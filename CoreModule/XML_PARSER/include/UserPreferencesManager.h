@@ -3,7 +3,7 @@
 
 #include <string>
 #include "XMLParser.h"
-#include "../../STRUCTURES/include/Color.h"
+#include "Color.h"
 
 using namespace std;
 
@@ -16,6 +16,12 @@ class UserPreferencesManager
 
         Color getBackgroudColor();
         Color getGroupColor(int);
+
+        int getCorePort();
+        Color getXAxisColor();
+        Color getYAxisColor();
+        Color getZAxisColor();
+        Color getCuttingPlaneColor();
     protected:
     private:
         XMLParser* parser;

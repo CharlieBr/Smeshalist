@@ -9,7 +9,7 @@
 #define MOVING_PRECISION 400.0
 #define PI_2 1.57
 
-#include "XML_PARSER/include/UserPreferencesManager.h"
+#include "UserPreferencesManager.h"
 #ifdef __linux__
 #include "LinuxServer.h"
 #include "LinuxDataTree.h"
@@ -38,7 +38,11 @@ bool isLeftMouseButtonPressed = false;
 AbstractDataTree* d = NULL;
 AbstractServer* server = NULL;
 
-Color backgroundColor(0,0,0);
+Color backgroundColor = UserPreferencesManager::getInstance()->getBackgroudColor();
+Color xAxis = UserPreferencesManager::getInstance()->getXAxisColor();
+Color yAxis = UserPreferencesManager::getInstance()->getYAxisColor();
+Color zAxis = UserPreferencesManager::getInstance()->getZAxisColor();
+Color BLACK(0,0,0);
 
 void computeCameraPosition() {
     cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius + cameraLookAtX;
@@ -76,10 +80,21 @@ void drawLine(  double x0, double y0, double z0,
     glEnd();
 }
 
+void drawLine(  double x0, double y0, double z0,
+                double x1, double y1, double z1,
+                Color color0, Color color1,
+                double transparent) {
+    drawLine(x0, y0, z0,
+             x1, y1, z1,
+             color0.r(), color0.g(), color0.b(),
+             color1.r(), color1.g(), color1.b(),
+             transparent);
+}
+
 void drawOrigin() {
-    drawLine(-2,0,0,  2,0,0,  0,0,0,  1,0,0,  1);
-    drawLine(0,-2,0,  0,2,0,  0,0,0,  0,1,0,  1);
-    drawLine(0,0,-2,  0,0,2,  0,0,0,  0,0,1,  1);
+    drawLine(-2,0,0,  2,0,0,  BLACK,  xAxis,  1);
+    drawLine(0,-2,0,  0,2,0,  BLACK,  yAxis,  1);
+    drawLine(0,0,-2,  0,0,2,  BLACK,  zAxis,  1);
 }
 
 void drawBoundingBox(AbstractDataTree* d) {
@@ -298,17 +313,6 @@ void tryToRunSmeshalistManager(int argc, char** argv) {
 }
 
 void redirectOutput() {
-    /*time_t rawtime;
-    struct tm * timeinfo;
-    time (&rawtime);
-    timeinfo = localtime (&rawtime);
-
-    char *time = asctime (timeinfo);
-    char* fileName = new char[20];
-    memcpy(fileName, &time[4], 16);
-    fileName[15] = '\0';
-    strcat(fileName, ".log");*/
-
     freopen("info.txt", "w", stdout);
     freopen("error.txt", "w", stderr);
 }
@@ -330,8 +334,6 @@ int main(int argc, char **argv) {
 
     server -> registerStructuresHandler(d);
     server -> registerMouseSensitivityHandler(&mouseSensitivity);
-
-    backgroundColor = UserPreferencesManager::getInstance()->getBackgroudColor();
 
 	initGLUT(argc, argv);
 
