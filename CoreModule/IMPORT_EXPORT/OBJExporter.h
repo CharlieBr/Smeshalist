@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <string>
 #include "AbstractDataTree.h"
 
 class OBJExporter
@@ -13,7 +14,9 @@ class OBJExporter
     protected:
     private:
         ofstream exportedFile;
-        void writeToFile(Element* element);
+        std::map<string, int> elementPosition;
+        int counter = 1;
+        void writeVerticesToFile(Element* element);
         void treeIteration(Data* dataTree);
 
 };
