@@ -32,6 +32,22 @@ void OBJExporter::writeVerticesToFile(Element* element) {
 
 
 
+void OBJExporter::writeEdgeToFile(int number){
+    int startVertice = (elementPosition.find("edge")->second) * number;
+    exportedFile << "l " << startVertice << " " << (startVertice + 1)  << endl;
+}
+
+
+void OBJExporter::writeFaceToFile(int number){
+    int startVertice = (elementPosition.find("face")->second) * number;
+    exportedFile << "f " << startVertice << " " << (startVertice + 1) << " " << (startVertice + 2) << endl;
+}
+
+void OBJExporter::writeBlockToFile(int number){
+
+}
+
+
 void OBJExporter::treeIteration(Data* dataTree) {
     vector<string> types = {"vertex", "edge", "face", "block"};
     vector<int>* groupIDs = dataTree -> get_all_groupIDs();
@@ -39,6 +55,7 @@ void OBJExporter::treeIteration(Data* dataTree) {
 
     for(string structureType : types){
         elementPosition.insert(std::pair<string, int>(structureType, counter));
+        currentTypeCounter = 0;
         for (int groupID : *groupIDs) {
             ElementsGroup* elementsGroup = dataTree -> get_group(groupID);
 
@@ -64,6 +81,35 @@ void OBJExporter::treeIteration(Data* dataTree) {
                 writeVerticesToFile(element);
             }
             
+            if(structureType == "edge"){
+                for(Element* element : *elements){
+                    if(!element -> is_drawable()){
+                        continue;
+                    }
+
+                    currentTypeCounter++;
+                    writeEdgeToFile(currentTypeCounter);
+                }
+            } else if (structureType == "face"){
+                for(Element* element : *elements){
+                    if(!element -> is_drawable()){
+                        continue;
+                    }
+
+                    currentTypeCounter++;
+                    writeFaceToFile(currentTypeCounter);
+                }
+
+            } else if (structureType == "block"){
+                for(Element* element : *elements){
+                    if(!element->is_drawable()){
+                        continue;
+                    } 
+
+                    currentTypeCounter++;
+                    writeBlockToFile(currentTypeCounter);
+                }
+            }
         }
 
     }
