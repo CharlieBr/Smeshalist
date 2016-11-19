@@ -15,12 +15,11 @@ class OBJExporter
     private:
         ofstream exportedFile;
         std::map<string, int> elementPosition;
-        int counter = 1;
         int currentTypeCounter = 0;
         void writeVerticesToFile(Element* element);
-        void writeEdgeToFile(int number);
-        void writeFaceToFile(int number);
-        void writeBlockToFile(int number);
+        void writeEdgeToFile();
+        void writeFaceToFile();
+        void writeBlockToFile();
         void treeIteration(Data* dataTree);
 
 };

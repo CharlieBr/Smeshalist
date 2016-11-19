@@ -19,12 +19,12 @@ void OBJExporter::writeVerticesToFile(Element* element) {
     if(!element -> is_drawable()){
         return;
     }
-    
+
+    currentTypeCounter++;
     vector<Point3D> *vertices = element -> get_vertices();
 
     for(Point3D point : *vertices){
         exportedFile << "v " << point.get_x() << " " << point.get_y() << " " << point.get_z() << endl;
-        counter++;
     }
 
 
@@ -32,18 +32,27 @@ void OBJExporter::writeVerticesToFile(Element* element) {
 
 
 
-void OBJExporter::writeEdgeToFile(int number){
-    int startVertice = (elementPosition.find("edge")->second) * number;
-    exportedFile << "l " << startVertice << " " << (startVertice + 1)  << endl;
+void OBJExporter::writeEdgeToFile(){
+    int numberOfEdges = elementPosition.find("edge")->second;
+    int startVertice = (elementPosition.find("vertex")->second) + 1;
+    for(int i=1; i<=numberOfEdges; i++){
+        exportedFile << "l " << startVertice << " " << (startVertice + 1)  << endl;
+        startVertice += 2;
+    }
 }
 
 
-void OBJExporter::writeFaceToFile(int number){
-    int startVertice = (elementPosition.find("face")->second) * number;
-    exportedFile << "f " << startVertice << " " << (startVertice + 1) << " " << (startVertice + 2) << endl;
+void OBJExporter::writeFaceToFile(){
+    int numberOfFaces = elementPosition.find("face")->second;
+    int startVertice = (elementPosition.find("vertex")->second)+2*(elementPosition.find("edge")->second)+1;
+    for(int i=1; i<= numberOfFaces; i++){
+        exportedFile << "f " << startVertice << " " << (startVertice + 1) << " " << (startVertice + 2) << endl;
+        startVertice += 3;
+    }
+
 }
 
-void OBJExporter::writeBlockToFile(int number){
+void OBJExporter::writeBlockToFile(){
 
 }
 
@@ -51,10 +60,10 @@ void OBJExporter::writeBlockToFile(int number){
 void OBJExporter::treeIteration(Data* dataTree) {
     vector<string> types = {"vertex", "edge", "face", "block"};
     vector<int>* groupIDs = dataTree -> get_all_groupIDs();
-    
+
 
     for(string structureType : types){
-        elementPosition.insert(std::pair<string, int>(structureType, counter));
+
         currentTypeCounter = 0;
         for (int groupID : *groupIDs) {
             ElementsGroup* elementsGroup = dataTree -> get_group(groupID);
@@ -64,9 +73,9 @@ void OBJExporter::treeIteration(Data* dataTree) {
                 continue;
             }
 
-            
+
             ElementsList* elementsList = elementsGroup -> get_list(structureType);
-            if(elementList == NULL){
+            if(elementsList == NULL){
                 continue;
             }
 
@@ -80,38 +89,15 @@ void OBJExporter::treeIteration(Data* dataTree) {
             for(Element* element : *elements) {
                 writeVerticesToFile(element);
             }
-            
-            if(structureType == "edge"){
-                for(Element* element : *elements){
-                    if(!element -> is_drawable()){
-                        continue;
-                    }
-
-                    currentTypeCounter++;
-                    writeEdgeToFile(currentTypeCounter);
-                }
-            } else if (structureType == "face"){
-                for(Element* element : *elements){
-                    if(!element -> is_drawable()){
-                        continue;
-                    }
-
-                    currentTypeCounter++;
-                    writeFaceToFile(currentTypeCounter);
-                }
-
-            } else if (structureType == "block"){
-                for(Element* element : *elements){
-                    if(!element->is_drawable()){
-                        continue;
-                    } 
-
-                    currentTypeCounter++;
-                    writeBlockToFile(currentTypeCounter);
-                }
-            }
         }
 
+        elementPosition.insert(std::pair<string, int>(structureType, currentTypeCounter));
     }
 
+    writeEdgeToFile();
+    writeFaceToFile();
+    writeBlockToFile();
+
 }
+
+
