@@ -269,8 +269,8 @@ public class OptionsTab extends JPanel{
 	}
 
 	public void setTreeName(String treeName){
-		this.treeName = new JLabel(treeName);
-		cleanButton.setEnabled(treeName.compareTo("ACTIVE") != 0);
+		this.treeName.setText(treeName);
+		cleanButton.setEnabled(treeName.equals("ACTIVE"));
 
 		treeButtonsContainer.revalidate();
 		treeButtonsContainer.repaint();
