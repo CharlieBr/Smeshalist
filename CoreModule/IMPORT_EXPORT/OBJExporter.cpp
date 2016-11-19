@@ -53,7 +53,18 @@ void OBJExporter::writeFaceToFile(){
 }
 
 void OBJExporter::writeBlockToFile(){
+    int numberOfBlocks = elementPosition.find("block")->second;
+    int startVertice = (elementPosition.find("vertex")->second)+2*(elementPosition.find("edge")->second)+3*(elementPosition.find("face")->second) + 1;
 
+    for(int i=1; i<= numberOfBlocks; i++){
+        exportedFile<<"o block"<<i<<endl;
+        exportedFile << "f " << startVertice << " " << (startVertice + 1) << " " << (startVertice + 2) << endl;
+        exportedFile << "f " << startVertice << " " << (startVertice + 1) << " " << (startVertice + 3) << endl;
+        exportedFile << "f " << startVertice << " " << (startVertice + 3) << " " << (startVertice + 2) << endl;
+        exportedFile << "f " << (startVertice + 3)<< " " << (startVertice + 1) << " " << (startVertice + 2) << endl;
+
+        startVertice += 4;
+    }
 }
 
 
