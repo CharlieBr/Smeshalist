@@ -1,6 +1,7 @@
 #include "AbstractServer.h"
 
 bool transparentStructures = false;
+extern char SMESHALIST[];
 
 void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
     if (this->handler != NULL) {
@@ -134,6 +135,9 @@ void AbstractServer::sendStaticticsOfGivenTree(AbstractDataTree* tree) {
         (*groupsInfo.mutable_allgroups())[id] = smColor;
     }
     (*info.mutable_groupsinfo()) = groupsInfo;
+
+    //set tree name
+    info.set_treename(tree->getTreeName());
 
     (*message.mutable_statisticsinfo()) = info;
 
@@ -280,11 +284,32 @@ void AbstractServer::startSMServer() {
                     sendStatistics();
                 }
                 break;
+            case sm::ManagerToCoreMessage_MTCMessageType_NEXT_TREE:
+                AbstractDataTree::increaseVisibleDataTreeIndex();
+                changeVisibleTree();
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_PREV_TREE:
+                AbstractDataTree::decreaseVisibleDataTreeIndex();
+                changeVisibleTree();
+                break;
             default:
                 cerr << "Unknow message type\n";
                 break;
         }
     }
+}
+
+void AbstractServer::changeVisibleTree() {
+    Statistics statistics = AbstractDataTree::getCurrentlyVisibleDataTree()->get_statistics();
+    CoordinatesFilter::getInstance() -> recomputeIntersections(&statistics);
+    sendStatisticsOfCurrentlyVisibleTree();
+
+    char title[80];
+    strcpy(title, SMESHALIST);
+    strcat(title, "\t");
+    strcat(title, AbstractDataTree::getCurrentlyVisibleDataTree() -> getTreeName().c_str());
+
+    glutSetWindowTitle(title);
 }
 
 void AbstractServer::startServerInNewThread()

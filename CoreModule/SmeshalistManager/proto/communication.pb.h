@@ -100,11 +100,13 @@ enum ManagerToCoreMessage_MTCMessageType {
   ManagerToCoreMessage_MTCMessageType_ABORT = 4,
   ManagerToCoreMessage_MTCMessageType_HELLO = 5,
   ManagerToCoreMessage_MTCMessageType_SNAPSHOT = 6,
-  ManagerToCoreMessage_MTCMessageType_CLEAN = 7
+  ManagerToCoreMessage_MTCMessageType_CLEAN = 7,
+  ManagerToCoreMessage_MTCMessageType_NEXT_TREE = 8,
+  ManagerToCoreMessage_MTCMessageType_PREV_TREE = 9
 };
 bool ManagerToCoreMessage_MTCMessageType_IsValid(int value);
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MIN = ManagerToCoreMessage_MTCMessageType_OPTIONS;
-const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX = ManagerToCoreMessage_MTCMessageType_CLEAN;
+const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX = ManagerToCoreMessage_MTCMessageType_PREV_TREE;
 const int ManagerToCoreMessage_MTCMessageType_MTCMessageType_ARRAYSIZE = ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* ManagerToCoreMessage_MTCMessageType_descriptor();
@@ -812,6 +814,18 @@ class StatisticsInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   ::sm::GroupsInfo* release_groupsinfo();
   void set_allocated_groupsinfo(::sm::GroupsInfo* groupsinfo);
 
+  // required string treeName = 4;
+  bool has_treename() const;
+  void clear_treename();
+  static const int kTreeNameFieldNumber = 4;
+  const ::std::string& treename() const;
+  void set_treename(const ::std::string& value);
+  void set_treename(const char* value);
+  void set_treename(const char* value, size_t size);
+  ::std::string* mutable_treename();
+  ::std::string* release_treename();
+  void set_allocated_treename(::std::string* treename);
+
   // @@protoc_insertion_point(class_scope:sm.StatisticsInfo)
  private:
   inline void set_has_elementscount();
@@ -820,6 +834,8 @@ class StatisticsInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   inline void clear_has_boundingbox();
   inline void set_has_groupsinfo();
   inline void clear_has_groupsinfo();
+  inline void set_has_treename();
+  inline void clear_has_treename();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -830,6 +846,7 @@ class StatisticsInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   ::sm::ElementsCount* elementscount_;
   ::sm::BoundingBox* boundingbox_;
   ::sm::GroupsInfo* groupsinfo_;
+  ::google::protobuf::internal::ArenaStringPtr treename_;
   friend void  protobuf_AddDesc_communication_2eproto();
   friend void protobuf_AssignDesc_communication_2eproto();
   friend void protobuf_ShutdownFile_communication_2eproto();
@@ -1872,6 +1889,10 @@ class ManagerToCoreMessage : public ::google::protobuf::Message /* @@protoc_inse
     ManagerToCoreMessage_MTCMessageType_SNAPSHOT;
   static const MTCMessageType CLEAN =
     ManagerToCoreMessage_MTCMessageType_CLEAN;
+  static const MTCMessageType NEXT_TREE =
+    ManagerToCoreMessage_MTCMessageType_NEXT_TREE;
+  static const MTCMessageType PREV_TREE =
+    ManagerToCoreMessage_MTCMessageType_PREV_TREE;
   static inline bool MTCMessageType_IsValid(int value) {
     return ManagerToCoreMessage_MTCMessageType_IsValid(value);
   }
@@ -2436,6 +2457,60 @@ inline void StatisticsInfo::set_allocated_groupsinfo(::sm::GroupsInfo* groupsinf
     clear_has_groupsinfo();
   }
   // @@protoc_insertion_point(field_set_allocated:sm.StatisticsInfo.groupsInfo)
+}
+
+// required string treeName = 4;
+inline bool StatisticsInfo::has_treename() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void StatisticsInfo::set_has_treename() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void StatisticsInfo::clear_has_treename() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void StatisticsInfo::clear_treename() {
+  treename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_treename();
+}
+inline const ::std::string& StatisticsInfo::treename() const {
+  // @@protoc_insertion_point(field_get:sm.StatisticsInfo.treeName)
+  return treename_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StatisticsInfo::set_treename(const ::std::string& value) {
+  set_has_treename();
+  treename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sm.StatisticsInfo.treeName)
+}
+inline void StatisticsInfo::set_treename(const char* value) {
+  set_has_treename();
+  treename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sm.StatisticsInfo.treeName)
+}
+inline void StatisticsInfo::set_treename(const char* value, size_t size) {
+  set_has_treename();
+  treename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sm.StatisticsInfo.treeName)
+}
+inline ::std::string* StatisticsInfo::mutable_treename() {
+  set_has_treename();
+  // @@protoc_insertion_point(field_mutable:sm.StatisticsInfo.treeName)
+  return treename_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StatisticsInfo::release_treename() {
+  // @@protoc_insertion_point(field_release:sm.StatisticsInfo.treeName)
+  clear_has_treename();
+  return treename_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StatisticsInfo::set_allocated_treename(::std::string* treename) {
+  if (treename != NULL) {
+    set_has_treename();
+  } else {
+    clear_has_treename();
+  }
+  treename_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), treename);
+  // @@protoc_insertion_point(field_set_allocated:sm.StatisticsInfo.treeName)
 }
 
 // -------------------------------------------------------------------

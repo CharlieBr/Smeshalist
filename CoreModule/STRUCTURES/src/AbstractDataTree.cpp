@@ -174,3 +174,7 @@ void AbstractDataTree::cloneDataTreeToNewInstance(AbstractDataTree* newInstance)
 	}
 	previousInstances.insert(previousInstances.begin(), newInstance);
 }
+
+string AbstractDataTree::getTreeName() {
+    return treeName;
+}

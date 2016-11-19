@@ -58,6 +58,8 @@ class AbstractServer
         void parseTriangleFaceSet(structDefinitions::DataPackage*);
         void parseBlockSet(structDefinitions::DataPackage*);
 
+        void changeVisibleTree();
+
         void getDataPackages();
         void processFiltersDataPackage(sm::ManagerToCoreMessage*);
         void processOptionDataPackage(sm::ManagerToCoreMessage*);

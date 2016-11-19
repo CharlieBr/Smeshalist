@@ -194,41 +194,10 @@ void mouseButton(int button, int state, int x, int y) {
 void setTitle() {
     char title[80];
     strcpy(title, SMESHALIST);
-
-    if (AbstractDataTree::getVisibleDataTreeIndex() == -1) {
-        strcat(title, "\tACTIVE");
-    } else {
-        strcat(title, "\tPREVIOUS: ");
-        strcat(title, to_string(AbstractDataTree::getVisibleDataTreeIndex()+1).c_str());
-    }
+    strcat(title, "\t");
+    strcat(title, AbstractDataTree::getCurrentlyVisibleDataTree() -> getTreeName().c_str());
 
     glutSetWindowTitle(title);
-}
-
-void keyboardEventSpec(int key, int x, int y) {
-    int visibleTreeIndex = AbstractDataTree::getVisibleDataTreeIndex();
-
-    switch(key) {
-        case GLUT_KEY_LEFT:
-            AbstractDataTree::decreaseVisibleDataTreeIndex();
-            break;
-        case GLUT_KEY_RIGHT:
-            AbstractDataTree::increaseVisibleDataTreeIndex();
-            break;
-    }
-
-    //recompute only when data tree changed
-    if (visibleTreeIndex != AbstractDataTree::getVisibleDataTreeIndex()) {
-        switch(key) {
-            case GLUT_KEY_LEFT:
-            case GLUT_KEY_RIGHT:
-                setTitle();
-                Statistics stats = d->getCurrentlyVisibleDataTree()->get_statistics();
-                CoordinatesFilter::getInstance() -> recomputeIntersections(&stats);
-                server -> sendStatisticsOfCurrentlyVisibleTree();
-                break;
-        }
-    }
 }
 
 void keyboardEvent(unsigned char key, int x, int y) {
@@ -270,7 +239,6 @@ void initGLUT(int argc, char **argv) {
 
 	glutMouseFunc(mouseButton);
 	glutKeyboardFunc(keyboardEvent);
-	glutSpecialFunc(keyboardEventSpec);
 	glutMotionFunc(mouseMove);
 
 	glEnable(GL_DEPTH_TEST);
