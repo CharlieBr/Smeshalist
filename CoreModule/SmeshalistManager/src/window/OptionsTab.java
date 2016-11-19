@@ -1,19 +1,16 @@
 package window;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JSlider;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.plaf.metal.MetalScrollButton;
 
 import communication.Communication.ManagerToCoreMessage;
 import communication.Communication.ManagerToCoreMessage.MTCMessageType;
@@ -33,10 +30,15 @@ public class OptionsTab extends JPanel{
 	private JButton applyButton;
 	private JButton continueButton;
 	private JButton abortButton;
+	private JLabel treeName;
 	private JButton snapshotButton;
 	private JButton cleanButton;
+	private JButton nextSnapshotButton;
+	private JButton prevSnapshotButton;
 	private JPanel breakpointButtonsContainer;
 	private JPanel treeButtonsContainer;
+
+	private boolean activeTree;
 
 	public OptionsTab(){
 		
@@ -50,6 +52,9 @@ public class OptionsTab extends JPanel{
 		mainLayout.setAutoCreateGaps(true);
 		mainLayout.setAutoCreateContainerGaps(true);
 		this.setLayout(mainLayout);
+
+		treeName = new JLabel("None");
+		activeTree = false;
 		
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		setBorder(border);
@@ -120,15 +125,36 @@ public class OptionsTab extends JPanel{
 				cleanButtonPressed();
 			}
 		});
+		nextSnapshotButton = new JButton("Next");
+		nextSnapshotButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				nextSnapshotButtonPressed();
+			}
+		});
+		prevSnapshotButton = new JButton("Prev");
+		prevSnapshotButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				prevSnapshotButtonPressed();
+			}
+		});
 
 		breakpointButtonsContainer = new JPanel();
 		breakpointButtonsContainer.add(continueButton);
 		breakpointButtonsContainer.add(abortButton);
 		breakpointButtonsContainer.setBorder(new CompoundBorder(new TitledBorder("Breakpoint"), new EmptyBorder(0, 100, 0, 100)));
 		treeButtonsContainer = new JPanel();
-		treeButtonsContainer.add(snapshotButton);
-		treeButtonsContainer.add(cleanButton);
-		treeButtonsContainer.setBorder(new CompoundBorder(new TitledBorder("Structures Tree"), new EmptyBorder(0, 100, 0, 100)));
+		treeButtonsContainer.setLayout(new BoxLayout(treeButtonsContainer,BoxLayout.PAGE_AXIS));
+		JPanel treeButtonsPanel = new JPanel();
+		treeButtonsPanel.add(snapshotButton);
+		treeButtonsPanel.add(cleanButton);
+		treeButtonsPanel.add(Box.createHorizontalStrut(30));
+		treeButtonsPanel.add(prevSnapshotButton);
+		treeButtonsPanel.add(nextSnapshotButton);
+		treeButtonsContainer.add(treeName);
+		treeButtonsContainer.add(treeButtonsPanel);
+		treeButtonsContainer.setBorder(new CompoundBorder(new TitledBorder("Structures Tree"), new EmptyBorder(0, 50, 0, 50)));
 
 		mainLayout.setHorizontalGroup(
 				mainLayout.createParallelGroup()
@@ -158,8 +184,21 @@ public class OptionsTab extends JPanel{
 				);
 	}
 
+	private void prevSnapshotButtonPressed() {
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(MTCMessageType.PREV_TREE);
 
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
+	}
 
+	private void nextSnapshotButtonPressed() {
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(MTCMessageType.NEXT_TREE);
+
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
+	}
 
 	private void applyButtonPressed(){
 
@@ -227,5 +266,13 @@ public class OptionsTab extends JPanel{
 	public void breakpoint(){
 		abortButton.setEnabled(true);
 		continueButton.setEnabled(true);
+	}
+
+	public void setTreeName(String treeName){
+		this.treeName = new JLabel(treeName);
+		cleanButton.setEnabled(treeName.compareTo("ACTIVE") != 0);
+
+		treeButtonsContainer.revalidate();
+		treeButtonsContainer.repaint();
 	}
 }

@@ -22,7 +22,7 @@ public class MainWindow extends JFrame {
 	private MainWindow() {
 		this.initializeView();
 
-		this.setSize(500, 500);
+		this.setSize(500, 550);
 
 		setVisible(true);
 	}
@@ -72,6 +72,7 @@ public class MainWindow extends JFrame {
 				this.statisticsTab.setBoundingBox(toManagerMessage.getStatisticsInfo().getBoundingBox());
 				this.statisticsTab.setElementsCount(toManagerMessage.getStatisticsInfo().getElementsCount());
 				this.filtersTab.setGroupsInfo(toManagerMessage.getStatisticsInfo().getGroupsInfo());
+				this.optionsTab.setTreeName(toManagerMessage.getStatisticsInfo().getTreeName());
 				break;
 			default:
 				break;

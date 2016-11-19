@@ -34,6 +34,7 @@ message StatisticsInfo{
 	required ElementsCount elementsCount = 1;
 	required BoundingBox boundingBox = 2;
 	required GroupsInfo groupsInfo = 3;
+	required string treeName = 4;
 }
 
 message CoreToManagerMessage{
@@ -109,6 +110,8 @@ message ManagerToCoreMessage{
         HELLO = 5;
 		SNAPSHOT = 6;
 		CLEAN = 7;
+		NEXT_TREE = 8;
+		PREV_TREE = 9;
 	}
 
 	required MTCMessageType messageType = 1;
