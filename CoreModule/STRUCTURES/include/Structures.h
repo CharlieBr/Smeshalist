@@ -2,7 +2,6 @@
 #define STRUCTURES_H
 
 #include "Element.h"
-#include <GL/glut.h>
 
 // -----------------------------------------------
 // ----------- mesh elements ---------------------
