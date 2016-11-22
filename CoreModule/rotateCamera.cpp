@@ -44,6 +44,9 @@ Color yAxis = UserPreferencesManager::getInstance()->getYAxisColor();
 Color zAxis = UserPreferencesManager::getInstance()->getZAxisColor();
 Color BLACK(0,0,0);
 
+GLfloat light_diffuse[] = {1.0, 1.0, 1.0, 1.0};
+GLfloat light_position[] = {0.0, 1.0, 0.0, 0.0};
+
 void computeCameraPosition() {
     cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius + cameraLookAtX;
     cameraY = sin(deltaAngleY)*radius + cameraLookAtY;
@@ -114,6 +117,17 @@ void drawBoundingBox(AbstractDataTree* d) {
     drawLine(d->get_max_x(),d->get_min_y(),d->get_min_z(),  d->get_min_x(),d->get_min_y(),d->get_min_z(),  0,0,0,  0,0,0, 0.2);
 }
 
+void addDirectionalLight() {
+   glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
+   glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+   glEnable(GL_LIGHT0);
+   glEnable(GL_LIGHTING);
+
+   glMatrixMode(GL_MODELVIEW);
+   glEnable(GL_COLOR_MATERIAL);
+   glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_TRUE);
+}
+
 void renderScene(void) {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -122,12 +136,15 @@ void renderScene(void) {
 
 	glLoadIdentity();
 	gluLookAt(cameraX, cameraY, cameraZ, cameraLookAtX, cameraLookAtY, cameraLookAtZ, 0.0f, 1.0f, 0.0f);
+	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 
     glPushMatrix();
         drawOrigin();
         glColor3f(0.1f, 0.1f, 0.1f);
 
+        glEnable(GL_LIGHTING);
         d -> getCurrentlyVisibleDataTree() -> draw_elements();
+        glDisable(GL_LIGHTING);
         drawBoundingBox(d -> getCurrentlyVisibleDataTree());
 
         CoordinatesFilter::getInstance() -> draw();
@@ -245,6 +262,8 @@ void initGLUT(int argc, char **argv) {
 
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    addDirectionalLight();
 }
 
 inline bool isFileExists(const char* name) {
@@ -314,3 +333,4 @@ int main(int argc, char **argv) {
 
 	return 0;
 }
+

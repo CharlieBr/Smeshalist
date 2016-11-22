@@ -3,6 +3,52 @@
 
 #include "Element.h"
 
+//CMATHUTILS
+class Utils {
+    public:
+
+    static double* getVectorProduct(double* a, double* b) {
+        double* result = new double[3];
+        result[0] = a[1]*b[2] - a[2]*b[1];
+        result[1] = -(a[0]*b[2] - a[2]*b[0]);
+        result[2] = a[0]*b[1] - a[1]*b[0];
+        cout << result[0] << " " << result[1] << " " << result[2] << endl;
+        return result;
+    }
+
+    static double* getNormal(Point3D* a, Point3D* b, Point3D* c) {
+        cout << a->get_x() << " " << a->get_y() << " " << a->get_z() << endl;
+        cout << b->get_x() << " " << b->get_y() << " " << b->get_z() << endl;
+        cout << c->get_x() << " " << c->get_y() << " " << c->get_z() << endl;
+
+        int x=0;
+        int y=1;
+        int z=2;
+
+        double ab[3] = {b->get_x()-a->get_x(), b->get_y()-a->get_y(), b->get_z()-a->get_z()};
+        double ac[3] = {c->get_x()-a->get_x(), c->get_y()-a->get_y(), c->get_z()-a->get_z()};
+
+        double* product = getVectorProduct(ab, ac);
+        cout << product[0] << " " << product[1] << " " << product[2] << endl;
+        double len = std::sqrt(product[x]*product[x] + product[y]*product[y] + product[z]*product[z]);
+
+        if (len == 0) {
+            double* result = new double[3]{0, 0, 0};
+            return result;
+        }
+
+        cout << len << " " << product[0] << " " << product[1] << " " << product[2] << endl;
+
+        product[x] /= len;
+        product[y] /= len;
+        product[z] /= len;
+
+        cout << len << " " << product[0] << " " << product[1] << " " << product[2] << endl;
+
+        return product;
+    }
+};
+
 // -----------------------------------------------
 // ----------- mesh elements ---------------------
 // -----------------------------------------------
@@ -51,14 +97,15 @@ class Edge : public Element {
 
 class Face : public Element {
     public:
+        double* normal;
         Face(vector<Point3D> * points)
-            : Element(points, "face"){};
+            : Element(points, "face"){ normal = Utils::getNormal(&vertices[0], &vertices[1], &vertices[2]); };
         Face(vector<Point3D> * points, Label label)
-            : Element(points, "face", label) {};
+            : Element(points, "face", label) { normal = Utils::getNormal(&vertices[0], &vertices[1], &vertices[2]); };
         Face(vector<Point3D> * points, double quality)
-            : Element(points, "face", quality){};
+            : Element(points, "face", quality){ normal = Utils::getNormal(&vertices[0], &vertices[1], &vertices[2]); };
         Face(vector<Point3D> * points, Label label, double quality)
-            : Element(points, "face", label, quality) {};
+            : Element(points, "face", label, quality) { normal = Utils::getNormal(&vertices[0], &vertices[1], &vertices[2]); };
 
         virtual void draw(Color);
         Face* clone() {
@@ -69,20 +116,22 @@ class Face : public Element {
             Label newLabel(label.get_label_text());
             Face* f = new Face(&newVertices, newLabel, quality);
             f -> set_draw_flag(to_draw);
+            f -> normal = normal;
             return f;
         }
 };
 
 class Block : public Element {
     public:
+        vector<double*> normals;
         Block(vector<Point3D> * points)
-            : Element(points, "block") {};
+            : Element(points, "block") {computeNormals();};
         Block(vector<Point3D> * points, Label label)
-            : Element(points, "block", label) {};
+            : Element(points, "block", label) {computeNormals();};
         Block(vector<Point3D> * points, double quality)
-            : Element(points, "block", quality) {};
+            : Element(points, "block", quality) {computeNormals();};
         Block(vector<Point3D> * points, Label label, double quality)
-            : Element(points, "block", label, quality) {};
+            : Element(points, "block", label, quality) {computeNormals();};
 
         virtual void draw(Color);
         Block* clone() {
@@ -94,6 +143,17 @@ class Block : public Element {
             Block* b = new Block(&newVertices, newLabel, quality);
             b -> set_draw_flag(to_draw);
             return b;
+        }
+        void computeNormals() {
+            Point3D v1 = this -> vertices[0];
+            Point3D v2 = this -> vertices[1];
+            Point3D v3 = this -> vertices[2];
+            Point3D v4 = this -> vertices[3];
+
+            normals.push_back(Utils::getNormal(&v1, &v2, &v3));
+            normals.push_back(Utils::getNormal(&v1, &v2, &v4));
+            normals.push_back(Utils::getNormal(&v1, &v4, &v3));
+            normals.push_back(Utils::getNormal(&v4, &v2, &v3));
         }
 };
 
