@@ -1,6 +1,5 @@
 #include "Structures.h"
-
-extern bool transparentStructures;
+#include <string.h>
 
 // ----------------------------
 // -------- points ------------
@@ -25,6 +24,15 @@ void Vertex::draw(Color color){
     glBegin(GL_POINTS);
         glVertex3f(point.get_x(), point.get_y(), point.get_z());
     glEnd();
+/*
+    glColor3f(1,0,0);
+    glDisable(GL_DEPTH_TEST);
+    glDepthMask(GL_FALSE);
+    glRasterPos2f(0,0);
+    glPushAttrib(GL_LIST_BIT);                          // Pushes The Display List Bits
+    glListBase('a' - 32);                              // Sets The Base Character to 32
+    glCallLists(strlen("Perspective"), GL_UNSIGNED_BYTE, "Perspective");    // Draws The Display List Textstrlen(label)
+    glPopAttrib();*/
 }
 
 void Edge::draw(Color color){

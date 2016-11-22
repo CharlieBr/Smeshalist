@@ -5,6 +5,8 @@
 #include "Data.h"
 using namespace std;
 
+bool transparentStructures = false;
+
 struct test_struct{
     string name = "Kasia";
 };
@@ -98,7 +100,7 @@ int main(void){
     assert( data -> get_min_z() == -8.9 );
     assert( data -> get_max_z() == 8.9 );
 
-    assert(Color(1) == data -> get_color_for_group(1));
+    assert(Color(0.0, 1.0, 0.0) == data -> get_color_for_group(1));
     assert(Color(2) == data -> get_color_for_group(2));
     assert(Color(-1.0, -1.0, -1.0) == data -> get_color_for_group(3));
 
@@ -209,11 +211,11 @@ int main(void){
     assert( statistics.visible_elements_numbers["edge"]== 0 );
 
     assert( data -> get_min_x() == DBL_MAX );
-    assert( data -> get_max_x() == DBL_MIN );
+    assert( data -> get_max_x() == -DBL_MAX );
     assert( data -> get_min_y() == DBL_MAX );
-    assert( data -> get_max_y() == DBL_MIN );
+    assert( data -> get_max_y() == -DBL_MAX );
     assert( data -> get_min_z() == DBL_MAX );
-    assert( data -> get_max_z() == DBL_MIN );
+    assert( data -> get_max_z() == -DBL_MAX );
 
     return 0;
 }
