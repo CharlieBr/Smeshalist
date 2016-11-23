@@ -18,7 +18,6 @@ void LinuxCommunication::SetupSocket() {
 	core_addr.sin_family = AF_INET;
 	core_addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 	core_addr.sin_port = htons(core_port);
-
 }
 
 void LinuxCommunication::CleanupSocket() {

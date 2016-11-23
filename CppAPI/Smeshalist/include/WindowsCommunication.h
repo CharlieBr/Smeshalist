@@ -3,10 +3,9 @@
 
 #include "AbstractCommunication.h"
 
-#include <unistd.h>
-#include <cerrno>
-#include <cstdio>
-#include <cstring>
+#include <winsock.h>
+
+#pragma comment(lib, "ws2_32.lib")
 
 using namespace std;
 
@@ -18,6 +17,13 @@ class WindowsCommunication : public AbstractCommuniation {
 		void CleanupSocket();
 		int SendBytesToCore(const void* buffer, int buffer_size) const;
 		int GetBytesFromCore(char* buffer, int buffer_size);
+    private:
+		SOCKET* createSocket(sockaddr_in*, int);
+
+		SOCKET core_socket;
+		WSADATA wsa;
+		struct sockaddr_in core_addr;
+        int core_addr_size;
 };
 
 #endif // WINDOWS_COMMUNICATION_H
