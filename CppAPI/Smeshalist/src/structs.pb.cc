@@ -24,9 +24,6 @@ namespace {
 const ::google::protobuf::Descriptor* Properties_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Properties_reflection_ = NULL;
-const ::google::protobuf::Descriptor* Point2D_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  Point2D_reflection_ = NULL;
 const ::google::protobuf::Descriptor* Point3D_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   Point3D_reflection_ = NULL;
@@ -79,29 +76,11 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Properties),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Properties, _internal_metadata_),
       -1);
-  Point2D_descriptor_ = file->message_type(1);
-  static const int Point2D_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point2D, x_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point2D, y_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point2D, prop_),
-  };
-  Point2D_reflection_ =
-    ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
-      Point2D_descriptor_,
-      Point2D::default_instance_,
-      Point2D_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point2D, _has_bits_[0]),
-      -1,
-      -1,
-      sizeof(Point2D),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point2D, _internal_metadata_),
-      -1);
-  Point3D_descriptor_ = file->message_type(2);
-  static const int Point3D_offsets_[4] = {
+  Point3D_descriptor_ = file->message_type(1);
+  static const int Point3D_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3D, x_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3D, y_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3D, z_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3D, prop_),
   };
   Point3D_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -114,7 +93,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Point3D),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Point3D, _internal_metadata_),
       -1);
-  Vertex_descriptor_ = file->message_type(3);
+  Vertex_descriptor_ = file->message_type(2);
   static const int Vertex_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vertex, point_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vertex, number_),
@@ -131,7 +110,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Vertex),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Vertex, _internal_metadata_),
       -1);
-  Edge_descriptor_ = file->message_type(4);
+  Edge_descriptor_ = file->message_type(3);
   static const int Edge_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Edge, v1_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Edge, v2_),
@@ -148,7 +127,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Edge),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Edge, _internal_metadata_),
       -1);
-  TriangleFace_descriptor_ = file->message_type(5);
+  TriangleFace_descriptor_ = file->message_type(4);
   static const int TriangleFace_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriangleFace, v1_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriangleFace, v2_),
@@ -166,7 +145,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(TriangleFace),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TriangleFace, _internal_metadata_),
       -1);
-  Block_descriptor_ = file->message_type(6);
+  Block_descriptor_ = file->message_type(5);
   static const int Block_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Block, v1_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Block, v2_),
@@ -185,7 +164,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Block),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Block, _internal_metadata_),
       -1);
-  MessageInfo_descriptor_ = file->message_type(7);
+  MessageInfo_descriptor_ = file->message_type(6);
   static const int MessageInfo_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, type_),
   };
@@ -201,7 +180,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MessageInfo, _internal_metadata_),
       -1);
   MessageInfo_Type_descriptor_ = MessageInfo_descriptor_->enum_type(0);
-  Header_descriptor_ = file->message_type(8);
+  Header_descriptor_ = file->message_type(7);
   static const int Header_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, sizeofdata_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, endofdata_),
@@ -217,9 +196,8 @@ void protobuf_AssignDesc_structs_2eproto() {
       sizeof(Header),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, _internal_metadata_),
       -1);
-  DataPackage_descriptor_ = file->message_type(9);
-  static const int DataPackage_offsets_[6] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, points2d_),
+  DataPackage_descriptor_ = file->message_type(8);
+  static const int DataPackage_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, points3d_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, vertexes_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, edges_),
@@ -252,8 +230,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       Properties_descriptor_, &Properties::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-      Point2D_descriptor_, &Point2D::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       Point3D_descriptor_, &Point3D::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
       Vertex_descriptor_, &Vertex::default_instance());
@@ -276,8 +252,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_structs_2eproto() {
   delete Properties::default_instance_;
   delete Properties_reflection_;
-  delete Point2D::default_instance_;
-  delete Point2D_reflection_;
   delete Point3D::default_instance_;
   delete Point3D_reflection_;
   delete Vertex::default_instance_;
@@ -305,44 +279,38 @@ void protobuf_AddDesc_structs_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\rstructs.proto\022\021structDefinitions\"=\n\nPr"
     "operties\022\017\n\007quality\030\001 \001(\001\022\r\n\005label\030\002 \001(\t"
-    "\022\017\n\007groupId\030\003 \001(\005\"L\n\007Point2D\022\t\n\001x\030\001 \002(\001\022"
-    "\t\n\001y\030\002 \002(\001\022+\n\004prop\030\003 \001(\0132\035.structDefinit"
-    "ions.Properties\"W\n\007Point3D\022\t\n\001x\030\001 \002(\001\022\t\n"
-    "\001y\030\002 \002(\001\022\t\n\001z\030\003 \002(\001\022+\n\004prop\030\004 \001(\0132\035.stru"
-    "ctDefinitions.Properties\"p\n\006Vertex\022)\n\005po"
-    "int\030\001 \002(\0132\032.structDefinitions.Point3D\022\016\n"
-    "\006number\030\002 \002(\001\022+\n\004prop\030\003 \001(\0132\035.structDefi"
-    "nitions.Properties\"\203\001\n\004Edge\022&\n\002v1\030\001 \002(\0132"
-    "\032.structDefinitions.Point3D\022&\n\002v2\030\002 \002(\0132"
-    "\032.structDefinitions.Point3D\022+\n\004prop\030\003 \001("
-    "\0132\035.structDefinitions.Properties\"\263\001\n\014Tri"
-    "angleFace\022&\n\002v1\030\001 \002(\0132\032.structDefinition"
-    "s.Point3D\022&\n\002v2\030\002 \002(\0132\032.structDefinition"
-    "s.Point3D\022&\n\002v3\030\003 \002(\0132\032.structDefinition"
-    "s.Point3D\022+\n\004prop\030\004 \001(\0132\035.structDefiniti"
-    "ons.Properties\"\324\001\n\005Block\022&\n\002v1\030\001 \002(\0132\032.s"
+    "\022\017\n\007groupId\030\003 \001(\005\"*\n\007Point3D\022\t\n\001x\030\001 \002(\001\022"
+    "\t\n\001y\030\002 \002(\001\022\t\n\001z\030\003 \002(\001\"p\n\006Vertex\022)\n\005point"
+    "\030\001 \002(\0132\032.structDefinitions.Point3D\022\016\n\006nu"
+    "mber\030\002 \002(\001\022+\n\004prop\030\003 \001(\0132\035.structDefinit"
+    "ions.Properties\"\203\001\n\004Edge\022&\n\002v1\030\001 \002(\0132\032.s"
     "tructDefinitions.Point3D\022&\n\002v2\030\002 \002(\0132\032.s"
-    "tructDefinitions.Point3D\022&\n\002v3\030\003 \002(\0132\032.s"
-    "tructDefinitions.Point3D\022&\n\002v4\030\004 \002(\0132\032.s"
-    "tructDefinitions.Point3D\022+\n\004prop\030\005 \001(\0132\035"
-    ".structDefinitions.Properties\"\236\001\n\013Messag"
-    "eInfo\0221\n\004type\030\001 \002(\0162#.structDefinitions."
-    "MessageInfo.Type\"\\\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RE"
-    "NDER\020\002\022\016\n\nBREAKPOINT\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010"
-    "REJECTED\020\005\022\007\n\003ACK\020\006\022\t\n\005CLEAN\020\007\"/\n\006Header"
-    "\022\022\n\nsizeOfData\030\001 \002(\005\022\021\n\tendOfData\030\007 \002(\010\""
-    "\230\002\n\013DataPackage\022,\n\010points2D\030\001 \003(\0132\032.stru"
-    "ctDefinitions.Point2D\022,\n\010points3D\030\002 \003(\0132"
-    "\032.structDefinitions.Point3D\022+\n\010vertexes\030"
-    "\003 \003(\0132\031.structDefinitions.Vertex\022&\n\005edge"
-    "s\030\004 \003(\0132\027.structDefinitions.Edge\022.\n\005face"
-    "s\030\005 \003(\0132\037.structDefinitions.TriangleFace"
-    "\022(\n\006blocks\030\006 \003(\0132\030.structDefinitions.Blo"
-    "ck", 1402);
+    "tructDefinitions.Point3D\022+\n\004prop\030\003 \001(\0132\035"
+    ".structDefinitions.Properties\"\263\001\n\014Triang"
+    "leFace\022&\n\002v1\030\001 \002(\0132\032.structDefinitions.P"
+    "oint3D\022&\n\002v2\030\002 \002(\0132\032.structDefinitions.P"
+    "oint3D\022&\n\002v3\030\003 \002(\0132\032.structDefinitions.P"
+    "oint3D\022+\n\004prop\030\004 \001(\0132\035.structDefinitions"
+    ".Properties\"\324\001\n\005Block\022&\n\002v1\030\001 \002(\0132\032.stru"
+    "ctDefinitions.Point3D\022&\n\002v2\030\002 \002(\0132\032.stru"
+    "ctDefinitions.Point3D\022&\n\002v3\030\003 \002(\0132\032.stru"
+    "ctDefinitions.Point3D\022&\n\002v4\030\004 \002(\0132\032.stru"
+    "ctDefinitions.Point3D\022+\n\004prop\030\005 \001(\0132\035.st"
+    "ructDefinitions.Properties\"\236\001\n\013MessageIn"
+    "fo\0221\n\004type\030\001 \002(\0162#.structDefinitions.Mes"
+    "sageInfo.Type\"\\\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDE"
+    "R\020\002\022\016\n\nBREAKPOINT\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010REJ"
+    "ECTED\020\005\022\007\n\003ACK\020\006\022\t\n\005CLEAN\020\007\"/\n\006Header\022\022\n"
+    "\nsizeOfData\030\001 \002(\005\022\021\n\tendOfData\030\007 \002(\010\"\352\001\n"
+    "\013DataPackage\022,\n\010points3D\030\001 \003(\0132\032.structD"
+    "efinitions.Point3D\022+\n\010vertexes\030\002 \003(\0132\031.s"
+    "tructDefinitions.Vertex\022&\n\005edges\030\003 \003(\0132\027"
+    ".structDefinitions.Edge\022.\n\005faces\030\004 \003(\0132\037"
+    ".structDefinitions.TriangleFace\022(\n\006block"
+    "s\030\005 \003(\0132\030.structDefinitions.Block", 1233);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "structs.proto", &protobuf_RegisterTypes);
   Properties::default_instance_ = new Properties();
-  Point2D::default_instance_ = new Point2D();
   Point3D::default_instance_ = new Point3D();
   Vertex::default_instance_ = new Vertex();
   Edge::default_instance_ = new Edge();
@@ -352,7 +320,6 @@ void protobuf_AddDesc_structs_2eproto() {
   Header::default_instance_ = new Header();
   DataPackage::default_instance_ = new DataPackage();
   Properties::default_instance_->InitAsDefaultInstance();
-  Point2D::default_instance_->InitAsDefaultInstance();
   Point3D::default_instance_->InitAsDefaultInstance();
   Vertex::default_instance_->InitAsDefaultInstance();
   Edge::default_instance_->InitAsDefaultInstance();
@@ -827,462 +794,9 @@ void Properties::clear_groupid() {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Point2D::kXFieldNumber;
-const int Point2D::kYFieldNumber;
-const int Point2D::kPropFieldNumber;
-#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
-
-Point2D::Point2D()
-  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
-  SharedCtor();
-  // @@protoc_insertion_point(constructor:structDefinitions.Point2D)
-}
-
-void Point2D::InitAsDefaultInstance() {
-  prop_ = const_cast< ::structDefinitions::Properties*>(&::structDefinitions::Properties::default_instance());
-}
-
-Point2D::Point2D(const Point2D& from)
-  : ::google::protobuf::Message(),
-    _internal_metadata_(NULL) {
-  SharedCtor();
-  MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:structDefinitions.Point2D)
-}
-
-void Point2D::SharedCtor() {
-  _cached_size_ = 0;
-  x_ = 0;
-  y_ = 0;
-  prop_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-Point2D::~Point2D() {
-  // @@protoc_insertion_point(destructor:structDefinitions.Point2D)
-  SharedDtor();
-}
-
-void Point2D::SharedDtor() {
-  if (this != default_instance_) {
-    delete prop_;
-  }
-}
-
-void Point2D::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* Point2D::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return Point2D_descriptor_;
-}
-
-const Point2D& Point2D::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_structs_2eproto();
-  return *default_instance_;
-}
-
-Point2D* Point2D::default_instance_ = NULL;
-
-Point2D* Point2D::New(::google::protobuf::Arena* arena) const {
-  Point2D* n = new Point2D;
-  if (arena != NULL) {
-    arena->Own(n);
-  }
-  return n;
-}
-
-void Point2D::Clear() {
-// @@protoc_insertion_point(message_clear_start:structDefinitions.Point2D)
-#if defined(__clang__)
-#define ZR_HELPER_(f) \
-  _Pragma("clang diagnostic push") \
-  _Pragma("clang diagnostic ignored \"-Winvalid-offsetof\"") \
-  __builtin_offsetof(Point2D, f) \
-  _Pragma("clang diagnostic pop")
-#else
-#define ZR_HELPER_(f) reinterpret_cast<char*>(\
-  &reinterpret_cast<Point2D*>(16)->f)
-#endif
-
-#define ZR_(first, last) do {\
-  ::memset(&first, 0,\
-           ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
-} while (0)
-
-  if (_has_bits_[0 / 32] & 7u) {
-    ZR_(x_, y_);
-    if (has_prop()) {
-      if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();
-    }
-  }
-
-#undef ZR_HELPER_
-#undef ZR_
-
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  if (_internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->Clear();
-  }
-}
-
-bool Point2D::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
-  ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:structDefinitions.Point2D)
-  for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
-    tag = p.first;
-    if (!p.second) goto handle_unusual;
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required double x = 1;
-      case 1: {
-        if (tag == 9) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &x_)));
-          set_has_x();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(17)) goto parse_y;
-        break;
-      }
-
-      // required double y = 2;
-      case 2: {
-        if (tag == 17) {
-         parse_y:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &y_)));
-          set_has_y();
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(26)) goto parse_prop;
-        break;
-      }
-
-      // optional .structDefinitions.Properties prop = 3;
-      case 3: {
-        if (tag == 26) {
-         parse_prop:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_prop()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectAtEnd()) goto success;
-        break;
-      }
-
-      default: {
-      handle_unusual:
-        if (tag == 0 ||
-            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          goto success;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-success:
-  // @@protoc_insertion_point(parse_success:structDefinitions.Point2D)
-  return true;
-failure:
-  // @@protoc_insertion_point(parse_failure:structDefinitions.Point2D)
-  return false;
-#undef DO_
-}
-
-void Point2D::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:structDefinitions.Point2D)
-  // required double x = 1;
-  if (has_x()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(1, this->x(), output);
-  }
-
-  // required double y = 2;
-  if (has_y()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->y(), output);
-  }
-
-  // optional .structDefinitions.Properties prop = 3;
-  if (has_prop()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, *this->prop_, output);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-  // @@protoc_insertion_point(serialize_end:structDefinitions.Point2D)
-}
-
-::google::protobuf::uint8* Point2D::InternalSerializeWithCachedSizesToArray(
-    bool deterministic, ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.Point2D)
-  // required double x = 1;
-  if (has_x()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(1, this->x(), target);
-  }
-
-  // required double y = 2;
-  if (has_y()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->y(), target);
-  }
-
-  // optional .structDefinitions.Properties prop = 3;
-  if (has_prop()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        3, *this->prop_, false, target);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  // @@protoc_insertion_point(serialize_to_array_end:structDefinitions.Point2D)
-  return target;
-}
-
-int Point2D::RequiredFieldsByteSizeFallback() const {
-// @@protoc_insertion_point(required_fields_byte_size_fallback_start:structDefinitions.Point2D)
-  int total_size = 0;
-
-  if (has_x()) {
-    // required double x = 1;
-    total_size += 1 + 8;
-  }
-
-  if (has_y()) {
-    // required double y = 2;
-    total_size += 1 + 8;
-  }
-
-  return total_size;
-}
-int Point2D::ByteSize() const {
-// @@protoc_insertion_point(message_byte_size_start:structDefinitions.Point2D)
-  int total_size = 0;
-
-  if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
-    // required double x = 1;
-    total_size += 1 + 8;
-
-    // required double y = 2;
-    total_size += 1 + 8;
-
-  } else {
-    total_size += RequiredFieldsByteSizeFallback();
-  }
-  // optional .structDefinitions.Properties prop = 3;
-  if (has_prop()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->prop_);
-  }
-
-  if (_internal_metadata_.have_unknown_fields()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void Point2D::MergeFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_merge_from_start:structDefinitions.Point2D)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  const Point2D* source = 
-      ::google::protobuf::internal::DynamicCastToGenerated<const Point2D>(
-          &from);
-  if (source == NULL) {
-  // @@protoc_insertion_point(generalized_merge_from_cast_fail:structDefinitions.Point2D)
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-  // @@protoc_insertion_point(generalized_merge_from_cast_success:structDefinitions.Point2D)
-    MergeFrom(*source);
-  }
-}
-
-void Point2D::MergeFrom(const Point2D& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.Point2D)
-  if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_x()) {
-      set_x(from.x());
-    }
-    if (from.has_y()) {
-      set_y(from.y());
-    }
-    if (from.has_prop()) {
-      mutable_prop()->::structDefinitions::Properties::MergeFrom(from.prop());
-    }
-  }
-  if (from._internal_metadata_.have_unknown_fields()) {
-    mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-  }
-}
-
-void Point2D::CopyFrom(const ::google::protobuf::Message& from) {
-// @@protoc_insertion_point(generalized_copy_from_start:structDefinitions.Point2D)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void Point2D::CopyFrom(const Point2D& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:structDefinitions.Point2D)
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool Point2D::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
-
-  return true;
-}
-
-void Point2D::Swap(Point2D* other) {
-  if (other == this) return;
-  InternalSwap(other);
-}
-void Point2D::InternalSwap(Point2D* other) {
-  std::swap(x_, other->x_);
-  std::swap(y_, other->y_);
-  std::swap(prop_, other->prop_);
-  std::swap(_has_bits_[0], other->_has_bits_[0]);
-  _internal_metadata_.Swap(&other->_internal_metadata_);
-  std::swap(_cached_size_, other->_cached_size_);
-}
-
-::google::protobuf::Metadata Point2D::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = Point2D_descriptor_;
-  metadata.reflection = Point2D_reflection_;
-  return metadata;
-}
-
-#if PROTOBUF_INLINE_NOT_IN_HEADERS
-// Point2D
-
-// required double x = 1;
-bool Point2D::has_x() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void Point2D::set_has_x() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void Point2D::clear_has_x() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-void Point2D::clear_x() {
-  x_ = 0;
-  clear_has_x();
-}
- double Point2D::x() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.Point2D.x)
-  return x_;
-}
- void Point2D::set_x(double value) {
-  set_has_x();
-  x_ = value;
-  // @@protoc_insertion_point(field_set:structDefinitions.Point2D.x)
-}
-
-// required double y = 2;
-bool Point2D::has_y() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-void Point2D::set_has_y() {
-  _has_bits_[0] |= 0x00000002u;
-}
-void Point2D::clear_has_y() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-void Point2D::clear_y() {
-  y_ = 0;
-  clear_has_y();
-}
- double Point2D::y() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.Point2D.y)
-  return y_;
-}
- void Point2D::set_y(double value) {
-  set_has_y();
-  y_ = value;
-  // @@protoc_insertion_point(field_set:structDefinitions.Point2D.y)
-}
-
-// optional .structDefinitions.Properties prop = 3;
-bool Point2D::has_prop() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-void Point2D::set_has_prop() {
-  _has_bits_[0] |= 0x00000004u;
-}
-void Point2D::clear_has_prop() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-void Point2D::clear_prop() {
-  if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();
-  clear_has_prop();
-}
-const ::structDefinitions::Properties& Point2D::prop() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.Point2D.prop)
-  return prop_ != NULL ? *prop_ : *default_instance_->prop_;
-}
-::structDefinitions::Properties* Point2D::mutable_prop() {
-  set_has_prop();
-  if (prop_ == NULL) {
-    prop_ = new ::structDefinitions::Properties;
-  }
-  // @@protoc_insertion_point(field_mutable:structDefinitions.Point2D.prop)
-  return prop_;
-}
-::structDefinitions::Properties* Point2D::release_prop() {
-  // @@protoc_insertion_point(field_release:structDefinitions.Point2D.prop)
-  clear_has_prop();
-  ::structDefinitions::Properties* temp = prop_;
-  prop_ = NULL;
-  return temp;
-}
-void Point2D::set_allocated_prop(::structDefinitions::Properties* prop) {
-  delete prop_;
-  prop_ = prop;
-  if (prop) {
-    set_has_prop();
-  } else {
-    clear_has_prop();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Point2D.prop)
-}
-
-#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
-
-// ===================================================================
-
-#if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Point3D::kXFieldNumber;
 const int Point3D::kYFieldNumber;
 const int Point3D::kZFieldNumber;
-const int Point3D::kPropFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Point3D::Point3D()
@@ -1292,7 +806,6 @@ Point3D::Point3D()
 }
 
 void Point3D::InitAsDefaultInstance() {
-  prop_ = const_cast< ::structDefinitions::Properties*>(&::structDefinitions::Properties::default_instance());
 }
 
 Point3D::Point3D(const Point3D& from)
@@ -1308,7 +821,6 @@ void Point3D::SharedCtor() {
   x_ = 0;
   y_ = 0;
   z_ = 0;
-  prop_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1319,7 +831,6 @@ Point3D::~Point3D() {
 
 void Point3D::SharedDtor() {
   if (this != default_instance_) {
-    delete prop_;
   }
 }
 
@@ -1366,12 +877,7 @@ void Point3D::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  if (_has_bits_[0 / 32] & 15u) {
-    ZR_(x_, z_);
-    if (has_prop()) {
-      if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();
-    }
-  }
+  ZR_(x_, z_);
 
 #undef ZR_HELPER_
 #undef ZR_
@@ -1432,19 +938,6 @@ bool Point3D::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_prop;
-        break;
-      }
-
-      // optional .structDefinitions.Properties prop = 4;
-      case 4: {
-        if (tag == 34) {
-         parse_prop:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_prop()));
-        } else {
-          goto handle_unusual;
-        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -1489,12 +982,6 @@ void Point3D::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(3, this->z(), output);
   }
 
-  // optional .structDefinitions.Properties prop = 4;
-  if (has_prop()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, *this->prop_, output);
-  }
-
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1518,13 +1005,6 @@ void Point3D::SerializeWithCachedSizes(
   // required double z = 3;
   if (has_z()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(3, this->z(), target);
-  }
-
-  // optional .structDefinitions.Properties prop = 4;
-  if (has_prop()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        4, *this->prop_, false, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -1573,13 +1053,6 @@ int Point3D::ByteSize() const {
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  // optional .structDefinitions.Properties prop = 4;
-  if (has_prop()) {
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        *this->prop_);
-  }
-
   if (_internal_metadata_.have_unknown_fields()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1619,9 +1092,6 @@ void Point3D::MergeFrom(const Point3D& from) {
     if (from.has_z()) {
       set_z(from.z());
     }
-    if (from.has_prop()) {
-      mutable_prop()->::structDefinitions::Properties::MergeFrom(from.prop());
-    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1656,7 +1126,6 @@ void Point3D::InternalSwap(Point3D* other) {
   std::swap(x_, other->x_);
   std::swap(y_, other->y_);
   std::swap(z_, other->z_);
-  std::swap(prop_, other->prop_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -1743,50 +1212,6 @@ void Point3D::clear_z() {
   set_has_z();
   z_ = value;
   // @@protoc_insertion_point(field_set:structDefinitions.Point3D.z)
-}
-
-// optional .structDefinitions.Properties prop = 4;
-bool Point3D::has_prop() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-void Point3D::set_has_prop() {
-  _has_bits_[0] |= 0x00000008u;
-}
-void Point3D::clear_has_prop() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-void Point3D::clear_prop() {
-  if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();
-  clear_has_prop();
-}
-const ::structDefinitions::Properties& Point3D::prop() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.Point3D.prop)
-  return prop_ != NULL ? *prop_ : *default_instance_->prop_;
-}
-::structDefinitions::Properties* Point3D::mutable_prop() {
-  set_has_prop();
-  if (prop_ == NULL) {
-    prop_ = new ::structDefinitions::Properties;
-  }
-  // @@protoc_insertion_point(field_mutable:structDefinitions.Point3D.prop)
-  return prop_;
-}
-::structDefinitions::Properties* Point3D::release_prop() {
-  // @@protoc_insertion_point(field_release:structDefinitions.Point3D.prop)
-  clear_has_prop();
-  ::structDefinitions::Properties* temp = prop_;
-  prop_ = NULL;
-  return temp;
-}
-void Point3D::set_allocated_prop(::structDefinitions::Properties* prop) {
-  delete prop_;
-  prop_ = prop;
-  if (prop) {
-    set_has_prop();
-  } else {
-    clear_has_prop();
-  }
-  // @@protoc_insertion_point(field_set_allocated:structDefinitions.Point3D.prop)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -4709,7 +4134,6 @@ void Header::clear_endofdata() {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int DataPackage::kPoints2DFieldNumber;
 const int DataPackage::kPoints3DFieldNumber;
 const int DataPackage::kVertexesFieldNumber;
 const int DataPackage::kEdgesFieldNumber;
@@ -4776,7 +4200,6 @@ DataPackage* DataPackage::New(::google::protobuf::Arena* arena) const {
 
 void DataPackage::Clear() {
 // @@protoc_insertion_point(message_clear_start:structDefinitions.DataPackage)
-  points2d_.Clear();
   points3d_.Clear();
   vertexes_.Clear();
   edges_.Clear();
@@ -4798,25 +4221,9 @@ bool DataPackage::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .structDefinitions.Point2D points2D = 1;
+      // repeated .structDefinitions.Point3D points3D = 1;
       case 1: {
         if (tag == 10) {
-          DO_(input->IncrementRecursionDepth());
-         parse_loop_points2D:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_points2d()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(10)) goto parse_loop_points2D;
-        if (input->ExpectTag(18)) goto parse_loop_points3D;
-        input->UnsafeDecrementRecursionDepth();
-        break;
-      }
-
-      // repeated .structDefinitions.Point3D points3D = 2;
-      case 2: {
-        if (tag == 18) {
           DO_(input->IncrementRecursionDepth());
          parse_loop_points3D:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
@@ -4824,15 +4231,15 @@ bool DataPackage::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(18)) goto parse_loop_points3D;
-        if (input->ExpectTag(26)) goto parse_loop_vertexes;
+        if (input->ExpectTag(10)) goto parse_loop_points3D;
+        if (input->ExpectTag(18)) goto parse_loop_vertexes;
         input->UnsafeDecrementRecursionDepth();
         break;
       }
 
-      // repeated .structDefinitions.Vertex vertexes = 3;
-      case 3: {
-        if (tag == 26) {
+      // repeated .structDefinitions.Vertex vertexes = 2;
+      case 2: {
+        if (tag == 18) {
           DO_(input->IncrementRecursionDepth());
          parse_loop_vertexes:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
@@ -4840,15 +4247,15 @@ bool DataPackage::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_loop_vertexes;
-        if (input->ExpectTag(34)) goto parse_loop_edges;
+        if (input->ExpectTag(18)) goto parse_loop_vertexes;
+        if (input->ExpectTag(26)) goto parse_loop_edges;
         input->UnsafeDecrementRecursionDepth();
         break;
       }
 
-      // repeated .structDefinitions.Edge edges = 4;
-      case 4: {
-        if (tag == 34) {
+      // repeated .structDefinitions.Edge edges = 3;
+      case 3: {
+        if (tag == 26) {
           DO_(input->IncrementRecursionDepth());
          parse_loop_edges:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
@@ -4856,15 +4263,15 @@ bool DataPackage::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_loop_edges;
-        if (input->ExpectTag(42)) goto parse_loop_faces;
+        if (input->ExpectTag(26)) goto parse_loop_edges;
+        if (input->ExpectTag(34)) goto parse_loop_faces;
         input->UnsafeDecrementRecursionDepth();
         break;
       }
 
-      // repeated .structDefinitions.TriangleFace faces = 5;
-      case 5: {
-        if (tag == 42) {
+      // repeated .structDefinitions.TriangleFace faces = 4;
+      case 4: {
+        if (tag == 34) {
           DO_(input->IncrementRecursionDepth());
          parse_loop_faces:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
@@ -4872,15 +4279,15 @@ bool DataPackage::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_loop_faces;
-        if (input->ExpectTag(50)) goto parse_loop_blocks;
+        if (input->ExpectTag(34)) goto parse_loop_faces;
+        if (input->ExpectTag(42)) goto parse_loop_blocks;
         input->UnsafeDecrementRecursionDepth();
         break;
       }
 
-      // repeated .structDefinitions.Block blocks = 6;
-      case 6: {
-        if (tag == 50) {
+      // repeated .structDefinitions.Block blocks = 5;
+      case 5: {
+        if (tag == 42) {
           DO_(input->IncrementRecursionDepth());
          parse_loop_blocks:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
@@ -4888,7 +4295,7 @@ bool DataPackage::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_loop_blocks;
+        if (input->ExpectTag(42)) goto parse_loop_blocks;
         input->UnsafeDecrementRecursionDepth();
         if (input->ExpectAtEnd()) goto success;
         break;
@@ -4919,40 +4326,34 @@ failure:
 void DataPackage::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:structDefinitions.DataPackage)
-  // repeated .structDefinitions.Point2D points2D = 1;
-  for (unsigned int i = 0, n = this->points2d_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->points2d(i), output);
-  }
-
-  // repeated .structDefinitions.Point3D points3D = 2;
+  // repeated .structDefinitions.Point3D points3D = 1;
   for (unsigned int i = 0, n = this->points3d_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->points3d(i), output);
+      1, this->points3d(i), output);
   }
 
-  // repeated .structDefinitions.Vertex vertexes = 3;
+  // repeated .structDefinitions.Vertex vertexes = 2;
   for (unsigned int i = 0, n = this->vertexes_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->vertexes(i), output);
+      2, this->vertexes(i), output);
   }
 
-  // repeated .structDefinitions.Edge edges = 4;
+  // repeated .structDefinitions.Edge edges = 3;
   for (unsigned int i = 0, n = this->edges_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->edges(i), output);
+      3, this->edges(i), output);
   }
 
-  // repeated .structDefinitions.TriangleFace faces = 5;
+  // repeated .structDefinitions.TriangleFace faces = 4;
   for (unsigned int i = 0, n = this->faces_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->faces(i), output);
+      4, this->faces(i), output);
   }
 
-  // repeated .structDefinitions.Block blocks = 6;
+  // repeated .structDefinitions.Block blocks = 5;
   for (unsigned int i = 0, n = this->blocks_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->blocks(i), output);
+      5, this->blocks(i), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4965,46 +4366,39 @@ void DataPackage::SerializeWithCachedSizes(
 ::google::protobuf::uint8* DataPackage::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.DataPackage)
-  // repeated .structDefinitions.Point2D points2D = 1;
-  for (unsigned int i = 0, n = this->points2d_size(); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        1, this->points2d(i), false, target);
-  }
-
-  // repeated .structDefinitions.Point3D points3D = 2;
+  // repeated .structDefinitions.Point3D points3D = 1;
   for (unsigned int i = 0, n = this->points3d_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        2, this->points3d(i), false, target);
+        1, this->points3d(i), false, target);
   }
 
-  // repeated .structDefinitions.Vertex vertexes = 3;
+  // repeated .structDefinitions.Vertex vertexes = 2;
   for (unsigned int i = 0, n = this->vertexes_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        3, this->vertexes(i), false, target);
+        2, this->vertexes(i), false, target);
   }
 
-  // repeated .structDefinitions.Edge edges = 4;
+  // repeated .structDefinitions.Edge edges = 3;
   for (unsigned int i = 0, n = this->edges_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        4, this->edges(i), false, target);
+        3, this->edges(i), false, target);
   }
 
-  // repeated .structDefinitions.TriangleFace faces = 5;
+  // repeated .structDefinitions.TriangleFace faces = 4;
   for (unsigned int i = 0, n = this->faces_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        5, this->faces(i), false, target);
+        4, this->faces(i), false, target);
   }
 
-  // repeated .structDefinitions.Block blocks = 6;
+  // repeated .structDefinitions.Block blocks = 5;
   for (unsigned int i = 0, n = this->blocks_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageNoVirtualToArray(
-        6, this->blocks(i), false, target);
+        5, this->blocks(i), false, target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -5019,15 +4413,7 @@ int DataPackage::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:structDefinitions.DataPackage)
   int total_size = 0;
 
-  // repeated .structDefinitions.Point2D points2D = 1;
-  total_size += 1 * this->points2d_size();
-  for (int i = 0; i < this->points2d_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->points2d(i));
-  }
-
-  // repeated .structDefinitions.Point3D points3D = 2;
+  // repeated .structDefinitions.Point3D points3D = 1;
   total_size += 1 * this->points3d_size();
   for (int i = 0; i < this->points3d_size(); i++) {
     total_size +=
@@ -5035,7 +4421,7 @@ int DataPackage::ByteSize() const {
         this->points3d(i));
   }
 
-  // repeated .structDefinitions.Vertex vertexes = 3;
+  // repeated .structDefinitions.Vertex vertexes = 2;
   total_size += 1 * this->vertexes_size();
   for (int i = 0; i < this->vertexes_size(); i++) {
     total_size +=
@@ -5043,7 +4429,7 @@ int DataPackage::ByteSize() const {
         this->vertexes(i));
   }
 
-  // repeated .structDefinitions.Edge edges = 4;
+  // repeated .structDefinitions.Edge edges = 3;
   total_size += 1 * this->edges_size();
   for (int i = 0; i < this->edges_size(); i++) {
     total_size +=
@@ -5051,7 +4437,7 @@ int DataPackage::ByteSize() const {
         this->edges(i));
   }
 
-  // repeated .structDefinitions.TriangleFace faces = 5;
+  // repeated .structDefinitions.TriangleFace faces = 4;
   total_size += 1 * this->faces_size();
   for (int i = 0; i < this->faces_size(); i++) {
     total_size +=
@@ -5059,7 +4445,7 @@ int DataPackage::ByteSize() const {
         this->faces(i));
   }
 
-  // repeated .structDefinitions.Block blocks = 6;
+  // repeated .structDefinitions.Block blocks = 5;
   total_size += 1 * this->blocks_size();
   for (int i = 0; i < this->blocks_size(); i++) {
     total_size +=
@@ -5096,7 +4482,6 @@ void DataPackage::MergeFrom(const ::google::protobuf::Message& from) {
 void DataPackage::MergeFrom(const DataPackage& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.DataPackage)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  points2d_.MergeFrom(from.points2d_);
   points3d_.MergeFrom(from.points3d_);
   vertexes_.MergeFrom(from.vertexes_);
   edges_.MergeFrom(from.edges_);
@@ -5123,7 +4508,6 @@ void DataPackage::CopyFrom(const DataPackage& from) {
 
 bool DataPackage::IsInitialized() const {
 
-  if (!::google::protobuf::internal::AllAreInitialized(this->points2d())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->points3d())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->vertexes())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->edges())) return false;
@@ -5137,7 +4521,6 @@ void DataPackage::Swap(DataPackage* other) {
   InternalSwap(other);
 }
 void DataPackage::InternalSwap(DataPackage* other) {
-  points2d_.UnsafeArenaSwap(&other->points2d_);
   points3d_.UnsafeArenaSwap(&other->points3d_);
   vertexes_.UnsafeArenaSwap(&other->vertexes_);
   edges_.UnsafeArenaSwap(&other->edges_);
@@ -5159,37 +4542,7 @@ void DataPackage::InternalSwap(DataPackage* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // DataPackage
 
-// repeated .structDefinitions.Point2D points2D = 1;
-int DataPackage::points2d_size() const {
-  return points2d_.size();
-}
-void DataPackage::clear_points2d() {
-  points2d_.Clear();
-}
-const ::structDefinitions::Point2D& DataPackage::points2d(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points2D)
-  return points2d_.Get(index);
-}
-::structDefinitions::Point2D* DataPackage::mutable_points2d(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points2D)
-  return points2d_.Mutable(index);
-}
-::structDefinitions::Point2D* DataPackage::add_points2d() {
-  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.points2D)
-  return points2d_.Add();
-}
-::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >*
-DataPackage::mutable_points2d() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.points2D)
-  return &points2d_;
-}
-const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point2D >&
-DataPackage::points2d() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.points2D)
-  return points2d_;
-}
-
-// repeated .structDefinitions.Point3D points3D = 2;
+// repeated .structDefinitions.Point3D points3D = 1;
 int DataPackage::points3d_size() const {
   return points3d_.size();
 }
@@ -5219,7 +4572,7 @@ DataPackage::points3d() const {
   return points3d_;
 }
 
-// repeated .structDefinitions.Vertex vertexes = 3;
+// repeated .structDefinitions.Vertex vertexes = 2;
 int DataPackage::vertexes_size() const {
   return vertexes_.size();
 }
@@ -5249,7 +4602,7 @@ DataPackage::vertexes() const {
   return vertexes_;
 }
 
-// repeated .structDefinitions.Edge edges = 4;
+// repeated .structDefinitions.Edge edges = 3;
 int DataPackage::edges_size() const {
   return edges_.size();
 }
@@ -5279,7 +4632,7 @@ DataPackage::edges() const {
   return edges_;
 }
 
-// repeated .structDefinitions.TriangleFace faces = 5;
+// repeated .structDefinitions.TriangleFace faces = 4;
 int DataPackage::faces_size() const {
   return faces_.size();
 }
@@ -5309,7 +4662,7 @@ DataPackage::faces() const {
   return faces_;
 }
 
-// repeated .structDefinitions.Block blocks = 6;
+// repeated .structDefinitions.Block blocks = 5;
 int DataPackage::blocks_size() const {
   return blocks_.size();
 }

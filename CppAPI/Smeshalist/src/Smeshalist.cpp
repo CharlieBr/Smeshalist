@@ -56,10 +56,6 @@ structDefinitions::Point3D* Smeshalist::GetPoint3D(Point3D &point) const {
 
 }
 
-void Smeshalist::AddGeometry(Point2D &point) {
-    Smeshalist::points2d_to_send.push_front(point);
-}
-
 void Smeshalist::AddGeometry(Point3D &point) {
 	Smeshalist::points3d_to_send.push_front(point);
 }
@@ -80,20 +76,13 @@ void Smeshalist::AddGeometry(Block &block) {
 	Smeshalist::blocks_to_send.push_front(block);
 }
 
-void Smeshalist::ProcessGeometry(Point2D &element, structDefinitions::DataPackage &data_package) const {
-    structDefinitions::Point2D* point2d = data_package.add_points2d();
-    point2d->set_x(element.GetX());
-    point2d->set_y(element.GetY());
-    point2d->set_allocated_prop(GetProperties(element.GetGroupId(),element.GetLabel(),element.GetQuality()));
-}
-
 void Smeshalist::ProcessGeometry(Point3D &element, structDefinitions::DataPackage &data_package) const {
 	structDefinitions::Point3D* point3d = data_package.add_points3d();
     point3d->set_x(element.GetX());
     point3d->set_y(element.GetY());
     point3d->set_z(element.GetZ());
-    point3d->set_allocated_prop(GetProperties(element.GetGroupId(),element.GetLabel(),element.GetQuality()));
 }
+
 void Smeshalist::ProcessGeometry(Vertex &element, structDefinitions::DataPackage &data_package) const {
     structDefinitions::Vertex* vertex = data_package.add_vertexes();
     Point3D point = element.GetPoint();
@@ -134,7 +123,7 @@ void Smeshalist::ProcessGeometry(Block &element, structDefinitions::DataPackage 
 }
 
 int Smeshalist::GetElementsCount() const {
-    return Smeshalist::points2d_to_send.size() + Smeshalist::points3d_to_send.size() +
+    return Smeshalist::points3d_to_send.size() +
     Smeshalist::vertexes_to_send.size() + Smeshalist::edges_to_send.size() +
     Smeshalist::faces_to_send.size() + Smeshalist::blocks_to_send.size();
 }
@@ -182,11 +171,7 @@ void Smeshalist::FlushBuffer() {
 
 		for (int i = 0; i < n_elements_in_package; i++) {
 
-			if (!Smeshalist::points2d_to_send.empty()) {
-				Point2D element = Smeshalist::points2d_to_send.front();
-				Smeshalist::ProcessGeometry(element, data_package);
-				Smeshalist::points2d_to_send.pop_front();
-			} else if (!Smeshalist::points3d_to_send.empty()) {
+			if (!Smeshalist::points3d_to_send.empty()) {
 				Point3D element = Smeshalist::points3d_to_send.front();
 				Smeshalist::ProcessGeometry(element, data_package);
 				Smeshalist::points3d_to_send.pop_front();
@@ -210,17 +195,11 @@ void Smeshalist::FlushBuffer() {
 
 		}
 
-
 		//create header
 		structDefinitions::Header header;
 		header.set_endofdata(end_of_data);
 		header.set_sizeofdata(data_package.ByteSize());
-//		cout<<"p2d size "<<data_package.points2d_size()<<endl;
-//		cout<<"p3d size "<<data_package.points3d_size()<<endl;
-//		cout<<"ver size "<<data_package.vertexes_size()<<endl;
-//		cout<<"edg size "<<data_package.edges_size()<<endl;
-//		cout<<"fac size "<<data_package.faces_size()<<endl;
-//		cout<<"blo size "<<data_package.blocks_size()<<endl;
+
 		size = header.ByteSize();
 		out_buffer = new char[size];
 
@@ -232,8 +211,6 @@ void Smeshalist::FlushBuffer() {
 
 		data_package.SerializeToArray(out_buffer, size);
 		SendBytesToCore(out_buffer, size);
-
-//		cout<<GetElementsCount()<< " elements after sending a batch"<<endl;
 
 		n_bytes = GetBytesFromCore(in_buffer, BUFFER_SIZE);
 
