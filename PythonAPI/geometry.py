@@ -1,21 +1,18 @@
-class Point2D:
-    
-    def __init__(self, x, y):
-       self.x = x
-       self.y = y
-       self.quality = 0.0
-       self.label = ""
-       self.groupId = 0
-
 class Point3D:
 
     def __init__(self, x, y, z):
         self.x = x
         self.y = y
         self.z = z
-        self.quality = 0.0
+
+
+class Vertex:
+
+    def __init__(self, point):
+	self.point = point
+	self.quality = 0.0
         self.label = ""
-        self.groupId = 0
+        self.groupId = 0 
 
 
 class Edge:

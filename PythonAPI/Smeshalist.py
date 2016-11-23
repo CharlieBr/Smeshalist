@@ -17,26 +17,6 @@ def getInstance(portNumber):
     dataPackages.append(dataPackage)
 
 
-
-def addPoint2D(point2D):
-
-    global structuresRemaining
-    if structuresRemaining ==  0:
-        structuresRemaining = numberOfStructuresToSend 
-        dataPackage = structs_pb2.DataPackage()
-        dataPackages.append(dataPackage)
-        
-    structuresRemaining = structuresRemaining -1
-    dataPackage = dataPackages[-1]
-    pointToSend = dataPackage.points2D.add()
-    pointToSend.x = point2D.x
-    pointToSend.y = point2D.y
-    pointToSend.prop.quality = point2D.quality
-    pointToSend.prop.label = point2D.label
-    pointToSend.prop.groupId = point2D.groupId
-       
-
-
 def addPoint3D(point3D):
 
     global structuresRemaining
@@ -51,9 +31,24 @@ def addPoint3D(point3D):
     pointToSend.x = point3D.x
     pointToSend.y = point3D.y
     pointToSend.z = point3D.z
-    pointToSend.prop.quality = point3D.quality
-    pointToSend.prop.label = point3D.label
-    pointToSend.prop.groupId = point3D.groupId
+
+
+def addVertex(vertex):
+    global structuresRemaining
+    if structuresRemaining ==  0:
+        structuresRemaining = numberOfStructuresToSend 
+        dataPackage = structs_pb2.DataPackage()
+        dataPackages.append(dataPackage)
+
+    structuresRemaining = structuresRemaining -1
+    dataPackage = dataPackages[-1]
+    vertexToSend = dataPackage.vertexes.add()
+    vertexToSend.point.x = vertex.point.x
+    vertexToSend.point.y = vertex.point.y
+    vertexToSend.point.z = vertex.point.z
+    vertexToSend.prop.quality = vertex.quality
+    vertexToSend.prop.label = vertex.label
+    vertexToSend.prop.groupId = vertex.groupId
 
 
 
