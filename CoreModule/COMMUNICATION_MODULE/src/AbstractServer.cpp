@@ -381,7 +381,6 @@ void AbstractServer::getDataPackages() {
             continue;
         }
 
-        parsePoint2DSet(&package);
         parsePoint3DSet(&package);
         parseVertexSet(&package);
         parseEdgeSet(&package);
@@ -443,27 +442,12 @@ void AbstractServer::parseEdgeSet(structDefinitions::DataPackage* dataPackage) {
     }
 }
 
-void AbstractServer::parsePoint2DSet(structDefinitions::DataPackage* dataPackage) {
-    for (int i=0; i<dataPackage->points2d_size(); i++) {
-        const structDefinitions::Point2D p = dataPackage->points2d(i);
-
-        structDefinitions::Properties prop = p.prop();
-        Label label = getLabel(prop.label());
-
-        Vertex* v = new Vertex(Point3D(p.x(), p.y(), 0), label, prop.quality());
-		elementsBuffer[prop.groupid()][v->get_type()].push_back(v);
-    }
-}
-
 void AbstractServer::parsePoint3DSet(structDefinitions::DataPackage* dataPackage) {
     for (int i=0; i<dataPackage->points3d_size(); i++) {
         const structDefinitions::Point3D p = dataPackage->points3d(i);
 
-        structDefinitions::Properties prop = p.prop();
-        Label label = getLabel(prop.label());
-
-        Vertex* v = new Vertex(parsePoint(&p), label, prop.quality());
-		elementsBuffer[prop.groupid()][v->get_type()].push_back(v);
+        Vertex* v = new Vertex(parsePoint(&p));
+		elementsBuffer[0][v->get_type()].push_back(v);
     }
 }
 
