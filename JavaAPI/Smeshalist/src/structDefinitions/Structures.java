@@ -1343,24 +1343,15 @@ public final class Structures {
     structDefinitions.Structures.Point3DOrBuilder getPointOrBuilder();
 
     /**
-     * <code>required double number = 2;</code>
-     */
-    boolean hasNumber();
-    /**
-     * <code>required double number = 2;</code>
-     */
-    double getNumber();
-
-    /**
-     * <code>optional .Properties prop = 3;</code>
+     * <code>optional .Properties prop = 2;</code>
      */
     boolean hasProp();
     /**
-     * <code>optional .Properties prop = 3;</code>
+     * <code>optional .Properties prop = 2;</code>
      */
     structDefinitions.Structures.Properties getProp();
     /**
-     * <code>optional .Properties prop = 3;</code>
+     * <code>optional .Properties prop = 2;</code>
      */
     structDefinitions.Structures.PropertiesOrBuilder getPropOrBuilder();
   }
@@ -1376,7 +1367,6 @@ public final class Structures {
       super(builder);
     }
     private Vertex() {
-      number_ = 0D;
     }
 
     @java.lang.Override
@@ -1420,14 +1410,9 @@ public final class Structures {
               bitField0_ |= 0x00000001;
               break;
             }
-            case 17: {
-              bitField0_ |= 0x00000002;
-              number_ = input.readDouble();
-              break;
-            }
-            case 26: {
+            case 18: {
               structDefinitions.Structures.Properties.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000004) == 0x00000004)) {
+              if (((bitField0_ & 0x00000002) == 0x00000002)) {
                 subBuilder = prop_.toBuilder();
               }
               prop_ = input.readMessage(structDefinitions.Structures.Properties.PARSER, extensionRegistry);
@@ -1435,7 +1420,7 @@ public final class Structures {
                 subBuilder.mergeFrom(prop_);
                 prop_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000002;
               break;
             }
           }
@@ -1484,37 +1469,22 @@ public final class Structures {
       return point_ == null ? structDefinitions.Structures.Point3D.getDefaultInstance() : point_;
     }
 
-    public static final int NUMBER_FIELD_NUMBER = 2;
-    private double number_;
+    public static final int PROP_FIELD_NUMBER = 2;
+    private structDefinitions.Structures.Properties prop_;
     /**
-     * <code>required double number = 2;</code>
+     * <code>optional .Properties prop = 2;</code>
      */
-    public boolean hasNumber() {
+    public boolean hasProp() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required double number = 2;</code>
-     */
-    public double getNumber() {
-      return number_;
-    }
-
-    public static final int PROP_FIELD_NUMBER = 3;
-    private structDefinitions.Structures.Properties prop_;
-    /**
-     * <code>optional .Properties prop = 3;</code>
-     */
-    public boolean hasProp() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>optional .Properties prop = 3;</code>
+     * <code>optional .Properties prop = 2;</code>
      */
     public structDefinitions.Structures.Properties getProp() {
       return prop_ == null ? structDefinitions.Structures.Properties.getDefaultInstance() : prop_;
     }
     /**
-     * <code>optional .Properties prop = 3;</code>
+     * <code>optional .Properties prop = 2;</code>
      */
     public structDefinitions.Structures.PropertiesOrBuilder getPropOrBuilder() {
       return prop_ == null ? structDefinitions.Structures.Properties.getDefaultInstance() : prop_;
@@ -1527,10 +1497,6 @@ public final class Structures {
       if (isInitialized == 0) return false;
 
       if (!hasPoint()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasNumber()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1548,10 +1514,7 @@ public final class Structures {
         output.writeMessage(1, getPoint());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeDouble(2, number_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, getProp());
+        output.writeMessage(2, getProp());
       }
       unknownFields.writeTo(output);
     }
@@ -1567,11 +1530,7 @@ public final class Structures {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(2, number_);
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getProp());
+          .computeMessageSize(2, getProp());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1595,13 +1554,6 @@ public final class Structures {
         result = result && getPoint()
             .equals(other.getPoint());
       }
-      result = result && (hasNumber() == other.hasNumber());
-      if (hasNumber()) {
-        result = result && (
-            java.lang.Double.doubleToLongBits(getNumber())
-            == java.lang.Double.doubleToLongBits(
-                other.getNumber()));
-      }
       result = result && (hasProp() == other.hasProp());
       if (hasProp()) {
         result = result && getProp()
@@ -1621,11 +1573,6 @@ public final class Structures {
       if (hasPoint()) {
         hash = (37 * hash) + POINT_FIELD_NUMBER;
         hash = (53 * hash) + getPoint().hashCode();
-      }
-      if (hasNumber()) {
-        hash = (37 * hash) + NUMBER_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            java.lang.Double.doubleToLongBits(getNumber()));
       }
       if (hasProp()) {
         hash = (37 * hash) + PROP_FIELD_NUMBER;
@@ -1756,14 +1703,12 @@ public final class Structures {
           pointBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
-        number_ = 0D;
-        bitField0_ = (bitField0_ & ~0x00000002);
         if (propBuilder_ == null) {
           prop_ = null;
         } else {
           propBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -1799,10 +1744,6 @@ public final class Structures {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.number_ = number_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         if (propBuilder_ == null) {
           result.prop_ = prop_;
         } else {
@@ -1827,9 +1768,6 @@ public final class Structures {
         if (other.hasPoint()) {
           mergePoint(other.getPoint());
         }
-        if (other.hasNumber()) {
-          setNumber(other.getNumber());
-        }
         if (other.hasProp()) {
           mergeProp(other.getProp());
         }
@@ -1840,9 +1778,6 @@ public final class Structures {
 
       public final boolean isInitialized() {
         if (!hasPoint()) {
-          return false;
-        }
-        if (!hasNumber()) {
           return false;
         }
         if (!getPoint().isInitialized()) {
@@ -1988,49 +1923,17 @@ public final class Structures {
         return pointBuilder_;
       }
 
-      private double number_ ;
-      /**
-       * <code>required double number = 2;</code>
-       */
-      public boolean hasNumber() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required double number = 2;</code>
-       */
-      public double getNumber() {
-        return number_;
-      }
-      /**
-       * <code>required double number = 2;</code>
-       */
-      public Builder setNumber(double value) {
-        bitField0_ |= 0x00000002;
-        number_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required double number = 2;</code>
-       */
-      public Builder clearNumber() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        number_ = 0D;
-        onChanged();
-        return this;
-      }
-
       private structDefinitions.Structures.Properties prop_ = null;
       private com.google.protobuf.SingleFieldBuilderV3<
           structDefinitions.Structures.Properties, structDefinitions.Structures.Properties.Builder, structDefinitions.Structures.PropertiesOrBuilder> propBuilder_;
       /**
-       * <code>optional .Properties prop = 3;</code>
+       * <code>optional .Properties prop = 2;</code>
        */
       public boolean hasProp() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional .Properties prop = 3;</code>
+       * <code>optional .Properties prop = 2;</code>
        */
       public structDefinitions.Structures.Properties getProp() {
         if (propBuilder_ == null) {
@@ -2040,7 +1943,7 @@ public final class Structures {
         }
       }
       /**
-       * <code>optional .Properties prop = 3;</code>
+       * <code>optional .Properties prop = 2;</code>
        */
       public Builder setProp(structDefinitions.Structures.Properties value) {
         if (propBuilder_ == null) {
@@ -2052,11 +1955,11 @@ public final class Structures {
         } else {
           propBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .Properties prop = 3;</code>
+       * <code>optional .Properties prop = 2;</code>
        */
       public Builder setProp(
           structDefinitions.Structures.Properties.Builder builderForValue) {
@@ -2066,15 +1969,15 @@ public final class Structures {
         } else {
           propBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .Properties prop = 3;</code>
+       * <code>optional .Properties prop = 2;</code>
        */
       public Builder mergeProp(structDefinitions.Structures.Properties value) {
         if (propBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+          if (((bitField0_ & 0x00000002) == 0x00000002) &&
               prop_ != null &&
               prop_ != structDefinitions.Structures.Properties.getDefaultInstance()) {
             prop_ =
@@ -2086,11 +1989,11 @@ public final class Structures {
         } else {
           propBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         return this;
       }
       /**
-       * <code>optional .Properties prop = 3;</code>
+       * <code>optional .Properties prop = 2;</code>
        */
       public Builder clearProp() {
         if (propBuilder_ == null) {
@@ -2099,19 +2002,19 @@ public final class Structures {
         } else {
           propBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
       /**
-       * <code>optional .Properties prop = 3;</code>
+       * <code>optional .Properties prop = 2;</code>
        */
       public structDefinitions.Structures.Properties.Builder getPropBuilder() {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
         onChanged();
         return getPropFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .Properties prop = 3;</code>
+       * <code>optional .Properties prop = 2;</code>
        */
       public structDefinitions.Structures.PropertiesOrBuilder getPropOrBuilder() {
         if (propBuilder_ != null) {
@@ -2122,7 +2025,7 @@ public final class Structures {
         }
       }
       /**
-       * <code>optional .Properties prop = 3;</code>
+       * <code>optional .Properties prop = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           structDefinitions.Structures.Properties, structDefinitions.Structures.Properties.Builder, structDefinitions.Structures.PropertiesOrBuilder> 
@@ -9114,26 +9017,25 @@ public final class Structures {
       "\n\rstructs.proto\"=\n\nProperties\022\017\n\007quality" +
       "\030\001 \001(\001\022\r\n\005label\030\002 \001(\t\022\017\n\007groupId\030\003 \001(\005\"*" +
       "\n\007Point3D\022\t\n\001x\030\001 \002(\001\022\t\n\001y\030\002 \002(\001\022\t\n\001z\030\003 \002" +
-      "(\001\"L\n\006Vertex\022\027\n\005point\030\001 \002(\0132\010.Point3D\022\016\n" +
-      "\006number\030\002 \002(\001\022\031\n\004prop\030\003 \001(\0132\013.Properties" +
-      "\"M\n\004Edge\022\024\n\002v1\030\001 \002(\0132\010.Point3D\022\024\n\002v2\030\002 \002" +
-      "(\0132\010.Point3D\022\031\n\004prop\030\003 \001(\0132\013.Properties\"" +
-      "k\n\014TriangleFace\022\024\n\002v1\030\001 \002(\0132\010.Point3D\022\024\n" +
-      "\002v2\030\002 \002(\0132\010.Point3D\022\024\n\002v3\030\003 \002(\0132\010.Point3" +
-      "D\022\031\n\004prop\030\004 \001(\0132\013.Properties\"z\n\005Block\022\024\n",
-      "\002v1\030\001 \002(\0132\010.Point3D\022\024\n\002v2\030\002 \002(\0132\010.Point3" +
-      "D\022\024\n\002v3\030\003 \002(\0132\010.Point3D\022\024\n\002v4\030\004 \002(\0132\010.Po" +
-      "int3D\022\031\n\004prop\030\005 \001(\0132\013.Properties\"\214\001\n\013Mes" +
-      "sageInfo\022\037\n\004type\030\001 \002(\0162\021.MessageInfo.Typ" +
-      "e\"\\\n\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDER\020\002\022\016\n\nBREAK" +
-      "POINT\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010REJECTED\020\005\022\007\n\003A" +
-      "CK\020\006\022\t\n\005CLEAN\020\007\"/\n\006Header\022\022\n\nsizeOfData\030" +
-      "\001 \002(\005\022\021\n\tendOfData\030\007 \002(\010\"\220\001\n\013DataPackage" +
-      "\022\032\n\010points3D\030\001 \003(\0132\010.Point3D\022\031\n\010vertexes" +
-      "\030\002 \003(\0132\007.Vertex\022\024\n\005edges\030\003 \003(\0132\005.Edge\022\034\n",
-      "\005faces\030\004 \003(\0132\r.TriangleFace\022\026\n\006blocks\030\005 " +
-      "\003(\0132\006.BlockB\037\n\021structDefinitionsB\nStruct" +
-      "ures"
+      "(\001\"<\n\006Vertex\022\027\n\005point\030\001 \002(\0132\010.Point3D\022\031\n" +
+      "\004prop\030\002 \001(\0132\013.Properties\"M\n\004Edge\022\024\n\002v1\030\001" +
+      " \002(\0132\010.Point3D\022\024\n\002v2\030\002 \002(\0132\010.Point3D\022\031\n\004" +
+      "prop\030\003 \001(\0132\013.Properties\"k\n\014TriangleFace\022" +
+      "\024\n\002v1\030\001 \002(\0132\010.Point3D\022\024\n\002v2\030\002 \002(\0132\010.Poin" +
+      "t3D\022\024\n\002v3\030\003 \002(\0132\010.Point3D\022\031\n\004prop\030\004 \001(\0132" +
+      "\013.Properties\"z\n\005Block\022\024\n\002v1\030\001 \002(\0132\010.Poin",
+      "t3D\022\024\n\002v2\030\002 \002(\0132\010.Point3D\022\024\n\002v3\030\003 \002(\0132\010." +
+      "Point3D\022\024\n\002v4\030\004 \002(\0132\010.Point3D\022\031\n\004prop\030\005 " +
+      "\001(\0132\013.Properties\"\214\001\n\013MessageInfo\022\037\n\004type" +
+      "\030\001 \002(\0162\021.MessageInfo.Type\"\\\n\004Type\022\010\n\004DAT" +
+      "A\020\001\022\n\n\006RENDER\020\002\022\016\n\nBREAKPOINT\020\003\022\014\n\010ACCEP" +
+      "TED\020\004\022\014\n\010REJECTED\020\005\022\007\n\003ACK\020\006\022\t\n\005CLEAN\020\007\"" +
+      "/\n\006Header\022\022\n\nsizeOfData\030\001 \002(\005\022\021\n\tendOfDa" +
+      "ta\030\007 \002(\010\"\220\001\n\013DataPackage\022\032\n\010points3D\030\001 \003" +
+      "(\0132\010.Point3D\022\031\n\010vertexes\030\002 \003(\0132\007.Vertex\022" +
+      "\024\n\005edges\030\003 \003(\0132\005.Edge\022\034\n\005faces\030\004 \003(\0132\r.T",
+      "riangleFace\022\026\n\006blocks\030\005 \003(\0132\006.BlockB\037\n\021s" +
+      "tructDefinitionsB\nStructures"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9164,7 +9066,7 @@ public final class Structures {
     internal_static_Vertex_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_Vertex_descriptor,
-        new java.lang.String[] { "Point", "Number", "Prop", });
+        new java.lang.String[] { "Point", "Prop", });
     internal_static_Edge_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_Edge_fieldAccessorTable = new

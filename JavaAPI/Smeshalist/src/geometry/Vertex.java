@@ -1,26 +1,16 @@
 package geometry;
 
 public class Vertex {
-	private double number;
 	private Point3D point;
 	private double quality;
 	private String label;
 	private int groupId;
 
-	public Vertex(Point3D point, double number) {
-		setNumber(number);
+	public Vertex(Point3D point) {
 		setPoint(point);
 		quality = 0.0;
 		label = "";
 		groupId = 0;
-	}
-
-	public double getNumber() {
-		return number;
-	}
-
-	public void setNumber(double number) {
-		this.number = number;
 	}
 
 	public Point3D getPoint() {

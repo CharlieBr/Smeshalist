@@ -3,11 +3,9 @@ package test;
 import java.util.Random;
 
 import geometry.Edge;
-import geometry.Point2D;
 import geometry.Point3D;
 import geometry.TriangleFace;
 import geometry.Vertex;
-import geometry.Block;
 import tool.Smeshalist;
 
 public class App {
@@ -19,7 +17,7 @@ public class App {
 
 		
 		for (int i=0; i<100; i++) {
-			Vertex v = new Vertex(new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5), r.nextDouble()*10-5);
+			Vertex v = new Vertex(new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5));
 			v.setGroupId(3);		
 			tool.addGeometry(v);
 		}

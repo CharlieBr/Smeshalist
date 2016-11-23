@@ -18,8 +18,7 @@ message Point3D {
 
 message Vertex {
 	required Point3D point = 1;
-	required double number = 2;
-	optional Properties prop = 3;
+	optional Properties prop = 2;
 }
 
 

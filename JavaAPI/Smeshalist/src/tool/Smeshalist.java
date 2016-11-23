@@ -82,7 +82,6 @@ public class Smeshalist {
 				vertex.getGroupId());
 		Vertex.Builder builder = Vertex.newBuilder();
 		builder.setPoint(SmeshalistHelper.convertToPoint3D(vertex.getPoint()));
-		builder.setNumber(vertex.getNumber());
 		builder.setProp(prop.build());
 		structuresToSend.add(builder.build());
 	}
