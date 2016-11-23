@@ -7,12 +7,22 @@ Smeshalist::Smeshalist() {
 	SetupSocket();
 }
 
+Smeshalist::Smeshalist(int port_number) {
+	Smeshalist::core_port = port_number;
+	SetupSocket();
+}
+
 Smeshalist::~Smeshalist(){
     close(core_socket);
 }
 
 Smeshalist& Smeshalist::GetInstance() {
 	static Smeshalist INSTANCE;
+	return INSTANCE;
+}
+
+Smeshalist& Smeshalist::GetInstance(int port_number){
+	static Smeshalist INSTANCE(port_number);
 	return INSTANCE;
 }
 

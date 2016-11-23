@@ -22,6 +22,7 @@ class Smeshalist {
 	public:
 		~Smeshalist();
 		static Smeshalist& GetInstance();
+		static Smeshalist& GetInstance(int port_number);
 		void AddGeometry(Point3D &point);
 		void AddGeometry(Vertex &vertex);
         void AddGeometry(Edge &edge);
@@ -43,6 +44,7 @@ class Smeshalist {
 		list<Face> faces_to_send;
 		list<Block> blocks_to_send;
 		Smeshalist();
+		Smeshalist(int port_number);
 		void SetupSocket();
 		int SendBytesToCore(const void* buffer, int buffer_size) const;
 		int GetBytesFromCore(char* buffer, int buffer_size);
