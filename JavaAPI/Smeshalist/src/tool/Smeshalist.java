@@ -14,14 +14,12 @@ import java.util.Objects;
 import org.apache.log4j.Logger;
 
 import helpers.SmeshalistHelper;
-import structDefinitions.Structures;
 import structDefinitions.Structures.Block;
 import structDefinitions.Structures.DataPackage;
 import structDefinitions.Structures.Edge;
 import structDefinitions.Structures.Header;
 import structDefinitions.Structures.MessageInfo;
 import structDefinitions.Structures.MessageInfo.Type;
-import structDefinitions.Structures.Point2D;
 import structDefinitions.Structures.Point3D;
 import structDefinitions.Structures.Properties;
 import structDefinitions.Structures.TriangleFace;
@@ -73,16 +71,6 @@ public class Smeshalist {
 
 	public static void destroySmeshialist() {
 		instance.socket.close();
-	}
-
-	public void addGeometry(geometry.Point2D point) {
-		Properties.Builder prop = SmeshalistHelper.setProperties(point.getLabel(), point.getQuality(),
-				point.getGroupId());
-		Structures.Point2D.Builder builder = Structures.Point2D.newBuilder();
-		builder.setX(point.getX());
-		builder.setY(point.getY());
-		builder.setProp(prop.build());
-		structuresToSend.add(builder.build());
 	}
 
 	public void addGeometry(geometry.Point3D point) {
@@ -192,10 +180,7 @@ public class Smeshalist {
 					
 					
 					for (Object structure: toBeSent){
-						if (structure instanceof Point2D){
-							dataPackageBuilder.addPoints2D((Point2D)structure);
-						}
-						else if (structure instanceof Point3D){
+						if (structure instanceof Point3D){
 							dataPackageBuilder.addPoints3D((Point3D)structure);
 						} 
 						else if (structure instanceof Vertex){
@@ -248,6 +233,8 @@ public class Smeshalist {
 					}
 
 					feedback = MessageInfo.parseFrom(trimResponse);
+					
+					logger.info("---------------------->po ack");
 
 				}
 					

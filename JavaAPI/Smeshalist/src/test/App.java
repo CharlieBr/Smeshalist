@@ -16,26 +16,15 @@ public class App {
 		Smeshalist tool = Smeshalist.getInstance(8383);
 		Random r = new Random();
 
-		for (int i=0; i<10; i++) {
-			Point2D point = new Point2D();
-			point.setLocation(r.nextInt(5), r.nextInt(5));
-			point.setGroupId(1);
-			tool.addGeometry(point);
-		}
 
-		for (int i=0; i<100000; i++) {
-			Point3D point = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
-			point.setGroupId(2);
-			tool.addGeometry(point);
-		}
 		
-		for (int i=0; i<10; i++) {
+		for (int i=0; i<100; i++) {
 			Vertex v = new Vertex(new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5), r.nextDouble()*10-5);
 			v.setGroupId(3);		
 			tool.addGeometry(v);
 		}
 		
-		for (int i=0; i<10; i++) {
+		for (int i=0; i<100; i++) {
 			Point3D v1 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			Point3D v2 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			Edge edge = new Edge(v1, v2);
@@ -43,7 +32,7 @@ public class App {
 			tool.addGeometry(edge);
 		}
 		
-		for (int i=0; i<10; i++) {
+		for (int i=0; i<100; i++) {
 			double d = r.nextDouble()*10-5;
 			Point3D v1 = new Point3D(d, d, d);
 			Point3D v2 = new Point3D(d-0.5, d-0.6, d-0.7);
@@ -53,7 +42,7 @@ public class App {
 			tool.addGeometry(tf);
 		}
 		
-/*		for (int i=0; i<100000; i++) {
+/*		for (int i=0; i<3; i++) {
 			Point3D v1 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			Point3D v2 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
 			Point3D v3 = new Point3D(r.nextDouble()*10-5, r.nextDouble()*10-5, r.nextDouble()*10-5);
@@ -69,10 +58,11 @@ public class App {
 		tool.flushBuffer();
 		System.out.println("Render..");
 		tool.render();
-		System.out.println("Breakpoint...");
+		System.out.println("Po render...");
+		/*System.out.println("Breakpoint...");
 		tool.breakpoint();
-		System.out.println("Destroy...");
-		tool.clean();
+		System.out.println("Destroy...");*/
+		//tool.clean();
 		Smeshalist.destroySmeshialist();
 		
 	}

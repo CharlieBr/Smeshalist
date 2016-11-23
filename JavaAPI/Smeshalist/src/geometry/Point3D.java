@@ -12,9 +12,6 @@ public class Point3D {
 		setX(x);
 		setY(y);
 		setZ(z);
-		quality = 0.0;
-		label = "";
-		groupId = 0;
 	}
 
 	public double getX() {
@@ -41,27 +38,4 @@ public class Point3D {
 		this.z = z;
 	}
 
-	public double getQuality() {
-		return quality;
-	}
-
-	public void setQuality(double quality) {
-		this.quality = quality;
-	}
-
-	public String getLabel() {
-		return label;
-	}
-
-	public void setLabel(String label) {
-		this.label = label;
-	}
-
-	public int getGroupId() {
-		return groupId;
-	}
-
-	public void setGroupId(int groupId) {
-		this.groupId = groupId;
-	}
 }
