@@ -303,13 +303,6 @@ void AbstractServer::changeVisibleTree() {
     Statistics statistics = AbstractDataTree::getCurrentlyVisibleDataTree()->get_statistics();
     CoordinatesFilter::getInstance() -> recomputeIntersections(&statistics);
     sendStatisticsOfCurrentlyVisibleTree();
-
-    char title[80];
-    strcpy(title, SMESHALIST);
-    strcat(title, "\t");
-    strcat(title, AbstractDataTree::getCurrentlyVisibleDataTree() -> getTreeName().c_str());
-
-    glutSetWindowTitle(title);
 }
 
 void AbstractServer::startServerInNewThread()

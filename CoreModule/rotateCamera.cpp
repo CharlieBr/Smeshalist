@@ -121,7 +121,6 @@ void addDirectionalLight() {
    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
    glEnable(GL_LIGHT0);
-   glEnable(GL_LIGHTING);
 
    glMatrixMode(GL_MODELVIEW);
    glEnable(GL_COLOR_MATERIAL);
@@ -142,9 +141,7 @@ void renderScene(void) {
         drawOrigin();
         glColor3f(0.1f, 0.1f, 0.1f);
 
-        glEnable(GL_LIGHTING);
         d -> getCurrentlyVisibleDataTree() -> draw_elements();
-        glDisable(GL_LIGHTING);
         drawBoundingBox(d -> getCurrentlyVisibleDataTree());
 
         CoordinatesFilter::getInstance() -> draw();
@@ -208,15 +205,6 @@ void mouseButton(int button, int state, int x, int y) {
     computeCameraPosition();
 }
 
-void setTitle() {
-    char title[80];
-    strcpy(title, SMESHALIST);
-    strcat(title, "\t");
-    strcat(title, AbstractDataTree::getCurrentlyVisibleDataTree() -> getTreeName().c_str());
-
-    glutSetWindowTitle(title);
-}
-
 void keyboardEvent(unsigned char key, int x, int y) {
     switch (key) {
         case 'x':
@@ -245,8 +233,7 @@ void initGLUT(int argc, char **argv) {
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(500, 500);
-	glutCreateWindow("");
-	setTitle();
+	glutCreateWindow(SMESHALIST);
 
 	glutDisplayFunc(renderScene);
 	glutReshapeFunc(changeSize);
