@@ -3,25 +3,17 @@
 using namespace std;
 
 Smeshalist::Smeshalist() {
-    #ifdef __linux__
-	communication = new LinuxCommunication();
-	#else
-	communication = new WindowsCommunication();
-    #endif // __linux__
-	communication->SetupSocket();
+	Smeshalist::core_port = CORE_PORT;
+	SetupSocket();
 }
 
 Smeshalist::Smeshalist(int port_number) {
-	#ifdef __linux__
-	communication = new LinuxCommunication(port_number);
-	#else
-	communication = new WindowsCommunication(port_number);
-    #endif // __linux__
-	communication->SetupSocket();
+	Smeshalist::core_port = port_number;
+	SetupSocket();
 }
 
 Smeshalist::~Smeshalist(){
-    communication->CleanupSocket();
+    close(core_socket);
 }
 
 Smeshalist& Smeshalist::GetInstance() {
@@ -32,6 +24,29 @@ Smeshalist& Smeshalist::GetInstance() {
 Smeshalist& Smeshalist::GetInstance(int port_number){
 	static Smeshalist INSTANCE(port_number);
 	return INSTANCE;
+}
+
+void Smeshalist::SetupSocket() {
+
+	if ((core_socket = socket(AF_INET, SOCK_DGRAM, 0))  < 0) {
+		perror("Cannot create socket");
+		return;
+	}
+
+	memset((char *)&core_addr, 0, sizeof(core_addr));
+	core_addr.sin_family = AF_INET;
+	core_addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+	core_addr.sin_port = htons(core_port);
+
+}
+
+int Smeshalist::SendBytesToCore(const void* buffer, int buffer_size) const {
+
+	return sendto(core_socket, buffer, buffer_size, 0, (struct sockaddr *)&core_addr, sizeof(core_addr));
+}
+int Smeshalist::GetBytesFromCore(char* buffer, int buffer_size) {
+
+	return recvfrom(core_socket, buffer, buffer_size, 0, (struct sockaddr *)&core_addr, &core_addr_size);
 }
 
 structDefinitions::Properties* Smeshalist::GetProperties(int group_id, string label, double quality) const {
@@ -82,7 +97,6 @@ void Smeshalist::ProcessGeometry(Vertex &element, structDefinitions::DataPackage
     structDefinitions::Vertex* vertex = data_package.add_vertexes();
     Point3D point = element.GetPoint();
     vertex->set_allocated_point(Smeshalist::GetPoint3D(point));
-    vertex->set_number(0.0);
     vertex->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
 }
 
@@ -135,9 +149,9 @@ void Smeshalist::FlushBuffer() {
 	out_buffer = new char[size];
 
 	message_info.SerializeToArray(out_buffer, size);
-	communication->SendBytesToCore(out_buffer, size);
+	SendBytesToCore(out_buffer, size);
 
-	n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
+	n_bytes = GetBytesFromCore(in_buffer, BUFFER_SIZE);
 
 	if (n_bytes < 0) {
 		cout<<"Error when receiving bytes from core"<<endl;
@@ -199,15 +213,15 @@ void Smeshalist::FlushBuffer() {
 		out_buffer = new char[size];
 
 		header.SerializeToArray(out_buffer, size);
-		communication->SendBytesToCore(out_buffer, size);
+		SendBytesToCore(out_buffer, size);
 
 		size = data_package.ByteSize();
 		out_buffer = new char[size];
 
 		data_package.SerializeToArray(out_buffer, size);
-		communication->SendBytesToCore(out_buffer, size);
+		SendBytesToCore(out_buffer, size);
 
-		n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
+		n_bytes = GetBytesFromCore(in_buffer, BUFFER_SIZE);
 
 		if (n_bytes < 0) {
 			cout<<"Error when receiving bytes from core"<<endl;
@@ -228,7 +242,7 @@ void Smeshalist::Render() const {
 	out_buffer = new char[size];
 
 	message_info.SerializeToArray(out_buffer, size);
-	communication->SendBytesToCore(out_buffer, size);
+	SendBytesToCore(out_buffer, size);
 }
 
 void Smeshalist::Breakpoint() {
@@ -242,9 +256,9 @@ void Smeshalist::Breakpoint() {
 	out_buffer = new char[size];
 
 	message_info.SerializeToArray(out_buffer, size);
-	communication->SendBytesToCore(out_buffer, size);
+	SendBytesToCore(out_buffer, size);
 
-	n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
+	n_bytes = GetBytesFromCore(in_buffer, BUFFER_SIZE);
 
 	if (n_bytes < 0) {
 		cout<<"Error when receiving bytes from core"<<endl;
@@ -271,9 +285,9 @@ void Smeshalist::Clean() {
 	out_buffer = new char[size];
 
 	message_info.SerializeToArray(out_buffer, size);
-	communication->SendBytesToCore(out_buffer, size);
+	SendBytesToCore(out_buffer, size);
 
-	n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
+	n_bytes = GetBytesFromCore(in_buffer, BUFFER_SIZE);
 
 	if (n_bytes < 0) {
 		cout<<"Error when receiving bytes from core"<<endl;
