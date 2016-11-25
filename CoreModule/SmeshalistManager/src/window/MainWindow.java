@@ -22,7 +22,7 @@ public class MainWindow extends JFrame {
 	private MainWindow() {
 		this.initializeView();
 
-		this.setSize(500, 550);
+		this.setSize(550, 550);
 
 		setVisible(true);
 	}
