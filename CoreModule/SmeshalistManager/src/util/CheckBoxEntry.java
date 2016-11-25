@@ -23,6 +23,10 @@ public class CheckBoxEntry extends JPanel {
 		return this.checkBox.isSelected();
 	}
 
+	public void setCheckBoxSelected(boolean selection) {
+		this.checkBox.setSelected(selection);
+	}
+
 	public String getCheckBoxText(){
 		return this.checkBox.getText();
 	}
