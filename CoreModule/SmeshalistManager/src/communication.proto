@@ -47,11 +47,17 @@ message CoreToManagerMessage{
 	optional StatisticsInfo statisticsInfo = 2;
 }
 //----------------------------------------------------------------------------------------------------------------
+enum ColoringType{
+	GROUPS_COLORING = 1;
+	QUALITY_COLORING = 2;
+}
+
 message OptionsInfo{
 	required bool transparentStructures = 1;
 	required bool dynamicRendering = 2;
 	required bool showLabels = 3;
 	required double mouseSensitivity = 4;
+	required ColoringType coloringType = 5;
 }
 
 message TypesFilter{
