@@ -61,7 +61,7 @@ public class App {
 		tool.breakpoint();
 		System.out.println("Destroy...");*/
 		//tool.clean();
-		Smeshalist.destroySmeshialist();
+		Smeshalist.destroySmeshalist();
 		
 	}
 
