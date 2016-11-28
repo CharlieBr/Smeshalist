@@ -1,3 +1,4 @@
+"""Smeshalist module - Main API module which provide methods to add geometries for visualization algorithm"""
 import geometry
 import structs_pb2
 import socket
@@ -11,6 +12,7 @@ structuresRemaining = numberOfStructuresToSend
 dataPackages = []
 
 def getInstance(portNumber):
+    """Return instance of Smeshalist class. Tool is using port of given number to connect to main window"""
     global port
     port = portNumber
     dataPackage = structs_pb2.DataPackage()
@@ -18,7 +20,7 @@ def getInstance(portNumber):
 
 
 def addPoint3D(point3D):
-
+    """Method adds Point3D object point3D to internal data buffer that stores structures to send for visualization"""
     global structuresRemaining
     if structuresRemaining ==  0:
         structuresRemaining = numberOfStructuresToSend 
@@ -34,6 +36,7 @@ def addPoint3D(point3D):
 
 
 def addVertex(vertex):
+    """Method adds Vertex object vertex to internal data buffer that stores structures to send for visualization"""
     global structuresRemaining
     if structuresRemaining ==  0:
         structuresRemaining = numberOfStructuresToSend 
@@ -53,6 +56,7 @@ def addVertex(vertex):
 
 
 def addEdge(edge):
+    """Method adds Edge object edge to internal data buffer that stores structures to send for visualization"""
     global structuresRemaining
     if structuresRemaining ==  0:
         structuresRemaining = numberOfStructuresToSend 
@@ -76,6 +80,7 @@ def addEdge(edge):
 
 
 def addTriangleFace(triangleFace):
+    """Method adds TriangleFace object triangleFace to internal data buffer that stores structures to send for visualization"""
     global structuresRemaining
     if structuresRemaining ==  0:
         structuresRemaining = numberOfStructuresToSend 
@@ -100,6 +105,7 @@ def addTriangleFace(triangleFace):
 
 
 def addBlock(block):
+    """Method adds Block object block to internal data buffer that stores structures to send for visualization"""
     global structuresRemaining
     if structuresRemaining ==  0:
         structuresRemaining = numberOfStructuresToSend 
@@ -129,8 +135,7 @@ def addBlock(block):
 
 
 def flushBuffer():
-  
-
+    """Send all structures stored in buffer to main window"""
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # Send 
@@ -174,6 +179,8 @@ def flushBuffer():
 
 
 def breakpoint():
+    """Interrupts algorithm execution until proper option will be chosen in Smeshalist Manager window.
+    In case continue option has been chosen algorithm is continued otherwise program is terminated."""    
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # Send 
@@ -197,6 +204,7 @@ def breakpoint():
 
 
 def render():
+    """Method forces rendering sent structures in main window in case Dynamic rendering is turned off in Smeshalist Manager window."""
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # Send 
@@ -210,6 +218,7 @@ def render():
 
 
 def clean():
+    """Method forces deleting all data from data structure tree in main window without affecting taken snapshots."""
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # Send 
