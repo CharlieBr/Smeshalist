@@ -141,7 +141,6 @@ def flushBuffer():
 
 
         # Receive acknowledge
-        print 'waiting to receive'
         data, addr = sock.recvfrom(10)
         reply = structs_pb2.MessageInfo()
         reply.ParseFromString(data)
@@ -163,12 +162,10 @@ def flushBuffer():
             sent = sock.sendto(dataToSend, (IPAdress, port))
             
             # Receive acknowledge
-            print 'waiting to receive2'
             data, addr = sock.recvfrom(10)
             reply.ParseFromString(data)                        
 
     finally:
-        print 'closing socket'
         global structuresRemaining 
         structuresRemaining = numberOfStructuresToSend
         dataPackage = structs_pb2.DataPackage()
@@ -187,7 +184,6 @@ def breakpoint():
 
 
         # Receive acknowledge
-        print 'waiting to receive'
         data, addr = sock.recvfrom(10)
         reply = structs_pb2.MessageInfo()
         reply.ParseFromString(data)
@@ -197,7 +193,6 @@ def breakpoint():
             exit()                    
 
     finally:
-        print 'closing socket'
         sock.close()
 
 
@@ -211,7 +206,6 @@ def render():
         sent = sock.sendto(bytesToSend, (IPAdress, port))                
 
     finally:
-        print 'closing socket'
         sock.close()
 
 
@@ -226,7 +220,6 @@ def clean():
 
 
         # Receive acknowledge
-        print 'waiting to receive'
         data, addr = sock.recvfrom(10)
         reply = structs_pb2.MessageInfo()
         reply.ParseFromString(data)
@@ -236,5 +229,4 @@ def clean():
             exit()                    
 
     finally:
-        print 'closing socket'
         sock.close()

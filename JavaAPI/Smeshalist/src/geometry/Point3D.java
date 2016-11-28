@@ -16,6 +16,19 @@ public class Point3D {
 	 * 
 	 * @param x the x coordinate
 	 * @param y the y coordinate
+	 * 
+	 * Class constructor for point in case of using it as a 2D point structure
+	 */
+	public Point3D(double x, double y){
+		setX(x);
+		setY(y);
+		setZ(0.0);
+	}
+	
+	/**
+	 * 
+	 * @param x the x coordinate
+	 * @param y the y coordinate
 	 * @param z the z coordinate
 	 * Class constructor.
 	 */

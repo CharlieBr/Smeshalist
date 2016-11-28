@@ -1,9 +1,12 @@
 class Point3D:
 
-    def __init__(self, x, y, z):
+    def __init__(self, x, y, z = None):
         self.x = x
         self.y = y
-        self.z = z
+        if z is None:
+            self.z = 0.0
+        else:
+            self.z = z
 
 
 class Vertex:
