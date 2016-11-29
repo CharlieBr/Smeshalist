@@ -239,6 +239,9 @@ void AbstractServer::processOptionDataPackage(sm::ManagerToCoreMessage* message)
     //TODO show labels
 
     transparentStructures = options.transparentstructures();
+
+    sm::ColoringType coloringType = options.coloringtype();
+    Element::setColoringBuQuality(coloringType == sm::ColoringType::QUALITY_COLORING);
 }
 
 void AbstractServer::startSMServer() {

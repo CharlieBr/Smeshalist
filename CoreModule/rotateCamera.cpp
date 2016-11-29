@@ -222,9 +222,6 @@ void keyboardEvent(unsigned char key, int x, int y) {
             deltaAngleY=0;
             computeCameraPosition();
             break;
-        case 'q':
-            Element::switchColoringByQuality();
-            break;
     }
 }
 

@@ -102,8 +102,8 @@ class Element
                 glColor3f(groupColor.r(), groupColor.g(), groupColor.b());
             }
         }
-        static void switchColoringByQuality() {
-            colorByQuality = !colorByQuality;
+        static void setColoringBuQuality(bool flag) {
+            colorByQuality = flag;
         }
 };
 

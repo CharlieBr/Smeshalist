@@ -119,6 +119,25 @@ inline bool ManagerToCoreMessage_MTCMessageType_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<ManagerToCoreMessage_MTCMessageType>(
     ManagerToCoreMessage_MTCMessageType_descriptor(), name, value);
 }
+enum ColoringType {
+  GROUPS_COLORING = 1,
+  QUALITY_COLORING = 2
+};
+bool ColoringType_IsValid(int value);
+const ColoringType ColoringType_MIN = GROUPS_COLORING;
+const ColoringType ColoringType_MAX = QUALITY_COLORING;
+const int ColoringType_ARRAYSIZE = ColoringType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ColoringType_descriptor();
+inline const ::std::string& ColoringType_Name(ColoringType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ColoringType_descriptor(), value);
+}
+inline bool ColoringType_Parse(
+    const ::std::string& name, ColoringType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ColoringType>(
+    ColoringType_descriptor(), name, value);
+}
 enum ComparisonOperator {
   GREATER_OR_EQUAL = 1,
   GREATER = 2,
@@ -1083,6 +1102,13 @@ class OptionsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
   double mousesensitivity() const;
   void set_mousesensitivity(double value);
 
+  // required .sm.ColoringType coloringType = 5;
+  bool has_coloringtype() const;
+  void clear_coloringtype();
+  static const int kColoringTypeFieldNumber = 5;
+  ::sm::ColoringType coloringtype() const;
+  void set_coloringtype(::sm::ColoringType value);
+
   // @@protoc_insertion_point(class_scope:sm.OptionsInfo)
  private:
   inline void set_has_transparentstructures();
@@ -1093,6 +1119,8 @@ class OptionsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
   inline void clear_has_showlabels();
   inline void set_has_mousesensitivity();
   inline void clear_has_mousesensitivity();
+  inline void set_has_coloringtype();
+  inline void clear_has_coloringtype();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -1100,10 +1128,11 @@ class OptionsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  double mousesensitivity_;
   bool transparentstructures_;
   bool dynamicrendering_;
   bool showlabels_;
+  int coloringtype_;
+  double mousesensitivity_;
   friend void  protobuf_AddDesc_communication_2eproto();
   friend void protobuf_AssignDesc_communication_2eproto();
   friend void protobuf_ShutdownFile_communication_2eproto();
@@ -2686,6 +2715,31 @@ inline void OptionsInfo::set_mousesensitivity(double value) {
   // @@protoc_insertion_point(field_set:sm.OptionsInfo.mouseSensitivity)
 }
 
+// required .sm.ColoringType coloringType = 5;
+inline bool OptionsInfo::has_coloringtype() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void OptionsInfo::set_has_coloringtype() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void OptionsInfo::clear_has_coloringtype() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void OptionsInfo::clear_coloringtype() {
+  coloringtype_ = 1;
+  clear_has_coloringtype();
+}
+inline ::sm::ColoringType OptionsInfo::coloringtype() const {
+  // @@protoc_insertion_point(field_get:sm.OptionsInfo.coloringType)
+  return static_cast< ::sm::ColoringType >(coloringtype_);
+}
+inline void OptionsInfo::set_coloringtype(::sm::ColoringType value) {
+  assert(::sm::ColoringType_IsValid(value));
+  set_has_coloringtype();
+  coloringtype_ = value;
+  // @@protoc_insertion_point(field_set:sm.OptionsInfo.coloringType)
+}
+
 // -------------------------------------------------------------------
 
 // TypesFilter
@@ -3351,6 +3405,11 @@ template <> struct is_proto_enum< ::sm::ManagerToCoreMessage_MTCMessageType> : :
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::sm::ManagerToCoreMessage_MTCMessageType>() {
   return ::sm::ManagerToCoreMessage_MTCMessageType_descriptor();
+}
+template <> struct is_proto_enum< ::sm::ColoringType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::sm::ColoringType>() {
+  return ::sm::ColoringType_descriptor();
 }
 template <> struct is_proto_enum< ::sm::ComparisonOperator> : ::google::protobuf::internal::true_type {};
 template <>
