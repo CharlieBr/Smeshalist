@@ -20,6 +20,7 @@ class OBJImporter
         vector<Point3D*> vertices;
         vector<Edge*> edges;
         vector<Face*> faces;
+        vector<Block*> blocks;
         vector<int> verticesIndexes;
         void addToStructuresTree(AbstractDataTree* handler);
 

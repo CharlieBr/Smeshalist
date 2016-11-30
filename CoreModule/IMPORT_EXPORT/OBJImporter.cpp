@@ -17,15 +17,19 @@ void OBJImporter::loadOBJFile(const char* path, AbstractDataTree* handler){
     while (1){
         char lineHeader[128];
         double x, y, z;
+        bool working = true;
+        if(working == false) {
+            break;
+        }
         int res = fscanf(importedFile, "%s", lineHeader);
         if(res == EOF){
             break;
         }
 
+
         if(strcmp(lineHeader, "v") == 0){
 
             fscanf(importedFile, "%lf %lf %lf\n", &x, &y, &z);
-            cout<<x<<" "<<y<<" "<<z<<endl;
             Point3D* point = new Point3D(x, y, z);
             vertices.push_back(point);
 
@@ -33,7 +37,6 @@ void OBJImporter::loadOBJFile(const char* path, AbstractDataTree* handler){
 
             int v1, v2;
             fscanf(importedFile, "%d %d\n", &v1, &v2);
-            cout<<v1<<" "<<v2<<endl;
             vector<Point3D> points;
             points.push_back(*vertices.at(v1-1));
             points.push_back(*vertices.at(v2-1));
@@ -46,7 +49,6 @@ void OBJImporter::loadOBJFile(const char* path, AbstractDataTree* handler){
 
             int v1, v2, v3;
             fscanf(importedFile, "%d %d %d\n", &v1, &v2, &v3);
-            cout<<v1<<" "<<v2<<" "<<v3<<endl;
             vector<Point3D> points;
             points.push_back(*vertices.at(v1-1));
             points.push_back(*vertices.at(v2-1));
@@ -56,19 +58,91 @@ void OBJImporter::loadOBJFile(const char* path, AbstractDataTree* handler){
             verticesIndexes.push_back(v1);
             verticesIndexes.push_back(v2);
             verticesIndexes.push_back(v3);
+
+        } else if(strcmp(lineHeader, "o") == 0){
+
+            object:
+                fscanf(importedFile, "%[^\n]\n", lineHeader);
+                vector<Point3D*> objectVertices;
+                vector<int> objectVerticesIndexes;
+                bool isInsideObject = true;
+                while(isInsideObject){
+                    res = fscanf(importedFile, "%s", lineHeader);
+                    if(res == EOF){
+                        working = false;
+                        isInsideObject = false;
+                    }
+
+                    if(strcmp(lineHeader, "o") == 0){
+                        goto addObject;
+                    } else if(strcmp(lineHeader, "v") == 0){
+                        fscanf(importedFile, "%lf %lf %lf\n", &x, &y, &z);
+                        Point3D* point = new Point3D(x, y, z);
+
+                        if(objectVertices.size() == 4) {
+                            cerr<<"Error during adding importing object"<<endl;
+                            return;
+                        }
+
+                        objectVertices.push_back(point);
+
+                    } else if (strcmp(lineHeader, "f") == 0){
+                        int v1, v2, v3;
+                        fscanf(importedFile, "%d %d %d\n", &v1, &v2, &v3);
+                        if(std::find(objectVerticesIndexes.begin(), objectVerticesIndexes.end(), v1) == objectVerticesIndexes.end()){
+                            objectVerticesIndexes.push_back(v1);
+                        }
+
+                        if(std::find(objectVerticesIndexes.begin(), objectVerticesIndexes.end(), v2) == objectVerticesIndexes.end()){
+                            objectVerticesIndexes.push_back(v2);
+                        }
+
+                        if(std::find(objectVerticesIndexes.begin(), objectVerticesIndexes.end(), v3) == objectVerticesIndexes.end()) {
+                            objectVerticesIndexes.push_back(v3);
+
+                        }
+                    } else {
+                        continue;
+                    }
+                }
+
+            addObject:
+            //dodawanie do listy bloków
+            vector<Point3D> points;
+
+            if(objectVertices.size() == 0){
+                for(int i=0; i<4; i++){
+                    points.push_back(*vertices.at(objectVerticesIndexes.at(i)-1));
+                    Point3D* vertex = vertices.at(objectVerticesIndexes.at(i)-1);
+                    verticesIndexes.push_back(objectVerticesIndexes.at(i)-1);
+                }
+            } else {
+
+                points.push_back(*objectVertices.at(0));
+                points.push_back(*objectVertices.at(1));
+                points.push_back(*objectVertices.at(2));
+                points.push_back(*objectVertices.at(3));
+            }
+
+            Block* block = new Block(&points);
+            blocks.push_back(block);
+
+            if(isInsideObject){
+                goto object;
+            }
+
+        } else {
+            continue;
         }
     }
-
-    cout<<"po petli"<<endl;
 
     int res = fclose(importedFile);
     if(res == EOF){
         cerr<<"Error during closing imported file"<<endl;
         return;
     }
-    addToStructuresTree(handler);
 
-    cout<<"dodalo"<<endl;
+    addToStructuresTree(handler);
 
 }
 
@@ -89,6 +163,16 @@ void OBJImporter::addToStructuresTree(AbstractDataTree* handler){
     for(Face* face : faces){
         handler->add(0, face);
     }
+
+
+    for(Block* block : blocks){
+        handler->add(0, block);
+    }
+
+    vertices.clear();
+    edges.clear();
+    faces.clear();
+    blocks.clear();
 
 }
 
