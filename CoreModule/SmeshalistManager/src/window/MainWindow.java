@@ -40,7 +40,7 @@ public class MainWindow extends JFrame {
 		this.tabContainer.addTab("Statistics", statisticsTab);
 		this.tabContainer.addTab("Options", optionsTab);
 		this.tabContainer.addTab("Filters", filtersTab);
-		this.tabContainer.addTab("Obj", objTab);
+		this.tabContainer.addTab("Import/Export", objTab);
 		this.add(tabContainer);
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

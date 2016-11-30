@@ -67,17 +67,17 @@ public class OptionsTab extends JPanel{
 		setBorder(border);
 		
 		transparencyCheckBox = new JCheckBox("Transparent structures");
-		transparencyCheckBox.setBorder(new EmptyBorder(10, 0, 10, 0));
+		transparencyCheckBox.setBorder(new EmptyBorder(10, 10, 10, 0));
 		renderingCheckBox = new JCheckBox("Dynamic rendering");
 		renderingCheckBox.setSelected(true);
-		renderingCheckBox.setBorder(new EmptyBorder(10, 0, 10, 0));
+		renderingCheckBox.setBorder(new EmptyBorder(10, 10, 10, 0));
 		showLabelsCheckBox = new JCheckBox("Show labels");
-		showLabelsCheckBox.setBorder(new EmptyBorder(10, 0, 10, 0));
+		showLabelsCheckBox.setBorder(new EmptyBorder(10, 10, 10, 0));
 
 		coloringComboBox = new JComboBox<>();
 		coloringComboBox.addItem(ColoringType.GROUP_COLORING);
 		coloringComboBox.addItem(ColoringType.QUALITY_COLORING);
-		coloringComboBox.setBorder(new EmptyBorder(10,0,10,0));
+		coloringComboBox.setBorder(new EmptyBorder(10,0,10,10));
 
 		sensitivitySlider = new JSlider(JScrollBar.HORIZONTAL, 0, 20, 1);
 		sensitivitySlider.setMajorTickSpacing(5);
