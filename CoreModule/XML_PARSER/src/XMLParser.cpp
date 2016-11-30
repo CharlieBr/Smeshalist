@@ -86,7 +86,7 @@ XMLNode* XMLParser::getNode(string content) {
                 if (content[index] == '"') {
                     index++;
                 }
-                while(isalnum(content[index])) {
+                while(isalnum(content[index]) || content[index]=='.') {
                     value += content[index++];
                 }
                 if (content[index] == '"') {

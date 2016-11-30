@@ -9,6 +9,100 @@ public final class Communication {
       com.google.protobuf.ExtensionRegistry registry) {
   }
   /**
+   * <pre>
+   *----------------------------------------------------------------------------------------------------------------
+   * </pre>
+   *
+   * Protobuf enum {@code sm.ColoringType}
+   */
+  public enum ColoringType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>GROUPS_COLORING = 1;</code>
+     */
+    GROUPS_COLORING(1),
+    /**
+     * <code>QUALITY_COLORING = 2;</code>
+     */
+    QUALITY_COLORING(2),
+    ;
+
+    /**
+     * <code>GROUPS_COLORING = 1;</code>
+     */
+    public static final int GROUPS_COLORING_VALUE = 1;
+    /**
+     * <code>QUALITY_COLORING = 2;</code>
+     */
+    public static final int QUALITY_COLORING_VALUE = 2;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ColoringType valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ColoringType forNumber(int value) {
+      switch (value) {
+        case 1: return GROUPS_COLORING;
+        case 2: return QUALITY_COLORING;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ColoringType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        ColoringType> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ColoringType>() {
+            public ColoringType findValueByNumber(int number) {
+              return ColoringType.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return communication.Communication.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final ColoringType[] VALUES = values();
+
+    public static ColoringType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private ColoringType(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:sm.ColoringType)
+  }
+
+  /**
    * Protobuf enum {@code sm.ComparisonOperator}
    */
   public enum ComparisonOperator
@@ -102,7 +196,7 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return communication.Communication.getDescriptor().getEnumTypes().get(0);
+      return communication.Communication.getDescriptor().getEnumTypes().get(1);
     }
 
     private static final ComparisonOperator[] VALUES = values();
@@ -3553,6 +3647,20 @@ public final class Communication {
      * <code>required .sm.GroupsInfo groupsInfo = 3;</code>
      */
     communication.Communication.GroupsInfoOrBuilder getGroupsInfoOrBuilder();
+
+    /**
+     * <code>required string treeName = 4;</code>
+     */
+    boolean hasTreeName();
+    /**
+     * <code>required string treeName = 4;</code>
+     */
+    java.lang.String getTreeName();
+    /**
+     * <code>required string treeName = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getTreeNameBytes();
   }
   /**
    * Protobuf type {@code sm.StatisticsInfo}
@@ -3566,6 +3674,7 @@ public final class Communication {
       super(builder);
     }
     private StatisticsInfo() {
+      treeName_ = "";
     }
 
     @java.lang.Override
@@ -3633,6 +3742,12 @@ public final class Communication {
                 groupsInfo_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000008;
+              treeName_ = bs;
               break;
             }
           }
@@ -3723,6 +3838,48 @@ public final class Communication {
       return groupsInfo_ == null ? communication.Communication.GroupsInfo.getDefaultInstance() : groupsInfo_;
     }
 
+    public static final int TREENAME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object treeName_;
+    /**
+     * <code>required string treeName = 4;</code>
+     */
+    public boolean hasTreeName() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required string treeName = 4;</code>
+     */
+    public java.lang.String getTreeName() {
+      java.lang.Object ref = treeName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          treeName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string treeName = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTreeNameBytes() {
+      java.lang.Object ref = treeName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        treeName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3738,6 +3895,10 @@ public final class Communication {
         return false;
       }
       if (!hasGroupsInfo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasTreeName()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3768,6 +3929,9 @@ public final class Communication {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeMessage(3, getGroupsInfo());
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, treeName_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -3787,6 +3951,9 @@ public final class Communication {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getGroupsInfo());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, treeName_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3820,6 +3987,11 @@ public final class Communication {
         result = result && getGroupsInfo()
             .equals(other.getGroupsInfo());
       }
+      result = result && (hasTreeName() == other.hasTreeName());
+      if (hasTreeName()) {
+        result = result && getTreeName()
+            .equals(other.getTreeName());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -3842,6 +4014,10 @@ public final class Communication {
       if (hasGroupsInfo()) {
         hash = (37 * hash) + GROUPSINFO_FIELD_NUMBER;
         hash = (53 * hash) + getGroupsInfo().hashCode();
+      }
+      if (hasTreeName()) {
+        hash = (37 * hash) + TREENAME_FIELD_NUMBER;
+        hash = (53 * hash) + getTreeName().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -3981,6 +4157,8 @@ public final class Communication {
           groupsInfoBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
+        treeName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -4029,6 +4207,10 @@ public final class Communication {
         } else {
           result.groupsInfo_ = groupsInfoBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.treeName_ = treeName_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4054,6 +4236,11 @@ public final class Communication {
         if (other.hasGroupsInfo()) {
           mergeGroupsInfo(other.getGroupsInfo());
         }
+        if (other.hasTreeName()) {
+          bitField0_ |= 0x00000008;
+          treeName_ = other.treeName_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -4067,6 +4254,9 @@ public final class Communication {
           return false;
         }
         if (!hasGroupsInfo()) {
+          return false;
+        }
+        if (!hasTreeName()) {
           return false;
         }
         if (!getElementsCount().isInitialized()) {
@@ -4452,6 +4642,82 @@ public final class Communication {
           groupsInfo_ = null;
         }
         return groupsInfoBuilder_;
+      }
+
+      private java.lang.Object treeName_ = "";
+      /**
+       * <code>required string treeName = 4;</code>
+       */
+      public boolean hasTreeName() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required string treeName = 4;</code>
+       */
+      public java.lang.String getTreeName() {
+        java.lang.Object ref = treeName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            treeName_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string treeName = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTreeNameBytes() {
+        java.lang.Object ref = treeName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          treeName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string treeName = 4;</code>
+       */
+      public Builder setTreeName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        treeName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string treeName = 4;</code>
+       */
+      public Builder clearTreeName() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        treeName_ = getDefaultInstance().getTreeName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string treeName = 4;</code>
+       */
+      public Builder setTreeNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        treeName_ = value;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:sm.StatisticsInfo)
@@ -5277,12 +5543,17 @@ public final class Communication {
      * <code>required double mouseSensitivity = 4;</code>
      */
     double getMouseSensitivity();
+
+    /**
+     * <code>required .sm.ColoringType coloringType = 5;</code>
+     */
+    boolean hasColoringType();
+    /**
+     * <code>required .sm.ColoringType coloringType = 5;</code>
+     */
+    communication.Communication.ColoringType getColoringType();
   }
   /**
-   * <pre>
-   *----------------------------------------------------------------------------------------------------------------
-   * </pre>
-   *
    * Protobuf type {@code sm.OptionsInfo}
    */
   public  static final class OptionsInfo extends
@@ -5298,6 +5569,7 @@ public final class Communication {
       dynamicRendering_ = false;
       showLabels_ = false;
       mouseSensitivity_ = 0D;
+      coloringType_ = 1;
     }
 
     @java.lang.Override
@@ -5346,6 +5618,17 @@ public final class Communication {
             case 33: {
               bitField0_ |= 0x00000008;
               mouseSensitivity_ = input.readDouble();
+              break;
+            }
+            case 40: {
+              int rawValue = input.readEnum();
+              communication.Communication.ColoringType value = communication.Communication.ColoringType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(5, rawValue);
+              } else {
+                bitField0_ |= 0x00000010;
+                coloringType_ = rawValue;
+              }
               break;
             }
           }
@@ -5433,6 +5716,22 @@ public final class Communication {
       return mouseSensitivity_;
     }
 
+    public static final int COLORINGTYPE_FIELD_NUMBER = 5;
+    private int coloringType_;
+    /**
+     * <code>required .sm.ColoringType coloringType = 5;</code>
+     */
+    public boolean hasColoringType() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required .sm.ColoringType coloringType = 5;</code>
+     */
+    public communication.Communication.ColoringType getColoringType() {
+      communication.Communication.ColoringType result = communication.Communication.ColoringType.valueOf(coloringType_);
+      return result == null ? communication.Communication.ColoringType.GROUPS_COLORING : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5455,6 +5754,10 @@ public final class Communication {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasColoringType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -5472,6 +5775,9 @@ public final class Communication {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeDouble(4, mouseSensitivity_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeEnum(5, coloringType_);
       }
       unknownFields.writeTo(output);
     }
@@ -5496,6 +5802,10 @@ public final class Communication {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(4, mouseSensitivity_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(5, coloringType_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5536,6 +5846,10 @@ public final class Communication {
             == java.lang.Double.doubleToLongBits(
                 other.getMouseSensitivity()));
       }
+      result = result && (hasColoringType() == other.hasColoringType());
+      if (hasColoringType()) {
+        result = result && coloringType_ == other.coloringType_;
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -5566,6 +5880,10 @@ public final class Communication {
         hash = (37 * hash) + MOUSESENSITIVITY_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
             java.lang.Double.doubleToLongBits(getMouseSensitivity()));
+      }
+      if (hasColoringType()) {
+        hash = (37 * hash) + COLORINGTYPE_FIELD_NUMBER;
+        hash = (53 * hash) + coloringType_;
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -5650,10 +5968,6 @@ public final class Communication {
       return builder;
     }
     /**
-     * <pre>
-     *----------------------------------------------------------------------------------------------------------------
-     * </pre>
-     *
      * Protobuf type {@code sm.OptionsInfo}
      */
     public static final class Builder extends
@@ -5696,6 +6010,8 @@ public final class Communication {
         bitField0_ = (bitField0_ & ~0x00000004);
         mouseSensitivity_ = 0D;
         bitField0_ = (bitField0_ & ~0x00000008);
+        coloringType_ = 1;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -5736,6 +6052,10 @@ public final class Communication {
           to_bitField0_ |= 0x00000008;
         }
         result.mouseSensitivity_ = mouseSensitivity_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.coloringType_ = coloringType_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5764,6 +6084,9 @@ public final class Communication {
         if (other.hasMouseSensitivity()) {
           setMouseSensitivity(other.getMouseSensitivity());
         }
+        if (other.hasColoringType()) {
+          setColoringType(other.getColoringType());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -5780,6 +6103,9 @@ public final class Communication {
           return false;
         }
         if (!hasMouseSensitivity()) {
+          return false;
+        }
+        if (!hasColoringType()) {
           return false;
         }
         return true;
@@ -5928,6 +6254,42 @@ public final class Communication {
       public Builder clearMouseSensitivity() {
         bitField0_ = (bitField0_ & ~0x00000008);
         mouseSensitivity_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private int coloringType_ = 1;
+      /**
+       * <code>required .sm.ColoringType coloringType = 5;</code>
+       */
+      public boolean hasColoringType() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required .sm.ColoringType coloringType = 5;</code>
+       */
+      public communication.Communication.ColoringType getColoringType() {
+        communication.Communication.ColoringType result = communication.Communication.ColoringType.valueOf(coloringType_);
+        return result == null ? communication.Communication.ColoringType.GROUPS_COLORING : result;
+      }
+      /**
+       * <code>required .sm.ColoringType coloringType = 5;</code>
+       */
+      public Builder setColoringType(communication.Communication.ColoringType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000010;
+        coloringType_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .sm.ColoringType coloringType = 5;</code>
+       */
+      public Builder clearColoringType() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        coloringType_ = 1;
         onChanged();
         return this;
       }
@@ -10673,6 +11035,14 @@ public final class Communication {
        * <code>CLEAN = 7;</code>
        */
       CLEAN(7),
+      /**
+       * <code>NEXT_TREE = 8;</code>
+       */
+      NEXT_TREE(8),
+      /**
+       * <code>PREV_TREE = 9;</code>
+       */
+      PREV_TREE(9),
       ;
 
       /**
@@ -10703,6 +11073,14 @@ public final class Communication {
        * <code>CLEAN = 7;</code>
        */
       public static final int CLEAN_VALUE = 7;
+      /**
+       * <code>NEXT_TREE = 8;</code>
+       */
+      public static final int NEXT_TREE_VALUE = 8;
+      /**
+       * <code>PREV_TREE = 9;</code>
+       */
+      public static final int PREV_TREE_VALUE = 9;
 
 
       public final int getNumber() {
@@ -10726,6 +11104,8 @@ public final class Communication {
           case 5: return HELLO;
           case 6: return SNAPSHOT;
           case 7: return CLEAN;
+          case 8: return NEXT_TREE;
+          case 9: return PREV_TREE;
           default: return null;
         }
       }
@@ -12133,50 +12513,54 @@ public final class Communication {
       "\"{\n\nGroupsInfo\0220\n\tallGroups\030\001 \003(\0132\035.sm.G",
       "roupsInfo.AllGroupsEntry\032;\n\016AllGroupsEnt" +
       "ry\022\013\n\003key\030\001 \001(\005\022\030\n\005value\030\002 \001(\0132\t.sm.Colo" +
-      "r:\0028\001\"\204\001\n\016StatisticsInfo\022(\n\relementsCoun" +
+      "r:\0028\001\"\226\001\n\016StatisticsInfo\022(\n\relementsCoun" +
       "t\030\001 \002(\0132\021.sm.ElementsCount\022$\n\013boundingBo" +
       "x\030\002 \002(\0132\017.sm.BoundingBox\022\"\n\ngroupsInfo\030\003" +
-      " \002(\0132\016.sm.GroupsInfo\"\262\001\n\024CoreToManagerMe" +
-      "ssage\022<\n\013messageType\030\001 \002(\0162\'.sm.CoreToMa" +
-      "nagerMessage.CTMMessageType\022*\n\016statistic" +
-      "sInfo\030\002 \001(\0132\022.sm.StatisticsInfo\"0\n\016CTMMe" +
-      "ssageType\022\016\n\nSTATISTICS\020\001\022\016\n\nBREAKPOINT\020",
-      "\002\"t\n\013OptionsInfo\022\035\n\025transparentStructure" +
-      "s\030\001 \002(\010\022\030\n\020dynamicRendering\030\002 \002(\010\022\022\n\nsho" +
-      "wLabels\030\003 \002(\010\022\030\n\020mouseSensitivity\030\004 \002(\001\"" +
-      "~\n\013TypesFilter\0229\n\rselectedTypes\030\001 \003(\0132\"." +
-      "sm.TypesFilter.SelectedTypesEntry\0324\n\022Sel" +
-      "ectedTypesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 " +
-      "\001(\010:\0028\001\"\203\001\n\014GroupsFilter\022<\n\016selectedGrou" +
-      "ps\030\001 \003(\0132$.sm.GroupsFilter.SelectedGroup" +
-      "sEntry\0325\n\023SelectedGroupsEntry\022\013\n\003key\030\001 \001" +
-      "(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\226\001\n\020QualityConditi",
-      "on\022\021\n\tleftValue\030\001 \001(\001\022,\n\014leftOperator\030\002 " +
-      "\001(\0162\026.sm.ComparisonOperator\022-\n\rrightOper" +
-      "ator\030\003 \001(\0162\026.sm.ComparisonOperator\022\022\n\nri" +
-      "ghtValue\030\004 \001(\001\"?\n\rQualityFilter\022.\n\020quali" +
-      "tyCondition\030\001 \003(\0132\024.sm.QualityCondition\"" +
-      "\215\001\n\024CoordinatesCondition\022\016\n\006xValue\030\001 \002(\001" +
-      "\022\016\n\006yValue\030\002 \002(\001\022\016\n\006zValue\030\003 \002(\001\0223\n\023coor" +
-      "dinatesOperator\030\004 \002(\0162\026.sm.ComparisonOpe" +
-      "rator\022\020\n\010constant\030\005 \002(\001\"\243\001\n\021CoordinatesF" +
-      "ilter\0226\n\024coordinatesCondition\030\001 \003(\0132\030.sm",
-      ".CoordinatesCondition\0226\n\013conjunction\030\002 \001" +
-      "(\0162!.sm.CoordinatesFilter.Conjunction\"\036\n" +
-      "\013Conjunction\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\215\003\n\024Manage" +
-      "rToCoreMessage\022<\n\013messageType\030\001 \002(\0162\'.sm" +
-      ".ManagerToCoreMessage.MTCMessageType\022$\n\013" +
-      "optionsInfo\030\002 \001(\0132\017.sm.OptionsInfo\022&\n\014gr" +
-      "oupsFilter\030\003 \001(\0132\020.sm.GroupsFilter\022$\n\013ty" +
-      "pesFilter\030\004 \001(\0132\017.sm.TypesFilter\022(\n\rqual" +
-      "ityFilter\030\005 \001(\0132\021.sm.QualityFilter\0220\n\021co" +
-      "ordinatesFilter\030\006 \001(\0132\025.sm.CoordinatesFi",
-      "lter\"g\n\016MTCMessageType\022\013\n\007OPTIONS\020\001\022\013\n\007F" +
-      "ILTERS\020\002\022\014\n\010CONTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HEL" +
-      "LO\020\005\022\014\n\010SNAPSHOT\020\006\022\t\n\005CLEAN\020\007*_\n\022Compari" +
-      "sonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GRE" +
-      "ATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004" +
-      "LESS\020\005B\036\n\rcommunicationB\rCommunication"
+      " \002(\0132\016.sm.GroupsInfo\022\020\n\010treeName\030\004 \002(\t\"\262" +
+      "\001\n\024CoreToManagerMessage\022<\n\013messageType\030\001" +
+      " \002(\0162\'.sm.CoreToManagerMessage.CTMMessag" +
+      "eType\022*\n\016statisticsInfo\030\002 \001(\0132\022.sm.Stati" +
+      "sticsInfo\"0\n\016CTMMessageType\022\016\n\nSTATISTIC",
+      "S\020\001\022\016\n\nBREAKPOINT\020\002\"\234\001\n\013OptionsInfo\022\035\n\025t" +
+      "ransparentStructures\030\001 \002(\010\022\030\n\020dynamicRen" +
+      "dering\030\002 \002(\010\022\022\n\nshowLabels\030\003 \002(\010\022\030\n\020mous" +
+      "eSensitivity\030\004 \002(\001\022&\n\014coloringType\030\005 \002(\016" +
+      "2\020.sm.ColoringType\"~\n\013TypesFilter\0229\n\rsel" +
+      "ectedTypes\030\001 \003(\0132\".sm.TypesFilter.Select" +
+      "edTypesEntry\0324\n\022SelectedTypesEntry\022\013\n\003ke" +
+      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n\014GroupsFil" +
+      "ter\022<\n\016selectedGroups\030\001 \003(\0132$.sm.GroupsF" +
+      "ilter.SelectedGroupsEntry\0325\n\023SelectedGro",
+      "upsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001" +
+      "\"\226\001\n\020QualityCondition\022\021\n\tleftValue\030\001 \001(\001" +
+      "\022,\n\014leftOperator\030\002 \001(\0162\026.sm.ComparisonOp" +
+      "erator\022-\n\rrightOperator\030\003 \001(\0162\026.sm.Compa" +
+      "risonOperator\022\022\n\nrightValue\030\004 \001(\001\"?\n\rQua" +
+      "lityFilter\022.\n\020qualityCondition\030\001 \003(\0132\024.s" +
+      "m.QualityCondition\"\215\001\n\024CoordinatesCondit" +
+      "ion\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030\002 \002(\001\022\016\n\006z" +
+      "Value\030\003 \002(\001\0223\n\023coordinatesOperator\030\004 \002(\016" +
+      "2\026.sm.ComparisonOperator\022\020\n\010constant\030\005 \002",
+      "(\001\"\243\001\n\021CoordinatesFilter\0226\n\024coordinatesC" +
+      "ondition\030\001 \003(\0132\030.sm.CoordinatesCondition" +
+      "\0226\n\013conjunction\030\002 \001(\0162!.sm.CoordinatesFi" +
+      "lter.Conjunction\"\036\n\013Conjunction\022\007\n\003AND\020\001" +
+      "\022\006\n\002OR\020\002\"\254\003\n\024ManagerToCoreMessage\022<\n\013mes" +
+      "sageType\030\001 \002(\0162\'.sm.ManagerToCoreMessage" +
+      ".MTCMessageType\022$\n\013optionsInfo\030\002 \001(\0132\017.s" +
+      "m.OptionsInfo\022&\n\014groupsFilter\030\003 \001(\0132\020.sm" +
+      ".GroupsFilter\022$\n\013typesFilter\030\004 \001(\0132\017.sm." +
+      "TypesFilter\022(\n\rqualityFilter\030\005 \001(\0132\021.sm.",
+      "QualityFilter\0220\n\021coordinatesFilter\030\006 \001(\013" +
+      "2\025.sm.CoordinatesFilter\"\205\001\n\016MTCMessageTy" +
+      "pe\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CONTINUE" +
+      "\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSHOT\020\006\022\t" +
+      "\n\005CLEAN\020\007\022\r\n\tNEXT_TREE\020\010\022\r\n\tPREV_TREE\020\t*" +
+      "9\n\014ColoringType\022\023\n\017GROUPS_COLORING\020\001\022\024\n\020" +
+      "QUALITY_COLORING\020\002*_\n\022ComparisonOperator" +
+      "\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GREATER\020\002\022\t\n\005E" +
+      "QUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rc" +
+      "ommunicationB\rCommunication"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -12237,7 +12621,7 @@ public final class Communication {
     internal_static_sm_StatisticsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_StatisticsInfo_descriptor,
-        new java.lang.String[] { "ElementsCount", "BoundingBox", "GroupsInfo", });
+        new java.lang.String[] { "ElementsCount", "BoundingBox", "GroupsInfo", "TreeName", });
     internal_static_sm_CoreToManagerMessage_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_sm_CoreToManagerMessage_fieldAccessorTable = new
@@ -12249,7 +12633,7 @@ public final class Communication {
     internal_static_sm_OptionsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_OptionsInfo_descriptor,
-        new java.lang.String[] { "TransparentStructures", "DynamicRendering", "ShowLabels", "MouseSensitivity", });
+        new java.lang.String[] { "TransparentStructures", "DynamicRendering", "ShowLabels", "MouseSensitivity", "ColoringType", });
     internal_static_sm_TypesFilter_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_sm_TypesFilter_fieldAccessorTable = new

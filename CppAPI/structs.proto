@@ -8,25 +8,16 @@ message Properties {
 
 }
 
-message Point2D {
-    required double x = 1;
-    required double y = 2;
-    optional Properties prop = 3;
-}
-
 message Point3D {
 	required double x = 1;
 	required double y = 2;
 	required double z = 3;
-	optional Properties prop = 4;
 }
 
 message Vertex {
 	required Point3D point = 1;
-	required double number = 2;
-	optional Properties prop = 3;
+	optional Properties prop = 2;
 }
-
 
 message Edge {
 	required Point3D v1 = 1;
@@ -70,14 +61,12 @@ message Header{
 	required bool endOfData = 7;
 }
 
-message DataPackage {
-	
-	repeated Point2D points2D  = 1;
-	repeated Point3D points3D = 2;
-	repeated Vertex vertexes = 3;
-	repeated Edge edges = 4;
-	repeated TriangleFace faces = 5;
-	repeated Block blocks = 6;
+message DataPackage {	
+	repeated Point3D points3D = 1;
+	repeated Vertex vertexes = 2;
+	repeated Edge edges = 3;
+	repeated TriangleFace faces = 4;
+	repeated Block blocks = 5;
 	
 }
 	

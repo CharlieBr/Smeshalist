@@ -2,6 +2,8 @@
 
 extern bool transparentStructures;
 
+bool Element::colorByQuality = false;
+
 // ----------------------------
 // -------- points ------------
 // ----------------------------
@@ -20,8 +22,8 @@ string Point3D::print_coordinates(){
 void Vertex::draw(Color color){
     Point3D point = this -> vertices.front();
 
-    glColor3f(color.r(), color.g(), color.b());
-    glPointSize(4.0f);
+    setElementColor(color);
+    glPointSize(3.0f);
     glBegin(GL_POINTS);
         glVertex3f(point.get_x(), point.get_y(), point.get_z());
     glEnd();
@@ -31,7 +33,7 @@ void Edge::draw(Color color){
     Point3D v1 = this -> vertices[0];
     Point3D v2 = this -> vertices[1];
 
-    glColor3f(color.r(), color.g(), color.b());
+    setElementColor(color);
     glBegin(GL_LINES);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
@@ -44,12 +46,15 @@ void Face::draw(Color color){
     Point3D v3 = this -> vertices[2];
 
     if (!transparentStructures) {
-        glColor3f(color.r(), color.g(), color.b());
+        glEnable(GL_LIGHTING);
+        setElementColor(color);
         glBegin(GL_TRIANGLES);
+            glNormal3dv(normal);
             glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
             glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
             glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
         glEnd();
+        glDisable(GL_LIGHTING);
     }
 
     glEnable(GL_POLYGON_OFFSET_LINE);
@@ -58,6 +63,7 @@ void Face::draw(Color color){
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     glBegin(GL_TRIANGLES);
+        glNormal3dv(normal);
         glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
         glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
         glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
@@ -74,30 +80,36 @@ void Block::draw(Color color){
     Point3D v4 = this -> vertices[3];
 
     if (!transparentStructures) {
-        glColor3f(color.r(), color.g(), color.b());
+        glEnable(GL_LIGHTING);
+        setElementColor(color);
         glBegin(GL_TRIANGLES);
+            glNormal3dv(normals[0]);
             glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
             glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
             glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
         glEnd();
 
         glBegin(GL_TRIANGLES);
+            glNormal3dv(normals[1]);
             glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
             glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
             glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
         glEnd();
 
         glBegin(GL_TRIANGLES);
+            glNormal3dv(normals[2]);
             glVertex3f(v1.get_x(), v1.get_y(), v1.get_z());
             glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
             glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
         glEnd();
 
         glBegin(GL_TRIANGLES);
+            glNormal3dv(normals[3]);
             glVertex3f(v4.get_x(), v4.get_y(), v4.get_z());
             glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
             glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
         glEnd();
+        glDisable(GL_LIGHTING);
     }
 
     glEnable(GL_POLYGON_OFFSET_LINE);

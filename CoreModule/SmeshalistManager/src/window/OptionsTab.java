@@ -1,20 +1,15 @@
 package window;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JSlider;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.TitledBorder;
+import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.plaf.metal.MetalScrollButton;
 
+import communication.Communication;
 import communication.Communication.ManagerToCoreMessage;
 import communication.Communication.ManagerToCoreMessage.MTCMessageType;
 import communication.Communication.OptionsInfo;
@@ -25,16 +20,34 @@ public class OptionsTab extends JPanel{
 	
 	private static final long serialVersionUID = 2544760396056394118L;
 
-	private GroupLayout mainLayout;
+	private enum ColoringType {
+		QUALITY_COLORING {
+			@Override
+			public String toString(){
+				return "Quality coloring";
+			}
+		},
+		GROUP_COLORING{
+			@Override
+			public String toString(){
+				return "Group coloring";
+			}
+		};
+	}
+
 	private JCheckBox transparencyCheckBox;
 	private JCheckBox renderingCheckBox;
 	private JCheckBox showLabelsCheckBox;
+	private JComboBox<ColoringType> coloringComboBox;
 	private JSlider sensitivitySlider;
 	private JButton applyButton;
 	private JButton continueButton;
 	private JButton abortButton;
+	private JLabel treeName;
 	private JButton snapshotButton;
 	private JButton cleanButton;
+	private JButton nextSnapshotButton;
+	private JButton prevSnapshotButton;
 	private JPanel breakpointButtonsContainer;
 	private JPanel treeButtonsContainer;
 
@@ -46,32 +59,36 @@ public class OptionsTab extends JPanel{
 	}
 
 	private void initializeView(){
-		mainLayout = new GroupLayout(this);
-		mainLayout.setAutoCreateGaps(true);
-		mainLayout.setAutoCreateContainerGaps(true);
-		this.setLayout(mainLayout);
+		this.setLayout(new BorderLayout());
+
+		treeName = new JLabel("None");
 		
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		setBorder(border);
 		
 		transparencyCheckBox = new JCheckBox("Transparent structures");
-		transparencyCheckBox.setBorder(new EmptyBorder(0, 0, 10, 0));
+		transparencyCheckBox.setBorder(new EmptyBorder(10, 10, 10, 0));
 		renderingCheckBox = new JCheckBox("Dynamic rendering");
 		renderingCheckBox.setSelected(true);
-		renderingCheckBox.setBorder(new EmptyBorder(0, 0, 10, 0));
+		renderingCheckBox.setBorder(new EmptyBorder(10, 10, 10, 0));
 		showLabelsCheckBox = new JCheckBox("Show labels");
-		showLabelsCheckBox.setBorder(new EmptyBorder(0, 0, 10, 0));
-		
-		JLabel label = new JLabel("Mouse sensitivity");
-		label.setBorder(new EmptyBorder(0, 0, 10, 0));
+		showLabelsCheckBox.setBorder(new EmptyBorder(10, 10, 10, 0));
+
+		coloringComboBox = new JComboBox<>();
+		coloringComboBox.addItem(ColoringType.GROUP_COLORING);
+		coloringComboBox.addItem(ColoringType.QUALITY_COLORING);
+		coloringComboBox.setBorder(new EmptyBorder(10,0,10,10));
+
 		sensitivitySlider = new JSlider(JScrollBar.HORIZONTAL, 0, 20, 1);
 		sensitivitySlider.setMajorTickSpacing(5);
 		sensitivitySlider.setMinorTickSpacing(1);
 		sensitivitySlider.setValue(10);
 		sensitivitySlider.setPaintTicks(true);
 		sensitivitySlider.setPaintLabels(true);
-		sensitivitySlider.setBorder(new EmptyBorder(0, 20, 20, 20));
-		
+		TitledBorder titledBorder = new TitledBorder("Mouse sensitivity");
+		titledBorder.setBorder(new EmptyBorder(40,0,0,0));
+		sensitivitySlider.setBorder(titledBorder);
+
 		applyButton = new JButton("Apply");	
 		applyButton.setBorder(new EmptyBorder(5,25,5,25));
 		applyButton.addActionListener(new ActionListener() {
@@ -120,46 +137,86 @@ public class OptionsTab extends JPanel{
 				cleanButtonPressed();
 			}
 		});
+		nextSnapshotButton = new JButton("Next");
+		nextSnapshotButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				nextSnapshotButtonPressed();
+			}
+		});
+		prevSnapshotButton = new JButton("Prev");
+		prevSnapshotButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				prevSnapshotButtonPressed();
+			}
+		});
 
 		breakpointButtonsContainer = new JPanel();
 		breakpointButtonsContainer.add(continueButton);
 		breakpointButtonsContainer.add(abortButton);
-		breakpointButtonsContainer.setBorder(new CompoundBorder(new TitledBorder("Breakpoint"), new EmptyBorder(0, 100, 0, 100)));
+		breakpointButtonsContainer.setBorder(new TitledBorder("Breakpoint"));
 		treeButtonsContainer = new JPanel();
-		treeButtonsContainer.add(snapshotButton);
-		treeButtonsContainer.add(cleanButton);
-		treeButtonsContainer.setBorder(new CompoundBorder(new TitledBorder("Structures Tree"), new EmptyBorder(0, 100, 0, 100)));
+		treeButtonsContainer.setLayout(new BoxLayout(treeButtonsContainer,BoxLayout.PAGE_AXIS));
+		JPanel treeButtonsPanel = new JPanel();
+		treeButtonsPanel.add(snapshotButton);
+		treeButtonsPanel.add(cleanButton);
+		treeButtonsPanel.add(Box.createHorizontalStrut(30));
+		treeButtonsPanel.add(prevSnapshotButton);
+		treeButtonsPanel.add(nextSnapshotButton);
+		treeButtonsContainer.add(treeName);
+		treeButtonsContainer.add(treeButtonsPanel);
+		treeButtonsContainer.setBorder(new TitledBorder("Structures Tree"));
 
-		mainLayout.setHorizontalGroup(
-				mainLayout.createParallelGroup()
-				.addComponent(transparencyCheckBox)
-				.addComponent(renderingCheckBox)
-				.addComponent(showLabelsCheckBox)
-				.addGroup(mainLayout.createParallelGroup()
-						.addComponent(label)
-						.addComponent(sensitivitySlider)
-						.addComponent(applyButtonContainer))
-						.addComponent(breakpointButtonsContainer)
-						.addComponent(treeButtonsContainer)
-				);
-		
-		mainLayout.setVerticalGroup(
-				mainLayout.createSequentialGroup()
-				.addComponent(transparencyCheckBox)
-				.addComponent(renderingCheckBox)
-				.addComponent(showLabelsCheckBox)
-				.addGroup(mainLayout.createSequentialGroup()
-						.addComponent(label)
-						.addComponent(sensitivitySlider)
-						.addComponent(applyButtonContainer))
-						.addComponent(breakpointButtonsContainer)
-						.addComponent(treeButtonsContainer)
+		JPanel checkBoxesPanel = new JPanel();
+		checkBoxesPanel.setLayout(new BoxLayout(checkBoxesPanel, BoxLayout.PAGE_AXIS));
+		checkBoxesPanel.add(transparencyCheckBox);
+		checkBoxesPanel.add(renderingCheckBox);
+		checkBoxesPanel.add(showLabelsCheckBox);
 
-				);
+		JPanel coloringPanel = new JPanel();
+		coloringPanel.setLayout(new BorderLayout());
+		coloringPanel.add(coloringComboBox, BorderLayout.NORTH);
+
+		JPanel visualisationOptionsPanel = new JPanel();
+		visualisationOptionsPanel.setLayout(new BorderLayout());
+		visualisationOptionsPanel.add(checkBoxesPanel, BorderLayout.WEST);
+		visualisationOptionsPanel.add(coloringPanel, BorderLayout.EAST);
+
+		JPanel sliderPanel = new JPanel();
+		sliderPanel.setLayout(new BoxLayout(sliderPanel, BoxLayout.PAGE_AXIS));
+		sliderPanel.add(sensitivitySlider);
+		sliderPanel.add(applyButtonContainer);
+
+		JPanel optionsPanel = new JPanel();
+		optionsPanel.setLayout(new BorderLayout());
+		optionsPanel.add(visualisationOptionsPanel, BorderLayout.NORTH);
+		optionsPanel.add(sliderPanel, BorderLayout.CENTER);
+		optionsPanel.setBorder(new TitledBorder(""));
+
+		Box box = Box.createVerticalBox();
+		box.add(breakpointButtonsContainer);
+		box.add(treeButtonsContainer);
+
+		this.add(optionsPanel, BorderLayout.NORTH);
+		this.add(box, BorderLayout.CENTER);
 	}
 
+	private void prevSnapshotButtonPressed() {
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(MTCMessageType.PREV_TREE);
 
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
+	}
 
+	private void nextSnapshotButtonPressed() {
+		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
+		toCoreMessageBuilder.setMessageType(MTCMessageType.NEXT_TREE);
+
+		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
+		new SendingThread(toCoreMessage).start();
+	}
 
 	private void applyButtonPressed(){
 
@@ -178,7 +235,20 @@ public class OptionsTab extends JPanel{
 		optionsInfo.setShowLabels(showLabelsCheckBox.isSelected());
 		optionsInfo.setTransparentStructures(transparencyCheckBox.isSelected());
 		optionsInfo.setMouseSensitivity(sensitivitySlider.getValue() * 0.1);
+		optionsInfo.setColoringType(getColoringType());
 		return optionsInfo.build();
+	}
+
+	private Communication.ColoringType getColoringType() {
+		switch(coloringComboBox.getItemAt(coloringComboBox.getSelectedIndex())) {
+			case QUALITY_COLORING:
+				return Communication.ColoringType.QUALITY_COLORING;
+			case GROUP_COLORING:
+				return Communication.ColoringType.GROUPS_COLORING;
+			default:
+				System.out.println("Unsupported coloring type!");
+				return null;
+		}
 	}
 
 	private void cleanButtonPressed() {
@@ -227,5 +297,13 @@ public class OptionsTab extends JPanel{
 	public void breakpoint(){
 		abortButton.setEnabled(true);
 		continueButton.setEnabled(true);
+	}
+
+	public void setTreeName(String treeName){
+		this.treeName.setText(treeName);
+		cleanButton.setEnabled(treeName.equals("ACTIVE"));
+
+		treeButtonsContainer.revalidate();
+		treeButtonsContainer.repaint();
 	}
 }

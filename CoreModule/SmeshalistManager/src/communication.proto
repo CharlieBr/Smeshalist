@@ -34,6 +34,7 @@ message StatisticsInfo{
 	required ElementsCount elementsCount = 1;
 	required BoundingBox boundingBox = 2;
 	required GroupsInfo groupsInfo = 3;
+	required string treeName = 4;
 }
 
 message CoreToManagerMessage{
@@ -46,11 +47,17 @@ message CoreToManagerMessage{
 	optional StatisticsInfo statisticsInfo = 2;
 }
 //----------------------------------------------------------------------------------------------------------------
+enum ColoringType{
+	GROUPS_COLORING = 1;
+	QUALITY_COLORING = 2;
+}
+
 message OptionsInfo{
 	required bool transparentStructures = 1;
 	required bool dynamicRendering = 2;
 	required bool showLabels = 3;
 	required double mouseSensitivity = 4;
+	required ColoringType coloringType = 5;
 }
 
 message TypesFilter{
@@ -109,6 +116,8 @@ message ManagerToCoreMessage{
         HELLO = 5;
 		SNAPSHOT = 6;
 		CLEAN = 7;
+		NEXT_TREE = 8;
+		PREV_TREE = 9;
 	}
 
 	required MTCMessageType messageType = 1;

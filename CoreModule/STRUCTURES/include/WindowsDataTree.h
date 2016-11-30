@@ -7,7 +7,7 @@
 class WindowsDataTree : public AbstractDataTree {
 	public:
 		void createNewInstance();
-		WindowsDataTree() {
+		WindowsDataTree(string name) : AbstractDataTree(name){
 			mutex = CreateMutex(NULL, FALSE, NULL);
 			if (mutex == NULL) {
 				cerr << "Windows mutex cannot be created!!!\n";

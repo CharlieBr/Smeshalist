@@ -1,6 +1,6 @@
 #include "WindowsDataTree.h"
 
-AbstractDataTree* AbstractDataTree::current = new WindowsDataTree();
+AbstractDataTree* AbstractDataTree::active = new WindowsDataTree("ACTIVE");
 
 void WindowsDataTree::LOCK()
 {
@@ -18,7 +18,10 @@ void WindowsDataTree::sleepThread(int milisec) {
 
 void WindowsDataTree::createNewInstance() {
 	LOCK();
-	WindowsDataTree* newInstance = new WindowsDataTree();
+	char title[80];
+	strcpy(title, "PREVIOUS: ");
+	strcat(title, to_string(getNumberOfDataTreeInstances() + 1).c_str());
+	WindowsDataTree* newInstance = new WindowsDataTree(title);
 	cloneDataTreeToNewInstance(newInstance);
 	UNLOCK();
 }

@@ -1,6 +1,7 @@
 #include "AbstractServer.h"
 
 bool transparentStructures = false;
+extern char SMESHALIST[];
 
 void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
     if (this->handler != NULL) {
@@ -135,6 +136,9 @@ void AbstractServer::sendStaticticsOfGivenTree(AbstractDataTree* tree) {
     }
     (*info.mutable_groupsinfo()) = groupsInfo;
 
+    //set tree name
+    info.set_treename(tree->getTreeName());
+
     (*message.mutable_statisticsinfo()) = info;
 
     message.SerializeToArray(buffer, BUFFER_SIZE);
@@ -235,6 +239,9 @@ void AbstractServer::processOptionDataPackage(sm::ManagerToCoreMessage* message)
     //TODO show labels
 
     transparentStructures = options.transparentstructures();
+
+    sm::ColoringType coloringType = options.coloringtype();
+    Element::setColoringBuQuality(coloringType == sm::ColoringType::QUALITY_COLORING);
 }
 
 void AbstractServer::startSMServer() {
@@ -280,11 +287,25 @@ void AbstractServer::startSMServer() {
                     sendStatistics();
                 }
                 break;
+            case sm::ManagerToCoreMessage_MTCMessageType_NEXT_TREE:
+                AbstractDataTree::increaseVisibleDataTreeIndex();
+                changeVisibleTree();
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_PREV_TREE:
+                AbstractDataTree::decreaseVisibleDataTreeIndex();
+                changeVisibleTree();
+                break;
             default:
                 cerr << "Unknow message type\n";
                 break;
         }
     }
+}
+
+void AbstractServer::changeVisibleTree() {
+    Statistics statistics = AbstractDataTree::getCurrentlyVisibleDataTree()->get_statistics();
+    CoordinatesFilter::getInstance() -> recomputeIntersections(&statistics);
+    sendStatisticsOfCurrentlyVisibleTree();
 }
 
 void AbstractServer::startServerInNewThread()
@@ -347,6 +368,7 @@ void AbstractServer::getDataPackages() {
         }
 
         structDefinitions::DataPackage package;
+	delete buffer;
         buffer = new char[(int)header.sizeofdata()];
         nBytes = getBytesFromSocket(buffer, header.sizeofdata());
 
@@ -355,7 +377,6 @@ void AbstractServer::getDataPackages() {
             continue;
         }
 
-        parsePoint2DSet(&package);
         parsePoint3DSet(&package);
         parseVertexSet(&package);
         parseEdgeSet(&package);
@@ -364,6 +385,7 @@ void AbstractServer::getDataPackages() {
 
         sendAcknowlage();
 
+        delete buffer;
         if(header.endofdata()) {
             break;
         }
@@ -416,27 +438,12 @@ void AbstractServer::parseEdgeSet(structDefinitions::DataPackage* dataPackage) {
     }
 }
 
-void AbstractServer::parsePoint2DSet(structDefinitions::DataPackage* dataPackage) {
-    for (int i=0; i<dataPackage->points2d_size(); i++) {
-        const structDefinitions::Point2D p = dataPackage->points2d(i);
-
-        structDefinitions::Properties prop = p.prop();
-        Label label = getLabel(prop.label());
-
-        Vertex* v = new Vertex(Point3D(p.x(), p.y(), 0), label, prop.quality());
-		elementsBuffer[prop.groupid()][v->get_type()].push_back(v);
-    }
-}
-
 void AbstractServer::parsePoint3DSet(structDefinitions::DataPackage* dataPackage) {
     for (int i=0; i<dataPackage->points3d_size(); i++) {
         const structDefinitions::Point3D p = dataPackage->points3d(i);
 
-        structDefinitions::Properties prop = p.prop();
-        Label label = getLabel(prop.label());
-
-        Vertex* v = new Vertex(parsePoint(&p), label, prop.quality());
-		elementsBuffer[prop.groupid()][v->get_type()].push_back(v);
+        Vertex* v = new Vertex(parsePoint(&p));
+		elementsBuffer[0][v->get_type()].push_back(v);
     }
 }
 
