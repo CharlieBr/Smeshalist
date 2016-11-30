@@ -15,14 +15,15 @@ class WindowsCommunication : public AbstractCommuniation {
 		WindowsCommunication(int port_number);
 		void SetupSocket();
 		void CleanupSocket();
-		int SendBytesToCore(const void* buffer, int buffer_size) const;
+		int SendBytesToCore(const char* buffer, int buffer_size) const;
 		int GetBytesFromCore(char* buffer, int buffer_size);
     private:
 		SOCKET* createSocket(sockaddr_in*, int);
 
 		SOCKET core_socket;
 		WSADATA wsa;
-		struct sockaddr_in core_addr;
+		struct sockaddr_in core_addr_in;
+		struct sockaddr core_addr;
         int core_addr_size;
 };
 

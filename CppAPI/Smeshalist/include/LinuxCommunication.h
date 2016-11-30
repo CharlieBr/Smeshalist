@@ -17,7 +17,7 @@ class LinuxCommunication : public AbstractCommuniation {
 		LinuxCommunication(int port_number);
 		void SetupSocket();
 		void CleanupSocket();
-		int SendBytesToCore(const void* buffer, int buffer_size) const;
+		int SendBytesToCore(const char* buffer, int buffer_size) const;
 		int GetBytesFromCore(char* buffer, int buffer_size);
 	private:
 		struct sockaddr_in core_addr;

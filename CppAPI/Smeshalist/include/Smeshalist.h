@@ -5,9 +5,6 @@
 #include <cstdio>
 #include <cstring>
 #include <cerrno>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <unistd.h>
 #include <list>
 #include "structs.pb.h"
 #include "Geometry.h"

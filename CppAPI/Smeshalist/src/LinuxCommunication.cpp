@@ -24,7 +24,7 @@ void LinuxCommunication::CleanupSocket() {
 	close(core_socket);
 }
 
-int LinuxCommunication::SendBytesToCore(const void* buffer, int buffer_size) const {
+int LinuxCommunication::SendBytesToCore(const char* buffer, int buffer_size) const {
 
 	return sendto(core_socket, buffer, buffer_size, 0, (struct sockaddr *)&core_addr, sizeof(core_addr));
 }

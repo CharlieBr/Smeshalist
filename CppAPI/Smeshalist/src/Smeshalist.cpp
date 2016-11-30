@@ -3,17 +3,25 @@
 using namespace std;
 
 Smeshalist::Smeshalist() {
-	Smeshalist::core_port = CORE_PORT;
-	SetupSocket();
+#ifdef __linux__
+	communication = new LinuxCommunication();
+#else
+	communication = new WindowsCommunication();
+#endif // __linux__
+	communication->SetupSocket();
 }
 
 Smeshalist::Smeshalist(int port_number) {
-	Smeshalist::core_port = port_number;
-	SetupSocket();
+#ifdef __linux__
+	communication = new LinuxCommunication(port_number);
+#else
+	communication = new WindowsCommunication(port_number);
+#endif // __linux__
+	communication->SetupSocket();
 }
 
-Smeshalist::~Smeshalist(){
-    close(core_socket);
+Smeshalist::~Smeshalist() {
+	communication->CleanupSocket();
 }
 
 Smeshalist& Smeshalist::GetInstance() {
@@ -21,32 +29,9 @@ Smeshalist& Smeshalist::GetInstance() {
 	return INSTANCE;
 }
 
-Smeshalist& Smeshalist::GetInstance(int port_number){
+Smeshalist& Smeshalist::GetInstance(int port_number) {
 	static Smeshalist INSTANCE(port_number);
 	return INSTANCE;
-}
-
-void Smeshalist::SetupSocket() {
-
-	if ((core_socket = socket(AF_INET, SOCK_DGRAM, 0))  < 0) {
-		perror("Cannot create socket");
-		return;
-	}
-
-	memset((char *)&core_addr, 0, sizeof(core_addr));
-	core_addr.sin_family = AF_INET;
-	core_addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
-	core_addr.sin_port = htons(core_port);
-
-}
-
-int Smeshalist::SendBytesToCore(const void* buffer, int buffer_size) const {
-
-	return sendto(core_socket, buffer, buffer_size, 0, (struct sockaddr *)&core_addr, sizeof(core_addr));
-}
-int Smeshalist::GetBytesFromCore(char* buffer, int buffer_size) {
-
-	return recvfrom(core_socket, buffer, buffer_size, 0, (struct sockaddr *)&core_addr, &core_addr_size);
 }
 
 structDefinitions::Properties* Smeshalist::GetProperties(int group_id, string label, double quality) const {
@@ -59,10 +44,10 @@ structDefinitions::Properties* Smeshalist::GetProperties(int group_id, string la
 
 structDefinitions::Point3D* Smeshalist::GetPoint3D(Point3D &point) const {
 	structDefinitions::Point3D* point3d = new structDefinitions::Point3D();
-    point3d->set_x(point.GetX());
-    point3d->set_y(point.GetY());
-    point3d->set_z(point.GetZ());
-    return point3d;
+	point3d->set_x(point.GetX());
+	point3d->set_y(point.GetY());
+	point3d->set_z(point.GetZ());
+	return point3d;
 
 }
 
@@ -88,42 +73,43 @@ void Smeshalist::AddGeometry(Block &block) {
 
 void Smeshalist::ProcessGeometry(Point3D &element, structDefinitions::DataPackage &data_package) const {
 	structDefinitions::Point3D* point3d = data_package.add_points3d();
-    point3d->set_x(element.GetX());
-    point3d->set_y(element.GetY());
-    point3d->set_z(element.GetZ());
+	point3d->set_x(element.GetX());
+	point3d->set_y(element.GetY());
+	point3d->set_z(element.GetZ());
 }
 
 void Smeshalist::ProcessGeometry(Vertex &element, structDefinitions::DataPackage &data_package) const {
-    structDefinitions::Vertex* vertex = data_package.add_vertexes();
-    Point3D point = element.GetPoint();
-    vertex->set_allocated_point(Smeshalist::GetPoint3D(point));
-    vertex->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
+	structDefinitions::Vertex* vertex = data_package.add_vertexes();
+	Point3D point = element.GetPoint();
+	vertex->set_allocated_point(Smeshalist::GetPoint3D(point));
+	vertex->set_number(0.0);
+	vertex->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
 }
 
 void Smeshalist::ProcessGeometry(Edge &element, structDefinitions::DataPackage &data_package) const {
-    structDefinitions::Edge* edge = data_package.add_edges();
-    Point3D v1 = element.GetV1();
-    Point3D v2 = element.GetV2();
-    edge->set_allocated_v1(GetPoint3D(v1));
-    edge->set_allocated_v2(GetPoint3D(v2));
-    edge->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
+	structDefinitions::Edge* edge = data_package.add_edges();
+	Point3D v1 = element.GetV1();
+	Point3D v2 = element.GetV2();
+	edge->set_allocated_v1(GetPoint3D(v1));
+	edge->set_allocated_v2(GetPoint3D(v2));
+	edge->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
 }
 void Smeshalist::ProcessGeometry(Face &element, structDefinitions::DataPackage &data_package) const {
-    structDefinitions::TriangleFace* face = data_package.add_faces();
-    Point3D v1 = element.GetV1();
-    Point3D v2 = element.GetV2();
-    Point3D v3 = element.GetV3();
-    face->set_allocated_v1(GetPoint3D(v1));
-    face->set_allocated_v2(GetPoint3D(v2));
-    face->set_allocated_v3(GetPoint3D(v3));
-    face->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
+	structDefinitions::TriangleFace* face = data_package.add_faces();
+	Point3D v1 = element.GetV1();
+	Point3D v2 = element.GetV2();
+	Point3D v3 = element.GetV3();
+	face->set_allocated_v1(GetPoint3D(v1));
+	face->set_allocated_v2(GetPoint3D(v2));
+	face->set_allocated_v3(GetPoint3D(v3));
+	face->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
 }
 void Smeshalist::ProcessGeometry(Block &element, structDefinitions::DataPackage &data_package) const {
 	structDefinitions::Block* block = data_package.add_blocks();
 	Point3D v1 = element.GetV1();
-    Point3D v2 = element.GetV2();
-    Point3D v3 = element.GetV3();
-    Point3D v4 = element.GetV4();
+	Point3D v2 = element.GetV2();
+	Point3D v3 = element.GetV3();
+	Point3D v4 = element.GetV4();
 	block->set_allocated_v1(GetPoint3D(v1));
 	block->set_allocated_v2(GetPoint3D(v2));
 	block->set_allocated_v3(GetPoint3D(v3));
@@ -132,13 +118,13 @@ void Smeshalist::ProcessGeometry(Block &element, structDefinitions::DataPackage 
 }
 
 int Smeshalist::GetElementsCount() const {
-    return Smeshalist::points3d_to_send.size() +
-    Smeshalist::vertexes_to_send.size() + Smeshalist::edges_to_send.size() +
-    Smeshalist::faces_to_send.size() + Smeshalist::blocks_to_send.size();
+	return Smeshalist::points3d_to_send.size() +
+		Smeshalist::vertexes_to_send.size() + Smeshalist::edges_to_send.size() +
+		Smeshalist::faces_to_send.size() + Smeshalist::blocks_to_send.size();
 }
 
 void Smeshalist::FlushBuffer() {
-	cout<<Smeshalist::GetElementsCount()<<" elements waiting to be sent"<<endl;
+	cout << Smeshalist::GetElementsCount() << " elements waiting to be sent" << endl;
 	char *out_buffer;
 	char in_buffer[BUFFER_SIZE];
 	int n_bytes, size;
@@ -149,17 +135,17 @@ void Smeshalist::FlushBuffer() {
 	out_buffer = new char[size];
 
 	message_info.SerializeToArray(out_buffer, size);
-	SendBytesToCore(out_buffer, size);
+	communication->SendBytesToCore(out_buffer, size);
 
-	n_bytes = GetBytesFromCore(in_buffer, BUFFER_SIZE);
+	n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
 
 	if (n_bytes < 0) {
-		cout<<"Error when receiving bytes from core"<<endl;
+		cout << "Error when receiving bytes from core" << endl;
 	}
 
 	structDefinitions::MessageInfo ack_message_info;
 	if (!ack_message_info.ParseFromArray(in_buffer, n_bytes)) {
-		cout<<"Error when parsing message from core"<<endl;
+		cout << "Error when parsing message from core" << endl;
 	}
 
 	bool end_of_data = false;
@@ -172,9 +158,10 @@ void Smeshalist::FlushBuffer() {
 		if (Smeshalist::GetElementsCount() > BATCH_SIZE) {
 			n_elements_in_package = BATCH_SIZE;
 
-		} else {
+		}
+		else {
 			n_elements_in_package = Smeshalist::GetElementsCount();
-            cout<<"--------------------------------endofdata"<<endl;
+			cout << "--------------------------------endofdata" << endl;
 			end_of_data = true;
 		}
 
@@ -184,19 +171,23 @@ void Smeshalist::FlushBuffer() {
 				Point3D element = Smeshalist::points3d_to_send.front();
 				Smeshalist::ProcessGeometry(element, data_package);
 				Smeshalist::points3d_to_send.pop_front();
-			} else if (!Smeshalist::vertexes_to_send.empty()) {
+			}
+			else if (!Smeshalist::vertexes_to_send.empty()) {
 				Vertex element = Smeshalist::vertexes_to_send.front();
 				Smeshalist::ProcessGeometry(element, data_package);
 				Smeshalist::vertexes_to_send.pop_front();
-			} else if (!Smeshalist::edges_to_send.empty()) {
+			}
+			else if (!Smeshalist::edges_to_send.empty()) {
 				Edge element = Smeshalist::edges_to_send.front();
 				Smeshalist::ProcessGeometry(element, data_package);
 				Smeshalist::edges_to_send.pop_front();
-			} else if (!Smeshalist::faces_to_send.empty()) {
+			}
+			else if (!Smeshalist::faces_to_send.empty()) {
 				Face element = Smeshalist::faces_to_send.front();
 				Smeshalist::ProcessGeometry(element, data_package);
 				Smeshalist::faces_to_send.pop_front();
-			} else if (!Smeshalist::blocks_to_send.empty()) {
+			}
+			else if (!Smeshalist::blocks_to_send.empty()) {
 				Block element = Smeshalist::blocks_to_send.front();
 				Smeshalist::ProcessGeometry(element, data_package);
 				Smeshalist::blocks_to_send.pop_front();
@@ -213,22 +204,22 @@ void Smeshalist::FlushBuffer() {
 		out_buffer = new char[size];
 
 		header.SerializeToArray(out_buffer, size);
-		SendBytesToCore(out_buffer, size);
+		communication->SendBytesToCore(out_buffer, size);
 
 		size = data_package.ByteSize();
 		out_buffer = new char[size];
 
 		data_package.SerializeToArray(out_buffer, size);
-		SendBytesToCore(out_buffer, size);
+		communication->SendBytesToCore(out_buffer, size);
 
-		n_bytes = GetBytesFromCore(in_buffer, BUFFER_SIZE);
+		n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
 
 		if (n_bytes < 0) {
-			cout<<"Error when receiving bytes from core"<<endl;
+			cout << "Error when receiving bytes from core" << endl;
 		}
 
 		if (!ack_message_info.ParseFromArray(in_buffer, n_bytes)) {
-			cout<<"Error when parsing message from core"<<endl;
+			cout << "Error when parsing message from core" << endl;
 		}
 	}
 }
@@ -242,7 +233,7 @@ void Smeshalist::Render() const {
 	out_buffer = new char[size];
 
 	message_info.SerializeToArray(out_buffer, size);
-	SendBytesToCore(out_buffer, size);
+	communication->SendBytesToCore(out_buffer, size);
 }
 
 void Smeshalist::Breakpoint() {
@@ -256,21 +247,21 @@ void Smeshalist::Breakpoint() {
 	out_buffer = new char[size];
 
 	message_info.SerializeToArray(out_buffer, size);
-	SendBytesToCore(out_buffer, size);
+	communication->SendBytesToCore(out_buffer, size);
 
-	n_bytes = GetBytesFromCore(in_buffer, BUFFER_SIZE);
+	n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
 
 	if (n_bytes < 0) {
-		cout<<"Error when receiving bytes from core"<<endl;
+		cout << "Error when receiving bytes from core" << endl;
 	}
 
 	structDefinitions::MessageInfo ack_message_info;
 	if (!ack_message_info.ParseFromArray(in_buffer, n_bytes)) {
-		cout<<"Error when parsing message from core"<<endl;
+		cout << "Error when parsing message from core" << endl;
 	}
 	if (ack_message_info.type() == structDefinitions::MessageInfo_Type_REJECTED) {
-        cout<<"ABORT from SmeshalistManager"<<endl;
-        exit(0);
+		cout << "ABORT from SmeshalistManager" << endl;
+		exit(0);
 	}
 }
 
@@ -285,20 +276,20 @@ void Smeshalist::Clean() {
 	out_buffer = new char[size];
 
 	message_info.SerializeToArray(out_buffer, size);
-	SendBytesToCore(out_buffer, size);
+	communication->SendBytesToCore(out_buffer, size);
 
-	n_bytes = GetBytesFromCore(in_buffer, BUFFER_SIZE);
+	n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
 
 	if (n_bytes < 0) {
-		cout<<"Error when receiving bytes from core"<<endl;
+		cout << "Error when receiving bytes from core" << endl;
 	}
 
 	structDefinitions::MessageInfo ack_message_info;
 	if (!ack_message_info.ParseFromArray(in_buffer, n_bytes)) {
-		cout<<"Error when parsing message from core"<<endl;
+		cout << "Error when parsing message from core" << endl;
 	}
 	if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
-        cout<<"Error after sending CLEAN request"<<endl;
-        exit(0);
+		cout << "Error after sending CLEAN request" << endl;
+		exit(0);
 	}
 }

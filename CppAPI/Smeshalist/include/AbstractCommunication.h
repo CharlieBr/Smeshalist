@@ -4,6 +4,7 @@
 #include <cerrno>
 #include <cstdio>
 #include <cstring>
+#include <iostream>
 
 #define CORE_PORT 8383
 
@@ -15,7 +16,7 @@ class AbstractCommuniation {
 		AbstractCommuniation(int port_number);
 		virtual void SetupSocket() = 0;
 		virtual void CleanupSocket() = 0;
-		virtual int SendBytesToCore(const void* buffer, int buffer_size) const = 0;
+		virtual int SendBytesToCore(const char* buffer, int buffer_size) const = 0;
 		virtual int GetBytesFromCore(char* buffer, int buffer_size) = 0;
 	protected:
 		int core_port;
