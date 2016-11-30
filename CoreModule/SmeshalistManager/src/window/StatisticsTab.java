@@ -28,18 +28,17 @@ public class StatisticsTab extends JPanel{
 	private ElementsCount elementsCount;
 	private BoundingBox boundingBox;
 
+	/*
+		11	12
+		21	22
+	*/
 	private JPanel cell11;
 	private JPanel cell12;
 	private JPanel cell21;
 	private JPanel cell22;
-	
-	private BoxLayout bl11;
-	private BoxLayout bl12;
-	private BoxLayout bl21;
-	private	BoxLayout bl22;
 
-	private Font titleFont = new Font("Tahoma", Font.ITALIC, 22);
-	private Font textFont = new Font("Tahoma", Font.PLAIN, 16);
+	private Font titleFont = new Font("Tahoma", Font.PLAIN, 18);
+	private Font textFont = new Font("Tahoma", Font.PLAIN, 14);
 
 	public StatisticsTab(){
 		initializeView();
@@ -47,31 +46,38 @@ public class StatisticsTab extends JPanel{
 	}
 
 	private void initializeView(){
-		LayoutManager mgr = new GridLayout(2,2);
-		setLayout(mgr);
+//		LayoutManager mgr = new GridLayout(2,2);
+//		setLayout(mgr);
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		setBorder(border);
 
-		cell11 = new JPanel();
-		cell12 = new JPanel();
-		cell21 = new JPanel();
-		cell22 = new JPanel();
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
 		initStructuresList();
 		initValuesList();
 		initAxisList();
 		initCoordinatesList();
-		
-		add(cell11);
-		add(cell12);
-		add(cell21);
-		add(cell22);
+
+		JPanel firstRow = new JPanel();
+		firstRow.setLayout(new BoxLayout(firstRow, BoxLayout.LINE_AXIS));
+		firstRow.add(cell11);
+		firstRow.add(cell12);
+
+		JPanel secondRow = new JPanel();
+		secondRow.setLayout(new BoxLayout(secondRow, BoxLayout.LINE_AXIS));
+		secondRow.add(cell21);
+		secondRow.add(cell22);
+
+		this.add(firstRow);
+		this.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		this.add(secondRow);
 
 		setInitContent();
 	}
 
 	private void initCoordinatesList() {
-		bl22 = new BoxLayout(cell22,BoxLayout.PAGE_AXIS);
+		cell22 = new JPanel();
+		BoxLayout bl22 = new BoxLayout(cell22, BoxLayout.PAGE_AXIS);
 		cell22.setLayout(bl22);
 
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Range");
@@ -82,7 +88,8 @@ public class StatisticsTab extends JPanel{
 	}
 
 	private void initAxisList() {
-		bl21 = new BoxLayout(cell21,BoxLayout.PAGE_AXIS);
+		cell21 = new JPanel();
+		BoxLayout bl21 = new BoxLayout(cell21, BoxLayout.PAGE_AXIS);
 		cell21.setLayout(bl21);
 
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Axis");
@@ -91,8 +98,9 @@ public class StatisticsTab extends JPanel{
 		border.setTitleJustification(2);
 		cell21.setBorder(border);
 
-		JLabel label;
 		cell21.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+
+		JLabel label;
 		label = new JLabel("x");
 		label.setFont(textFont);
 		cell21.add(label);
@@ -107,7 +115,8 @@ public class StatisticsTab extends JPanel{
 	}
 
 	private void initValuesList() {
-		bl12 = new BoxLayout(cell12,BoxLayout.PAGE_AXIS);
+		cell12 = new JPanel();
+		BoxLayout bl12 = new BoxLayout(cell12, BoxLayout.PAGE_AXIS);
 		cell12.setLayout(bl12);
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Visible (total)");
 		border.setTitleFont(titleFont);
@@ -117,7 +126,9 @@ public class StatisticsTab extends JPanel{
 	}
 
 	private void initStructuresList() {
-		bl11 = new BoxLayout(cell11,BoxLayout.PAGE_AXIS);
+		cell11 = new JPanel();
+
+		BoxLayout bl11 = new BoxLayout(cell11, BoxLayout.PAGE_AXIS);
 		cell11.setLayout(bl11);
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Structures");
 		border.setTitleFont(titleFont);
@@ -129,9 +140,10 @@ public class StatisticsTab extends JPanel{
 	public void putElementsCount(){
 		cell11.removeAll();
 		cell12.removeAll();
-		
+
 		cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+
 		for(String element : this.elementsCount.getElementInfosMap().keySet()){
 			JLabel label = new JLabel(element);
 			label.setFont(textFont);
@@ -155,10 +167,11 @@ public class StatisticsTab extends JPanel{
 	public void putBoundingBox(){
 		cell22.removeAll();
 
+		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+
 		DecimalFormat df = new DecimalFormat(DEFAULT_DECIMAL_FORMAT);
 		JLabel label;
 
-		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		label = new JLabel("["+df.format(new BigDecimal(this.boundingBox.getFromX()))+"; "+df.format(new BigDecimal(this.boundingBox.getToX()))+"]");
 		label.setFont(textFont);
 		cell22.add(label);
