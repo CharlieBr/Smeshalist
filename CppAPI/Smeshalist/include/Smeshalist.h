@@ -23,16 +23,60 @@ using namespace std;
 class Smeshalist {
 	public:
 		~Smeshalist();
+		/**
+		 * Method implements singleton pattern. Returns instance of class Smeshalist. 
+		 * Tool uses default port number - 8383.
+		 * @return instance of Smeshalist
+		 */
 		static Smeshalist& GetInstance();
+		/**
+		* Method implements singleton pattern. Returns instance of class Smeshalist.
+		* Tool uses given port number.
+		* @param port_number port on witch the tool will connect to main window
+		* @return instance of Smeshalist
+		*/
 		static Smeshalist& GetInstance(int port_number);
+		/**
+		 * Method adds Point3D structure to internal data buffer that stores structures to send for visualization.
+		 * @param point Point3D structure
+		 */
 		void AddGeometry(Point3D &point);
+		/**
+		* Method adds Vertex structure to internal data buffer that stores structures to send for visualization.
+		* @param vertex Vertex structure
+		*/
 		void AddGeometry(Vertex &vertex);
+		/**
+		* Method adds Edge structure to internal data buffer that stores structures to send for visualization.
+		* @param edge Edge structure
+		*/
         void AddGeometry(Edge &edge);
+		/**
+		* Method adds Face structure to internal data buffer that stores structures to send for visualization.
+		* @param face Face structure
+		*/
         void AddGeometry(Face &face);
+		/**
+		* Method adds Block structure to internal data buffer that stores structures to send for visualization.
+		* @param block Block structure
+		*/
         void AddGeometry(Block &block);
+		/**
+		 * Sends all structures stored in buffer to main window.
+		 */
         void FlushBuffer();
+		/**
+		 * Suspends algorithm execution until proper option will be chosen in Smeshalist Manager window.
+		 * In case continue option has been chosen algorithm is continued otherwise program is terminated.
+		 */
         void Breakpoint();
+		/**
+		 * Method forces rendering sent structures in main window when 'Dynamic rendering' is turned off in Smeshalist Manager window.
+		 */
         void Render() const;
+		/**
+		 * Method forces deleting all data from data structure tree in main window without affecting taken snapshots.
+		 */
         void Clean();
 	protected:
 	private:
