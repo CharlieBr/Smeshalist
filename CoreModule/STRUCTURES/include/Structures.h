@@ -12,15 +12,10 @@ class Utils {
         result[0] = a[1]*b[2] - a[2]*b[1];
         result[1] = -(a[0]*b[2] - a[2]*b[0]);
         result[2] = a[0]*b[1] - a[1]*b[0];
-        cout << result[0] << " " << result[1] << " " << result[2] << endl;
         return result;
     }
 
     static double* getNormal(Point3D* a, Point3D* b, Point3D* c) {
-        cout << a->get_x() << " " << a->get_y() << " " << a->get_z() << endl;
-        cout << b->get_x() << " " << b->get_y() << " " << b->get_z() << endl;
-        cout << c->get_x() << " " << c->get_y() << " " << c->get_z() << endl;
-
         int x=0;
         int y=1;
         int z=2;
@@ -29,7 +24,6 @@ class Utils {
         double ac[3] = {c->get_x()-a->get_x(), c->get_y()-a->get_y(), c->get_z()-a->get_z()};
 
         double* product = getVectorProduct(ab, ac);
-        cout << product[0] << " " << product[1] << " " << product[2] << endl;
         double len = std::sqrt(product[x]*product[x] + product[y]*product[y] + product[z]*product[z]);
 
         if (len == 0) {
@@ -37,13 +31,9 @@ class Utils {
             return result;
         }
 
-        cout << len << " " << product[0] << " " << product[1] << " " << product[2] << endl;
-
         product[x] /= len;
         product[y] /= len;
         product[z] /= len;
-
-        cout << len << " " << product[0] << " " << product[1] << " " << product[2] << endl;
 
         return product;
     }

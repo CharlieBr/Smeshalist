@@ -97,7 +97,7 @@ public class QualityTab extends JPanel{
 		boxLayout = new BoxLayout(scrollPaneContent, BoxLayout.PAGE_AXIS);
 		scrollPaneContent.setLayout(boxLayout);
 		
-		scrollPaneContent.add(controlsPanel);
+//		scrollPaneContent.add(controlsPanel);
 		scrollPaneContent.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		
 		scrollPane = new JScrollPane(scrollPaneContent);

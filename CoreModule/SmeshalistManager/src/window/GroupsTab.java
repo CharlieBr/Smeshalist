@@ -6,11 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.List;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.JCheckBox;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 
@@ -19,17 +15,19 @@ import communication.Communication.GroupsFilter;
 import util.CheckBoxEntry;
 import util.WindowUtil;
 
-public class GroupsTab extends JScrollPane{
+public class GroupsTab extends JPanel{
 
 	private static final long serialVersionUID = 5805971516639326078L;
 	private static boolean changed;
-
-	private JPanel scrollPaneContent;
 	private List<String> groups;
 	private List<CheckBoxEntry> groupsCheckBoxes;
-	
-	private BoxLayout boxLayout;
-		
+
+	private JScrollPane scrollPane;
+	private JPanel buttonsContainer;
+	private JPanel scrollPaneContent;
+	private JButton selectAllButton;
+	private JButton clearSelectionButton;
+
 	public GroupsTab(){
 		this.groups = new LinkedList<>();
 		this.groupsCheckBoxes = new LinkedList<>();
@@ -40,14 +38,53 @@ public class GroupsTab extends JScrollPane{
 
 	private void initializeView() {
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
-		this.setBorder(border);		
+		this.setBorder(border);
+
+		this.setLayout(new BorderLayout());
+
+		selectAllButton = new JButton("Select all");
+		selectAllButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectAllButtonPressed();
+			}
+		});
+		clearSelectionButton = new JButton("Clear selection");
+		clearSelectionButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				clearSelectionButtonPressed();
+			}
+		});
+		buttonsContainer = new JPanel();
+		buttonsContainer.add(selectAllButton);
+		buttonsContainer.add(Box.createHorizontalStrut(20));
+		buttonsContainer.add(clearSelectionButton);
 
 		scrollPaneContent = new JPanel();
-//		boxLayout = new BoxLayout(scrollPaneContent, BoxLayout.PAGE_AXIS);
-//		scrollPaneContent.setLayout(boxLayout);
 		scrollPaneContent.setLayout(new GridLayout(0,3));
-		this.setViewportView(scrollPaneContent);
-		
+		scrollPane = new JScrollPane(scrollPaneContent);
+
+		this.add(buttonsContainer, BorderLayout.NORTH);
+		this.add(scrollPane, BorderLayout.CENTER);
+	}
+
+	private void clearSelectionButtonPressed() {
+		for (CheckBoxEntry checkBox : this.groupsCheckBoxes) {
+			checkBox.setCheckBoxSelected(false);
+		}
+		setChanged(true);
+		scrollPaneContent.revalidate();
+		scrollPaneContent.repaint();
+	}
+
+	private void selectAllButtonPressed() {
+		for (CheckBoxEntry checkBox : this.groupsCheckBoxes) {
+			checkBox.setCheckBoxSelected(true);
+		}
+		setChanged(true);
+		scrollPaneContent.revalidate();
+		scrollPaneContent.repaint();
 	}
 
 	public List<String> getGroups() {

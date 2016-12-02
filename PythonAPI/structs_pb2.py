@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='structs.proto',
   package='structDefinitions',
   syntax='proto2',
-  serialized_pb=_b('\n\rstructs.proto\x12\x11structDefinitions\"=\n\nProperties\x12\x0f\n\x07quality\x18\x01 \x01(\x01\x12\r\n\x05label\x18\x02 \x01(\t\x12\x0f\n\x07groupId\x18\x03 \x01(\x05\"L\n\x07Point2D\x12\t\n\x01x\x18\x01 \x02(\x01\x12\t\n\x01y\x18\x02 \x02(\x01\x12+\n\x04prop\x18\x03 \x01(\x0b\x32\x1d.structDefinitions.Properties\"W\n\x07Point3D\x12\t\n\x01x\x18\x01 \x02(\x01\x12\t\n\x01y\x18\x02 \x02(\x01\x12\t\n\x01z\x18\x03 \x02(\x01\x12+\n\x04prop\x18\x04 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\x83\x01\n\x04\x45\x64ge\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x03 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\xb3\x01\n\x0cTriangleFace\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v3\x18\x03 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x04 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\xd4\x01\n\x05\x42lock\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v3\x18\x03 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v4\x18\x04 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x05 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\x9e\x01\n\x0bMessageInfo\x12\x31\n\x04type\x18\x01 \x02(\x0e\x32#.structDefinitions.MessageInfo.Type\"\\\n\x04Type\x12\x08\n\x04\x44\x41TA\x10\x01\x12\n\n\x06RENDER\x10\x02\x12\x0e\n\nBREAKPOINT\x10\x03\x12\x0c\n\x08\x41\x43\x43\x45PTED\x10\x04\x12\x0c\n\x08REJECTED\x10\x05\x12\x07\n\x03\x41\x43K\x10\x06\x12\t\n\x05\x43LEAN\x10\x07\"/\n\x06Header\x12\x12\n\nsizeOfData\x18\x01 \x02(\x05\x12\x11\n\tendOfData\x18\x07 \x02(\x08\"\xeb\x01\n\x0b\x44\x61taPackage\x12,\n\x08points2D\x18\x01 \x03(\x0b\x32\x1a.structDefinitions.Point2D\x12,\n\x08points3D\x18\x02 \x03(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x05\x65\x64ges\x18\x04 \x03(\x0b\x32\x17.structDefinitions.Edge\x12.\n\x05\x66\x61\x63\x65s\x18\x05 \x03(\x0b\x32\x1f.structDefinitions.TriangleFace\x12(\n\x06\x62locks\x18\x06 \x03(\x0b\x32\x18.structDefinitions.Block')
+  serialized_pb=_b('\n\rstructs.proto\x12\x11structDefinitions\"=\n\nProperties\x12\x0f\n\x07quality\x18\x01 \x01(\x01\x12\r\n\x05label\x18\x02 \x01(\t\x12\x0f\n\x07groupId\x18\x03 \x01(\x05\"*\n\x07Point3D\x12\t\n\x01x\x18\x01 \x02(\x01\x12\t\n\x01y\x18\x02 \x02(\x01\x12\t\n\x01z\x18\x03 \x02(\x01\"`\n\x06Vertex\x12)\n\x05point\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x03 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\x83\x01\n\x04\x45\x64ge\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x03 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\xb3\x01\n\x0cTriangleFace\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v3\x18\x03 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x04 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\xd4\x01\n\x05\x42lock\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v3\x18\x03 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v4\x18\x04 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x05 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\x9e\x01\n\x0bMessageInfo\x12\x31\n\x04type\x18\x01 \x02(\x0e\x32#.structDefinitions.MessageInfo.Type\"\\\n\x04Type\x12\x08\n\x04\x44\x41TA\x10\x01\x12\n\n\x06RENDER\x10\x02\x12\x0e\n\nBREAKPOINT\x10\x03\x12\x0c\n\x08\x41\x43\x43\x45PTED\x10\x04\x12\x0c\n\x08REJECTED\x10\x05\x12\x07\n\x03\x41\x43K\x10\x06\x12\t\n\x05\x43LEAN\x10\x07\"/\n\x06Header\x12\x12\n\nsizeOfData\x18\x01 \x02(\x05\x12\x11\n\tendOfData\x18\x07 \x02(\x08\"\xea\x01\n\x0b\x44\x61taPackage\x12,\n\x08points3D\x18\x01 \x03(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x08vertexes\x18\x02 \x03(\x0b\x32\x19.structDefinitions.Vertex\x12&\n\x05\x65\x64ges\x18\x03 \x03(\x0b\x32\x17.structDefinitions.Edge\x12.\n\x05\x66\x61\x63\x65s\x18\x04 \x03(\x0b\x32\x1f.structDefinitions.TriangleFace\x12(\n\x06\x62locks\x18\x05 \x03(\x0b\x32\x18.structDefinitions.Block')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -62,8 +62,8 @@ _MESSAGEINFO_TYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=864,
-  serialized_end=956,
+  serialized_start=839,
+  serialized_end=931,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGEINFO_TYPE)
 
@@ -113,51 +113,6 @@ _PROPERTIES = _descriptor.Descriptor(
 )
 
 
-_POINT2D = _descriptor.Descriptor(
-  name='Point2D',
-  full_name='structDefinitions.Point2D',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='x', full_name='structDefinitions.Point2D.x', index=0,
-      number=1, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='y', full_name='structDefinitions.Point2D.y', index=1,
-      number=2, type=1, cpp_type=5, label=2,
-      has_default_value=False, default_value=float(0),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='prop', full_name='structDefinitions.Point2D.prop', index=2,
-      number=3, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  syntax='proto2',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=99,
-  serialized_end=175,
-)
-
-
 _POINT3D = _descriptor.Descriptor(
   name='Point3D',
   full_name='structDefinitions.Point3D',
@@ -186,9 +141,40 @@ _POINT3D = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto2',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=99,
+  serialized_end=141,
+)
+
+
+_VERTEX = _descriptor.Descriptor(
+  name='Vertex',
+  full_name='structDefinitions.Vertex',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
     _descriptor.FieldDescriptor(
-      name='prop', full_name='structDefinitions.Point3D.prop', index=3,
-      number=4, type=11, cpp_type=10, label=1,
+      name='point', full_name='structDefinitions.Vertex.point', index=0,
+      number=1, type=11, cpp_type=10, label=2,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='prop', full_name='structDefinitions.Vertex.prop', index=1,
+      number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -205,8 +191,8 @@ _POINT3D = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=177,
-  serialized_end=264,
+  serialized_start=143,
+  serialized_end=239,
 )
 
 
@@ -250,8 +236,8 @@ _EDGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=267,
-  serialized_end=398,
+  serialized_start=242,
+  serialized_end=373,
 )
 
 
@@ -302,8 +288,8 @@ _TRIANGLEFACE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=401,
-  serialized_end=580,
+  serialized_start=376,
+  serialized_end=555,
 )
 
 
@@ -361,8 +347,8 @@ _BLOCK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=583,
-  serialized_end=795,
+  serialized_start=558,
+  serialized_end=770,
 )
 
 
@@ -393,8 +379,8 @@ _MESSAGEINFO = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=798,
-  serialized_end=956,
+  serialized_start=773,
+  serialized_end=931,
 )
 
 
@@ -431,8 +417,8 @@ _HEADER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=958,
-  serialized_end=1005,
+  serialized_start=933,
+  serialized_end=980,
 )
 
 
@@ -444,14 +430,14 @@ _DATAPACKAGE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='points2D', full_name='structDefinitions.DataPackage.points2D', index=0,
+      name='points3D', full_name='structDefinitions.DataPackage.points3D', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='points3D', full_name='structDefinitions.DataPackage.points3D', index=1,
+      name='vertexes', full_name='structDefinitions.DataPackage.vertexes', index=1,
       number=2, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -459,21 +445,21 @@ _DATAPACKAGE = _descriptor.Descriptor(
       options=None),
     _descriptor.FieldDescriptor(
       name='edges', full_name='structDefinitions.DataPackage.edges', index=2,
-      number=4, type=11, cpp_type=10, label=3,
+      number=3, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='faces', full_name='structDefinitions.DataPackage.faces', index=3,
-      number=5, type=11, cpp_type=10, label=3,
+      number=4, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='blocks', full_name='structDefinitions.DataPackage.blocks', index=4,
-      number=6, type=11, cpp_type=10, label=3,
+      number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -490,12 +476,12 @@ _DATAPACKAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1008,
-  serialized_end=1243,
+  serialized_start=983,
+  serialized_end=1217,
 )
 
-_POINT2D.fields_by_name['prop'].message_type = _PROPERTIES
-_POINT3D.fields_by_name['prop'].message_type = _PROPERTIES
+_VERTEX.fields_by_name['point'].message_type = _POINT3D
+_VERTEX.fields_by_name['prop'].message_type = _PROPERTIES
 _EDGE.fields_by_name['v1'].message_type = _POINT3D
 _EDGE.fields_by_name['v2'].message_type = _POINT3D
 _EDGE.fields_by_name['prop'].message_type = _PROPERTIES
@@ -510,14 +496,14 @@ _BLOCK.fields_by_name['v4'].message_type = _POINT3D
 _BLOCK.fields_by_name['prop'].message_type = _PROPERTIES
 _MESSAGEINFO.fields_by_name['type'].enum_type = _MESSAGEINFO_TYPE
 _MESSAGEINFO_TYPE.containing_type = _MESSAGEINFO
-_DATAPACKAGE.fields_by_name['points2D'].message_type = _POINT2D
 _DATAPACKAGE.fields_by_name['points3D'].message_type = _POINT3D
+_DATAPACKAGE.fields_by_name['vertexes'].message_type = _VERTEX
 _DATAPACKAGE.fields_by_name['edges'].message_type = _EDGE
 _DATAPACKAGE.fields_by_name['faces'].message_type = _TRIANGLEFACE
 _DATAPACKAGE.fields_by_name['blocks'].message_type = _BLOCK
 DESCRIPTOR.message_types_by_name['Properties'] = _PROPERTIES
-DESCRIPTOR.message_types_by_name['Point2D'] = _POINT2D
 DESCRIPTOR.message_types_by_name['Point3D'] = _POINT3D
+DESCRIPTOR.message_types_by_name['Vertex'] = _VERTEX
 DESCRIPTOR.message_types_by_name['Edge'] = _EDGE
 DESCRIPTOR.message_types_by_name['TriangleFace'] = _TRIANGLEFACE
 DESCRIPTOR.message_types_by_name['Block'] = _BLOCK
@@ -532,19 +518,19 @@ Properties = _reflection.GeneratedProtocolMessageType('Properties', (_message.Me
   ))
 _sym_db.RegisterMessage(Properties)
 
-Point2D = _reflection.GeneratedProtocolMessageType('Point2D', (_message.Message,), dict(
-  DESCRIPTOR = _POINT2D,
-  __module__ = 'structs_pb2'
-  # @@protoc_insertion_point(class_scope:structDefinitions.Point2D)
-  ))
-_sym_db.RegisterMessage(Point2D)
-
 Point3D = _reflection.GeneratedProtocolMessageType('Point3D', (_message.Message,), dict(
   DESCRIPTOR = _POINT3D,
   __module__ = 'structs_pb2'
   # @@protoc_insertion_point(class_scope:structDefinitions.Point3D)
   ))
 _sym_db.RegisterMessage(Point3D)
+
+Vertex = _reflection.GeneratedProtocolMessageType('Vertex', (_message.Message,), dict(
+  DESCRIPTOR = _VERTEX,
+  __module__ = 'structs_pb2'
+  # @@protoc_insertion_point(class_scope:structDefinitions.Vertex)
+  ))
+_sym_db.RegisterMessage(Vertex)
 
 Edge = _reflection.GeneratedProtocolMessageType('Edge', (_message.Message,), dict(
   DESCRIPTOR = _EDGE,

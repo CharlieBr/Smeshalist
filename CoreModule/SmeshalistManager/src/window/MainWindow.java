@@ -18,11 +18,12 @@ public class MainWindow extends JFrame {
 	private StatisticsTab statisticsTab;
 	private OptionsTab optionsTab;
 	private FiltersTab filtersTab;
+	private ObjTab objTab;
 
 	private MainWindow() {
 		this.initializeView();
 
-		this.setSize(500, 550);
+		this.setSize(550, 550);
 
 		setVisible(true);
 	}
@@ -34,10 +35,12 @@ public class MainWindow extends JFrame {
 		this.optionsTab = new OptionsTab();
 		this.statisticsTab = new StatisticsTab();
 		this.filtersTab = new FiltersTab();
+		this.objTab = new ObjTab();
 
 		this.tabContainer.addTab("Statistics", statisticsTab);
 		this.tabContainer.addTab("Options", optionsTab);
 		this.tabContainer.addTab("Filters", filtersTab);
+		this.tabContainer.addTab("Import/Export", objTab);
 		this.add(tabContainer);
 
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

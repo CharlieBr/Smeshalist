@@ -1,3 +1,4 @@
+"""Smeshalist module - Main API module which provide methods to add geometries for visualization algorithm"""
 import geometry
 import structs_pb2
 import socket
@@ -11,34 +12,15 @@ structuresRemaining = numberOfStructuresToSend
 dataPackages = []
 
 def getInstance(portNumber):
+    """Return instance of Smeshalist class. Tool is using port of given number to connect to main window"""
     global port
     port = portNumber
     dataPackage = structs_pb2.DataPackage()
     dataPackages.append(dataPackage)
 
 
-
-def addPoint2D(point2D):
-
-    global structuresRemaining
-    if structuresRemaining ==  0:
-        structuresRemaining = numberOfStructuresToSend 
-        dataPackage = structs_pb2.DataPackage()
-        dataPackages.append(dataPackage)
-        
-    structuresRemaining = structuresRemaining -1
-    dataPackage = dataPackages[-1]
-    pointToSend = dataPackage.points2D.add()
-    pointToSend.x = point2D.x
-    pointToSend.y = point2D.y
-    pointToSend.prop.quality = point2D.quality
-    pointToSend.prop.label = point2D.label
-    pointToSend.prop.groupId = point2D.groupId
-       
-
-
 def addPoint3D(point3D):
-
+    """Method adds Point3D object point3D to internal data buffer that stores structures to send for visualization"""
     global structuresRemaining
     if structuresRemaining ==  0:
         structuresRemaining = numberOfStructuresToSend 
@@ -51,13 +33,30 @@ def addPoint3D(point3D):
     pointToSend.x = point3D.x
     pointToSend.y = point3D.y
     pointToSend.z = point3D.z
-    pointToSend.prop.quality = point3D.quality
-    pointToSend.prop.label = point3D.label
-    pointToSend.prop.groupId = point3D.groupId
+
+
+def addVertex(vertex):
+    """Method adds Vertex object vertex to internal data buffer that stores structures to send for visualization"""
+    global structuresRemaining
+    if structuresRemaining ==  0:
+        structuresRemaining = numberOfStructuresToSend 
+        dataPackage = structs_pb2.DataPackage()
+        dataPackages.append(dataPackage)
+
+    structuresRemaining = structuresRemaining -1
+    dataPackage = dataPackages[-1]
+    vertexToSend = dataPackage.vertexes.add()
+    vertexToSend.point.x = vertex.point.x
+    vertexToSend.point.y = vertex.point.y
+    vertexToSend.point.z = vertex.point.z
+    vertexToSend.prop.quality = vertex.quality
+    vertexToSend.prop.label = vertex.label
+    vertexToSend.prop.groupId = vertex.groupId
 
 
 
 def addEdge(edge):
+    """Method adds Edge object edge to internal data buffer that stores structures to send for visualization"""
     global structuresRemaining
     if structuresRemaining ==  0:
         structuresRemaining = numberOfStructuresToSend 
@@ -81,6 +80,7 @@ def addEdge(edge):
 
 
 def addTriangleFace(triangleFace):
+    """Method adds TriangleFace object triangleFace to internal data buffer that stores structures to send for visualization"""
     global structuresRemaining
     if structuresRemaining ==  0:
         structuresRemaining = numberOfStructuresToSend 
@@ -105,6 +105,7 @@ def addTriangleFace(triangleFace):
 
 
 def addBlock(block):
+    """Method adds Block object block to internal data buffer that stores structures to send for visualization"""
     global structuresRemaining
     if structuresRemaining ==  0:
         structuresRemaining = numberOfStructuresToSend 
@@ -134,8 +135,7 @@ def addBlock(block):
 
 
 def flushBuffer():
-  
-
+    """Send all structures stored in buffer to main window"""
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # Send 
@@ -146,7 +146,6 @@ def flushBuffer():
 
 
         # Receive acknowledge
-        print 'waiting to receive'
         data, addr = sock.recvfrom(10)
         reply = structs_pb2.MessageInfo()
         reply.ParseFromString(data)
@@ -168,12 +167,10 @@ def flushBuffer():
             sent = sock.sendto(dataToSend, (IPAdress, port))
             
             # Receive acknowledge
-            print 'waiting to receive2'
             data, addr = sock.recvfrom(10)
             reply.ParseFromString(data)                        
 
     finally:
-        print 'closing socket'
         global structuresRemaining 
         structuresRemaining = numberOfStructuresToSend
         dataPackage = structs_pb2.DataPackage()
@@ -182,6 +179,8 @@ def flushBuffer():
 
 
 def breakpoint():
+    """Interrupts algorithm execution until proper option will be chosen in Smeshalist Manager window.
+    In case continue option has been chosen algorithm is continued otherwise program is terminated."""    
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # Send 
@@ -192,7 +191,6 @@ def breakpoint():
 
 
         # Receive acknowledge
-        print 'waiting to receive'
         data, addr = sock.recvfrom(10)
         reply = structs_pb2.MessageInfo()
         reply.ParseFromString(data)
@@ -202,11 +200,11 @@ def breakpoint():
             exit()                    
 
     finally:
-        print 'closing socket'
         sock.close()
 
 
 def render():
+    """Method forces rendering sent structures in main window in case Dynamic rendering is turned off in Smeshalist Manager window."""
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # Send 
@@ -216,11 +214,11 @@ def render():
         sent = sock.sendto(bytesToSend, (IPAdress, port))                
 
     finally:
-        print 'closing socket'
         sock.close()
 
 
 def clean():
+    """Method forces deleting all data from data structure tree in main window without affecting taken snapshots."""
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # Send 
@@ -231,7 +229,6 @@ def clean():
 
 
         # Receive acknowledge
-        print 'waiting to receive'
         data, addr = sock.recvfrom(10)
         reply = structs_pb2.MessageInfo()
         reply.ParseFromString(data)
@@ -241,5 +238,4 @@ def clean():
             exit()                    
 
     finally:
-        print 'closing socket'
         sock.close()

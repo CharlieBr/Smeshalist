@@ -384,17 +384,10 @@ class Vertex : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
   ::structDefinitions::Point3D* release_point();
   void set_allocated_point(::structDefinitions::Point3D* point);
 
-  // required double number = 2;
-  bool has_number() const;
-  void clear_number();
-  static const int kNumberFieldNumber = 2;
-  double number() const;
-  void set_number(double value);
-
-  // optional .structDefinitions.Properties prop = 3;
+  // optional .structDefinitions.Properties prop = 2;
   bool has_prop() const;
   void clear_prop();
-  static const int kPropFieldNumber = 3;
+  static const int kPropFieldNumber = 2;
   const ::structDefinitions::Properties& prop() const;
   ::structDefinitions::Properties* mutable_prop();
   ::structDefinitions::Properties* release_prop();
@@ -404,19 +397,13 @@ class Vertex : public ::google::protobuf::Message /* @@protoc_insertion_point(cl
  private:
   inline void set_has_point();
   inline void clear_has_point();
-  inline void set_has_number();
-  inline void clear_has_number();
   inline void set_has_prop();
   inline void clear_has_prop();
-
-  // helper for ByteSize()
-  int RequiredFieldsByteSizeFallback() const;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
   ::structDefinitions::Point3D* point_;
-  double number_;
   ::structDefinitions::Properties* prop_;
   friend void  protobuf_AddDesc_structs_2eproto();
   friend void protobuf_AssignDesc_structs_2eproto();
@@ -1444,39 +1431,15 @@ inline void Vertex::set_allocated_point(::structDefinitions::Point3D* point) {
   // @@protoc_insertion_point(field_set_allocated:structDefinitions.Vertex.point)
 }
 
-// required double number = 2;
-inline bool Vertex::has_number() const {
+// optional .structDefinitions.Properties prop = 2;
+inline bool Vertex::has_prop() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void Vertex::set_has_number() {
+inline void Vertex::set_has_prop() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void Vertex::clear_has_number() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void Vertex::clear_number() {
-  number_ = 0;
-  clear_has_number();
-}
-inline double Vertex::number() const {
-  // @@protoc_insertion_point(field_get:structDefinitions.Vertex.number)
-  return number_;
-}
-inline void Vertex::set_number(double value) {
-  set_has_number();
-  number_ = value;
-  // @@protoc_insertion_point(field_set:structDefinitions.Vertex.number)
-}
-
-// optional .structDefinitions.Properties prop = 3;
-inline bool Vertex::has_prop() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void Vertex::set_has_prop() {
-  _has_bits_[0] |= 0x00000004u;
-}
 inline void Vertex::clear_has_prop() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void Vertex::clear_prop() {
   if (prop_ != NULL) prop_->::structDefinitions::Properties::Clear();

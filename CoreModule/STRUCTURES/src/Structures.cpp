@@ -46,6 +46,7 @@ void Face::draw(Color color){
     Point3D v3 = this -> vertices[2];
 
     if (!transparentStructures) {
+        glEnable(GL_LIGHTING);
         setElementColor(color);
         glBegin(GL_TRIANGLES);
             glNormal3dv(normal);
@@ -53,6 +54,7 @@ void Face::draw(Color color){
             glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
             glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
         glEnd();
+        glDisable(GL_LIGHTING);
     }
 
     glEnable(GL_POLYGON_OFFSET_LINE);
@@ -78,6 +80,7 @@ void Block::draw(Color color){
     Point3D v4 = this -> vertices[3];
 
     if (!transparentStructures) {
+        glEnable(GL_LIGHTING);
         setElementColor(color);
         glBegin(GL_TRIANGLES);
             glNormal3dv(normals[0]);
@@ -106,6 +109,7 @@ void Block::draw(Color color){
             glVertex3f(v2.get_x(), v2.get_y(), v2.get_z());
             glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
         glEnd();
+        glDisable(GL_LIGHTING);
     }
 
     glEnable(GL_POLYGON_OFFSET_LINE);

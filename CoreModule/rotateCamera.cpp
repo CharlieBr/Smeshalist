@@ -34,6 +34,7 @@ float cameraLookAtX=0, cameraLookAtY=0, cameraLookAtZ=0;
 
 bool isShiftPressed = false;
 bool isLeftMouseButtonPressed = false;
+bool isOrtho = false;
 
 AbstractDataTree* d = NULL;
 AbstractServer* server = NULL;
@@ -47,27 +48,49 @@ Color BLACK(0,0,0);
 GLfloat light_diffuse[] = {1.0, 1.0, 1.0, 1.0};
 GLfloat light_position[] = {0.0, 1.0, 0.0, 0.0};
 
+float screenRatio = 0;
+float screenWidth=0, screenHeight=0;
+
 void computeCameraPosition() {
     cameraX = cos(deltaAngleY)*cos(deltaAngleX)*radius + cameraLookAtX;
     cameraY = sin(deltaAngleY)*radius + cameraLookAtY;
     cameraZ = cos(deltaAngleY)*sin(deltaAngleX)*radius + cameraLookAtZ;
 }
 
+void setPerspective() {
+    isOrtho = false;
+
+    glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glViewport(0, 0, screenWidth, screenHeight);
+    gluPerspective(45.0f, screenRatio, 0.1f, 100.0f);
+    glMatrixMode(GL_MODELVIEW);
+}
+
+void setOrtho() {
+    isOrtho = true;
+
+    glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glViewport(0, 0, screenWidth, screenHeight);
+    glOrtho(-screenRatio*radius, screenRatio*radius, -radius, radius, 0.1f, 100.0f);
+    glMatrixMode(GL_MODELVIEW);
+}
+
 void changeSize(int w, int h) {
 	if (h == 0)
 		h = 1;
 
-	float ratio =  w * 1.0 / h;
+    screenWidth = w;
+    screenHeight = h;
 
-	glMatrixMode(GL_PROJECTION);
+	screenRatio =  w * 1.0 / h;
 
-	glLoadIdentity();
-
-	glViewport(0, 0, w, h);
-
-	gluPerspective(45.0f, ratio, 0.1f, 100.0f);
-
-	glMatrixMode(GL_MODELVIEW);
+    if (isOrtho) {
+        setOrtho();
+    } else {
+        setPerspective();
+	}
 }
 
 void drawLine(  double x0, double y0, double z0,
@@ -121,7 +144,6 @@ void addDirectionalLight() {
    glLightfv(GL_LIGHT0, GL_DIFFUSE, light_diffuse);
    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
    glEnable(GL_LIGHT0);
-   glEnable(GL_LIGHTING);
 
    glMatrixMode(GL_MODELVIEW);
    glEnable(GL_COLOR_MATERIAL);
@@ -142,9 +164,7 @@ void renderScene(void) {
         drawOrigin();
         glColor3f(0.1f, 0.1f, 0.1f);
 
-        glEnable(GL_LIGHTING);
         d -> getCurrentlyVisibleDataTree() -> draw_elements();
-        glDisable(GL_LIGHTING);
         drawBoundingBox(d -> getCurrentlyVisibleDataTree());
 
         CoordinatesFilter::getInstance() -> draw();
@@ -165,7 +185,7 @@ void mouseMove(int x, int y) {
         cameraLookAtX -= translationX * sin(deltaAngleX) - translationY*sin(deltaAngleY)*cos(deltaAngleX);
         cameraLookAtY -= translationY * cos(deltaAngleY);
         cameraLookAtZ += translationX * cos(deltaAngleX) + translationY*sin(deltaAngleY)*sin(deltaAngleX);
-    } else {
+    } else if (!isOrtho){
         deltaAngleX += mouseSensitivity * (x-oldMousePositionX) / MOUSE_PRECISION;
         deltaAngleY += mouseSensitivity * (y-oldMousePositionY) / MOUSE_PRECISION;
 
@@ -199,22 +219,18 @@ void mouseButton(int button, int state, int x, int y) {
 
     isShiftPressed = glutGetModifiers() == GLUT_ACTIVE_SHIFT;
 
-	if (button == 3){
-        radius*=std::pow(0.9, mouseSensitivity);
-	} else if (button == 4){
-        radius/=std::pow(0.9, mouseSensitivity);
+    //if (!isOrtho) {
+        if (button == 3){
+            radius*=std::pow(0.9, mouseSensitivity);
+        } else if (button == 4){
+            radius/=std::pow(0.9, mouseSensitivity);
+        }
+	//}
+	if (isOrtho) {
+        setOrtho();
 	}
 
     computeCameraPosition();
-}
-
-void setTitle() {
-    char title[80];
-    strcpy(title, SMESHALIST);
-    strcat(title, "\t");
-    strcat(title, AbstractDataTree::getCurrentlyVisibleDataTree() -> getTreeName().c_str());
-
-    glutSetWindowTitle(title);
 }
 
 void keyboardEvent(unsigned char key, int x, int y) {
@@ -225,7 +241,7 @@ void keyboardEvent(unsigned char key, int x, int y) {
             computeCameraPosition();
             break;
         case 'y':
-            deltaAngleX=0;
+            deltaAngleX=M_PI;
             deltaAngleY=PI_2;
             computeCameraPosition();
             break;
@@ -234,8 +250,11 @@ void keyboardEvent(unsigned char key, int x, int y) {
             deltaAngleY=0;
             computeCameraPosition();
             break;
-        case 'q':
-            Element::switchColoringByQuality();
+        case 'o':
+            setOrtho();
+            break;
+        case 'p':
+            setPerspective();
             break;
     }
 }
@@ -245,8 +264,7 @@ void initGLUT(int argc, char **argv) {
 	glutInitDisplayMode(GLUT_DEPTH | GLUT_DOUBLE | GLUT_RGBA);
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(500, 500);
-	glutCreateWindow("");
-	setTitle();
+	glutCreateWindow(SMESHALIST);
 
 	glutDisplayFunc(renderScene);
 	glutReshapeFunc(changeSize);

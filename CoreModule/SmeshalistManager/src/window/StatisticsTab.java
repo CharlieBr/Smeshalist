@@ -1,8 +1,6 @@
 package window;
 
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.LayoutManager;
+import java.awt.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
@@ -30,113 +28,133 @@ public class StatisticsTab extends JPanel{
 	private ElementsCount elementsCount;
 	private BoundingBox boundingBox;
 
+	/*
+		11	12
+		21	22
+	*/
 	private JPanel cell11;
 	private JPanel cell12;
 	private JPanel cell21;
 	private JPanel cell22;
-	
-	private BoxLayout bl11;
-	private BoxLayout bl12;
-	private BoxLayout bl21;
-	private	BoxLayout bl22;
-	
-	
+
+	private Font titleFont = new Font("Tahoma", Font.PLAIN, 18);
+	private Font textFont = new Font("Tahoma", Font.PLAIN, 14);
+
 	public StatisticsTab(){
-		
 		initializeView();
 		setVisible(true);
-		
 	}
 
 	private void initializeView(){
-
-		LayoutManager mgr = new GridLayout(2,2);
-		setLayout(mgr);
+//		LayoutManager mgr = new GridLayout(2,2);
+//		setLayout(mgr);
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		setBorder(border);
 
-		cell11 = new JPanel();
-		cell12 = new JPanel();
-		cell21 = new JPanel();
-		cell22 = new JPanel();
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
 		initStructuresList();
 		initValuesList();
 		initAxisList();
 		initCoordinatesList();
-		
-		add(cell11);
-		add(cell12);
-		add(cell21);
-		add(cell22);
+
+		JPanel firstRow = new JPanel();
+		firstRow.setLayout(new BoxLayout(firstRow, BoxLayout.LINE_AXIS));
+		firstRow.add(cell11);
+		firstRow.add(cell12);
+
+		JPanel secondRow = new JPanel();
+		secondRow.setLayout(new BoxLayout(secondRow, BoxLayout.LINE_AXIS));
+		secondRow.add(cell21);
+		secondRow.add(cell22);
+
+		this.add(firstRow);
+		this.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		this.add(secondRow);
 
 		setInitContent();
-
 	}
 
 	private void initCoordinatesList() {
-		bl22 = new BoxLayout(cell22,BoxLayout.PAGE_AXIS);
+		cell22 = new JPanel();
+		BoxLayout bl22 = new BoxLayout(cell22, BoxLayout.PAGE_AXIS);
 		cell22.setLayout(bl22);
 
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Range");
+		border.setTitleFont(titleFont);
 		border.setTitleColor(Color.BLUE);
 		border.setTitleJustification(2);
 		cell22.setBorder(border);
-		
 	}
 
 	private void initAxisList() {
-		bl21 = new BoxLayout(cell21,BoxLayout.PAGE_AXIS);
+		cell21 = new JPanel();
+		BoxLayout bl21 = new BoxLayout(cell21, BoxLayout.PAGE_AXIS);
 		cell21.setLayout(bl21);
 
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Axis");
+		border.setTitleFont(titleFont);
 		border.setTitleColor(Color.BLUE);
 		border.setTitleJustification(2);
 		cell21.setBorder(border);
 
 		cell21.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		cell21.add(new JLabel("x"));
+
+		JLabel label;
+		label = new JLabel("x");
+		label.setFont(textFont);
+		cell21.add(label);
 		cell21.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		cell21.add(new JLabel("y"));
+		label = new JLabel("y");
+		label.setFont(textFont);
+		cell21.add(label);
 		cell21.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		cell21.add(new JLabel("z"));
+		label = new JLabel("z");
+		label.setFont(textFont);
+		cell21.add(label);
 	}
 
 	private void initValuesList() {
-		bl12 = new BoxLayout(cell12,BoxLayout.PAGE_AXIS);
+		cell12 = new JPanel();
+		BoxLayout bl12 = new BoxLayout(cell12, BoxLayout.PAGE_AXIS);
 		cell12.setLayout(bl12);
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Visible (total)");
+		border.setTitleFont(titleFont);
 		border.setTitleColor(Color.BLUE);
 		border.setTitleJustification(2);
-		cell12.setBorder(border);	
-		
+		cell12.setBorder(border);
 	}
 
 	private void initStructuresList() {
-		bl11 = new BoxLayout(cell11,BoxLayout.PAGE_AXIS);
+		cell11 = new JPanel();
+
+		BoxLayout bl11 = new BoxLayout(cell11, BoxLayout.PAGE_AXIS);
 		cell11.setLayout(bl11);
 		TitledBorder border = new TitledBorder(new EmptyBorder(10,10,10,10), "Structures");
+		border.setTitleFont(titleFont);
 		border.setTitleColor(Color.BLUE);
 		border.setTitleJustification(2);
 		cell11.setBorder(border);
-		
 	}
 	
 	public void putElementsCount(){
-		
 		cell11.removeAll();
 		cell12.removeAll();
 
-		
 		cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+
 		for(String element : this.elementsCount.getElementInfosMap().keySet()){
-			cell11.add(new JLabel(element));
+			JLabel label = new JLabel(element);
+			label.setFont(textFont);
+			cell11.add(label);
 			cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		}
 		
 		for(ElementInfo info : this.elementsCount.getElementInfosMap().values()){
-			cell12.add(new JLabel(info.getVisible()+" ("+info.getTotal()+")"));
+			JLabel label = new JLabel(info.getVisible()+" ("+info.getTotal()+")");
+			label.setFont(textFont);
+			cell12.add(label);
 			cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		}
 
@@ -148,16 +166,26 @@ public class StatisticsTab extends JPanel{
 	
 	public void putBoundingBox(){
 		cell22.removeAll();
-		cell22.repaint();
+
+		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+
 		DecimalFormat df = new DecimalFormat(DEFAULT_DECIMAL_FORMAT);
+		JLabel label;
 
+		label = new JLabel("["+df.format(new BigDecimal(this.boundingBox.getFromX()))+"; "+df.format(new BigDecimal(this.boundingBox.getToX()))+"]");
+		label.setFont(textFont);
+		cell22.add(label);
 		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		cell22.add(new JLabel("["+df.format(new BigDecimal(this.boundingBox.getFromX()))+"; "+df.format(new BigDecimal(this.boundingBox.getToX()))+"]"));
+		label = new JLabel("["+df.format(new BigDecimal(this.boundingBox.getFromY()))+"; "+df.format(new BigDecimal(this.boundingBox.getToY()))+"]");
+		label.setFont(textFont);
+		cell22.add(label);
 		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		cell22.add(new JLabel("["+df.format(new BigDecimal(this.boundingBox.getFromY()))+"; "+df.format(new BigDecimal(this.boundingBox.getToY()))+"]"));
-		cell22.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		cell22.add(new JLabel("["+df.format(new BigDecimal(this.boundingBox.getFromZ()))+"; "+df.format(new BigDecimal(this.boundingBox.getToZ()))+"]"));
+		label = new JLabel("["+df.format(new BigDecimal(this.boundingBox.getFromZ()))+"; "+df.format(new BigDecimal(this.boundingBox.getToZ()))+"]");
+		label.setFont(textFont);
+		cell22.add(label);
 
+		cell22.revalidate();
+		cell22.repaint();
 	}
 
 	public void setElementsCount(ElementsCount elementsCount) {
@@ -174,8 +202,6 @@ public class StatisticsTab extends JPanel{
 	
 	
 	public void setInitContent(){
-		
-
 		BoundingBox.Builder bbBuilder = BoundingBox.newBuilder();
 		bbBuilder.setFromX(0.0);
 		bbBuilder.setToX(0.0);

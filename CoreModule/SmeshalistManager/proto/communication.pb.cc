@@ -73,6 +73,7 @@ const ::google::protobuf::Descriptor* ManagerToCoreMessage_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   ManagerToCoreMessage_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* ManagerToCoreMessage_MTCMessageType_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* ColoringType_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* ComparisonOperator_descriptor_ = NULL;
 
 }  // namespace
@@ -205,11 +206,12 @@ void protobuf_AssignDesc_communication_2eproto() {
       -1);
   CoreToManagerMessage_CTMMessageType_descriptor_ = CoreToManagerMessage_descriptor_->enum_type(0);
   OptionsInfo_descriptor_ = file->message_type(7);
-  static const int OptionsInfo_offsets_[4] = {
+  static const int OptionsInfo_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, transparentstructures_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, dynamicrendering_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, showlabels_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, mousesensitivity_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, coloringtype_),
   };
   OptionsInfo_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -344,7 +346,8 @@ void protobuf_AssignDesc_communication_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ManagerToCoreMessage, _internal_metadata_),
       -1);
   ManagerToCoreMessage_MTCMessageType_descriptor_ = ManagerToCoreMessage_descriptor_->enum_type(0);
-  ComparisonOperator_descriptor_ = file->enum_type(0);
+  ColoringType_descriptor_ = file->enum_type(0);
+  ComparisonOperator_descriptor_ = file->enum_type(1);
 }
 
 namespace {
@@ -487,44 +490,46 @@ void protobuf_AddDesc_communication_2eproto() {
     " \002(\0162\'.sm.CoreToManagerMessage.CTMMessag"
     "eType\022*\n\016statisticsInfo\030\002 \001(\0132\022.sm.Stati"
     "sticsInfo\"0\n\016CTMMessageType\022\016\n\nSTATISTIC"
-    "S\020\001\022\016\n\nBREAKPOINT\020\002\"t\n\013OptionsInfo\022\035\n\025tr"
-    "ansparentStructures\030\001 \002(\010\022\030\n\020dynamicRend"
-    "ering\030\002 \002(\010\022\022\n\nshowLabels\030\003 \002(\010\022\030\n\020mouse"
-    "Sensitivity\030\004 \002(\001\"~\n\013TypesFilter\0229\n\rsele"
-    "ctedTypes\030\001 \003(\0132\".sm.TypesFilter.Selecte"
-    "dTypesEntry\0324\n\022SelectedTypesEntry\022\013\n\003key"
-    "\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n\014GroupsFilt"
-    "er\022<\n\016selectedGroups\030\001 \003(\0132$.sm.GroupsFi"
-    "lter.SelectedGroupsEntry\0325\n\023SelectedGrou"
-    "psEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\""
-    "\226\001\n\020QualityCondition\022\021\n\tleftValue\030\001 \001(\001\022"
-    ",\n\014leftOperator\030\002 \001(\0162\026.sm.ComparisonOpe"
-    "rator\022-\n\rrightOperator\030\003 \001(\0162\026.sm.Compar"
-    "isonOperator\022\022\n\nrightValue\030\004 \001(\001\"\?\n\rQual"
-    "ityFilter\022.\n\020qualityCondition\030\001 \003(\0132\024.sm"
-    ".QualityCondition\"\215\001\n\024CoordinatesConditi"
-    "on\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030\002 \002(\001\022\016\n\006zV"
-    "alue\030\003 \002(\001\0223\n\023coordinatesOperator\030\004 \002(\0162"
-    "\026.sm.ComparisonOperator\022\020\n\010constant\030\005 \002("
-    "\001\"\243\001\n\021CoordinatesFilter\0226\n\024coordinatesCo"
-    "ndition\030\001 \003(\0132\030.sm.CoordinatesCondition\022"
-    "6\n\013conjunction\030\002 \001(\0162!.sm.CoordinatesFil"
-    "ter.Conjunction\"\036\n\013Conjunction\022\007\n\003AND\020\001\022"
-    "\006\n\002OR\020\002\"\254\003\n\024ManagerToCoreMessage\022<\n\013mess"
-    "ageType\030\001 \002(\0162\'.sm.ManagerToCoreMessage."
-    "MTCMessageType\022$\n\013optionsInfo\030\002 \001(\0132\017.sm"
-    ".OptionsInfo\022&\n\014groupsFilter\030\003 \001(\0132\020.sm."
-    "GroupsFilter\022$\n\013typesFilter\030\004 \001(\0132\017.sm.T"
-    "ypesFilter\022(\n\rqualityFilter\030\005 \001(\0132\021.sm.Q"
-    "ualityFilter\0220\n\021coordinatesFilter\030\006 \001(\0132"
-    "\025.sm.CoordinatesFilter\"\205\001\n\016MTCMessageTyp"
-    "e\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CONTINUE\020"
-    "\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSHOT\020\006\022\t\n"
-    "\005CLEAN\020\007\022\r\n\tNEXT_TREE\020\010\022\r\n\tPREV_TREE\020\t*_"
-    "\n\022ComparisonOperator\022\024\n\020GREATER_OR_EQUAL"
-    "\020\001\022\013\n\007GREATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQ"
-    "UAL\020\004\022\010\n\004LESS\020\005B\036\n\rcommunicationB\rCommun"
-    "ication", 2287);
+    "S\020\001\022\016\n\nBREAKPOINT\020\002\"\234\001\n\013OptionsInfo\022\035\n\025t"
+    "ransparentStructures\030\001 \002(\010\022\030\n\020dynamicRen"
+    "dering\030\002 \002(\010\022\022\n\nshowLabels\030\003 \002(\010\022\030\n\020mous"
+    "eSensitivity\030\004 \002(\001\022&\n\014coloringType\030\005 \002(\016"
+    "2\020.sm.ColoringType\"~\n\013TypesFilter\0229\n\rsel"
+    "ectedTypes\030\001 \003(\0132\".sm.TypesFilter.Select"
+    "edTypesEntry\0324\n\022SelectedTypesEntry\022\013\n\003ke"
+    "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n\014GroupsFil"
+    "ter\022<\n\016selectedGroups\030\001 \003(\0132$.sm.GroupsF"
+    "ilter.SelectedGroupsEntry\0325\n\023SelectedGro"
+    "upsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001"
+    "\"\226\001\n\020QualityCondition\022\021\n\tleftValue\030\001 \001(\001"
+    "\022,\n\014leftOperator\030\002 \001(\0162\026.sm.ComparisonOp"
+    "erator\022-\n\rrightOperator\030\003 \001(\0162\026.sm.Compa"
+    "risonOperator\022\022\n\nrightValue\030\004 \001(\001\"\?\n\rQua"
+    "lityFilter\022.\n\020qualityCondition\030\001 \003(\0132\024.s"
+    "m.QualityCondition\"\215\001\n\024CoordinatesCondit"
+    "ion\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030\002 \002(\001\022\016\n\006z"
+    "Value\030\003 \002(\001\0223\n\023coordinatesOperator\030\004 \002(\016"
+    "2\026.sm.ComparisonOperator\022\020\n\010constant\030\005 \002"
+    "(\001\"\243\001\n\021CoordinatesFilter\0226\n\024coordinatesC"
+    "ondition\030\001 \003(\0132\030.sm.CoordinatesCondition"
+    "\0226\n\013conjunction\030\002 \001(\0162!.sm.CoordinatesFi"
+    "lter.Conjunction\"\036\n\013Conjunction\022\007\n\003AND\020\001"
+    "\022\006\n\002OR\020\002\"\254\003\n\024ManagerToCoreMessage\022<\n\013mes"
+    "sageType\030\001 \002(\0162\'.sm.ManagerToCoreMessage"
+    ".MTCMessageType\022$\n\013optionsInfo\030\002 \001(\0132\017.s"
+    "m.OptionsInfo\022&\n\014groupsFilter\030\003 \001(\0132\020.sm"
+    ".GroupsFilter\022$\n\013typesFilter\030\004 \001(\0132\017.sm."
+    "TypesFilter\022(\n\rqualityFilter\030\005 \001(\0132\021.sm."
+    "QualityFilter\0220\n\021coordinatesFilter\030\006 \001(\013"
+    "2\025.sm.CoordinatesFilter\"\205\001\n\016MTCMessageTy"
+    "pe\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CONTINUE"
+    "\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSHOT\020\006\022\t"
+    "\n\005CLEAN\020\007\022\r\n\tNEXT_TREE\020\010\022\r\n\tPREV_TREE\020\t*"
+    "9\n\014ColoringType\022\023\n\017GROUPS_COLORING\020\001\022\024\n\020"
+    "QUALITY_COLORING\020\002*_\n\022ComparisonOperator"
+    "\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GREATER\020\002\022\t\n\005E"
+    "QUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rc"
+    "ommunicationB\rCommunication", 2387);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "communication.proto", &protobuf_RegisterTypes);
   ElementInfo::default_instance_ = new ElementInfo();
@@ -566,6 +571,20 @@ struct StaticDescriptorInitializer_communication_2eproto {
     protobuf_AddDesc_communication_2eproto();
   }
 } static_descriptor_initializer_communication_2eproto_;
+const ::google::protobuf::EnumDescriptor* ColoringType_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return ColoringType_descriptor_;
+}
+bool ColoringType_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
 const ::google::protobuf::EnumDescriptor* ComparisonOperator_descriptor() {
   protobuf_AssignDescriptorsOnce();
   return ComparisonOperator_descriptor_;
@@ -3626,6 +3645,7 @@ const int OptionsInfo::kTransparentStructuresFieldNumber;
 const int OptionsInfo::kDynamicRenderingFieldNumber;
 const int OptionsInfo::kShowLabelsFieldNumber;
 const int OptionsInfo::kMouseSensitivityFieldNumber;
+const int OptionsInfo::kColoringTypeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 OptionsInfo::OptionsInfo()
@@ -3651,6 +3671,7 @@ void OptionsInfo::SharedCtor() {
   dynamicrendering_ = false;
   showlabels_ = false;
   mousesensitivity_ = 0;
+  coloringtype_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -3707,7 +3728,11 @@ void OptionsInfo::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  ZR_(mousesensitivity_, showlabels_);
+  if (_has_bits_[0 / 32] & 31u) {
+    ZR_(transparentstructures_, showlabels_);
+    mousesensitivity_ = 0;
+    coloringtype_ = 1;
+  }
 
 #undef ZR_HELPER_
 #undef ZR_
@@ -3783,6 +3808,26 @@ bool OptionsInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(40)) goto parse_coloringType;
+        break;
+      }
+
+      // required .sm.ColoringType coloringType = 5;
+      case 5: {
+        if (tag == 40) {
+         parse_coloringType:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::sm::ColoringType_IsValid(value)) {
+            set_coloringtype(static_cast< ::sm::ColoringType >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(5, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -3832,6 +3877,12 @@ void OptionsInfo::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->mousesensitivity(), output);
   }
 
+  // required .sm.ColoringType coloringType = 5;
+  if (has_coloringtype()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      5, this->coloringtype(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -3860,6 +3911,12 @@ void OptionsInfo::SerializeWithCachedSizes(
   // required double mouseSensitivity = 4;
   if (has_mousesensitivity()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->mousesensitivity(), target);
+  }
+
+  // required .sm.ColoringType coloringType = 5;
+  if (has_coloringtype()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      5, this->coloringtype(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3894,13 +3951,19 @@ int OptionsInfo::RequiredFieldsByteSizeFallback() const {
     total_size += 1 + 8;
   }
 
+  if (has_coloringtype()) {
+    // required .sm.ColoringType coloringType = 5;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->coloringtype());
+  }
+
   return total_size;
 }
 int OptionsInfo::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:sm.OptionsInfo)
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000000f) ^ 0x0000000f) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000001f) ^ 0x0000001f) == 0) {  // All required fields are present.
     // required bool transparentStructures = 1;
     total_size += 1 + 1;
 
@@ -3912,6 +3975,10 @@ int OptionsInfo::ByteSize() const {
 
     // required double mouseSensitivity = 4;
     total_size += 1 + 8;
+
+    // required .sm.ColoringType coloringType = 5;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->coloringtype());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -3958,6 +4025,9 @@ void OptionsInfo::MergeFrom(const OptionsInfo& from) {
     if (from.has_mousesensitivity()) {
       set_mousesensitivity(from.mousesensitivity());
     }
+    if (from.has_coloringtype()) {
+      set_coloringtype(from.coloringtype());
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -3979,7 +4049,7 @@ void OptionsInfo::CopyFrom(const OptionsInfo& from) {
 }
 
 bool OptionsInfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
 
   return true;
 }
@@ -3993,6 +4063,7 @@ void OptionsInfo::InternalSwap(OptionsInfo* other) {
   std::swap(dynamicrendering_, other->dynamicrendering_);
   std::swap(showlabels_, other->showlabels_);
   std::swap(mousesensitivity_, other->mousesensitivity_);
+  std::swap(coloringtype_, other->coloringtype_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -4103,6 +4174,31 @@ void OptionsInfo::clear_mousesensitivity() {
   set_has_mousesensitivity();
   mousesensitivity_ = value;
   // @@protoc_insertion_point(field_set:sm.OptionsInfo.mouseSensitivity)
+}
+
+// required .sm.ColoringType coloringType = 5;
+bool OptionsInfo::has_coloringtype() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+void OptionsInfo::set_has_coloringtype() {
+  _has_bits_[0] |= 0x00000010u;
+}
+void OptionsInfo::clear_has_coloringtype() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+void OptionsInfo::clear_coloringtype() {
+  coloringtype_ = 1;
+  clear_has_coloringtype();
+}
+ ::sm::ColoringType OptionsInfo::coloringtype() const {
+  // @@protoc_insertion_point(field_get:sm.OptionsInfo.coloringType)
+  return static_cast< ::sm::ColoringType >(coloringtype_);
+}
+ void OptionsInfo::set_coloringtype(::sm::ColoringType value) {
+  assert(::sm::ColoringType_IsValid(value));
+  set_has_coloringtype();
+  coloringtype_ = value;
+  // @@protoc_insertion_point(field_set:sm.OptionsInfo.coloringType)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

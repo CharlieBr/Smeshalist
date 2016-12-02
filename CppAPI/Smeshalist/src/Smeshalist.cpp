@@ -79,11 +79,10 @@ void Smeshalist::ProcessGeometry(Point3D &element, structDefinitions::DataPackag
 }
 
 void Smeshalist::ProcessGeometry(Vertex &element, structDefinitions::DataPackage &data_package) const {
-	structDefinitions::Vertex* vertex = data_package.add_vertexes();
-	Point3D point = element.GetPoint();
-	vertex->set_allocated_point(Smeshalist::GetPoint3D(point));
-	vertex->set_number(0.0);
-	vertex->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
+    structDefinitions::Vertex* vertex = data_package.add_vertexes();
+    Point3D point = element.GetPoint();
+    vertex->set_allocated_point(Smeshalist::GetPoint3D(point));
+    vertex->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
 }
 
 void Smeshalist::ProcessGeometry(Edge &element, structDefinitions::DataPackage &data_package) const {
