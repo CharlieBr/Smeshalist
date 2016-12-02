@@ -5,14 +5,16 @@
 #include <cstdio>
 #include <cstring>
 #include <cerrno>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <unistd.h>
 #include <list>
 #include "structs.pb.h"
 #include "Geometry.h"
 
-#define CORE_PORT 8383
+#ifdef __linux__
+#include "LinuxCommunication.h"
+#else
+#include "WindowsCommunication.h"
+#endif // __linux__
+
 #define BUFFER_SIZE 1024
 #define BATCH_SIZE 300
 
@@ -34,10 +36,7 @@ class Smeshalist {
         void Clean();
 	protected:
 	private:
-		int core_port;
-		struct sockaddr_in core_addr;
-		socklen_t core_addr_size;
-		int core_socket;
+		AbstractCommuniation *communication;
 		list<Point3D> points3d_to_send;
 		list<Vertex> vertexes_to_send;
 		list<Edge> edges_to_send;
@@ -45,9 +44,6 @@ class Smeshalist {
 		list<Block> blocks_to_send;
 		Smeshalist();
 		Smeshalist(int port_number);
-		void SetupSocket();
-		int SendBytesToCore(const void* buffer, int buffer_size) const;
-		int GetBytesFromCore(char* buffer, int buffer_size);
 		structDefinitions::Properties* GetProperties(int group_id, string label, double quality) const;
 		structDefinitions::Point3D* GetPoint3D(Point3D &point) const;
 		void ProcessGeometry(Point3D &element, structDefinitions::DataPackage &data_package) const;
