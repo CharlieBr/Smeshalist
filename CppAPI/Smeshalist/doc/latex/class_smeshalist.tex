@@ -1,0 +1,140 @@
+\hypertarget{class_smeshalist}{}\section{Smeshalist Class Reference}
+\label{class_smeshalist}\index{Smeshalist@{Smeshalist}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_smeshalist_a41602e1155a57128f4e261a471f0ae4a}{Add\+Geometry} (\hyperlink{class_point3_d}{Point3D} \&point)
+\item 
+void \hyperlink{class_smeshalist_adc9851608ab3ef54319f6549250275e7}{Add\+Geometry} (\hyperlink{class_vertex}{Vertex} \&vertex)
+\item 
+void \hyperlink{class_smeshalist_ae07be2d0483ccc8f21eabadd0ff4d2fb}{Add\+Geometry} (\hyperlink{class_edge}{Edge} \&edge)
+\item 
+void \hyperlink{class_smeshalist_a3b562ba90203c809e48c42f635b50e70}{Add\+Geometry} (\hyperlink{class_face}{Face} \&face)
+\item 
+void \hyperlink{class_smeshalist_a4307536971e1f8bfcd921b4f12198579}{Add\+Geometry} (\hyperlink{class_block}{Block} \&block)
+\item 
+void \hyperlink{class_smeshalist_a312ced405b18cf134ee15d7ea66b2632}{Flush\+Buffer} ()
+\item 
+void \hyperlink{class_smeshalist_a096f7b67b9bb28c4b70274812d45db36}{Breakpoint} ()
+\item 
+void \hyperlink{class_smeshalist_aeb4349559d8417e17fb659827dec57c7}{Render} () const
+\item 
+void \hyperlink{class_smeshalist_a0bdba425a903528f2ecef7297da7486e}{Clean} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_smeshalist}{Smeshalist} \& \hyperlink{class_smeshalist_ae8da75b21c37c5559aa39318e039694a}{Get\+Instance} ()
+\item 
+static \hyperlink{class_smeshalist}{Smeshalist} \& \hyperlink{class_smeshalist_a44524c05ed6ebe5ad1a632378d5d4037}{Get\+Instance} (int port\+\_\+number)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_smeshalist_a41602e1155a57128f4e261a471f0ae4a}{}\label{class_smeshalist_a41602e1155a57128f4e261a471f0ae4a} 
+\index{Smeshalist@{Smeshalist}!Add\+Geometry@{Add\+Geometry}}
+\index{Add\+Geometry@{Add\+Geometry}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Add\+Geometry()}{AddGeometry()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily void Smeshalist\+::\+Add\+Geometry (\begin{DoxyParamCaption}\item[{\hyperlink{class_point3_d}{Point3D} \&}]{point }\end{DoxyParamCaption})}
+
+Method adds \hyperlink{class_point3_d}{Point3D} structure to internal data buffer that stores structures to send for visualization. 
+\begin{DoxyParams}{Parameters}
+{\em point} & \hyperlink{class_point3_d}{Point3D} structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_smeshalist_adc9851608ab3ef54319f6549250275e7}{}\label{class_smeshalist_adc9851608ab3ef54319f6549250275e7} 
+\index{Smeshalist@{Smeshalist}!Add\+Geometry@{Add\+Geometry}}
+\index{Add\+Geometry@{Add\+Geometry}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Add\+Geometry()}{AddGeometry()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily void Smeshalist\+::\+Add\+Geometry (\begin{DoxyParamCaption}\item[{\hyperlink{class_vertex}{Vertex} \&}]{vertex }\end{DoxyParamCaption})}
+
+Method adds \hyperlink{class_vertex}{Vertex} structure to internal data buffer that stores structures to send for visualization. 
+\begin{DoxyParams}{Parameters}
+{\em vertex} & \hyperlink{class_vertex}{Vertex} structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_smeshalist_ae07be2d0483ccc8f21eabadd0ff4d2fb}{}\label{class_smeshalist_ae07be2d0483ccc8f21eabadd0ff4d2fb} 
+\index{Smeshalist@{Smeshalist}!Add\+Geometry@{Add\+Geometry}}
+\index{Add\+Geometry@{Add\+Geometry}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Add\+Geometry()}{AddGeometry()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily void Smeshalist\+::\+Add\+Geometry (\begin{DoxyParamCaption}\item[{\hyperlink{class_edge}{Edge} \&}]{edge }\end{DoxyParamCaption})}
+
+Method adds \hyperlink{class_edge}{Edge} structure to internal data buffer that stores structures to send for visualization. 
+\begin{DoxyParams}{Parameters}
+{\em edge} & \hyperlink{class_edge}{Edge} structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_smeshalist_a3b562ba90203c809e48c42f635b50e70}{}\label{class_smeshalist_a3b562ba90203c809e48c42f635b50e70} 
+\index{Smeshalist@{Smeshalist}!Add\+Geometry@{Add\+Geometry}}
+\index{Add\+Geometry@{Add\+Geometry}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Add\+Geometry()}{AddGeometry()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily void Smeshalist\+::\+Add\+Geometry (\begin{DoxyParamCaption}\item[{\hyperlink{class_face}{Face} \&}]{face }\end{DoxyParamCaption})}
+
+Method adds \hyperlink{class_face}{Face} structure to internal data buffer that stores structures to send for visualization. 
+\begin{DoxyParams}{Parameters}
+{\em face} & \hyperlink{class_face}{Face} structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_smeshalist_a4307536971e1f8bfcd921b4f12198579}{}\label{class_smeshalist_a4307536971e1f8bfcd921b4f12198579} 
+\index{Smeshalist@{Smeshalist}!Add\+Geometry@{Add\+Geometry}}
+\index{Add\+Geometry@{Add\+Geometry}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Add\+Geometry()}{AddGeometry()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily void Smeshalist\+::\+Add\+Geometry (\begin{DoxyParamCaption}\item[{\hyperlink{class_block}{Block} \&}]{block }\end{DoxyParamCaption})}
+
+Method adds \hyperlink{class_block}{Block} structure to internal data buffer that stores structures to send for visualization. 
+\begin{DoxyParams}{Parameters}
+{\em block} & \hyperlink{class_block}{Block} structure \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_smeshalist_a096f7b67b9bb28c4b70274812d45db36}{}\label{class_smeshalist_a096f7b67b9bb28c4b70274812d45db36} 
+\index{Smeshalist@{Smeshalist}!Breakpoint@{Breakpoint}}
+\index{Breakpoint@{Breakpoint}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Breakpoint()}{Breakpoint()}}
+{\footnotesize\ttfamily void Smeshalist\+::\+Breakpoint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Suspends algorithm execution until proper option will be chosen in \hyperlink{class_smeshalist}{Smeshalist} Manager window. In case continue option has been chosen algorithm is continued otherwise program is terminated. \hypertarget{class_smeshalist_a0bdba425a903528f2ecef7297da7486e}{}\label{class_smeshalist_a0bdba425a903528f2ecef7297da7486e} 
+\index{Smeshalist@{Smeshalist}!Clean@{Clean}}
+\index{Clean@{Clean}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Clean()}{Clean()}}
+{\footnotesize\ttfamily void Smeshalist\+::\+Clean (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Method forces deleting all data from data structure tree in main window without affecting taken snapshots. \hypertarget{class_smeshalist_a312ced405b18cf134ee15d7ea66b2632}{}\label{class_smeshalist_a312ced405b18cf134ee15d7ea66b2632} 
+\index{Smeshalist@{Smeshalist}!Flush\+Buffer@{Flush\+Buffer}}
+\index{Flush\+Buffer@{Flush\+Buffer}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Flush\+Buffer()}{FlushBuffer()}}
+{\footnotesize\ttfamily void Smeshalist\+::\+Flush\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sends all structures stored in buffer to main window. \hypertarget{class_smeshalist_ae8da75b21c37c5559aa39318e039694a}{}\label{class_smeshalist_ae8da75b21c37c5559aa39318e039694a} 
+\index{Smeshalist@{Smeshalist}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily static \hyperlink{class_smeshalist}{Smeshalist}\& Smeshalist\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Method implements singleton pattern. Returns instance of class \hyperlink{class_smeshalist}{Smeshalist}. Tool uses default port number -\/ 8383. \begin{DoxyReturn}{Returns}
+instance of \hyperlink{class_smeshalist}{Smeshalist} 
+\end{DoxyReturn}
+\hypertarget{class_smeshalist_a44524c05ed6ebe5ad1a632378d5d4037}{}\label{class_smeshalist_a44524c05ed6ebe5ad1a632378d5d4037} 
+\index{Smeshalist@{Smeshalist}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily static \hyperlink{class_smeshalist}{Smeshalist}\& Smeshalist\+::\+Get\+Instance (\begin{DoxyParamCaption}\item[{int}]{port\+\_\+number }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Method implements singleton pattern. Returns instance of class \hyperlink{class_smeshalist}{Smeshalist}. Tool uses given port number. 
+\begin{DoxyParams}{Parameters}
+{\em port\+\_\+number} & port on witch the tool will connect to main window \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+instance of \hyperlink{class_smeshalist}{Smeshalist} 
+\end{DoxyReturn}
+\hypertarget{class_smeshalist_aeb4349559d8417e17fb659827dec57c7}{}\label{class_smeshalist_aeb4349559d8417e17fb659827dec57c7} 
+\index{Smeshalist@{Smeshalist}!Render@{Render}}
+\index{Render@{Render}!Smeshalist@{Smeshalist}}
+\subsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void Smeshalist\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Method forces rendering sent structures in main window when \textquotesingle{}Dynamic rendering\textquotesingle{} is turned off in \hyperlink{class_smeshalist}{Smeshalist} Manager window. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/Smeshalist.\+h\end{DoxyCompactItemize}
