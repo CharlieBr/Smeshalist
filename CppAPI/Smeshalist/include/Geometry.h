@@ -21,23 +21,11 @@ class Geometry {
 		string label;
 };
 
-class Point2D : public Geometry {
-	public:
-		Point2D();
-        Point2D(double x, double y);
-        void SetX(double value);
-        void SetY(double value);
-        double GetX() const;
-        double GetY() const;
-	private:
-		double x;
-		double y;
-};
-
 class Point3D : public Geometry {
 	public:
 		Point3D();
         Point3D(double x, double y, double z);
+		Point3D(double x, double y);
         void SetX(double value);
         void SetY(double value);
         void SetZ(double value);
@@ -53,9 +41,8 @@ class Point3D : public Geometry {
 class Vertex : public Geometry {
 	public:
 		Vertex();
-        Vertex(Point2D point2d);
         Vertex(Point3D point3d);
-        Vertex(double x, double y, double z);
+		Vertex(double x, double y, double z);
         void SetPoint(Point3D point);
         Point3D GetPoint() const;
 	private:
