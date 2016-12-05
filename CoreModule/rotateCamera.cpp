@@ -59,7 +59,9 @@ void computeCameraPosition() {
 
 void setPerspective() {
     isOrtho = false;
-
+    deltaAngleX = 0.8;
+    deltaAngleY = 0.8;
+    computeCameraPosition();
     glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, screenWidth, screenHeight);
@@ -67,14 +69,20 @@ void setPerspective() {
     glMatrixMode(GL_MODELVIEW);
 }
 
-void setOrtho() {
-    isOrtho = true;
-
+void refreshOrthoSettings() {
     glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, screenWidth, screenHeight);
     glOrtho(-screenRatio*radius, screenRatio*radius, -radius, radius, 0.1f, 100.0f);
     glMatrixMode(GL_MODELVIEW);
+}
+
+void setOrtho() {
+    isOrtho = true;
+    deltaAngleX = PI_2;
+    deltaAngleY = 0;
+    computeCameraPosition();
+    refreshOrthoSettings();
 }
 
 void changeSize(int w, int h) {
@@ -87,7 +95,7 @@ void changeSize(int w, int h) {
 	screenRatio =  w * 1.0 / h;
 
     if (isOrtho) {
-        setOrtho();
+        refreshOrthoSettings();
     } else {
         setPerspective();
 	}
@@ -227,36 +235,10 @@ void mouseButton(int button, int state, int x, int y) {
         }
 	//}
 	if (isOrtho) {
-        setOrtho();
+        refreshOrthoSettings();
 	}
 
     computeCameraPosition();
-}
-
-void keyboardEvent(unsigned char key, int x, int y) {
-    switch (key) {
-        case 'x':
-            deltaAngleX=M_PI;
-            deltaAngleY=0;
-            computeCameraPosition();
-            break;
-        case 'y':
-            deltaAngleX=M_PI;
-            deltaAngleY=PI_2;
-            computeCameraPosition();
-            break;
-        case 'z':
-            deltaAngleX=PI_2;
-            deltaAngleY=0;
-            computeCameraPosition();
-            break;
-        case 'o':
-            setOrtho();
-            break;
-        case 'p':
-            setPerspective();
-            break;
-    }
 }
 
 void initGLUT(int argc, char **argv) {
@@ -273,7 +255,6 @@ void initGLUT(int argc, char **argv) {
 	glutIgnoreKeyRepeat(1);
 
 	glutMouseFunc(mouseButton);
-	glutKeyboardFunc(keyboardEvent);
 	glutMotionFunc(mouseMove);
 
 	glEnable(GL_DEPTH_TEST);

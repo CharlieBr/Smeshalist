@@ -1,7 +1,8 @@
 #include "AbstractServer.h"
 
 bool transparentStructures = false;
-extern char SMESHALIST[];
+extern void setOrtho();
+extern void setPerspective();
 
 void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
     if (this->handler != NULL) {
@@ -242,6 +243,13 @@ void AbstractServer::processOptionDataPackage(sm::ManagerToCoreMessage* message)
 
     sm::ColoringType coloringType = options.coloringtype();
     Element::setColoringBuQuality(coloringType == sm::ColoringType::QUALITY_COLORING);
+
+    sm::VisualisationMode mode = options.visualisationmode();
+    if (mode == sm::VisualisationMode::MODE_2D) {
+        setOrtho();
+    } else {
+        setPerspective();
+    }
 }
 
 void AbstractServer::startSMServer() {
