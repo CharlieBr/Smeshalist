@@ -10,7 +10,7 @@ class OBJExporter
 {
     public:
         OBJExporter();
-        void exportToOBJ(Data* dataTree);
+        void exportToOBJ(Data* dataTree, string fileName);
     protected:
     private:
         ofstream exportedFile;

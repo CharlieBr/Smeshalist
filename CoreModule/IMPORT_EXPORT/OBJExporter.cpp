@@ -6,9 +6,9 @@ OBJExporter::OBJExporter()
 }
 
 
-void OBJExporter::exportToOBJ(Data* dataTree){
+void OBJExporter::exportToOBJ(Data* dataTree, string fileName){
 
-    exportedFile.open ("exported.obj");
+    exportedFile.open (fileName);
     treeIteration(dataTree);
     exportedFile.close();
 
