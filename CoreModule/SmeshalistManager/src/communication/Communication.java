@@ -103,6 +103,96 @@ public final class Communication {
   }
 
   /**
+   * Protobuf enum {@code sm.VisualisationMode}
+   */
+  public enum VisualisationMode
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>MODE_3D = 1;</code>
+     */
+    MODE_3D(1),
+    /**
+     * <code>MODE_2D = 2;</code>
+     */
+    MODE_2D(2),
+    ;
+
+    /**
+     * <code>MODE_3D = 1;</code>
+     */
+    public static final int MODE_3D_VALUE = 1;
+    /**
+     * <code>MODE_2D = 2;</code>
+     */
+    public static final int MODE_2D_VALUE = 2;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static VisualisationMode valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static VisualisationMode forNumber(int value) {
+      switch (value) {
+        case 1: return MODE_3D;
+        case 2: return MODE_2D;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<VisualisationMode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        VisualisationMode> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<VisualisationMode>() {
+            public VisualisationMode findValueByNumber(int number) {
+              return VisualisationMode.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return communication.Communication.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final VisualisationMode[] VALUES = values();
+
+    public static VisualisationMode valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private VisualisationMode(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:sm.VisualisationMode)
+  }
+
+  /**
    * Protobuf enum {@code sm.ComparisonOperator}
    */
   public enum ComparisonOperator
@@ -196,7 +286,7 @@ public final class Communication {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return communication.Communication.getDescriptor().getEnumTypes().get(1);
+      return communication.Communication.getDescriptor().getEnumTypes().get(2);
     }
 
     private static final ComparisonOperator[] VALUES = values();
@@ -5552,6 +5642,15 @@ public final class Communication {
      * <code>required .sm.ColoringType coloringType = 5;</code>
      */
     communication.Communication.ColoringType getColoringType();
+
+    /**
+     * <code>required .sm.VisualisationMode visualisationMode = 6;</code>
+     */
+    boolean hasVisualisationMode();
+    /**
+     * <code>required .sm.VisualisationMode visualisationMode = 6;</code>
+     */
+    communication.Communication.VisualisationMode getVisualisationMode();
   }
   /**
    * Protobuf type {@code sm.OptionsInfo}
@@ -5570,6 +5669,7 @@ public final class Communication {
       showLabels_ = false;
       mouseSensitivity_ = 0D;
       coloringType_ = 1;
+      visualisationMode_ = 1;
     }
 
     @java.lang.Override
@@ -5628,6 +5728,17 @@ public final class Communication {
               } else {
                 bitField0_ |= 0x00000010;
                 coloringType_ = rawValue;
+              }
+              break;
+            }
+            case 48: {
+              int rawValue = input.readEnum();
+              communication.Communication.VisualisationMode value = communication.Communication.VisualisationMode.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(6, rawValue);
+              } else {
+                bitField0_ |= 0x00000020;
+                visualisationMode_ = rawValue;
               }
               break;
             }
@@ -5732,6 +5843,22 @@ public final class Communication {
       return result == null ? communication.Communication.ColoringType.GROUPS_COLORING : result;
     }
 
+    public static final int VISUALISATIONMODE_FIELD_NUMBER = 6;
+    private int visualisationMode_;
+    /**
+     * <code>required .sm.VisualisationMode visualisationMode = 6;</code>
+     */
+    public boolean hasVisualisationMode() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>required .sm.VisualisationMode visualisationMode = 6;</code>
+     */
+    public communication.Communication.VisualisationMode getVisualisationMode() {
+      communication.Communication.VisualisationMode result = communication.Communication.VisualisationMode.valueOf(visualisationMode_);
+      return result == null ? communication.Communication.VisualisationMode.MODE_3D : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5758,6 +5885,10 @@ public final class Communication {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasVisualisationMode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -5778,6 +5909,9 @@ public final class Communication {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeEnum(5, coloringType_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeEnum(6, visualisationMode_);
       }
       unknownFields.writeTo(output);
     }
@@ -5806,6 +5940,10 @@ public final class Communication {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(5, coloringType_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(6, visualisationMode_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5850,6 +5988,10 @@ public final class Communication {
       if (hasColoringType()) {
         result = result && coloringType_ == other.coloringType_;
       }
+      result = result && (hasVisualisationMode() == other.hasVisualisationMode());
+      if (hasVisualisationMode()) {
+        result = result && visualisationMode_ == other.visualisationMode_;
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -5884,6 +6026,10 @@ public final class Communication {
       if (hasColoringType()) {
         hash = (37 * hash) + COLORINGTYPE_FIELD_NUMBER;
         hash = (53 * hash) + coloringType_;
+      }
+      if (hasVisualisationMode()) {
+        hash = (37 * hash) + VISUALISATIONMODE_FIELD_NUMBER;
+        hash = (53 * hash) + visualisationMode_;
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -6012,6 +6158,8 @@ public final class Communication {
         bitField0_ = (bitField0_ & ~0x00000008);
         coloringType_ = 1;
         bitField0_ = (bitField0_ & ~0x00000010);
+        visualisationMode_ = 1;
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
 
@@ -6056,6 +6204,10 @@ public final class Communication {
           to_bitField0_ |= 0x00000010;
         }
         result.coloringType_ = coloringType_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.visualisationMode_ = visualisationMode_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6087,6 +6239,9 @@ public final class Communication {
         if (other.hasColoringType()) {
           setColoringType(other.getColoringType());
         }
+        if (other.hasVisualisationMode()) {
+          setVisualisationMode(other.getVisualisationMode());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -6106,6 +6261,9 @@ public final class Communication {
           return false;
         }
         if (!hasColoringType()) {
+          return false;
+        }
+        if (!hasVisualisationMode()) {
           return false;
         }
         return true;
@@ -6290,6 +6448,42 @@ public final class Communication {
       public Builder clearColoringType() {
         bitField0_ = (bitField0_ & ~0x00000010);
         coloringType_ = 1;
+        onChanged();
+        return this;
+      }
+
+      private int visualisationMode_ = 1;
+      /**
+       * <code>required .sm.VisualisationMode visualisationMode = 6;</code>
+       */
+      public boolean hasVisualisationMode() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required .sm.VisualisationMode visualisationMode = 6;</code>
+       */
+      public communication.Communication.VisualisationMode getVisualisationMode() {
+        communication.Communication.VisualisationMode result = communication.Communication.VisualisationMode.valueOf(visualisationMode_);
+        return result == null ? communication.Communication.VisualisationMode.MODE_3D : result;
+      }
+      /**
+       * <code>required .sm.VisualisationMode visualisationMode = 6;</code>
+       */
+      public Builder setVisualisationMode(communication.Communication.VisualisationMode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000020;
+        visualisationMode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required .sm.VisualisationMode visualisationMode = 6;</code>
+       */
+      public Builder clearVisualisationMode() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        visualisationMode_ = 1;
         onChanged();
         return this;
       }
@@ -12521,46 +12715,49 @@ public final class Communication {
       " \002(\0162\'.sm.CoreToManagerMessage.CTMMessag" +
       "eType\022*\n\016statisticsInfo\030\002 \001(\0132\022.sm.Stati" +
       "sticsInfo\"0\n\016CTMMessageType\022\016\n\nSTATISTIC",
-      "S\020\001\022\016\n\nBREAKPOINT\020\002\"\234\001\n\013OptionsInfo\022\035\n\025t" +
+      "S\020\001\022\016\n\nBREAKPOINT\020\002\"\316\001\n\013OptionsInfo\022\035\n\025t" +
       "ransparentStructures\030\001 \002(\010\022\030\n\020dynamicRen" +
       "dering\030\002 \002(\010\022\022\n\nshowLabels\030\003 \002(\010\022\030\n\020mous" +
       "eSensitivity\030\004 \002(\001\022&\n\014coloringType\030\005 \002(\016" +
-      "2\020.sm.ColoringType\"~\n\013TypesFilter\0229\n\rsel" +
-      "ectedTypes\030\001 \003(\0132\".sm.TypesFilter.Select" +
-      "edTypesEntry\0324\n\022SelectedTypesEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n\014GroupsFil" +
-      "ter\022<\n\016selectedGroups\030\001 \003(\0132$.sm.GroupsF" +
-      "ilter.SelectedGroupsEntry\0325\n\023SelectedGro",
-      "upsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001" +
-      "\"\226\001\n\020QualityCondition\022\021\n\tleftValue\030\001 \001(\001" +
-      "\022,\n\014leftOperator\030\002 \001(\0162\026.sm.ComparisonOp" +
-      "erator\022-\n\rrightOperator\030\003 \001(\0162\026.sm.Compa" +
-      "risonOperator\022\022\n\nrightValue\030\004 \001(\001\"?\n\rQua" +
-      "lityFilter\022.\n\020qualityCondition\030\001 \003(\0132\024.s" +
-      "m.QualityCondition\"\215\001\n\024CoordinatesCondit" +
-      "ion\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030\002 \002(\001\022\016\n\006z" +
-      "Value\030\003 \002(\001\0223\n\023coordinatesOperator\030\004 \002(\016" +
-      "2\026.sm.ComparisonOperator\022\020\n\010constant\030\005 \002",
-      "(\001\"\243\001\n\021CoordinatesFilter\0226\n\024coordinatesC" +
-      "ondition\030\001 \003(\0132\030.sm.CoordinatesCondition" +
-      "\0226\n\013conjunction\030\002 \001(\0162!.sm.CoordinatesFi" +
-      "lter.Conjunction\"\036\n\013Conjunction\022\007\n\003AND\020\001" +
-      "\022\006\n\002OR\020\002\"\254\003\n\024ManagerToCoreMessage\022<\n\013mes" +
-      "sageType\030\001 \002(\0162\'.sm.ManagerToCoreMessage" +
-      ".MTCMessageType\022$\n\013optionsInfo\030\002 \001(\0132\017.s" +
-      "m.OptionsInfo\022&\n\014groupsFilter\030\003 \001(\0132\020.sm" +
-      ".GroupsFilter\022$\n\013typesFilter\030\004 \001(\0132\017.sm." +
-      "TypesFilter\022(\n\rqualityFilter\030\005 \001(\0132\021.sm.",
-      "QualityFilter\0220\n\021coordinatesFilter\030\006 \001(\013" +
-      "2\025.sm.CoordinatesFilter\"\205\001\n\016MTCMessageTy" +
-      "pe\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CONTINUE" +
-      "\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSHOT\020\006\022\t" +
-      "\n\005CLEAN\020\007\022\r\n\tNEXT_TREE\020\010\022\r\n\tPREV_TREE\020\t*" +
-      "9\n\014ColoringType\022\023\n\017GROUPS_COLORING\020\001\022\024\n\020" +
-      "QUALITY_COLORING\020\002*_\n\022ComparisonOperator" +
-      "\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GREATER\020\002\022\t\n\005E" +
-      "QUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rc" +
-      "ommunicationB\rCommunication"
+      "2\020.sm.ColoringType\0220\n\021visualisationMode\030" +
+      "\006 \002(\0162\025.sm.VisualisationMode\"~\n\013TypesFil" +
+      "ter\0229\n\rselectedTypes\030\001 \003(\0132\".sm.TypesFil" +
+      "ter.SelectedTypesEntry\0324\n\022SelectedTypesE" +
+      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n" +
+      "\014GroupsFilter\022<\n\016selectedGroups\030\001 \003(\0132$.",
+      "sm.GroupsFilter.SelectedGroupsEntry\0325\n\023S" +
+      "electedGroupsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value" +
+      "\030\002 \001(\010:\0028\001\"\226\001\n\020QualityCondition\022\021\n\tleftV" +
+      "alue\030\001 \001(\001\022,\n\014leftOperator\030\002 \001(\0162\026.sm.Co" +
+      "mparisonOperator\022-\n\rrightOperator\030\003 \001(\0162" +
+      "\026.sm.ComparisonOperator\022\022\n\nrightValue\030\004 " +
+      "\001(\001\"?\n\rQualityFilter\022.\n\020qualityCondition" +
+      "\030\001 \003(\0132\024.sm.QualityCondition\"\215\001\n\024Coordin" +
+      "atesCondition\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030" +
+      "\002 \002(\001\022\016\n\006zValue\030\003 \002(\001\0223\n\023coordinatesOper",
+      "ator\030\004 \002(\0162\026.sm.ComparisonOperator\022\020\n\010co" +
+      "nstant\030\005 \002(\001\"\243\001\n\021CoordinatesFilter\0226\n\024co" +
+      "ordinatesCondition\030\001 \003(\0132\030.sm.Coordinate" +
+      "sCondition\0226\n\013conjunction\030\002 \001(\0162!.sm.Coo" +
+      "rdinatesFilter.Conjunction\"\036\n\013Conjunctio" +
+      "n\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\254\003\n\024ManagerToCoreMess" +
+      "age\022<\n\013messageType\030\001 \002(\0162\'.sm.ManagerToC" +
+      "oreMessage.MTCMessageType\022$\n\013optionsInfo" +
+      "\030\002 \001(\0132\017.sm.OptionsInfo\022&\n\014groupsFilter\030" +
+      "\003 \001(\0132\020.sm.GroupsFilter\022$\n\013typesFilter\030\004",
+      " \001(\0132\017.sm.TypesFilter\022(\n\rqualityFilter\030\005" +
+      " \001(\0132\021.sm.QualityFilter\0220\n\021coordinatesFi" +
+      "lter\030\006 \001(\0132\025.sm.CoordinatesFilter\"\205\001\n\016MT" +
+      "CMessageType\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014" +
+      "\n\010CONTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SN" +
+      "APSHOT\020\006\022\t\n\005CLEAN\020\007\022\r\n\tNEXT_TREE\020\010\022\r\n\tPR" +
+      "EV_TREE\020\t*9\n\014ColoringType\022\023\n\017GROUPS_COLO" +
+      "RING\020\001\022\024\n\020QUALITY_COLORING\020\002*-\n\021Visualis" +
+      "ationMode\022\013\n\007MODE_3D\020\001\022\013\n\007MODE_2D\020\002*_\n\022C" +
+      "omparisonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022",
+      "\013\n\007GREATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL" +
+      "\020\004\022\010\n\004LESS\020\005B\036\n\rcommunicationB\rCommunica" +
+      "tion"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -12633,7 +12830,7 @@ public final class Communication {
     internal_static_sm_OptionsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_OptionsInfo_descriptor,
-        new java.lang.String[] { "TransparentStructures", "DynamicRendering", "ShowLabels", "MouseSensitivity", "ColoringType", });
+        new java.lang.String[] { "TransparentStructures", "DynamicRendering", "ShowLabels", "MouseSensitivity", "ColoringType", "VisualisationMode", });
     internal_static_sm_TypesFilter_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_sm_TypesFilter_fieldAccessorTable = new
