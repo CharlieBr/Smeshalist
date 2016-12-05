@@ -28,9 +28,7 @@ void OBJImporter::loadOBJFile(const char* path, AbstractDataTree* handler){
 
 
         if(strcmp(lineHeader, "v") == 0){
-            cout<<"Vertex ";
             fscanf(importedFile, "%lf %lf %lf\n", &x, &y, &z);
-            cout<<x<<" "<<y<<" "<<z<<endl;
             Point3D* point = new Point3D(x, y, z);
             vertices.push_back(point);
 
@@ -51,7 +49,6 @@ void OBJImporter::loadOBJFile(const char* path, AbstractDataTree* handler){
             char line[256];
             int v1, v2, v3;
             fgets(line, sizeof line, importedFile);
-            cout<< line;
             string strLine(line);
             size_t found = strLine.find("/");
 
@@ -127,7 +124,6 @@ void OBJImporter::loadOBJFile(const char* path, AbstractDataTree* handler){
                         char line[256];
                         int v1, v2, v3;
                         fgets(line, sizeof line, importedFile);
-                        cout<< line;
                         string strLine(line);
                         size_t found = strLine.find("/");
 
@@ -224,7 +220,6 @@ void OBJImporter::addToStructuresTree(AbstractDataTree* handler){
         if(std::find(verticesIndexes.begin(), verticesIndexes.end(), i) == verticesIndexes.end()){
             Vertex* vertex = new Vertex(*vertices.at(i));
             handler->add(0, vertex);
-            cout<<"wchodze tu bez potrzeby znow"<<endl;
         }
     }
 
