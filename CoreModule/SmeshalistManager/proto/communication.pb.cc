@@ -74,6 +74,7 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
   ManagerToCoreMessage_reflection_ = NULL;
 const ::google::protobuf::EnumDescriptor* ManagerToCoreMessage_MTCMessageType_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* ColoringType_descriptor_ = NULL;
+const ::google::protobuf::EnumDescriptor* VisualisationMode_descriptor_ = NULL;
 const ::google::protobuf::EnumDescriptor* ComparisonOperator_descriptor_ = NULL;
 
 }  // namespace
@@ -206,12 +207,13 @@ void protobuf_AssignDesc_communication_2eproto() {
       -1);
   CoreToManagerMessage_CTMMessageType_descriptor_ = CoreToManagerMessage_descriptor_->enum_type(0);
   OptionsInfo_descriptor_ = file->message_type(7);
-  static const int OptionsInfo_offsets_[5] = {
+  static const int OptionsInfo_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, transparentstructures_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, dynamicrendering_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, showlabels_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, mousesensitivity_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, coloringtype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(OptionsInfo, visualisationmode_),
   };
   OptionsInfo_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -347,7 +349,8 @@ void protobuf_AssignDesc_communication_2eproto() {
       -1);
   ManagerToCoreMessage_MTCMessageType_descriptor_ = ManagerToCoreMessage_descriptor_->enum_type(0);
   ColoringType_descriptor_ = file->enum_type(0);
-  ComparisonOperator_descriptor_ = file->enum_type(1);
+  VisualisationMode_descriptor_ = file->enum_type(1);
+  ComparisonOperator_descriptor_ = file->enum_type(2);
 }
 
 namespace {
@@ -490,46 +493,49 @@ void protobuf_AddDesc_communication_2eproto() {
     " \002(\0162\'.sm.CoreToManagerMessage.CTMMessag"
     "eType\022*\n\016statisticsInfo\030\002 \001(\0132\022.sm.Stati"
     "sticsInfo\"0\n\016CTMMessageType\022\016\n\nSTATISTIC"
-    "S\020\001\022\016\n\nBREAKPOINT\020\002\"\234\001\n\013OptionsInfo\022\035\n\025t"
+    "S\020\001\022\016\n\nBREAKPOINT\020\002\"\316\001\n\013OptionsInfo\022\035\n\025t"
     "ransparentStructures\030\001 \002(\010\022\030\n\020dynamicRen"
     "dering\030\002 \002(\010\022\022\n\nshowLabels\030\003 \002(\010\022\030\n\020mous"
     "eSensitivity\030\004 \002(\001\022&\n\014coloringType\030\005 \002(\016"
-    "2\020.sm.ColoringType\"~\n\013TypesFilter\0229\n\rsel"
-    "ectedTypes\030\001 \003(\0132\".sm.TypesFilter.Select"
-    "edTypesEntry\0324\n\022SelectedTypesEntry\022\013\n\003ke"
-    "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n\014GroupsFil"
-    "ter\022<\n\016selectedGroups\030\001 \003(\0132$.sm.GroupsF"
-    "ilter.SelectedGroupsEntry\0325\n\023SelectedGro"
-    "upsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001"
-    "\"\226\001\n\020QualityCondition\022\021\n\tleftValue\030\001 \001(\001"
-    "\022,\n\014leftOperator\030\002 \001(\0162\026.sm.ComparisonOp"
-    "erator\022-\n\rrightOperator\030\003 \001(\0162\026.sm.Compa"
-    "risonOperator\022\022\n\nrightValue\030\004 \001(\001\"\?\n\rQua"
-    "lityFilter\022.\n\020qualityCondition\030\001 \003(\0132\024.s"
-    "m.QualityCondition\"\215\001\n\024CoordinatesCondit"
-    "ion\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030\002 \002(\001\022\016\n\006z"
-    "Value\030\003 \002(\001\0223\n\023coordinatesOperator\030\004 \002(\016"
-    "2\026.sm.ComparisonOperator\022\020\n\010constant\030\005 \002"
-    "(\001\"\243\001\n\021CoordinatesFilter\0226\n\024coordinatesC"
-    "ondition\030\001 \003(\0132\030.sm.CoordinatesCondition"
-    "\0226\n\013conjunction\030\002 \001(\0162!.sm.CoordinatesFi"
-    "lter.Conjunction\"\036\n\013Conjunction\022\007\n\003AND\020\001"
-    "\022\006\n\002OR\020\002\"\254\003\n\024ManagerToCoreMessage\022<\n\013mes"
-    "sageType\030\001 \002(\0162\'.sm.ManagerToCoreMessage"
-    ".MTCMessageType\022$\n\013optionsInfo\030\002 \001(\0132\017.s"
-    "m.OptionsInfo\022&\n\014groupsFilter\030\003 \001(\0132\020.sm"
-    ".GroupsFilter\022$\n\013typesFilter\030\004 \001(\0132\017.sm."
-    "TypesFilter\022(\n\rqualityFilter\030\005 \001(\0132\021.sm."
-    "QualityFilter\0220\n\021coordinatesFilter\030\006 \001(\013"
-    "2\025.sm.CoordinatesFilter\"\205\001\n\016MTCMessageTy"
-    "pe\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CONTINUE"
-    "\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSHOT\020\006\022\t"
-    "\n\005CLEAN\020\007\022\r\n\tNEXT_TREE\020\010\022\r\n\tPREV_TREE\020\t*"
-    "9\n\014ColoringType\022\023\n\017GROUPS_COLORING\020\001\022\024\n\020"
-    "QUALITY_COLORING\020\002*_\n\022ComparisonOperator"
-    "\022\024\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GREATER\020\002\022\t\n\005E"
-    "QUAL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rc"
-    "ommunicationB\rCommunication", 2387);
+    "2\020.sm.ColoringType\0220\n\021visualisationMode\030"
+    "\006 \002(\0162\025.sm.VisualisationMode\"~\n\013TypesFil"
+    "ter\0229\n\rselectedTypes\030\001 \003(\0132\".sm.TypesFil"
+    "ter.SelectedTypesEntry\0324\n\022SelectedTypesE"
+    "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n"
+    "\014GroupsFilter\022<\n\016selectedGroups\030\001 \003(\0132$."
+    "sm.GroupsFilter.SelectedGroupsEntry\0325\n\023S"
+    "electedGroupsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value"
+    "\030\002 \001(\010:\0028\001\"\226\001\n\020QualityCondition\022\021\n\tleftV"
+    "alue\030\001 \001(\001\022,\n\014leftOperator\030\002 \001(\0162\026.sm.Co"
+    "mparisonOperator\022-\n\rrightOperator\030\003 \001(\0162"
+    "\026.sm.ComparisonOperator\022\022\n\nrightValue\030\004 "
+    "\001(\001\"\?\n\rQualityFilter\022.\n\020qualityCondition"
+    "\030\001 \003(\0132\024.sm.QualityCondition\"\215\001\n\024Coordin"
+    "atesCondition\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030"
+    "\002 \002(\001\022\016\n\006zValue\030\003 \002(\001\0223\n\023coordinatesOper"
+    "ator\030\004 \002(\0162\026.sm.ComparisonOperator\022\020\n\010co"
+    "nstant\030\005 \002(\001\"\243\001\n\021CoordinatesFilter\0226\n\024co"
+    "ordinatesCondition\030\001 \003(\0132\030.sm.Coordinate"
+    "sCondition\0226\n\013conjunction\030\002 \001(\0162!.sm.Coo"
+    "rdinatesFilter.Conjunction\"\036\n\013Conjunctio"
+    "n\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\254\003\n\024ManagerToCoreMess"
+    "age\022<\n\013messageType\030\001 \002(\0162\'.sm.ManagerToC"
+    "oreMessage.MTCMessageType\022$\n\013optionsInfo"
+    "\030\002 \001(\0132\017.sm.OptionsInfo\022&\n\014groupsFilter\030"
+    "\003 \001(\0132\020.sm.GroupsFilter\022$\n\013typesFilter\030\004"
+    " \001(\0132\017.sm.TypesFilter\022(\n\rqualityFilter\030\005"
+    " \001(\0132\021.sm.QualityFilter\0220\n\021coordinatesFi"
+    "lter\030\006 \001(\0132\025.sm.CoordinatesFilter\"\205\001\n\016MT"
+    "CMessageType\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014"
+    "\n\010CONTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SN"
+    "APSHOT\020\006\022\t\n\005CLEAN\020\007\022\r\n\tNEXT_TREE\020\010\022\r\n\tPR"
+    "EV_TREE\020\t*9\n\014ColoringType\022\023\n\017GROUPS_COLO"
+    "RING\020\001\022\024\n\020QUALITY_COLORING\020\002*-\n\021Visualis"
+    "ationMode\022\013\n\007MODE_3D\020\001\022\013\n\007MODE_2D\020\002*_\n\022C"
+    "omparisonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022"
+    "\013\n\007GREATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL"
+    "\020\004\022\010\n\004LESS\020\005B\036\n\rcommunicationB\rCommunica"
+    "tion", 2484);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "communication.proto", &protobuf_RegisterTypes);
   ElementInfo::default_instance_ = new ElementInfo();
@@ -576,6 +582,20 @@ const ::google::protobuf::EnumDescriptor* ColoringType_descriptor() {
   return ColoringType_descriptor_;
 }
 bool ColoringType_IsValid(int value) {
+  switch(value) {
+    case 1:
+    case 2:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* VisualisationMode_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return VisualisationMode_descriptor_;
+}
+bool VisualisationMode_IsValid(int value) {
   switch(value) {
     case 1:
     case 2:
@@ -3646,6 +3666,7 @@ const int OptionsInfo::kDynamicRenderingFieldNumber;
 const int OptionsInfo::kShowLabelsFieldNumber;
 const int OptionsInfo::kMouseSensitivityFieldNumber;
 const int OptionsInfo::kColoringTypeFieldNumber;
+const int OptionsInfo::kVisualisationModeFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 OptionsInfo::OptionsInfo()
@@ -3672,6 +3693,7 @@ void OptionsInfo::SharedCtor() {
   showlabels_ = false;
   mousesensitivity_ = 0;
   coloringtype_ = 1;
+  visualisationmode_ = 1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -3728,10 +3750,11 @@ void OptionsInfo::Clear() {
            ZR_HELPER_(last) - ZR_HELPER_(first) + sizeof(last));\
 } while (0)
 
-  if (_has_bits_[0 / 32] & 31u) {
+  if (_has_bits_[0 / 32] & 63u) {
     ZR_(transparentstructures_, showlabels_);
     mousesensitivity_ = 0;
     coloringtype_ = 1;
+    visualisationmode_ = 1;
   }
 
 #undef ZR_HELPER_
@@ -3828,6 +3851,26 @@ bool OptionsInfo::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(48)) goto parse_visualisationMode;
+        break;
+      }
+
+      // required .sm.VisualisationMode visualisationMode = 6;
+      case 6: {
+        if (tag == 48) {
+         parse_visualisationMode:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::sm::VisualisationMode_IsValid(value)) {
+            set_visualisationmode(static_cast< ::sm::VisualisationMode >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(6, value);
+          }
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -3883,6 +3926,12 @@ void OptionsInfo::SerializeWithCachedSizes(
       5, this->coloringtype(), output);
   }
 
+  // required .sm.VisualisationMode visualisationMode = 6;
+  if (has_visualisationmode()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      6, this->visualisationmode(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -3917,6 +3966,12 @@ void OptionsInfo::SerializeWithCachedSizes(
   if (has_coloringtype()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       5, this->coloringtype(), target);
+  }
+
+  // required .sm.VisualisationMode visualisationMode = 6;
+  if (has_visualisationmode()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      6, this->visualisationmode(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -3957,13 +4012,19 @@ int OptionsInfo::RequiredFieldsByteSizeFallback() const {
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->coloringtype());
   }
 
+  if (has_visualisationmode()) {
+    // required .sm.VisualisationMode visualisationMode = 6;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->visualisationmode());
+  }
+
   return total_size;
 }
 int OptionsInfo::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:sm.OptionsInfo)
   int total_size = 0;
 
-  if (((_has_bits_[0] & 0x0000001f) ^ 0x0000001f) == 0) {  // All required fields are present.
+  if (((_has_bits_[0] & 0x0000003f) ^ 0x0000003f) == 0) {  // All required fields are present.
     // required bool transparentStructures = 1;
     total_size += 1 + 1;
 
@@ -3979,6 +4040,10 @@ int OptionsInfo::ByteSize() const {
     // required .sm.ColoringType coloringType = 5;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->coloringtype());
+
+    // required .sm.VisualisationMode visualisationMode = 6;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->visualisationmode());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
@@ -4028,6 +4093,9 @@ void OptionsInfo::MergeFrom(const OptionsInfo& from) {
     if (from.has_coloringtype()) {
       set_coloringtype(from.coloringtype());
     }
+    if (from.has_visualisationmode()) {
+      set_visualisationmode(from.visualisationmode());
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -4049,7 +4117,7 @@ void OptionsInfo::CopyFrom(const OptionsInfo& from) {
 }
 
 bool OptionsInfo::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
+  if ((_has_bits_[0] & 0x0000003f) != 0x0000003f) return false;
 
   return true;
 }
@@ -4064,6 +4132,7 @@ void OptionsInfo::InternalSwap(OptionsInfo* other) {
   std::swap(showlabels_, other->showlabels_);
   std::swap(mousesensitivity_, other->mousesensitivity_);
   std::swap(coloringtype_, other->coloringtype_);
+  std::swap(visualisationmode_, other->visualisationmode_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -4199,6 +4268,31 @@ void OptionsInfo::clear_coloringtype() {
   set_has_coloringtype();
   coloringtype_ = value;
   // @@protoc_insertion_point(field_set:sm.OptionsInfo.coloringType)
+}
+
+// required .sm.VisualisationMode visualisationMode = 6;
+bool OptionsInfo::has_visualisationmode() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+void OptionsInfo::set_has_visualisationmode() {
+  _has_bits_[0] |= 0x00000020u;
+}
+void OptionsInfo::clear_has_visualisationmode() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+void OptionsInfo::clear_visualisationmode() {
+  visualisationmode_ = 1;
+  clear_has_visualisationmode();
+}
+ ::sm::VisualisationMode OptionsInfo::visualisationmode() const {
+  // @@protoc_insertion_point(field_get:sm.OptionsInfo.visualisationMode)
+  return static_cast< ::sm::VisualisationMode >(visualisationmode_);
+}
+ void OptionsInfo::set_visualisationmode(::sm::VisualisationMode value) {
+  assert(::sm::VisualisationMode_IsValid(value));
+  set_has_visualisationmode();
+  visualisationmode_ = value;
+  // @@protoc_insertion_point(field_set:sm.OptionsInfo.visualisationMode)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS

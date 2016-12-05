@@ -138,6 +138,25 @@ inline bool ColoringType_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<ColoringType>(
     ColoringType_descriptor(), name, value);
 }
+enum VisualisationMode {
+  MODE_3D = 1,
+  MODE_2D = 2
+};
+bool VisualisationMode_IsValid(int value);
+const VisualisationMode VisualisationMode_MIN = MODE_3D;
+const VisualisationMode VisualisationMode_MAX = MODE_2D;
+const int VisualisationMode_ARRAYSIZE = VisualisationMode_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* VisualisationMode_descriptor();
+inline const ::std::string& VisualisationMode_Name(VisualisationMode value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    VisualisationMode_descriptor(), value);
+}
+inline bool VisualisationMode_Parse(
+    const ::std::string& name, VisualisationMode* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<VisualisationMode>(
+    VisualisationMode_descriptor(), name, value);
+}
 enum ComparisonOperator {
   GREATER_OR_EQUAL = 1,
   GREATER = 2,
@@ -1109,6 +1128,13 @@ class OptionsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::sm::ColoringType coloringtype() const;
   void set_coloringtype(::sm::ColoringType value);
 
+  // required .sm.VisualisationMode visualisationMode = 6;
+  bool has_visualisationmode() const;
+  void clear_visualisationmode();
+  static const int kVisualisationModeFieldNumber = 6;
+  ::sm::VisualisationMode visualisationmode() const;
+  void set_visualisationmode(::sm::VisualisationMode value);
+
   // @@protoc_insertion_point(class_scope:sm.OptionsInfo)
  private:
   inline void set_has_transparentstructures();
@@ -1121,6 +1147,8 @@ class OptionsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
   inline void clear_has_mousesensitivity();
   inline void set_has_coloringtype();
   inline void clear_has_coloringtype();
+  inline void set_has_visualisationmode();
+  inline void clear_has_visualisationmode();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -1133,6 +1161,7 @@ class OptionsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
   bool showlabels_;
   int coloringtype_;
   double mousesensitivity_;
+  int visualisationmode_;
   friend void  protobuf_AddDesc_communication_2eproto();
   friend void protobuf_AssignDesc_communication_2eproto();
   friend void protobuf_ShutdownFile_communication_2eproto();
@@ -2740,6 +2769,31 @@ inline void OptionsInfo::set_coloringtype(::sm::ColoringType value) {
   // @@protoc_insertion_point(field_set:sm.OptionsInfo.coloringType)
 }
 
+// required .sm.VisualisationMode visualisationMode = 6;
+inline bool OptionsInfo::has_visualisationmode() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void OptionsInfo::set_has_visualisationmode() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void OptionsInfo::clear_has_visualisationmode() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void OptionsInfo::clear_visualisationmode() {
+  visualisationmode_ = 1;
+  clear_has_visualisationmode();
+}
+inline ::sm::VisualisationMode OptionsInfo::visualisationmode() const {
+  // @@protoc_insertion_point(field_get:sm.OptionsInfo.visualisationMode)
+  return static_cast< ::sm::VisualisationMode >(visualisationmode_);
+}
+inline void OptionsInfo::set_visualisationmode(::sm::VisualisationMode value) {
+  assert(::sm::VisualisationMode_IsValid(value));
+  set_has_visualisationmode();
+  visualisationmode_ = value;
+  // @@protoc_insertion_point(field_set:sm.OptionsInfo.visualisationMode)
+}
+
 // -------------------------------------------------------------------
 
 // TypesFilter
@@ -3410,6 +3464,11 @@ template <> struct is_proto_enum< ::sm::ColoringType> : ::google::protobuf::inte
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::sm::ColoringType>() {
   return ::sm::ColoringType_descriptor();
+}
+template <> struct is_proto_enum< ::sm::VisualisationMode> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::sm::VisualisationMode>() {
+  return ::sm::VisualisationMode_descriptor();
 }
 template <> struct is_proto_enum< ::sm::ComparisonOperator> : ::google::protobuf::internal::true_type {};
 template <>
