@@ -124,6 +124,8 @@ message ManagerToCoreMessage{
 		CLEAN = 7;
 		NEXT_TREE = 8;
 		PREV_TREE = 9;
+		IMPORT = 10;
+		EXPORT = 11;
 	}
 
 	required MTCMessageType messageType = 1;
@@ -132,5 +134,6 @@ message ManagerToCoreMessage{
     optional TypesFilter typesFilter = 4;
     optional QualityFilter qualityFilter = 5;
     optional CoordinatesFilter coordinatesFilter = 6;
+	optional string objFilePath = 7;
 
 }

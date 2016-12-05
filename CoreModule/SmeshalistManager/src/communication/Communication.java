@@ -11052,6 +11052,20 @@ public final class Communication {
      * <code>optional .sm.CoordinatesFilter coordinatesFilter = 6;</code>
      */
     communication.Communication.CoordinatesFilterOrBuilder getCoordinatesFilterOrBuilder();
+
+    /**
+     * <code>optional string objFilePath = 7;</code>
+     */
+    boolean hasObjFilePath();
+    /**
+     * <code>optional string objFilePath = 7;</code>
+     */
+    java.lang.String getObjFilePath();
+    /**
+     * <code>optional string objFilePath = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getObjFilePathBytes();
   }
   /**
    * Protobuf type {@code sm.ManagerToCoreMessage}
@@ -11066,6 +11080,7 @@ public final class Communication {
     }
     private ManagerToCoreMessage() {
       messageType_ = 1;
+      objFilePath_ = "";
     }
 
     @java.lang.Override
@@ -11172,6 +11187,12 @@ public final class Communication {
               bitField0_ |= 0x00000020;
               break;
             }
+            case 58: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000040;
+              objFilePath_ = bs;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -11237,6 +11258,14 @@ public final class Communication {
        * <code>PREV_TREE = 9;</code>
        */
       PREV_TREE(9),
+      /**
+       * <code>IMPORT = 10;</code>
+       */
+      IMPORT(10),
+      /**
+       * <code>EXPORT = 11;</code>
+       */
+      EXPORT(11),
       ;
 
       /**
@@ -11275,6 +11304,14 @@ public final class Communication {
        * <code>PREV_TREE = 9;</code>
        */
       public static final int PREV_TREE_VALUE = 9;
+      /**
+       * <code>IMPORT = 10;</code>
+       */
+      public static final int IMPORT_VALUE = 10;
+      /**
+       * <code>EXPORT = 11;</code>
+       */
+      public static final int EXPORT_VALUE = 11;
 
 
       public final int getNumber() {
@@ -11300,6 +11337,8 @@ public final class Communication {
           case 7: return CLEAN;
           case 8: return NEXT_TREE;
           case 9: return PREV_TREE;
+          case 10: return IMPORT;
+          case 11: return EXPORT;
           default: return null;
         }
       }
@@ -11471,6 +11510,48 @@ public final class Communication {
       return coordinatesFilter_ == null ? communication.Communication.CoordinatesFilter.getDefaultInstance() : coordinatesFilter_;
     }
 
+    public static final int OBJFILEPATH_FIELD_NUMBER = 7;
+    private volatile java.lang.Object objFilePath_;
+    /**
+     * <code>optional string objFilePath = 7;</code>
+     */
+    public boolean hasObjFilePath() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional string objFilePath = 7;</code>
+     */
+    public java.lang.String getObjFilePath() {
+      java.lang.Object ref = objFilePath_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          objFilePath_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string objFilePath = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getObjFilePathBytes() {
+      java.lang.Object ref = objFilePath_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        objFilePath_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -11517,6 +11598,9 @@ public final class Communication {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeMessage(6, getCoordinatesFilter());
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 7, objFilePath_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -11548,6 +11632,9 @@ public final class Communication {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getCoordinatesFilter());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(7, objFilePath_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -11595,6 +11682,11 @@ public final class Communication {
         result = result && getCoordinatesFilter()
             .equals(other.getCoordinatesFilter());
       }
+      result = result && (hasObjFilePath() == other.hasObjFilePath());
+      if (hasObjFilePath()) {
+        result = result && getObjFilePath()
+            .equals(other.getObjFilePath());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -11629,6 +11721,10 @@ public final class Communication {
       if (hasCoordinatesFilter()) {
         hash = (37 * hash) + COORDINATESFILTER_FIELD_NUMBER;
         hash = (53 * hash) + getCoordinatesFilter().hashCode();
+      }
+      if (hasObjFilePath()) {
+        hash = (37 * hash) + OBJFILEPATH_FIELD_NUMBER;
+        hash = (53 * hash) + getObjFilePath().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -11784,6 +11880,8 @@ public final class Communication {
           coordinatesFilterBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000020);
+        objFilePath_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
 
@@ -11852,6 +11950,10 @@ public final class Communication {
         } else {
           result.coordinatesFilter_ = coordinatesFilterBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.objFilePath_ = objFilePath_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -11885,6 +11987,11 @@ public final class Communication {
         }
         if (other.hasCoordinatesFilter()) {
           mergeCoordinatesFilter(other.getCoordinatesFilter());
+        }
+        if (other.hasObjFilePath()) {
+          bitField0_ |= 0x00000040;
+          objFilePath_ = other.objFilePath_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -12553,6 +12660,82 @@ public final class Communication {
         return coordinatesFilterBuilder_;
       }
 
+      private java.lang.Object objFilePath_ = "";
+      /**
+       * <code>optional string objFilePath = 7;</code>
+       */
+      public boolean hasObjFilePath() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional string objFilePath = 7;</code>
+       */
+      public java.lang.String getObjFilePath() {
+        java.lang.Object ref = objFilePath_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            objFilePath_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string objFilePath = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getObjFilePathBytes() {
+        java.lang.Object ref = objFilePath_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          objFilePath_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string objFilePath = 7;</code>
+       */
+      public Builder setObjFilePath(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        objFilePath_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string objFilePath = 7;</code>
+       */
+      public Builder clearObjFilePath() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        objFilePath_ = getDefaultInstance().getObjFilePath();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string objFilePath = 7;</code>
+       */
+      public Builder setObjFilePathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        objFilePath_ = value;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:sm.ManagerToCoreMessage)
     }
 
@@ -12740,24 +12923,25 @@ public final class Communication {
       "ordinatesCondition\030\001 \003(\0132\030.sm.Coordinate" +
       "sCondition\0226\n\013conjunction\030\002 \001(\0162!.sm.Coo" +
       "rdinatesFilter.Conjunction\"\036\n\013Conjunctio" +
-      "n\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\254\003\n\024ManagerToCoreMess" +
+      "n\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\331\003\n\024ManagerToCoreMess" +
       "age\022<\n\013messageType\030\001 \002(\0162\'.sm.ManagerToC" +
       "oreMessage.MTCMessageType\022$\n\013optionsInfo" +
       "\030\002 \001(\0132\017.sm.OptionsInfo\022&\n\014groupsFilter\030" +
       "\003 \001(\0132\020.sm.GroupsFilter\022$\n\013typesFilter\030\004",
       " \001(\0132\017.sm.TypesFilter\022(\n\rqualityFilter\030\005" +
       " \001(\0132\021.sm.QualityFilter\0220\n\021coordinatesFi" +
-      "lter\030\006 \001(\0132\025.sm.CoordinatesFilter\"\205\001\n\016MT" +
-      "CMessageType\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014" +
-      "\n\010CONTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SN" +
-      "APSHOT\020\006\022\t\n\005CLEAN\020\007\022\r\n\tNEXT_TREE\020\010\022\r\n\tPR" +
-      "EV_TREE\020\t*9\n\014ColoringType\022\023\n\017GROUPS_COLO" +
-      "RING\020\001\022\024\n\020QUALITY_COLORING\020\002*-\n\021Visualis" +
-      "ationMode\022\013\n\007MODE_3D\020\001\022\013\n\007MODE_2D\020\002*_\n\022C" +
-      "omparisonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022",
-      "\013\n\007GREATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL" +
-      "\020\004\022\010\n\004LESS\020\005B\036\n\rcommunicationB\rCommunica" +
-      "tion"
+      "lter\030\006 \001(\0132\025.sm.CoordinatesFilter\022\023\n\013obj" +
+      "FilePath\030\007 \001(\t\"\235\001\n\016MTCMessageType\022\013\n\007OPT" +
+      "IONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CONTINUE\020\003\022\t\n\005ABO" +
+      "RT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSHOT\020\006\022\t\n\005CLEAN\020\007" +
+      "\022\r\n\tNEXT_TREE\020\010\022\r\n\tPREV_TREE\020\t\022\n\n\006IMPORT" +
+      "\020\n\022\n\n\006EXPORT\020\013*9\n\014ColoringType\022\023\n\017GROUPS" +
+      "_COLORING\020\001\022\024\n\020QUALITY_COLORING\020\002*-\n\021Vis" +
+      "ualisationMode\022\013\n\007MODE_3D\020\001\022\013\n\007MODE_2D\020\002",
+      "*_\n\022ComparisonOperator\022\024\n\020GREATER_OR_EQU" +
+      "AL\020\001\022\013\n\007GREATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_" +
+      "EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rcommunicationB\rComm" +
+      "unication"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -12884,7 +13068,7 @@ public final class Communication {
     internal_static_sm_ManagerToCoreMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_ManagerToCoreMessage_descriptor,
-        new java.lang.String[] { "MessageType", "OptionsInfo", "GroupsFilter", "TypesFilter", "QualityFilter", "CoordinatesFilter", });
+        new java.lang.String[] { "MessageType", "OptionsInfo", "GroupsFilter", "TypesFilter", "QualityFilter", "CoordinatesFilter", "ObjFilePath", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
