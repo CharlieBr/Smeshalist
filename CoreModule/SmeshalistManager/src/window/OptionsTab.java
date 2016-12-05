@@ -34,11 +34,26 @@ public class OptionsTab extends JPanel{
 			}
 		};
 	}
+	private enum VisualisationMode {
+		MODE_3D {
+			@Override
+			public String toString(){
+				return "3D mode";
+			}
+		},
+		MODE_2D{
+			@Override
+			public String toString(){
+				return "2D mode";
+			}
+		};
+	}
 
 	private JCheckBox transparencyCheckBox;
 	private JCheckBox renderingCheckBox;
 	private JCheckBox showLabelsCheckBox;
 	private JComboBox<ColoringType> coloringComboBox;
+	private JComboBox<VisualisationMode> modeComboBox;
 	private JSlider sensitivitySlider;
 	private JButton applyButton;
 	private JButton continueButton;
@@ -78,6 +93,11 @@ public class OptionsTab extends JPanel{
 		coloringComboBox.addItem(ColoringType.GROUP_COLORING);
 		coloringComboBox.addItem(ColoringType.QUALITY_COLORING);
 		coloringComboBox.setBorder(new EmptyBorder(10,0,10,10));
+
+		modeComboBox = new JComboBox<>();
+		modeComboBox.addItem(VisualisationMode.MODE_3D);
+		modeComboBox.addItem(VisualisationMode.MODE_2D);
+		modeComboBox.setBorder(new EmptyBorder(10,0,10,10));
 
 		sensitivitySlider = new JSlider(JScrollBar.HORIZONTAL, 0, 20, 1);
 		sensitivitySlider.setMajorTickSpacing(5);
@@ -174,14 +194,15 @@ public class OptionsTab extends JPanel{
 		checkBoxesPanel.add(renderingCheckBox);
 		checkBoxesPanel.add(showLabelsCheckBox);
 
-		JPanel coloringPanel = new JPanel();
-		coloringPanel.setLayout(new BorderLayout());
-		coloringPanel.add(coloringComboBox, BorderLayout.NORTH);
+		JPanel comboBoxesPanel = new JPanel();
+		comboBoxesPanel.setLayout(new BorderLayout());
+		comboBoxesPanel.add(coloringComboBox, BorderLayout.NORTH);
+		comboBoxesPanel.add(modeComboBox, BorderLayout.SOUTH);
 
 		JPanel visualisationOptionsPanel = new JPanel();
 		visualisationOptionsPanel.setLayout(new BorderLayout());
 		visualisationOptionsPanel.add(checkBoxesPanel, BorderLayout.WEST);
-		visualisationOptionsPanel.add(coloringPanel, BorderLayout.EAST);
+		visualisationOptionsPanel.add(comboBoxesPanel, BorderLayout.EAST);
 
 		JPanel sliderPanel = new JPanel();
 		sliderPanel.setLayout(new BoxLayout(sliderPanel, BoxLayout.PAGE_AXIS));
@@ -236,7 +257,20 @@ public class OptionsTab extends JPanel{
 		optionsInfo.setTransparentStructures(transparencyCheckBox.isSelected());
 		optionsInfo.setMouseSensitivity(sensitivitySlider.getValue() * 0.1);
 		optionsInfo.setColoringType(getColoringType());
+		optionsInfo.setVisualisationMode(getVisualisationMode());
 		return optionsInfo.build();
+	}
+
+	private Communication.VisualisationMode getVisualisationMode() {
+		switch(modeComboBox.getItemAt(modeComboBox.getSelectedIndex())) {
+			case MODE_3D:
+				return Communication.VisualisationMode.MODE_3D;
+			case MODE_2D:
+				return Communication.VisualisationMode.MODE_2D;
+			default:
+				System.out.println("Unsupported visualisation mode!");
+				return null;
+		}
 	}
 
 	private Communication.ColoringType getColoringType() {
