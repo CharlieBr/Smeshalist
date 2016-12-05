@@ -13,6 +13,9 @@
 #include "structs.pb.h"
 #include "communication.pb.h"
 #include "UserPreferencesManager.h"
+#include "OBJExporter.h"
+#include "OBJImporter.h"
+
 
 
 class AbstractServer
@@ -62,6 +65,8 @@ class AbstractServer
         void getDataPackages();
         void processFiltersDataPackage(sm::ManagerToCoreMessage*);
         void processOptionDataPackage(sm::ManagerToCoreMessage*);
+        void processDataImportMessage(sm::ManagerToCoreMessage*);
+        void processDataExportMessage(sm::ManagerToCoreMessage*);
         int sendDatagramToClient(structDefinitions::MessageInfo_Type);
         void sendAcknowlage();
         void sendStaticticsOfGivenTree(AbstractDataTree*);
@@ -74,6 +79,8 @@ class AbstractServer
         void sendBreakpoint();
 
         AbstractDataTree* handler = NULL;
+        OBJExporter exporter;
+        OBJImporter importer;
         int PORT;
         float* mouseSensitivity;
         std::atomic_bool isStopped;

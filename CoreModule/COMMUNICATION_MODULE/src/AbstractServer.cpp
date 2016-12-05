@@ -149,6 +149,28 @@ void AbstractServer::sendStaticticsOfGivenTree(AbstractDataTree* tree) {
     }
 }
 
+void AbstractServer::processDataExportMessage(sm::ManagerToCoreMessage* message) {
+    string file = message -> objfilepath();
+    AbstractDataTree* active = AbstractDataTree::getActiveDataTree();
+
+    active->LOCK();
+    exporter.exportToOBJ(active, file);
+    active->UNLOCK();
+}
+
+void AbstractServer::processDataImportMessage(sm::ManagerToCoreMessage* message) {
+    string file = message -> objfilepath();
+    AbstractDataTree* active = AbstractDataTree::getActiveDataTree();
+
+    //lock should no to set - it is use during adding elements to data tree
+    importer.loadOBJFile(file.c_str(), active);
+
+    AbstractDataTree::recomputeIntersectionPointsInVisibleTree();
+	if (AbstractDataTree::isActiveTreeVisible()) {
+        sendStatistics();
+	}
+}
+
 void AbstractServer::processFiltersDataPackage(sm::ManagerToCoreMessage* message) {
     vector<SingleGroupFilter*> *singleGroupFilters = NULL;
     vector<SingleTypesFilter*> *singleTypeFilters = NULL;
@@ -302,6 +324,12 @@ void AbstractServer::startSMServer() {
             case sm::ManagerToCoreMessage_MTCMessageType_PREV_TREE:
                 AbstractDataTree::decreaseVisibleDataTreeIndex();
                 changeVisibleTree();
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_IMPORT:
+                processDataImportMessage(&message);
+                break;
+            case sm::ManagerToCoreMessage_MTCMessageType_EXPORT:
+                processDataExportMessage(&message);
                 break;
             default:
                 cerr << "Unknow message type\n";

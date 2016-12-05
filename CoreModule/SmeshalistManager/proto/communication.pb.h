@@ -102,11 +102,13 @@ enum ManagerToCoreMessage_MTCMessageType {
   ManagerToCoreMessage_MTCMessageType_SNAPSHOT = 6,
   ManagerToCoreMessage_MTCMessageType_CLEAN = 7,
   ManagerToCoreMessage_MTCMessageType_NEXT_TREE = 8,
-  ManagerToCoreMessage_MTCMessageType_PREV_TREE = 9
+  ManagerToCoreMessage_MTCMessageType_PREV_TREE = 9,
+  ManagerToCoreMessage_MTCMessageType_IMPORT = 10,
+  ManagerToCoreMessage_MTCMessageType_EXPORT = 11
 };
 bool ManagerToCoreMessage_MTCMessageType_IsValid(int value);
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MIN = ManagerToCoreMessage_MTCMessageType_OPTIONS;
-const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX = ManagerToCoreMessage_MTCMessageType_PREV_TREE;
+const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX = ManagerToCoreMessage_MTCMessageType_EXPORT;
 const int ManagerToCoreMessage_MTCMessageType_MTCMessageType_ARRAYSIZE = ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* ManagerToCoreMessage_MTCMessageType_descriptor();
@@ -1951,6 +1953,10 @@ class ManagerToCoreMessage : public ::google::protobuf::Message /* @@protoc_inse
     ManagerToCoreMessage_MTCMessageType_NEXT_TREE;
   static const MTCMessageType PREV_TREE =
     ManagerToCoreMessage_MTCMessageType_PREV_TREE;
+  static const MTCMessageType IMPORT =
+    ManagerToCoreMessage_MTCMessageType_IMPORT;
+  static const MTCMessageType EXPORT =
+    ManagerToCoreMessage_MTCMessageType_EXPORT;
   static inline bool MTCMessageType_IsValid(int value) {
     return ManagerToCoreMessage_MTCMessageType_IsValid(value);
   }
@@ -2026,6 +2032,18 @@ class ManagerToCoreMessage : public ::google::protobuf::Message /* @@protoc_inse
   ::sm::CoordinatesFilter* release_coordinatesfilter();
   void set_allocated_coordinatesfilter(::sm::CoordinatesFilter* coordinatesfilter);
 
+  // optional string objFilePath = 7;
+  bool has_objfilepath() const;
+  void clear_objfilepath();
+  static const int kObjFilePathFieldNumber = 7;
+  const ::std::string& objfilepath() const;
+  void set_objfilepath(const ::std::string& value);
+  void set_objfilepath(const char* value);
+  void set_objfilepath(const char* value, size_t size);
+  ::std::string* mutable_objfilepath();
+  ::std::string* release_objfilepath();
+  void set_allocated_objfilepath(::std::string* objfilepath);
+
   // @@protoc_insertion_point(class_scope:sm.ManagerToCoreMessage)
  private:
   inline void set_has_messagetype();
@@ -2040,6 +2058,8 @@ class ManagerToCoreMessage : public ::google::protobuf::Message /* @@protoc_inse
   inline void clear_has_qualityfilter();
   inline void set_has_coordinatesfilter();
   inline void clear_has_coordinatesfilter();
+  inline void set_has_objfilepath();
+  inline void clear_has_objfilepath();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
@@ -2049,6 +2069,7 @@ class ManagerToCoreMessage : public ::google::protobuf::Message /* @@protoc_inse
   ::sm::TypesFilter* typesfilter_;
   ::sm::QualityFilter* qualityfilter_;
   ::sm::CoordinatesFilter* coordinatesfilter_;
+  ::google::protobuf::internal::ArenaStringPtr objfilepath_;
   int messagetype_;
   friend void  protobuf_AddDesc_communication_2eproto();
   friend void protobuf_AssignDesc_communication_2eproto();
@@ -3405,6 +3426,60 @@ inline void ManagerToCoreMessage::set_allocated_coordinatesfilter(::sm::Coordina
     clear_has_coordinatesfilter();
   }
   // @@protoc_insertion_point(field_set_allocated:sm.ManagerToCoreMessage.coordinatesFilter)
+}
+
+// optional string objFilePath = 7;
+inline bool ManagerToCoreMessage::has_objfilepath() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ManagerToCoreMessage::set_has_objfilepath() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ManagerToCoreMessage::clear_has_objfilepath() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ManagerToCoreMessage::clear_objfilepath() {
+  objfilepath_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_objfilepath();
+}
+inline const ::std::string& ManagerToCoreMessage::objfilepath() const {
+  // @@protoc_insertion_point(field_get:sm.ManagerToCoreMessage.objFilePath)
+  return objfilepath_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ManagerToCoreMessage::set_objfilepath(const ::std::string& value) {
+  set_has_objfilepath();
+  objfilepath_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sm.ManagerToCoreMessage.objFilePath)
+}
+inline void ManagerToCoreMessage::set_objfilepath(const char* value) {
+  set_has_objfilepath();
+  objfilepath_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sm.ManagerToCoreMessage.objFilePath)
+}
+inline void ManagerToCoreMessage::set_objfilepath(const char* value, size_t size) {
+  set_has_objfilepath();
+  objfilepath_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sm.ManagerToCoreMessage.objFilePath)
+}
+inline ::std::string* ManagerToCoreMessage::mutable_objfilepath() {
+  set_has_objfilepath();
+  // @@protoc_insertion_point(field_mutable:sm.ManagerToCoreMessage.objFilePath)
+  return objfilepath_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ManagerToCoreMessage::release_objfilepath() {
+  // @@protoc_insertion_point(field_release:sm.ManagerToCoreMessage.objFilePath)
+  clear_has_objfilepath();
+  return objfilepath_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ManagerToCoreMessage::set_allocated_objfilepath(::std::string* objfilepath) {
+  if (objfilepath != NULL) {
+    set_has_objfilepath();
+  } else {
+    clear_has_objfilepath();
+  }
+  objfilepath_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), objfilepath);
+  // @@protoc_insertion_point(field_set_allocated:sm.ManagerToCoreMessage.objFilePath)
 }
 
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS

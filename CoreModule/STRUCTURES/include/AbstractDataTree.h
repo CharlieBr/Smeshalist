@@ -28,9 +28,9 @@ class AbstractDataTree : public Data
         void draw_elements();
         void clean();
         string getTreeName();
-    protected:
         virtual void LOCK()=0;
         virtual void UNLOCK()=0;
+    protected:
         virtual void sleepThread(int)=0;
 		void cloneDataTreeToNewInstance(AbstractDataTree*);
         void (AbstractDataTree::*drawFunction)();

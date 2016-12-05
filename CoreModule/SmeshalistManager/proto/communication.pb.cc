@@ -328,13 +328,14 @@ void protobuf_AssignDesc_communication_2eproto() {
       -1);
   CoordinatesFilter_Conjunction_descriptor_ = CoordinatesFilter_descriptor_->enum_type(0);
   ManagerToCoreMessage_descriptor_ = file->message_type(14);
-  static const int ManagerToCoreMessage_offsets_[6] = {
+  static const int ManagerToCoreMessage_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ManagerToCoreMessage, messagetype_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ManagerToCoreMessage, optionsinfo_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ManagerToCoreMessage, groupsfilter_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ManagerToCoreMessage, typesfilter_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ManagerToCoreMessage, qualityfilter_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ManagerToCoreMessage, coordinatesfilter_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ManagerToCoreMessage, objfilepath_),
   };
   ManagerToCoreMessage_reflection_ =
     ::google::protobuf::internal::GeneratedMessageReflection::NewGeneratedMessageReflection(
@@ -518,24 +519,25 @@ void protobuf_AddDesc_communication_2eproto() {
     "ordinatesCondition\030\001 \003(\0132\030.sm.Coordinate"
     "sCondition\0226\n\013conjunction\030\002 \001(\0162!.sm.Coo"
     "rdinatesFilter.Conjunction\"\036\n\013Conjunctio"
-    "n\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\254\003\n\024ManagerToCoreMess"
+    "n\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\331\003\n\024ManagerToCoreMess"
     "age\022<\n\013messageType\030\001 \002(\0162\'.sm.ManagerToC"
     "oreMessage.MTCMessageType\022$\n\013optionsInfo"
     "\030\002 \001(\0132\017.sm.OptionsInfo\022&\n\014groupsFilter\030"
     "\003 \001(\0132\020.sm.GroupsFilter\022$\n\013typesFilter\030\004"
     " \001(\0132\017.sm.TypesFilter\022(\n\rqualityFilter\030\005"
     " \001(\0132\021.sm.QualityFilter\0220\n\021coordinatesFi"
-    "lter\030\006 \001(\0132\025.sm.CoordinatesFilter\"\205\001\n\016MT"
-    "CMessageType\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014"
-    "\n\010CONTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SN"
-    "APSHOT\020\006\022\t\n\005CLEAN\020\007\022\r\n\tNEXT_TREE\020\010\022\r\n\tPR"
-    "EV_TREE\020\t*9\n\014ColoringType\022\023\n\017GROUPS_COLO"
-    "RING\020\001\022\024\n\020QUALITY_COLORING\020\002*-\n\021Visualis"
-    "ationMode\022\013\n\007MODE_3D\020\001\022\013\n\007MODE_2D\020\002*_\n\022C"
-    "omparisonOperator\022\024\n\020GREATER_OR_EQUAL\020\001\022"
-    "\013\n\007GREATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_EQUAL"
-    "\020\004\022\010\n\004LESS\020\005B\036\n\rcommunicationB\rCommunica"
-    "tion", 2484);
+    "lter\030\006 \001(\0132\025.sm.CoordinatesFilter\022\023\n\013obj"
+    "FilePath\030\007 \001(\t\"\235\001\n\016MTCMessageType\022\013\n\007OPT"
+    "IONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CONTINUE\020\003\022\t\n\005ABO"
+    "RT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSHOT\020\006\022\t\n\005CLEAN\020\007"
+    "\022\r\n\tNEXT_TREE\020\010\022\r\n\tPREV_TREE\020\t\022\n\n\006IMPORT"
+    "\020\n\022\n\n\006EXPORT\020\013*9\n\014ColoringType\022\023\n\017GROUPS"
+    "_COLORING\020\001\022\024\n\020QUALITY_COLORING\020\002*-\n\021Vis"
+    "ualisationMode\022\013\n\007MODE_3D\020\001\022\013\n\007MODE_2D\020\002"
+    "*_\n\022ComparisonOperator\022\024\n\020GREATER_OR_EQU"
+    "AL\020\001\022\013\n\007GREATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_"
+    "EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rcommunicationB\rComm"
+    "unication", 2529);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "communication.proto", &protobuf_RegisterTypes);
   ElementInfo::default_instance_ = new ElementInfo();
@@ -6594,6 +6596,8 @@ bool ManagerToCoreMessage_MTCMessageType_IsValid(int value) {
     case 7:
     case 8:
     case 9:
+    case 10:
+    case 11:
       return true;
     default:
       return false;
@@ -6610,6 +6614,8 @@ const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::SNAPSHOT;
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::CLEAN;
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::NEXT_TREE;
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::PREV_TREE;
+const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::IMPORT;
+const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::EXPORT;
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::MTCMessageType_MIN;
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage::MTCMessageType_MAX;
 const int ManagerToCoreMessage::MTCMessageType_ARRAYSIZE;
@@ -6621,6 +6627,7 @@ const int ManagerToCoreMessage::kGroupsFilterFieldNumber;
 const int ManagerToCoreMessage::kTypesFilterFieldNumber;
 const int ManagerToCoreMessage::kQualityFilterFieldNumber;
 const int ManagerToCoreMessage::kCoordinatesFilterFieldNumber;
+const int ManagerToCoreMessage::kObjFilePathFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 ManagerToCoreMessage::ManagerToCoreMessage()
@@ -6646,6 +6653,7 @@ ManagerToCoreMessage::ManagerToCoreMessage(const ManagerToCoreMessage& from)
 }
 
 void ManagerToCoreMessage::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   messagetype_ = 1;
   optionsinfo_ = NULL;
@@ -6653,6 +6661,7 @@ void ManagerToCoreMessage::SharedCtor() {
   typesfilter_ = NULL;
   qualityfilter_ = NULL;
   coordinatesfilter_ = NULL;
+  objfilepath_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -6662,6 +6671,7 @@ ManagerToCoreMessage::~ManagerToCoreMessage() {
 }
 
 void ManagerToCoreMessage::SharedDtor() {
+  objfilepath_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   if (this != default_instance_) {
     delete optionsinfo_;
     delete groupsfilter_;
@@ -6698,7 +6708,7 @@ ManagerToCoreMessage* ManagerToCoreMessage::New(::google::protobuf::Arena* arena
 
 void ManagerToCoreMessage::Clear() {
 // @@protoc_insertion_point(message_clear_start:sm.ManagerToCoreMessage)
-  if (_has_bits_[0 / 32] & 63u) {
+  if (_has_bits_[0 / 32] & 127u) {
     messagetype_ = 1;
     if (has_optionsinfo()) {
       if (optionsinfo_ != NULL) optionsinfo_->::sm::OptionsInfo::Clear();
@@ -6714,6 +6724,9 @@ void ManagerToCoreMessage::Clear() {
     }
     if (has_coordinatesfilter()) {
       if (coordinatesfilter_ != NULL) coordinatesfilter_->::sm::CoordinatesFilter::Clear();
+    }
+    if (has_objfilepath()) {
+      objfilepath_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -6812,6 +6825,23 @@ bool ManagerToCoreMessage::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
+        if (input->ExpectTag(58)) goto parse_objFilePath;
+        break;
+      }
+
+      // optional string objFilePath = 7;
+      case 7: {
+        if (tag == 58) {
+         parse_objFilePath:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_objfilepath()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->objfilepath().data(), this->objfilepath().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "sm.ManagerToCoreMessage.objFilePath");
+        } else {
+          goto handle_unusual;
+        }
         if (input->ExpectAtEnd()) goto success;
         break;
       }
@@ -6877,6 +6907,16 @@ void ManagerToCoreMessage::SerializeWithCachedSizes(
       6, *this->coordinatesfilter_, output);
   }
 
+  // optional string objFilePath = 7;
+  if (has_objfilepath()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->objfilepath().data(), this->objfilepath().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "sm.ManagerToCoreMessage.objFilePath");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      7, this->objfilepath(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -6928,6 +6968,17 @@ void ManagerToCoreMessage::SerializeWithCachedSizes(
         6, *this->coordinatesfilter_, false, target);
   }
 
+  // optional string objFilePath = 7;
+  if (has_objfilepath()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->objfilepath().data(), this->objfilepath().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "sm.ManagerToCoreMessage.objFilePath");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->objfilepath(), target);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -6945,7 +6996,7 @@ int ManagerToCoreMessage::ByteSize() const {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->messagetype());
   }
-  if (_has_bits_[1 / 32] & 62u) {
+  if (_has_bits_[1 / 32] & 126u) {
     // optional .sm.OptionsInfo optionsInfo = 2;
     if (has_optionsinfo()) {
       total_size += 1 +
@@ -6979,6 +7030,13 @@ int ManagerToCoreMessage::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *this->coordinatesfilter_);
+    }
+
+    // optional string objFilePath = 7;
+    if (has_objfilepath()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->objfilepath());
     }
 
   }
@@ -7030,6 +7088,10 @@ void ManagerToCoreMessage::MergeFrom(const ManagerToCoreMessage& from) {
     if (from.has_coordinatesfilter()) {
       mutable_coordinatesfilter()->::sm::CoordinatesFilter::MergeFrom(from.coordinatesfilter());
     }
+    if (from.has_objfilepath()) {
+      set_has_objfilepath();
+      objfilepath_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.objfilepath_);
+    }
   }
   if (from._internal_metadata_.have_unknown_fields()) {
     mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -7073,6 +7135,7 @@ void ManagerToCoreMessage::InternalSwap(ManagerToCoreMessage* other) {
   std::swap(typesfilter_, other->typesfilter_);
   std::swap(qualityfilter_, other->qualityfilter_);
   std::swap(coordinatesfilter_, other->coordinatesfilter_);
+  objfilepath_.Swap(&other->objfilepath_);
   std::swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   std::swap(_cached_size_, other->_cached_size_);
@@ -7332,6 +7395,60 @@ void ManagerToCoreMessage::set_allocated_coordinatesfilter(::sm::CoordinatesFilt
     clear_has_coordinatesfilter();
   }
   // @@protoc_insertion_point(field_set_allocated:sm.ManagerToCoreMessage.coordinatesFilter)
+}
+
+// optional string objFilePath = 7;
+bool ManagerToCoreMessage::has_objfilepath() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+void ManagerToCoreMessage::set_has_objfilepath() {
+  _has_bits_[0] |= 0x00000040u;
+}
+void ManagerToCoreMessage::clear_has_objfilepath() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+void ManagerToCoreMessage::clear_objfilepath() {
+  objfilepath_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_objfilepath();
+}
+ const ::std::string& ManagerToCoreMessage::objfilepath() const {
+  // @@protoc_insertion_point(field_get:sm.ManagerToCoreMessage.objFilePath)
+  return objfilepath_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ManagerToCoreMessage::set_objfilepath(const ::std::string& value) {
+  set_has_objfilepath();
+  objfilepath_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sm.ManagerToCoreMessage.objFilePath)
+}
+ void ManagerToCoreMessage::set_objfilepath(const char* value) {
+  set_has_objfilepath();
+  objfilepath_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sm.ManagerToCoreMessage.objFilePath)
+}
+ void ManagerToCoreMessage::set_objfilepath(const char* value, size_t size) {
+  set_has_objfilepath();
+  objfilepath_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sm.ManagerToCoreMessage.objFilePath)
+}
+ ::std::string* ManagerToCoreMessage::mutable_objfilepath() {
+  set_has_objfilepath();
+  // @@protoc_insertion_point(field_mutable:sm.ManagerToCoreMessage.objFilePath)
+  return objfilepath_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ ::std::string* ManagerToCoreMessage::release_objfilepath() {
+  // @@protoc_insertion_point(field_release:sm.ManagerToCoreMessage.objFilePath)
+  clear_has_objfilepath();
+  return objfilepath_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+ void ManagerToCoreMessage::set_allocated_objfilepath(::std::string* objfilepath) {
+  if (objfilepath != NULL) {
+    set_has_objfilepath();
+  } else {
+    clear_has_objfilepath();
+  }
+  objfilepath_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), objfilepath);
+  // @@protoc_insertion_point(field_set_allocated:sm.ManagerToCoreMessage.objFilePath)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
