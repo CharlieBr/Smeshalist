@@ -46,8 +46,6 @@ public class StatisticsTab extends JPanel{
 	}
 
 	private void initializeView(){
-//		LayoutManager mgr = new GridLayout(2,2);
-//		setLayout(mgr);
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		setBorder(border);
 
@@ -69,7 +67,6 @@ public class StatisticsTab extends JPanel{
 		secondRow.add(cell22);
 
 		this.add(firstRow);
-		this.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		this.add(secondRow);
 
 		setInitContent();
