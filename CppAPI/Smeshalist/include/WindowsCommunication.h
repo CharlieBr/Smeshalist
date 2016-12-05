@@ -23,7 +23,6 @@ class WindowsCommunication : public AbstractCommuniation {
 		SOCKET core_socket;
 		WSADATA wsa;
 		struct sockaddr_in core_addr_in;
-		struct sockaddr core_addr;
         int core_addr_size;
 };
 

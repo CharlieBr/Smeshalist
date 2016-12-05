@@ -34,9 +34,9 @@ SOCKET* WindowsCommunication::createSocket(sockaddr_in* sockaddr, int port) {
 }
 
 int WindowsCommunication::GetBytesFromCore(char* buffer, int buffer_size) {
-    return recvfrom(core_socket, buffer, buffer_size, 0, &core_addr, &core_addr_size);
+    return recvfrom(core_socket, buffer, buffer_size, 0, (struct sockaddr*)&core_addr_in, &core_addr_size);
 }
 
 int WindowsCommunication::SendBytesToCore(const char* buffer, int buffer_size) const {
-    return sendto(core_socket, buffer, buffer_size, 0, &core_addr, core_addr_size);
+    return sendto(core_socket, buffer, buffer_size, 0, (struct sockaddr*)&core_addr_in, core_addr_size);
 }
