@@ -1,5 +1,7 @@
 package window;
 
+import communication.Communication;
+import communication.SendingThread;
 import util.WindowUtil;
 
 import javax.swing.*;
@@ -24,8 +26,8 @@ public class ObjTab extends JPanel {
 	private JButton chooseExportFileButton;
 	private JButton importButton;
 	private JButton exportButton;
-	private JLabel importPathLabel;
-	private JLabel exportPathLabel;
+	private JTextArea importPathTextArea;
+	private JTextArea exportPathTextArea;
 
 	public ObjTab() {
 		this.initializeView();
@@ -39,8 +41,11 @@ public class ObjTab extends JPanel {
 		importPanel = new JPanel();
 		importPanel.setLayout(new BorderLayout(5,0));
 		importPanel.setBorder(new TitledBorder("Import"));
-		importPathLabel = new JLabel("Path:");
+		importPathTextArea = new JTextArea("Path:");
+		importPathTextArea.setEditable(false);
+		importPathTextArea.setFont(importPathTextArea.getFont().deriveFont(12f));
 
+		JScrollPane importPathScrollPane = new JScrollPane(importPathTextArea, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 		chooseImportFileButton = new JButton("Choose file");
 		chooseImportFileButton.addActionListener(new ActionListener() {
 			@Override
@@ -59,10 +64,13 @@ public class ObjTab extends JPanel {
 				importButtonPressed();
 			}
 		});
+		JPanel importButtonPanel = new JPanel();
+		importButtonPanel.add(importButton);
+
 		JPanel importSouth = new JPanel();
 		importSouth.setLayout(new BorderLayout());
-		importSouth.add(importPathLabel, BorderLayout.WEST);
-		importSouth.add(importButton, BorderLayout.EAST);
+		importSouth.add(importPathScrollPane, BorderLayout.CENTER);
+		importSouth.add(importButtonPanel, BorderLayout.EAST);
 
 		JLabel importInfoLabel = new JLabel("Import structures from an OBJ file.");
 		importInfoLabel.setFont(new Font("Tahoma", Font.ITALIC, 14));
@@ -74,7 +82,11 @@ public class ObjTab extends JPanel {
 		exportPanel = new JPanel();
 		exportPanel.setLayout(new BorderLayout(5,0));
 		exportPanel.setBorder(new TitledBorder("Export"));
-		exportPathLabel = new JLabel("Path:");
+		exportPathTextArea = new JTextArea("Path: ");
+		exportPathTextArea.setEditable(false);
+		exportPathTextArea.setFont(exportPathTextArea.getFont().deriveFont(12f));
+
+		JScrollPane exportPathScrollPane = new JScrollPane(exportPathTextArea, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 		chooseExportFileButton = new JButton("Choose file");
 		chooseExportFileButton.addActionListener(new ActionListener() {
@@ -94,11 +106,13 @@ public class ObjTab extends JPanel {
 				exportButtonPressed();
 			}
 		});
+		JPanel exportButtonPanel = new JPanel();
+		exportButtonPanel.add(exportButton);
 
 		JPanel exportSouth = new JPanel();
 		exportSouth.setLayout(new BorderLayout());
-		exportSouth.add(exportPathLabel, BorderLayout.WEST);
-		exportSouth.add(exportButton, BorderLayout.EAST);
+		exportSouth.add(exportPathScrollPane, BorderLayout.CENTER);
+		exportSouth.add(exportButtonPanel, BorderLayout.EAST);
 
 		JLabel exportInfoLabel = new JLabel("Export structures from active tree to an OBJ file.");
 		exportInfoLabel.setFont(new Font("Tahoma", Font.ITALIC, 14));
@@ -113,8 +127,18 @@ public class ObjTab extends JPanel {
 	}
 
 	private void exportButtonPressed() {
-		//TODO send proto message
-		System.out.println("Exporting to selected file.");
+		if (exportFile == null) {
+			System.out.println("Choose export file first!");
+			return;
+		}
+
+		Communication.ManagerToCoreMessage.Builder messageBuilder = Communication.ManagerToCoreMessage.newBuilder();
+		messageBuilder.setMessageType(Communication.ManagerToCoreMessage.MTCMessageType.EXPORT);
+		messageBuilder.setObjFilePath(exportFile.getPath());
+		Communication.ManagerToCoreMessage message = messageBuilder.build();
+		new SendingThread(message).start();
+
+		System.out.println("Exporting structures tree to: " + exportFile.getPath());
 	}
 
 	private void chooseExportFileButtonPressed() {
@@ -124,17 +148,26 @@ public class ObjTab extends JPanel {
 
 		if (returnedValue == JFileChooser.APPROVE_OPTION) {
 			exportFile = exportFileChooser.getSelectedFile();
-			exportPathLabel.setText("Path: " + exportFile.getPath());
+			exportPathTextArea.setText("Path: " + exportFile.getPath());
 		} else {
-			exportPathLabel.setText("Path:");
+			exportPathTextArea.setText("Path:");
 		}
 		this.revalidate();
 		this.repaint();
 	}
 
 	private void importButtonPressed() {
-		//TODO send proto message
-		System.out.println("Importing selected file.");
+		if (importFile == null) {
+			System.out.println("Choose import file first!");
+			return;
+		}
+		Communication.ManagerToCoreMessage.Builder messageBuilder = Communication.ManagerToCoreMessage.newBuilder();
+		messageBuilder.setMessageType(Communication.ManagerToCoreMessage.MTCMessageType.IMPORT);
+		messageBuilder.setObjFilePath(importFile.getPath());
+		Communication.ManagerToCoreMessage message = messageBuilder.build();
+		new SendingThread(message).start();
+
+		System.out.println("Importing structures from: " + importFile.getPath());
 	}
 
 	private void chooseImportFileButtonPressed() {
@@ -146,9 +179,9 @@ public class ObjTab extends JPanel {
 		int returnValue = importFileChooser.showOpenDialog(null);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			importFile = importFileChooser.getSelectedFile();
-			importPathLabel.setText("Path: " + importFile.getPath());
+			importPathTextArea.setText("Path: " + importFile.getPath());
 		} else {
-			importPathLabel.setText("Path:");
+			importPathTextArea.setText("Path:");
 		}
 		this.revalidate();
 		this.repaint();
