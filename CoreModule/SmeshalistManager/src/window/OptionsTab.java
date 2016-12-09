@@ -229,6 +229,8 @@ public class OptionsTab extends JPanel{
 
 		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
 		new SendingThread(toCoreMessage).start();
+
+		MainWindow.getInstance().cleanGroupCheckBoxes();
 	}
 
 	private void nextSnapshotButtonPressed() {
@@ -237,6 +239,8 @@ public class OptionsTab extends JPanel{
 
 		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
 		new SendingThread(toCoreMessage).start();
+
+		MainWindow.getInstance().cleanGroupCheckBoxes();
 	}
 
 	private void applyButtonPressed(){

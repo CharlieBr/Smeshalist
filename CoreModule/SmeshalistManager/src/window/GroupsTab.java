@@ -21,6 +21,7 @@ public class GroupsTab extends JPanel{
 	private static boolean changed;
 	private List<String> groups;
 	private List<CheckBoxEntry> groupsCheckBoxes;
+	private Map<String, Boolean> groupsVisibility;
 
 	private JScrollPane scrollPane;
 	private JPanel buttonsContainer;
@@ -31,6 +32,7 @@ public class GroupsTab extends JPanel{
 	public GroupsTab(){
 		this.groups = new LinkedList<>();
 		this.groupsCheckBoxes = new LinkedList<>();
+		this.groupsVisibility = new HashMap<>();
 		GroupsTab.changed = false;
 		this.initializeView();
 		this.setVisible(true);
@@ -108,10 +110,13 @@ public class GroupsTab extends JPanel{
 					break;
 				}
 			}
-
 			if (!found) {
 				JCheckBox tmpCheckBox = new JCheckBox(groupName);
-				tmpCheckBox.setSelected(true);
+				if (this.groupsVisibility.containsKey(groupName)) {
+					tmpCheckBox.setSelected(this.groupsVisibility.get(groupName));
+				} else {
+					tmpCheckBox.setSelected(true);
+				}
 				tmpCheckBox.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -151,6 +156,9 @@ public class GroupsTab extends JPanel{
 	}
 
 	public void cleanGroupCheckboxes(){
+		for (CheckBoxEntry checkBoxEntry: this.groupsCheckBoxes){
+			this.groupsVisibility.put(checkBoxEntry.getCheckBoxText(),checkBoxEntry.isCheckBoxSelected());
+		}
 		this.scrollPaneContent.removeAll();
 		this.groupsCheckBoxes.clear();
 		this.groups.clear();
