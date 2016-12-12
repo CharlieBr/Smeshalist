@@ -3,7 +3,7 @@
 
 #include <string>
 #include "XMLParser.h"
-#include "../../STRUCTURES/include/Color.h"
+#include "Color.h"
 
 using namespace std;
 
@@ -16,6 +16,13 @@ class UserPreferencesManager
 
         Color getBackgroudColor();
         Color getGroupColor(int);
+
+        int getCorePort();
+        Color getXAxisColor();
+        Color getYAxisColor();
+        Color getZAxisColor();
+        Color getCuttingPlaneColor();
+        Color* getQualityColor(double);
     protected:
     private:
         XMLParser* parser;
@@ -23,7 +30,13 @@ class UserPreferencesManager
         const string file = "user.config.xml";
 
         string getPreference(string, XMLNode*);
+        vector<string> getAttributeValues(string, string);
+        vector<string> getAttributeValues(string, string, XMLNode*);
         UserPreferencesManager();
+        Color* interpolateColor(Color, Color, double, double, double);
+
+        static map<double, Color*> qualityColorMap;
+        static Color* negQualityColor;
 };
 
 #endif // USERPREFERENCESMANAGER_H

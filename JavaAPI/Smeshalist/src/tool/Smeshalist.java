@@ -14,19 +14,23 @@ import java.util.Objects;
 import org.apache.log4j.Logger;
 
 import helpers.SmeshalistHelper;
-import structDefinitions.Structures;
 import structDefinitions.Structures.Block;
 import structDefinitions.Structures.DataPackage;
 import structDefinitions.Structures.Edge;
 import structDefinitions.Structures.Header;
 import structDefinitions.Structures.MessageInfo;
 import structDefinitions.Structures.MessageInfo.Type;
-import structDefinitions.Structures.Point2D;
 import structDefinitions.Structures.Point3D;
 import structDefinitions.Structures.Properties;
 import structDefinitions.Structures.TriangleFace;
 import structDefinitions.Structures.Vertex;
 
+
+/**
+ * Main API class which provide methods to add geometries for visualization algorithm
+ * @author ewa
+ *
+ */
 public class Smeshalist {
 
 	private static final Logger logger = Logger.getLogger(Smeshalist.class.getName());
@@ -64,6 +68,11 @@ public class Smeshalist {
 		return instance;
 	}
 	
+	/**
+	 * 
+	 * @param portNumber
+	 * @return instance of Smeshalist class. Tool is using port of given number to connect to main window
+	 */
 	public static Smeshalist getInstance(int portNumber){
 		if(Objects.isNull(instance)){
 			instance = new Smeshalist(portNumber);
@@ -71,34 +80,41 @@ public class Smeshalist {
 		return instance;
 	}
 
-	public static void destroySmeshialist() {
+	/**
+	 * Method which is to be used after finishing work with tool. It provides proper socket closing.
+	 */
+	public static void destroySmeshalist() {
 		instance.socket.close();
 	}
 
-	public void addGeometry(geometry.Point2D point) {
-		Properties.Builder prop = SmeshalistHelper.setProperties(point.getLabel(), point.getQuality(),
-				point.getGroupId());
-		Structures.Point2D.Builder builder = Structures.Point2D.newBuilder();
-		builder.setX(point.getX());
-		builder.setY(point.getY());
-		builder.setProp(prop.build());
-		structuresToSend.add(builder.build());
-	}
-
+	/**
+	 * 
+	 * @param point Point3D structure
+	 * Method adds Point3D structure to internal data buffer that stores structures to send for visualization 
+	 */
 	public void addGeometry(geometry.Point3D point) {
 		structuresToSend.add(SmeshalistHelper.convertToPoint3D(point));
 	}
 
+	/**
+	 * 
+	 * @param vertex Vertex structure
+	 * Method adds Vertex structure to internal data buffer that stores structures to send for visualization
+	 */
 	public void addGeometry(geometry.Vertex vertex) {
 		Properties.Builder prop = SmeshalistHelper.setProperties(vertex.getLabel(), vertex.getQuality(),
 				vertex.getGroupId());
 		Vertex.Builder builder = Vertex.newBuilder();
 		builder.setPoint(SmeshalistHelper.convertToPoint3D(vertex.getPoint()));
-		builder.setNumber(vertex.getNumber());
 		builder.setProp(prop.build());
 		structuresToSend.add(builder.build());
 	}
 
+	/**
+	 * 
+	 * @param edge Edge structure
+	 * Method adds Edge structure to internal data buffer that stores structures to send for visualization
+	 */
 	public void addGeometry(geometry.Edge edge) {
 		Properties.Builder prop = SmeshalistHelper.setProperties(edge.getLabel(), edge.getQuality(), edge.getGroupId());
 		Edge.Builder builder = Edge.newBuilder();
@@ -108,6 +124,11 @@ public class Smeshalist {
 		structuresToSend.add(builder.build());
 	}
 
+	/**
+	 * 
+	 * @param triangleFace TriangleFace structure
+	 * Method adds TriangleFace structure to internal data buffer that stores structures to send for visualization 
+	 */
 	public void addGeometry(geometry.TriangleFace triangleFace) {
 		Properties.Builder prop = SmeshalistHelper.setProperties(triangleFace.getLabel(), triangleFace.getQuality(),
 				triangleFace.getGroupId());
@@ -119,6 +140,11 @@ public class Smeshalist {
 		structuresToSend.add(builder.build());
 	}
 
+	/**
+	 * 
+	 * @param block Block structure
+	 * Method adds Block structure to internal data buffer that stores structures to send for visualization
+	 */
 	public void addGeometry(geometry.Block block) {
 		Properties.Builder prop = SmeshalistHelper.setProperties(block.getLabel(), block.getQuality(),
 				block.getGroupId());
@@ -133,11 +159,14 @@ public class Smeshalist {
 
 	
 	/**
-	 * send all structures stored in buffer to main window
+	 * Send all structures stored in buffer to main window
 	 */
 	public void flushBuffer() {
 
 		logger.info(structuresToSend.size() + " structures waiting to be sent when called flushBuffer()");
+		
+		if(structuresToSend.isEmpty()) return;
+		
 		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
 		ByteArrayOutputStream dataBuffer = new ByteArrayOutputStream();
 		MessageInfo.Builder builder = MessageInfo.newBuilder();
@@ -189,10 +218,7 @@ public class Smeshalist {
 					
 					
 					for (Object structure: toBeSent){
-						if (structure instanceof Point2D){
-							dataPackageBuilder.addPoints2D((Point2D)structure);
-						}
-						else if (structure instanceof Point3D){
+						if (structure instanceof Point3D){
 							dataPackageBuilder.addPoints3D((Point3D)structure);
 						} 
 						else if (structure instanceof Vertex){
@@ -218,8 +244,6 @@ public class Smeshalist {
 					headerBuilder.setSizeOfData(dataBytes.length);
 					headerBuilder.setEndOfData(endOfData);
 					Header header = headerBuilder.build();
-					System.out.println("Header sizeOfData: " + header.getSizeOfData());
-					System.out.println("Header endOfData: " + header.getEndOfData());
 					byte[] headerBytes;
 					aOutput = new ByteArrayOutputStream(64);
 					header.writeTo(aOutput);
@@ -232,8 +256,7 @@ public class Smeshalist {
 					DatagramPacket dataPacket = new DatagramPacket(dataBytes, dataBytes.length, IPAddress, mainWindowPort);
 					socket.send(dataPacket);
 					dataBuffer.close();
-					logger.info("---------------------->sent");
-
+					
 					//ACK from Core
 					responseBytes = new byte[10];
 					response = new DatagramPacket(responseBytes, responseBytes.length);
@@ -245,13 +268,12 @@ public class Smeshalist {
 					}
 
 					feedback = MessageInfo.parseFrom(trimResponse);
+					
+					logger.info("---------------------->po ack");
 
 				}
 					
-//			}
-
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			logger.error(e.getMessage());
 		}
 
@@ -259,7 +281,11 @@ public class Smeshalist {
 
 	
 	
-
+	/**
+	 * Interrupts algorithm execution until proper option will be chosen in Smeshalist Manager window.
+	 * In case continue option has been chosen algorithm is continued otherwise program is terminated.
+	 * 
+	 */
 	public void breakpoint() {
 		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
 		MessageInfo.Builder builder = MessageInfo.newBuilder();
@@ -289,12 +315,15 @@ public class Smeshalist {
 			}
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 
 	}
 
+	/**
+	 * Method forces rendering sent structures in main window 
+	 * in case Dynamic rendering is turned off in Smeshalist Manager window.
+	 */
 	public void render() {
 		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
 		MessageInfo.Builder builder = MessageInfo.newBuilder();
@@ -309,9 +338,46 @@ public class Smeshalist {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 
+	}
+	
+	/**
+	 * Method forces deleting all data from data structure tree in main window without affecting taken snapshots.
+	 */
+	public void clean() {
+		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
+		MessageInfo.Builder builder = MessageInfo.newBuilder();
+		builder.setType(Type.CLEAN);
+		MessageInfo message = builder.build();
+
+		try {
+			message.writeTo(aOutput);
+			byte[] bytes = aOutput.toByteArray();
+			DatagramPacket packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
+			socket.send(packet);
+			aOutput.close();
+
+			byte[] responseBytes = new byte[10];
+			DatagramPacket response = new DatagramPacket(responseBytes, responseBytes.length);
+			socket.receive(response);
+
+			byte[] trimResponse = new byte[response.getLength()];
+			for (int i=0; i<response.getLength(); i++) {
+				trimResponse[i] = responseBytes[i];
+			}
+			
+			MessageInfo feedback = MessageInfo.parseFrom(trimResponse);
+			if (feedback.getType() != Type.ACK) {
+				socket.close();
+				logger.error("Clean method feedback from CORE");
+				System.exit(0);
+			}
+
+		} catch (IOException e) {
+			logger.error(e.getMessage());
+		}
 	}
 
 	

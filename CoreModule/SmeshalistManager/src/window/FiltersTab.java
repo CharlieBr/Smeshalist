@@ -45,11 +45,6 @@ public class FiltersTab extends JPanel{
 		mainLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
 		this.setLayout(mainLayout);
 		
-		//TODO to set the border or not to set the border - that's the question
-		Border border = new EmptyBorder(0,0,0,0);
-		this.setBorder(border);
-
-		
 		tabsContainer = new JTabbedPane(JTabbedPane.TOP);
 
 		
@@ -57,9 +52,7 @@ public class FiltersTab extends JPanel{
 		groupsTab = new GroupsTab();
 		qualityTab = new QualityTab();
 		coordinatesTab = new CoordinatesTab();
-		
-		//this.setTestContent();
-		
+
 		tabsContainer.add("Types", typesTab);
 		tabsContainer.add("Groups", groupsTab);
 		tabsContainer.add("Quality", qualityTab);
@@ -92,19 +85,15 @@ public class FiltersTab extends JPanel{
 
 		if (TypesTab.isChanged()){
 			toCoreMessageBuilder.setTypesFilter(typesFilter);
-			System.out.println("TypesTab changes are being sent");
 		}
 		if (GroupsTab.isChanged()){
 			toCoreMessageBuilder.setGroupsFilter(groupsFilter);
-			System.out.println("GroupsTab changes are being sent");
 		}
 		if (QualityTab.isChanged()){
 			toCoreMessageBuilder.setQualityFilter(qualityFilter);
-			System.out.println("QualityTab changes are being sent");
 		}
 		if (CoordinatesTab.isChanged()){
 			toCoreMessageBuilder.setCoordinatesFilter(coordinatesFilter);
-			System.out.println("CoordinatesTab changes are being sent");
 		}
 		ManagerToCoreMessage toCoreMessage = toCoreMessageBuilder.build();
 		new SendingThread(toCoreMessage).start();

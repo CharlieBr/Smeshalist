@@ -1,10 +1,27 @@
  <preferences>
    
+   <port CORE="8383"/>
+   
    <background theme="DARK"/>
    
    <groups>
-     <g0 r="255" g="0" b="0"/>
-     <g1 r="0" g="255" b="0"/>
+     <g id="0" r="255" g="0" b="0"/>
+     <g id="1" r="0" g="255" b="0"/>
    </groups>
+   
+   <qualityColors>
+     <negQualityColor r="111" g="111" b="111"/>
+     <color q="0.0" r="0" g="0" b="255"/>
+     <color q="0.5" r="255" g="255" b="0"/>
+     <color q="1.0" r="255" g="0" b="0"/>
+   </qualityColors>
+   
+   <axes>
+     <x r="255" g="0" b="0"/>
+     <y r="0" g="255" b="0"/>
+     <z r="0" g="0" b="255"/>
+   </axes>
+   
+   <cuttingPlane r="255" g="255" b="255" a="20"/>
    
  </preferences>

@@ -26,6 +26,7 @@ class SingleCoordinateFilter
         double absolute_value;
         RelationalOperator op;
         vector<Point3D*> intersectionPoints;
+        static Color cuttingPlaneColor;
 
         double computeValue(double, double, double);
 };

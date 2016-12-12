@@ -5,14 +5,16 @@
 #include <cstdio>
 #include <cstring>
 #include <cerrno>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <unistd.h>
 #include <list>
 #include "structs.pb.h"
 #include "Geometry.h"
 
-#define CORE_PORT 8383
+#ifdef __linux__
+#include "LinuxCommunication.h"
+#else
+#include "WindowsCommunication.h"
+#endif // __linux__
+
 #define BUFFER_SIZE 1024
 #define BATCH_SIZE 300
 
@@ -21,37 +23,73 @@ using namespace std;
 class Smeshalist {
 	public:
 		~Smeshalist();
+		/**
+		 * Method implements singleton pattern. Returns instance of class Smeshalist. 
+		 * Tool uses default port number - 8383.
+		 * @return instance of Smeshalist
+		 */
 		static Smeshalist& GetInstance();
-		void TestSmeshalist();
-		void AddGeometry(Point2D &point);
+		/**
+		* Method implements singleton pattern. Returns instance of class Smeshalist.
+		* Tool uses given port number.
+		* @param port_number port on witch the tool will connect to main window
+		* @return instance of Smeshalist
+		*/
+		static Smeshalist& GetInstance(int port_number);
+		/**
+		 * Method adds Point3D structure to internal data buffer that stores structures to send for visualization.
+		 * @param point Point3D structure
+		 */
 		void AddGeometry(Point3D &point);
+		/**
+		* Method adds Vertex structure to internal data buffer that stores structures to send for visualization.
+		* @param vertex Vertex structure
+		*/
 		void AddGeometry(Vertex &vertex);
+		/**
+		* Method adds Edge structure to internal data buffer that stores structures to send for visualization.
+		* @param edge Edge structure
+		*/
         void AddGeometry(Edge &edge);
+		/**
+		* Method adds Face structure to internal data buffer that stores structures to send for visualization.
+		* @param face Face structure
+		*/
         void AddGeometry(Face &face);
+		/**
+		* Method adds Block structure to internal data buffer that stores structures to send for visualization.
+		* @param block Block structure
+		*/
         void AddGeometry(Block &block);
+		/**
+		 * Sends all structures stored in buffer to main window.
+		 */
         void FlushBuffer();
+		/**
+		 * Suspends algorithm execution until proper option will be chosen in Smeshalist Manager window.
+		 * In case continue option has been chosen algorithm is continued otherwise program is terminated.
+		 */
         void Breakpoint();
+		/**
+		 * Method forces rendering sent structures in main window when 'Dynamic rendering' is turned off in Smeshalist Manager window.
+		 */
         void Render() const;
+		/**
+		 * Method forces deleting all data from data structure tree in main window without affecting taken snapshots.
+		 */
         void Clean();
 	protected:
 	private:
-		int core_port;
-		struct sockaddr_in core_addr;
-		socklen_t core_addr_size;
-		int core_socket;
-		list<Point2D> points2d_to_send;
+		AbstractCommuniation *communication;
 		list<Point3D> points3d_to_send;
 		list<Vertex> vertexes_to_send;
 		list<Edge> edges_to_send;
 		list<Face> faces_to_send;
 		list<Block> blocks_to_send;
 		Smeshalist();
-		void SetupSocket();
-		int SendBytesToCore(const void* buffer, int buffer_size) const;
-		int GetBytesFromCore(char* buffer, int buffer_size);
+		Smeshalist(int port_number);
 		structDefinitions::Properties* GetProperties(int group_id, string label, double quality) const;
 		structDefinitions::Point3D* GetPoint3D(Point3D &point) const;
-		void ProcessGeometry(Point2D &element, structDefinitions::DataPackage &data_package) const;
 		void ProcessGeometry(Point3D &element, structDefinitions::DataPackage &data_package) const;
 		void ProcessGeometry(Vertex &element, structDefinitions::DataPackage &data_package) const;
 		void ProcessGeometry(Edge &element, structDefinitions::DataPackage &data_package) const;

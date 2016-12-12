@@ -28,35 +28,6 @@ string Geometry::GetLabel() const {
     return Geometry::label;
 }
 
-//POINT2D
-
-Point2D::Point2D() {
-	SetGroupId(0);
-    SetLabel("");
-    SetQuality(0.0);
-}
-
-Point2D::Point2D(double x, double y) : Point2D() {
-    Point2D::x = x;
-    Point2D::y = y;
-}
-
-void Point2D::SetX(double value) {
-    Point2D::x = value;
-}
-
-void Point2D::SetY(double value) {
-    Point2D::y = value;
-}
-
-double Point2D::GetX() const {
-	return Point2D::x;
-}
-
-double Point2D::GetY() const {
-	return Point2D::y;
-}
-
 //POINT3D
 
 Point3D::Point3D() {
@@ -69,6 +40,12 @@ Point3D::Point3D(double x, double y, double z) : Point3D() {
     Point3D::x = x;
     Point3D::y = y;
     Point3D::z = z;
+}
+
+Point3D::Point3D(double x, double y) {
+	Point3D::x = x;
+	Point3D::y = y;
+	Point3D::z = 0.0;
 }
 
 void Point3D::SetX(double value) {
@@ -101,10 +78,6 @@ Vertex::Vertex() {
 	SetGroupId(0);
     SetLabel("");
     SetQuality(0.0);
-}
-
-Vertex::Vertex(Point2D point2d) : Vertex() {
-    Vertex::point = Point3D(point2d.GetX(), point2d.GetY(), 0.0);
 }
 
 Vertex::Vertex(Point3D point3d) : Vertex() {

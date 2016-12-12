@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <cstring>
 #include <cerrno>
+#include <ctime>
 #include "Smeshalist.h"
 #include "Geometry.h"
 
@@ -41,5 +42,6 @@ int main() {
 
 
 	google::protobuf::ShutdownProtobufLibrary();
+	system("pause");
 	return 0;
 }

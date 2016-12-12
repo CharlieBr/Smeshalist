@@ -1,6 +1,7 @@
 #include "CoordinatesFilter.h"
 
 CoordinatesFilter* CoordinatesFilter::instance;
+Color SingleCoordinateFilter::cuttingPlaneColor = UserPreferencesManager::getInstance() -> getCuttingPlaneColor();
 
 bool SingleCoordinateFilter::applyFilter(Element* element) {
     bool result = true;
@@ -31,7 +32,7 @@ double SingleCoordinateFilter::computeValue(double x, double y, double z) {
 }
 
 void SingleCoordinateFilter::draw() {
-    glColor4f(0.5f,0.1f,0.1f,0.1f);
+    glColor4f(cuttingPlaneColor.r(), cuttingPlaneColor.g(), cuttingPlaneColor.b(), cuttingPlaneColor.a());
     glBegin(GL_POLYGON);
     for (Point3D* point : intersectionPoints) {
         glVertex3d(point->get_x(), point->get_y(), point->get_z());

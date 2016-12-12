@@ -7,6 +7,8 @@
 #include "TypesFilter.h"
 #include "QualityFilter.h"
 
+#include <string.h>
+
 
 class AbstractDataTree : public Data
 {
@@ -25,9 +27,10 @@ class AbstractDataTree : public Data
         static bool isActiveTreeVisible();
         void draw_elements();
         void clean();
-    protected:
+        string getTreeName();
         virtual void LOCK()=0;
         virtual void UNLOCK()=0;
+    protected:
         virtual void sleepThread(int)=0;
 		void cloneDataTreeToNewInstance(AbstractDataTree*);
         void (AbstractDataTree::*drawFunction)();
@@ -39,10 +42,12 @@ class AbstractDataTree : public Data
         static AbstractDataTree* active;
         static bool readyToBeCleaned;
         static int visibleDataTreeIndex; //-1-current; >=0 - previous
+        string treeName;
         void drawElements();
         void drawNothing();
-        AbstractDataTree() {
+        AbstractDataTree(string name) {
             drawFunction = &AbstractDataTree::drawElements;
+            treeName = name;
         }
 };
 

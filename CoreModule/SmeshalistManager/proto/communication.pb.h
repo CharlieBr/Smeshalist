@@ -100,11 +100,15 @@ enum ManagerToCoreMessage_MTCMessageType {
   ManagerToCoreMessage_MTCMessageType_ABORT = 4,
   ManagerToCoreMessage_MTCMessageType_HELLO = 5,
   ManagerToCoreMessage_MTCMessageType_SNAPSHOT = 6,
-  ManagerToCoreMessage_MTCMessageType_CLEAN = 7
+  ManagerToCoreMessage_MTCMessageType_CLEAN = 7,
+  ManagerToCoreMessage_MTCMessageType_NEXT_TREE = 8,
+  ManagerToCoreMessage_MTCMessageType_PREV_TREE = 9,
+  ManagerToCoreMessage_MTCMessageType_IMPORT = 10,
+  ManagerToCoreMessage_MTCMessageType_EXPORT = 11
 };
 bool ManagerToCoreMessage_MTCMessageType_IsValid(int value);
 const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MIN = ManagerToCoreMessage_MTCMessageType_OPTIONS;
-const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX = ManagerToCoreMessage_MTCMessageType_CLEAN;
+const ManagerToCoreMessage_MTCMessageType ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX = ManagerToCoreMessage_MTCMessageType_EXPORT;
 const int ManagerToCoreMessage_MTCMessageType_MTCMessageType_ARRAYSIZE = ManagerToCoreMessage_MTCMessageType_MTCMessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* ManagerToCoreMessage_MTCMessageType_descriptor();
@@ -116,6 +120,44 @@ inline bool ManagerToCoreMessage_MTCMessageType_Parse(
     const ::std::string& name, ManagerToCoreMessage_MTCMessageType* value) {
   return ::google::protobuf::internal::ParseNamedEnum<ManagerToCoreMessage_MTCMessageType>(
     ManagerToCoreMessage_MTCMessageType_descriptor(), name, value);
+}
+enum ColoringType {
+  GROUPS_COLORING = 1,
+  QUALITY_COLORING = 2
+};
+bool ColoringType_IsValid(int value);
+const ColoringType ColoringType_MIN = GROUPS_COLORING;
+const ColoringType ColoringType_MAX = QUALITY_COLORING;
+const int ColoringType_ARRAYSIZE = ColoringType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ColoringType_descriptor();
+inline const ::std::string& ColoringType_Name(ColoringType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ColoringType_descriptor(), value);
+}
+inline bool ColoringType_Parse(
+    const ::std::string& name, ColoringType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ColoringType>(
+    ColoringType_descriptor(), name, value);
+}
+enum VisualisationMode {
+  MODE_3D = 1,
+  MODE_2D = 2
+};
+bool VisualisationMode_IsValid(int value);
+const VisualisationMode VisualisationMode_MIN = MODE_3D;
+const VisualisationMode VisualisationMode_MAX = MODE_2D;
+const int VisualisationMode_ARRAYSIZE = VisualisationMode_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* VisualisationMode_descriptor();
+inline const ::std::string& VisualisationMode_Name(VisualisationMode value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    VisualisationMode_descriptor(), value);
+}
+inline bool VisualisationMode_Parse(
+    const ::std::string& name, VisualisationMode* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<VisualisationMode>(
+    VisualisationMode_descriptor(), name, value);
 }
 enum ComparisonOperator {
   GREATER_OR_EQUAL = 1,
@@ -812,6 +854,18 @@ class StatisticsInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   ::sm::GroupsInfo* release_groupsinfo();
   void set_allocated_groupsinfo(::sm::GroupsInfo* groupsinfo);
 
+  // required string treeName = 4;
+  bool has_treename() const;
+  void clear_treename();
+  static const int kTreeNameFieldNumber = 4;
+  const ::std::string& treename() const;
+  void set_treename(const ::std::string& value);
+  void set_treename(const char* value);
+  void set_treename(const char* value, size_t size);
+  ::std::string* mutable_treename();
+  ::std::string* release_treename();
+  void set_allocated_treename(::std::string* treename);
+
   // @@protoc_insertion_point(class_scope:sm.StatisticsInfo)
  private:
   inline void set_has_elementscount();
@@ -820,6 +874,8 @@ class StatisticsInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   inline void clear_has_boundingbox();
   inline void set_has_groupsinfo();
   inline void clear_has_groupsinfo();
+  inline void set_has_treename();
+  inline void clear_has_treename();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -830,6 +886,7 @@ class StatisticsInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   ::sm::ElementsCount* elementscount_;
   ::sm::BoundingBox* boundingbox_;
   ::sm::GroupsInfo* groupsinfo_;
+  ::google::protobuf::internal::ArenaStringPtr treename_;
   friend void  protobuf_AddDesc_communication_2eproto();
   friend void protobuf_AssignDesc_communication_2eproto();
   friend void protobuf_ShutdownFile_communication_2eproto();
@@ -1066,6 +1123,20 @@ class OptionsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
   double mousesensitivity() const;
   void set_mousesensitivity(double value);
 
+  // required .sm.ColoringType coloringType = 5;
+  bool has_coloringtype() const;
+  void clear_coloringtype();
+  static const int kColoringTypeFieldNumber = 5;
+  ::sm::ColoringType coloringtype() const;
+  void set_coloringtype(::sm::ColoringType value);
+
+  // required .sm.VisualisationMode visualisationMode = 6;
+  bool has_visualisationmode() const;
+  void clear_visualisationmode();
+  static const int kVisualisationModeFieldNumber = 6;
+  ::sm::VisualisationMode visualisationmode() const;
+  void set_visualisationmode(::sm::VisualisationMode value);
+
   // @@protoc_insertion_point(class_scope:sm.OptionsInfo)
  private:
   inline void set_has_transparentstructures();
@@ -1076,6 +1147,10 @@ class OptionsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
   inline void clear_has_showlabels();
   inline void set_has_mousesensitivity();
   inline void clear_has_mousesensitivity();
+  inline void set_has_coloringtype();
+  inline void clear_has_coloringtype();
+  inline void set_has_visualisationmode();
+  inline void clear_has_visualisationmode();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -1083,10 +1158,12 @@ class OptionsInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  double mousesensitivity_;
   bool transparentstructures_;
   bool dynamicrendering_;
   bool showlabels_;
+  int coloringtype_;
+  double mousesensitivity_;
+  int visualisationmode_;
   friend void  protobuf_AddDesc_communication_2eproto();
   friend void protobuf_AssignDesc_communication_2eproto();
   friend void protobuf_ShutdownFile_communication_2eproto();
@@ -1872,6 +1949,14 @@ class ManagerToCoreMessage : public ::google::protobuf::Message /* @@protoc_inse
     ManagerToCoreMessage_MTCMessageType_SNAPSHOT;
   static const MTCMessageType CLEAN =
     ManagerToCoreMessage_MTCMessageType_CLEAN;
+  static const MTCMessageType NEXT_TREE =
+    ManagerToCoreMessage_MTCMessageType_NEXT_TREE;
+  static const MTCMessageType PREV_TREE =
+    ManagerToCoreMessage_MTCMessageType_PREV_TREE;
+  static const MTCMessageType IMPORT =
+    ManagerToCoreMessage_MTCMessageType_IMPORT;
+  static const MTCMessageType EXPORT =
+    ManagerToCoreMessage_MTCMessageType_EXPORT;
   static inline bool MTCMessageType_IsValid(int value) {
     return ManagerToCoreMessage_MTCMessageType_IsValid(value);
   }
@@ -1947,6 +2032,18 @@ class ManagerToCoreMessage : public ::google::protobuf::Message /* @@protoc_inse
   ::sm::CoordinatesFilter* release_coordinatesfilter();
   void set_allocated_coordinatesfilter(::sm::CoordinatesFilter* coordinatesfilter);
 
+  // optional string objFilePath = 7;
+  bool has_objfilepath() const;
+  void clear_objfilepath();
+  static const int kObjFilePathFieldNumber = 7;
+  const ::std::string& objfilepath() const;
+  void set_objfilepath(const ::std::string& value);
+  void set_objfilepath(const char* value);
+  void set_objfilepath(const char* value, size_t size);
+  ::std::string* mutable_objfilepath();
+  ::std::string* release_objfilepath();
+  void set_allocated_objfilepath(::std::string* objfilepath);
+
   // @@protoc_insertion_point(class_scope:sm.ManagerToCoreMessage)
  private:
   inline void set_has_messagetype();
@@ -1961,6 +2058,8 @@ class ManagerToCoreMessage : public ::google::protobuf::Message /* @@protoc_inse
   inline void clear_has_qualityfilter();
   inline void set_has_coordinatesfilter();
   inline void clear_has_coordinatesfilter();
+  inline void set_has_objfilepath();
+  inline void clear_has_objfilepath();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
@@ -1970,6 +2069,7 @@ class ManagerToCoreMessage : public ::google::protobuf::Message /* @@protoc_inse
   ::sm::TypesFilter* typesfilter_;
   ::sm::QualityFilter* qualityfilter_;
   ::sm::CoordinatesFilter* coordinatesfilter_;
+  ::google::protobuf::internal::ArenaStringPtr objfilepath_;
   int messagetype_;
   friend void  protobuf_AddDesc_communication_2eproto();
   friend void protobuf_AssignDesc_communication_2eproto();
@@ -2438,6 +2538,60 @@ inline void StatisticsInfo::set_allocated_groupsinfo(::sm::GroupsInfo* groupsinf
   // @@protoc_insertion_point(field_set_allocated:sm.StatisticsInfo.groupsInfo)
 }
 
+// required string treeName = 4;
+inline bool StatisticsInfo::has_treename() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void StatisticsInfo::set_has_treename() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void StatisticsInfo::clear_has_treename() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void StatisticsInfo::clear_treename() {
+  treename_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_treename();
+}
+inline const ::std::string& StatisticsInfo::treename() const {
+  // @@protoc_insertion_point(field_get:sm.StatisticsInfo.treeName)
+  return treename_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StatisticsInfo::set_treename(const ::std::string& value) {
+  set_has_treename();
+  treename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sm.StatisticsInfo.treeName)
+}
+inline void StatisticsInfo::set_treename(const char* value) {
+  set_has_treename();
+  treename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sm.StatisticsInfo.treeName)
+}
+inline void StatisticsInfo::set_treename(const char* value, size_t size) {
+  set_has_treename();
+  treename_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sm.StatisticsInfo.treeName)
+}
+inline ::std::string* StatisticsInfo::mutable_treename() {
+  set_has_treename();
+  // @@protoc_insertion_point(field_mutable:sm.StatisticsInfo.treeName)
+  return treename_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* StatisticsInfo::release_treename() {
+  // @@protoc_insertion_point(field_release:sm.StatisticsInfo.treeName)
+  clear_has_treename();
+  return treename_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void StatisticsInfo::set_allocated_treename(::std::string* treename) {
+  if (treename != NULL) {
+    set_has_treename();
+  } else {
+    clear_has_treename();
+  }
+  treename_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), treename);
+  // @@protoc_insertion_point(field_set_allocated:sm.StatisticsInfo.treeName)
+}
+
 // -------------------------------------------------------------------
 
 // CoreToManagerMessage
@@ -2609,6 +2763,56 @@ inline void OptionsInfo::set_mousesensitivity(double value) {
   set_has_mousesensitivity();
   mousesensitivity_ = value;
   // @@protoc_insertion_point(field_set:sm.OptionsInfo.mouseSensitivity)
+}
+
+// required .sm.ColoringType coloringType = 5;
+inline bool OptionsInfo::has_coloringtype() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void OptionsInfo::set_has_coloringtype() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void OptionsInfo::clear_has_coloringtype() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void OptionsInfo::clear_coloringtype() {
+  coloringtype_ = 1;
+  clear_has_coloringtype();
+}
+inline ::sm::ColoringType OptionsInfo::coloringtype() const {
+  // @@protoc_insertion_point(field_get:sm.OptionsInfo.coloringType)
+  return static_cast< ::sm::ColoringType >(coloringtype_);
+}
+inline void OptionsInfo::set_coloringtype(::sm::ColoringType value) {
+  assert(::sm::ColoringType_IsValid(value));
+  set_has_coloringtype();
+  coloringtype_ = value;
+  // @@protoc_insertion_point(field_set:sm.OptionsInfo.coloringType)
+}
+
+// required .sm.VisualisationMode visualisationMode = 6;
+inline bool OptionsInfo::has_visualisationmode() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void OptionsInfo::set_has_visualisationmode() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void OptionsInfo::clear_has_visualisationmode() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void OptionsInfo::clear_visualisationmode() {
+  visualisationmode_ = 1;
+  clear_has_visualisationmode();
+}
+inline ::sm::VisualisationMode OptionsInfo::visualisationmode() const {
+  // @@protoc_insertion_point(field_get:sm.OptionsInfo.visualisationMode)
+  return static_cast< ::sm::VisualisationMode >(visualisationmode_);
+}
+inline void OptionsInfo::set_visualisationmode(::sm::VisualisationMode value) {
+  assert(::sm::VisualisationMode_IsValid(value));
+  set_has_visualisationmode();
+  visualisationmode_ = value;
+  // @@protoc_insertion_point(field_set:sm.OptionsInfo.visualisationMode)
 }
 
 // -------------------------------------------------------------------
@@ -3224,6 +3428,60 @@ inline void ManagerToCoreMessage::set_allocated_coordinatesfilter(::sm::Coordina
   // @@protoc_insertion_point(field_set_allocated:sm.ManagerToCoreMessage.coordinatesFilter)
 }
 
+// optional string objFilePath = 7;
+inline bool ManagerToCoreMessage::has_objfilepath() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void ManagerToCoreMessage::set_has_objfilepath() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void ManagerToCoreMessage::clear_has_objfilepath() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void ManagerToCoreMessage::clear_objfilepath() {
+  objfilepath_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  clear_has_objfilepath();
+}
+inline const ::std::string& ManagerToCoreMessage::objfilepath() const {
+  // @@protoc_insertion_point(field_get:sm.ManagerToCoreMessage.objFilePath)
+  return objfilepath_.GetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ManagerToCoreMessage::set_objfilepath(const ::std::string& value) {
+  set_has_objfilepath();
+  objfilepath_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
+  // @@protoc_insertion_point(field_set:sm.ManagerToCoreMessage.objFilePath)
+}
+inline void ManagerToCoreMessage::set_objfilepath(const char* value) {
+  set_has_objfilepath();
+  objfilepath_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:sm.ManagerToCoreMessage.objFilePath)
+}
+inline void ManagerToCoreMessage::set_objfilepath(const char* value, size_t size) {
+  set_has_objfilepath();
+  objfilepath_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:sm.ManagerToCoreMessage.objFilePath)
+}
+inline ::std::string* ManagerToCoreMessage::mutable_objfilepath() {
+  set_has_objfilepath();
+  // @@protoc_insertion_point(field_mutable:sm.ManagerToCoreMessage.objFilePath)
+  return objfilepath_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline ::std::string* ManagerToCoreMessage::release_objfilepath() {
+  // @@protoc_insertion_point(field_release:sm.ManagerToCoreMessage.objFilePath)
+  clear_has_objfilepath();
+  return objfilepath_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+}
+inline void ManagerToCoreMessage::set_allocated_objfilepath(::std::string* objfilepath) {
+  if (objfilepath != NULL) {
+    set_has_objfilepath();
+  } else {
+    clear_has_objfilepath();
+  }
+  objfilepath_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), objfilepath);
+  // @@protoc_insertion_point(field_set_allocated:sm.ManagerToCoreMessage.objFilePath)
+}
+
 #endif  // !PROTOBUF_INLINE_NOT_IN_HEADERS
 // -------------------------------------------------------------------
 
@@ -3276,6 +3534,16 @@ template <> struct is_proto_enum< ::sm::ManagerToCoreMessage_MTCMessageType> : :
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::sm::ManagerToCoreMessage_MTCMessageType>() {
   return ::sm::ManagerToCoreMessage_MTCMessageType_descriptor();
+}
+template <> struct is_proto_enum< ::sm::ColoringType> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::sm::ColoringType>() {
+  return ::sm::ColoringType_descriptor();
+}
+template <> struct is_proto_enum< ::sm::VisualisationMode> : ::google::protobuf::internal::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::sm::VisualisationMode>() {
+  return ::sm::VisualisationMode_descriptor();
 }
 template <> struct is_proto_enum< ::sm::ComparisonOperator> : ::google::protobuf::internal::true_type {};
 template <>

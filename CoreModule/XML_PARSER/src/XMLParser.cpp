@@ -31,6 +31,7 @@ XMLParser::XMLParser(string fileName) {
 
     if (!file.is_open()) {
         cerr << "Unable to open user configuration\n";
+        root = NULL;
         return;
     }
 
@@ -85,7 +86,7 @@ XMLNode* XMLParser::getNode(string content) {
                 if (content[index] == '"') {
                     index++;
                 }
-                while(isalnum(content[index])) {
+                while(isalnum(content[index]) || content[index]=='.') {
                     value += content[index++];
                 }
                 if (content[index] == '"') {

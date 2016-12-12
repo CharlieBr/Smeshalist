@@ -1,6 +1,6 @@
 #include "LinuxDataTree.h"
 
-AbstractDataTree* AbstractDataTree::active = new LinuxDataTree();
+AbstractDataTree* AbstractDataTree::active = new LinuxDataTree("ACTIVE");
 
 void LinuxDataTree::LOCK() {
     mtx.lock();
@@ -18,7 +18,10 @@ void LinuxDataTree::sleepThread(int milisec) {
 
 void LinuxDataTree::createNewInstance() {
     LOCK();
-    LinuxDataTree* newInstance = new LinuxDataTree();
+    char title[80];
+    strcpy(title, "PREVIOUS: ");
+    strcat(title, to_string(getNumberOfDataTreeInstances()+1).c_str());
+    LinuxDataTree* newInstance = new LinuxDataTree(title);
 	cloneDataTreeToNewInstance(newInstance);
     UNLOCK();
 }

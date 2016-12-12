@@ -2,3 +2,8 @@
 .metadata
 JavaAPI/.recommenders/
 .recommenders/
+Make/Linux/error.txt
+Make/Linux/info.txt
+Make/Linux/user.config.xml
+Make/Linux/lib/CORE.a
+Make/Linux/CoreModule
