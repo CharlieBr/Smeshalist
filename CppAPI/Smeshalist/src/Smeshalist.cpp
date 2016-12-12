@@ -51,10 +51,6 @@ structDefinitions::Point3D* Smeshalist::GetPoint3D(Point3D &point) const {
 
 }
 
-void Smeshalist::AddGeometry(Point3D &point) {
-	Smeshalist::points3d_to_send.push_front(point);
-}
-
 void Smeshalist::AddGeometry(Vertex &vertex) {
 	Smeshalist::vertexes_to_send.push_front(vertex);
 }
@@ -69,13 +65,6 @@ void Smeshalist::AddGeometry(Face &face) {
 
 void Smeshalist::AddGeometry(Block &block) {
 	Smeshalist::blocks_to_send.push_front(block);
-}
-
-void Smeshalist::ProcessGeometry(Point3D &element, structDefinitions::DataPackage &data_package) const {
-	structDefinitions::Point3D* point3d = data_package.add_points3d();
-	point3d->set_x(element.GetX());
-	point3d->set_y(element.GetY());
-	point3d->set_z(element.GetZ());
 }
 
 void Smeshalist::ProcessGeometry(Vertex &element, structDefinitions::DataPackage &data_package) const {
@@ -166,12 +155,7 @@ void Smeshalist::FlushBuffer() {
 
 		for (int i = 0; i < n_elements_in_package; i++) {
 
-			if (!Smeshalist::points3d_to_send.empty()) {
-				Point3D element = Smeshalist::points3d_to_send.front();
-				Smeshalist::ProcessGeometry(element, data_package);
-				Smeshalist::points3d_to_send.pop_front();
-			}
-			else if (!Smeshalist::vertexes_to_send.empty()) {
+			if (!Smeshalist::vertexes_to_send.empty()) {
 				Vertex element = Smeshalist::vertexes_to_send.front();
 				Smeshalist::ProcessGeometry(element, data_package);
 				Smeshalist::vertexes_to_send.pop_front();

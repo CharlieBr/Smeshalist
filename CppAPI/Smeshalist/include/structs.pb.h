@@ -1119,18 +1119,6 @@ class DataPackage : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // accessors -------------------------------------------------------
 
-  // repeated .structDefinitions.Point3D points3D = 1;
-  int points3d_size() const;
-  void clear_points3d();
-  static const int kPoints3DFieldNumber = 1;
-  const ::structDefinitions::Point3D& points3d(int index) const;
-  ::structDefinitions::Point3D* mutable_points3d(int index);
-  ::structDefinitions::Point3D* add_points3d();
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
-      mutable_points3d();
-  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
-      points3d() const;
-
   // repeated .structDefinitions.Vertex vertexes = 2;
   int vertexes_size() const;
   void clear_vertexes();
@@ -1185,7 +1173,6 @@ class DataPackage : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D > points3d_;
   ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex > vertexes_;
   ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge > edges_;
   ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace > faces_;
@@ -2099,36 +2086,6 @@ inline void Header::set_endofdata(bool value) {
 // -------------------------------------------------------------------
 
 // DataPackage
-
-// repeated .structDefinitions.Point3D points3D = 1;
-inline int DataPackage::points3d_size() const {
-  return points3d_.size();
-}
-inline void DataPackage::clear_points3d() {
-  points3d_.Clear();
-}
-inline const ::structDefinitions::Point3D& DataPackage::points3d(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points3D)
-  return points3d_.Get(index);
-}
-inline ::structDefinitions::Point3D* DataPackage::mutable_points3d(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points3D)
-  return points3d_.Mutable(index);
-}
-inline ::structDefinitions::Point3D* DataPackage::add_points3d() {
-  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.points3D)
-  return points3d_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
-DataPackage::mutable_points3d() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.points3D)
-  return &points3d_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
-DataPackage::points3d() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.points3D)
-  return points3d_;
-}
 
 // repeated .structDefinitions.Vertex vertexes = 2;
 inline int DataPackage::vertexes_size() const {

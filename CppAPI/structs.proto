@@ -40,8 +40,6 @@ message Block {
 	optional Properties prop = 5;
 }
 
-
-
 message MessageInfo {
 	enum Type {
 		DATA = 1;
@@ -62,7 +60,6 @@ message Header{
 }
 
 message DataPackage {	
-	repeated Point3D points3D = 1;
 	repeated Vertex vertexes = 2;
 	repeated Edge edges = 3;
 	repeated TriangleFace faces = 4;
