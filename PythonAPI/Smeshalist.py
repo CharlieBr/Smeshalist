@@ -19,22 +19,6 @@ def getInstance(portNumber):
     dataPackages.append(dataPackage)
 
 
-def addPoint3D(point3D):
-    """Method adds Point3D object point3D to internal data buffer that stores structures to send for visualization"""
-    global structuresRemaining
-    if structuresRemaining ==  0:
-        structuresRemaining = numberOfStructuresToSend 
-        dataPackage = structs_pb2.DataPackage()
-        dataPackages.append(dataPackage)
-
-    structuresRemaining = structuresRemaining -1
-    dataPackage = dataPackages[-1]
-    pointToSend = dataPackage.points3D.add()
-    pointToSend.x = point3D.x
-    pointToSend.y = point3D.y
-    pointToSend.z = point3D.z
-
-
 def addVertex(vertex):
     """Method adds Vertex object vertex to internal data buffer that stores structures to send for visualization"""
     global structuresRemaining
