@@ -6,8 +6,7 @@
 #include <list>
 #include <vector>
 #include <stdio.h>
-#include <GL/glut.h>
-
+#include "print.h"
 #include "Color.h"
 #include "UserPreferencesManager.h"
 

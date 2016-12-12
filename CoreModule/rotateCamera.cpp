@@ -3,8 +3,6 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-#include "print.h"
-
 #define MOUSE_PRECISION 100.0
 #define MOVING_PRECISION 400.0
 #define PI_2 1.57

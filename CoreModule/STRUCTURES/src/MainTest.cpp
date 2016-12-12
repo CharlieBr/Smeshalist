@@ -70,6 +70,8 @@ int main(void){
     ElementsList * edge_list1 = group2 -> get_list("edge");
     assert( edge_list1 != NULL );
 
+    group2 -> set_draw_flag(true);
+
     vector<Element*> * vertices = vertex_list -> get_elements();
     assert( vertices -> size() == 3 );
 
@@ -113,6 +115,13 @@ int main(void){
     vector<Element*> * edges2 = edge_list2 -> get_elements();
     assert( edges2 -> size() == 2 );
 
+    group1 -> set_draw_flag(true);
+    group2 -> set_draw_flag(true);
+    edge_list1 -> set_draw_flag(true);
+    edge_list2 -> set_draw_flag(true);
+    vertex_list -> set_draw_flag(true);
+
+    data -> count_visible_elements();
     Statistics statistics = data -> get_statistics();
 
     assert( statistics.all_elements_numbers["all"] == 6 );
@@ -126,6 +135,7 @@ int main(void){
     group1 -> set_draw_flag(false);
     data -> count_visible_elements();
     statistics = data -> get_statistics();
+
     assert( statistics.visible_elements_numbers["all"] == 4);
     assert( statistics.visible_elements_numbers["vertex"] == 3 );
     assert( statistics.visible_elements_numbers["edge"] == 1 );
@@ -185,7 +195,6 @@ int main(void){
     assert( statistics.visible_elements_numbers["edge"] == 4 );
 
     //cleaning
-    data -> draw_elements();
     data -> clean();
 
     vertex = nullptr;
