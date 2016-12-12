@@ -294,17 +294,18 @@ void protobuf_AddDesc_structs_2eproto() {
     "int3D\022&\n\002v3\030\003 \002(\0132\032.structDefinitions.Po"
     "int3D\022&\n\002v4\030\004 \002(\0132\032.structDefinitions.Po"
     "int3D\022+\n\004prop\030\005 \001(\0132\035.structDefinitions."
-    "Properties\"\236\001\n\013MessageInfo\0221\n\004type\030\001 \002(\016"
-    "2#.structDefinitions.MessageInfo.Type\"\\\n"
+    "Properties\"\274\001\n\013MessageInfo\0221\n\004type\030\001 \002(\016"
+    "2#.structDefinitions.MessageInfo.Type\"z\n"
     "\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDER\020\002\022\016\n\nBREAKPOIN"
     "T\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010REJECTED\020\005\022\007\n\003ACK\020\006"
-    "\022\t\n\005CLEAN\020\007\"/\n\006Header\022\022\n\nsizeOfData\030\001 \002("
-    "\005\022\021\n\tendOfData\030\007 \002(\010\"\274\001\n\013DataPackage\022+\n\010"
-    "vertexes\030\002 \003(\0132\031.structDefinitions.Verte"
-    "x\022&\n\005edges\030\003 \003(\0132\027.structDefinitions.Edg"
-    "e\022.\n\005faces\030\004 \003(\0132\037.structDefinitions.Tri"
-    "angleFace\022(\n\006blocks\030\005 \003(\0132\030.structDefini"
-    "tions.Block", 1171);
+    "\022\t\n\005CLEAN\020\007\022\016\n\nHARD_RESET\020\010\022\014\n\010NO_RESET\020"
+    "\t\"/\n\006Header\022\022\n\nsizeOfData\030\001 \002(\005\022\021\n\tendOf"
+    "Data\030\007 \002(\010\"\274\001\n\013DataPackage\022+\n\010vertexes\030\002"
+    " \003(\0132\031.structDefinitions.Vertex\022&\n\005edges"
+    "\030\003 \003(\0132\027.structDefinitions.Edge\022.\n\005faces"
+    "\030\004 \003(\0132\037.structDefinitions.TriangleFace\022"
+    "(\n\006blocks\030\005 \003(\0132\030.structDefinitions.Bloc"
+    "k", 1201);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "structs.proto", &protobuf_RegisterTypes);
   Properties::default_instance_ = new Properties();
@@ -3392,6 +3393,8 @@ bool MessageInfo_Type_IsValid(int value) {
     case 5:
     case 6:
     case 7:
+    case 8:
+    case 9:
       return true;
     default:
       return false;
@@ -3406,6 +3409,8 @@ const MessageInfo_Type MessageInfo::ACCEPTED;
 const MessageInfo_Type MessageInfo::REJECTED;
 const MessageInfo_Type MessageInfo::ACK;
 const MessageInfo_Type MessageInfo::CLEAN;
+const MessageInfo_Type MessageInfo::HARD_RESET;
+const MessageInfo_Type MessageInfo::NO_RESET;
 const MessageInfo_Type MessageInfo::Type_MIN;
 const MessageInfo_Type MessageInfo::Type_MAX;
 const int MessageInfo::Type_ARRAYSIZE;
