@@ -34,7 +34,7 @@ float cameraLookAtX=0, cameraLookAtY=0, cameraLookAtZ=0;
 
 bool isShiftPressed = false;
 bool isLeftMouseButtonPressed = false;
-bool isOrtho = false;
+bool switchView = false;
 
 AbstractDataTree* d = NULL;
 AbstractServer* server = NULL;
@@ -58,10 +58,6 @@ void computeCameraPosition() {
 }
 
 void setPerspective() {
-    isOrtho = false;
-    deltaAngleX = 0.8;
-    deltaAngleY = 0.8;
-    computeCameraPosition();
     glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glViewport(0, 0, screenWidth, screenHeight);
@@ -78,7 +74,6 @@ void refreshOrthoSettings() {
 }
 
 void setOrtho() {
-    isOrtho = true;
     deltaAngleX = PI_2;
     deltaAngleY = 0;
     computeCameraPosition();
@@ -94,7 +89,7 @@ void changeSize(int w, int h) {
 
 	screenRatio =  w * 1.0 / h;
 
-    if (isOrtho) {
+    if (server -> isOrthoViewSet()) {
         refreshOrthoSettings();
     } else {
         setPerspective();
@@ -164,6 +159,15 @@ void renderScene(void) {
 	glClearColor(backgroundColor.r(), backgroundColor.g(), backgroundColor.b(), 1);
     glClear(GL_COLOR_BUFFER_BIT);
 
+    if (switchView) {
+        switchView = false;
+        if (server -> isOrthoViewSet()) {
+            setOrtho();
+        } else {
+            setPerspective();
+        }
+    }
+
 	glLoadIdentity();
 	gluLookAt(cameraX, cameraY, cameraZ, cameraLookAtX, cameraLookAtY, cameraLookAtZ, 0.0f, 1.0f, 0.0f);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
@@ -193,7 +197,7 @@ void mouseMove(int x, int y) {
         cameraLookAtX -= translationX * sin(deltaAngleX) - translationY*sin(deltaAngleY)*cos(deltaAngleX);
         cameraLookAtY -= translationY * cos(deltaAngleY);
         cameraLookAtZ += translationX * cos(deltaAngleX) + translationY*sin(deltaAngleY)*sin(deltaAngleX);
-    } else if (!isOrtho){
+    } else if (!server -> isOrthoViewSet()){
         deltaAngleX += mouseSensitivity * (x-oldMousePositionX) / MOUSE_PRECISION;
         deltaAngleY += mouseSensitivity * (y-oldMousePositionY) / MOUSE_PRECISION;
 
@@ -234,7 +238,7 @@ void mouseButton(int button, int state, int x, int y) {
             radius/=std::pow(0.9, mouseSensitivity);
         }
 	//}
-	if (isOrtho) {
+	if (server -> isOrthoViewSet()) {
         refreshOrthoSettings();
 	}
 

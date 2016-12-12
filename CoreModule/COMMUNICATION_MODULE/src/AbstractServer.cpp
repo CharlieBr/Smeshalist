@@ -1,8 +1,7 @@
 #include "AbstractServer.h"
 
 bool transparentStructures = false;
-extern void setOrtho();
-extern void setPerspective();
+extern bool switchView;
 
 void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
     if (this->handler != NULL) {
@@ -14,6 +13,10 @@ void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
 
 void AbstractServer::registerMouseSensitivityHandler(float* pointer) {
     mouseSensitivity = pointer;
+}
+
+bool AbstractServer::isOrthoViewSet() {
+    return isOrtho;
 }
 
 void AbstractServer::setDynamicRendering(bool flag)
@@ -267,10 +270,12 @@ void AbstractServer::processOptionDataPackage(sm::ManagerToCoreMessage* message)
     Element::setColoringBuQuality(coloringType == sm::ColoringType::QUALITY_COLORING);
 
     sm::VisualisationMode mode = options.visualisationmode();
-    if (mode == sm::VisualisationMode::MODE_2D) {
-        setOrtho();
-    } else {
-        setPerspective();
+    if (mode == sm::VisualisationMode::MODE_2D && !isOrtho) {
+        switchView = true;
+        isOrtho = true;
+    } else if (mode == sm::VisualisationMode::MODE_3D && isOrtho) {
+        switchView = true;
+        isOrtho = false;
     }
 }
 

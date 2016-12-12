@@ -48,6 +48,7 @@ class AbstractServer
 		void sendElementsBufferToTree();
 		void sendStatistics();
 		void sendStatisticsOfCurrentlyVisibleTree();
+		bool isOrthoViewSet();
     protected:
         virtual int getBytesFromSocket(char[], int) = 0;
         virtual int sendBytesToSocket(char[], int) = 0;
@@ -92,6 +93,7 @@ class AbstractServer
         Label getLabel(string);
 		map<int, map<string, vector<Element*>>> elementsBuffer;
 		bool dynamicRendering = true;
+		bool isOrtho = false;
 };
 
 #endif // ABSTRACTSERVER_H
