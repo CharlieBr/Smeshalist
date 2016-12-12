@@ -14,7 +14,7 @@ class OBJImporter
 {
     public:
         OBJImporter();
-        void loadOBJFile(const char* path, AbstractDataTree* handler);
+        void loadOBJFile(Data* handler, string path);
     protected:
     private:
         vector<Point3D*> vertices;

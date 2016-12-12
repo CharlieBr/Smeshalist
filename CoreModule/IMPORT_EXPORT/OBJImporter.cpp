@@ -6,7 +6,7 @@ OBJImporter::OBJImporter()
 }
 
 
-void OBJImporter::loadOBJFile(const char* path, AbstractDataTree* handler){
+void OBJImporter::loadOBJFile(Data* handler, string path){
 
     FILE* importedFile = fopen(path, "r");
     if(importedFile == NULL){
