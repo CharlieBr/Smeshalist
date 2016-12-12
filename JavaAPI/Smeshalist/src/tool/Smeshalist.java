@@ -57,26 +57,30 @@ public class Smeshalist {
 
 	/**
 	 * 
+	 * @param hardReset flag which indicates if data should be reset in Core
 	 * @return instance of Smeshalist. Tool is using localhost:8383 address to
 	 *         connect to main window
 	 */
-	public static Smeshalist getInstance() {
+	public static Smeshalist getInstance(boolean hardReset) {
 		if(Objects.isNull(instance)){
 			instance = new Smeshalist(8383);
 		}
 		
+		instance.sendHardReset(hardReset);		
 		return instance;
 	}
 	
 	/**
 	 * 
 	 * @param portNumber
+	 * @param hardReset flag which indicates if data should be reset in Core
 	 * @return instance of Smeshalist class. Tool is using port of given number to connect to main window
 	 */
-	public static Smeshalist getInstance(int portNumber){
+	public static Smeshalist getInstance(int portNumber, boolean hardReset){
 		if(Objects.isNull(instance)){
 			instance = new Smeshalist(portNumber);
 		}
+		instance.sendHardReset(hardReset);
 		return instance;
 	}
 
@@ -367,6 +371,45 @@ public class Smeshalist {
 		} catch (IOException e) {
 			logger.error(e.getMessage());
 		}
+	}
+	
+	
+	private void sendHardReset(boolean hardReset){
+		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
+		MessageInfo.Builder builder = MessageInfo.newBuilder();
+		if(hardReset){
+			builder.setType(Type.HARD_RESET);
+		} else {
+			builder.setType(Type.NO_RESET);
+		}
+		
+		MessageInfo message = builder.build();
+		try {
+			message.writeTo(aOutput);
+			byte[] bytes = aOutput.toByteArray();
+			DatagramPacket packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
+			socket.send(packet);
+			aOutput.close();
+
+			byte[] responseBytes = new byte[10];
+			DatagramPacket response = new DatagramPacket(responseBytes, responseBytes.length);
+			socket.receive(response);
+
+			byte[] trimResponse = new byte[response.getLength()];
+			for (int i=0; i<response.getLength(); i++) {
+				trimResponse[i] = responseBytes[i];
+			}
+			
+			MessageInfo feedback = MessageInfo.parseFrom(trimResponse);
+			if(feedback.getType() != Type.ACK){
+				System.exit(0);
+			}
+			
+		} catch(IOException e){
+			logger.error(e.getMessage());
+			
+		}
+		
 	}
 
 	

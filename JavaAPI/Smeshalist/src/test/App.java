@@ -11,7 +11,7 @@ import tool.Smeshalist;
 public class App {
 
 	public static void main(String[] args) {
-		Smeshalist tool = Smeshalist.getInstance(8383);
+		Smeshalist tool = Smeshalist.getInstance(true);
 		Random r = new Random();
 
 

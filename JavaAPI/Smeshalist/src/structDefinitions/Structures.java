@@ -5743,6 +5743,14 @@ public final class Structures {
        * <code>CLEAN = 7;</code>
        */
       CLEAN(7),
+      /**
+       * <code>HARD_RESET = 8;</code>
+       */
+      HARD_RESET(8),
+      /**
+       * <code>NO_RESET = 9;</code>
+       */
+      NO_RESET(9),
       ;
 
       /**
@@ -5773,6 +5781,14 @@ public final class Structures {
        * <code>CLEAN = 7;</code>
        */
       public static final int CLEAN_VALUE = 7;
+      /**
+       * <code>HARD_RESET = 8;</code>
+       */
+      public static final int HARD_RESET_VALUE = 8;
+      /**
+       * <code>NO_RESET = 9;</code>
+       */
+      public static final int NO_RESET_VALUE = 9;
 
 
       public final int getNumber() {
@@ -5796,6 +5812,8 @@ public final class Structures {
           case 5: return REJECTED;
           case 6: return ACK;
           case 7: return CLEAN;
+          case 8: return HARD_RESET;
+          case 9: return NO_RESET;
           default: return null;
         }
       }
@@ -8648,15 +8666,16 @@ public final class Structures {
       "\013.Properties\"z\n\005Block\022\024\n\002v1\030\001 \002(\0132\010.Poin",
       "t3D\022\024\n\002v2\030\002 \002(\0132\010.Point3D\022\024\n\002v3\030\003 \002(\0132\010." +
       "Point3D\022\024\n\002v4\030\004 \002(\0132\010.Point3D\022\031\n\004prop\030\005 " +
-      "\001(\0132\013.Properties\"\214\001\n\013MessageInfo\022\037\n\004type" +
-      "\030\001 \002(\0162\021.MessageInfo.Type\"\\\n\004Type\022\010\n\004DAT" +
+      "\001(\0132\013.Properties\"\252\001\n\013MessageInfo\022\037\n\004type" +
+      "\030\001 \002(\0162\021.MessageInfo.Type\"z\n\004Type\022\010\n\004DAT" +
       "A\020\001\022\n\n\006RENDER\020\002\022\016\n\nBREAKPOINT\020\003\022\014\n\010ACCEP" +
-      "TED\020\004\022\014\n\010REJECTED\020\005\022\007\n\003ACK\020\006\022\t\n\005CLEAN\020\007\"" +
-      "/\n\006Header\022\022\n\nsizeOfData\030\001 \002(\005\022\021\n\tendOfDa" +
-      "ta\030\007 \002(\010\"t\n\013DataPackage\022\031\n\010vertexes\030\002 \003(" +
-      "\0132\007.Vertex\022\024\n\005edges\030\003 \003(\0132\005.Edge\022\034\n\005face" +
-      "s\030\004 \003(\0132\r.TriangleFace\022\026\n\006blocks\030\005 \003(\0132\006",
-      ".BlockB\037\n\021structDefinitionsB\nStructures"
+      "TED\020\004\022\014\n\010REJECTED\020\005\022\007\n\003ACK\020\006\022\t\n\005CLEAN\020\007\022" +
+      "\016\n\nHARD_RESET\020\010\022\014\n\010NO_RESET\020\t\"/\n\006Header\022" +
+      "\022\n\nsizeOfData\030\001 \002(\005\022\021\n\tendOfData\030\007 \002(\010\"t" +
+      "\n\013DataPackage\022\031\n\010vertexes\030\002 \003(\0132\007.Vertex" +
+      "\022\024\n\005edges\030\003 \003(\0132\005.Edge\022\034\n\005faces\030\004 \003(\0132\r.",
+      "TriangleFace\022\026\n\006blocks\030\005 \003(\0132\006.BlockB\037\n\021" +
+      "structDefinitionsB\nStructures"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
