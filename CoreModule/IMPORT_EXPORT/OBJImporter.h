@@ -22,7 +22,7 @@ class OBJImporter
         vector<Face*> faces;
         vector<Block*> blocks;
         vector<int> verticesIndexes;
-        void addToStructuresTree(AbstractDataTree* handler);
+        void addToStructuresTree(Data* handler);
 
 
 };

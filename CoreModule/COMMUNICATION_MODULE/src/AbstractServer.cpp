@@ -166,7 +166,7 @@ void AbstractServer::processDataImportMessage(sm::ManagerToCoreMessage* message)
     AbstractDataTree* active = AbstractDataTree::getActiveDataTree();
 
     //lock should no to set - it is use during adding elements to data tree
-    importer.loadOBJFile(file.c_str(), active);
+    importer.loadOBJFile(active, file);
 
     AbstractDataTree::recomputeIntersectionPointsInVisibleTree();
 	if (AbstractDataTree::isActiveTreeVisible()) {
@@ -418,7 +418,6 @@ void AbstractServer::getDataPackages() {
             continue;
         }
 
-        parsePoint3DSet(&package);
         parseVertexSet(&package);
         parseEdgeSet(&package);
         parseTriangleFaceSet(&package);
@@ -476,15 +475,6 @@ void AbstractServer::parseEdgeSet(structDefinitions::DataPackage* dataPackage) {
 
         Edge* edge = new Edge(&points, label, prop.quality());
 		elementsBuffer[prop.groupid()][edge->get_type()].push_back(edge);
-    }
-}
-
-void AbstractServer::parsePoint3DSet(structDefinitions::DataPackage* dataPackage) {
-    for (int i=0; i<dataPackage->points3d_size(); i++) {
-        const structDefinitions::Point3D p = dataPackage->points3d(i);
-
-        Vertex* v = new Vertex(parsePoint(&p));
-		elementsBuffer[0][v->get_type()].push_back(v);
     }
 }
 

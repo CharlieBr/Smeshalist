@@ -8,7 +8,7 @@ OBJImporter::OBJImporter()
 
 void OBJImporter::loadOBJFile(Data* handler, string path){
 
-    FILE* importedFile = fopen(path, "r");
+    FILE* importedFile = fopen(path.c_str(), "r");
     if(importedFile == NULL){
         cerr<<"Error opening imported OBJ file !"<<endl;
         return;
@@ -180,7 +180,6 @@ void OBJImporter::loadOBJFile(Data* handler, string path){
             if(objectVertices.size() == 0){
                 for(int i=0; i<4; i++){
                     points.push_back(*vertices.at(objectVerticesIndexes.at(i)-1));
-                    Point3D* vertex = vertices.at(objectVerticesIndexes.at(i)-1);
                     verticesIndexes.push_back(objectVerticesIndexes.at(i)-1);
                 }
             } else {
@@ -215,8 +214,8 @@ void OBJImporter::loadOBJFile(Data* handler, string path){
 
 
 
-void OBJImporter::addToStructuresTree(AbstractDataTree* handler){
-    for(int i=0; i<vertices.size(); i++){
+void OBJImporter::addToStructuresTree(Data* handler){
+    for(unsigned int i=0; i<vertices.size(); i++){
         if(std::find(verticesIndexes.begin(), verticesIndexes.end(), i) == verticesIndexes.end()){
             Vertex* vertex = new Vertex(*vertices.at(i));
             handler->add(0, vertex);
