@@ -55,10 +55,14 @@ void Face::draw(Color color){
             glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
         glEnd();
         glDisable(GL_LIGHTING);
+
+        //set color of edges
+        glColor3f(0.0f, 0.0f, 0.0f);
+    } else {
+        setElementColor(color);
     }
 
     glEnable(GL_POLYGON_OFFSET_LINE);
-    glColor3f(0.0f, 0.0f, 0.0f);
     glPolygonOffset(-1,-1);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -110,10 +114,14 @@ void Block::draw(Color color){
             glVertex3f(v3.get_x(), v3.get_y(), v3.get_z());
         glEnd();
         glDisable(GL_LIGHTING);
+
+        //set color of edges
+        glColor3f(0.0f, 0.0f, 0.0f);
+    } else {
+        setElementColor(color);
     }
 
     glEnable(GL_POLYGON_OFFSET_LINE);
-    glColor3f(0.0f, 0.0f, 0.0f);
     glPolygonOffset(-1,-1);
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glBegin(GL_TRIANGLES);
