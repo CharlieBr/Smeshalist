@@ -26,6 +26,10 @@ void Vertex::draw(Color color){
     glBegin(GL_POINTS);
         glVertex3f(point.get_x(), point.get_y(), point.get_z());
     glEnd();
+
+    glColor3d(color.r(), color.b(), color.g());
+    glRasterPos3d(point.get_x(), point.get_y() + 0.01, point.get_z());
+    print::printStringFont10(this -> label.get_label_text().c_str());
 }
 
 void Edge::draw(Color color){

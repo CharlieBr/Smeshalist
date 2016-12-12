@@ -36,7 +36,7 @@ class Point3D {
 // ------ element additional attribute -------
 // -------------------------------------------
 class Label {
-    string text;
+    string text = "";
 
     public:
         Label(){};

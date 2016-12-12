@@ -9,8 +9,10 @@
 class print {
     public:
         static void printString(const char* format, ...);
+        static void printStringFont10(const char* format, ...);
     private:
         static void printv(va_list args, const char* format);
+        static void printFont10(va_list args, const char* format);
         static void printAt(int x, int y, const char* format, ...);
         static void errCheck(char* where);
 };
