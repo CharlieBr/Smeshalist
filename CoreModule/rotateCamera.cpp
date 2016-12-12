@@ -3,7 +3,7 @@
 #define _USE_MATH_DEFINES
 #include <cmath>
 
-#include <GL/glut.h>
+#include "print.h"
 
 #define MOUSE_PRECISION 100.0
 #define MOVING_PRECISION 400.0
@@ -123,7 +123,21 @@ void drawLine(  double x0, double y0, double z0,
 void drawOrigin() {
     drawLine(-2,0,0,  2,0,0,  BLACK,  xAxis,  1);
     drawLine(0,-2,0,  0,2,0,  BLACK,  yAxis,  1);
-    drawLine(0,0,-2,  0,0,2,  BLACK,  zAxis,  1);
+
+    if (!server -> isOrthoViewSet()) {
+        drawLine(0,0,-2,  0,0,2,  BLACK,  zAxis,  1);
+        glColor3d(yAxis.r(), yAxis.g(), yAxis.b());
+        glRasterPos3d(0,0,2);
+        print::printString("Z");
+    }
+
+    glColor3d(zAxis.r(), zAxis.g(), zAxis.b());
+    glRasterPos3d(2,0,0);
+    print::printString("X");
+
+    glColor3d(xAxis.r(), xAxis.g(), xAxis.b());
+    glRasterPos3d(0,2,0);
+    print::printString("Y");
 }
 
 void drawBoundingBox(AbstractDataTree* d) {
