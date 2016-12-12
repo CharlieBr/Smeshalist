@@ -65,7 +65,6 @@ message Header{
 
 message DataPackage {
 	
-	repeated Point3D points3D = 1;
 	repeated Vertex vertexes = 2;
 	repeated Edge edges = 3;
 	repeated TriangleFace faces = 4;

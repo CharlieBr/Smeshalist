@@ -87,14 +87,6 @@ public class Smeshalist {
 		instance.socket.close();
 	}
 
-	/**
-	 * 
-	 * @param point Point3D structure
-	 * Method adds Point3D structure to internal data buffer that stores structures to send for visualization 
-	 */
-	public void addGeometry(geometry.Point3D point) {
-		structuresToSend.add(SmeshalistHelper.convertToPoint3D(point));
-	}
 
 	/**
 	 * 
@@ -218,10 +210,7 @@ public class Smeshalist {
 					
 					
 					for (Object structure: toBeSent){
-						if (structure instanceof Point3D){
-							dataPackageBuilder.addPoints3D((Point3D)structure);
-						} 
-						else if (structure instanceof Vertex){
+						if (structure instanceof Vertex){
 							dataPackageBuilder.addVertexes((Vertex)structure);
 						}
 						else if (structure instanceof Edge){
