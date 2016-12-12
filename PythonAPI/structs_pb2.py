@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='structs.proto',
   package='structDefinitions',
   syntax='proto2',
-  serialized_pb=_b('\n\rstructs.proto\x12\x11structDefinitions\"=\n\nProperties\x12\x0f\n\x07quality\x18\x01 \x01(\x01\x12\r\n\x05label\x18\x02 \x01(\t\x12\x0f\n\x07groupId\x18\x03 \x01(\x05\"*\n\x07Point3D\x12\t\n\x01x\x18\x01 \x02(\x01\x12\t\n\x01y\x18\x02 \x02(\x01\x12\t\n\x01z\x18\x03 \x02(\x01\"`\n\x06Vertex\x12)\n\x05point\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x03 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\x83\x01\n\x04\x45\x64ge\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x03 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\xb3\x01\n\x0cTriangleFace\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v3\x18\x03 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x04 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\xd4\x01\n\x05\x42lock\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v3\x18\x03 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v4\x18\x04 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x05 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\x9e\x01\n\x0bMessageInfo\x12\x31\n\x04type\x18\x01 \x02(\x0e\x32#.structDefinitions.MessageInfo.Type\"\\\n\x04Type\x12\x08\n\x04\x44\x41TA\x10\x01\x12\n\n\x06RENDER\x10\x02\x12\x0e\n\nBREAKPOINT\x10\x03\x12\x0c\n\x08\x41\x43\x43\x45PTED\x10\x04\x12\x0c\n\x08REJECTED\x10\x05\x12\x07\n\x03\x41\x43K\x10\x06\x12\t\n\x05\x43LEAN\x10\x07\"/\n\x06Header\x12\x12\n\nsizeOfData\x18\x01 \x02(\x05\x12\x11\n\tendOfData\x18\x07 \x02(\x08\"\xbc\x01\n\x0b\x44\x61taPackage\x12+\n\x08vertexes\x18\x02 \x03(\x0b\x32\x19.structDefinitions.Vertex\x12&\n\x05\x65\x64ges\x18\x03 \x03(\x0b\x32\x17.structDefinitions.Edge\x12.\n\x05\x66\x61\x63\x65s\x18\x04 \x03(\x0b\x32\x1f.structDefinitions.TriangleFace\x12(\n\x06\x62locks\x18\x05 \x03(\x0b\x32\x18.structDefinitions.Block')
+  serialized_pb=_b('\n\rstructs.proto\x12\x11structDefinitions\"=\n\nProperties\x12\x0f\n\x07quality\x18\x01 \x01(\x01\x12\r\n\x05label\x18\x02 \x01(\t\x12\x0f\n\x07groupId\x18\x03 \x01(\x05\"*\n\x07Point3D\x12\t\n\x01x\x18\x01 \x02(\x01\x12\t\n\x01y\x18\x02 \x02(\x01\x12\t\n\x01z\x18\x03 \x02(\x01\"`\n\x06Vertex\x12)\n\x05point\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x03 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\x83\x01\n\x04\x45\x64ge\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x03 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\xb3\x01\n\x0cTriangleFace\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v3\x18\x03 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x04 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\xd4\x01\n\x05\x42lock\x12&\n\x02v1\x18\x01 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v2\x18\x02 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v3\x18\x03 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12&\n\x02v4\x18\x04 \x02(\x0b\x32\x1a.structDefinitions.Point3D\x12+\n\x04prop\x18\x05 \x01(\x0b\x32\x1d.structDefinitions.Properties\"\xbc\x01\n\x0bMessageInfo\x12\x31\n\x04type\x18\x01 \x02(\x0e\x32#.structDefinitions.MessageInfo.Type\"z\n\x04Type\x12\x08\n\x04\x44\x41TA\x10\x01\x12\n\n\x06RENDER\x10\x02\x12\x0e\n\nBREAKPOINT\x10\x03\x12\x0c\n\x08\x41\x43\x43\x45PTED\x10\x04\x12\x0c\n\x08REJECTED\x10\x05\x12\x07\n\x03\x41\x43K\x10\x06\x12\t\n\x05\x43LEAN\x10\x07\x12\x0e\n\nHARD_RESET\x10\x08\x12\x0c\n\x08NO_RESET\x10\t\"/\n\x06Header\x12\x12\n\nsizeOfData\x18\x01 \x02(\x05\x12\x11\n\tendOfData\x18\x07 \x02(\x08\"\xbc\x01\n\x0b\x44\x61taPackage\x12+\n\x08vertexes\x18\x02 \x03(\x0b\x32\x19.structDefinitions.Vertex\x12&\n\x05\x65\x64ges\x18\x03 \x03(\x0b\x32\x17.structDefinitions.Edge\x12.\n\x05\x66\x61\x63\x65s\x18\x04 \x03(\x0b\x32\x1f.structDefinitions.TriangleFace\x12(\n\x06\x62locks\x18\x05 \x03(\x0b\x32\x18.structDefinitions.Block')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -59,11 +59,19 @@ _MESSAGEINFO_TYPE = _descriptor.EnumDescriptor(
       name='CLEAN', index=6, number=7,
       options=None,
       type=None),
+    _descriptor.EnumValueDescriptor(
+      name='HARD_RESET', index=7, number=8,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NO_RESET', index=8, number=9,
+      options=None,
+      type=None),
   ],
   containing_type=None,
   options=None,
   serialized_start=839,
-  serialized_end=931,
+  serialized_end=961,
 )
 _sym_db.RegisterEnumDescriptor(_MESSAGEINFO_TYPE)
 
@@ -380,7 +388,7 @@ _MESSAGEINFO = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=773,
-  serialized_end=931,
+  serialized_end=961,
 )
 
 
@@ -417,8 +425,8 @@ _HEADER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=933,
-  serialized_end=980,
+  serialized_start=963,
+  serialized_end=1010,
 )
 
 
@@ -469,8 +477,8 @@ _DATAPACKAGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=983,
-  serialized_end=1171,
+  serialized_start=1013,
+  serialized_end=1201,
 )
 
 _VERTEX.fields_by_name['point'].message_type = _POINT3D

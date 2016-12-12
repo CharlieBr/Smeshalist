@@ -11,12 +11,36 @@ numberOfStructuresToSend = 200
 structuresRemaining = numberOfStructuresToSend
 dataPackages = []
 
-def getInstance(portNumber):
-    """Return instance of Smeshalist class. Tool is using port of given number to connect to main window"""
+def getInstance(portNumber, hardReset):
+    """Return instance of Smeshalist class. Tool is using port of given number to connect to main window. hardReset flag indicates if data should be reset in Core"""
     global port
     port = portNumber
     dataPackage = structs_pb2.DataPackage()
     dataPackages.append(dataPackage)
+
+    try:
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        # Send 
+        message = structs_pb2.MessageInfo()
+        if hardReset == True:
+            message.type = structs_pb2.MessageInfo.HARD_RESET
+        else :
+            message.type = structs_pb2.MessageInfo.NO_RESET
+        bytesToSend =  message.SerializeToString()
+        sent = sock.sendto(bytesToSend, (IPAdress, port))   
+
+
+        # Receive acknowledge
+        data, addr = sock.recvfrom(10)
+        reply = structs_pb2.MessageInfo()
+        reply.ParseFromString(data)
+
+        if reply.type != structs_pb2.MessageInfo.ACK:
+            sock.close()
+            exit()                    
+
+    finally:
+        sock.close()
 
 
 def addVertex(vertex):
@@ -201,6 +225,7 @@ def render():
         sock.close()
 
 
+
 def clean():
     """Method forces deleting all data from data structure tree in main window without affecting taken snapshots."""
     try:
@@ -223,3 +248,5 @@ def clean():
 
     finally:
         sock.close()
+    
+    

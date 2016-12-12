@@ -53,6 +53,8 @@ message MessageInfo {
 		REJECTED = 5;
 		ACK = 6;
 		CLEAN = 7;
+		HARD_RESET = 8;
+		NO_RESET = 9;
 	}
 	
 	required Type type = 1;

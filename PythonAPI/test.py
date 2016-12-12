@@ -2,7 +2,7 @@ import Smeshalist
 import geometry
 import random 
 
-Smeshalist.getInstance(8383)
+Smeshalist.getInstance(8383, False)
 
 counter = 0
 while counter < 1000:
