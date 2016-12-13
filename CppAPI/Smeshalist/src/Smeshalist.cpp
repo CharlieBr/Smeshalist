@@ -28,16 +28,11 @@ Smeshalist& Smeshalist::GetInstance() {
 	static Smeshalist INSTANCE;
 
 	INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_NO_RESET);
-	try {
-		structDefinitions::MessageInfo ack_message_info = INSTANCE.receiveMessageInfo();
 
-		if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
-			cerr << "No ACK received!" << endl;
-		}
-	}
-	catch (string e) {
-		cerr << e;
-		exit(-1);
+	structDefinitions::MessageInfo ack_message_info = INSTANCE.receiveMessageInfo();
+
+	if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
+		cerr << "No ACK received!" << endl;
 	}
 
 	return INSTANCE;
