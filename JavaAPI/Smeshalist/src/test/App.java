@@ -60,9 +60,9 @@ public class App {
 		System.out.println("Render..");
 		tool.render();
 		System.out.println("Po render...");
-		/*System.out.println("Breakpoint...");
+		System.out.println("Breakpoint...");
 		tool.breakpoint();
-		System.out.println("Destroy...");*/
+		//System.out.println("Destroy...");*/
 		//tool.clean();
 		Smeshalist.destroySmeshalist();
 		
