@@ -26,11 +26,75 @@ Smeshalist::~Smeshalist() {
 
 Smeshalist& Smeshalist::GetInstance() {
 	static Smeshalist INSTANCE;
+	
+	INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_NO_RESET);
+	try {
+		structDefinitions::MessageInfo ack_message_info = INSTANCE.receiveMessageInfo();
+
+		if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
+			cerr << "No ACK received!" << endl;
+		}
+	}
+	catch (string e) {
+		cerr << e;
+		exit(-1);
+	}
+	
 	return INSTANCE;
 }
 
 Smeshalist& Smeshalist::GetInstance(int port_number) {
 	static Smeshalist INSTANCE(port_number);
+	
+	INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_NO_RESET);
+	structDefinitions::MessageInfo ack_message_info = INSTANCE.receiveMessageInfo();
+
+	if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
+		cerr << "No ACK received!" << endl;
+	}
+	
+	return INSTANCE;
+}
+
+Smeshalist & Smeshalist::GetInstance(bool hard_reset) {
+	static Smeshalist INSTANCE;
+	char in_buffer[BUFFER_SIZE];
+	int n_bytes;
+	
+	if (hard_reset) {
+		INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_HARD_RESET);
+	}
+	else {
+		INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_NO_RESET);
+	}
+
+	structDefinitions::MessageInfo ack_message_info = INSTANCE.receiveMessageInfo();
+
+	if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
+		cerr << "No ACK received!" << endl;
+	}
+	
+	return INSTANCE;
+}
+
+Smeshalist & Smeshalist::GetInstance(int port_number, bool hard_reset) {
+	static Smeshalist INSTANCE(port_number);
+	char in_buffer[BUFFER_SIZE];
+	int n_bytes;
+	
+	if (hard_reset) {
+		INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_HARD_RESET);
+	}
+	else {
+		INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_NO_RESET);
+	}
+
+	structDefinitions::MessageInfo ack_message_info = INSTANCE.receiveMessageInfo();
+
+	if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
+		cerr << "No ACK received!" << endl;
+	}
+	
 	return INSTANCE;
 }
 
@@ -82,6 +146,7 @@ void Smeshalist::ProcessGeometry(Edge &element, structDefinitions::DataPackage &
 	edge->set_allocated_v2(GetPoint3D(v2));
 	edge->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
 }
+
 void Smeshalist::ProcessGeometry(Face &element, structDefinitions::DataPackage &data_package) const {
 	structDefinitions::TriangleFace* face = data_package.add_faces();
 	Point3D v1 = element.GetV1();
@@ -92,6 +157,7 @@ void Smeshalist::ProcessGeometry(Face &element, structDefinitions::DataPackage &
 	face->set_allocated_v3(GetPoint3D(v3));
 	face->set_allocated_prop(GetProperties(element.GetGroupId(), element.GetLabel(), element.GetQuality()));
 }
+
 void Smeshalist::ProcessGeometry(Block &element, structDefinitions::DataPackage &data_package) const {
 	structDefinitions::Block* block = data_package.add_blocks();
 	Point3D v1 = element.GetV1();
@@ -112,29 +178,12 @@ int Smeshalist::GetElementsCount() const {
 }
 
 void Smeshalist::FlushBuffer() {
-	cout << Smeshalist::GetElementsCount() << " elements waiting to be sent" << endl;
 	char *out_buffer;
 	char in_buffer[BUFFER_SIZE];
 	int n_bytes, size;
 
-	structDefinitions::MessageInfo message_info;
-	message_info.set_type(structDefinitions::MessageInfo_Type_DATA);
-	size = message_info.ByteSize();
-	out_buffer = new char[size];
-
-	message_info.SerializeToArray(out_buffer, size);
-	communication->SendBytesToCore(out_buffer, size);
-
-	n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
-
-	if (n_bytes < 0) {
-		cout << "Error when receiving bytes from core" << endl;
-	}
-
-	structDefinitions::MessageInfo ack_message_info;
-	if (!ack_message_info.ParseFromArray(in_buffer, n_bytes)) {
-		cout << "Error when parsing message from core" << endl;
-	}
+	sendMessageInfo(structDefinitions::MessageInfo_Type_DATA);
+	structDefinitions::MessageInfo ack_message_info = receiveMessageInfo();
 
 	bool end_of_data = false;
 	while (Smeshalist::GetElementsCount() > 0 && ack_message_info.type() == structDefinitions::MessageInfo_Type_ACK) {
@@ -149,7 +198,6 @@ void Smeshalist::FlushBuffer() {
 		}
 		else {
 			n_elements_in_package = Smeshalist::GetElementsCount();
-			cout << "--------------------------------endofdata" << endl;
 			end_of_data = true;
 		}
 
@@ -194,85 +242,67 @@ void Smeshalist::FlushBuffer() {
 
 		data_package.SerializeToArray(out_buffer, size);
 		communication->SendBytesToCore(out_buffer, size);
+		receiveMessageInfo();
 
-		n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
-
-		if (n_bytes < 0) {
-			cout << "Error when receiving bytes from core" << endl;
-		}
-
-		if (!ack_message_info.ParseFromArray(in_buffer, n_bytes)) {
-			cout << "Error when parsing message from core" << endl;
-		}
 	}
 }
+
 void Smeshalist::Render() const {
-	char *out_buffer;
-	int size;
-
-	structDefinitions::MessageInfo message_info;
-	message_info.set_type(structDefinitions::MessageInfo_Type_RENDER);
-	size = message_info.ByteSize();
-	out_buffer = new char[size];
-
-	message_info.SerializeToArray(out_buffer, size);
-	communication->SendBytesToCore(out_buffer, size);
+	sendMessageInfo(structDefinitions::MessageInfo_Type_RENDER);
 }
 
 void Smeshalist::Breakpoint() {
-	char *out_buffer;
-	char in_buffer[BUFFER_SIZE];
-	int size, n_bytes;
+	sendMessageInfo(structDefinitions::MessageInfo_Type_BREAKPOINT);
+	cout << "Choose \"Continue\" or \"Abort\" in Smeshalist Manager's Options tab." << endl;
+	structDefinitions::MessageInfo ack_message_info = receiveMessageInfo();
 
-	structDefinitions::MessageInfo message_info;
-	message_info.set_type(structDefinitions::MessageInfo_Type_BREAKPOINT);
-	size = message_info.ByteSize();
-	out_buffer = new char[size];
-
-	message_info.SerializeToArray(out_buffer, size);
-	communication->SendBytesToCore(out_buffer, size);
-
-	n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
-
-	if (n_bytes < 0) {
-		cout << "Error when receiving bytes from core" << endl;
-	}
-
-	structDefinitions::MessageInfo ack_message_info;
-	if (!ack_message_info.ParseFromArray(in_buffer, n_bytes)) {
-		cout << "Error when parsing message from core" << endl;
-	}
 	if (ack_message_info.type() == structDefinitions::MessageInfo_Type_REJECTED) {
 		cout << "ABORT from SmeshalistManager" << endl;
 		exit(0);
 	}
+	
 }
 
 void Smeshalist::Clean() {
+	sendMessageInfo(structDefinitions::MessageInfo_Type_CLEAN);
+	structDefinitions::MessageInfo ack_message_info = receiveMessageInfo();
+}
+
+void Smeshalist::sendMessageInfo(structDefinitions::MessageInfo_Type type) const {
 	char *out_buffer;
-	char in_buffer[BUFFER_SIZE];
-	int size, n_bytes;
+	int size;
 
 	structDefinitions::MessageInfo message_info;
-	message_info.set_type(structDefinitions::MessageInfo_Type_CLEAN);
+	message_info.set_type(type);
 	size = message_info.ByteSize();
 	out_buffer = new char[size];
 
 	message_info.SerializeToArray(out_buffer, size);
 	communication->SendBytesToCore(out_buffer, size);
+}
 
-	n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
+structDefinitions::MessageInfo Smeshalist::receiveMessageInfo() const {
+	int n_bytes;
+	char in_buffer[BUFFER_SIZE];
+
+	try {
+		n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
+	}
+	catch (CoreNotRunningException e) {
+		cerr << e.what();
+		exit(-1);
+	}
 
 	if (n_bytes < 0) {
-		cout << "Error when receiving bytes from core" << endl;
+		cerr << "Error when receiving bytes from core" << endl;
+		exit(-1);
 	}
 
 	structDefinitions::MessageInfo ack_message_info;
 	if (!ack_message_info.ParseFromArray(in_buffer, n_bytes)) {
-		cout << "Error when parsing message from core" << endl;
+		cerr << "Error when parsing message from core" << endl;
+		exit(-1);
 	}
-	if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
-		cout << "Error after sending CLEAN request" << endl;
-		exit(0);
-	}
+
+	return ack_message_info;
 }

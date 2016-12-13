@@ -37,6 +37,23 @@ class Smeshalist {
 		*/
 		static Smeshalist& GetInstance(int port_number);
 		/**
+		* Method implements singleton pattern. Returns instance of class Smeshalist.
+		* Tool uses default port number - 8383. Hard_reset flag indicates if the tool should
+		* reset all settings and contents from Core modules.
+		* @param hard_reset if set to true, all structures already stored in Core module will be removed and all settings will be reset
+		* @return instance of Smeshalist
+		*/
+		static Smeshalist& GetInstance(bool hard_reset);
+		/**
+		* Method implements singleton pattern. Returns instance of class Smeshalist.
+		* Tool uses given port number. Hard_reset flag indicates if the tool should
+		* reset all settings and contents from Core modules.
+		* @param port_number port on witch the tool will connect to main window
+		* @param hard_reset if set to true, all structures already stored in Core module will be removed and all settings will be reset
+		* @return instance of Smeshalist
+		*/
+		static Smeshalist& GetInstance(int port_number, bool hard_reset);
+		/**
 		* Method adds Vertex structure to internal data buffer that stores structures to send for visualization.
 		* @param vertex Vertex structure
 		*/
@@ -90,6 +107,8 @@ class Smeshalist {
 		void ProcessGeometry(Face &element, structDefinitions::DataPackage &data_package) const;
 		void ProcessGeometry(Block &element, structDefinitions::DataPackage &data_package) const;
 		int GetElementsCount() const;
+		void sendMessageInfo(structDefinitions::MessageInfo_Type type) const;
+		structDefinitions::MessageInfo receiveMessageInfo() const;
 };
 
 #endif // SMESHALIST_H
