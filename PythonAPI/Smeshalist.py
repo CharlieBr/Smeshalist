@@ -4,6 +4,9 @@ import structs_pb2
 import socket
 import sys
 
+class CoreNotRunningException(Exception):
+   pass
+
 IPAdress = "127.0.0.1"
 port = 8383
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -21,6 +24,7 @@ def getInstance(portNumber, hardReset):
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         # Send 
+	sock.settimeout(2)
         message = structs_pb2.MessageInfo()
         if hardReset == True:
             message.type = structs_pb2.MessageInfo.HARD_RESET
@@ -38,7 +42,8 @@ def getInstance(portNumber, hardReset):
         if reply.type != structs_pb2.MessageInfo.ACK:
             sock.close()
             exit()                    
-
+    except socket.timeout as e:
+        raise CoreNotRunningException(e)
     finally:
         sock.close()
 
@@ -146,6 +151,7 @@ def flushBuffer():
     """Send all structures stored in buffer to main window"""
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.settimeout(2)
         # Send 
         message = structs_pb2.MessageInfo()
         message.type = structs_pb2.MessageInfo.DATA
@@ -176,8 +182,10 @@ def flushBuffer():
             
             # Receive acknowledge
             data, addr = sock.recvfrom(10)
-            reply.ParseFromString(data)                        
-
+            reply.ParseFromString(data) 
+                       
+    except socket.timeout as e:
+        raise CoreNotRunningException(e)
     finally:
         global structuresRemaining 
         structuresRemaining = numberOfStructuresToSend
@@ -215,12 +223,15 @@ def render():
     """Method forces rendering sent structures in main window in case Dynamic rendering is turned off in Smeshalist Manager window."""
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.settimeout(2)
         # Send 
         message = structs_pb2.MessageInfo()
         message.type = structs_pb2.MessageInfo.RENDER
         bytesToSend =  message.SerializeToString()
-        sent = sock.sendto(bytesToSend, (IPAdress, port))                
+        sent = sock.sendto(bytesToSend, (IPAdress, port)) 
 
+    except socket.timeout as e:
+        raise CoreNotRunningException(e)             
     finally:
         sock.close()
 
@@ -230,6 +241,7 @@ def clean():
     """Method forces deleting all data from data structure tree in main window without affecting taken snapshots."""
     try:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.settimeout(2)
         # Send 
         message = structs_pb2.MessageInfo()
         message.type = structs_pb2.MessageInfo.CLEAN
@@ -244,9 +256,10 @@ def clean():
 
         if reply.type != structs_pb2.MessageInfo.ACK:
             sock.close()
-            exit()                    
+            exit() 
 
+    except socket.timeout as e:
+        raise CoreNotRunningException(e)                   
     finally:
         sock.close()
-    
     
