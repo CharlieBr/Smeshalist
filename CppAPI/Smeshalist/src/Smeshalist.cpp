@@ -26,7 +26,7 @@ Smeshalist::~Smeshalist() {
 
 Smeshalist& Smeshalist::GetInstance() {
 	static Smeshalist INSTANCE;
-	
+
 	INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_NO_RESET);
 	try {
 		structDefinitions::MessageInfo ack_message_info = INSTANCE.receiveMessageInfo();
@@ -39,28 +39,26 @@ Smeshalist& Smeshalist::GetInstance() {
 		cerr << e;
 		exit(-1);
 	}
-	
+
 	return INSTANCE;
 }
 
 Smeshalist& Smeshalist::GetInstance(int port_number) {
 	static Smeshalist INSTANCE(port_number);
-	
+
 	INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_NO_RESET);
 	structDefinitions::MessageInfo ack_message_info = INSTANCE.receiveMessageInfo();
 
 	if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
 		cerr << "No ACK received!" << endl;
 	}
-	
+
 	return INSTANCE;
 }
 
 Smeshalist & Smeshalist::GetInstance(bool hard_reset) {
 	static Smeshalist INSTANCE;
-	char in_buffer[BUFFER_SIZE];
-	int n_bytes;
-	
+
 	if (hard_reset) {
 		INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_HARD_RESET);
 	}
@@ -73,15 +71,13 @@ Smeshalist & Smeshalist::GetInstance(bool hard_reset) {
 	if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
 		cerr << "No ACK received!" << endl;
 	}
-	
+
 	return INSTANCE;
 }
 
 Smeshalist & Smeshalist::GetInstance(int port_number, bool hard_reset) {
 	static Smeshalist INSTANCE(port_number);
-	char in_buffer[BUFFER_SIZE];
-	int n_bytes;
-	
+
 	if (hard_reset) {
 		INSTANCE.sendMessageInfo(structDefinitions::MessageInfo_Type_HARD_RESET);
 	}
@@ -94,7 +90,7 @@ Smeshalist & Smeshalist::GetInstance(int port_number, bool hard_reset) {
 	if (ack_message_info.type() != structDefinitions::MessageInfo_Type_ACK) {
 		cerr << "No ACK received!" << endl;
 	}
-	
+
 	return INSTANCE;
 }
 
@@ -179,8 +175,7 @@ int Smeshalist::GetElementsCount() const {
 
 void Smeshalist::FlushBuffer() {
 	char *out_buffer;
-	char in_buffer[BUFFER_SIZE];
-	int n_bytes, size;
+	int size;
 
 	sendMessageInfo(structDefinitions::MessageInfo_Type_DATA);
 	structDefinitions::MessageInfo ack_message_info = receiveMessageInfo();
@@ -260,7 +255,7 @@ void Smeshalist::Breakpoint() {
 		cout << "ABORT from SmeshalistManager" << endl;
 		exit(0);
 	}
-	
+
 }
 
 void Smeshalist::Clean() {
