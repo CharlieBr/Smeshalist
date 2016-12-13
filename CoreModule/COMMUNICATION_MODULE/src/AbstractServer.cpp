@@ -383,6 +383,12 @@ void AbstractServer::startServerInNewThread()
                 sendStatistics();
                 sendAcknowlage();
                 break;
+            case structDefinitions::MessageInfo_Type_NO_RESET:
+                sendAcknowlage();
+                break;
+            case structDefinitions::MessageInfo_Type_HARD_RESET:
+                sendAcknowlage();
+                break;
             default:
                 cerr << "Unknow message type\n";
                 break;
