@@ -172,4 +172,16 @@ void Block::draw(Color color){
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glDisable(GL_POLYGON_OFFSET_LINE);
+
+    double max_y = v1.get_y();
+    unsigned int max_idx = 0;
+    for(unsigned int i = 1; i < this -> vertices.size(); i++){
+        if(this -> vertices[i].get_y() > max_y){
+            max_y = this -> vertices[i].get_y();
+            max_idx = i;
+        }
+    }
+    glColor3d(color.r(), color.b(), color.g());
+    glRasterPos3d(vertices[max_idx].get_x(), vertices[max_idx].get_y() + 0.001, vertices[max_idx].get_z());
+    print::printStringFont10(this -> label.get_label_text().c_str());
 }
