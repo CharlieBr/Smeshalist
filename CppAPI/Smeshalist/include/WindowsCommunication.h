@@ -2,8 +2,8 @@
 #define WINDOWS_COMMUNICATION_H
 
 #include "AbstractCommunication.h"
-
-#include <winsock.h>
+#include "CoreNotRunningException.h"
+#include <winsock2.h>
 
 #pragma comment(lib, "ws2_32.lib")
 
