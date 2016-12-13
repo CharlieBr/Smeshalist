@@ -18,6 +18,15 @@ void LinuxCommunication::SetupSocket() {
 	core_addr.sin_family = AF_INET;
 	core_addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
 	core_addr.sin_port = htons(core_port);
+
+	struct timeval tv;
+	tv.tv_sec = TIMEOUT_SEC;
+	tv.tv_usec = TIMEOUT_USEC;
+
+	if (setsockopt(core_socket,SOL_SOCKET,SO_RCVTIMEO,&tv,sizeof(tv)) < 0) {
+		perror("Cannot set timeout for recvfrom");
+		return;
+	}
 }
 
 void LinuxCommunication::CleanupSocket() {
@@ -29,6 +38,9 @@ int LinuxCommunication::SendBytesToCore(const char* buffer, int buffer_size) con
 	return sendto(core_socket, buffer, buffer_size, 0, (struct sockaddr *)&core_addr, sizeof(core_addr));
 }
 int LinuxCommunication::GetBytesFromCore(char* buffer, int buffer_size) {
-
-	return recvfrom(core_socket, buffer, buffer_size, 0, (struct sockaddr *)&core_addr, &core_addr_size);
+	int ret_val = recvfrom(core_socket, buffer, buffer_size, 0, (struct sockaddr *)&core_addr, &core_addr_size);
+    if (errno == EAGAIN || errno == EWOULDBLOCK) {
+		throw CoreNotRunningException();
+    }
+	return ret_val;
 }

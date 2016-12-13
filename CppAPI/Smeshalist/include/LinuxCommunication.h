@@ -2,6 +2,7 @@
 #define LINUX_COMMUNICATION_H
 
 #include "AbstractCommunication.h"
+#include "CoreNotRunningException.h"
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
