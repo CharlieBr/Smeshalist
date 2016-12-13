@@ -7,6 +7,8 @@
 #include <iostream>
 
 #define CORE_PORT 8383
+#define TIMEOUT_SEC 2
+#define TIMEOUT_USEC 0
 
 using namespace std;
 
