@@ -5,6 +5,9 @@
 #include "Data.h"
 using namespace std;
 
+bool transparentStructures = false;
+bool showLabels = true;
+
 struct test_struct{
     string name = "Kasia";
 };

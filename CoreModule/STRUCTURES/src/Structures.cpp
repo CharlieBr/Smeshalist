@@ -29,8 +29,8 @@ void Vertex::draw(Color color){
     glEnd();
 
     if(showLabels){
-        glColor3d(color.r(), color.g(), color.b());
-        glRasterPos3d(point.get_x(), point.get_y() + 0.001, point.get_z());
+        glColor3f(color.r(), color.g(), color.b());
+        glRasterPos3d(point.get_x(), point.get_y() + 0.01, point.get_z());
         print::printStringFont10(this -> label.get_label_text().c_str());
     }
 }
@@ -49,7 +49,7 @@ void Edge::draw(Color color){
         double center_x = (v1.get_x() + v2.get_x())/2;
         double center_y = (v1.get_y() + v2.get_y())/2;
         double center_z = (v1.get_z() + v2.get_z())/2;
-        glColor3d(color.r(), color.g(), color.b());
+        glColor3f(color.r(), color.g(), color.b());
         glRasterPos3d(center_x, center_y + 0.001, center_z);
         print::printStringFont10(this -> label.get_label_text().c_str());
     }
@@ -100,7 +100,7 @@ void Face::draw(Color color){
                 max_idx = i;
             }
         }
-        glColor3d(color.r(), color.g(), color.b());
+        glColor3f(color.r(), color.g(), color.b());
         glRasterPos3d(vertices[max_idx].get_x(), vertices[max_idx].get_y() + 0.001, vertices[max_idx].get_z());
         print::printStringFont10(this -> label.get_label_text().c_str());
     }
@@ -179,6 +179,7 @@ void Block::draw(Color color){
 
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glDisable(GL_POLYGON_OFFSET_LINE);
+
     if(showLabels){
         double max_y = v1.get_y();
         unsigned int max_idx = 0;
@@ -188,7 +189,7 @@ void Block::draw(Color color){
                 max_idx = i;
             }
         }
-        glColor3d(color.r(), color.g(), color.b());
+        glColor3f(color.r(), color.g(), color.b());
         glRasterPos3d(vertices[max_idx].get_x(), vertices[max_idx].get_y() + 0.001, vertices[max_idx].get_z());
         print::printStringFont10(this -> label.get_label_text().c_str());
     }
