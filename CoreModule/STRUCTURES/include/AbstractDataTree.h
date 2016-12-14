@@ -17,6 +17,7 @@ class AbstractDataTree : public Data
         void add(int, vector<Element*>*);
         static void recomputeIntersectionPointsInVisibleTree();
         static void reloadFlitersInAllTrees(vector<SingleGroupFilter*>*, vector<SingleTypesFilter*>*, vector<SingleCoordinateFilter*>*, LogicalConnectiveEnum*, vector<SingleQualityFilter*>*);
+        static void removeAllFilters();
         static int getNumberOfDataTreeInstances();
         virtual void createNewInstance() = 0;
         static AbstractDataTree* getCurrentlyVisibleDataTree();
@@ -27,6 +28,7 @@ class AbstractDataTree : public Data
         static bool isActiveTreeVisible();
         void draw_elements();
         void clean();
+        void removeAllSnapshots();
         string getTreeName();
         virtual void LOCK()=0;
         virtual void UNLOCK()=0;

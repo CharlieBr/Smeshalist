@@ -33,6 +33,19 @@ void AbstractDataTree::clean() {
     UNLOCK();
 }
 
+void AbstractDataTree::removeAllSnapshots() {
+    LOCK();
+    drawFunction = &AbstractDataTree::drawNothing;
+    while (!readyToBeCleaned) {
+        sleepThread(10);
+    }
+    visibleDataTreeIndex = -1;
+    previousInstances.clear();
+    drawFunction = &AbstractDataTree::drawElements;
+    readyToBeCleaned = false;
+    UNLOCK();
+}
+
 void AbstractDataTree::add(int groupID, Element* element) {
     LOCK();
     QualityFilter::getInstance() -> filterElement(element);
@@ -63,6 +76,13 @@ void AbstractDataTree::reloadFlitersInAllTrees(vector<SingleGroupFilter*> *group
     for (auto tree : previousInstances) {
         tree -> filterDataTree();
     }
+}
+
+void AbstractDataTree::removeAllFilters() {
+    GroupsFilter::getInstance() -> deleteAllFilters();
+    TypesFilter::getInstance() -> deleteAllFilters();
+    QualityFilter::getInstance() -> deleteAllFilters();
+    CoordinatesFilter::getInstance() -> deleteAllFilters();
 }
 
 void AbstractDataTree::reloadFliters(vector<SingleGroupFilter*> *groupFilters, vector<SingleTypesFilter*> *typesFilters,

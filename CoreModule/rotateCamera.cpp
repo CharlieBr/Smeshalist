@@ -120,24 +120,81 @@ void drawLine(  double x0, double y0, double z0,
              transparent);
 }
 
-void drawOrigin() {
-    drawLine(-2,0,0,  2,0,0,  BLACK,  xAxis,  1);
-    drawLine(0,-2,0,  0,2,0,  BLACK,  yAxis,  1);
+char* getFormattedDouble(double value) {
+    char* buffer = new char[10];
+
+    sprintf(buffer, "%lf", value);
+    for (int i=0; i<10; i++) {
+        if (buffer[i] == '.') {
+            for (int j=i+1; j<10; j++) {
+                if (buffer[j] == '0') {
+                    buffer[j] = '\0';
+                    break;
+                }
+            }
+            break;
+        }
+    }
+
+    return buffer;
+}
+
+void drawOrigin(AbstractDataTree* d) {
+    double min_x = min(-1.0, d->get_min_x());
+    double max_x = max( 1.0, d->get_max_x());
+    double min_y = min(-1.0, d->get_min_y());
+    double max_y = max( 1.0, d->get_max_y());
+    double min_z = min(-1.0, d->get_min_z());
+    double max_z = max( 1.0, d->get_max_z());
 
     if (!server -> isOrthoViewSet()) {
-        drawLine(0,0,-2,  0,0,2,  BLACK,  zAxis,  1);
-        glColor3d(yAxis.r(), yAxis.g(), yAxis.b());
-        glRasterPos3d(0,0,2);
+        drawLine(0,0,min_z,  0,0,max_z,  BLACK,  zAxis,  1);
+        glRasterPos3d(0,0,max_z);
         print::printString("Z");
     }
 
-    glColor3d(zAxis.r(), zAxis.g(), zAxis.b());
-    glRasterPos3d(2,0,0);
+    drawLine(min_x,0,0,  max_x,0,0,  BLACK,  xAxis,  1);
+    glRasterPos3d(max_x,0,0);
     print::printString("X");
 
-    glColor3d(xAxis.r(), xAxis.g(), xAxis.b());
-    glRasterPos3d(0,2,0);
+    drawLine(0,min_y,0,  0,max_y,0,  BLACK,  yAxis,  1);
+    glRasterPos3d(0,max_y,0);
     print::printString("Y");
+
+    //drawing scale
+    double step = 0.25 * (1 + floor((radius+4)/5.0));
+
+    glColor3d(xAxis.r(), xAxis.g(), xAxis.b());
+    for (double x=step; x<max_x; x+=step) {
+        glRasterPos3d(x,0,0);
+        print::printString(getFormattedDouble(x));
+    }
+    for (double x=-step; x>min_x; x-=step) {
+        glRasterPos3d(x,0,0);
+        print::printString(getFormattedDouble(x));
+    }
+
+    glColor3d(yAxis.r(), yAxis.g(), yAxis.b());
+    for (double y=step; y<max_y; y+=step) {
+        glRasterPos3d(0,y,0);
+        print::printString(getFormattedDouble(y));
+    }
+    for (double y=-step; y>min_y; y-=step) {
+        glRasterPos3d(0,y,0);
+        print::printString(getFormattedDouble(y));
+    }
+
+    if (!server -> isOrthoViewSet()) {
+        glColor3d(zAxis.r(), zAxis.g(), zAxis.b());
+        for (double z=step; z<max_z; z+=step) {
+            glRasterPos3d(0,0,z);
+            print::printString(getFormattedDouble(z));
+        }
+        for (double z=-step; z>min_z; z-=step) {
+            glRasterPos3d(0,0,z);
+            print::printString(getFormattedDouble(z));
+        }
+    }
 }
 
 void drawBoundingBox(AbstractDataTree* d) {
@@ -186,12 +243,14 @@ void renderScene(void) {
 	gluLookAt(cameraX, cameraY, cameraZ, cameraLookAtX, cameraLookAtY, cameraLookAtZ, 0.0f, 1.0f, 0.0f);
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 
+
+    AbstractDataTree* current = d -> getCurrentlyVisibleDataTree();
     glPushMatrix();
-        drawOrigin();
+        drawOrigin(current);
         glColor3f(0.1f, 0.1f, 0.1f);
 
-        d -> getCurrentlyVisibleDataTree() -> draw_elements();
-        drawBoundingBox(d -> getCurrentlyVisibleDataTree());
+        current -> draw_elements();
+        drawBoundingBox(current);
 
         CoordinatesFilter::getInstance() -> draw();
     glPopMatrix();
