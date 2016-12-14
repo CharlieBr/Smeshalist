@@ -24,7 +24,7 @@ class Smeshalist {
 	public:
 		~Smeshalist();
 		/**
-		 * Method implements singleton pattern. Returns instance of class Smeshalist. 
+		 * Method implements singleton pattern. Returns instance of class Smeshalist.
 		 * Tool uses default port number - 8383.
 		 * @return instance of Smeshalist
 		 */
@@ -37,10 +37,22 @@ class Smeshalist {
 		*/
 		static Smeshalist& GetInstance(int port_number);
 		/**
-		 * Method adds Point3D structure to internal data buffer that stores structures to send for visualization.
-		 * @param point Point3D structure
-		 */
-		void AddGeometry(Point3D &point);
+		* Method implements singleton pattern. Returns instance of class Smeshalist.
+		* Tool uses default port number - 8383. Hard_reset flag indicates if the tool should
+		* reset all settings and contents from Core modules.
+		* @param hard_reset if set to true, all structures already stored in Core module will be removed and all settings will be reset
+		* @return instance of Smeshalist
+		*/
+		static Smeshalist& GetInstance(bool hard_reset);
+		/**
+		* Method implements singleton pattern. Returns instance of class Smeshalist.
+		* Tool uses given port number. Hard_reset flag indicates if the tool should
+		* reset all settings and contents from Core modules.
+		* @param port_number port on witch the tool will connect to main window
+		* @param hard_reset if set to true, all structures already stored in Core module will be removed and all settings will be reset
+		* @return instance of Smeshalist
+		*/
+		static Smeshalist& GetInstance(int port_number, bool hard_reset);
 		/**
 		* Method adds Vertex structure to internal data buffer that stores structures to send for visualization.
 		* @param vertex Vertex structure
@@ -90,12 +102,13 @@ class Smeshalist {
 		Smeshalist(int port_number);
 		structDefinitions::Properties* GetProperties(int group_id, string label, double quality) const;
 		structDefinitions::Point3D* GetPoint3D(Point3D &point) const;
-		void ProcessGeometry(Point3D &element, structDefinitions::DataPackage &data_package) const;
 		void ProcessGeometry(Vertex &element, structDefinitions::DataPackage &data_package) const;
 		void ProcessGeometry(Edge &element, structDefinitions::DataPackage &data_package) const;
 		void ProcessGeometry(Face &element, structDefinitions::DataPackage &data_package) const;
 		void ProcessGeometry(Block &element, structDefinitions::DataPackage &data_package) const;
 		int GetElementsCount() const;
+		void sendMessageInfo(structDefinitions::MessageInfo_Type type) const;
+		structDefinitions::MessageInfo receiveMessageInfo() const;
 };
 
 #endif // SMESHALIST_H

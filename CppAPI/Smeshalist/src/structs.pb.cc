@@ -196,8 +196,7 @@ void protobuf_AssignDesc_structs_2eproto() {
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Header, _internal_metadata_),
       -1);
   DataPackage_descriptor_ = file->message_type(8);
-  static const int DataPackage_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, points3d_),
+  static const int DataPackage_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, vertexes_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, edges_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DataPackage, faces_),
@@ -295,18 +294,18 @@ void protobuf_AddDesc_structs_2eproto() {
     "int3D\022&\n\002v3\030\003 \002(\0132\032.structDefinitions.Po"
     "int3D\022&\n\002v4\030\004 \002(\0132\032.structDefinitions.Po"
     "int3D\022+\n\004prop\030\005 \001(\0132\035.structDefinitions."
-    "Properties\"\236\001\n\013MessageInfo\0221\n\004type\030\001 \002(\016"
-    "2#.structDefinitions.MessageInfo.Type\"\\\n"
+    "Properties\"\274\001\n\013MessageInfo\0221\n\004type\030\001 \002(\016"
+    "2#.structDefinitions.MessageInfo.Type\"z\n"
     "\004Type\022\010\n\004DATA\020\001\022\n\n\006RENDER\020\002\022\016\n\nBREAKPOIN"
     "T\020\003\022\014\n\010ACCEPTED\020\004\022\014\n\010REJECTED\020\005\022\007\n\003ACK\020\006"
-    "\022\t\n\005CLEAN\020\007\"/\n\006Header\022\022\n\nsizeOfData\030\001 \002("
-    "\005\022\021\n\tendOfData\030\007 \002(\010\"\352\001\n\013DataPackage\022,\n\010"
-    "points3D\030\001 \003(\0132\032.structDefinitions.Point"
-    "3D\022+\n\010vertexes\030\002 \003(\0132\031.structDefinitions"
-    ".Vertex\022&\n\005edges\030\003 \003(\0132\027.structDefinitio"
-    "ns.Edge\022.\n\005faces\030\004 \003(\0132\037.structDefinitio"
-    "ns.TriangleFace\022(\n\006blocks\030\005 \003(\0132\030.struct"
-    "Definitions.Block", 1217);
+    "\022\t\n\005CLEAN\020\007\022\016\n\nHARD_RESET\020\010\022\014\n\010NO_RESET\020"
+    "\t\"/\n\006Header\022\022\n\nsizeOfData\030\001 \002(\005\022\021\n\tendOf"
+    "Data\030\007 \002(\010\"\274\001\n\013DataPackage\022+\n\010vertexes\030\002"
+    " \003(\0132\031.structDefinitions.Vertex\022&\n\005edges"
+    "\030\003 \003(\0132\027.structDefinitions.Edge\022.\n\005faces"
+    "\030\004 \003(\0132\037.structDefinitions.TriangleFace\022"
+    "(\n\006blocks\030\005 \003(\0132\030.structDefinitions.Bloc"
+    "k", 1201);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "structs.proto", &protobuf_RegisterTypes);
   Properties::default_instance_ = new Properties();
@@ -3394,6 +3393,8 @@ bool MessageInfo_Type_IsValid(int value) {
     case 5:
     case 6:
     case 7:
+    case 8:
+    case 9:
       return true;
     default:
       return false;
@@ -3408,6 +3409,8 @@ const MessageInfo_Type MessageInfo::ACCEPTED;
 const MessageInfo_Type MessageInfo::REJECTED;
 const MessageInfo_Type MessageInfo::ACK;
 const MessageInfo_Type MessageInfo::CLEAN;
+const MessageInfo_Type MessageInfo::HARD_RESET;
+const MessageInfo_Type MessageInfo::NO_RESET;
 const MessageInfo_Type MessageInfo::Type_MIN;
 const MessageInfo_Type MessageInfo::Type_MAX;
 const int MessageInfo::Type_ARRAYSIZE;
@@ -4053,7 +4056,6 @@ void Header::clear_endofdata() {
 // ===================================================================
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int DataPackage::kPoints3DFieldNumber;
 const int DataPackage::kVertexesFieldNumber;
 const int DataPackage::kEdgesFieldNumber;
 const int DataPackage::kFacesFieldNumber;
@@ -4119,7 +4121,6 @@ DataPackage* DataPackage::New(::google::protobuf::Arena* arena) const {
 
 void DataPackage::Clear() {
 // @@protoc_insertion_point(message_clear_start:structDefinitions.DataPackage)
-  points3d_.Clear();
   vertexes_.Clear();
   edges_.Clear();
   faces_.Clear();
@@ -4140,22 +4141,6 @@ bool DataPackage::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .structDefinitions.Point3D points3D = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(input->IncrementRecursionDepth());
-         parse_loop_points3D:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtualNoRecursionDepth(
-                input, add_points3d()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(10)) goto parse_loop_points3D;
-        if (input->ExpectTag(18)) goto parse_loop_vertexes;
-        input->UnsafeDecrementRecursionDepth();
-        break;
-      }
-
       // repeated .structDefinitions.Vertex vertexes = 2;
       case 2: {
         if (tag == 18) {
@@ -4245,12 +4230,6 @@ failure:
 void DataPackage::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:structDefinitions.DataPackage)
-  // repeated .structDefinitions.Point3D points3D = 1;
-  for (unsigned int i = 0, n = this->points3d_size(); i < n; i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->points3d(i), output);
-  }
-
   // repeated .structDefinitions.Vertex vertexes = 2;
   for (unsigned int i = 0, n = this->vertexes_size(); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
@@ -4285,13 +4264,6 @@ void DataPackage::SerializeWithCachedSizes(
 ::google::protobuf::uint8* DataPackage::InternalSerializeWithCachedSizesToArray(
     bool deterministic, ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:structDefinitions.DataPackage)
-  // repeated .structDefinitions.Point3D points3D = 1;
-  for (unsigned int i = 0, n = this->points3d_size(); i < n; i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      InternalWriteMessageNoVirtualToArray(
-        1, this->points3d(i), false, target);
-  }
-
   // repeated .structDefinitions.Vertex vertexes = 2;
   for (unsigned int i = 0, n = this->vertexes_size(); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
@@ -4331,14 +4303,6 @@ void DataPackage::SerializeWithCachedSizes(
 int DataPackage::ByteSize() const {
 // @@protoc_insertion_point(message_byte_size_start:structDefinitions.DataPackage)
   int total_size = 0;
-
-  // repeated .structDefinitions.Point3D points3D = 1;
-  total_size += 1 * this->points3d_size();
-  for (int i = 0; i < this->points3d_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->points3d(i));
-  }
 
   // repeated .structDefinitions.Vertex vertexes = 2;
   total_size += 1 * this->vertexes_size();
@@ -4401,7 +4365,6 @@ void DataPackage::MergeFrom(const ::google::protobuf::Message& from) {
 void DataPackage::MergeFrom(const DataPackage& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:structDefinitions.DataPackage)
   if (GOOGLE_PREDICT_FALSE(&from == this)) MergeFromFail(__LINE__);
-  points3d_.MergeFrom(from.points3d_);
   vertexes_.MergeFrom(from.vertexes_);
   edges_.MergeFrom(from.edges_);
   faces_.MergeFrom(from.faces_);
@@ -4427,7 +4390,6 @@ void DataPackage::CopyFrom(const DataPackage& from) {
 
 bool DataPackage::IsInitialized() const {
 
-  if (!::google::protobuf::internal::AllAreInitialized(this->points3d())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->vertexes())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->edges())) return false;
   if (!::google::protobuf::internal::AllAreInitialized(this->faces())) return false;
@@ -4440,7 +4402,6 @@ void DataPackage::Swap(DataPackage* other) {
   InternalSwap(other);
 }
 void DataPackage::InternalSwap(DataPackage* other) {
-  points3d_.UnsafeArenaSwap(&other->points3d_);
   vertexes_.UnsafeArenaSwap(&other->vertexes_);
   edges_.UnsafeArenaSwap(&other->edges_);
   faces_.UnsafeArenaSwap(&other->faces_);
@@ -4460,36 +4421,6 @@ void DataPackage::InternalSwap(DataPackage* other) {
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // DataPackage
-
-// repeated .structDefinitions.Point3D points3D = 1;
-int DataPackage::points3d_size() const {
-  return points3d_.size();
-}
-void DataPackage::clear_points3d() {
-  points3d_.Clear();
-}
-const ::structDefinitions::Point3D& DataPackage::points3d(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points3D)
-  return points3d_.Get(index);
-}
-::structDefinitions::Point3D* DataPackage::mutable_points3d(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points3D)
-  return points3d_.Mutable(index);
-}
-::structDefinitions::Point3D* DataPackage::add_points3d() {
-  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.points3D)
-  return points3d_.Add();
-}
-::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
-DataPackage::mutable_points3d() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.points3D)
-  return &points3d_;
-}
-const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
-DataPackage::points3d() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.points3D)
-  return points3d_;
-}
 
 // repeated .structDefinitions.Vertex vertexes = 2;
 int DataPackage::vertexes_size() const {

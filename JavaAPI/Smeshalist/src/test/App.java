@@ -6,13 +6,16 @@ import geometry.Edge;
 import geometry.Point3D;
 import geometry.TriangleFace;
 import geometry.Vertex;
+import helpers.CoreNotRunningException;
 import tool.Smeshalist;
 
 public class App {
 
 	public static void main(String[] args) {
-		Smeshalist tool = Smeshalist.getInstance(8383);
-		Random r = new Random();
+		Smeshalist tool;
+		try {
+			tool = Smeshalist.getInstance(true);
+			Random r = new Random();
 
 
 		
@@ -57,11 +60,15 @@ public class App {
 		System.out.println("Render..");
 		tool.render();
 		System.out.println("Po render...");
-		/*System.out.println("Breakpoint...");
+		System.out.println("Breakpoint...");
 		tool.breakpoint();
-		System.out.println("Destroy...");*/
+		//System.out.println("Destroy...");*/
 		//tool.clean();
 		Smeshalist.destroySmeshalist();
+		
+		} catch (CoreNotRunningException e) {
+			System.out.println(e.getMessage());
+		}
 		
 	}
 

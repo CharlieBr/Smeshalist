@@ -8,7 +8,7 @@ void print::printv(va_list args, const char* format) {
   char* ch=buf;
   vsnprintf(buf,LEN,format,args);
   while (*ch)
-    glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18,*ch++);
+    glutBitmapCharacter(GLUT_BITMAP_HELVETICA_12,*ch++);
 }
 
 void print::printFont10(va_list args, const char* format) {

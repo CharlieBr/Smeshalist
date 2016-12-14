@@ -14,7 +14,7 @@ class OBJImporter
 {
     public:
         OBJImporter();
-        void loadOBJFile(const char* path, AbstractDataTree* handler);
+        void loadOBJFile(Data* handler, string path);
     protected:
     private:
         vector<Point3D*> vertices;
@@ -22,7 +22,7 @@ class OBJImporter
         vector<Face*> faces;
         vector<Block*> blocks;
         vector<int> verticesIndexes;
-        void addToStructuresTree(AbstractDataTree* handler);
+        void addToStructuresTree(Data* handler);
 
 
 };

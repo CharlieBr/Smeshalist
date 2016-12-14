@@ -55,7 +55,6 @@ class AbstractServer
         virtual int getBytesFromSMsocket(char[], int) = 0;
         virtual int sendBytesToSMsocket(char[], int) = 0;
 
-        void parsePoint3DSet(structDefinitions::DataPackage*);
         void parseVertexSet(structDefinitions::DataPackage*);
         void parseEdgeSet(structDefinitions::DataPackage*);
         void parseTriangleFaceSet(structDefinitions::DataPackage*);

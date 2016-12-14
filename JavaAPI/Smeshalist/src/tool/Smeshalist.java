@@ -6,6 +6,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Objects;
 
 import org.apache.log4j.Logger;
 
+import helpers.CoreNotRunningException;
 import helpers.SmeshalistHelper;
 import structDefinitions.Structures.Block;
 import structDefinitions.Structures.DataPackage;
@@ -49,6 +51,7 @@ public class Smeshalist {
 
 		try {
 			socket = new DatagramSocket();
+			socket.setSoTimeout(2000);
 			IPAddress = InetAddress.getByName("localhost");
 		} catch (UnknownHostException | SocketException e) {
 			logger.error(e.getMessage());
@@ -57,26 +60,32 @@ public class Smeshalist {
 
 	/**
 	 * 
+	 * @param hardReset flag which indicates if data should be reset in Core
 	 * @return instance of Smeshalist. Tool is using localhost:8383 address to
 	 *         connect to main window
+	 * @throws CoreNotRunningException 
 	 */
-	public static Smeshalist getInstance() {
+	public static Smeshalist getInstance(boolean hardReset) throws CoreNotRunningException {
 		if(Objects.isNull(instance)){
 			instance = new Smeshalist(8383);
 		}
 		
+		instance.sendHardReset(hardReset);		
 		return instance;
 	}
 	
 	/**
 	 * 
 	 * @param portNumber
+	 * @param hardReset flag which indicates if data should be reset in Core
 	 * @return instance of Smeshalist class. Tool is using port of given number to connect to main window
+	 * @throws CoreNotRunningException 
 	 */
-	public static Smeshalist getInstance(int portNumber){
+	public static Smeshalist getInstance(int portNumber, boolean hardReset) throws CoreNotRunningException{
 		if(Objects.isNull(instance)){
 			instance = new Smeshalist(portNumber);
 		}
+		instance.sendHardReset(hardReset);
 		return instance;
 	}
 
@@ -85,16 +94,9 @@ public class Smeshalist {
 	 */
 	public static void destroySmeshalist() {
 		instance.socket.close();
+		instance = null;
 	}
 
-	/**
-	 * 
-	 * @param point Point3D structure
-	 * Method adds Point3D structure to internal data buffer that stores structures to send for visualization 
-	 */
-	public void addGeometry(geometry.Point3D point) {
-		structuresToSend.add(SmeshalistHelper.convertToPoint3D(point));
-	}
 
 	/**
 	 * 
@@ -160,8 +162,9 @@ public class Smeshalist {
 	
 	/**
 	 * Send all structures stored in buffer to main window
+	 * @throws CoreNotRunningException 
 	 */
-	public void flushBuffer() {
+	public void flushBuffer() throws CoreNotRunningException {
 
 		logger.info(structuresToSend.size() + " structures waiting to be sent when called flushBuffer()");
 		
@@ -218,10 +221,7 @@ public class Smeshalist {
 					
 					
 					for (Object structure: toBeSent){
-						if (structure instanceof Point3D){
-							dataPackageBuilder.addPoints3D((Point3D)structure);
-						} 
-						else if (structure instanceof Vertex){
+						if (structure instanceof Vertex){
 							dataPackageBuilder.addVertexes((Vertex)structure);
 						}
 						else if (structure instanceof Edge){
@@ -273,7 +273,10 @@ public class Smeshalist {
 
 				}
 					
-		} catch (IOException e) {
+		} catch (SocketTimeoutException e){
+			throw new CoreNotRunningException(e.getMessage());
+		}
+		catch (IOException e) {
 			logger.error(e.getMessage());
 		}
 
@@ -287,12 +290,14 @@ public class Smeshalist {
 	 * 
 	 */
 	public void breakpoint() {
+		
 		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
 		MessageInfo.Builder builder = MessageInfo.newBuilder();
 		builder.setType(Type.BREAKPOINT);
 		MessageInfo message = builder.build();
 
 		try {
+			socket.setSoTimeout(0);
 			message.writeTo(aOutput);
 			byte[] bytes = aOutput.toByteArray();
 			DatagramPacket packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
@@ -313,6 +318,8 @@ public class Smeshalist {
 				socket.close();
 				System.exit(0);
 			}
+			
+			socket.setSoTimeout(2000);
 
 		} catch (IOException e) {
 			logger.error(e.getMessage());
@@ -323,8 +330,9 @@ public class Smeshalist {
 	/**
 	 * Method forces rendering sent structures in main window 
 	 * in case Dynamic rendering is turned off in Smeshalist Manager window.
+	 * @throws CoreNotRunningException 
 	 */
-	public void render() {
+	public void render() throws CoreNotRunningException {
 		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
 		MessageInfo.Builder builder = MessageInfo.newBuilder();
 		builder.setType(Type.RENDER);
@@ -336,7 +344,10 @@ public class Smeshalist {
 			socket.send(packet);
 			aOutput.close();
 
-		} catch (IOException e) {
+		} catch (SocketTimeoutException e){
+			throw new CoreNotRunningException(e.getMessage());
+		}
+		catch (IOException e) {
 			// TODO Auto-generated catch block
 			logger.error(e.getMessage());
 		}
@@ -345,8 +356,9 @@ public class Smeshalist {
 	
 	/**
 	 * Method forces deleting all data from data structure tree in main window without affecting taken snapshots.
+	 * @throws CoreNotRunningException 
 	 */
-	public void clean() {
+	public void clean() throws CoreNotRunningException {
 		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
 		MessageInfo.Builder builder = MessageInfo.newBuilder();
 		builder.setType(Type.CLEAN);
@@ -375,9 +387,53 @@ public class Smeshalist {
 				System.exit(0);
 			}
 
-		} catch (IOException e) {
+		} catch( SocketTimeoutException e){
+			throw new CoreNotRunningException(e.getMessage());
+		}
+			catch (IOException e) {
 			logger.error(e.getMessage());
 		}
+	}
+	
+	
+	private void sendHardReset(boolean hardReset) throws CoreNotRunningException{
+		ByteArrayOutputStream aOutput = new ByteArrayOutputStream(10);
+		MessageInfo.Builder builder = MessageInfo.newBuilder();
+		if(hardReset){
+			builder.setType(Type.HARD_RESET);
+		} else {
+			builder.setType(Type.NO_RESET);
+		}
+		
+		MessageInfo message = builder.build();
+		try {
+			message.writeTo(aOutput);
+			byte[] bytes = aOutput.toByteArray();
+			DatagramPacket packet = new DatagramPacket(bytes, bytes.length, IPAddress, mainWindowPort);
+			socket.send(packet);
+			aOutput.close();
+
+			byte[] responseBytes = new byte[10];
+			DatagramPacket response = new DatagramPacket(responseBytes, responseBytes.length);
+			socket.receive(response);
+
+			byte[] trimResponse = new byte[response.getLength()];
+			for (int i=0; i<response.getLength(); i++) {
+				trimResponse[i] = responseBytes[i];
+			}
+			
+			MessageInfo feedback = MessageInfo.parseFrom(trimResponse);
+			if(feedback.getType() != Type.ACK){
+				System.exit(0);
+			}
+			
+		} catch (SocketTimeoutException e){
+			throw new CoreNotRunningException(e.getMessage());
+		} catch(IOException e){
+			logger.error(e.getMessage());
+			
+		} 
+		
 	}
 
 	

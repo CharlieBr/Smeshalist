@@ -5743,6 +5743,14 @@ public final class Structures {
        * <code>CLEAN = 7;</code>
        */
       CLEAN(7),
+      /**
+       * <code>HARD_RESET = 8;</code>
+       */
+      HARD_RESET(8),
+      /**
+       * <code>NO_RESET = 9;</code>
+       */
+      NO_RESET(9),
       ;
 
       /**
@@ -5773,6 +5781,14 @@ public final class Structures {
        * <code>CLEAN = 7;</code>
        */
       public static final int CLEAN_VALUE = 7;
+      /**
+       * <code>HARD_RESET = 8;</code>
+       */
+      public static final int HARD_RESET_VALUE = 8;
+      /**
+       * <code>NO_RESET = 9;</code>
+       */
+      public static final int NO_RESET_VALUE = 9;
 
 
       public final int getNumber() {
@@ -5796,6 +5812,8 @@ public final class Structures {
           case 5: return REJECTED;
           case 6: return ACK;
           case 7: return CLEAN;
+          case 8: return HARD_RESET;
+          case 9: return NO_RESET;
           default: return null;
         }
       }
@@ -6736,30 +6754,6 @@ public final class Structures {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated .Point3D points3D = 1;</code>
-     */
-    java.util.List<structDefinitions.Structures.Point3D> 
-        getPoints3DList();
-    /**
-     * <code>repeated .Point3D points3D = 1;</code>
-     */
-    structDefinitions.Structures.Point3D getPoints3D(int index);
-    /**
-     * <code>repeated .Point3D points3D = 1;</code>
-     */
-    int getPoints3DCount();
-    /**
-     * <code>repeated .Point3D points3D = 1;</code>
-     */
-    java.util.List<? extends structDefinitions.Structures.Point3DOrBuilder> 
-        getPoints3DOrBuilderList();
-    /**
-     * <code>repeated .Point3D points3D = 1;</code>
-     */
-    structDefinitions.Structures.Point3DOrBuilder getPoints3DOrBuilder(
-        int index);
-
-    /**
      * <code>repeated .Vertex vertexes = 2;</code>
      */
     java.util.List<structDefinitions.Structures.Vertex> 
@@ -6867,7 +6861,6 @@ public final class Structures {
       super(builder);
     }
     private DataPackage() {
-      points3D_ = java.util.Collections.emptyList();
       vertexes_ = java.util.Collections.emptyList();
       edges_ = java.util.Collections.emptyList();
       faces_ = java.util.Collections.emptyList();
@@ -6902,46 +6895,37 @@ public final class Structures {
               }
               break;
             }
-            case 10: {
-              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                points3D_ = new java.util.ArrayList<structDefinitions.Structures.Point3D>();
-                mutable_bitField0_ |= 0x00000001;
-              }
-              points3D_.add(
-                  input.readMessage(structDefinitions.Structures.Point3D.PARSER, extensionRegistry));
-              break;
-            }
             case 18: {
-              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
                 vertexes_ = new java.util.ArrayList<structDefinitions.Structures.Vertex>();
-                mutable_bitField0_ |= 0x00000002;
+                mutable_bitField0_ |= 0x00000001;
               }
               vertexes_.add(
                   input.readMessage(structDefinitions.Structures.Vertex.PARSER, extensionRegistry));
               break;
             }
             case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+              if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
                 edges_ = new java.util.ArrayList<structDefinitions.Structures.Edge>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000002;
               }
               edges_.add(
                   input.readMessage(structDefinitions.Structures.Edge.PARSER, extensionRegistry));
               break;
             }
             case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
                 faces_ = new java.util.ArrayList<structDefinitions.Structures.TriangleFace>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000004;
               }
               faces_.add(
                   input.readMessage(structDefinitions.Structures.TriangleFace.PARSER, extensionRegistry));
               break;
             }
             case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
                 blocks_ = new java.util.ArrayList<structDefinitions.Structures.Block>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000008;
               }
               blocks_.add(
                   input.readMessage(structDefinitions.Structures.Block.PARSER, extensionRegistry));
@@ -6956,18 +6940,15 @@ public final class Structures {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          points3D_ = java.util.Collections.unmodifiableList(points3D_);
-        }
-        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           vertexes_ = java.util.Collections.unmodifiableList(vertexes_);
         }
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           edges_ = java.util.Collections.unmodifiableList(edges_);
         }
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           faces_ = java.util.Collections.unmodifiableList(faces_);
         }
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           blocks_ = java.util.Collections.unmodifiableList(blocks_);
         }
         this.unknownFields = unknownFields.build();
@@ -6984,41 +6965,6 @@ public final class Structures {
       return structDefinitions.Structures.internal_static_DataPackage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               structDefinitions.Structures.DataPackage.class, structDefinitions.Structures.DataPackage.Builder.class);
-    }
-
-    public static final int POINTS3D_FIELD_NUMBER = 1;
-    private java.util.List<structDefinitions.Structures.Point3D> points3D_;
-    /**
-     * <code>repeated .Point3D points3D = 1;</code>
-     */
-    public java.util.List<structDefinitions.Structures.Point3D> getPoints3DList() {
-      return points3D_;
-    }
-    /**
-     * <code>repeated .Point3D points3D = 1;</code>
-     */
-    public java.util.List<? extends structDefinitions.Structures.Point3DOrBuilder> 
-        getPoints3DOrBuilderList() {
-      return points3D_;
-    }
-    /**
-     * <code>repeated .Point3D points3D = 1;</code>
-     */
-    public int getPoints3DCount() {
-      return points3D_.size();
-    }
-    /**
-     * <code>repeated .Point3D points3D = 1;</code>
-     */
-    public structDefinitions.Structures.Point3D getPoints3D(int index) {
-      return points3D_.get(index);
-    }
-    /**
-     * <code>repeated .Point3D points3D = 1;</code>
-     */
-    public structDefinitions.Structures.Point3DOrBuilder getPoints3DOrBuilder(
-        int index) {
-      return points3D_.get(index);
     }
 
     public static final int VERTEXES_FIELD_NUMBER = 2;
@@ -7167,12 +7113,6 @@ public final class Structures {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      for (int i = 0; i < getPoints3DCount(); i++) {
-        if (!getPoints3D(i).isInitialized()) {
-          memoizedIsInitialized = 0;
-          return false;
-        }
-      }
       for (int i = 0; i < getVertexesCount(); i++) {
         if (!getVertexes(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -7203,9 +7143,6 @@ public final class Structures {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < points3D_.size(); i++) {
-        output.writeMessage(1, points3D_.get(i));
-      }
       for (int i = 0; i < vertexes_.size(); i++) {
         output.writeMessage(2, vertexes_.get(i));
       }
@@ -7226,10 +7163,6 @@ public final class Structures {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < points3D_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, points3D_.get(i));
-      }
       for (int i = 0; i < vertexes_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, vertexes_.get(i));
@@ -7263,8 +7196,6 @@ public final class Structures {
       structDefinitions.Structures.DataPackage other = (structDefinitions.Structures.DataPackage) obj;
 
       boolean result = true;
-      result = result && getPoints3DList()
-          .equals(other.getPoints3DList());
       result = result && getVertexesList()
           .equals(other.getVertexesList());
       result = result && getEdgesList()
@@ -7284,10 +7215,6 @@ public final class Structures {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      if (getPoints3DCount() > 0) {
-        hash = (37 * hash) + POINTS3D_FIELD_NUMBER;
-        hash = (53 * hash) + getPoints3DList().hashCode();
-      }
       if (getVertexesCount() > 0) {
         hash = (37 * hash) + VERTEXES_FIELD_NUMBER;
         hash = (53 * hash) + getVertexesList().hashCode();
@@ -7417,7 +7344,6 @@ public final class Structures {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getPoints3DFieldBuilder();
           getVertexesFieldBuilder();
           getEdgesFieldBuilder();
           getFacesFieldBuilder();
@@ -7426,33 +7352,27 @@ public final class Structures {
       }
       public Builder clear() {
         super.clear();
-        if (points3DBuilder_ == null) {
-          points3D_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          points3DBuilder_.clear();
-        }
         if (vertexesBuilder_ == null) {
           vertexes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           vertexesBuilder_.clear();
         }
         if (edgesBuilder_ == null) {
           edges_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
         } else {
           edgesBuilder_.clear();
         }
         if (facesBuilder_ == null) {
           faces_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           facesBuilder_.clear();
         }
         if (blocksBuilder_ == null) {
           blocks_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000008);
         } else {
           blocksBuilder_.clear();
         }
@@ -7479,46 +7399,37 @@ public final class Structures {
       public structDefinitions.Structures.DataPackage buildPartial() {
         structDefinitions.Structures.DataPackage result = new structDefinitions.Structures.DataPackage(this);
         int from_bitField0_ = bitField0_;
-        if (points3DBuilder_ == null) {
-          if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            points3D_ = java.util.Collections.unmodifiableList(points3D_);
-            bitField0_ = (bitField0_ & ~0x00000001);
-          }
-          result.points3D_ = points3D_;
-        } else {
-          result.points3D_ = points3DBuilder_.build();
-        }
         if (vertexesBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) == 0x00000002)) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
             vertexes_ = java.util.Collections.unmodifiableList(vertexes_);
-            bitField0_ = (bitField0_ & ~0x00000002);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.vertexes_ = vertexes_;
         } else {
           result.vertexes_ = vertexesBuilder_.build();
         }
         if (edgesBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000002) == 0x00000002)) {
             edges_ = java.util.Collections.unmodifiableList(edges_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000002);
           }
           result.edges_ = edges_;
         } else {
           result.edges_ = edgesBuilder_.build();
         }
         if (facesBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
             faces_ = java.util.Collections.unmodifiableList(faces_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.faces_ = faces_;
         } else {
           result.faces_ = facesBuilder_.build();
         }
         if (blocksBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
             blocks_ = java.util.Collections.unmodifiableList(blocks_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000008);
           }
           result.blocks_ = blocks_;
         } else {
@@ -7539,37 +7450,11 @@ public final class Structures {
 
       public Builder mergeFrom(structDefinitions.Structures.DataPackage other) {
         if (other == structDefinitions.Structures.DataPackage.getDefaultInstance()) return this;
-        if (points3DBuilder_ == null) {
-          if (!other.points3D_.isEmpty()) {
-            if (points3D_.isEmpty()) {
-              points3D_ = other.points3D_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-            } else {
-              ensurePoints3DIsMutable();
-              points3D_.addAll(other.points3D_);
-            }
-            onChanged();
-          }
-        } else {
-          if (!other.points3D_.isEmpty()) {
-            if (points3DBuilder_.isEmpty()) {
-              points3DBuilder_.dispose();
-              points3DBuilder_ = null;
-              points3D_ = other.points3D_;
-              bitField0_ = (bitField0_ & ~0x00000001);
-              points3DBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getPoints3DFieldBuilder() : null;
-            } else {
-              points3DBuilder_.addAllMessages(other.points3D_);
-            }
-          }
-        }
         if (vertexesBuilder_ == null) {
           if (!other.vertexes_.isEmpty()) {
             if (vertexes_.isEmpty()) {
               vertexes_ = other.vertexes_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureVertexesIsMutable();
               vertexes_.addAll(other.vertexes_);
@@ -7582,7 +7467,7 @@ public final class Structures {
               vertexesBuilder_.dispose();
               vertexesBuilder_ = null;
               vertexes_ = other.vertexes_;
-              bitField0_ = (bitField0_ & ~0x00000002);
+              bitField0_ = (bitField0_ & ~0x00000001);
               vertexesBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getVertexesFieldBuilder() : null;
@@ -7595,7 +7480,7 @@ public final class Structures {
           if (!other.edges_.isEmpty()) {
             if (edges_.isEmpty()) {
               edges_ = other.edges_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
             } else {
               ensureEdgesIsMutable();
               edges_.addAll(other.edges_);
@@ -7608,7 +7493,7 @@ public final class Structures {
               edgesBuilder_.dispose();
               edgesBuilder_ = null;
               edges_ = other.edges_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000002);
               edgesBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getEdgesFieldBuilder() : null;
@@ -7621,7 +7506,7 @@ public final class Structures {
           if (!other.faces_.isEmpty()) {
             if (faces_.isEmpty()) {
               faces_ = other.faces_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureFacesIsMutable();
               faces_.addAll(other.faces_);
@@ -7634,7 +7519,7 @@ public final class Structures {
               facesBuilder_.dispose();
               facesBuilder_ = null;
               faces_ = other.faces_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000004);
               facesBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getFacesFieldBuilder() : null;
@@ -7647,7 +7532,7 @@ public final class Structures {
           if (!other.blocks_.isEmpty()) {
             if (blocks_.isEmpty()) {
               blocks_ = other.blocks_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000008);
             } else {
               ensureBlocksIsMutable();
               blocks_.addAll(other.blocks_);
@@ -7660,7 +7545,7 @@ public final class Structures {
               blocksBuilder_.dispose();
               blocksBuilder_ = null;
               blocks_ = other.blocks_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000008);
               blocksBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getBlocksFieldBuilder() : null;
@@ -7675,11 +7560,6 @@ public final class Structures {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getPoints3DCount(); i++) {
-          if (!getPoints3D(i).isInitialized()) {
-            return false;
-          }
-        }
         for (int i = 0; i < getVertexesCount(); i++) {
           if (!getVertexes(i).isInitialized()) {
             return false;
@@ -7722,252 +7602,12 @@ public final class Structures {
       }
       private int bitField0_;
 
-      private java.util.List<structDefinitions.Structures.Point3D> points3D_ =
-        java.util.Collections.emptyList();
-      private void ensurePoints3DIsMutable() {
-        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          points3D_ = new java.util.ArrayList<structDefinitions.Structures.Point3D>(points3D_);
-          bitField0_ |= 0x00000001;
-         }
-      }
-
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          structDefinitions.Structures.Point3D, structDefinitions.Structures.Point3D.Builder, structDefinitions.Structures.Point3DOrBuilder> points3DBuilder_;
-
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public java.util.List<structDefinitions.Structures.Point3D> getPoints3DList() {
-        if (points3DBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(points3D_);
-        } else {
-          return points3DBuilder_.getMessageList();
-        }
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public int getPoints3DCount() {
-        if (points3DBuilder_ == null) {
-          return points3D_.size();
-        } else {
-          return points3DBuilder_.getCount();
-        }
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public structDefinitions.Structures.Point3D getPoints3D(int index) {
-        if (points3DBuilder_ == null) {
-          return points3D_.get(index);
-        } else {
-          return points3DBuilder_.getMessage(index);
-        }
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public Builder setPoints3D(
-          int index, structDefinitions.Structures.Point3D value) {
-        if (points3DBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePoints3DIsMutable();
-          points3D_.set(index, value);
-          onChanged();
-        } else {
-          points3DBuilder_.setMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public Builder setPoints3D(
-          int index, structDefinitions.Structures.Point3D.Builder builderForValue) {
-        if (points3DBuilder_ == null) {
-          ensurePoints3DIsMutable();
-          points3D_.set(index, builderForValue.build());
-          onChanged();
-        } else {
-          points3DBuilder_.setMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public Builder addPoints3D(structDefinitions.Structures.Point3D value) {
-        if (points3DBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePoints3DIsMutable();
-          points3D_.add(value);
-          onChanged();
-        } else {
-          points3DBuilder_.addMessage(value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public Builder addPoints3D(
-          int index, structDefinitions.Structures.Point3D value) {
-        if (points3DBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          ensurePoints3DIsMutable();
-          points3D_.add(index, value);
-          onChanged();
-        } else {
-          points3DBuilder_.addMessage(index, value);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public Builder addPoints3D(
-          structDefinitions.Structures.Point3D.Builder builderForValue) {
-        if (points3DBuilder_ == null) {
-          ensurePoints3DIsMutable();
-          points3D_.add(builderForValue.build());
-          onChanged();
-        } else {
-          points3DBuilder_.addMessage(builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public Builder addPoints3D(
-          int index, structDefinitions.Structures.Point3D.Builder builderForValue) {
-        if (points3DBuilder_ == null) {
-          ensurePoints3DIsMutable();
-          points3D_.add(index, builderForValue.build());
-          onChanged();
-        } else {
-          points3DBuilder_.addMessage(index, builderForValue.build());
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public Builder addAllPoints3D(
-          java.lang.Iterable<? extends structDefinitions.Structures.Point3D> values) {
-        if (points3DBuilder_ == null) {
-          ensurePoints3DIsMutable();
-          com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, points3D_);
-          onChanged();
-        } else {
-          points3DBuilder_.addAllMessages(values);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public Builder clearPoints3D() {
-        if (points3DBuilder_ == null) {
-          points3D_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000001);
-          onChanged();
-        } else {
-          points3DBuilder_.clear();
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public Builder removePoints3D(int index) {
-        if (points3DBuilder_ == null) {
-          ensurePoints3DIsMutable();
-          points3D_.remove(index);
-          onChanged();
-        } else {
-          points3DBuilder_.remove(index);
-        }
-        return this;
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public structDefinitions.Structures.Point3D.Builder getPoints3DBuilder(
-          int index) {
-        return getPoints3DFieldBuilder().getBuilder(index);
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public structDefinitions.Structures.Point3DOrBuilder getPoints3DOrBuilder(
-          int index) {
-        if (points3DBuilder_ == null) {
-          return points3D_.get(index);  } else {
-          return points3DBuilder_.getMessageOrBuilder(index);
-        }
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public java.util.List<? extends structDefinitions.Structures.Point3DOrBuilder> 
-           getPoints3DOrBuilderList() {
-        if (points3DBuilder_ != null) {
-          return points3DBuilder_.getMessageOrBuilderList();
-        } else {
-          return java.util.Collections.unmodifiableList(points3D_);
-        }
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public structDefinitions.Structures.Point3D.Builder addPoints3DBuilder() {
-        return getPoints3DFieldBuilder().addBuilder(
-            structDefinitions.Structures.Point3D.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public structDefinitions.Structures.Point3D.Builder addPoints3DBuilder(
-          int index) {
-        return getPoints3DFieldBuilder().addBuilder(
-            index, structDefinitions.Structures.Point3D.getDefaultInstance());
-      }
-      /**
-       * <code>repeated .Point3D points3D = 1;</code>
-       */
-      public java.util.List<structDefinitions.Structures.Point3D.Builder> 
-           getPoints3DBuilderList() {
-        return getPoints3DFieldBuilder().getBuilderList();
-      }
-      private com.google.protobuf.RepeatedFieldBuilderV3<
-          structDefinitions.Structures.Point3D, structDefinitions.Structures.Point3D.Builder, structDefinitions.Structures.Point3DOrBuilder> 
-          getPoints3DFieldBuilder() {
-        if (points3DBuilder_ == null) {
-          points3DBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-              structDefinitions.Structures.Point3D, structDefinitions.Structures.Point3D.Builder, structDefinitions.Structures.Point3DOrBuilder>(
-                  points3D_,
-                  ((bitField0_ & 0x00000001) == 0x00000001),
-                  getParentForChildren(),
-                  isClean());
-          points3D_ = null;
-        }
-        return points3DBuilder_;
-      }
-
       private java.util.List<structDefinitions.Structures.Vertex> vertexes_ =
         java.util.Collections.emptyList();
       private void ensureVertexesIsMutable() {
-        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
           vertexes_ = new java.util.ArrayList<structDefinitions.Structures.Vertex>(vertexes_);
-          bitField0_ |= 0x00000002;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -8117,7 +7757,7 @@ public final class Structures {
       public Builder clearVertexes() {
         if (vertexesBuilder_ == null) {
           vertexes_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000002);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           vertexesBuilder_.clear();
@@ -8194,7 +7834,7 @@ public final class Structures {
           vertexesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               structDefinitions.Structures.Vertex, structDefinitions.Structures.Vertex.Builder, structDefinitions.Structures.VertexOrBuilder>(
                   vertexes_,
-                  ((bitField0_ & 0x00000002) == 0x00000002),
+                  ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
           vertexes_ = null;
@@ -8205,9 +7845,9 @@ public final class Structures {
       private java.util.List<structDefinitions.Structures.Edge> edges_ =
         java.util.Collections.emptyList();
       private void ensureEdgesIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000002) == 0x00000002)) {
           edges_ = new java.util.ArrayList<structDefinitions.Structures.Edge>(edges_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000002;
          }
       }
 
@@ -8357,7 +7997,7 @@ public final class Structures {
       public Builder clearEdges() {
         if (edgesBuilder_ == null) {
           edges_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
           edgesBuilder_.clear();
@@ -8434,7 +8074,7 @@ public final class Structures {
           edgesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               structDefinitions.Structures.Edge, structDefinitions.Structures.Edge.Builder, structDefinitions.Structures.EdgeOrBuilder>(
                   edges_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000002) == 0x00000002),
                   getParentForChildren(),
                   isClean());
           edges_ = null;
@@ -8445,9 +8085,9 @@ public final class Structures {
       private java.util.List<structDefinitions.Structures.TriangleFace> faces_ =
         java.util.Collections.emptyList();
       private void ensureFacesIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           faces_ = new java.util.ArrayList<structDefinitions.Structures.TriangleFace>(faces_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -8597,7 +8237,7 @@ public final class Structures {
       public Builder clearFaces() {
         if (facesBuilder_ == null) {
           faces_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           facesBuilder_.clear();
@@ -8674,7 +8314,7 @@ public final class Structures {
           facesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               structDefinitions.Structures.TriangleFace, structDefinitions.Structures.TriangleFace.Builder, structDefinitions.Structures.TriangleFaceOrBuilder>(
                   faces_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
           faces_ = null;
@@ -8685,9 +8325,9 @@ public final class Structures {
       private java.util.List<structDefinitions.Structures.Block> blocks_ =
         java.util.Collections.emptyList();
       private void ensureBlocksIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
           blocks_ = new java.util.ArrayList<structDefinitions.Structures.Block>(blocks_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000008;
          }
       }
 
@@ -8837,7 +8477,7 @@ public final class Structures {
       public Builder clearBlocks() {
         if (blocksBuilder_ == null) {
           blocks_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000008);
           onChanged();
         } else {
           blocksBuilder_.clear();
@@ -8914,7 +8554,7 @@ public final class Structures {
           blocksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               structDefinitions.Structures.Block, structDefinitions.Structures.Block.Builder, structDefinitions.Structures.BlockOrBuilder>(
                   blocks_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000008) == 0x00000008),
                   getParentForChildren(),
                   isClean());
           blocks_ = null;
@@ -9026,16 +8666,16 @@ public final class Structures {
       "\013.Properties\"z\n\005Block\022\024\n\002v1\030\001 \002(\0132\010.Poin",
       "t3D\022\024\n\002v2\030\002 \002(\0132\010.Point3D\022\024\n\002v3\030\003 \002(\0132\010." +
       "Point3D\022\024\n\002v4\030\004 \002(\0132\010.Point3D\022\031\n\004prop\030\005 " +
-      "\001(\0132\013.Properties\"\214\001\n\013MessageInfo\022\037\n\004type" +
-      "\030\001 \002(\0162\021.MessageInfo.Type\"\\\n\004Type\022\010\n\004DAT" +
+      "\001(\0132\013.Properties\"\252\001\n\013MessageInfo\022\037\n\004type" +
+      "\030\001 \002(\0162\021.MessageInfo.Type\"z\n\004Type\022\010\n\004DAT" +
       "A\020\001\022\n\n\006RENDER\020\002\022\016\n\nBREAKPOINT\020\003\022\014\n\010ACCEP" +
-      "TED\020\004\022\014\n\010REJECTED\020\005\022\007\n\003ACK\020\006\022\t\n\005CLEAN\020\007\"" +
-      "/\n\006Header\022\022\n\nsizeOfData\030\001 \002(\005\022\021\n\tendOfDa" +
-      "ta\030\007 \002(\010\"\220\001\n\013DataPackage\022\032\n\010points3D\030\001 \003" +
-      "(\0132\010.Point3D\022\031\n\010vertexes\030\002 \003(\0132\007.Vertex\022" +
-      "\024\n\005edges\030\003 \003(\0132\005.Edge\022\034\n\005faces\030\004 \003(\0132\r.T",
-      "riangleFace\022\026\n\006blocks\030\005 \003(\0132\006.BlockB\037\n\021s" +
-      "tructDefinitionsB\nStructures"
+      "TED\020\004\022\014\n\010REJECTED\020\005\022\007\n\003ACK\020\006\022\t\n\005CLEAN\020\007\022" +
+      "\016\n\nHARD_RESET\020\010\022\014\n\010NO_RESET\020\t\"/\n\006Header\022" +
+      "\022\n\nsizeOfData\030\001 \002(\005\022\021\n\tendOfData\030\007 \002(\010\"t" +
+      "\n\013DataPackage\022\031\n\010vertexes\030\002 \003(\0132\007.Vertex" +
+      "\022\024\n\005edges\030\003 \003(\0132\005.Edge\022\034\n\005faces\030\004 \003(\0132\r.",
+      "TriangleFace\022\026\n\006blocks\030\005 \003(\0132\006.BlockB\037\n\021" +
+      "structDefinitionsB\nStructures"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9102,7 +8742,7 @@ public final class Structures {
     internal_static_DataPackage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_DataPackage_descriptor,
-        new java.lang.String[] { "Points3D", "Vertexes", "Edges", "Faces", "Blocks", });
+        new java.lang.String[] { "Vertexes", "Edges", "Faces", "Blocks", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

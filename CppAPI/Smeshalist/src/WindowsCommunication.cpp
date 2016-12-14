@@ -34,6 +34,28 @@ SOCKET* WindowsCommunication::createSocket(sockaddr_in* sockaddr, int port) {
 }
 
 int WindowsCommunication::GetBytesFromCore(char* buffer, int buffer_size) {
+	
+	fd_set fds;
+	int n;
+	struct timeval tv;
+
+	// Set up the file descriptor set.
+	FD_ZERO(&fds);
+	FD_SET(core_socket, &fds);
+
+	// Set up the struct timeval for the timeout.
+	tv.tv_sec = TIMEOUT_SEC;
+	tv.tv_usec = TIMEOUT_USEC;
+
+	// Wait until timeout or data received.
+	n = select(0, &fds, 0, 0, &tv);
+	if (n == 0)	{
+		throw CoreNotRunningException();
+	}
+	else if (n == -1)	{
+		cerr << "Error when receiving from Core" << endl;
+	}
+	
     return recvfrom(core_socket, buffer, buffer_size, 0, (struct sockaddr*)&core_addr_in, &core_addr_size);
 }
 

@@ -16,7 +16,7 @@ public class SendingThread extends Thread{
 	@Override
 	public void run(){
 		byte[] messageBytes = toCoreMessage.toByteArray();
-		DatagramPacket datagramPacket = new DatagramPacket(messageBytes, messageBytes.length, SocketUtil.IP, SocketUtil.port);
+		DatagramPacket datagramPacket = new DatagramPacket(messageBytes, messageBytes.length, SocketUtil.IP, SocketUtil.PORT);
 		try {
 			SocketUtil.socket.send(datagramPacket);
 		} catch (IOException e) {

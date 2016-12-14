@@ -54,11 +54,13 @@ enum MessageInfo_Type {
   MessageInfo_Type_ACCEPTED = 4,
   MessageInfo_Type_REJECTED = 5,
   MessageInfo_Type_ACK = 6,
-  MessageInfo_Type_CLEAN = 7
+  MessageInfo_Type_CLEAN = 7,
+  MessageInfo_Type_HARD_RESET = 8,
+  MessageInfo_Type_NO_RESET = 9
 };
 bool MessageInfo_Type_IsValid(int value);
 const MessageInfo_Type MessageInfo_Type_Type_MIN = MessageInfo_Type_DATA;
-const MessageInfo_Type MessageInfo_Type_Type_MAX = MessageInfo_Type_CLEAN;
+const MessageInfo_Type MessageInfo_Type_Type_MAX = MessageInfo_Type_NO_RESET;
 const int MessageInfo_Type_Type_ARRAYSIZE = MessageInfo_Type_Type_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* MessageInfo_Type_descriptor();
@@ -897,6 +899,10 @@ class MessageInfo : public ::google::protobuf::Message /* @@protoc_insertion_poi
     MessageInfo_Type_ACK;
   static const Type CLEAN =
     MessageInfo_Type_CLEAN;
+  static const Type HARD_RESET =
+    MessageInfo_Type_HARD_RESET;
+  static const Type NO_RESET =
+    MessageInfo_Type_NO_RESET;
   static inline bool Type_IsValid(int value) {
     return MessageInfo_Type_IsValid(value);
   }
@@ -1119,18 +1125,6 @@ class DataPackage : public ::google::protobuf::Message /* @@protoc_insertion_poi
 
   // accessors -------------------------------------------------------
 
-  // repeated .structDefinitions.Point3D points3D = 1;
-  int points3d_size() const;
-  void clear_points3d();
-  static const int kPoints3DFieldNumber = 1;
-  const ::structDefinitions::Point3D& points3d(int index) const;
-  ::structDefinitions::Point3D* mutable_points3d(int index);
-  ::structDefinitions::Point3D* add_points3d();
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
-      mutable_points3d();
-  const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
-      points3d() const;
-
   // repeated .structDefinitions.Vertex vertexes = 2;
   int vertexes_size() const;
   void clear_vertexes();
@@ -1185,7 +1179,6 @@ class DataPackage : public ::google::protobuf::Message /* @@protoc_insertion_poi
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D > points3d_;
   ::google::protobuf::RepeatedPtrField< ::structDefinitions::Vertex > vertexes_;
   ::google::protobuf::RepeatedPtrField< ::structDefinitions::Edge > edges_;
   ::google::protobuf::RepeatedPtrField< ::structDefinitions::TriangleFace > faces_;
@@ -2099,36 +2092,6 @@ inline void Header::set_endofdata(bool value) {
 // -------------------------------------------------------------------
 
 // DataPackage
-
-// repeated .structDefinitions.Point3D points3D = 1;
-inline int DataPackage::points3d_size() const {
-  return points3d_.size();
-}
-inline void DataPackage::clear_points3d() {
-  points3d_.Clear();
-}
-inline const ::structDefinitions::Point3D& DataPackage::points3d(int index) const {
-  // @@protoc_insertion_point(field_get:structDefinitions.DataPackage.points3D)
-  return points3d_.Get(index);
-}
-inline ::structDefinitions::Point3D* DataPackage::mutable_points3d(int index) {
-  // @@protoc_insertion_point(field_mutable:structDefinitions.DataPackage.points3D)
-  return points3d_.Mutable(index);
-}
-inline ::structDefinitions::Point3D* DataPackage::add_points3d() {
-  // @@protoc_insertion_point(field_add:structDefinitions.DataPackage.points3D)
-  return points3d_.Add();
-}
-inline ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >*
-DataPackage::mutable_points3d() {
-  // @@protoc_insertion_point(field_mutable_list:structDefinitions.DataPackage.points3D)
-  return &points3d_;
-}
-inline const ::google::protobuf::RepeatedPtrField< ::structDefinitions::Point3D >&
-DataPackage::points3d() const {
-  // @@protoc_insertion_point(field_list:structDefinitions.DataPackage.points3D)
-  return points3d_;
-}
 
 // repeated .structDefinitions.Vertex vertexes = 2;
 inline int DataPackage::vertexes_size() const {

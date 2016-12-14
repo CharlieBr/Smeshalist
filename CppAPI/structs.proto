@@ -40,8 +40,6 @@ message Block {
 	optional Properties prop = 5;
 }
 
-
-
 message MessageInfo {
 	enum Type {
 		DATA = 1;
@@ -51,6 +49,8 @@ message MessageInfo {
 		REJECTED = 5;
 		ACK = 6;
 		CLEAN = 7;
+		HARD_RESET = 8;
+		NO_RESET = 9;
 	}
 	
 	required Type type = 1;
@@ -62,7 +62,6 @@ message Header{
 }
 
 message DataPackage {	
-	repeated Point3D points3D = 1;
 	repeated Vertex vertexes = 2;
 	repeated Edge edges = 3;
 	repeated TriangleFace faces = 4;
