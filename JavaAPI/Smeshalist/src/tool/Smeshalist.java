@@ -94,6 +94,7 @@ public class Smeshalist {
 	 */
 	public static void destroySmeshalist() {
 		instance.socket.close();
+		instance = null;
 	}
 
 
