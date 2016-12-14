@@ -1,6 +1,7 @@
 #include "AbstractServer.h"
 
 bool transparentStructures = false;
+bool showLabels = false;
 extern bool switchView;
 
 void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
@@ -262,7 +263,8 @@ void AbstractServer::processOptionDataPackage(sm::ManagerToCoreMessage* message)
     *mouseSensitivity = std::pow(BASE, exponent)/BASE;
 
     setDynamicRendering(options.dynamicrendering());
-    //TODO show labels
+    
+    showLabels = options.showlabels();
 
     transparentStructures = options.transparentstructures();
 

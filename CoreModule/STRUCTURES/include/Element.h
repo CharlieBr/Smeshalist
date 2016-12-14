@@ -6,6 +6,7 @@
 #include <list>
 #include <vector>
 #include <stdio.h>
+#include <string.h>
 #include "print.h"
 #include "Color.h"
 #include "UserPreferencesManager.h"
