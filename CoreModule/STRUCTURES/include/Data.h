@@ -12,7 +12,7 @@
 #include "Statistics.h"
 #include "Color.h"
 
-#include "../../XML_PARSER/include/UserPreferencesManager.h"
+#include "UserPreferencesManager.h"
 
 using namespace std;
 // -----------------------------------

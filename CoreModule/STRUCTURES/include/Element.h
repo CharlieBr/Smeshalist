@@ -6,8 +6,8 @@
 #include <list>
 #include <vector>
 #include <stdio.h>
-#include <GL/glut.h>
-
+#include <string.h>
+#include "print.h"
 #include "Color.h"
 #include "UserPreferencesManager.h"
 
@@ -37,7 +37,7 @@ class Point3D {
 // ------ element additional attribute -------
 // -------------------------------------------
 class Label {
-    string text;
+    string text = "";
 
     public:
         Label(){};

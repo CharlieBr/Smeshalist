@@ -50,5 +50,6 @@ build:
 	#BUILDING
 	ar rvs lib/CORE.a obj/*.o
 	$(CC) -o CoreModule $(LIBS)
+clean:
 	rm -r obj
-all: compile build
+all: compile build clean
