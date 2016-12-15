@@ -109,6 +109,7 @@ class Smeshalist {
 		int GetElementsCount() const;
 		void sendMessageInfo(structDefinitions::MessageInfo_Type type) const;
 		structDefinitions::MessageInfo receiveMessageInfo() const;
+		structDefinitions::MessageInfo receiveMessageInfo(bool with_timeout) const;
 };
 
 #endif // SMESHALIST_H

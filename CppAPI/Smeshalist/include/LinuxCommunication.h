@@ -19,6 +19,7 @@ class LinuxCommunication : public AbstractCommuniation {
 		void SetupSocket();
 		void CleanupSocket();
 		int SendBytesToCore(const char* buffer, int buffer_size) const;
+		int GetBytesFromCore(char* buffer, int buffer_size, bool with_timeout);
 		int GetBytesFromCore(char* buffer, int buffer_size);
 	private:
 		struct sockaddr_in core_addr;

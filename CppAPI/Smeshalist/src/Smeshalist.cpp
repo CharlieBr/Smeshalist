@@ -244,7 +244,7 @@ void Smeshalist::Render() const {
 void Smeshalist::Breakpoint() {
 	sendMessageInfo(structDefinitions::MessageInfo_Type_BREAKPOINT);
 	cout << "Choose \"Continue\" or \"Abort\" in Smeshalist Manager's Options tab." << endl;
-	structDefinitions::MessageInfo ack_message_info = receiveMessageInfo();
+	structDefinitions::MessageInfo ack_message_info = receiveMessageInfo(false);
 
 	if (ack_message_info.type() == structDefinitions::MessageInfo_Type_REJECTED) {
 		cout << "ABORT from SmeshalistManager" << endl;
@@ -271,12 +271,38 @@ void Smeshalist::sendMessageInfo(structDefinitions::MessageInfo_Type type) const
 	communication->SendBytesToCore(out_buffer, size);
 }
 
+structDefinitions::MessageInfo Smeshalist::receiveMessageInfo(bool with_timeout) const {
+	int n_bytes;
+	char in_buffer[BUFFER_SIZE];
+
+	try {
+		n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE, with_timeout);
+	}
+	catch (CoreNotRunningException e) {
+		cerr << e.what();
+		exit(-1);
+	}
+
+	if (n_bytes < 0) {
+		cerr << "Error when receiving bytes from core" << endl;
+		exit(-1);
+	}
+
+	structDefinitions::MessageInfo ack_message_info;
+	if (!ack_message_info.ParseFromArray(in_buffer, n_bytes)) {
+		cerr << "Error when parsing message from core" << endl;
+		exit(-1);
+	}
+
+	return ack_message_info;
+}
+
 structDefinitions::MessageInfo Smeshalist::receiveMessageInfo() const {
 	int n_bytes;
 	char in_buffer[BUFFER_SIZE];
 
 	try {
-		n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE);
+		n_bytes = communication->GetBytesFromCore(in_buffer, BUFFER_SIZE, true);
 	}
 	catch (CoreNotRunningException e) {
 		cerr << e.what();

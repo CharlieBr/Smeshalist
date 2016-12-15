@@ -19,6 +19,7 @@ class AbstractCommuniation {
 		virtual void SetupSocket() = 0;
 		virtual void CleanupSocket() = 0;
 		virtual int SendBytesToCore(const char* buffer, int buffer_size) const = 0;
+		virtual int GetBytesFromCore(char* buffer, int buffer_size, bool with_timeout) = 0;
 		virtual int GetBytesFromCore(char* buffer, int buffer_size) = 0;
 	protected:
 		int core_port;
