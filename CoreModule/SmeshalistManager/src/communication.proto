@@ -41,6 +41,7 @@ message CoreToManagerMessage{
 	enum CTMMessageType{
 		STATISTICS = 1;
 		BREAKPOINT = 2;
+		HARD_RESET = 3;
 	}
 
 	required CTMMessageType messageType = 1;
