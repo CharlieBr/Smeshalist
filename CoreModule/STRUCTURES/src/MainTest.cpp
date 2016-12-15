@@ -5,6 +5,9 @@
 #include "Data.h"
 using namespace std;
 
+bool transparentStructures = false;
+bool showLabels = true;
+
 struct test_struct{
     string name = "Kasia";
 };
@@ -68,6 +71,8 @@ int main(void){
     ElementsList * edge_list1 = group2 -> get_list("edge");
     assert( edge_list1 != NULL );
 
+    group2 -> set_draw_flag(true);
+
     vector<Element*> * vertices = vertex_list -> get_elements();
     assert( vertices -> size() == 3 );
 
@@ -98,7 +103,7 @@ int main(void){
     assert( data -> get_min_z() == -8.9 );
     assert( data -> get_max_z() == 8.9 );
 
-    assert(Color(1) == data -> get_color_for_group(1));
+    assert(Color(0.0, 1.0, 0.0) == data -> get_color_for_group(1));
     assert(Color(2) == data -> get_color_for_group(2));
     assert(Color(-1.0, -1.0, -1.0) == data -> get_color_for_group(3));
 
@@ -111,6 +116,13 @@ int main(void){
     vector<Element*> * edges2 = edge_list2 -> get_elements();
     assert( edges2 -> size() == 2 );
 
+    group1 -> set_draw_flag(true);
+    group2 -> set_draw_flag(true);
+    edge_list1 -> set_draw_flag(true);
+    edge_list2 -> set_draw_flag(true);
+    vertex_list -> set_draw_flag(true);
+
+    data -> count_visible_elements();
     Statistics statistics = data -> get_statistics();
 
     assert( statistics.all_elements_numbers["all"] == 6 );
@@ -124,6 +136,7 @@ int main(void){
     group1 -> set_draw_flag(false);
     data -> count_visible_elements();
     statistics = data -> get_statistics();
+
     assert( statistics.visible_elements_numbers["all"] == 4);
     assert( statistics.visible_elements_numbers["vertex"] == 3 );
     assert( statistics.visible_elements_numbers["edge"] == 1 );
@@ -183,7 +196,6 @@ int main(void){
     assert( statistics.visible_elements_numbers["edge"] == 4 );
 
     //cleaning
-    data -> draw_elements();
     data -> clean();
 
     vertex = nullptr;
@@ -209,11 +221,11 @@ int main(void){
     assert( statistics.visible_elements_numbers["edge"]== 0 );
 
     assert( data -> get_min_x() == DBL_MAX );
-    assert( data -> get_max_x() == DBL_MIN );
+    assert( data -> get_max_x() == -DBL_MAX );
     assert( data -> get_min_y() == DBL_MAX );
-    assert( data -> get_max_y() == DBL_MIN );
+    assert( data -> get_max_y() == -DBL_MAX );
     assert( data -> get_min_z() == DBL_MAX );
-    assert( data -> get_max_z() == DBL_MIN );
+    assert( data -> get_max_z() == -DBL_MAX );
 
     return 0;
 }
