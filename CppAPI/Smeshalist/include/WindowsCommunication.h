@@ -16,6 +16,7 @@ class WindowsCommunication : public AbstractCommuniation {
 		void SetupSocket();
 		void CleanupSocket();
 		int SendBytesToCore(const char* buffer, int buffer_size) const;
+		int GetBytesFromCore(char* buffer, int buffer_size, bool with_timeout);
 		int GetBytesFromCore(char* buffer, int buffer_size);
     private:
 		SOCKET* createSocket(sockaddr_in*, int);
