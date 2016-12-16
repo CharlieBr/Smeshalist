@@ -89,6 +89,19 @@ void AbstractServer::sendStatistics() {
     sendStaticticsOfGivenTree(handler);
 }
 
+void AbstractServer::sendHardResetToSM() {
+    char buffer[BUFFER_SIZE];
+
+    sm::CoreToManagerMessage message;
+    message.set_messagetype(sm::CoreToManagerMessage_CTMMessageType_HARD_RESET);
+
+    message.SerializeToArray(buffer, BUFFER_SIZE);
+
+    if (sendBytesToSMsocket(buffer, message.GetCachedSize()) < 0) {
+        cerr << "Error during sending hard reset to Smeshalist Manager\n";
+    }
+}
+
 void AbstractServer::sendStatisticsOfCurrentlyVisibleTree() {
     sendStaticticsOfGivenTree(AbstractDataTree::getCurrentlyVisibleDataTree());
 }
@@ -263,7 +276,7 @@ void AbstractServer::processOptionDataPackage(sm::ManagerToCoreMessage* message)
     *mouseSensitivity = std::pow(BASE, exponent)/BASE;
 
     setDynamicRendering(options.dynamicrendering());
-    
+
     showLabels = options.showlabels();
 
     transparentStructures = options.transparentstructures();
@@ -392,6 +405,7 @@ void AbstractServer::startServerInNewThread()
                 handler -> removeAllSnapshots();
                 AbstractDataTree::removeAllFilters();
                 handler -> clean();
+                sendHardResetToSM();
                 sendAcknowlage();
                 break;
             default:

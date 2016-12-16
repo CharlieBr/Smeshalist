@@ -77,6 +77,7 @@ class AbstractServer
         void sendAbort();
 
         void sendBreakpoint();
+        void sendHardResetToSM();
 
         AbstractDataTree* handler = NULL;
         OBJExporter exporter;
