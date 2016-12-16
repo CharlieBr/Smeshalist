@@ -19,7 +19,7 @@ int main() {
 
 	GOOGLE_PROTOBUF_VERIFY_VERSION;
 
-	Smeshalist tool = Smeshalist::GetInstance();
+	Smeshalist tool = Smeshalist::GetInstance(true);
 	srand(time(NULL));
 
 	for (int i = 0; i < N; i++){
@@ -39,7 +39,21 @@ int main() {
 
     tool.FlushBuffer();
     tool.Render();
+	
+	tool.Breakpoint();
+	cout << "Hard reset now" << endl;
 
+	tool = Smeshalist::GetInstance(true);
+	
+	cout << "Reset done" << endl;
+	for (int i = 0; i < N; i++) {
+		Vertex v = Vertex(genPoint());
+		v.SetGroupId(1);
+		tool.AddGeometry(v);
+	}
+	tool.FlushBuffer();
+	tool.Render();
+	tool.Breakpoint();
 
 	google::protobuf::ShutdownProtobufLibrary();
 	system("pause");

@@ -16,8 +16,8 @@ void WindowsCommunication::SetupSocket() {
         core_addr_size = sizeof(core_addr_in);
 }
 
-void WindowsCommunication::CleanupSocket()
-{
+void WindowsCommunication::CleanupSocket(){
+	closesocket(core_socket);
 }
 
 SOCKET* WindowsCommunication::createSocket(sockaddr_in* sockaddr, int port) {
