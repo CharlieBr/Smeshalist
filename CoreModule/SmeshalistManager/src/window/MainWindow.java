@@ -77,9 +77,19 @@ public class MainWindow extends JFrame {
 				this.filtersTab.setGroupsInfo(toManagerMessage.getStatisticsInfo().getGroupsInfo());
 				this.optionsTab.setTreeName(toManagerMessage.getStatisticsInfo().getTreeName());
 				break;
+			case HARD_RESET:
+				this.hardReset();
+				break;
 			default:
 				break;
 		}
+	}
+
+	private void hardReset() {
+		this.statisticsTab.setInitContent();
+		this.optionsTab.setInitContent();
+		this.filtersTab.setInitContent();
+		this.objTab.setInitContent();
 	}
 
 	public OptionsInfo getDefaults(){

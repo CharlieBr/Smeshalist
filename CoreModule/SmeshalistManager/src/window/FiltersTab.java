@@ -141,4 +141,11 @@ public class FiltersTab extends JPanel{
 	public void cleanGroupCheckBoxes() {
 		this.groupsTab.cleanGroupCheckboxes();
 	}
+
+	public void setInitContent() {
+		this.typesTab.setInitContent();
+		this.groupsTab.setInitContent();
+		this.qualityTab.setInitContent();
+		this.coordinatesTab.setInitContent();
+	}
 }

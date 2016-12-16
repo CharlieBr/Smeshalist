@@ -16,7 +16,7 @@ import java.io.File;
 public class ObjTab extends JPanel {
 
 	private File importFile;
-	private  File exportFile;
+	private File exportFile;
 
 	private JPanel importPanel;
 	private JPanel exportPanel;
@@ -186,5 +186,14 @@ public class ObjTab extends JPanel {
 		this.revalidate();
 		this.repaint();
 	}
+
+    public void setInitContent() {
+		this.removeAll();
+		exportFile = null;
+		importFile = null;
+		this.initializeView();
+		this.revalidate();
+		this.repaint();
+    }
 }
 

@@ -99,4 +99,12 @@ public class TypesTab extends JPanel{
 	public static void setChanged(boolean changed) {
 		TypesTab.changed = changed;
 	}
+
+    public void setInitContent() {
+		this.removeAll();
+		TypesTab.changed = false;
+		this.initializeView();
+		this.revalidate();
+		this.repaint();
+    }
 }

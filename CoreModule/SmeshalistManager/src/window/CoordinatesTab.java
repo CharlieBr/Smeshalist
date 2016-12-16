@@ -182,4 +182,13 @@ public class CoordinatesTab extends JPanel{
 	public static void setChanged(boolean changed) {
 		CoordinatesTab.changed = changed;
 	}
+
+    public void setInitContent() {
+		this.removeAll();
+		CoordinatesTab.changed = false;
+		this.conditionEntries.clear();
+		this.initializeView();
+		this.revalidate();
+		this.repaint();
+    }
 }

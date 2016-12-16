@@ -160,4 +160,14 @@ public class QualityTab extends JPanel{
 	public static void setChanged(boolean changed) {
 		QualityTab.changed = changed;
 	}
+
+    public void setInitContent() {
+		this.removeAll();
+		QualityTab.changed = false;
+		this.conditionEntries.clear();
+		this.initializeView();
+		this.revalidate();
+		this.repaint();
+
+    }
 }

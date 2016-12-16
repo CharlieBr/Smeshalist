@@ -165,5 +165,15 @@ public class GroupsTab extends JPanel{
 		this.scrollPaneContent.revalidate();
 		this.scrollPaneContent.repaint();
 	}
-	
+
+	public void setInitContent() {
+		this.removeAll();
+		this.groups.clear();
+		this.groupsVisibility.clear();
+		this.groupsCheckBoxes.clear();
+		GroupsTab.changed = false;
+		this.initializeView();
+		this.revalidate();
+		this.repaint();
+	}
 }

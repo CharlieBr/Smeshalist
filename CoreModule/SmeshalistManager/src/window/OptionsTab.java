@@ -344,4 +344,12 @@ public class OptionsTab extends JPanel{
 		treeButtonsContainer.revalidate();
 		treeButtonsContainer.repaint();
 	}
+
+	public void setInitContent() {
+		this.removeAll();
+		this.initializeView();
+		this.revalidate();
+		this.repaint();
+	}
+
 }
