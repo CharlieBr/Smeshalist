@@ -57,11 +57,12 @@ class TypesFilter;
 
 enum CoreToManagerMessage_CTMMessageType {
   CoreToManagerMessage_CTMMessageType_STATISTICS = 1,
-  CoreToManagerMessage_CTMMessageType_BREAKPOINT = 2
+  CoreToManagerMessage_CTMMessageType_BREAKPOINT = 2,
+  CoreToManagerMessage_CTMMessageType_HARD_RESET = 3
 };
 bool CoreToManagerMessage_CTMMessageType_IsValid(int value);
 const CoreToManagerMessage_CTMMessageType CoreToManagerMessage_CTMMessageType_CTMMessageType_MIN = CoreToManagerMessage_CTMMessageType_STATISTICS;
-const CoreToManagerMessage_CTMMessageType CoreToManagerMessage_CTMMessageType_CTMMessageType_MAX = CoreToManagerMessage_CTMMessageType_BREAKPOINT;
+const CoreToManagerMessage_CTMMessageType CoreToManagerMessage_CTMMessageType_CTMMessageType_MAX = CoreToManagerMessage_CTMMessageType_HARD_RESET;
 const int CoreToManagerMessage_CTMMessageType_CTMMessageType_ARRAYSIZE = CoreToManagerMessage_CTMMessageType_CTMMessageType_MAX + 1;
 
 const ::google::protobuf::EnumDescriptor* CoreToManagerMessage_CTMMessageType_descriptor();
@@ -967,6 +968,8 @@ class CoreToManagerMessage : public ::google::protobuf::Message /* @@protoc_inse
     CoreToManagerMessage_CTMMessageType_STATISTICS;
   static const CTMMessageType BREAKPOINT =
     CoreToManagerMessage_CTMMessageType_BREAKPOINT;
+  static const CTMMessageType HARD_RESET =
+    CoreToManagerMessage_CTMMessageType_HARD_RESET;
   static inline bool CTMMessageType_IsValid(int value) {
     return CoreToManagerMessage_CTMMessageType_IsValid(value);
   }
