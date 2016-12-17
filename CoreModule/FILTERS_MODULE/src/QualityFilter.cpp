@@ -21,7 +21,7 @@ void QualityFilter::filterElement(Element* element) {
         result = true;
     }
 
-    element->set_draw_flag(result);
+    element->set_has_proper_quality_flag(result);
 }
 
 void QualityFilter::filterTree(Data* dataTree) {

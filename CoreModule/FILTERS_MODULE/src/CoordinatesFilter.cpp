@@ -136,7 +136,8 @@ void CoordinatesFilter::changeLogicalCoonective(LogicalConnectiveEnum lc) {
 }
 
 void CoordinatesFilter::filterElement(Element* element) {
-    if (!element -> is_drawable()) {
+    if (!element -> has_proper_quality()) {
+        element->set_draw_flag(false);
         return;
     }
 

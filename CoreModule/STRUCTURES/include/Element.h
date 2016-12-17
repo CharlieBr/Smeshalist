@@ -56,6 +56,7 @@ class Element
         string type;
         Label label;
         bool to_draw = true;
+        bool hasProperQuality = true; //used by quality filters
         double quality = 0.0;
         Color* qualityColor;
         static bool colorByQuality;
@@ -91,7 +92,9 @@ class Element
         void set_label(Label label){ this -> label = label; }
         Label get_label(){ return label; }
         bool is_drawable(){ return to_draw; }
+        bool has_proper_quality(){ return hasProperQuality; }
         void set_draw_flag(bool to_draw) { this -> to_draw = to_draw; }
+        void set_has_proper_quality_flag(bool flag) { this -> hasProperQuality = flag;}
         void set_quality(double quality){ this -> quality = quality; }
         double get_quality(){ return this -> quality; }
         virtual Element* clone() = 0;
