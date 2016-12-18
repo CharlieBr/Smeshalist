@@ -75,7 +75,7 @@ public class OptionsTab extends JPanel{
 	private void initializeView(){
 		this.setLayout(new BorderLayout());
 
-		treeName = new JLabel("None");
+		treeName = new JLabel("ACTIVE");
 		
 		Border border = new EmptyBorder(WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE,WindowUtil.PADDING_VALUE);
 		setBorder(border);
@@ -157,6 +157,7 @@ public class OptionsTab extends JPanel{
 			}
 		});
 		nextSnapshotButton = new JButton("Next");
+		nextSnapshotButton.setEnabled(false);
 		nextSnapshotButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -164,6 +165,7 @@ public class OptionsTab extends JPanel{
 			}
 		});
 		prevSnapshotButton = new JButton("Prev");
+		prevSnapshotButton.setEnabled(false);
 		prevSnapshotButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -299,6 +301,7 @@ public class OptionsTab extends JPanel{
 	}
 
 	private void snapshotButtonPressed() {
+		prevSnapshotButton.setEnabled(true);
 		ManagerToCoreMessage.Builder toCoreMessageBuilder = ManagerToCoreMessage.newBuilder();
 		toCoreMessageBuilder.setMessageType(MTCMessageType.SNAPSHOT);
 
