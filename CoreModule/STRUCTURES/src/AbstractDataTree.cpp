@@ -192,7 +192,7 @@ void AbstractDataTree::cloneDataTreeToNewInstance(AbstractDataTree* newInstance)
 			newInstance->add(groupID, clone->get_elements());
 		}
 	}
-	previousInstances.insert(previousInstances.begin(), newInstance);
+	previousInstances.insert(previousInstances.end(), newInstance);
 }
 
 string AbstractDataTree::getTreeName() {
