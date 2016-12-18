@@ -3,6 +3,8 @@ package window;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -68,6 +70,7 @@ public class StatisticsTab extends JPanel{
 		this.add(secondRow);
 
 		clearBoundingBox();
+		clearElementsCount();
 	}
 
 	private void initCoordinatesList() {
@@ -184,18 +187,40 @@ public class StatisticsTab extends JPanel{
 	}
 
 	public void setElementsCount(ElementsCount elementsCount) {
-		this.elementsCount = elementsCount;
-		this.putElementsCount();
-	}
-	
+//		this.elementsCount = elementsCount;
+//		this.putElementsCount();
+		cell11.removeAll();
+		cell12.removeAll();
 
+		cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+
+		for(String element : elementsCount.getElementInfosMap().keySet()){
+			JLabel label = new JLabel(element);
+			label.setFont(textFont);
+			cell11.add(label);
+			cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		}
+
+		for(ElementInfo info : elementsCount.getElementInfosMap().values()){
+			JLabel label = new JLabel(info.getVisible()+" ("+info.getTotal()+")");
+			label.setFont(textFont);
+			cell12.add(label);
+			cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
+		}
+
+		cell11.revalidate();
+		cell11.repaint();
+		cell12.revalidate();
+		cell12.repaint();
+	}
 
 	public void setBoundingBox(BoundingBox boundingBox) {
 		this.boundingBox = boundingBox;
 		this.putBoundingBox();
 	}
 
-	private void clearBoundingBox(){
+	private void clearBoundingBox() {
 		BoundingBox.Builder bbBuilder = BoundingBox.newBuilder();
 		bbBuilder.setFromX(0.0);
 		bbBuilder.setToX(0.0);
@@ -207,7 +232,22 @@ public class StatisticsTab extends JPanel{
 		setBoundingBox(testBoundingBox);
 	}
 
-	public void setInitContent(){
+	private void clearElementsCount() {
+		String[] types = {"vertex", "edge", "face", "block", "all"};
+		Map<String, ElementInfo> elementInfoMap = new HashMap<>();
+		for (String type: types) {
+			ElementInfo.Builder eiBuilder = ElementInfo.newBuilder();
+			eiBuilder.setTotal(0);
+			eiBuilder.setVisible(0);
+			elementInfoMap.put(type, eiBuilder.build());
+		}
+
+		ElementsCount.Builder ecBuilder = ElementsCount.newBuilder();
+		ecBuilder.putAllElementInfos(elementInfoMap);
+		setElementsCount(ecBuilder.build());
+	}
+
+	public void setInitContent() {
 		this.removeAll();
 		this.initializeView();
 		this.revalidate();
