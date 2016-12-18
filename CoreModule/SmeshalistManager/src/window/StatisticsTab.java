@@ -3,8 +3,6 @@ package window;
 import java.awt.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -69,7 +67,7 @@ public class StatisticsTab extends JPanel{
 		this.add(firstRow);
 		this.add(secondRow);
 
-		setInitContent();
+		clearBoundingBox();
 	}
 
 	private void initCoordinatesList() {
@@ -196,9 +194,8 @@ public class StatisticsTab extends JPanel{
 		this.boundingBox = boundingBox;
 		this.putBoundingBox();
 	}
-	
-	
-	public void setInitContent(){
+
+	private void clearBoundingBox(){
 		BoundingBox.Builder bbBuilder = BoundingBox.newBuilder();
 		bbBuilder.setFromX(0.0);
 		bbBuilder.setToX(0.0);
@@ -207,7 +204,13 @@ public class StatisticsTab extends JPanel{
 		bbBuilder.setFromZ(0.0);
 		bbBuilder.setToZ(0.0);
 		BoundingBox testBoundingBox = bbBuilder.build();
-		
 		setBoundingBox(testBoundingBox);
+	}
+
+	public void setInitContent(){
+		this.removeAll();
+		this.initializeView();
+		this.revalidate();
+		this.repaint();
 	}
 }

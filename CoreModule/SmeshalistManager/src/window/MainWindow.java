@@ -76,6 +76,7 @@ public class MainWindow extends JFrame {
 				this.statisticsTab.setElementsCount(toManagerMessage.getStatisticsInfo().getElementsCount());
 				this.filtersTab.setGroupsInfo(toManagerMessage.getStatisticsInfo().getGroupsInfo());
 				this.optionsTab.setTreeName(toManagerMessage.getStatisticsInfo().getTreeName());
+				this.optionsTab.setOldestSnapshot(toManagerMessage.getStatisticsInfo().getOldestSnapshot());
 				break;
 			case HARD_RESET:
 				this.hardReset();

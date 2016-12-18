@@ -67,7 +67,6 @@ public class OptionsTab extends JPanel{
 	private JPanel treeButtonsContainer;
 
 	public OptionsTab(){
-		
 		initializeView();
 
 		setVisible(true);
@@ -340,6 +339,7 @@ public class OptionsTab extends JPanel{
 	public void setTreeName(String treeName){
 		this.treeName.setText(treeName);
 		cleanButton.setEnabled(treeName.equals("ACTIVE"));
+		nextSnapshotButton.setEnabled(!treeName.equals("ACTIVE"));
 
 		treeButtonsContainer.revalidate();
 		treeButtonsContainer.repaint();
@@ -350,6 +350,10 @@ public class OptionsTab extends JPanel{
 		this.initializeView();
 		this.revalidate();
 		this.repaint();
+	}
+
+	public void setOldestSnapshot(boolean oldestSnapshot) {
+		prevSnapshotButton.setEnabled(!oldestSnapshot);
 	}
 
 }
