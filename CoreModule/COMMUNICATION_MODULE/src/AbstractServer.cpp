@@ -128,7 +128,7 @@ void AbstractServer::sendStaticticsOfGivenTree(AbstractDataTree* tree) {
     }
     (*info.mutable_elementscount()) = elementsCount;
 
-    info.set_oldestsnapshot(AbstractDataTree::getVisibleDataTreeIndex()==0);
+    info.set_oldestsnapshot(AbstractDataTree::getNumberOfDataTreeInstances()==0 || AbstractDataTree::getVisibleDataTreeIndex()==0);
 
     //set boundingBox
     sm::BoundingBox boundingBox;
