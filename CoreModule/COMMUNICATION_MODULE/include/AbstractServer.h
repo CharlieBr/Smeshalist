@@ -42,7 +42,6 @@ class AbstractServer
         virtual void startServer() {};
         virtual void stopServer() {};
 
-        void registerStructuresHandler(AbstractDataTree*);
         void registerMouseSensitivityHandler(float*);
 		void setDynamicRendering(bool);
 		void sendElementsBufferToTree();

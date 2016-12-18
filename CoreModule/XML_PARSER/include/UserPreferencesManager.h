@@ -23,6 +23,8 @@ class UserPreferencesManager
         Color getZAxisColor();
         Color getCuttingPlaneColor();
         Color* getQualityColor(double);
+
+        float getPointSize();
     protected:
     private:
         XMLParser* parser;

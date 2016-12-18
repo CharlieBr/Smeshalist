@@ -9,6 +9,8 @@
      <g id="1" r="0" g="255" b="0"/>
    </groups>
    
+   <points size="3"/>
+   
    <qualityColors>
      <negQualityColor r="111" g="111" b="111"/>
      <color q="0.0" r="0" g="0" b="255"/>

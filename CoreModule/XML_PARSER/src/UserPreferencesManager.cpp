@@ -315,6 +315,16 @@ vector<string> UserPreferencesManager::getAttributeValues(string path, string at
     return empty;
 }
 
+float UserPreferencesManager::getPointSize() {
+    string sizeStr = getPreference("points.size");
+
+    if (sizeStr != "") {
+        return stof(sizeStr);
+    }
+
+    return 3.0f;
+}
+
 Color* UserPreferencesManager::interpolateColor(Color begin, Color end, double qualityBegin, double qualityEnd, double quality) {
     double r = ((begin.r() - end.r()) * quality + qualityBegin * end.r() - qualityEnd * begin.r()) / (qualityBegin - qualityEnd);
     double g = ((begin.g() - end.g()) * quality + qualityBegin * end.g() - qualityEnd * begin.g()) / (qualityBegin - qualityEnd);

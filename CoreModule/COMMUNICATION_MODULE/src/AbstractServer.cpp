@@ -4,14 +4,6 @@ bool transparentStructures = false;
 bool showLabels = false;
 extern bool switchView;
 
-void AbstractServer::registerStructuresHandler(AbstractDataTree* data) {
-    if (this->handler != NULL) {
-		cout << "Set new data handler\n";
-	}
-
-	this->handler = data;
-}
-
 void AbstractServer::registerMouseSensitivityHandler(float* pointer) {
     mouseSensitivity = pointer;
 }
@@ -30,9 +22,10 @@ void AbstractServer::setDynamicRendering(bool flag)
 
 void AbstractServer::sendElementsBufferToTree()
 {
+    AbstractDataTree* active = AbstractDataTree::getActiveDataTree();
 	for (auto group : elementsBuffer) {
 		for (auto type : group.second) {
-			handler->add(group.first, &type.second);
+			active->add(group.first, &type.second);
 		}
 	}
 	elementsBuffer.clear();
@@ -86,7 +79,7 @@ void AbstractServer::sendBreakpoint() {
 }
 
 void AbstractServer::sendStatistics() {
-    sendStaticticsOfGivenTree(handler);
+    sendStaticticsOfGivenTree(AbstractDataTree::getActiveDataTree());
 }
 
 void AbstractServer::sendHardResetToSM() {
@@ -331,11 +324,11 @@ void AbstractServer::startSMServer() {
                 }
                 break;
             case sm::ManagerToCoreMessage_MTCMessageType_SNAPSHOT:
-                handler->createNewInstance();
+                AbstractDataTree::getActiveDataTree()->createNewInstance();
                 break;
             case sm::ManagerToCoreMessage_MTCMessageType_CLEAN:
                 if (AbstractDataTree::isActiveTreeVisible()) {  //clean ACTIVE data tree only when it's visible
-                    handler->clean();
+                    AbstractDataTree::getActiveDataTree()->clean();
                     sendStatistics();
                 }
                 break;
@@ -387,7 +380,6 @@ void AbstractServer::startServerInNewThread()
             case structDefinitions::MessageInfo_Type_DATA:
                 sendAcknowlage();
                 getDataPackages();
-                handler -> draw_elements();
                 break;
             case structDefinitions::MessageInfo_Type_BREAKPOINT:
                 sendBreakpoint();
@@ -396,7 +388,7 @@ void AbstractServer::startServerInNewThread()
                 sendElementsBufferToTree();
                 break;
             case structDefinitions::MessageInfo_Type_CLEAN:
-                handler->clean();
+                AbstractDataTree::getActiveDataTree()->clean();
                 sendStatistics();
                 sendAcknowlage();
                 break;
@@ -406,7 +398,7 @@ void AbstractServer::startServerInNewThread()
             case structDefinitions::MessageInfo_Type_HARD_RESET:
                 AbstractDataTree::getCurrentlyVisibleDataTree() -> removeAllSnapshots();
                 AbstractDataTree::removeAllFilters();
-                handler -> clean();
+                AbstractDataTree::getActiveDataTree() -> clean();
                 sendHardResetToSM();
                 sendAcknowlage();
                 break;

@@ -3,6 +3,7 @@
 extern bool transparentStructures;
 extern bool showLabels;
 bool Element::colorByQuality = false;
+float pointSize = UserPreferencesManager::getInstance()->getPointSize();
 
 // ----------------------------
 // -------- points ------------
@@ -23,7 +24,7 @@ void Vertex::draw(Color color){
     Point3D point = this -> vertices.front();
 
     setElementColor(color);
-    glPointSize(3.0f);
+    glPointSize(pointSize);
     glBegin(GL_POINTS);
         glVertex3f(point.get_x(), point.get_y(), point.get_z());
     glEnd();

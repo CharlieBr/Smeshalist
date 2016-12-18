@@ -10,10 +10,8 @@
 #include "UserPreferencesManager.h"
 #ifdef __linux__
 #include "LinuxServer.h"
-#include "LinuxDataTree.h"
 #else
 #include "WindowsServer.h"
-#include "WindowsDataTree.h"
 #endif // __linux__
 
 char SMESHALIST[] = "Smeshalist v1.0";
@@ -34,7 +32,6 @@ bool isShiftPressed = false;
 bool isLeftMouseButtonPressed = false;
 bool switchView = false;
 
-AbstractDataTree* d = NULL;
 AbstractServer* server = NULL;
 
 Color backgroundColor = UserPreferencesManager::getInstance()->getBackgroudColor();
@@ -242,7 +239,7 @@ void renderScene(void) {
 	glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 
 
-    AbstractDataTree* current = d -> getCurrentlyVisibleDataTree();
+    AbstractDataTree* current = AbstractDataTree::getCurrentlyVisibleDataTree();
     glPushMatrix();
         drawOrigin(current);
         glColor3f(0.1f, 0.1f, 0.1f);
@@ -390,13 +387,10 @@ int main(int argc, char **argv) {
 
     #ifdef __linux__
     server = new LinuxServer();
-	d = LinuxDataTree::getActiveDataTree();
     #else
 	server = new WindowsServer();
-	d = WindowsDataTree::getActiveDataTree();
     #endif // __linux__
 
-    server -> registerStructuresHandler(d);
     server -> registerMouseSensitivityHandler(&mouseSensitivity);
 
 	initGLUT(argc, argv);
