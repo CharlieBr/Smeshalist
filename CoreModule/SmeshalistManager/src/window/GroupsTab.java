@@ -94,41 +94,36 @@ public class GroupsTab extends JPanel{
 	}
 
 	public void setGroups(Map<Integer, Color> groups) {
-		TreeSet<Integer> sortedGroupNames = new TreeSet<>(groups.keySet());
+		this.scrollPaneContent.removeAll();
+		this.groupsCheckBoxes.clear();
+		this.groups.clear();
 
-		for (Integer groupName : sortedGroupNames) {
-			if (!this.groups.contains(Integer.toString(groupName))) {
-				this.groups.add(Integer.toString(groupName));
-			}
+		List<Integer> sortedGroups = new LinkedList<>(groups.keySet());
+		sortedGroups.sort(Comparator.naturalOrder());
+
+		for (Integer group: sortedGroups) {
+			this.groups.add(Integer.toString(group));
 		}
 
-		for (String groupName : this.groups) {
-			boolean found = false;
-			for (CheckBoxEntry groupCheckBox : this.groupsCheckBoxes) {
-				if (groupCheckBox.getCheckBoxText().compareTo(groupName) == 0){
-					found = true;
-					break;
-				}
+		for (String groupName: this.groups) {
+			JCheckBox tmpCheckBox = new JCheckBox(groupName);
+			if (this.groupsVisibility.containsKey(groupName)) {
+				tmpCheckBox.setSelected(this.groupsVisibility.get(groupName));
+			} else {
+				tmpCheckBox.setSelected(true);
+				this.groupsVisibility.put(groupName, true);
 			}
-			if (!found) {
-				JCheckBox tmpCheckBox = new JCheckBox(groupName);
-				if (this.groupsVisibility.containsKey(groupName)) {
-					tmpCheckBox.setSelected(this.groupsVisibility.get(groupName));
-				} else {
-					tmpCheckBox.setSelected(true);
+			tmpCheckBox.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					GroupsTab.setChanged(true);
 				}
-				tmpCheckBox.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						GroupsTab.setChanged(true);
-					}
-				});
-				CheckBoxEntry groupCheckBox = new CheckBoxEntry(tmpCheckBox, groups.get(Integer.parseInt(groupName)));
-				groupCheckBox.setPreferredSize(new Dimension(50,25));
-				this.groupsCheckBoxes.add(groupCheckBox);
+			});
+			CheckBoxEntry groupCheckBox = new CheckBoxEntry(tmpCheckBox, groups.get(Integer.parseInt(groupName)));
+			groupCheckBox.setPreferredSize(new Dimension(50,25));
+			this.groupsCheckBoxes.add(groupCheckBox);
 
-				scrollPaneContent.add(groupCheckBox);
-			}
+			scrollPaneContent.add(groupCheckBox);
 		}
 
 		scrollPaneContent.revalidate();
@@ -156,9 +151,7 @@ public class GroupsTab extends JPanel{
 	}
 
 	public void cleanGroupCheckboxes(){
-		for (CheckBoxEntry checkBoxEntry: this.groupsCheckBoxes){
-			this.groupsVisibility.put(checkBoxEntry.getCheckBoxText(),checkBoxEntry.isCheckBoxSelected());
-		}
+		updateGroupsVisibility();
 		this.scrollPaneContent.removeAll();
 		this.groupsCheckBoxes.clear();
 		this.groups.clear();
@@ -175,5 +168,11 @@ public class GroupsTab extends JPanel{
 		this.initializeView();
 		this.revalidate();
 		this.repaint();
+	}
+
+	public void updateGroupsVisibility() {
+		for (CheckBoxEntry checkBoxEntry: this.groupsCheckBoxes){
+			this.groupsVisibility.put(checkBoxEntry.getCheckBoxText(),checkBoxEntry.isCheckBoxSelected());
+		}
 	}
 }

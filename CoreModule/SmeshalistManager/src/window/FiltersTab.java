@@ -102,6 +102,8 @@ public class FiltersTab extends JPanel{
 		GroupsTab.setChanged(false);
 		CoordinatesTab.setChanged(false);
 		QualityTab.setChanged(false);
+
+		this.groupsTab.updateGroupsVisibility();
 	}
 
 	public void setGroupsInfo(GroupsInfo groupsInfo){
