@@ -867,6 +867,13 @@ class StatisticsInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   ::std::string* release_treename();
   void set_allocated_treename(::std::string* treename);
 
+  // required bool oldestSnapshot = 5;
+  bool has_oldestsnapshot() const;
+  void clear_oldestsnapshot();
+  static const int kOldestSnapshotFieldNumber = 5;
+  bool oldestsnapshot() const;
+  void set_oldestsnapshot(bool value);
+
   // @@protoc_insertion_point(class_scope:sm.StatisticsInfo)
  private:
   inline void set_has_elementscount();
@@ -877,6 +884,8 @@ class StatisticsInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   inline void clear_has_groupsinfo();
   inline void set_has_treename();
   inline void clear_has_treename();
+  inline void set_has_oldestsnapshot();
+  inline void clear_has_oldestsnapshot();
 
   // helper for ByteSize()
   int RequiredFieldsByteSizeFallback() const;
@@ -888,6 +897,7 @@ class StatisticsInfo : public ::google::protobuf::Message /* @@protoc_insertion_
   ::sm::BoundingBox* boundingbox_;
   ::sm::GroupsInfo* groupsinfo_;
   ::google::protobuf::internal::ArenaStringPtr treename_;
+  bool oldestsnapshot_;
   friend void  protobuf_AddDesc_communication_2eproto();
   friend void protobuf_AssignDesc_communication_2eproto();
   friend void protobuf_ShutdownFile_communication_2eproto();
@@ -2593,6 +2603,30 @@ inline void StatisticsInfo::set_allocated_treename(::std::string* treename) {
   }
   treename_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), treename);
   // @@protoc_insertion_point(field_set_allocated:sm.StatisticsInfo.treeName)
+}
+
+// required bool oldestSnapshot = 5;
+inline bool StatisticsInfo::has_oldestsnapshot() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void StatisticsInfo::set_has_oldestsnapshot() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void StatisticsInfo::clear_has_oldestsnapshot() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void StatisticsInfo::clear_oldestsnapshot() {
+  oldestsnapshot_ = false;
+  clear_has_oldestsnapshot();
+}
+inline bool StatisticsInfo::oldestsnapshot() const {
+  // @@protoc_insertion_point(field_get:sm.StatisticsInfo.oldestSnapshot)
+  return oldestsnapshot_;
+}
+inline void StatisticsInfo::set_oldestsnapshot(bool value) {
+  set_has_oldestsnapshot();
+  oldestsnapshot_ = value;
+  // @@protoc_insertion_point(field_set:sm.StatisticsInfo.oldestSnapshot)
 }
 
 // -------------------------------------------------------------------

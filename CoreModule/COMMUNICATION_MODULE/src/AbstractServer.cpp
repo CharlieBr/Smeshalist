@@ -128,6 +128,8 @@ void AbstractServer::sendStaticticsOfGivenTree(AbstractDataTree* tree) {
     }
     (*info.mutable_elementscount()) = elementsCount;
 
+    info.set_oldestsnapshot(AbstractDataTree::getVisibleDataTreeIndex()==0);
+
     //set boundingBox
     sm::BoundingBox boundingBox;
     if (tree -> get_min_x() > tree -> get_max_x()) {  //no data in tree - send zeros
