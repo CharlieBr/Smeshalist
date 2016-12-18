@@ -3751,6 +3751,15 @@ public final class Communication {
      */
     com.google.protobuf.ByteString
         getTreeNameBytes();
+
+    /**
+     * <code>required bool oldestSnapshot = 5;</code>
+     */
+    boolean hasOldestSnapshot();
+    /**
+     * <code>required bool oldestSnapshot = 5;</code>
+     */
+    boolean getOldestSnapshot();
   }
   /**
    * Protobuf type {@code sm.StatisticsInfo}
@@ -3765,6 +3774,7 @@ public final class Communication {
     }
     private StatisticsInfo() {
       treeName_ = "";
+      oldestSnapshot_ = false;
     }
 
     @java.lang.Override
@@ -3838,6 +3848,11 @@ public final class Communication {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000008;
               treeName_ = bs;
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              oldestSnapshot_ = input.readBool();
               break;
             }
           }
@@ -3970,6 +3985,21 @@ public final class Communication {
       }
     }
 
+    public static final int OLDESTSNAPSHOT_FIELD_NUMBER = 5;
+    private boolean oldestSnapshot_;
+    /**
+     * <code>required bool oldestSnapshot = 5;</code>
+     */
+    public boolean hasOldestSnapshot() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required bool oldestSnapshot = 5;</code>
+     */
+    public boolean getOldestSnapshot() {
+      return oldestSnapshot_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3989,6 +4019,10 @@ public final class Communication {
         return false;
       }
       if (!hasTreeName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOldestSnapshot()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -4022,6 +4056,9 @@ public final class Communication {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 4, treeName_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBool(5, oldestSnapshot_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -4044,6 +4081,10 @@ public final class Communication {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(4, treeName_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(5, oldestSnapshot_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4082,6 +4123,11 @@ public final class Communication {
         result = result && getTreeName()
             .equals(other.getTreeName());
       }
+      result = result && (hasOldestSnapshot() == other.hasOldestSnapshot());
+      if (hasOldestSnapshot()) {
+        result = result && (getOldestSnapshot()
+            == other.getOldestSnapshot());
+      }
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -4108,6 +4154,11 @@ public final class Communication {
       if (hasTreeName()) {
         hash = (37 * hash) + TREENAME_FIELD_NUMBER;
         hash = (53 * hash) + getTreeName().hashCode();
+      }
+      if (hasOldestSnapshot()) {
+        hash = (37 * hash) + OLDESTSNAPSHOT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+            getOldestSnapshot());
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -4249,6 +4300,8 @@ public final class Communication {
         bitField0_ = (bitField0_ & ~0x00000004);
         treeName_ = "";
         bitField0_ = (bitField0_ & ~0x00000008);
+        oldestSnapshot_ = false;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -4301,6 +4354,10 @@ public final class Communication {
           to_bitField0_ |= 0x00000008;
         }
         result.treeName_ = treeName_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.oldestSnapshot_ = oldestSnapshot_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4331,6 +4388,9 @@ public final class Communication {
           treeName_ = other.treeName_;
           onChanged();
         }
+        if (other.hasOldestSnapshot()) {
+          setOldestSnapshot(other.getOldestSnapshot());
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -4347,6 +4407,9 @@ public final class Communication {
           return false;
         }
         if (!hasTreeName()) {
+          return false;
+        }
+        if (!hasOldestSnapshot()) {
           return false;
         }
         if (!getElementsCount().isInitialized()) {
@@ -4806,6 +4869,38 @@ public final class Communication {
   }
   bitField0_ |= 0x00000008;
         treeName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean oldestSnapshot_ ;
+      /**
+       * <code>required bool oldestSnapshot = 5;</code>
+       */
+      public boolean hasOldestSnapshot() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required bool oldestSnapshot = 5;</code>
+       */
+      public boolean getOldestSnapshot() {
+        return oldestSnapshot_;
+      }
+      /**
+       * <code>required bool oldestSnapshot = 5;</code>
+       */
+      public Builder setOldestSnapshot(boolean value) {
+        bitField0_ |= 0x00000010;
+        oldestSnapshot_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool oldestSnapshot = 5;</code>
+       */
+      public Builder clearOldestSnapshot() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        oldestSnapshot_ = false;
         onChanged();
         return this;
       }
@@ -12899,58 +12994,59 @@ public final class Communication {
       "\"{\n\nGroupsInfo\0220\n\tallGroups\030\001 \003(\0132\035.sm.G",
       "roupsInfo.AllGroupsEntry\032;\n\016AllGroupsEnt" +
       "ry\022\013\n\003key\030\001 \001(\005\022\030\n\005value\030\002 \001(\0132\t.sm.Colo" +
-      "r:\0028\001\"\226\001\n\016StatisticsInfo\022(\n\relementsCoun" +
+      "r:\0028\001\"\256\001\n\016StatisticsInfo\022(\n\relementsCoun" +
       "t\030\001 \002(\0132\021.sm.ElementsCount\022$\n\013boundingBo" +
       "x\030\002 \002(\0132\017.sm.BoundingBox\022\"\n\ngroupsInfo\030\003" +
-      " \002(\0132\016.sm.GroupsInfo\022\020\n\010treeName\030\004 \002(\t\"\302" +
-      "\001\n\024CoreToManagerMessage\022<\n\013messageType\030\001" +
-      " \002(\0162\'.sm.CoreToManagerMessage.CTMMessag" +
-      "eType\022*\n\016statisticsInfo\030\002 \001(\0132\022.sm.Stati" +
-      "sticsInfo\"@\n\016CTMMessageType\022\016\n\nSTATISTIC",
-      "S\020\001\022\016\n\nBREAKPOINT\020\002\022\016\n\nHARD_RESET\020\003\"\316\001\n\013" +
-      "OptionsInfo\022\035\n\025transparentStructures\030\001 \002" +
-      "(\010\022\030\n\020dynamicRendering\030\002 \002(\010\022\022\n\nshowLabe" +
-      "ls\030\003 \002(\010\022\030\n\020mouseSensitivity\030\004 \002(\001\022&\n\014co" +
-      "loringType\030\005 \002(\0162\020.sm.ColoringType\0220\n\021vi" +
-      "sualisationMode\030\006 \002(\0162\025.sm.Visualisation" +
-      "Mode\"~\n\013TypesFilter\0229\n\rselectedTypes\030\001 \003" +
-      "(\0132\".sm.TypesFilter.SelectedTypesEntry\0324" +
-      "\n\022SelectedTypesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val" +
-      "ue\030\002 \001(\010:\0028\001\"\203\001\n\014GroupsFilter\022<\n\016selecte",
-      "dGroups\030\001 \003(\0132$.sm.GroupsFilter.Selected" +
-      "GroupsEntry\0325\n\023SelectedGroupsEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\226\001\n\020QualityCo" +
-      "ndition\022\021\n\tleftValue\030\001 \001(\001\022,\n\014leftOperat" +
-      "or\030\002 \001(\0162\026.sm.ComparisonOperator\022-\n\rrigh" +
-      "tOperator\030\003 \001(\0162\026.sm.ComparisonOperator\022" +
-      "\022\n\nrightValue\030\004 \001(\001\"?\n\rQualityFilter\022.\n\020" +
-      "qualityCondition\030\001 \003(\0132\024.sm.QualityCondi" +
-      "tion\"\215\001\n\024CoordinatesCondition\022\016\n\006xValue\030" +
-      "\001 \002(\001\022\016\n\006yValue\030\002 \002(\001\022\016\n\006zValue\030\003 \002(\001\0223\n",
-      "\023coordinatesOperator\030\004 \002(\0162\026.sm.Comparis" +
-      "onOperator\022\020\n\010constant\030\005 \002(\001\"\243\001\n\021Coordin" +
-      "atesFilter\0226\n\024coordinatesCondition\030\001 \003(\013" +
-      "2\030.sm.CoordinatesCondition\0226\n\013conjunctio" +
-      "n\030\002 \001(\0162!.sm.CoordinatesFilter.Conjuncti" +
-      "on\"\036\n\013Conjunction\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\331\003\n\024M" +
-      "anagerToCoreMessage\022<\n\013messageType\030\001 \002(\016" +
-      "2\'.sm.ManagerToCoreMessage.MTCMessageTyp" +
-      "e\022$\n\013optionsInfo\030\002 \001(\0132\017.sm.OptionsInfo\022" +
-      "&\n\014groupsFilter\030\003 \001(\0132\020.sm.GroupsFilter\022",
-      "$\n\013typesFilter\030\004 \001(\0132\017.sm.TypesFilter\022(\n" +
-      "\rqualityFilter\030\005 \001(\0132\021.sm.QualityFilter\022" +
-      "0\n\021coordinatesFilter\030\006 \001(\0132\025.sm.Coordina" +
-      "tesFilter\022\023\n\013objFilePath\030\007 \001(\t\"\235\001\n\016MTCMe" +
-      "ssageType\022\013\n\007OPTIONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010C" +
-      "ONTINUE\020\003\022\t\n\005ABORT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPS" +
-      "HOT\020\006\022\t\n\005CLEAN\020\007\022\r\n\tNEXT_TREE\020\010\022\r\n\tPREV_" +
-      "TREE\020\t\022\n\n\006IMPORT\020\n\022\n\n\006EXPORT\020\013*9\n\014Colori" +
-      "ngType\022\023\n\017GROUPS_COLORING\020\001\022\024\n\020QUALITY_C" +
-      "OLORING\020\002*-\n\021VisualisationMode\022\013\n\007MODE_3",
-      "D\020\001\022\013\n\007MODE_2D\020\002*_\n\022ComparisonOperator\022\024" +
-      "\n\020GREATER_OR_EQUAL\020\001\022\013\n\007GREATER\020\002\022\t\n\005EQU" +
-      "AL\020\003\022\021\n\rLESS_OR_EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rcom" +
-      "municationB\rCommunication"
+      " \002(\0132\016.sm.GroupsInfo\022\020\n\010treeName\030\004 \002(\t\022\026" +
+      "\n\016oldestSnapshot\030\005 \002(\010\"\302\001\n\024CoreToManager" +
+      "Message\022<\n\013messageType\030\001 \002(\0162\'.sm.CoreTo" +
+      "ManagerMessage.CTMMessageType\022*\n\016statist" +
+      "icsInfo\030\002 \001(\0132\022.sm.StatisticsInfo\"@\n\016CTM",
+      "MessageType\022\016\n\nSTATISTICS\020\001\022\016\n\nBREAKPOIN" +
+      "T\020\002\022\016\n\nHARD_RESET\020\003\"\316\001\n\013OptionsInfo\022\035\n\025t" +
+      "ransparentStructures\030\001 \002(\010\022\030\n\020dynamicRen" +
+      "dering\030\002 \002(\010\022\022\n\nshowLabels\030\003 \002(\010\022\030\n\020mous" +
+      "eSensitivity\030\004 \002(\001\022&\n\014coloringType\030\005 \002(\016" +
+      "2\020.sm.ColoringType\0220\n\021visualisationMode\030" +
+      "\006 \002(\0162\025.sm.VisualisationMode\"~\n\013TypesFil" +
+      "ter\0229\n\rselectedTypes\030\001 \003(\0132\".sm.TypesFil" +
+      "ter.SelectedTypesEntry\0324\n\022SelectedTypesE" +
+      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\"\203\001\n",
+      "\014GroupsFilter\022<\n\016selectedGroups\030\001 \003(\0132$." +
+      "sm.GroupsFilter.SelectedGroupsEntry\0325\n\023S" +
+      "electedGroupsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value" +
+      "\030\002 \001(\010:\0028\001\"\226\001\n\020QualityCondition\022\021\n\tleftV" +
+      "alue\030\001 \001(\001\022,\n\014leftOperator\030\002 \001(\0162\026.sm.Co" +
+      "mparisonOperator\022-\n\rrightOperator\030\003 \001(\0162" +
+      "\026.sm.ComparisonOperator\022\022\n\nrightValue\030\004 " +
+      "\001(\001\"?\n\rQualityFilter\022.\n\020qualityCondition" +
+      "\030\001 \003(\0132\024.sm.QualityCondition\"\215\001\n\024Coordin" +
+      "atesCondition\022\016\n\006xValue\030\001 \002(\001\022\016\n\006yValue\030",
+      "\002 \002(\001\022\016\n\006zValue\030\003 \002(\001\0223\n\023coordinatesOper" +
+      "ator\030\004 \002(\0162\026.sm.ComparisonOperator\022\020\n\010co" +
+      "nstant\030\005 \002(\001\"\243\001\n\021CoordinatesFilter\0226\n\024co" +
+      "ordinatesCondition\030\001 \003(\0132\030.sm.Coordinate" +
+      "sCondition\0226\n\013conjunction\030\002 \001(\0162!.sm.Coo" +
+      "rdinatesFilter.Conjunction\"\036\n\013Conjunctio" +
+      "n\022\007\n\003AND\020\001\022\006\n\002OR\020\002\"\331\003\n\024ManagerToCoreMess" +
+      "age\022<\n\013messageType\030\001 \002(\0162\'.sm.ManagerToC" +
+      "oreMessage.MTCMessageType\022$\n\013optionsInfo" +
+      "\030\002 \001(\0132\017.sm.OptionsInfo\022&\n\014groupsFilter\030",
+      "\003 \001(\0132\020.sm.GroupsFilter\022$\n\013typesFilter\030\004" +
+      " \001(\0132\017.sm.TypesFilter\022(\n\rqualityFilter\030\005" +
+      " \001(\0132\021.sm.QualityFilter\0220\n\021coordinatesFi" +
+      "lter\030\006 \001(\0132\025.sm.CoordinatesFilter\022\023\n\013obj" +
+      "FilePath\030\007 \001(\t\"\235\001\n\016MTCMessageType\022\013\n\007OPT" +
+      "IONS\020\001\022\013\n\007FILTERS\020\002\022\014\n\010CONTINUE\020\003\022\t\n\005ABO" +
+      "RT\020\004\022\t\n\005HELLO\020\005\022\014\n\010SNAPSHOT\020\006\022\t\n\005CLEAN\020\007" +
+      "\022\r\n\tNEXT_TREE\020\010\022\r\n\tPREV_TREE\020\t\022\n\n\006IMPORT" +
+      "\020\n\022\n\n\006EXPORT\020\013*9\n\014ColoringType\022\023\n\017GROUPS" +
+      "_COLORING\020\001\022\024\n\020QUALITY_COLORING\020\002*-\n\021Vis",
+      "ualisationMode\022\013\n\007MODE_3D\020\001\022\013\n\007MODE_2D\020\002" +
+      "*_\n\022ComparisonOperator\022\024\n\020GREATER_OR_EQU" +
+      "AL\020\001\022\013\n\007GREATER\020\002\022\t\n\005EQUAL\020\003\022\021\n\rLESS_OR_" +
+      "EQUAL\020\004\022\010\n\004LESS\020\005B\036\n\rcommunicationB\rComm" +
+      "unication"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -13011,7 +13107,7 @@ public final class Communication {
     internal_static_sm_StatisticsInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_sm_StatisticsInfo_descriptor,
-        new java.lang.String[] { "ElementsCount", "BoundingBox", "GroupsInfo", "TreeName", });
+        new java.lang.String[] { "ElementsCount", "BoundingBox", "GroupsInfo", "TreeName", "OldestSnapshot", });
     internal_static_sm_CoreToManagerMessage_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_sm_CoreToManagerMessage_fieldAccessorTable = new

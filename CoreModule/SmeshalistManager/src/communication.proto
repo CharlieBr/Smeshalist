@@ -35,6 +35,7 @@ message StatisticsInfo{
 	required BoundingBox boundingBox = 2;
 	required GroupsInfo groupsInfo = 3;
 	required string treeName = 4;
+	required bool oldestSnapshot = 5;
 }
 
 message CoreToManagerMessage{
