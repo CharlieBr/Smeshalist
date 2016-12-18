@@ -404,7 +404,7 @@ void AbstractServer::startServerInNewThread()
                 sendAcknowlage();
                 break;
             case structDefinitions::MessageInfo_Type_HARD_RESET:
-                handler -> removeAllSnapshots();
+                AbstractDataTree::getCurrentlyVisibleDataTree() -> removeAllSnapshots();
                 AbstractDataTree::removeAllFilters();
                 handler -> clean();
                 sendHardResetToSM();
