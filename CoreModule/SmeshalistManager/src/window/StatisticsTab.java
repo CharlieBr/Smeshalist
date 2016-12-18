@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -17,6 +18,7 @@ import javax.swing.border.TitledBorder;
 import communication.Communication.BoundingBox;
 import communication.Communication.ElementInfo;
 import communication.Communication.ElementsCount;
+import util.StatisticsTypeComparator;
 import util.WindowUtil;
 
 public class StatisticsTab extends JPanel{
@@ -134,34 +136,7 @@ public class StatisticsTab extends JPanel{
 		border.setTitleJustification(2);
 		cell11.setBorder(border);
 	}
-	
-	public void putElementsCount(){
-		cell11.removeAll();
-		cell12.removeAll();
 
-		cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-
-		for(String element : this.elementsCount.getElementInfosMap().keySet()){
-			JLabel label = new JLabel(element);
-			label.setFont(textFont);
-			cell11.add(label);
-			cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		}
-		
-		for(ElementInfo info : this.elementsCount.getElementInfosMap().values()){
-			JLabel label = new JLabel(info.getVisible()+" ("+info.getTotal()+")");
-			label.setFont(textFont);
-			cell12.add(label);
-			cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
-		}
-
-		cell11.revalidate();
-		cell11.repaint();
-		cell12.revalidate();
-		cell12.repaint();
-	}
-	
 	public void putBoundingBox(){
 		cell22.removeAll();
 
@@ -187,22 +162,23 @@ public class StatisticsTab extends JPanel{
 	}
 
 	public void setElementsCount(ElementsCount elementsCount) {
-//		this.elementsCount = elementsCount;
-//		this.putElementsCount();
 		cell11.removeAll();
 		cell12.removeAll();
 
 		cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		cell12.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 
-		for(String element : elementsCount.getElementInfosMap().keySet()){
+		TreeMap<String, ElementInfo> elementInfosMap = new TreeMap<>(new StatisticsTypeComparator());
+		elementInfosMap.putAll(elementsCount.getElementInfosMap());
+
+		for(String element : elementInfosMap.keySet()){
 			JLabel label = new JLabel(element);
 			label.setFont(textFont);
 			cell11.add(label);
 			cell11.add(Box.createVerticalStrut(WindowUtil.SPACING_VALUE));
 		}
 
-		for(ElementInfo info : elementsCount.getElementInfosMap().values()){
+		for(ElementInfo info : elementInfosMap.values()){
 			JLabel label = new JLabel(info.getVisible()+" ("+info.getTotal()+")");
 			label.setFont(textFont);
 			cell12.add(label);
